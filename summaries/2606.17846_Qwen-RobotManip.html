@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Qwen-RobotManip — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Foundation Model</span>
+    <h1>Qwen-RobotManip: Alignment Unlocks Scale for Robotic Manipulation Foundation Models</h1>
+    <p class="authors">Qwen Team (Alibaba) · 기술 리포트</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2606.17846" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2606.17846" target="_blank">PDF</a>
+      <a href="https://qwen.ai/blog?id=qwen-robotmanip" target="_blank">프로젝트/블로그</a>
+      <a href="https://github.com/QwenLM/Qwen-RobotManip" target="_blank">GitHub</a>
+      <span>arXiv:2606.17846</span>
+    </div>
+    <p class="meta">제출: 2026년 6월 17일 (v2) · 백본 Qwen3.5-4B VLM + DiT action expert</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>"<b>정렬(alignment)이 스케일을 푼다.</b>" 이질적 embodiment를 통합하는 정렬 프레임워크(정규 80차원 상태-행동 표현 + 카메라 프레임 델타 pose + 실행 이력 기반 in-context 적응)와 <b>~38,100시간</b>의 순수 오픈소스 데이터(사유 데이터 무수집, 인간→로봇 합성 24,808h 포함)로 학습한 조작 파운데이션 모델. 표준 in-domain 벤치는 사전학습 효과를 못 가린다고 주장, <b>OOD 평가</b>를 north star로 제시. LIBERO-Plus <span class="win">91.4%</span>(π0.5 84.4), zero-shot 교차 embodiment 평균 <span class="win">23.9%</span>(π0.5의 3.2배), RoboChallenge Table30-v1 제너럴리스트 트랙 <span class="win">1위</span>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇 조작 파운데이션 모델의 스케일업을 막는 근본 문제는 embodiment 간 <b>표현 이질성(representational heterogeneity)</b>. 서로 다른 로봇의 상태·행동·카메라·형태가 제각각이라 대규모 다출처 데이터를 하나의 정책으로 녹이기 어렵다. 저자들의 처방은 세 층위의 <b>정렬</b>이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>교차 embodiment 통합 정렬 프레임워크:</b> ① 차원별 이진 마스킹을 쓰는 정규 80차원 상태-행동 표현, ② EEF 행동을 시각 도메인에 접지하는 카메라 프레임 델타 pose, ③ 에피소드 내 실행 이력을 암묵적 embodiment 식별자로 쓰는 in-context 적응. + 조작·시각언어를 공동 최적화하는 <b>이중 스트림 co-training</b>.</li>
+      <li><b>확장형 다출처 코퍼스(~38,100h):</b> 전부 오픈소스 로봇 데이터 + 에고센트릭 인간 영상, <b>사유 데이터 무수집</b>. 어떤 에고센트릭 데모든 <b>15개 로봇 플랫폼</b> 궤적으로 변환하는 인간→로봇 합성 파이프라인(~24,808h).</li>
+      <li><b>VLA 일반화 평가의 새 기준:</b> in-domain 벤치는 사전학습 품질을 못 가린다고 주장. OOD 세팅(LIBERO-Plus, RoboTwin-Clean2Rand, RoboCasa365, EBench) + 신규 벤치 <b>RoboTwin-IF</b>(지시 추종)·<b>RoboTwin-XE</b>(zero-shot 교차 embodiment).</li>
+      <li><b>실로봇 검증:</b> 4개 물리 플랫폼(AgileX ALOHA, Franka, UR, ARX)에서 in-domain/OOD/few-shot/zero-shot 검증. RoboChallenge Table30-v1 제너럴리스트 트랙 1위(상대 +20%).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>구조 (분리형)</h3>
+    <p>Qwen-VL 백본(<b>Qwen3.5-4B</b>, D<sub>vlm</sub>=2560) + flow-matching <b>Diffusion Transformer(DiT) action expert</b>(N=10 블록, D<sub>act</sub>=768, 12 heads). 각 DiT 블록: 상태+행동 토큰 self-attention → VLM hidden state로 cross-attention(짝수 블록=시각, 홀수 블록=언어 교차) → SwiGLU FFN. flow-matching(t~Beta(1,1.5)), 추론은 <b>4스텝 Euler</b>로 저지연 제어.</p>
+
+    <h3>교차 embodiment 상태/행동 표현</h3>
+    <div class="callout">
+      <b>80차원 정규 벡터</b> = 팔당 29차원 블록 2개 + 예약 22차원. 팔 블록: 관절위치(7) + EEF pose(9=위치3+6D 회전) + 그리퍼(1) + 손 관절(12). 상태·관절행동은 절대값, EEF 행동은 상대 델타. embodiment마다 다른 부분집합만 채우고, zero-pad 차원은 <b>차원별 이진 마스크</b>로 손실에서 제외.
+    </div>
+    <p><b>통합 EEF 모션 예측:</b> 카메라 프레임 델타 pose로 시각적으로 유사한 동작을 수치적으로 가깝게 만들고, <b>Camera Positional Encoding(CaPE)</b>로 카메라 기하를 DiT cross-attention에 주입. EEF 타입 임베딩(단팔/양팔 좌우/에고센트릭 헤드/모바일 베이스) + 캘리브레이션 가용 플래그를 adaptive layernorm으로 조건화.</p>
+
+    <h3>in-context 정책 적응</h3>
+    <p>최근 실행 컨텍스트 청크 윈도우(관찰, 상태, K-step 행동 삼중항)를 조건으로. 이력 프레임은 VLM 비전 인코더에 prepend. <b>확률적 컨텍스트 샘플링</b>(최근이 아닌 무작위 에피소드 위치에서 윈도우 추출)으로 행동 복사 shortcut 붕괴 방지.</p>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>로봇 데이터</div><div>단팔 3,808h + 양팔 6,744h + 모바일/휴머노이드 868h (OXE, DROID, AgiBotWorld 등)</div>
+      <div>인간 영상</div><div>1,933h (EgoDex, VITRA, EgoVerse)</div>
+      <div>인간→로봇 합성</div><div>24,808h (15개 양팔 플랫폼)</div>
+      <div>합성 파이프라인</div><div>리타게팅 → SAM3 손 분할 → ProPainter 인페인팅 → MuJoCo IK → Depth Anything v3 합성</div>
+      <div>학습</div><div>이중 스트림 co-training 9:1(로봇:VL), L = L<sub>FM</sub> + 0.1·L<sub>VLM</sub></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <div class="callout">
+      <b>중심 논지(그림 4):</b> 표준 in-distribution 벤치(LIBERO, RoboTwin)로는 대규모 사전학습 이득을 구분 못함 — scratch 학습 모델이 사전학습 모델과 대등/상회(예: StarVLA는 RoboTwin Easy 85.7% → Clean2Rand 10.6%로 붕괴). <b>OOD 평가</b>를 north star로 채택.
+    </div>
+
+    <h3>주요 OOD 벤치마크</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치마크</th><th>Qwen-RobotManip</th><th>π0.5 (차순위)</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>LIBERO-Plus (Context)</td><td class="win">91.4%</td><td>84.4%</td><td>+7.0</td></tr>
+        <tr><td>RoboTwin-Clean2Rand (Hard, Context)</td><td class="win">69.4%</td><td>47.9%</td><td>+21.5</td></tr>
+        <tr><td>RoboCasa365 (overall)</td><td class="win">35.9%</td><td>16.9%</td><td>+19.0</td></tr>
+        <tr><td>EBench (SR)</td><td class="win">45.6%</td><td>27.1%</td><td>+18.5</td></tr>
+        <tr><td>RoboTwin-IF (지시 추종, avg)</td><td class="win">72.2%</td><td>49.6%</td><td>+22.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">in-distribution(표 3): LIBERO 99.2% / RoboTwin-Easy 93.7% / Hard 94.0%. RoboCasa365는 RLDX-1(33.2%)도 상회.</p>
+
+    <h3>RoboTwin-XE — zero-shot 교차 embodiment (표 9)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>ARX-X5</th><th>UR5-WSG</th><th>Franka</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td><b>Qwen-RobotManip (eef)</b></td><td class="win">42.9%</td><td>22.8%</td><td>5.9%</td><td class="win">23.9%</td></tr>
+        <tr><td>π0.5</td><td>—</td><td>—</td><td>—</td><td>7.5%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">EEF 표현이 π0.5의 <b>3.2배</b>. 관절 공간 전이는 취약(UR5/Franka &lt;5%) → EEF 정렬의 중요성.</p>
+
+    <h3>실로봇 (CobotMagic ALOHA, 표 10–11)</h3>
+    <p>22.9h로 파인튜닝. in-domain 평균 <b>88.6%</b>(π0.5 42.9, StarVLA 20.0), out-of-domain 평균 <b>87.5%</b>(π0.5 37.5, StarVLA 0.0).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 4</b> — "표준 벤치는 불충분하다"는 중심 논거. 캡션(원문): <i>"Standard in-distribution benchmarks cannot reveal whether a model benefits from large-scale robot data pretraining. Left: on in-distribution benchmarks (LIBERO, RoboTwin), models without large-scale robot pretraining (dashed borders) match or exceed pretrained ones. Right: on OOD benchmarks (LIBERO-Plus, RoboTwin-Clean2Rand), a clear separation emerges—pretraining provides genuine generalization that training-from-scratch cannot replicate."</i>
+    </div>
+    <div class="callout">
+      <b>Figure 7</b> — OOD 일반화 3축 요약. 캡션(원문): <i>"OOD generalization summary. QWEN-ROBOTMANIP vs. previous state-of-the-art VLA model across three generalization axes. (a) Task and scene generalization under controlled perturbations. (b) Instruction following with held-out language templates. (c) Zero-shot cross-embodiment transfer."</i>
+    </div>
+    <p class="cap">Figure 1: 인간→로봇 데이터 합성 파이프라인(~1,933h 에고센트릭 → 15개 형태 → ~24,808h 합성).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2606.17846" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2606.17846" target="_blank">PDF</a></li>
+      <li><a href="https://qwen.ai/blog?id=qwen-robotmanip" target="_blank">Qwen 블로그/프로젝트</a></li>
+      <li><a href="https://github.com/QwenLM/Qwen-RobotManip" target="_blank">GitHub</a></li>
+    </ul>
+    <p class="note">참고: 추출 텍스트가 실로봇 평가(6.3절) 이후에서 잘려, RoboChallenge 결과 표·일부 ablation(6.5절)은 원문 기준 요약. 헤드라인 수치는 초록·본문에서 그대로 인용.</p>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2606.17846 · Qwen-RobotManip Technical Report · 요약 생성 2026-07-02
+  </footer>
+</div>
+</body>
+</html>

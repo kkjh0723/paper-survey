@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RECAP — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Retrieval</span>
+    <h1>Retrieve, Don't Retrain: Extending Vision-Language-Action Models to New Tasks at Test Time</h1>
+    <p class="authors">Jeongeun Park, Juhan Park, Taekyung Kim, Sungjoon Choi, Dongyoon Han, Sangdoo Yun · NAVER AI Lab · Korea University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2606.15631v1" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2606.15631" target="_blank">PDF</a>
+      <a href="https://recap-robot.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2606.15631</span>
+    </div>
+    <p class="meta">제출: 2026년 6월 14일 (v1) · 백본 Cosmos Predict2.5 (2B)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>새 태스크를 배우려고 <b>재학습(retrain)하지 말고 검색(retrieve)하라.</b> 정책을 <b>동결</b>한 채, 값싼 pool-embodiment(예: 인간 손 영상) 데모를 검색 풀에 추가하는 것만으로 새 태스크를 흡수하는 <b>테스트타임 태스크 적응</b> 패러다임. 파인튜닝은 새 <b>embodiment</b>를 받을 때만 필요하고, 새 <b>태스크</b>마다는 불필요. 검색이 대략적 고수준 동작을, 정책은 embodiment 특화 <b>잔차(residual) 보정</b>만 학습. 인간 손 데모는 로봇 텔레옵 대비 <b>~18배</b> 저렴, WAM 태스크별 파인튜닝 <b>~24 GPU-hours/task</b>를 인덱싱으로 대체. PushT 미학습 각도 <span class="win">34.9%</span>(vs 6.0%), RoboTwin 2.0 미학습 태스크 <span class="win">31.5%</span>(vs 26.0%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>교차 embodiment 모방학습에서 query(배포 대상, 예: 로봇 팔)와 pool(더 값싼 embodiment, 예: 인간 손, 배포되지 않음)의 두 축을 다룬다. 전이는 두 가정에 기댄다: (1) 공유 상태/행동 표현 — SE(3) end-effector pose + 그리퍼 신호; (2) 궤적 수준에서 의미적으로 유사한 동작. 기존엔 새 태스크마다 텔레옵 수집 + 정책 파인튜닝(Cosmos Policy 기준 ~24 GPU-hours/task)이 필요했다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>재학습 없는 테스트타임 태스크 적응:</b> 값싼 pool-embodiment 데모를 검색 풀에 추가하는 것만으로 새 태스크 흡수. 파인튜닝은 새 embodiment에만 필요.</li>
+      <li><b>RECAP (Retrieval-Conditioned Action Policy):</b> world-action model(WAM, Cosmos Policy) 위에 세운 검색 조건부 <b>잔차 정책</b>. 검색이 대략적 동작/진행을, 정책은 embodiment 특화 보정(residual)만 학습. WAM의 미래-이미지 목적은 <b>검색과 결합될 때만</b> 유효.</li>
+      <li><b>비용 논거:</b> 인간 손 데모는 텔레옵 대비 ~18배 저렴, 태스크별 파인튜닝 ~24 GPU-hours를 인덱싱으로 대체.</li>
+      <li><b>실증적 우위:</b> PushT, RoboTwin 2.0, 실로봇에서 교차 embodiment 베이스라인 상회 + 파라미터 갱신 없이 풀 확장에 따른 단조 성능 향상.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>검색 증강 WAM</h3>
+    <p>Cosmos Policy(query 행동 + 미래 이미지 관찰을 하나의 denoised 비디오 시퀀스로 출력) 기반. RECAP은 검색된 pool 청크를 조건으로 추가: <b>π<sub>θ</sub>(s<sup>query</sup>, (s<sup>pool</sup>, a<sup>pool</sup>)) ↦ â<sup>query</sup>, ŝ<sup>query</sup></b>. 검색 청크+관측 query 프레임을 clean latent로 인코딩해 시간축 앞에 prepend, query 미래는 noise에서 denoise. 언어 지시는 cross-attention으로 진입 — <b>구조 변경 없이</b> 표준 I2V 조건화를 clean 상태-행동 서브시퀀스로 확장.</p>
+
+    <h3>잔차 행동 파라미터화</h3>
+    <div class="callout">
+      <b>â<sup>query</sup> = a<sup>pool</sup> + Δa</b> — action latent은 "query 행동이 pool과 <b>어떻게 다른가</b>"(embodiment gap 보정)만 인코딩. 이 차이는 행동 레이블엔 약하게, 픽셀엔 뚜렷하게 나타나므로 <b>미래 상태 예측(state prediction)</b>이 이를 학습할 dense한 시각 신호를 공급. 공동 목적: <b>L = λ·L<sub>act</sub> + L<sub>state</sub></b> (단일 flow-matching 손실).
+    </div>
+
+    <h3>2단계 검색</h3>
+    <p><b>Stage 1(궤적 prefilter):</b> 초기 프레임 기술자 ψ0 = 언어 목표 임베딩 + 초기 관련 물체 위치(SAM 3) + 초기 proprioception 하에 query에 가장 가까운 top-K 궤적. <b>Stage 2(서브프레임 매칭):</b> 후보 내에서 물체 pose·proprioception·(학습 시에만) 다가올 행동 청크의 가중 L2 + DINOv3 이미지 특징 코사인 거리로 매 스텝 최적 t' 선택. H 길이 청크를 가져와 잔차 행동 예측, 앞 K개 실행 후 K만큼 전진해 재검색. <b>추론 시</b> D<sup>pool</sup><sub>test</sub>가 활성 풀을 대체·재인덱싱하며 매 스텝 재검색 → 세션 내 풀이 파라미터 변경 없이 성장 가능.</p>
+
+    <h3>주요 하이퍼파라미터 (표 10)</h3>
+    <div class="kv">
+      <div>베이스 비디오 모델</div><div>Cosmos Predict2.5 (2B)</div>
+      <div>horizon H / stride K</div><div>16 프레임 / 1</div>
+      <div>action-loss 가중 λ</div><div>16</div>
+      <div>학습</div><div>AdamW, LR 1e-4(cosine, 2000 warm-up), batch 512, 20,000 iter</div>
+      <div>Top-K 궤적</div><div>5</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboTwin 2.0 (다태스크 양팔, 표 1 — 헤드라인)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Seen Avg ↑</th><th>Unseen Avg ↑</th></tr></thead>
+      <tbody>
+        <tr><td>Baseline (Cosmos Policy)</td><td>32.5</td><td>4.0</td></tr>
+        <tr><td>Retrieval Only</td><td>25.5</td><td>26.0</td></tr>
+        <tr><td>Co-training</td><td>27.0</td><td>10.0</td></tr>
+        <tr><td><b>RECAP (Ours)</b></td><td class="win">43.5</td><td class="win">31.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">target=Aloha-Agilex, pool=UR5. 5개 태스크(246 페어 에피소드) 학습, 5개 미학습 평가. 풀을 11→17→23→29→35 태스크로 키우면 미학습 성공률이 9.0→18.5→19.5→22.0→31.5%로 <b>단조 증가</b>(정책 동결 유지).</p>
+
+    <h3>PushT (2D T-블록 밀기)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Seen</th><th>Unseen Avg</th></tr></thead>
+      <tbody>
+        <tr><td>Cosmos Policy (검색 없음)</td><td>33.0</td><td>6.0</td></tr>
+        <tr><td>Retrieval Only</td><td>16.0</td><td>16.9</td></tr>
+        <tr><td>Co-train (all)</td><td>23.0</td><td>19.1</td></tr>
+        <tr><td><b>Ours</b></td><td class="win">50.0</td><td class="win">34.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">target=삼각 pusher, pool=원판 pusher. −45°/+45° 학습 후 −60°~+60°(15° 간격, 7개 미학습) 평가. 풀 성장 시 미학습 평균 6.0%→34.9% 단조 상승(보간이지 암기가 아님).</p>
+
+    <h3>핵심 ablation</h3>
+    <ul>
+      <li><b>백본 비교(그림 5a):</b> π0.5(행동만) 6.6%→25.1%, Cosmos(WAM) 6.0%→<b>34.9%</b> — WAM이 검색으로 더 큰 이득.</li>
+      <li><b>공동학습 역할(그림 5b):</b> 미래-이미지 예측 제거 시 34.9%→27.4%(검색 π0.5 수준). 검색 없이는 미래 예측이 중립/유해(8.3%→6.0%).</li>
+      <li><b>2×2(표 3):</b> residual+next-state 34.9 vs residual만 27.4 vs absolute+next-state 27.4 — next-state의 이득은 <b>WAM×검색 상호작용</b>에 특화(+7.4 under residual, 비검색 regime에선 −2.3).</li>
+    </ul>
+
+    <h3>실로봇 (pool=인간 손, target=텔레옵 로봇, 그림 8b)</h3>
+    <p>open-cabinet 25 페어 데모로 파인튜닝 후 동결. held-out 태스크당 인간 손 데모 10개만 풀에 추가. Open 90%/90%, <b>Place 10%→80%, Close 0%→30%</b> — 베이스라인은 held-out에서 학습된 open 동작으로 붕괴.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>메커니즘 분석 (해석성)</h2>
+    <p>디코더의 2단계 라우팅 관찰: <b>L10 "intake"</b>(검색된 태스크 영역에 주의, ret-1 T-블록 5.1×) + <b>L15 "commit"</b>(정책 자신이 예측한 종료 pose에 주의, 3.9×). 두 축 모두 <b>검색이 없으면 사라짐</b>(ROI 비율 ≈ 1.0). L10 causal 마스킹 시 성공률 20~80pp 하락, 실패 사례에서 L10 마스킹이 0%→20~40% 회생시키기도 함.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 1 (overview)</b> — 논문의 핵심 논지. 캡션(원문): <i>"RECAP overview. Instead of teleoperating each new task and fine-tuning the policy (top, ∼24 GPU-hours/task for Cosmos Policy), ReCAP appends cheap human-hand demonstrations to a retrieval pool while keeping the policy frozen (bottom), 18× cheaper, no additional training."</i>
+    </div>
+    <div class="callout">
+      <b>Table 1 (RoboTwin 결과)</b> — 헤드라인 근거. 캡션(원문): <i>"Quantitative analysis on RoboTwin. We report per-task success rate (%) on RoboTwin, with Aloha-Agilex as the target embodiment and UR5 as the retrieval pool. The left block shows seen tasks, and the right block shows unseen tasks."</i>
+    </div>
+    <p class="cap">Figure 5는 검색 × WAM 목적의 상호작용을 분리하는 핵심 분석 그림.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2606.15631v1" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2606.15631" target="_blank">PDF</a></li>
+      <li><a href="https://recap-robot.github.io" target="_blank">프로젝트 페이지 (recap-robot.github.io)</a></li>
+      <li>참조 코드: <a href="https://github.com/huggingface/lerobot" target="_blank">LeRobot</a> · SAM 3 (<a href="https://arxiv.org/abs/2511.16719" target="_blank">arXiv:2511.16719</a>)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2606.15631 · Retrieve, Don't Retrain (RECAP) · 요약 생성 2026-07-02
+  </footer>
+</div>
+</body>
+</html>

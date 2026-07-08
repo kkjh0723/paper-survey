@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VLA-JEPA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · World Model</span>
+    <h1>VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model</h1>
+    <p class="authors">Jingwen Sun, Wenyao Zhang (공동 1저자) 외 · USTC · SJTU · Tsinghua · Zhongguancun Academy · EIT Ningbo · 교신저자 Xin Jin, Zhibo Chen</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2602.10098" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2602.10098" target="_blank">PDF</a>
+      <a href="https://ginwind.github.io/VLA-JEPA/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/ginwind/VLA-JEPA/" target="_blank">GitHub</a>
+      <a href="https://huggingface.co/ginwind/VLA-JEPA/" target="_blank">HuggingFace</a>
+      <span>arXiv:2602.10098</span>
+    </div>
+    <p class="meta">제출: 2026년 2월 17일 (v2) · 백본 Qwen3-VL · 8× A100</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>영상 기반 latent-action 사전학습의 4가지 함정(픽셀 목표의 외형 편향, 실세계 영상의 잡음 모션 증폭, <b>정보 누출(information leakage)</b>, 복잡한 다단계 파이프라인)을 진단하고, 이를 <b>JEPA(Joint-Embedding Predictive Architecture)</b> 방식의 <b>누출 없는(leakage-free) 상태 예측</b>으로 해결한 VLA 사전학습 기법. 픽셀 복원 없이 미래 <b>latent state</b>를 예측·정렬해 행동 관련 전이 의미(transition semantics)를 학습하며, 단일 단계 파이프라인으로 단순화. LIBERO 평균 <span class="win">97.2</span>, 강건성 벤치 LIBERO-Plus <span class="win">79.5</span>(차순위 OpenVLA-OFT 69.6)로 큰 폭 우위.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>영상으로부터 <b>latent action</b>을 사전학습해 VLA에 주입하는 접근이 최근 유행이나, 저자들은 네 가지 실패 모드를 지적한다: (1) <b>픽셀 수준 목표</b>는 표현을 행동보다 <b>외형(appearance)</b>에 치우치게 한다; (2) 실세계 영상은 카메라 이동·배경 등 <b>잡음/무관 모션(nuisance motion)</b>을 증폭한다; (3) 미래 관찰을 학습기에 입력으로 넣으면 "latent action"이 미래 자체를 인코딩하는 <b>지름길(shortcut)로 붕괴</b>하는 정보 누출이 발생한다; (4) 다단계 학습 파이프라인은 복잡하고 취약하다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Latent-action 사전학습의 함정 분석</b> — 픽셀 목표 편향, 잡음 모션 증폭, 정보 누출, 파이프라인 취약성의 4대 실패 모드를 규명.</li>
+      <li><b>VLA-JEPA: 누출 없는 상태 수준 JEPA 사전학습</b> — 픽셀 복원·정보 누출 없이 미래 latent state를 예측·정렬. target encoder가 미래 프레임으로 target을 만들되, student 경로는 <b>현재 관찰만</b> 보고 미래 정보는 오직 <b>지도 신호(target)</b>로만 사용.</li>
+      <li><b>단순한 워크플로 + 강건성 향상</b> — JEPA 사전학습 → action-head 파인튜닝의 2단계 레시피로 LIBERO, LIBERO-Plus, SimplerEnv, 실로봇 전반에서 일관된 강건성·일반화 향상.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 & 토큰 설계</h3>
+    <p>핵심 VLM으로 <b>Qwen3-VL</b>(SigLIP-2 비전 인코더) 사용. 두 종류의 학습형 특수 토큰 도입: <b>⟨latent<sub>i</sub>⟩</b>(시점 i의 상태 전이 s<sub>i</sub>→s<sub>i+1</sub> 인코딩)와 <b>⟨action⟩</b>. 각 ⟨latent<sub>i</sub>⟩는 K번 복제되어 가변 길이 latent action 인코딩을 가능하게 함.</p>
+
+    <h3>World State Encoder</h3>
+    <p>동결된 자기지도 <b>V-JEPA2</b> 인코더 F(·)로 각 단일 시점 프레임을 인코딩하고, 동일 에피소드의 여러 시점을 벡터 concat으로 통합해 world-state 표현 <b>s<sub>t<sub>i</sub></sub> = ‖<sub>v</sub> F(I<sub>v,t<sub>i</sub></sub>)</b>을 구성.</p>
+
+    <h3>누출 없는 Latent Action 사전학습 (World Modeling)</h3>
+    <p>VLM은 초기 시점 t<sub>0</sub>의 멀티뷰 관찰 + 언어 지시 ℓ를 받아 ⟨latent<sub>i</sub>⟩ 토큰을 world dynamics를 요약하는 z<sub>t<sub>i</sub></sub>로 매핑. 자기회귀 트랜스포머 world model이 다음 상태 청크를 예측: <b>ŝ = p<sup>WM</sup><sub>θ</sub>(s<sub>t0:i</sub>, z<sub>t0:i</sub>)</b>. <b>time-causal attention</b> 사용 — 한 시점 내부에서는 양방향, 시점 간에는 엄격한 causal(미래 마스킹).</p>
+    <div class="callout">
+      목적함수는 의미 공간의 예측 log-likelihood ELBO 최대화. 동결 V-JEPA2가 결정론적 임베딩을 주므로 KL 항이 사라지고 ELBO는 latent-space 복원 손실로 귀결: <b>L<sub>WM</sub> = Σ(ŝ<sub>tk</sub> − s<sub>tk</sub>)</b>. <b>핵심:</b> 미래 프레임은 VLM의 입력이 절대 아니며, 오직 V-JEPA2 target 생성에만 쓰여 누출 shortcut을 제거한다.
+    </div>
+
+    <h3>Action 예측 (Flow Matching, 로봇 데이터)</h3>
+    <p>⟨action⟩ 토큰을 latent-action 토큰 뒤에 붙이고 causal attention으로 전역 action-conditioning 표현 z<sub>a</sub>를 생성. <b>조건부 flow-matching action head</b>가 연속 action 궤적을 모델링: a<sub>t</sub>=(1−t)ε+t·a<sub>0:H</sub>, 벡터장 v<sub>θ</sub>를 <b>L<sub>FM</sub>=E‖v<sub>θ</sub>−(a−ε)‖²</b>로 학습. 로봇 데이터 전체 목적: <b>L = L<sub>FM</sub> + β·L<sub>WM</sub></b>. 인간 영상(action-free)은 정렬 손실만, 로봇 데이터는 정렬+행동 예측 손실로 <b>교차 도메인 공동 사전학습</b> 지원.</p>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>Something-Something-v2 (인간 영상 220K, action-free) + Droid (로봇 76K)</div>
+      <div>파인튜닝</div><div>LIBERO ~2K 데모 / SimplerEnv용 Fractal+BridgeV2 / 실로봇 3태스크 100데모</div>
+      <div>하드웨어</div><div>8× NVIDIA A100</div>
+      <div>레시피</div><div>JEPA 사전학습 → action head 파인튜닝 (world-state 인코더는 동결)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO (성공률, 표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Spatial</th><th>Object</th><th>Goal</th><th>LIBERO-10</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA-OFT</td><td>—</td><td>—</td><td>—</td><td>—</td><td>97.1</td></tr>
+        <tr><td>π0.5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>96.9</td></tr>
+        <tr><td><b>VLA-JEPA</b></td><td>96.2</td><td class="win">99.6</td><td>97.2</td><td class="win">95.8</td><td class="win">97.2</td></tr>
+        <tr><td>VLA-JEPA (인간영상 없이)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>96.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">4개 suite 중 2개 SOTA, 평균 최고. 각 태스크 50 에피소드, suite당 500.</p>
+
+    <h3>LIBERO-Plus — 강건성 (표 3, 논문의 핵심 주장)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Camera</th><th>Robot</th><th>Lang</th><th>Light</th><th>BG</th><th>Noise</th><th>Layout</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td><b>VLA-JEPA</b></td><td>63.3</td><td class="win">67.1</td><td class="win">85.4</td><td class="win">95.6</td><td class="win">93.6</td><td>66.3</td><td class="win">85.1</td><td class="win">79.5</td></tr>
+        <tr><td>OpenVLA-OFT</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>69.6</td></tr>
+        <tr><td>π0-Fast</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>61.6</td></tr>
+        <tr><td>π0</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>53.6</td></tr>
+        <tr><td>VLA-JEPA (인간영상 없이)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>62.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">7개 교란 차원 중 5개 최고. <b>인간 영상 제거 시 79.5→62.9</b>로 급락 — 강건성 향상이 인간 영상 사전학습에서 크게 기인함을 시사.</p>
+
+    <h3>SimplerEnv (visual matching, 표 2)</h3>
+    <p>Google Robot 평균 <b>65.2</b>(최고 평균), WidowX 평균 <b>57.3</b>(villa-X 다음 2위, villa-X는 100배 이상 데이터 사용). 로봇별 4태스크 중 2개 최고.</p>
+
+    <h3>실로봇 (Franka Research 3 + Robotiq 2F-85, 그림 4)</h3>
+    <p>in-distribution·물체 배치 OOD에서 SOTA(π0·π0.5 상회), task-OOD에서는 2위. 특히 인간 영상 사전학습 덕분에 <b>재파지(repeated grasping, 실패 후 그리퍼 재개방 재시도)</b> 능력을 학습 — π0/π0.5엔 없는 능력. 트레이드오프: π0.5는 지시 추종이 더 정밀하나 팔 안전 경계를 위반, VLA-JEPA는 더 안정적이나 지시 정밀도는 낮음.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>인간 영상의 역할:</b> LIBERO/SimplerEnv엔 영향 미미(오히려 SimplerEnv는 도움), 그러나 <b>LIBERO-Plus 강건성엔 큰 이득</b>(79.5 vs 62.9). 인간 영상 비율↑일수록 강건성 일관 향상. → 새 동작을 가르치기보다 <b>기존 스킬의 강건성/안정성</b>을 높임.</li>
+      <li><b>통합 사전학습:</b> 단일 단계 통합이 기존 2단계 패러다임 상회. Attention 시각화(그림 6)에서 VLA-JEPA는 팔·손·조작 물체에 정확히 주의, LAPA는 과도하게 조밀한 무관 디테일(누출), UniVLA는 배경 의미에 과주의.</li>
+      <li><b>미래 영상 horizon (표 4):</b> T=8이 최적(평균 96.1), T=4는 94.8, T=16은 95.5. <b>영상 horizon이 action horizon에 가까울 때</b> 성능 최고.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Table 3 (LIBERO-Plus)</b> — 강건성/일반화라는 핵심 주장의 근거. 캡션(원문): <i>"Comparison on the LIBERO-Plus benchmark. We report the average success rate across each perturbation dimension, where each perturbation includes the four task suites from the original LIBERO benchmark."</i>
+    </div>
+    <div class="callout">
+      <b>Figure 6 (attention 시각화)</b> — "leakage-free" 주장의 정성적 증거. 캡션(원문): <i>"Visualization of the attention weight matrix of latent action tokens attending to image tokens."</i> VLA-JEPA vs LAPA vs UniVLA를 대비, VLA-JEPA의 주의가 팔·손·타깃 물체에 집중됨을 보임.
+    </div>
+    <p class="cap">Figure 1: "VLA-JEPA model architecture" · Figure 2: 인간 영상은 정렬 손실, 로봇 데이터는 정렬+행동 예측 손실로 학습하는 교차 도메인 구조.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2602.10098" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2602.10098" target="_blank">PDF</a></li>
+      <li><a href="https://ginwind.github.io/VLA-JEPA/" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/ginwind/VLA-JEPA/" target="_blank">GitHub 코드</a></li>
+      <li><a href="https://huggingface.co/ginwind/VLA-JEPA/" target="_blank">HuggingFace 모델</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2602.10098 · VLA-JEPA · 요약 생성 2026-07-02
+  </footer>
+</div>
+</body>
+</html>

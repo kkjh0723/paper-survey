@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Robot Self-Improvement (DGAC) — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Self-Improvement · Dynamics Model</span>
+    <h1>Robot Self-Improvement via Human-Video Dynamics Models</h1>
+    <p class="authors">Hanzhi Chen, Anran Zhang (공동 1저자) 외 · ETH Zurich · TUM · Microsoft · MCML · 공동 지도 Oier Mees, Stefan Leutenegger</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2606.21406v1" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2606.21406v1" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2606.21406v1" target="_blank">HTML</a>
+      <a href="https://ethz-mrl.github.io/robot-self-improvement-website/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2606.21406</span>
+    </div>
+    <p class="meta">제출: 2026년 6월 19일 (v1) · CC BY 4.0</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>인간 영상에서 <b>embodiment-불변</b>의 행동·동역학(dynamics)·가치(value) 표현을 학습해, 이를 로봇에 접지하고 <b>실세계 실패로부터 스스로 개선</b>하게 만드는 프레임워크. 핵심은 <b>DGAC(Dynamics-Guided Action Correction)</b> — 온라인 인간 개입 없이 <b>실패한 rollout 상태를 교정 지도신호로 변환</b>하는 학습 불필요(training-free) 플러그인 후처리 모듈. 7개 실세계 조작 태스크, 모바일 매니퓰레이터+고정 팔 두 embodiment에서 검증. 평균 성공률 <span class="win">40.0% → 81.0%</span>, 강력한 π0.5 백본에서도 SFT 62.7% → <span class="win">88.0%</span>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>인간 영상은 확장 가능한 사전지식의 원천이나, 대부분 로봇 <b>배포</b>에만 쓰였다. 이 논문의 질문: <i>인간 영상 사전지식이 배포뿐 아니라 실세계 실패로부터의 <b>자기 개선(self-improvement)</b>까지 지원할 수 있는가?</i> 온라인 인간 보상/개입 없이 실패를 지도신호로 바꾸는 것이 관건.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>재사용 가능한 인간 영상 사전지식:</b> 로봇 형태를 넘나드는 embodiment-불변의 행동·동역학·가치 표현을 확장 가능한 인간 영상에서 학습, 자율적 정책 개선의 예측 기반 제공.</li>
+      <li><b>실패→지도 학습 (DGAC):</b> 온라인 인간 개입 없이 실패 rollout 상태를 교정 지도신호로 변환하는 <b>학습 불필요</b> 방법.</li>
+      <li><b>정책 불변(policy-agnostic) 개선:</b> DGAC가 서로 다른 정책 백본에 붙는 plug-and-play 후처리 모듈로 작동.</li>
+      <li><b>교차 embodiment 자기개선 실증:</b> 모바일 매니퓰레이터(Stretch 3)와 고정 팔(Franka Panda)에서 7개 실세계 조작 태스크 검증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>embodiment-불변 표현 (인간 영상에서)</h3>
+    <ul>
+      <li><b>행동:</b> a<sub>t</sub>=[ξ<sub>t</sub>, c<sub>t</sub>], ξ<sub>t</sub>∈SE(3) 절대 6-DoF 손목 모션 + c<sub>t</sub>∈[0,1] 스칼라 손 닫힘(손가락 구성에서 추정, embodiment별 관절 추상화).</li>
+      <li><b>월드 상태:</b> o<sub>t</sub>=[z<sub>t</sub>, P<sub>t</sub>], z<sub>t</sub>=현 프레임 DINO-v3 시각 토큰 + P<sub>t</sub>=단기 3D point flow(TAPIP3D). "비대칭 시간 설계"로 단기 의미 맥락 + 접촉 기하 포착.</li>
+      <li><b>가치:</b> 희소 종료 보상의 할인 리턴 V<sub>t</sub>=γ<sup>T−t</sup>r<sub>T</sub>, r<sub>T</sub>∈{1,−1}.</li>
+    </ul>
+
+    <h3>세 모델 공동 사전학습</h3>
+    <p>정책 π<sub>θ</sub>, 동역학 f<sub>φ</sub>(상태 이력+후보 행동 청크 → 미래 상태), 가치 V<sub>ψ</sub>. 정책·동역학은 flow matching(<b>x-prediction</b>, clean target 직접 예측), 가치는 L2 회귀. RL은 유한 지평 contextual MDP, 청크 수준 부트스트랩 advantage Â = Σr + V(o<sub>t+H</sub>) − V(o<sub>t</sub>), 개선 지표 I<sub>t</sub>=1(Â&gt;ε)로 CFGRL식 정책 추출.</p>
+
+    <h3>사전학습 → 자기개선</h3>
+    <p><b>자율 로봇 적응:</b> 동결된 인간 사전학습 정책이 VLM(GPT-4o)이 제안한 원자적 지시를 실행하며 로봇 상태·자연 실패에 노출 → 동역학·가치 모델을 대상 로봇에 접지(텔레옵 불필요). <b>정책 초기화:</b> 소량 텔레옵 D<sub>tele</sub>로 앵커링, 그리퍼 뷰 관찰 + 개선 지표 I<sub>t</sub> 조건.</p>
+    <div class="callout">
+      <b>DGAC (Algorithm 1):</b> 실패 상태마다 ① 진행도 정렬된 성공 경험 검색 → ② value gap/유사도 임계(δ<sub>v</sub>, δ<sub>s</sub>) 초과 시 교정 기각 → ③ flow matching으로 N개 교정 행동 후보 샘플 → ④ 동역학 f<sub>φ</sub>로 롤아웃, 가치 V<sub>ψ</sub>로 채점 → ⑤ <b>a*=argmax<sub>n</sub> V</b> 선택. 선택된 교정으로 실패 전이를 relabel → 다음 정책 업데이트의 지도신호.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+    <div class="callout">
+      <b>헤드라인:</b> 다양한 정책 백본에서 성공률을 평균 <span class="win">40.0% → 81.0%</span>로 향상. 강력한 π0.5(대규모 로봇 데이터 사전학습) 백본에서도 <b>SFT 62.7% → 88.0%</b>. 동일 rollout에 단순 value-filtering(RECAP식)만 쓰면 62.7%→68.0%에 그쳐, DGAC의 명시적 실패 교정이 <b>+20.0%p</b> 도약.
+    </div>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>설정</th><th>개선 전</th><th>개선 후</th></tr></thead>
+      <tbody>
+        <tr><td>평균 (여러 백본)</td><td>40.0%</td><td class="win">81.0%</td></tr>
+        <tr><td>π0.5 백본 (SFT → DGAC)</td><td>62.7%</td><td class="win">88.0%</td></tr>
+        <tr><td>π0.5 백본 (value-filtering만)</td><td>62.7%</td><td>68.0%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">태스크/embodiment: Stretch 3(Socks, Kitchen, Microwave, Table, Basketball) + Franka Panda(Box, Sweep). 참조 베이스라인: SWIM, LPB, AWR, RECAP, RISE.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>핵심 Figure</h2>
+    <div class="callout">
+      <b>Figure 1 (teaser)</b> 캡션(원문): <i>"We learn transferable models from human videos, enabling different robots to ground human priors through real-world rollouts and improve from failures."</i>
+    </div>
+    <div class="callout">
+      <b>Figure 2 (framework)</b> 캡션(원문): <i>"Overview of our framework. We first pretrain reusable policy, dynamics, and value models from human videos, which then enable iterative robot policy self-improvement in the real world."</i>
+    </div>
+    <p class="cap">Algorithm 1(DGAC)이 검색 → 후보 샘플 → 동역학 롤아웃 → 가치 순위 → argmax 선택 절차를 정식화.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2606.21406v1" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2606.21406v1" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2606.21406v1" target="_blank">HTML</a></li>
+      <li><a href="https://ethz-mrl.github.io/robot-self-improvement-website/" target="_blank">프로젝트 페이지 (ETH MRL)</a></li>
+    </ul>
+    <p class="note">참고: HTML 추출본이 4.2절(정책 초기화) 중간에서 잘려, 실험(5절) 상세 표는 초록·서론의 헤드라인 수치 기준으로 정리했습니다. 원문은 위 링크 참조.</p>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2606.21406 · Robot Self-Improvement via Human-Video Dynamics Models (DGAC) · 요약 생성 2026-07-02
+  </footer>
+</div>
+</body>
+</html>
