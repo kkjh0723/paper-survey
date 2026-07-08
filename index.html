@@ -31,7 +31,7 @@
     border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03)}
   thead th{background:#f0f4ea;text-align:left;font-size:12.5px;letter-spacing:.03em;
     text-transform:uppercase;color:#48553f;padding:12px 14px;border-bottom:1px solid var(--line)}
-  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:14.5px}
   tbody tr:last-child td{border-bottom:none}
   tbody tr:hover{background:#fafcf6}
   .no{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
@@ -40,6 +40,8 @@
   .ttl a:hover{color:var(--accent-d)}
   .sub{color:var(--muted);font-size:13px;margin-top:3px}
   .tags{margin-top:7px;display:flex;flex-wrap:wrap;gap:5px}
+  /* 리스트에서는 저자·요약·태그를 숨겨 행 높이를 균일하게 유지 (검색은 숨긴 내용까지 매칭됨) */
+  tbody .sub, tbody .tags{display:none}
   .tag{font-size:11.5px;background:var(--soft);color:var(--accent-d);border:1px solid #d5e4bf;
     padding:2px 8px;border-radius:6px}
   .links{white-space:nowrap;font-size:13px}
@@ -213,7 +215,7 @@
     var rows=document.querySelectorAll('#rows tr');
     var n=0;
     rows.forEach(function(r){
-      var t=r.innerText.toLowerCase();
+      var t=r.textContent.toLowerCase();
       var show=t.indexOf(q)>-1;
       r.style.display=show?'':'none';
       if(show)n++;
