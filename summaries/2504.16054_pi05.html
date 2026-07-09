@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>π0.5 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Open-World</span>
+    <h1>π0.5: a Vision-Language-Action Model with Open-World Generalization</h1>
+    <p class="authors">Physical Intelligence (Kevin Black, Noah Brown, Danny Driess, Chelsea Finn, Sergey Levine, Karol Hausman, Karl Pertsch 외)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2504.16054" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2504.16054" target="_blank">PDF</a>
+      <a href="https://www.physicalintelligence.company/blog/pi05" target="_blank">프로젝트 블로그</a>
+      <span>arXiv:2504.16054</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Open-World Generalization</span>
+      <span class="t">Co-Training</span>
+      <span class="t">Hierarchical Inference</span>
+      <span class="t">Mobile Manipulation</span>
+    </div>
+    <p class="meta">제출: 2025년 4월 22일 (v1) · Physical Intelligence · 이동 조작 로봇(듀얼 암 + 홀로노믹 베이스)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>π0의 후속으로, <b>완전히 새로운 실제 가정</b>(학습 데이터에 없는 집)에서 부엌·침실 청소 같은 <b>10~15분 장기 조작</b>을 end-to-end로 수행하는 첫 VLA. 핵심은 무차별 로봇 데이터 수집이 아니라 <b>이질적 데이터 공동학습(co-training)</b> — 사전학습 데이터의 <span class="win">97.6%</span>가 이동조작이 아닌 소스(타 로봇, 웹 데이터, 실험실 데이터)다. <b>계층적 추론</b>(고수준 서브태스크 예측 + 저수준 행동 생성)을 단일 모델로 통합하고, <b>이산 토큰(FAST) 사전학습 + flow matching 연속 추론</b>의 하이브리드 행동 표현을 쓴다. 학습 환경 수를 <b>104개</b>까지 늘리면 테스트 가정에서 직접 학습한 오라클(≈92%)에 근접(≈90%)해, 데이터 다양성이 일반화를 이끈다는 것을 보인다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇이 실제로 쓸모 있으려면 실험실이 아닌 <b>현실 세계</b>에서 유의미한 작업을 해야 한다. π0 같은 기존 VLA는 학습 데이터와 유사한 환경에서는 잘 작동하지만, <b>전혀 새로운 집</b>(새 배치·새 물체·새 구조)으로의 진정한 open-world 일반화, 특히 "부엌을 청소하라" 같은 <b>장기(long-horizon)</b> 과제에서는 실패한다. 이전 연구가 보여준 일반화는 물건 집기·서랍 열기 같은 <b>단순·단기 스킬</b>에 한정됐고, 장기 과제에 필요한 폭넓은 상식/의미 이해는 로봇 데이터만의 무차별 수집으로는 달성 불가능하다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>새 가정에서의 장기 조작 최초 실증</b> — 해당 환경 학습 데이터 없이도 완전히 새로운 집에서 10~15분 장기·정교 조작을 수행하는 end-to-end 학습 로봇 시스템을 처음 시연.</li>
+      <li><b>이질적 데이터 공동학습(co-training) 프레임워크</b> — 사전학습 데이터의 97.6%가 이동조작 이외 소스(타 로봇, 웹 데이터, 실험실 데이터)로, 크로스-임바디먼트·웹 지식을 결합.</li>
+      <li><b>계층적 통합 아키텍처</b> — 하나의 모델이 고수준 의미적 서브태스크 예측과 저수준 행동 추론을 동시에 수행.</li>
+      <li><b>하이브리드 행동 표현</b> — 효율적 사전학습을 위한 이산 토큰화(FAST)와 배포 시 연속 행동 추론을 위한 flow matching을 결합.</li>
+      <li><b>일반화 스케일링 검증</b> — 일반화 성능이 학습 <b>환경 다양성</b>에 따라 단조 증가하며, 공동학습 구성요소 각각이 필수임을 ablation으로 입증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>공동학습 데이터 소스</h3>
+    <p>사전학습은 5종의 이질적 데이터를 함께 사용한다. 이동조작(MM) 데이터는 실제 가정에서 수집한 <b>~400시간</b>에 불과하고, 나머지 <b>97.6%</b>는 타 로봇·실험실·웹에서 온다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>데이터</th><th>출처</th><th>역할</th></tr></thead>
+      <tbody>
+        <tr><td>MM (이동조작)</td><td>실제 가정 ~400시간</td><td>목표 도메인</td></tr>
+        <tr><td>ME (다환경)</td><td>다양한 가정의 비이동 로봇</td><td>크로스-임바디먼트 전이</td></tr>
+        <tr><td>CE (실험실 크로스-임바디먼트)</td><td>테이블탑 태스크, OXE</td><td>다양한 조작 프리미티브</td></tr>
+        <tr><td>HL (고수준)</td><td>수동 서브태스크 주석</td><td>의미적 추론</td></tr>
+        <tr><td>WD (웹 데이터)</td><td>CapsFusion, COCO, VQAv2, Cambrian-7M</td><td>시각·의미 grounding</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">후처리(post-training)에서는 전문가 사용자의 언어 지도인 <b>VI(구두 지시)</b>가 추가되며, 고수준 데이터의 약 11%로 소량이지만 성능에 결정적이다.</p>
+
+    <h3>계층적 추론 구조</h3>
+    <p>예측을 다음과 같이 분해한다: <b>π(actions, subtask | obs, task) = π(actions | obs, subtask) × π(subtask | obs, task)</b>. <b>고수준 추론</b>이 의미적 서브태스크(예: "접시를 집어라")를 출력하고, <b>저수준 추론</b>이 그 서브태스크를 조건으로 연속 행동 청크를 생성한다. 단일 트랜스포머가 둘 다 처리하되, 연속 예측용 "action expert" 가중치를 별도로 둔다.</p>
+
+    <h3>하이브리드 행동 표현</h3>
+    <p><b>사전학습:</b> FAST 토크나이저(이산 토큰) 사용 — 확장성 좋은 next-token 예측이 장점이나 추론 시 자기회귀 디코딩이 비쌈. <b>후처리:</b> flow matching을 추가해 실시간 연속 행동 생성(10 denoising step) + 텍스트 생성 능력 유지. 후처리 손실은 <b>L = H(text) + α·‖noise_target − action_pred‖²</b> (α=10.0).</p>
+
+    <h3>로봇 시스템</h3>
+    <div class="kv">
+      <div>플랫폼</div><div>동일 스펙 이동 조작 로봇 2대 · 18~19 DOF</div>
+      <div>액추에이터</div><div>6-DOF 암 2개, 평행 그리퍼, 홀로노믹 베이스, 토르소 리프트</div>
+      <div>센서</div><div>카메라 4대(전방·후방·손목 ×2)</div>
+      <div>제어</div><div>50 Hz 직접 포즈 타깃팅(PD 제어), 궤적 플래닝 없음</div>
+      <div>학습 스텝</div><div>사전학습 280k + 후처리 80k</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>새 가정에서의 일반화</h3>
+    <p>학습에 없던 <b>완전히 새로운 집 3곳</b>(부엌 3 + 침실 3, 총 6태스크, 태스크당 10회)에서 평가. "싱크에 그릇 넣기" 약 70~85% 진행률, "서랍에 물건 넣기" 약 80~90%, "빨래 바구니" 약 75~85% 완료. 에피소드당 2~5분 다단계 과제로, 논문은 이를 "기존 VLA가 보인 결과를 크게 상회"한다고 밝힌다.</p>
+
+    <h3>환경 다양성에 따른 스케일링</h3>
+    <p>학습 환경 수를 <b>3 → 12 → 22 → 53 → 82 → 104</b>개로 늘리며 평가. 성능이 <b>단조 증가</b>하며, 104개 환경 모델은 테스트 집에서 직접 학습한 오라클과 사실상 동등한 수준에 도달한다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>설정</th><th>평균 성능(근사)</th></tr></thead>
+      <tbody>
+        <tr><td>테스트 가정 직접 학습 (오라클)</td><td>≈ 92%</td></tr>
+        <tr><td><b>104개 환경 공동학습 (test 데이터 0)</b></td><td class="win">≈ 90%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">언어 지시 따르기(Fig. 9): 104개 환경에서 학습 카테고리 물체 ≈85%, 미학습(OOD) 물체 ≈65%. 둘 다 환경 수 증가에 따라 꾸준히 향상.</p>
+
+    <h3>모델 비교</h3>
+    <p>π0.5는 원본 <b>π0</b> 및 공동학습 없는 강화판 <b>π0-FAST+Flow</b>를 4개 벤치 태스크 전반에서 뚜렷하게 능가한다(Fig. 12).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>웹 데이터(WD) 제거:</b> 모의 가정 태스크엔 영향 미미하나 <b>OOD 물체 일반화에서 크게 저하</b> — 웹 데이터가 폭넓은 물체 의미 지식을 제공.</li>
+      <li><b>다환경(ME) 데이터 제거:</b> 태스크 진행률 약 15~25%p 급락 — 다른 가정으로부터의 크로스-임바디먼트 전이가 핵심.</li>
+      <li><b>실험실 CE 데이터 제거:</b> 유의미한 저하 — 다양한 조작 프리미티브가 필수.</li>
+      <li><b>ME·CE 모두 제거:</b> 사실상 붕괴 — 이동조작 데이터만으로는 불충분, 이질적 소스의 필요성 입증.</li>
+      <li><b>고수준 추론·VI:</b> 명시적 고수준 추론이 최고, 구두지시(VI) 제거 시 큰 폭 저하. 흥미롭게도 π0.5는 <b>사람 고수준 주석자보다 더 잘 수행</b> — 학습된 계층적 분해가 효과적 추상화를 포착함을 시사.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>환경 스케일링 그래프</b> — 논문의 핵심 주장(다양성이 일반화를 이끈다)의 근거. 학습 환경 수 3→104에 따라 새 가정 성능이 오라클(≈92%)에 근접(≈90%)함을 보인다.
+    </div>
+    <div class="callout">
+      <b>공동학습 데이터 구성표</b> — 사전학습의 97.6%가 이동조작 이외 소스임을 보여, "무차별 로봇 데이터 수집이 아닌 이질적 전이"라는 방법론의 정체성을 요약.
+    </div>
+    <p class="cap">Fig. 7: 새 가정 6태스크 진행률 · Fig. 10~11: 웹 데이터 유무의 OOD 영향 · Fig. 13: 고수준 추론 방식별 비교.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2504.16054" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2504.16054" target="_blank">PDF</a></li>
+      <li><a href="https://www.physicalintelligence.company/blog/pi05" target="_blank">Physical Intelligence 블로그 (π0.5)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2504.16054 · π0.5 · 요약 생성 2026-07-09
+  </footer>
+</div>
+</body>
+</html>
