@@ -1,0 +1,83 @@
+{
+  "generated": "2026-07-09",
+  "groups": [
+    {
+      "key": "new",
+      "label": "새로 공개된 논문",
+      "items": [
+        {
+          "id": "2607.02865",
+          "title": "DREAMSTEER: Latent World Models Steering VLAs",
+          "authors": "Hanchen Cui 외",
+          "summary_ko": "파인튜닝 없이 배포 시점에 latent world model로 VLA 정책을 조종(steer)하는 프레임워크. 정책 수정 없이 미래 latent를 활용해 행동을 유도.",
+          "tags": ["VLA", "World Model", "Latent", "Test-Time Steering"],
+          "arxiv_url": "https://arxiv.org/abs/2607.02865",
+          "extra_url": "",
+          "date": "2026-07-03",
+          "reason": "보유 논문 VLA-JEPA(누출 없는 latent world model)와 π0.5(steerable 조작)의 아이디어를 배포시점 조종으로 결합. latent world model 관심사와 정면으로 연결."
+        },
+        {
+          "id": "2607.06988",
+          "title": "WAM-TTT: Steering World-Action Models via Test-Time Training",
+          "authors": "Yusen Feng 외",
+          "summary_ko": "인간 영상을 자기지도 메모리 재구성으로 활용해 world-action 모델을 테스트타임에 적응시키는 프레임워크.",
+          "tags": ["World Model", "Test-Time Adaptation", "Learning from Human"],
+          "arxiv_url": "https://arxiv.org/abs/2607.06988",
+          "extra_url": "",
+          "date": "2026-07-08",
+          "reason": "RECAP(재학습 없는 test-time 확장)과 DGAC(인간 영상 기반 자기개선)를 동시에 잇는 조합. 두 관심 축(테스트타임 적응 + 인간 영상)의 최신 후속."
+        },
+        {
+          "id": "2607.06403",
+          "title": "From Foundation to Application: LingBot-VLA 2.0",
+          "authors": "Wei Wu 외",
+          "summary_ko": "20종 로봇·6만 시간 사전학습으로 cross-embodiment 장기 조작을 보이는 VLA 파운데이션 모델.",
+          "tags": ["VLA", "Foundation Model", "Cross-Embodiment", "Long-Horizon"],
+          "arxiv_url": "https://arxiv.org/abs/2607.06403",
+          "extra_url": "",
+          "date": "2026-07-07",
+          "reason": "Qwen-RobotManip·π0.5 계열의 '대규모 이질적 데이터 cross-embodiment 파운데이션' 노선. 데이터 스케일·embodiment 통합 비교 대상으로 유용."
+        }
+      ]
+    },
+    {
+      "key": "related",
+      "label": "관련 논문",
+      "items": [
+        {
+          "id": "2410.24164",
+          "title": "π0: A Vision-Language-Action Flow Model for General Robot Control",
+          "authors": "Physical Intelligence",
+          "summary_ko": "flow matching으로 연속 행동을 생성하는 Physical Intelligence의 기반 VLA. 보유 중인 π0.5·π0.7의 직계 전신.",
+          "tags": ["VLA", "Flow Matching", "Foundation Model"],
+          "arxiv_url": "https://arxiv.org/abs/2410.24164",
+          "extra_url": "https://www.physicalintelligence.company/blog/pi0",
+          "date": "2024-10-31",
+          "reason": "리스트의 π0.5·π0.7이 직접 확장한 원본 모델. flow matching 행동 표현의 출발점이라 계보 이해에 필수."
+        },
+        {
+          "id": "2406.09246",
+          "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+          "authors": "Moo Jin Kim, Karl Pertsch 외 · Stanford · Berkeley",
+          "summary_ko": "Open X-Embodiment로 학습한 7B 오픈소스 VLA. 다수 후속 연구의 표준 베이스라인.",
+          "tags": ["VLA", "Open Source", "Cross-Embodiment"],
+          "arxiv_url": "https://arxiv.org/abs/2406.09246",
+          "extra_url": "https://openvla.github.io",
+          "date": "2024-06-13",
+          "reason": "VLA-JEPA·RECAP 등 보유 논문 다수가 OpenVLA(-OFT)를 베이스라인으로 삼음. 계열의 공통 기준점."
+        },
+        {
+          "id": "2503.14734",
+          "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
+          "authors": "NVIDIA",
+          "summary_ko": "비전-언어 추론 + 확산 행동의 이중 시스템 오픈 휴머노이드 파운데이션 모델. 실로봇·인간영상·시뮬을 함께 학습.",
+          "tags": ["VLA", "Foundation Model", "Humanoid", "Cross-Embodiment"],
+          "arxiv_url": "https://arxiv.org/abs/2503.14734",
+          "extra_url": "https://developer.nvidia.com/isaac/gr00t",
+          "date": "2025-03-18",
+          "reason": "Vesta(NVIDIA GEAR)·Qwen-RobotManip과 같은 이질적 데이터 통합·이중시스템 노선. cross-embodiment 파운데이션 비교에 유용."
+        }
+      ]
+    }
+  ]
+}

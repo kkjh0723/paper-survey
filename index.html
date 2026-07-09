@@ -69,6 +69,74 @@
   .date{color:var(--muted);font-size:13px;white-space:nowrap}
   footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
   .empty-hint{color:var(--muted);font-size:13px;margin-top:14px}
+  /* 탭 */
+  .tabs{display:flex;gap:6px;margin:20px 0 0;border-bottom:1px solid var(--line)}
+  .tab{cursor:pointer;user-select:none;font-size:14.5px;font-weight:700;padding:9px 16px;
+    border:1px solid transparent;border-bottom:none;border-radius:10px 10px 0 0;color:var(--muted);background:transparent}
+  .tab:hover{color:var(--accent-d)}
+  .tab.active{color:#12210a;background:var(--card);border-color:var(--line);position:relative;top:1px}
+  .tab .c{opacity:.65;margin-left:6px;font-variant-numeric:tabular-nums;font-weight:600;font-size:12.5px}
+  /* 좋아요 버튼 (제목 옆) */
+  .like-btn{display:inline-flex;align-items:center;gap:1px;cursor:pointer;user-select:none;
+    margin-left:8px;color:#c2c9bd;vertical-align:middle;border:none;background:none;padding:0;line-height:1}
+  .like-btn .h{font-size:15px}
+  .like-btn.liked{color:#e0567a}
+  .like-btn .s{font-size:10.5px;font-weight:800;font-variant-numeric:tabular-nums}
+  /* 동기화 배너 */
+  .sync-banner{display:none;align-items:center;gap:12px;justify-content:space-between;
+    background:#fff8e6;border:1px solid #f0e2b0;border-radius:10px;padding:9px 14px;margin:14px 0 0;
+    font-size:13px;color:#6b5b18}
+  .sync-banner.show{display:flex}
+  .sync-banner button{cursor:pointer;font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;
+    border:1px solid var(--accent);background:var(--accent);color:#12210a;white-space:nowrap}
+  .sync-banner button:hover{background:var(--accent-d);color:#fff}
+  /* 추천 뷰 */
+  #view-recos{display:none}
+  .reco-meta{font-size:13px;color:var(--muted);margin:16px 0 2px}
+  .reco-group{margin-top:18px}
+  .reco-group h2{font-size:17px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .reco-group h2 .badge{font-size:12px;font-weight:800;background:var(--soft);color:var(--accent-d);
+    border:1px solid #d5e4bf;padding:2px 9px;border-radius:999px}
+  .reco-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:10px 0;
+    box-shadow:0 1px 3px rgba(0,0,0,.03);transition:opacity .2s}
+  .reco-card .rtitle{font-size:15.5px;font-weight:700;color:#1c2618;margin:0 0 3px}
+  .reco-card .rauthors{font-size:12.5px;color:var(--muted);margin:0 0 8px}
+  .reco-card .rsum{font-size:14px;margin:0 0 9px;line-height:1.6}
+  .reco-card .rreason{font-size:13px;background:var(--softblue);border-left:4px solid var(--blue);
+    border-radius:8px;padding:8px 12px;margin:0 0 11px;color:#26414f;line-height:1.55}
+  .reco-card .rreason b{color:#1c3a57}
+  .reco-card .rtags{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}
+  .reco-card .rtags .tag{font-size:11.5px;background:var(--soft);color:var(--accent-d);
+    border:1px solid #d5e4bf;padding:2px 8px;border-radius:6px}
+  .reco-card .ractions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .reco-card .rlinks{margin-right:auto}
+  .reco-card .rlinks a{font-size:13px;margin-right:10px}
+  .btn-add,.btn-dismiss{cursor:pointer;font-size:13px;font-weight:700;padding:6px 13px;
+    border-radius:8px;border:1px solid var(--line);background:#fff}
+  .btn-add{background:var(--accent);border-color:var(--accent);color:#12210a}
+  .btn-add:hover{background:var(--accent-d);color:#fff}
+  .btn-add:disabled{background:#cfe1c0;border-color:#cfe1c0;color:#4a5a3c;cursor:default}
+  .btn-dismiss{color:var(--muted)}
+  .btn-dismiss:hover{border-color:#d99;color:#c55}
+  .reco-card.approved{opacity:.62}
+  .reco-card .inlist{font-size:12.5px;color:var(--muted);font-weight:700}
+  /* 승인 큐 패널 */
+  .queue-panel{display:none;background:#f4f8ee;border:1px solid #d9e6c8;border-radius:12px;
+    padding:14px 16px;margin:14px 0 4px}
+  .queue-panel.show{display:block}
+  .queue-panel h3{margin:0 0 8px;font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .queue-panel h3 .c{font-size:12.5px;color:var(--muted);font-weight:600}
+  .queue-panel ul{margin:0 0 10px;padding-left:18px;font-size:13.5px}
+  .queue-panel li{margin:3px 0}
+  .queue-panel .qbtn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 14px;border-radius:8px;
+    border:1px solid var(--accent);background:var(--accent);color:#12210a}
+  .queue-panel .qbtn:hover{background:var(--accent-d);color:#fff}
+  .queue-panel .qhint{font-size:12px;color:var(--muted);margin-top:8px}
+  .reco-empty{color:var(--muted);font-size:14px;padding:22px 2px}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#26331f;color:#eaf5da;
+    font-size:13.5px;padding:10px 18px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.2);
+    opacity:0;transition:opacity .25s;pointer-events:none;z-index:50;max-width:90vw;text-align:center}
+  .toast.show{opacity:1}
 </style>
 </head>
 <body>
@@ -77,6 +145,18 @@
     <h1><span class="dot"></span>Paper Survey</h1>
     <p>읽은 논문의 핵심 요약을 한곳에서 관리합니다. 제목을 클릭하면 요약 페이지로 이동합니다.</p>
   </header>
+
+  <div class="sync-banner" id="syncBanner">
+    <span id="syncMsg"></span>
+    <button onclick="copySyncPrompt()">📋 동기화 명령 복사</button>
+  </div>
+
+  <div class="tabs">
+    <span class="tab active" id="tab-survey" onclick="switchTab('survey')">논문 리스트 <span class="c" id="tabCountSurvey"></span></span>
+    <span class="tab" id="tab-recos" onclick="switchTab('recos')">추천 논문 <span class="c" id="tabCountRecos"></span></span>
+  </div>
+
+  <div id="view-survey">
 
   <!-- 필터 칩: JS가 자동 생성 (전체·새 논문·안 읽음 + 태그 그룹 ≥3편) -->
   <div class="chips-bar" id="chips"></div>
@@ -271,6 +351,14 @@
   </table>
   <p class="empty-hint" id="noresult" style="display:none">해당 조건의 논문이 없습니다.</p>
 
+  </div><!-- /view-survey -->
+
+  <div id="view-recos">
+    <div class="reco-meta" id="recoMeta"></div>
+    <div class="queue-panel" id="queuePanel"></div>
+    <div id="recoGroups"></div>
+  </div>
+
   <footer>Paper Survey · 최근 업데이트 2026-07-09</footer>
 </div>
 
@@ -359,11 +447,13 @@
     var total = rows.length;
     var newCount = matchCount(isNew);
     var unreadCount = matchCount(function(tr){ return !isRead(tr.getAttribute('data-id')); });
+    var likedCount = matchCount(function(tr){ return likeOf(tr.getAttribute('data-id')) > 0; });
 
     var defs = [
       {type:'all',   value:null,   label:'전체',    count:total},
       {type:'new',   value:null,   label:'🆕 새 논문', count:newCount},
-      {type:'unread',value:null,   label:'안 읽음',  count:unreadCount}
+      {type:'unread',value:null,   label:'안 읽음',  count:unreadCount},
+      {type:'liked', value:null,   label:'♥ 좋아요', count:likedCount}
     ];
     var groups = computeGroups();
     if(groups.length) defs.push({type:'sep'});
@@ -393,6 +483,7 @@
       var passFilter = true;
       if(activeFilter.type==='new')      passFilter = isNew(tr);
       else if(activeFilter.type==='unread') passFilter = !isRead(tr.getAttribute('data-id'));
+      else if(activeFilter.type==='liked') passFilter = likeOf(tr.getAttribute('data-id')) > 0;
       else if(activeFilter.type==='tag') passFilter = tagsOf(tr).indexOf(activeFilter.value) > -1;
       var passSearch = !q || tr.textContent.toLowerCase().indexOf(q) > -1;
       var show = passFilter && passSearch;
@@ -403,10 +494,258 @@
     document.getElementById('count').innerText = '총 ' + rows.length + '편 · 표시 ' + n + '편';
   }
 
+  // ===== 사용자 상태 (좋아요/승인큐/제외): localStorage + 커밋된 data/state.json 병합 =====
+  var LS_STATE = 'paper_survey_state';
+  var committedState = {likes:{}, queue:[], dismissed:[]};
+  var state = {likes:{}, queue:[], dismissed:[]};
+
+  function todayStr(){
+    var d = new Date();
+    return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+  }
+  function loadLocalState(){
+    try{ var s = JSON.parse(localStorage.getItem(LS_STATE)); if(s && typeof s==='object') return s; }catch(e){}
+    return null;
+  }
+  function saveLocalState(){
+    state.updated = todayStr();
+    try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
+    renderSyncBanner();
+  }
+  function normState(s){
+    s = s || {};
+    return {likes:s.likes||{}, queue:s.queue||[], dismissed:s.dismissed||[]};
+  }
+  function mergeStates(base, over){
+    base = normState(base); over = normState(over);
+    var out = {likes:{}, queue:[], dismissed:[]}, k;
+    for(k in base.likes) out.likes[k] = base.likes[k];
+    for(k in over.likes) out.likes[k] = Math.max(out.likes[k]||0, over.likes[k]);
+    for(k in out.likes){ if(!out.likes[k]) delete out.likes[k]; }
+    var seen = {};
+    base.queue.concat(over.queue).forEach(function(it){ if(it && it.id && !seen[it.id]){ seen[it.id]=1; out.queue.push(it); } });
+    var ds = {};
+    base.dismissed.concat(over.dismissed).forEach(function(x){ if(x) ds[x]=1; });
+    out.dismissed = Object.keys(ds);
+    return out;
+  }
+
+  function likeOf(id){ return state.likes[id]||0; }
+  function cycleLike(id){
+    var v = (likeOf(id)+1) % 4;   // 0→1→2→3→0
+    if(v) state.likes[id]=v; else delete state.likes[id];
+    saveLocalState();
+  }
+
+  // ===== 좋아요 버튼 주입 (survey 행 제목 옆) =====
+  function injectLikes(){
+    rows.forEach(function(tr){
+      var id = tr.getAttribute('data-id');
+      var ttl = tr.querySelector('.ttl');
+      if(!ttl || ttl.querySelector('.like-btn')) return;
+      var btn = document.createElement('button');
+      btn.className = 'like-btn';
+      btn.title = '좋아요 / 점수 (클릭: 0→1→2→3)';
+      function paint(){
+        var v = likeOf(id);
+        btn.classList.toggle('liked', v>0);
+        btn.innerHTML = '<span class="h">'+(v>0?'♥':'♡')+'</span>' + (v>1?'<span class="s">'+v+'</span>':'');
+      }
+      btn.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        cycleLike(id); paint(); renderChips();
+        if(activeFilter.type==='liked') applyFilter();
+      });
+      ttl.appendChild(btn);
+      paint();
+    });
+  }
+
+  // ===== 동기화 배너 =====
+  function unsyncedCount(){
+    var a = normState(state), b = normState(committedState), n=0, k, keys={};
+    for(k in a.likes) keys[k]=1;
+    for(k in b.likes) keys[k]=1;
+    for(k in keys){ if((a.likes[k]||0)!==(b.likes[k]||0)) n++; }
+    n += Math.abs(a.queue.length - b.queue.length);
+    n += Math.abs(a.dismissed.length - b.dismissed.length);
+    return n;
+  }
+  function renderSyncBanner(){
+    var n = unsyncedCount();
+    var el = document.getElementById('syncBanner');
+    if(!el) return;
+    if(n>0){
+      el.classList.add('show');
+      document.getElementById('syncMsg').textContent = '● 아직 저장소에 반영되지 않은 변경 '+n+'건 (좋아요·승인·제외). 맥의 Claude에 붙여넣어 반영하세요.';
+    } else el.classList.remove('show');
+  }
+  function copySyncPrompt(){
+    var payload = JSON.stringify({likes:state.likes, queue:state.queue, dismissed:state.dismissed});
+    var prompt = 'paper-survey 사용자 상태를 동기화해줘. 아래 JSON을 repo의 data/state.json에 병합(좋아요는 큰 점수 우선, queue는 id 합집합, dismissed는 합집합)해서 저장하고 updated를 오늘 날짜로 갱신한 뒤 git add data/state.json && commit && push 해줘:\n' + payload;
+    copyText(prompt, '동기화 명령을 복사했습니다. 맥의 Claude 대화에 붙여넣으세요.');
+  }
+
+  // ===== 추천 =====
+  var survIds = {};
+  rows.forEach(function(tr){ survIds[tr.getAttribute('data-id')] = true; });
+  var recosData = null;
+
+  function inSurvey(id){ return !!survIds[id]; }
+  function inQueue(id){ return state.queue.some(function(q){ return q.id===id; }); }
+  function isDismissed(id){ return state.dismissed.indexOf(id) > -1; }
+
+  function approveRecoById(id){
+    var found = null;
+    (recosData && recosData.groups || []).forEach(function(g){
+      (g.items||[]).forEach(function(it){ if(it.id===id) found=it; });
+    });
+    if(!found || inQueue(found.id) || inSurvey(found.id)) return;
+    state.queue.push({id:found.id, title:found.title, arxiv_url:found.arxiv_url, added:todayStr()});
+    saveLocalState();
+    renderRecos();
+  }
+  function dismissReco(id){
+    if(!isDismissed(id)) state.dismissed.push(id);
+    saveLocalState();
+    renderRecos();
+  }
+  function copyQueuePrompt(){
+    if(!state.queue.length){ toast('승인 큐가 비어 있습니다.'); return; }
+    var links = state.queue.map(function(q){ return '- '+q.title+' : '+q.arxiv_url; }).join('\n');
+    var prompt = '/add-paper 승인 큐 처리: 아래 승인된 논문들을 각각 요약 페이지 생성 + index.html 목록 추가하고, 처리한 항목을 data/state.json의 queue에서 제거한 뒤 git commit + push 해줘.\n' + links;
+    copyText(prompt, state.queue.length + '편 처리 명령을 복사했습니다. 맥의 Claude에 붙여넣으세요.');
+  }
+
+  function renderQueue(){
+    var el = document.getElementById('queuePanel');
+    if(!state.queue.length){ el.classList.remove('show'); el.innerHTML=''; return; }
+    el.classList.add('show');
+    var lis = state.queue.map(function(q){ return '<li>'+escapeHtml(q.title)+'</li>'; }).join('');
+    el.innerHTML = '<h3>🗂 승인 큐 <span class="c">'+state.queue.length+'편 대기</span></h3><ul>'+lis+'</ul>'+
+      '<button class="qbtn" onclick="copyQueuePrompt()">📋 Claude로 처리 (복사)</button>'+
+      '<div class="qhint">복사한 명령을 맥의 Claude 대화에 붙여넣으면 자동으로 요약·목록추가·push 됩니다.</div>';
+  }
+
+  function renderRecos(){
+    var wrap = document.getElementById('recoGroups');
+    var meta = document.getElementById('recoMeta');
+    renderQueue();
+    if(!recosData || !recosData.groups){
+      wrap.innerHTML = '<div class="reco-empty">아직 추천이 없습니다. 매일 아침 자동 생성되거나, 맥의 Claude에 "오늘 추천해줘"라고 요청하세요.</div>';
+      meta.textContent = ''; updateTabCounts(); return;
+    }
+    meta.textContent = '생성일 ' + (recosData.generated || '-');
+    var html = '';
+    recosData.groups.forEach(function(g){
+      var items = (g.items||[]).filter(function(it){ return !isDismissed(it.id); });
+      if(!items.length) return;
+      html += '<div class="reco-group"><h2>'+escapeHtml(g.label||'')+' <span class="badge">'+items.length+'</span></h2>';
+      items.forEach(function(it){
+        var approved = inQueue(it.id), inl = inSurvey(it.id);
+        var tags = (it.tags||[]).map(function(t){ return '<span class="tag">'+escapeHtml(t)+'</span>'; }).join('');
+        var links = '<a href="'+encodeURI(it.arxiv_url||'#')+'" target="_blank">arXiv</a>' +
+                    (it.extra_url ? '<a href="'+encodeURI(it.extra_url)+'" target="_blank">링크</a>' : '');
+        var addBtn = inl
+          ? '<span class="inlist">✓ 리스트에 있음</span>'
+          : '<button class="btn-add"'+(approved?' disabled':'')+' onclick="approveRecoById(\''+it.id+'\')">'+(approved?'✓ 승인됨':'➕ 추가')+'</button>';
+        html += '<div class="reco-card'+(approved?' approved':'')+'">'+
+          '<div class="rtitle">'+escapeHtml(it.title||'')+'</div>'+
+          '<div class="rauthors">'+escapeHtml(it.authors||'')+(it.date?' · '+escapeHtml(it.date):'')+'</div>'+
+          (it.summary_ko?'<div class="rsum">'+escapeHtml(it.summary_ko)+'</div>':'')+
+          (it.reason?'<div class="rreason"><b>추천 이유:</b> '+escapeHtml(it.reason)+'</div>':'')+
+          (tags?'<div class="rtags">'+tags+'</div>':'')+
+          '<div class="ractions"><span class="rlinks">'+links+'</span>'+addBtn+
+          '<button class="btn-dismiss" onclick="dismissReco(\''+it.id+'\')">✕ 제외</button></div>'+
+          '</div>';
+      });
+      html += '</div>';
+    });
+    wrap.innerHTML = html || '<div class="reco-empty">표시할 추천이 없습니다 (모두 추가/제외됨).</div>';
+    updateTabCounts();
+  }
+
+  function recoCount(){
+    if(!recosData || !recosData.groups) return 0;
+    var n = 0;
+    recosData.groups.forEach(function(g){
+      (g.items||[]).forEach(function(it){ if(!isDismissed(it.id) && !inSurvey(it.id)) n++; });
+    });
+    return n;
+  }
+  function updateTabCounts(){
+    var ts = document.getElementById('tabCountSurvey');
+    var tc = document.getElementById('tabCountRecos');
+    if(ts) ts.textContent = rows.length;
+    if(tc) tc.textContent = recoCount();
+  }
+
+  // ===== 탭 =====
+  function switchTab(which){
+    document.getElementById('view-survey').style.display = which==='survey' ? '' : 'none';
+    document.getElementById('view-recos').style.display  = which==='recos' ? 'block' : 'none';
+    document.getElementById('tab-survey').classList.toggle('active', which==='survey');
+    document.getElementById('tab-recos').classList.toggle('active', which==='recos');
+    if(which==='recos') renderRecos();
+  }
+
+  // ===== 공용 유틸 =====
+  function escapeHtml(s){
+    return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function copyText(t, msg){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){ toast(msg); }, function(){ fallbackCopy(t,msg); });
+    } else fallbackCopy(t,msg);
+  }
+  function fallbackCopy(t,msg){
+    var ta = document.createElement('textarea');
+    ta.value = t; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); toast(msg); }catch(e){ toast('복사 실패 — 수동으로 복사하세요'); }
+    document.body.removeChild(ta);
+  }
+  var toastTimer = null;
+  function toast(msg){
+    var el = document.getElementById('toast');
+    if(!el){ el = document.createElement('div'); el.id='toast'; el.className='toast'; document.body.appendChild(el); }
+    el.textContent = msg; el.classList.add('show');
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 2600);
+  }
+
   // ===== 초기화 =====
-  initRows();
-  renderChips();
-  applyFilter();
+  function boot(){
+    initRows();
+    injectLikes();
+    renderChips();
+    applyFilter();
+    updateTabCounts();
+    renderSyncBanner();
+  }
+
+  // 커밋된 사용자 상태 로드 → 로컬과 병합 → 화면 초기화
+  fetch('data/state.json', {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(cs){
+      committedState = normState(cs);
+      state = mergeStates(committedState, loadLocalState() || {});
+      try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
+      boot();
+    });
+
+  // 추천 데이터 로드
+  fetch('data/recommendations.json', {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(d){
+      recosData = d;
+      updateTabCounts();
+      if(document.getElementById('view-recos').style.display==='block') renderRecos();
+    });
 </script>
 </body>
 </html>

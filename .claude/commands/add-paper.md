@@ -4,10 +4,20 @@ argument-hint: <논문 링크 (arXiv abs/pdf URL 등)>
 allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch
 ---
 
-논문 링크: **$ARGUMENTS**
+논문 링크(또는 지시): **$ARGUMENTS**
 
-위 링크의 논문을 요약해 이 사이트(paper-survey)에 추가하고 자동으로 커밋·푸시한다.
-반드시 아래 순서를 따른다. 사용자에게 되묻지 말고 스스로 판단해 끝까지 완료한다.
+이 사이트(paper-survey)에 논문을 요약해 추가하고 자동으로 커밋·푸시한다.
+사용자에게 되묻지 말고 스스로 판단해 끝까지 완료한다.
+
+## 실행 모드 판단
+- **개별 링크 모드**: 인자에 arXiv/논문 URL이 있으면, 그 논문 1편을 아래 1~4 절차로 처리한다.
+- **승인 큐 배치 모드**: 인자가 비었거나 "승인 큐/queue 처리" 같은 지시이거나 여러 링크가 나열되면,
+  `data/state.json`의 `queue` 배열(또는 인자에 나열된 링크들)을 순회하며 각 논문을 1~4 절차로 처리한다.
+  - 각 논문 처리 완료 시 해당 항목을 `data/state.json`의 `queue`에서 제거한다.
+  - 마지막에 `index.html`, 새 `summaries/*.html`들, `data/state.json`을 한 번에 커밋·푸시한다.
+  - 이미 `index.html`에 있는 id는 건너뛰고 큐에서만 제거한다.
+
+아래는 논문 1편을 처리하는 절차다.
 
 ## 0. 준비
 - 오늘 날짜 확보: `date +%Y-%m-%d` (data-added 및 커밋용).
