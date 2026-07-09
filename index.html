@@ -494,10 +494,17 @@
     document.getElementById('count').innerText = '총 ' + rows.length + '편 · 표시 ' + n + '편';
   }
 
-  // ===== 사용자 상태 (좋아요/승인큐/제외): localStorage + 커밋된 data/state.json 병합 =====
+  // ===== 사용자 상태 (좋아요/승인큐/제외): localStorage + 저장소 data/state.json 병합 =====
   var LS_STATE = 'paper_survey_state';
   var committedState = {likes:{}, queue:[], dismissed:[]};
   var state = {likes:{}, queue:[], dismissed:[]};
+
+  // 원격 자동 동기화 (Cloudflare Worker). 배포 후 URL을 넣으면 붙여넣기 없이 자동 반영됨.
+  // 비워두면 아래 '원클릭 복사→Claude' 방식으로 자동 폴백. (설정법: tools/cf-worker/README.md)
+  var SYNC_ENDPOINT = '';   // 예: 'https://paper-sync.<계정>.workers.dev'
+  var SYNC_KEY = '';        // Worker에 SYNC_KEY를 설정했다면 같은 값
+  var syncTimer = null, lastSyncOk = true, remoteBusy = false;
+  function remoteEnabled(){ return !!SYNC_ENDPOINT; }
 
   function todayStr(){
     var d = new Date();
@@ -510,7 +517,31 @@
   function saveLocalState(){
     state.updated = todayStr();
     try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
+    scheduleRemotePush();
     renderSyncBanner();
+  }
+  // 변경을 모아 Worker로 자동 전송 (디바운스)
+  function scheduleRemotePush(){
+    if(!remoteEnabled()) return;
+    if(syncTimer) clearTimeout(syncTimer);
+    syncTimer = setTimeout(remotePush, 1200);
+  }
+  function remotePush(){
+    if(!remoteEnabled()) return;
+    remoteBusy = true; renderSyncBanner();
+    fetch(SYNC_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json', 'x-sync-key':SYNC_KEY},
+      body: JSON.stringify({likes:state.likes, queue:state.queue, dismissed:state.dismissed})
+    })
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function(merged){
+      committedState = normState(merged);
+      state = mergeStates(committedState, state);
+      try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
+      lastSyncOk = true; remoteBusy = false; renderSyncBanner();
+    })
+    .catch(function(){ lastSyncOk = false; remoteBusy = false; renderSyncBanner(); });
   }
   function normState(s){
     s = s || {};
@@ -572,12 +603,24 @@
     return n;
   }
   function renderSyncBanner(){
-    var n = unsyncedCount();
     var el = document.getElementById('syncBanner');
     if(!el) return;
+    var msg = document.getElementById('syncMsg');
+    var btn = el.querySelector('button');
+    if(remoteEnabled()){
+      // 자동 동기화 모드: 성공 시 배너 숨김, 진행중 표시, 실패 시에만 수동 폴백 노출
+      if(remoteBusy){ el.classList.add('show'); msg.textContent = '동기화 중…'; if(btn) btn.style.display='none'; return; }
+      if(lastSyncOk){ el.classList.remove('show'); return; }
+      el.classList.add('show'); if(btn) btn.style.display='';
+      msg.textContent = '● 자동 동기화 실패 — 잠시 후 재시도되며, 급하면 아래 버튼으로 수동 반영하세요.';
+      return;
+    }
+    // 원격 미설정: 기존 원클릭 방식
+    if(btn) btn.style.display='';
+    var n = unsyncedCount();
     if(n>0){
       el.classList.add('show');
-      document.getElementById('syncMsg').textContent = '● 아직 저장소에 반영되지 않은 변경 '+n+'건 (좋아요·승인·제외). 맥의 Claude에 붙여넣어 반영하세요.';
+      msg.textContent = '● 아직 저장소에 반영되지 않은 변경 '+n+'건 (좋아요·승인·제외). 맥의 Claude에 붙여넣어 반영하세요.';
     } else el.classList.remove('show');
   }
   function copySyncPrompt(){
@@ -726,16 +769,26 @@
     renderSyncBanner();
   }
 
-  // 커밋된 사용자 상태 로드 → 로컬과 병합 → 화면 초기화
-  fetch('data/state.json', {cache:'no-store'})
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .catch(function(){ return null; })
-    .then(function(cs){
-      committedState = normState(cs);
-      state = mergeStates(committedState, loadLocalState() || {});
-      try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
-      boot();
-    });
+  // 저장소 사용자 상태 로드 → 로컬과 병합 → 화면 초기화
+  // 원격 설정 시 Worker에서 최신본을 읽고(캐시 우회), 실패하면 data/state.json으로 폴백
+  function loadCommitted(){
+    var fromRepo = function(){
+      return fetch('data/state.json', {cache:'no-store'})
+        .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
+    };
+    if(remoteEnabled()){
+      return fetch(SYNC_ENDPOINT, {headers:{'x-sync-key':SYNC_KEY}})
+        .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+        .then(function(d){ return d || fromRepo(); });
+    }
+    return fromRepo();
+  }
+  loadCommitted().then(function(cs){
+    committedState = normState(cs);
+    state = mergeStates(committedState, loadLocalState() || {});
+    try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
+    boot();
+  });
 
   // 추천 데이터 로드
   fetch('data/recommendations.json', {cache:'no-store'})
