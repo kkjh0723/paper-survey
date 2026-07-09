@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Open X-Embodiment — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Cross-Embodiment · Dataset</span>
+    <h1>Open X-Embodiment: Robotic Learning Datasets and RT-X Models</h1>
+    <p class="authors">Open X-Embodiment Collaboration (21개 기관 · 293명 이상의 공동 저자) · arXiv:2310.08864</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2310.08864" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2310.08864" target="_blank">PDF</a>
+      <a href="https://robotics-transformer-x.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2310.08864</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Robot Dataset</span>
+      <span class="t">RT-X</span>
+      <span class="t">Positive Transfer</span>
+      <span class="t">Generalist Policy</span>
+    </div>
+    <p class="meta">제출: 2023년 10월 13일 (v1) · 22개 로봇 / 21개 기관 / 60개 데이터셋 / 100만+ 궤적</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>21개 기관이 모은 <b>22개 로봇 embodiment · 60개 데이터셋 · 100만+ 궤적</b>(527 스킬, 160,266 태스크)을 표준 포맷으로 통합한 <b>Open X-Embodiment</b> 데이터셋과, 이를 공동학습한 범용 정책 <b>RT-X</b>를 공개. RT-1-X는 소규모 데이터셋에서 개별 로봇 전용 모델 대비 성공률 평균 <span class="win">50%</span> 향상(<b>positive transfer</b>), RT-2-X(55B)는 창발 스킬 평가에서 RT-2를 <span class="win">27.3% → 75.8%</span>(약 <b>3배</b>)로 끌어올려 이종 로봇 데이터가 능력을 확장함을 입증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>대규모 언어·비전 모델은 다양한 데이터로 학습한 하나의 큰 모델이 개별 특화 모델을 능가함을 보였다. 그러나 로봇 학습은 여전히 <b>로봇·태스크·환경마다 별도 모델</b>을 처음부터 학습하는 것이 관행이다. 저자들은 "여러 로봇 플랫폼의 데이터로 학습한 단일 정책이, 각 로봇 전용 데이터로만 학습한 정책보다 더 잘 동작할 수 있는가?"라는 <b>positive transfer(양의 전이)</b> 가설을 검증한다. 이를 위해서는 (1) 여러 기관·로봇의 데이터를 <b>표준 포맷</b>으로 모으는 것과, (2) 이종 embodiment를 흡수할 수 있는 <b>고용량 모델</b>이 모두 필요하다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Open X-Embodiment 데이터셋 공개</b> — 21개 기관 협력으로 <b>22개 로봇 embodiment · 60개 데이터셋 · 100만+ 궤적</b>(527 스킬, 160,266 태스크)을 통합. 모두 <b>표준화된 RLDS/TFDS 포맷</b>으로 배포해 재현성 확보.</li>
+      <li><b>RT-X 범용 정책 학습</b> — 기존 RT-1·RT-2 아키텍처를 X-embodiment 데이터로 공동학습해 <b>RT-1-X·RT-2-X</b>를 구축. 이종 로봇 경험이 <b>positive transfer</b>를 만들어냄을 실증.</li>
+      <li><b>모델 용량이 전이의 열쇠임을 규명</b> — 작은 RT-1-X는 대규모 데이터에서 과소적합하지만, 고용량 RT-2-X(55B)는 다양한 embodiment 데이터를 흡수해 <b>창발적 스킬</b>과 강한 in-domain 성능을 동시에 달성.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>데이터셋 구성 (Open X-Embodiment)</h3>
+    <p>21개 기관이 보유한 기존 로봇 데이터셋을 하나의 컬렉션으로 통합. 각 데이터셋은 서로 다른 로봇 형태(단일팔·양팔·모바일 등), 액션 공간, 카메라 시점을 갖지만, 공통 <b>표준 포맷</b>으로 변환해 학습 파이프라인에서 균일하게 다룰 수 있게 함.</p>
+    <div class="kv">
+      <div>로봇 embodiment</div><div>22종</div>
+      <div>참여 기관</div><div>21개</div>
+      <div>개별 데이터셋</div><div>60개</div>
+      <div>궤적 수</div><div>100만 이상</div>
+      <div>스킬 / 태스크</div><div>527 스킬 · 160,266 태스크</div>
+      <div>배포 포맷</div><div>표준화 데이터 포맷 (RLDS 기반)</div>
+    </div>
+
+    <h3>RT-1-X (효율적 트랜스포머 정책)</h3>
+    <p>RT-1(3,500만 파라미터급 트랜스포머)을 그대로 사용하되, 입력으로 X-embodiment 데이터를 공동학습. 소규모 로봇 데이터셋들에서 <b>양의 전이</b> 효과를 검증하는 데 초점.</p>
+
+    <h3>RT-2-X (VLA, web-scale 공동학습)</h3>
+    <p>RT-2는 웹 규모 vision-language 데이터로 사전학습된 대형 VLM을 <b>action을 토큰으로 출력</b>하도록 파인튜닝한 VLA. RT-2-X는 이 VLM(최대 <b>55B</b>)을 로봇 데이터 + 웹 데이터로 <b>공동 파인튜닝(co-fine-tuning)</b>하며, Open X-Embodiment 데이터를 함께 학습해 여러 로봇을 아우르는 범용 정책을 만든다.</p>
+    <div class="callout">
+      <b>핵심 통찰:</b> 동일한 이종 데이터라도 <b>모델 용량</b>이 부족하면(RT-1-X) 대규모 데이터에서 과소적합해 전용 모델보다 나빠질 수 있으나, 고용량 RT-2-X는 다양성을 흡수해 강한 성능과 창발 능력을 동시에 얻는다. 웹 사전학습과 history conditioning도 전이의 필수 요소로 지목된다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RT-1-X — 소규모 데이터셋 positive transfer (Figure 2)</h3>
+    <p>5개 로봇 데이터셋 중 <b>4개</b>에서 각 로봇 전용 모델(Original Method)을 능가하며, 평균 성공률이 Original Method / RT-1 대비 <span class="win">50%</span> 더 높음. → 이종 데이터 공동학습이 소규모 도메인에서 양의 전이를 만든다.</p>
+
+    <h3>대규모 데이터셋 in-domain 성공률 (Table I)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>평가 (로봇)</th><th>Original</th><th>RT-1</th><th>RT-1-X</th><th>RT-2-X (55B)</th></tr></thead>
+      <tbody>
+        <tr><td>Bridge (WidowX)</td><td>13%</td><td>40%</td><td>27%</td><td class="win">50%</td></tr>
+        <tr><td>RT-1 paper (WidowX)</td><td>13%</td><td class="win">30%</td><td>27%</td><td class="win">30%</td></tr>
+        <tr><td>Google Robot</td><td>—</td><td class="win">92%</td><td>73%</td><td>91%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">RT-1-X는 대규모 데이터에서 <b>과소적합</b>해 전용 모델보다 나쁨. 반면 고용량 RT-2-X는 강한 성능 회복 → 모델 용량이 이종 데이터 흡수의 핵심.</p>
+
+    <h3>RT-2-X — 창발 스킬 평가 (Table II)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Emergent Skills 성공률</th></tr></thead>
+      <tbody>
+        <tr><td>RT-2 (55B)</td><td>27.3%</td></tr>
+        <tr><td><b>RT-2-X (55B)</b></td><td class="win">75.8%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">RT-2-X가 RT-2를 약 <b>3배</b> 능가(27.3% → 75.8%). RT-2 데이터에 없던 물체·스킬·공간 관계(Fig. 3)를 수행 — 이종 로봇 데이터를 함께 학습해 능력이 확장됨.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (Table II 설계 결정)</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구성</th><th>Size</th><th>History</th><th>Web 사전학습</th><th>Emergent</th></tr></thead>
+      <tbody>
+        <tr><td>RT-2-X (기준)</td><td>55B</td><td>none</td><td>Yes</td><td class="win">75.8%</td></tr>
+        <tr><td>소형 + history</td><td>5B</td><td>2 frames</td><td>Yes</td><td>44.4%</td></tr>
+        <tr><td>소형, history 없음</td><td>5B</td><td>none</td><td>Yes</td><td>14.5%</td></tr>
+        <tr><td>웹 사전학습 없음</td><td>5B</td><td>2 frames</td><td>No</td><td>0%</td></tr>
+        <tr><td>파인튜닝 전용(공동X)</td><td>5B</td><td>2 frames</td><td>No(FT만)</td><td>48.7%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>모델 크기:</b> 55B(75.8%) ≫ 5B(44.4%) — 클수록 강한 전이·창발.</li>
+      <li><b>History conditioning:</b> 2프레임 사용 44.4% vs 미사용 14.5% — 시계열 조건화가 큰 이득.</li>
+      <li><b>웹 사전학습:</b> 있으면 48.7%대, 없으면 <b>0%</b> — VLA 창발 능력에 필수.</li>
+      <li><b>공동 파인튜닝:</b> 웹 데이터와 함께 co-fine-tuning하는 것이 로봇 데이터만 파인튜닝하는 것보다 유리.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 2 (RT-1-X positive transfer)</b> — 5개 소규모 데이터셋에서 RT-1-X 평균 성공률이 Original Method/RT-1 대비 50% 높음을 보여, 논문의 핵심 주장인 양의 전이를 뒷받침.
+    </div>
+    <div class="callout">
+      <b>Table II (설계 결정 ablation)</b> — RT-2-X가 RT-2 대비 창발 스킬에서 27.3%→75.8%로 약 3배 향상. 모델 크기·history·웹 사전학습 각 요소의 기여를 분해한 핵심 근거 표.
+    </div>
+    <p class="cap">Figure 1: 22개 embodiment로 구성된 Open X-Embodiment 데이터셋 개요 · Figure 3: RT-2 데이터에 없던 out-of-distribution 스킬 평가 예시.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2310.08864" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2310.08864" target="_blank">PDF</a></li>
+      <li><a href="https://robotics-transformer-x.github.io" target="_blank">프로젝트 페이지 (robotics-transformer-x.github.io)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2310.08864 · Open X-Embodiment · 요약 생성 2026-07-09
+  </footer>
+</div>
+</body>
+</html>

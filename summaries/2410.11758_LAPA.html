@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LAPA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Latent Action</span>
+    <h1>Latent Action Pretraining from Videos (LAPA)</h1>
+    <p class="authors">Seonghyeon Ye, Joel Jang 외 · KAIST · Microsoft Research · NVIDIA · University of Washington · Allen Institute for AI · arXiv:2410.11758</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2410.11758" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2410.11758" target="_blank">PDF</a>
+      <a href="https://latentactionpretraining.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2410.11758</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Latent Action</span>
+      <span class="t">VQ-VAE</span>
+      <span class="t">Video Pretraining</span>
+      <span class="t">Unsupervised</span>
+    </div>
+    <p class="meta">제출: 2024년 10월 15일 (v1) · 개정 2025년 5월 15일 (v2) · ICLR 2025</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 <b>행동 레이블 없이</b> 인터넷 스케일 영상만으로 VLA를 사전학습하는 비지도 기법. 인접 프레임 사이의 <b>discrete latent action</b>을 VQ-VAE로 발견하고(코드북 8×4), 이를 예측하는 latent VLA를 사전학습한 뒤 소량 로봇 데이터로 파인튜닝. 실세계 조작에서 평균 <span class="win">50.1%</span>(OpenVLA 43.9%)로 우위이며, 특히 사전학습에 <b>272 H100-시간</b>만 써 OpenVLA(21,500 A100-시간) 대비 <span class="win">30~40배</span> 효율적. 로봇 데이터가 전혀 없는 사람 영상(Something-Something v2)만으로도 학습 가능한 유일한 접근.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA(Vision-Language-Action) 모델은 강력한 일반화를 보이지만, 사전학습에 <b>사람이 수집한 로봇 행동(action) 레이블</b>이 필요해 데이터 규모가 로봇 텔레오퍼레이션 병목에 갇힌다. 반면 인터넷에는 사람이 손으로 물체를 조작하는 영상이 방대하나, 이들에는 <b>행동 레이블이 없어</b> 기존 VLA 학습에 직접 쓸 수 없다.</p>
+    <p>저자들은 "레이블 없는 영상에서도 행동에 준하는 정보를 스스로 발견할 수 있는가?"를 묻는다. 프레임 간 변화가 곧 잠재적인 행동 신호라는 직관에서 출발해, <b>관측된 상태 전이로부터 latent action을 비지도로 학습</b>하고 이를 VLA 사전학습의 대체 행동 공간으로 삼는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>행동 레이블 없는 VLA 사전학습</b> — VQ-VAE로 인접 프레임 사이의 discrete latent action을 발견해, 로봇 action 주석 없이 인터넷 스케일 영상으로 VLA를 사전학습하는 비지도 기법 LAPA를 제안.</li>
+      <li><b>사람 영상만으로도 학습 가능</b> — 로봇 데이터가 전혀 없는 Something-Something v2(사람 손 조작 영상)만으로 사전학습해도 embodiment gap을 넘어 시뮬레이션 벤치마크에서 positive transfer 확인.</li>
+      <li><b>SOTA VLA 상회 + 압도적 학습 효율</b> — 실세계 조작에서 OpenVLA를 상회(50.1% vs 43.9%)하면서 사전학습 비용은 30~40배 저렴(272 H100-시간).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3단계 파이프라인</h3>
+    <p>LAPA는 (1) <b>latent action 양자화 학습</b> → (2) <b>latent VLA 사전학습</b> → (3) <b>로봇 데이터 파인튜닝</b>의 3단계로 구성된다.</p>
+
+    <h3>1단계 — Latent Action Quantization (VQ-VAE)</h3>
+    <p>연속된 두 프레임 (I<sub>t</sub>, I<sub>t+H</sub>)을 입력받아, 그 사이의 <b>latent action</b>을 <b>VQ-VAE</b> 목적함수로 이산 코드로 양자화한다. 인코더는 상태 전이를 discrete latent action으로 압축하고, 디코더는 그 latent action과 첫 프레임으로 미래 프레임을 복원하도록 학습된다. 행동 레이블 없이 오직 프레임 재구성만으로 학습이 진행된다. 메인 실험에서 코드북은 <b>8×4</b>(vocabulary size 8, sequence length 4) 구성을 사용한다.</p>
+
+    <h3>2단계 — Latent VLA Pretraining</h3>
+    <p>발견된 discrete latent action을 <b>대체 행동 공간</b>으로 삼아, VLM 백본이 현재 관측 이미지 + 언어 지시를 보고 다음 latent action 토큰을 예측하도록 자기회귀 사전학습한다. 이 단계에서 대규모 영상(로봇/사람 무관)을 행동 레이블 없이 활용한다.</p>
+
+    <h3>3단계 — Finetuning (latent → robot action)</h3>
+    <p>소량의 실제 로봇 조작 데이터로 파인튜닝해, latent action 공간을 실제 로봇 제어 행동으로 매핑(bridge)한다. 사전학습이 대부분의 조작 지식을 담당하므로 파인튜닝에 필요한 로봇 데이터는 적다.</p>
+
+    <div class="callout">
+      <b>핵심 아이디어:</b> "행동 레이블"을 데이터에서 지우고, 프레임 간 전이로부터 <b>스스로 발견한 latent action</b>을 학습 신호로 대체한다. 이로써 로봇 텔레오퍼레이션 병목을 우회하고 인터넷 영상 스케일을 사전학습에 끌어온다.
+    </div>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>Open X-Embodiment (약 970K 궤적), BridgeV2 (약 60K), Something-Something v2 (사람 영상 220K, action-free)</div>
+      <div>백본</div><div>VLM 기반 latent VLA</div>
+      <div>사전학습 비용</div><div>272 H100-시간 (단일 epoch에서 최적 성능)</div>
+      <div>레시피</div><div>latent action 양자화 → latent VLA 사전학습 → 로봇 데이터 파인튜닝</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>실세계 조작 (Open-X 사전학습, 3태스크 평균 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>3태스크 평균</th><th>미학습 물체 일반화</th></tr></thead>
+      <tbody>
+        <tr><td><b>LAPA (Open-X)</b></td><td class="win">50.1</td><td class="win">43.9</td></tr>
+        <tr><td>OpenVLA (Open-X)</td><td>43.9</td><td>42.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">LAPA가 3태스크 중 2개에서 OpenVLA를 크게 상회. 미학습 물체 일반화에서도 우위. (단위: %)</p>
+
+    <h3>Language Table (in-domain 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Seen</th><th>Unseen</th></tr></thead>
+      <tbody>
+        <tr><td>ActionVLA (action 레이블 사용)</td><td class="win">77.0</td><td class="win">58.8</td></tr>
+        <tr><td>LAPA (action 레이블 없음)</td><td>62.0</td><td>49.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">행동 레이블을 쓰는 상한(ActionVLA)에는 못 미치나, <b>레이블 없이도</b> 상당한 성능 도달. cross-task 평가에서는 LAPA가 seen 73.2 / unseen 54.8. (단위: %)</p>
+
+    <h3>SIMPLER (사람 영상 사전학습)</h3>
+    <p>로봇 데이터가 전혀 없는 <b>Something-Something v2</b>만으로 사전학습해도, embodiment gap에도 불구하고 <b>positive transfer</b>를 보이며 영상 기반 베이스라인 <b>UniPi·VPT를 상회</b>. 사람 손 조작 영상만으로 로봇 정책 사전학습이 가능함을 입증.</p>
+
+    <h3>학습 효율</h3>
+    <div class="callout">
+      LAPA 사전학습 <b>272 H100-시간</b> vs OpenVLA <b>21,500 A100-시간</b> → 약 <b>30~40배</b> 효율적. 단일 epoch에서 최적 성능 도달.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>사람 영상 전이:</b> 로봇 데이터가 없는 사람 영상(Something-Something v2)만으로 사전학습해도 SIMPLER에서 positive transfer가 나타나며, 영상 기반 베이스라인(UniPi, VPT)을 능가.</li>
+      <li><b>Latent action 양자화 설계:</b> 메인 실험은 코드북 vocabulary 8 × sequence length 4(=8<sup>4</sup> 조합) 구성을 사용. discrete latent action이 프레임 간 전이 의미를 담는 대체 행동 공간으로 기능함을 보임.</li>
+      <li><b>학습 효율 대비 성능:</b> 사전학습 비용을 30~40배 줄이고도 단일 epoch에서 OpenVLA를 상회 — 행동 레이블 없는 사전학습이 비용 대비 강력함을 시사.</li>
+    </ul>
+    <p class="note">본 요약의 세부 수치는 arXiv 초록·HTML 본문에서 확인 가능한 값에 근거하며, 추가 벤치마크의 태스크별 세부 수치는 원문 표를 참고.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>실세계 조작 비교 표</b> — LAPA vs OpenVLA. 행동 레이블 없이 사전학습한 LAPA가 3태스크 평균 50.1%로 OpenVLA(43.9%)를 상회한다는, 논문의 핵심 주장을 뒷받침하는 결과.
+    </div>
+    <div class="callout">
+      <b>Latent Action Quantization 개념도</b> — 인접 프레임 (I<sub>t</sub>, I<sub>t+H</sub>)에서 VQ-VAE로 discrete latent action을 추출하고, 이를 latent VLA 사전학습의 예측 대상으로 삼는 전체 파이프라인.
+    </div>
+    <p class="cap">SIMPLER 결과: 사람 영상만으로 사전학습한 LAPA가 UniPi·VPT를 상회하며 embodiment gap을 넘어선 positive transfer를 보이는 그림/표.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2410.11758" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2410.11758" target="_blank">PDF</a></li>
+      <li><a href="https://latentactionpretraining.github.io" target="_blank">프로젝트 페이지</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2410.11758 · LAPA · 요약 생성 2026-07-09
+  </footer>
+</div>
+</body>
+</html>

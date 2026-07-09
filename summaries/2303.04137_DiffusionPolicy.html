@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Diffusion Policy — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Diffusion Policy · Manipulation</span>
+    <h1>Diffusion Policy: Visuomotor Policy Learning via Action Diffusion</h1>
+    <p class="authors">Cheng Chi, Zhenjia Xu, Siyuan Feng, Eric Cousineau, Yilun Du, Benjamin Burchfiel, Russ Tedrake, Shuran Song · Columbia University · Toyota Research Institute · MIT · Stanford</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2303.04137" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2303.04137" target="_blank">PDF</a>
+      <a href="https://diffusion-policy.cs.columbia.edu" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/real-stanford/diffusion_policy" target="_blank">GitHub</a>
+      <span>arXiv:2303.04137</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Diffusion Policy</span>
+      <span class="t">Visuomotor Learning</span>
+      <span class="t">DDPM</span>
+      <span class="t">Imitation Learning</span>
+      <span class="t">Manipulation</span>
+    </div>
+    <p class="meta">제출: 2023년 3월 7일 (v1) · 최신본 2024년 3월 14일 (v5) · RSS 2023 · DDIM 10-step 추론(0.1s, RTX 3080)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 정책을 명시적 함수가 아니라 행동에 대한 <b>조건부 denoising diffusion 과정</b>으로 표현하는 visuomotor 정책 학습법. 관찰을 조건으로 하는 <b>action diffusion</b>과 <b>receding horizon control</b>·시계열 <b>diffusion transformer</b>를 결합해 멀티모달 행동 분포, 고차원 action 시퀀스, 학습 안정성을 동시에 해결. 4개 벤치마크의 <b>15개 태스크</b>에서 기존 SOTA 대비 평균 성공률 <span class="win">46.9%</span> 향상.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>행동 복제(behavior cloning)로 visuomotor 정책을 학습할 때 로봇 행동 예측은 세 가지 근본적 난제를 갖는다: (1) 사람 시연은 같은 상황에서도 여러 경로가 가능한 <b>멀티모달 분포</b>를 가지는데, 단봉(unimodal) 회귀나 명시적 정책은 이를 평균화해 무너뜨린다; (2) 로봇 행동은 관절·엔드이펙터·시퀀스가 얽힌 <b>고차원 연속 action space</b>를 가진다; (3) 에너지 기반 정책(EBM) 등 암시적 정책은 표현력은 있으나 <b>학습이 불안정</b>하다. 저자들은 이미지 생성에서 성공한 <b>denoising diffusion</b>을 행동 예측에 적용해 이 세 문제를 한 번에 다룬다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Action Diffusion으로 정책 표현</b> — 정책을 행동에 대한 조건부 denoising diffusion 과정으로 정의해, 스코어 함수의 gradient 만으로 멀티모달 분포와 고차원 action을 안정적으로 표현.</li>
+      <li><b>Receding Horizon Control과의 결합</b> — 고차원 <b>action 시퀀스</b>를 한 번에 예측하되 일부만 실행하고 재계획하는 receding-horizon 방식으로 장기 일관성과 실시간 반응성을 동시에 확보.</li>
+      <li><b>Visual Conditioning</b> — 관찰을 결합 분포의 일부가 아니라 <b>조건</b>으로 취급해, 매 denoising step마다 관찰 특징을 재추론할 필요를 없애 실시간 추론 비용을 크게 절감.</li>
+      <li><b>시계열 Diffusion Transformer</b> — over-smoothing을 완화하는 트랜스포머 기반 diffusion 구조로 <b>고주파 행동 변화·속도 제어</b>가 필요한 태스크에 대응.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>DDPM 기반 Action 생성</h3>
+    <p>정책은 관찰 O<sub>t</sub>를 조건으로 하는 조건부 DDPM으로, 순수 노이즈에서 시작해 <b>K</b>번의 denoising을 거쳐 action 시퀀스를 생성한다. 학습은 노이즈 예측 손실(예측 노이즈와 실제 노이즈의 MSE)을 최소화한다. 추론은 <b>DDIM</b>을 써서 <b>학습 100 iteration / 추론 10 iteration</b>으로 가속, RTX 3080에서 <b>0.1s</b> 지연으로 실시간 동작.</p>
+
+    <h3>Receding Horizon Control (관찰/예측/실행 horizon)</h3>
+    <p>매 스텝에서 관찰 horizon <b>T<sub>o</sub></b> 만큼의 관찰을 조건으로 예측 horizon <b>T<sub>p</sub></b> 길이의 action 시퀀스를 예측한 뒤, 그중 실행 horizon <b>T<sub>a</sub></b> 만큼만 실행하고 다시 관찰·재예측한다. 이렇게 하면 장기 계획성과 폐루프 반응성 사이의 균형을 맞춘다.</p>
+
+    <h3>네트워크 구조 (CNN vs Transformer)</h3>
+    <div class="kv">
+      <div>CNN 기반</div><div>1D 시계열 U-Net + <b>FiLM</b> 조건화. 하이퍼파라미터에 둔감해 기본값으로 잘 동작</div>
+      <div>Transformer 기반</div><div>action 임베딩에 causal attention. 고주파·속도 제어 태스크에서 over-smoothing 완화</div>
+      <div>Visual Encoder</div><div>수정된 ResNet-18 + spatial softmax pooling, BatchNorm 대신 <b>GroupNorm</b>으로 학습 안정화</div>
+    </div>
+    <div class="callout">
+      핵심 설계 포인트: 관찰을 <b>조건</b>으로만 넣으므로 시각 특징을 매 denoising 반복마다 다시 계산할 필요가 없어, 고차원 action 시퀀스를 예측하면서도 실시간 추론이 가능하다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>전체 요약</h3>
+    <p>4개 로봇 조작 벤치마크의 <b>15개 태스크</b>(시뮬레이션 + 실로봇)에서 기존 SOTA 행동 복제 방법 대비 평균 성공률 <span class="win">46.9%</span> 향상하며 일관되게 우위를 보였다.</p>
+
+    <h3>시뮬레이션 벤치마크 (성공률, %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>Diffusion Policy</th><th>기존 최고 baseline</th></tr></thead>
+      <tbody>
+        <tr><td>Multimodal Block Pushing</td><td class="win">99</td><td>96 (BET)</td></tr>
+        <tr><td>Franka Kitchen</td><td class="win">96–99</td><td>44 (BET)</td></tr>
+        <tr><td>Push-T (시뮬레이션)</td><td class="win">우위</td><td>—</td></tr>
+        <tr><td>Robomimic (Lift/Can/Square/Transport/ToolHang)</td><td class="win">근-완벽~대폭 향상</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Franka Kitchen은 난이도 지표 전반에서 BET(44) 대비 96–99로 큰 격차.</p>
+
+    <h3>실로봇 결과</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>Diffusion Policy</th><th>비교값</th></tr></thead>
+      <tbody>
+        <tr><td>Push-T (실로봇 성공률)</td><td class="win">95</td><td>20 (LSTM-GMM)</td></tr>
+        <tr><td>Mug Flipping 성공률</td><td class="win">90</td><td>—</td></tr>
+        <tr><td>Sauce Pouring 커버리지</td><td>0.74</td><td>사람 0.79</td></tr>
+        <tr><td>Sauce Spreading 성공률</td><td class="win">1.00</td><td>—</td></tr>
+        <tr><td>양손(bimanual) 태스크 성공률</td><td>55–75</td><td>Egg Beater 55 / Mat Unrolling 75 / Shirt Folding 75</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">실로봇 Push-T에서 LSTM-GMM(20) 대비 95로 4배 이상 향상.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>멀티모달 표현:</b> diffusion 정책은 같은 상황에서 여러 유효 경로(mode)를 무너뜨리지 않고 각각을 표본화 — 회귀·단봉 정책이 평균화로 실패하는 지점에서 우위.</li>
+      <li><b>Receding horizon:</b> 예측 horizon T<sub>p</sub>가 너무 짧으면 근시안적, 너무 길고 실행 horizon T<sub>a</sub>가 크면 반응성이 떨어짐 — 적절한 예측/실행 horizon 조합이 성능에 중요.</li>
+      <li><b>조건화 vs 결합 모델링:</b> 관찰을 조건으로 다루면 정확도를 유지하면서 추론 비용을 낮춤(실시간 0.1s).</li>
+      <li><b>구조 선택:</b> CNN 기반은 하이퍼파라미터에 강건해 기본값으로 잘 동작, Transformer 기반은 고주파·속도 제어 태스크에서 over-smoothing 완화에 유리.</li>
+    </ul>
+    <p class="note">세부 ablation 수치는 원문 표를 참조. 위 항목은 논문의 정성적 발견을 정리한 것이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Method 개요 그림</b> — 관찰 O<sub>t</sub>를 조건으로 순수 노이즈에서 K번 denoising을 거쳐 action 시퀀스 A<sub>t</sub>를 생성하고, receding horizon으로 일부만 실행·재계획하는 폐루프 구조를 도식화.
+    </div>
+    <div class="callout">
+      <b>벤치마크 비교 표</b> — 4개 벤치마크·15개 태스크에서 기존 SOTA 대비 평균 <b>46.9%</b> 성공률 향상이라는 핵심 주장의 근거. Franka Kitchen(44→96–99), 실로봇 Push-T(20→95) 등이 대표적 격차.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2303.04137" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2303.04137" target="_blank">PDF</a></li>
+      <li><a href="https://diffusion-policy.cs.columbia.edu" target="_blank">프로젝트 페이지 (diffusion-policy.cs.columbia.edu)</a></li>
+      <li><a href="https://github.com/real-stanford/diffusion_policy" target="_blank">GitHub 코드 (real-stanford/diffusion_policy)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2303.04137 · Diffusion Policy · 요약 생성 2026-07-09
+  </footer>
+</div>
+</body>
+</html>
