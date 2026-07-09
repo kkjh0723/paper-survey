@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>π0.7 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Foundation Model</span>
+    <h1>π0.7: a Steerable Generalist Robotic Foundation Model with Emergent Capabilities</h1>
+    <p class="authors">Physical Intelligence (Bo Ai, Ali Amin, Ashwin Balakrishna, Kevin Black 외 87인 공저)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2604.15483" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2604.15483" target="_blank">PDF</a>
+      <a href="https://www.pi.website/blog/pi07" target="_blank">프로젝트 블로그</a>
+      <span>arXiv:2604.15483</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Foundation Model</span>
+      <span class="t">Context Conditioning</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Compositional Generalization</span>
+    </div>
+    <p class="meta">제출: 2026년 4월 16일 (v1) · 4월 24일 (v2) · 백본 Gemma3 기반 VLM(4B) · 총 ≈5B 파라미터</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>"무엇을 하라"는 언어 지시뿐 아니라 <b>어떻게·어떤 전략으로</b> 수행할지를 알려주는 <b>다양한 멀티모달 맥락(diverse context conditioning)</b>을 학습에 함께 조건화한 로봇 파운데이션 모델. 이 맥락 조건화 덕에 데모·자율수집 실패데이터·인간영상·웹데이터 같은 <b>이질적·저품질 데이터</b>를 충돌 없이 한 모델에 흡수할 수 있다. 그 결과 파인튜닝 없이(out-of-the-box) 에스프레소 머신 조작·빨래 개기 같은 <b>고난도 조작을 RL 전문가 정책(π0.6*) 수준</b>으로 수행하고, 새 주방·침실에서의 <b>지시 추종</b>, 학습에 없던 embodiment로의 <b>제로샷 전이</b>(셔츠 접기 80% 성공), 그리고 <b>조합적 일반화(compositional generalization)</b>의 첫 신호를 보인다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>범용 로봇 파운데이션 모델을 키우려면 데이터를 대량·다양하게 모아야 하지만, 실제 데이터는 <b>품질과 전략이 제각각</b>이다. 고품질 데모, 실수를 포함한 성공 에피소드, 자율 rollout의 실패, 인간 영상, 웹 데이터가 뒤섞여 있고 로봇·제어모드·속도도 다르다. 단순히 언어 지시 하나로만 조건화해 이 모든 데이터를 학습하면 서로 <b>모순되는 신호</b>가 되어 성능이 오히려 떨어진다(저품질 데이터를 더할수록 나빠짐).</p>
+    <p>π0.7의 핵심 통찰은, 각 에피소드가 "무엇을" 했는지뿐 아니라 <b>"어떤 방식·품질·전략으로"</b> 했는지를 함께 조건화하면, 모델이 데이터 간 차이를 <b>혼동이 아니라 구분해야 할 맥락</b>으로 이해한다는 것이다. 추론 시에는 원하는 맥락(고품질·빠르게 등)만 지정하면 그 전략을 골라 실행할 수 있어 <b>steerable</b>해진다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Diverse Context Conditioning</b> — 언어 지시 외에 서브태스크 지시, 서브골 이미지, 에피소드 메타데이터(속도·품질점수·실수여부·제어모드)를 함께 조건화. 이질적·저품질 데이터를 충돌 없이 통합하는 열쇠.</li>
+      <li><b>Steerable & Coachable 정책</b> — 추론 시 원하는 맥락을 지정해 전략/품질을 선택하고, 언어로 단계별 <b>코칭(coaching)</b>이 가능. 코칭 에피소드로 상위 정책을 학습하면 추가 원격조작 없이 자율 실행으로 전환.</li>
+      <li><b>Emergent Capabilities</b> — 파인튜닝 없이 RL 전문가 수준의 dexterity, 미학습 embodiment로의 제로샷 전이, 그리고 학습에 없던 태스크로의 <b>조합적 일반화</b>의 첫 신호를 실증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>모델 구조</h3>
+    <p>총 ≈<b>5B</b> 파라미터. <b>Gemma3</b>로 초기화한 4B VLM 백본 + 400M 비전 인코더(최대 4개 카메라 뷰, 각 6프레임 히스토리, 448×448) + <b>860M action expert</b>. action expert는 <b>flow matching</b> 목적으로 연속 action 청크를 생성한다. proprioceptive 상태는 토큰화(디스크리트화) 대신 선형 사영으로 임베딩. 관찰/골 이미지 토큰은 양방향, 텍스트 토큰은 causal인 <b>block-causal 마스킹</b>을 사용.</p>
+
+    <h3>맥락 프롬프트의 4가지 구성요소</h3>
+    <div class="kv">
+      <div>① 고수준 언어 지시 (ℓₜ)</div><div>전체 목표. 예: "주방을 치워라"</div>
+      <div>② 서브태스크 지시 (ℓ̂ₜ)</div><div>중간 단계 의미 지시. 예: "냉장고 문을 열어라" — 단계별 코칭에 사용</div>
+      <div>③ 서브골 이미지 (gₜ)</div><div>가까운 미래의 목표 장면(멀티뷰). 경량 world model(BAGEL 14B 기반)이 생성</div>
+      <div>④ 에피소드 메타데이터 (m)</div><div>전체 속도(500스텝 bin), 품질점수(1–5), 실수 라벨(binary), 제어모드(joint/EE)</div>
+    </div>
+    <p class="cap">학습 시 각 요소를 확률적으로 드롭아웃(서브골 25%만 사용, 메타데이터 15% 전체 드롭 등)해 추론 시 일부만 주어져도 동작하도록 함.</p>
+
+    <h3>이질적 데이터 통합</h3>
+    <p>학습 데이터는 (1) 다수 플랫폼 로봇 데모(양팔 모바일·정적 양팔·UR5e), (2) 이전 모델(π0.6*) 평가에서 나온 자율 rollout, (3) 1인칭 인간 영상, (4) 웹 규모 비로봇 데이터(객체 위치·VQA·비디오 캡션), (5) 오픈소스 로봇 데이터로 구성. <b>실수를 포함한 저품질·실패 에피소드까지</b> 그대로 포함하되, 메타데이터로 품질을 명시해 모델이 구분 학습하도록 한다.</p>
+
+    <h3>학습·추론 레시피</h3>
+    <p><b>Knowledge Insulation</b>: VLM 백본은 FAST 토큰으로 지도하고, action expert의 gradient는 백본으로 역전파하지 않는다. <b>Real-Time Action Chunking(RTC)</b>로 0–12 스텝 지연을 시뮬레이션. flow matching 5 denoising 스텝으로 50스텝 action 청크를 생성하고 실행은 15–25스텝. 추론 시 서브골/서브태스크는 비동기 스레드로 생성하고, 메타데이터에 <b>Classifier-Free Guidance</b>(β∈{1.3,1.7,2.2})를 적용, 서브골은 Δ=4초마다 또는 의도 변화 시 갱신.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Out-of-the-box dexterity vs RL 전문가(π0.6*)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>π0.7 (파인튜닝 없음)</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>에스프레소 머신</td><td class="win">전문가 수준</td><td>RL 특화 정책과 대등</td></tr>
+        <tr><td>빨래 개기</td><td class="win">전문가 수준</td><td>처리량(throughput) 더 높음</td></tr>
+        <tr><td>박스 조립</td><td class="win">전문가 수준</td><td>처리량 더 높음</td></tr>
+        <tr><td>채소 껍질 벗기기·쓰레기 처리·셔츠 뒤집기</td><td>전문가와 대등</td><td>태스크별 파인튜닝 없이</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">단일 태스크에 RL로 특화한 π0.6* 정책과 <b>대등하거나 처리량 우위</b>. 혼합 데이터 학습만으로 전문가 능력을 사실상 distillation.</p>
+
+    <h3>지시 추종 (미학습 환경)</h3>
+    <p>미학습 주방 4곳·침실 2곳의 <b>14개 시나리오</b>, 3–6단계 지시 시퀀스에서 π0.7은 <b>π0.5·π0.6을 전반적으로 크게 상회</b>하며 높은 절대 성공률을 달성. 복잡한 지시·참조 표현, 그리고 학습 편향에 반하는 지시(예: 접시를 쓰레기통에 넣기)에서도 유의하게 개선되며, 특히 역방향 태스크에는 <b>서브골 이미지 조건화</b>가 결정적이었다.</p>
+
+    <h3>Cross-Embodiment 전이 — 셔츠 접기</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>주체</th><th>Task Progress</th><th>Success Rate</th></tr></thead>
+      <tbody>
+        <tr><td><b>π0.7 (제로샷, 미학습 embodiment)</b></td><td class="win">85.6%</td><td class="win">80%</td></tr>
+        <tr><td>전문 원격조작자(10명, 평균 375h)</td><td>90.9%</td><td>80.6%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">경량 정적 양팔 로봇에서 수집한 데이터로 학습해 더 큰 UR5e에서 테스트. 소스 행동을 그대로 모사하지 않고 <b>대상 embodiment에 맞는 새로운 파지 전략</b>을 스스로 발견 — 인간 전문가와 대등한 진행도. 물체 재배치(가방·셔츠 담기)에서도 π0.5는 크게 저하되나 π0.7은 성능 유지·상회.</p>
+
+    <h3>조합적 일반화 (compositional generalization)</h3>
+    <p>학습 데이터가 전혀 없는 단기 태스크 — 밥통에 쌀 퍼담기, 기어세트·선풍기 등 회전, 천으로 물체 닦기 — 를 <b>제로샷</b>으로 수행. 에어프라이어·베이글 굽기·쓰레기 처리 같은 장기 다단계 태스크는 언어 코칭으로 훨씬 효과적으로 유도되고, 코칭 에피소드로 학습한 상위 정책은 <b>추가 원격조작 없이 자율 실행</b>으로 전환된다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>메타데이터 제거 (Fig. 7):</b> 전반적 성능이 across-the-board로 저하. 자율 평가데이터 제거도 마찬가지 — 두 요소의 결합이 강한 성능에 필수.</li>
+      <li><b>저품질 데이터 확장 (Fig. 18 좌):</b> 메타데이터가 있으면 상위 30%→전체 데이터로 넓힐수록 성능이 <b>계속 향상</b>. 반면 메타데이터가 없으면 저품질 데이터를 더할수록 <b>오히려 성능 저하</b> — 맥락 조건화가 저품질 데이터를 자산으로 바꿈.</li>
+      <li><b>태스크 다양성 (Fig. 18 우):</b> 가장 다양한 20% 데이터를 제거하면 성능이 크게 하락하나, 무작위 20% 제거는 영향 미미 — <b>다양성</b>이 성능 개선의 핵심 원천.</li>
+      <li><b>서브골 이미지:</b> 참조 표현·데이터 편향에 반하는 역방향 태스크에서 특히 중요.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Fig. 18 (mixed-quality 학습)</b> — 논문의 핵심 주장 근거. 메타데이터가 있으면 저품질·다양성 높은 데이터를 넣을수록 성능이 오르지만, 없으면 저품질 데이터가 성능을 <b>깎는다</b>는 대비를 보여 "맥락 조건화가 이질적 데이터 통합의 열쇠"임을 입증.
+    </div>
+    <div class="callout">
+      <b>Fig. 7 (ablation)</b> — 메타데이터·자율 평가데이터를 각각 제거했을 때의 across-the-board 성능 저하로, 두 설계 요소의 필요성을 정량적으로 뒷받침.
+    </div>
+    <p class="cap">Fig. 9: 미학습 주방·침실 14개 시나리오 지시 추종 · Fig. 15–16: 장기 태스크 코칭 → 자율 전환 · Fig. 17: 제로샷 조합적 일반화 태스크.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2604.15483" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2604.15483" target="_blank">PDF</a></li>
+      <li><a href="https://www.pi.website/blog/pi07" target="_blank">Physical Intelligence 블로그 (π0.7)</a></li>
+      <li>계보: <a href="../summaries/2504.16054_pi05.html">π0.5 요약(이 사이트)</a> · π0.6*(RL 특화 전문가 정책, 본 논문 baseline)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2604.15483 · π0.7 · 요약 생성 2026-07-09
+  </footer>
+</div>
+</body>
+</html>
