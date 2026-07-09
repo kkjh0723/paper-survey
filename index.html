@@ -27,6 +27,16 @@
   .search{flex:1;min-width:200px;max-width:340px;padding:9px 13px;border:1px solid var(--line);
     border-radius:10px;font-size:14px;background:#fff}
   .search:focus{outline:none;border-color:var(--accent)}
+  /* 필터 칩 */
+  .chips-bar{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+  .chip{cursor:pointer;user-select:none;font-size:13px;padding:6px 12px;border-radius:999px;
+    border:1px solid var(--line);background:#fff;color:#3c4636;transition:all .12s}
+  .chip:hover{border-color:var(--accent);color:var(--accent-d)}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#12210a;font-weight:700}
+  .chip .c{opacity:.7;margin-left:5px;font-variant-numeric:tabular-nums}
+  .chip.active .c{opacity:.85}
+  .chip.sep{background:transparent;border:none;color:var(--muted);cursor:default;padding:6px 2px;font-size:12px}
+  .chip.sep:hover{color:var(--muted)}
   table{border-collapse:separate;border-spacing:0;width:100%;background:var(--card);
     border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03)}
   thead th{background:#f0f4ea;text-align:left;font-size:12.5px;letter-spacing:.03em;
@@ -35,12 +45,19 @@
   tbody tr:last-child td{border-bottom:none}
   tbody tr:hover{background:#fafcf6}
   .no{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+  .read-cell{text-align:center}
+  .read-cell input{width:17px;height:17px;cursor:pointer;accent-color:var(--accent)}
+  tr.is-read .ttl a{color:#8a978a}
+  tr.is-read{background:#fbfcfa}
   .ttl{font-size:15.5px;font-weight:700;color:#1c2618}
   .ttl a{color:#1c2618}
   .ttl a:hover{color:var(--accent-d)}
+  .new-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;
+    background:var(--accent);color:#12210a;padding:1px 6px;border-radius:5px;margin-left:8px;
+    vertical-align:middle;text-transform:uppercase}
   .sub{color:var(--muted);font-size:13px;margin-top:3px}
   .tags{margin-top:7px;display:flex;flex-wrap:wrap;gap:5px}
-  /* 리스트에서는 저자·요약·태그를 숨겨 행 높이를 균일하게 유지 (검색은 숨긴 내용까지 매칭됨) */
+  /* 리스트에서는 저자·요약·태그를 숨겨 행 높이를 균일하게 유지 (검색·필터는 숨긴 내용까지 매칭됨) */
   tbody .sub, tbody .tags{display:none}
   .tag{font-size:11.5px;background:var(--soft);color:var(--accent-d);border:1px solid #d5e4bf;
     padding:2px 8px;border-radius:6px}
@@ -61,8 +78,11 @@
     <p>읽은 논문의 핵심 요약을 한곳에서 관리합니다. 제목을 클릭하면 요약 페이지로 이동합니다.</p>
   </header>
 
+  <!-- 필터 칩: JS가 자동 생성 (전체·새 논문·안 읽음 + 태그 그룹 ≥3편) -->
+  <div class="chips-bar" id="chips"></div>
+
   <div class="bar">
-    <input class="search" id="q" type="text" placeholder="제목·저자·태그 검색…" oninput="filt()">
+    <input class="search" id="q" type="text" placeholder="제목·저자·태그 검색…" oninput="applyFilter()">
     <span class="count" id="count"></span>
   </div>
 
@@ -70,15 +90,19 @@
     <thead>
       <tr>
         <th style="width:38px">#</th>
+        <th style="width:52px" title="읽음 (직접 체크)">읽음</th>
         <th>논문</th>
         <th style="width:96px">날짜</th>
         <th style="width:150px">링크</th>
       </tr>
     </thead>
     <tbody id="rows">
-      <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가 -->
-      <tr>
+      <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
+           data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
+           data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2606.21406" data-added="2026-07-08" data-tags="Self-Improvement,Dynamics Model,Learning from Human,Cross-Embodiment">
         <td class="no">6</td>
+        <td class="read-cell"></td>
         <td>
           <div class="ttl"><a href="summaries/2606.21406_DGAC.html">Robot Self-Improvement via Human-Video Dynamics Models</a></div>
           <div class="sub">Hanzhi Chen, Anran Zhang 외 · ETH Zurich · TUM · Microsoft · arXiv:2606.21406</div>
@@ -96,8 +120,9 @@
           <a href="https://ethz-mrl.github.io/robot-self-improvement-website/" target="_blank">프로젝트</a>
         </td>
       </tr>
-      <tr>
+      <tr data-id="2606.17846" data-added="2026-07-08" data-tags="VLA,Foundation Model,Cross-Embodiment,Alignment,OOD Generalization">
         <td class="no">5</td>
+        <td class="read-cell"></td>
         <td>
           <div class="ttl"><a href="summaries/2606.17846_Qwen-RobotManip.html">Qwen-RobotManip: Alignment Unlocks Scale for Robotic Manipulation Foundation Models</a></div>
           <div class="sub">Qwen Team (Alibaba) · arXiv:2606.17846</div>
@@ -116,8 +141,9 @@
           <a href="https://github.com/QwenLM/Qwen-RobotManip" target="_blank">GitHub</a>
         </td>
       </tr>
-      <tr>
+      <tr data-id="2606.15631" data-added="2026-07-08" data-tags="VLA,Retrieval,Test-Time Adaptation,World Model,Cross-Embodiment">
         <td class="no">4</td>
+        <td class="read-cell"></td>
         <td>
           <div class="ttl"><a href="summaries/2606.15631_RECAP.html">Retrieve, Don't Retrain: Extending Vision-Language-Action Models to New Tasks at Test Time</a></div>
           <div class="sub">Jeongeun Park, Juhan Park 외 · NAVER AI Lab · Korea University · arXiv:2606.15631</div>
@@ -136,8 +162,9 @@
           <a href="https://recap-robot.github.io" target="_blank">프로젝트</a>
         </td>
       </tr>
-      <tr>
+      <tr data-id="2602.10098" data-added="2026-07-08" data-tags="VLA,World Model,JEPA,Latent Action,Robustness">
         <td class="no">3</td>
+        <td class="read-cell"></td>
         <td>
           <div class="ttl"><a href="summaries/2602.10098_VLA-JEPA.html">VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model</a></div>
           <div class="sub">Jingwen Sun, Wenyao Zhang 외 · USTC · SJTU · Tsinghua · arXiv:2602.10098</div>
@@ -156,8 +183,9 @@
           <a href="https://github.com/ginwind/VLA-JEPA/" target="_blank">GitHub</a>
         </td>
       </tr>
-      <tr>
+      <tr data-id="Aspire" data-added="2026-07-08" data-tags="Agentic Robotics,Continual Learning,Skill Library,LLM Coding Agent,Sim2Real">
         <td class="no">2</td>
+        <td class="read-cell"></td>
         <td>
           <div class="ttl"><a href="summaries/Aspire_NVIDIA.html">ASPIRE: Agentic Skill Programming through Iterative Robot Exploration</a></div>
           <div class="sub">Runyu Lu, Yubo Wu, Ethan Kou 외 · NVIDIA · UMich · UIUC · UC Berkeley · CMU</div>
@@ -176,8 +204,9 @@
           <a href="https://research.nvidia.com/labs/gear/aspire/assets/Aspire.pdf" target="_blank">PDF</a>
         </td>
       </tr>
-      <tr>
+      <tr data-id="2606.20905" data-added="2026-07-08" data-tags="Embodied AI,Robotics,VLM,Memory,Navigation">
         <td class="no">1</td>
+        <td class="read-cell"></td>
         <td>
           <div class="ttl"><a href="summaries/2606.20905_Vesta.html">Vesta: A Generalist Embodied Reasoning Model</a></div>
           <div class="sub">Johan Bjorck 외 · NVIDIA (GEAR) · arXiv:2606.20905</div>
@@ -198,29 +227,144 @@
       </tr>
     </tbody>
   </table>
-  <p class="empty-hint" id="noresult" style="display:none">검색 결과가 없습니다.</p>
+  <p class="empty-hint" id="noresult" style="display:none">해당 조건의 논문이 없습니다.</p>
 
-  <footer>Paper Survey · 최근 업데이트 2026-07-02</footer>
+  <footer>Paper Survey · 최근 업데이트 2026-07-09</footer>
 </div>
 
 <script>
-  function filt(){
-    var q=document.getElementById('q').value.toLowerCase();
-    var rows=document.querySelectorAll('#rows tr');
-    var n=0;
-    rows.forEach(function(r){
-      var t=r.textContent.toLowerCase();
-      var show=t.indexOf(q)>-1;
-      r.style.display=show?'':'none';
-      if(show)n++;
+  // ===== 설정 =====
+  var GROUP_MIN = 3;      // 태그 그룹 자동 생성 임계값 (N편 이상 공유 시)
+  var NEW_DAYS = 14;      // '새 논문' 기준 (등록일로부터 N일 이내)
+  var LS_KEY = 'paper_survey_read';
+
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#rows tr'));
+  var activeFilter = {type:'all', value:null};
+
+  // ===== 읽음 상태 (localStorage) =====
+  function loadRead(){
+    try{ return JSON.parse(localStorage.getItem(LS_KEY)) || {}; }catch(e){ return {}; }
+  }
+  function saveRead(obj){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(obj)); }catch(e){}
+  }
+  function isRead(id){ return !!loadRead()[id]; }
+  function setRead(id, val){
+    var o = loadRead();
+    if(val) o[id]=true; else delete o[id];
+    saveRead(o);
+  }
+
+  // ===== 유틸 =====
+  function tagsOf(tr){
+    return (tr.getAttribute('data-tags')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+  }
+  function daysSince(dateStr){
+    var d = new Date(dateStr + 'T00:00:00');
+    return (Date.now() - d.getTime()) / 86400000;
+  }
+  function isNew(tr){
+    var a = tr.getAttribute('data-added');
+    return a ? daysSince(a) <= NEW_DAYS : false;
+  }
+
+  // ===== 읽음 체크박스 렌더 + '새 논문' 배지 =====
+  function initRows(){
+    rows.forEach(function(tr){
+      var id = tr.getAttribute('data-id');
+      // 체크박스
+      var cell = tr.querySelector('.read-cell');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = isRead(id);
+      cb.title = '읽음으로 표시';
+      cb.addEventListener('change', function(){
+        setRead(id, cb.checked);
+        tr.classList.toggle('is-read', cb.checked);
+        renderChips();     // 안 읽음 카운트 갱신
+        applyFilter();     // 안 읽음 필터 활성 시 즉시 반영
+      });
+      cell.appendChild(cb);
+      tr.classList.toggle('is-read', cb.checked);
+      // 새 논문 배지
+      if(isNew(tr)){
+        var ttl = tr.querySelector('.ttl');
+        if(ttl && !ttl.querySelector('.new-badge')){
+          var b = document.createElement('span');
+          b.className = 'new-badge'; b.textContent = 'NEW';
+          ttl.appendChild(b);
+        }
+      }
     });
-    document.getElementById('noresult').style.display=n?'none':'';
   }
-  function updateCount(){
-    var total=document.querySelectorAll('#rows tr').length;
-    document.getElementById('count').innerText='총 '+total+'편';
+
+  // ===== 필터 칩 생성 =====
+  function computeGroups(){
+    var counts = {};
+    rows.forEach(function(tr){
+      tagsOf(tr).forEach(function(t){ counts[t] = (counts[t]||0)+1; });
+    });
+    return Object.keys(counts)
+      .filter(function(t){ return counts[t] >= GROUP_MIN; })
+      .sort(function(a,b){ return counts[b]-counts[a] || a.localeCompare(b); })
+      .map(function(t){ return {name:t, count:counts[t]}; });
   }
-  updateCount();
+  function matchCount(fn){ return rows.filter(fn).length; }
+
+  function renderChips(){
+    var bar = document.getElementById('chips');
+    bar.innerHTML = '';
+    var total = rows.length;
+    var newCount = matchCount(isNew);
+    var unreadCount = matchCount(function(tr){ return !isRead(tr.getAttribute('data-id')); });
+
+    var defs = [
+      {type:'all',   value:null,   label:'전체',    count:total},
+      {type:'new',   value:null,   label:'🆕 새 논문', count:newCount},
+      {type:'unread',value:null,   label:'안 읽음',  count:unreadCount}
+    ];
+    var groups = computeGroups();
+    if(groups.length) defs.push({type:'sep'});
+    groups.forEach(function(g){
+      defs.push({type:'tag', value:g.name, label:g.name, count:g.count});
+    });
+
+    defs.forEach(function(d){
+      var el = document.createElement('span');
+      if(d.type==='sep'){ el.className='chip sep'; el.textContent='|'; bar.appendChild(el); return; }
+      el.className = 'chip' + ((activeFilter.type===d.type && activeFilter.value===d.value) ? ' active' : '');
+      el.innerHTML = d.label + ' <span class="c">'+d.count+'</span>';
+      el.addEventListener('click', function(){
+        activeFilter = {type:d.type, value:d.value};
+        renderChips();
+        applyFilter();
+      });
+      bar.appendChild(el);
+    });
+  }
+
+  // ===== 필터 + 검색 적용 =====
+  function applyFilter(){
+    var q = document.getElementById('q').value.toLowerCase();
+    var n = 0;
+    rows.forEach(function(tr){
+      var passFilter = true;
+      if(activeFilter.type==='new')      passFilter = isNew(tr);
+      else if(activeFilter.type==='unread') passFilter = !isRead(tr.getAttribute('data-id'));
+      else if(activeFilter.type==='tag') passFilter = tagsOf(tr).indexOf(activeFilter.value) > -1;
+      var passSearch = !q || tr.textContent.toLowerCase().indexOf(q) > -1;
+      var show = passFilter && passSearch;
+      tr.style.display = show ? '' : 'none';
+      if(show) n++;
+    });
+    document.getElementById('noresult').style.display = n ? 'none' : '';
+    document.getElementById('count').innerText = '총 ' + rows.length + '편 · 표시 ' + n + '편';
+  }
+
+  // ===== 초기화 =====
+  initRows();
+  renderChips();
+  applyFilter();
 </script>
 </body>
 </html>
