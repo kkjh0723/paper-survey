@@ -501,7 +501,7 @@
 
   // 원격 자동 동기화 (Cloudflare Worker). 배포 후 URL을 넣으면 붙여넣기 없이 자동 반영됨.
   // 비워두면 아래 '원클릭 복사→Claude' 방식으로 자동 폴백. (설정법: tools/cf-worker/README.md)
-  var SYNC_ENDPOINT = '';   // 예: 'https://paper-sync.<계정>.workers.dev'
+  var SYNC_ENDPOINT = 'https://paper-sync.kkjh0723.workers.dev';   // Cloudflare Worker
   var SYNC_KEY = '';        // Worker에 SYNC_KEY를 설정했다면 같은 값
   var syncTimer = null, lastSyncOk = true, remoteBusy = false;
   function remoteEnabled(){ return !!SYNC_ENDPOINT; }
