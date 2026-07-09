@@ -1,6 +1,39 @@
 {
-  "likes": {},
-  "queue": [],
+  "likes": {
+    "2604.15483": 1
+  },
+  "queue": [
+    {
+      "id": "2607.04988",
+      "title": "InternVLA-A1.5: Unifying Understanding, Latent Foresight, and Action for Compositional Generalization",
+      "arxiv_url": "https://arxiv.org/abs/2607.04988",
+      "added": "2026-07-09"
+    },
+    {
+      "id": "2607.03570",
+      "title": "Cross-Embodiment Robot Manipulation via a Unified Hand Action Space",
+      "arxiv_url": "https://arxiv.org/abs/2607.03570",
+      "added": "2026-07-09"
+    },
+    {
+      "id": "2410.11758",
+      "title": "Latent Action Pretraining from Videos (LAPA)",
+      "arxiv_url": "https://arxiv.org/abs/2410.11758",
+      "added": "2026-07-09"
+    },
+    {
+      "id": "2310.08864",
+      "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+      "arxiv_url": "https://arxiv.org/abs/2310.08864",
+      "added": "2026-07-09"
+    },
+    {
+      "id": "2303.04137",
+      "title": "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion",
+      "arxiv_url": "https://arxiv.org/abs/2303.04137",
+      "added": "2026-07-09"
+    }
+  ],
   "dismissed": [],
   "updated": "2026-07-09"
 }
