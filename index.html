@@ -537,7 +537,9 @@
     .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
     .then(function(merged){
       committedState = normState(merged);
-      state = mergeStates(committedState, state);
+      // 좋아요는 로컬(방금 보낸 값)을 유지해 빠른 연속 토글 유실 방지, 큐·제외는 서버와 합집합
+      var lists = unionLists(committedState, state);
+      state = {likes: state.likes, queue: lists.queue, dismissed: lists.dismissed};
       try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
       lastSyncOk = true; remoteBusy = false; renderSyncBanner();
     })
@@ -771,21 +773,37 @@
 
   // 저장소 사용자 상태 로드 → 로컬과 병합 → 화면 초기화
   // 원격 설정 시 Worker에서 최신본을 읽고(캐시 우회), 실패하면 data/state.json으로 폴백
+  // 큐·제외만 합집합 (좋아요는 상황에 따라 진실 소스가 달라 별도 처리)
+  function unionLists(a, b){
+    a = normState(a); b = normState(b);
+    var seen = {}, queue = [];
+    a.queue.concat(b.queue).forEach(function(it){ if(it && it.id && !seen[it.id]){ seen[it.id]=1; queue.push(it); } });
+    var ds = {};
+    a.dismissed.concat(b.dismissed).forEach(function(x){ if(x) ds[x]=1; });
+    return {queue:queue, dismissed:Object.keys(ds)};
+  }
   function loadCommitted(){
     var fromRepo = function(){
       return fetch('data/state.json', {cache:'no-store'})
-        .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
+        .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+        .then(function(d){ return {state:d, fresh:false}; });
     };
     if(remoteEnabled()){
       return fetch(SYNC_ENDPOINT, {headers:{'x-sync-key':SYNC_KEY}})
         .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
-        .then(function(d){ return d || fromRepo(); });
+        .then(function(d){ return d ? {state:d, fresh:true} : fromRepo(); });
     }
     return fromRepo();
   }
-  loadCommitted().then(function(cs){
-    committedState = normState(cs);
-    state = mergeStates(committedState, loadLocalState() || {});
+  loadCommitted().then(function(res){
+    committedState = normState(res.state);
+    var local = loadLocalState();
+    var lists = unionLists(committedState, local || {});
+    var likes;
+    if(res.fresh) likes = committedState.likes;              // 온라인: 서버 좋아요가 진실(취소 반영)
+    else if(local) likes = normState(local).likes;           // 오프라인: 로컬 우선(오프라인 편집 보존)
+    else likes = committedState.likes;
+    state = {likes:likes, queue:lists.queue, dismissed:lists.dismissed};
     try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
     boot();
   });

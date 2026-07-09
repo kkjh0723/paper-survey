@@ -36,9 +36,9 @@ function normState(s){
 function mergeStates(base, over){
   base = normState(base); over = normState(over);
   const out = {likes:{}, queue:[], dismissed:[]};
-  for(const k in base.likes) out.likes[k] = base.likes[k];
-  for(const k in over.likes) out.likes[k] = Math.max(out.likes[k]||0, over.likes[k]);
-  for(const k in out.likes){ if(!out.likes[k]) delete out.likes[k]; }
+  // 좋아요/점수: 클라이언트(over)가 소스 오브 트루스 → 취소·하향이 반영됨(LWW).
+  for(const k in over.likes){ if(over.likes[k]) out.likes[k] = over.likes[k]; }
+  // 큐·제외: append-only 성격이라 합집합(동시 사용 시 유실 방지).
   const seen = {};
   base.queue.concat(over.queue).forEach(it => { if(it && it.id && !seen[it.id]){ seen[it.id]=1; out.queue.push(it); } });
   const ds = {};
