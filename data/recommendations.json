@@ -6,37 +6,37 @@
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.02865",
-          "title": "DREAMSTEER: Latent World Models Steering VLAs",
-          "authors": "Hanchen Cui 외",
-          "summary_ko": "파인튜닝 없이 배포 시점에 latent world model로 VLA 정책을 조종(steer)하는 프레임워크. 정책 수정 없이 미래 latent를 활용해 행동을 유도.",
-          "tags": ["VLA", "World Model", "Latent", "Test-Time Steering"],
-          "arxiv_url": "https://arxiv.org/abs/2607.02865",
+          "id": "2607.04988",
+          "title": "InternVLA-A1.5: Unifying Understanding, Latent Foresight, and Action for Compositional Generalization",
+          "authors": "Haoxiang Ma, Junhao Cai, Xiaoxu Xu 외 · Shanghai AI Lab",
+          "summary_ko": "VQA·서브태스크 예측을 그대로 유지한 채, 학습 가능한 foresight 토큰으로 미래를 latent 코드로 압축(픽셀 생성 대신 latent-querying). 로봇 1.2M 에피소드+멀티모달 3M 샘플로 학습해 held-out 지시 결합에서 최고 수준의 compositional generalization을 실시간 제어로 달성.",
+          "tags": ["VLA", "Latent Foresight", "Compositional Generalization", "Foundation Model"],
+          "arxiv_url": "https://arxiv.org/abs/2607.04988",
+          "extra_url": "",
+          "date": "2026-07-06",
+          "reason": "π0.7의 '다양한 맥락 조건화로 얻는 compositional/emergent 능력' 노선과, VLA-JEPA의 '픽셀 복원 없이 latent 미래 예측' 아이디어를 정면으로 결합. Vesta 같은 통합 추론 모델과도 비교 가능해 세 축(맥락 조건화·latent world model·통합 파운데이션)을 한 논문에서 대조하기 좋음."
+        },
+        {
+          "id": "2607.04978",
+          "title": "Qantara: Bridge-Flow Training for Multi-Paradigm JEPA Control",
+          "authors": "Ruslan Rakhimov, George Bredis, Yuriy Maksyuta, Daniil Gavrilov · T-Tech",
+          "summary_ko": "상태 축에는 클린 latent 간 Brownian-bridge 보간, 행동 축에는 noise-to-data flow matching을 붙인 end-to-end JEPA. 단일 체크포인트에서 latent 계획·BC 행동 샘플링·역동역학 세 가지 추론을 모두 지원. LeWM 91.2 SR, OGBench-Cube SoTA.",
+          "tags": ["JEPA", "World Model", "Flow Matching", "Latent Action"],
+          "arxiv_url": "https://arxiv.org/abs/2607.04978",
+          "extra_url": "",
+          "date": "2026-07-06",
+          "reason": "VLA-JEPA의 '누출 없는 JEPA 상태 예측' 라인의 직계 확장. VLA-JEPA가 latent 예측을 사전학습에 쓴 것과 달리, Qantara는 그 latent 위에서 계획/BC/역동역학을 한 checkpoint로 갈아끼우는 실행 프레임까지 붙였음. π0.5·π0.7의 flow matching 행동 생성과의 결합 지점도 뚜렷."
+        },
+        {
+          "id": "2607.03570",
+          "title": "Cross-Embodiment Robot Manipulation via a Unified Hand Action Space",
+          "authors": "Luis Felipe Casas, Robert Teal, Keval Shah, Abhijit Tadepalli, Wanxin Jin, Yu Xiang · UT Dallas · Arizona State",
+          "summary_ko": "여러 손(Allegro·LEAP·Shadow·MANO)을 표준 구(canonical sphere)의 기하학적 변형으로 표현하는 UHAS와 Cascade IK로 이질 embodiment 통합. RL로 in-hand cube reorientation을 학습해 zero-shot 전이·빠른 새 embodiment 적응·실로봇 실행까지 확인.",
+          "tags": ["Cross-Embodiment", "Dexterous Manipulation", "Unified Action Space", "Sim2Real"],
+          "arxiv_url": "https://arxiv.org/abs/2607.03570",
           "extra_url": "",
           "date": "2026-07-03",
-          "reason": "보유 논문 VLA-JEPA(누출 없는 latent world model)와 π0.5(steerable 조작)의 아이디어를 배포시점 조종으로 결합. latent world model 관심사와 정면으로 연결."
-        },
-        {
-          "id": "2607.06988",
-          "title": "WAM-TTT: Steering World-Action Models via Test-Time Training",
-          "authors": "Yusen Feng 외",
-          "summary_ko": "인간 영상을 자기지도 메모리 재구성으로 활용해 world-action 모델을 테스트타임에 적응시키는 프레임워크.",
-          "tags": ["World Model", "Test-Time Adaptation", "Learning from Human"],
-          "arxiv_url": "https://arxiv.org/abs/2607.06988",
-          "extra_url": "",
-          "date": "2026-07-08",
-          "reason": "RECAP(재학습 없는 test-time 확장)과 DGAC(인간 영상 기반 자기개선)를 동시에 잇는 조합. 두 관심 축(테스트타임 적응 + 인간 영상)의 최신 후속."
-        },
-        {
-          "id": "2607.06403",
-          "title": "From Foundation to Application: LingBot-VLA 2.0",
-          "authors": "Wei Wu 외",
-          "summary_ko": "20종 로봇·6만 시간 사전학습으로 cross-embodiment 장기 조작을 보이는 VLA 파운데이션 모델.",
-          "tags": ["VLA", "Foundation Model", "Cross-Embodiment", "Long-Horizon"],
-          "arxiv_url": "https://arxiv.org/abs/2607.06403",
-          "extra_url": "",
-          "date": "2026-07-07",
-          "reason": "Qwen-RobotManip·π0.5 계열의 '대규모 이질적 데이터 cross-embodiment 파운데이션' 노선. 데이터 스케일·embodiment 통합 비교 대상으로 유용."
+          "reason": "Qwen-RobotManip이 '정규 80차원 상태-행동 정렬로 cross-embodiment를 여는' 축이었다면, UHAS는 그 축을 손(dexterous) 도메인으로 좁혀 더 강한 표준화(canonical sphere)로 밀어붙임. π0.5·π0.7의 cross-embodiment 데이터 통합과도 정렬 표현 비교 대상으로 유용."
         }
       ]
     },
@@ -45,37 +45,37 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2410.24164",
-          "title": "π0: A Vision-Language-Action Flow Model for General Robot Control",
-          "authors": "Physical Intelligence",
-          "summary_ko": "flow matching으로 연속 행동을 생성하는 Physical Intelligence의 기반 VLA. 보유 중인 π0.5·π0.7의 직계 전신.",
-          "tags": ["VLA", "Flow Matching", "Foundation Model"],
-          "arxiv_url": "https://arxiv.org/abs/2410.24164",
-          "extra_url": "https://www.physicalintelligence.company/blog/pi0",
-          "date": "2024-10-31",
-          "reason": "리스트의 π0.5·π0.7이 직접 확장한 원본 모델. flow matching 행동 표현의 출발점이라 계보 이해에 필수."
+          "id": "2410.11758",
+          "title": "Latent Action Pretraining from Videos (LAPA)",
+          "authors": "Seonghyeon Ye, Joel Jang, Byeongguk Jeon 외 · KAIST · Washington · Nvidia",
+          "summary_ko": "액션 라벨 없는 인터넷 영상에서 VQ로 이산 latent 액션을 학습한 뒤 소규모 로봇 데이터로 파인튜닝하는 unsupervised VLA 사전학습. '로봇 액션 없는 인간 영상으로 VLA를 초기화한다'는 접근의 대표작.",
+          "tags": ["VLA", "Latent Action", "Learning from Human", "Pretraining"],
+          "arxiv_url": "https://arxiv.org/abs/2410.11758",
+          "extra_url": "https://latentactionpretraining.github.io",
+          "date": "2024-10-15",
+          "reason": "리스트의 DGAC(인간 영상 dynamics로 자기개선)와 VLA-JEPA(latent 미래 예측)의 공통 뿌리. '인간 영상 → latent action → VLA'라는 계보를 이해하려면 LAPA가 출발점. 최근 추천된 Qantara·WAM-TTT를 관통하는 latent action 라인의 원류."
         },
         {
-          "id": "2406.09246",
-          "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
-          "authors": "Moo Jin Kim, Karl Pertsch 외 · Stanford · Berkeley",
-          "summary_ko": "Open X-Embodiment로 학습한 7B 오픈소스 VLA. 다수 후속 연구의 표준 베이스라인.",
-          "tags": ["VLA", "Open Source", "Cross-Embodiment"],
-          "arxiv_url": "https://arxiv.org/abs/2406.09246",
-          "extra_url": "https://openvla.github.io",
-          "date": "2024-06-13",
-          "reason": "VLA-JEPA·RECAP 등 보유 논문 다수가 OpenVLA(-OFT)를 베이스라인으로 삼음. 계열의 공통 기준점."
+          "id": "2310.08864",
+          "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+          "authors": "Open X-Embodiment Collaboration (Abby O'Neill 외) · 21개 기관 22개 로봇",
+          "summary_ko": "22개 로봇·21개 기관·527 스킬을 합친 대규모 협력 데이터셋과, 이를 학습한 RT-X 모델. cross-embodiment 학습이 개별 로봇 성능을 끌어올린다는 positive transfer를 정량화한 파운데이션 데이터.",
+          "tags": ["Cross-Embodiment", "Dataset", "VLA", "Foundation"],
+          "arxiv_url": "https://arxiv.org/abs/2310.08864",
+          "extra_url": "https://robotics-transformer-x.github.io",
+          "date": "2023-10-13",
+          "reason": "Qwen-RobotManip·π0.5·π0.7·DGAC 모두 '이질 embodiment 데이터 통합'을 전제하고 시작함. 그 전제를 처음으로 대규모 실증한 논문이 OXE. 리스트 논문들의 데이터·평가·표준화 논의를 읽는 기준선."
         },
         {
-          "id": "2503.14734",
-          "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
-          "authors": "NVIDIA",
-          "summary_ko": "비전-언어 추론 + 확산 행동의 이중 시스템 오픈 휴머노이드 파운데이션 모델. 실로봇·인간영상·시뮬을 함께 학습.",
-          "tags": ["VLA", "Foundation Model", "Humanoid", "Cross-Embodiment"],
-          "arxiv_url": "https://arxiv.org/abs/2503.14734",
-          "extra_url": "https://developer.nvidia.com/isaac/gr00t",
-          "date": "2025-03-18",
-          "reason": "Vesta(NVIDIA GEAR)·Qwen-RobotManip과 같은 이질적 데이터 통합·이중시스템 노선. cross-embodiment 파운데이션 비교에 유용."
+          "id": "2303.04137",
+          "title": "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion",
+          "authors": "Cheng Chi, Zhenjia Xu, Siyuan Feng 외 · Columbia · Toyota Research · MIT",
+          "summary_ko": "행동을 조건부 denoising diffusion으로 생성하는 visuomotor 정책. 기존 SoTA 대비 평균 46.9% 개선을 보인 조작 정책의 대표 아키텍처.",
+          "tags": ["Diffusion Policy", "Action Generation", "Foundation", "Manipulation"],
+          "arxiv_url": "https://arxiv.org/abs/2303.04137",
+          "extra_url": "https://diffusion-policy.cs.columbia.edu",
+          "date": "2023-03-07",
+          "reason": "π0(및 리스트의 π0.5·π0.7)이 채택한 flow matching 행동 생성의 직전 세대. GR00T의 이중 시스템·RECAP의 잔차 정책 등도 diffusion/flow head를 전제로 함. '왜 요즘 VLA가 flow/diffusion으로 액션을 내는가'를 이해하려면 필수 원류."
         }
       ]
     }
