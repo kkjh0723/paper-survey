@@ -2,9 +2,16 @@
   "likes": {
     "2604.15483": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2607.06988",
+      "title": "WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time",
+      "arxiv_url": "https://arxiv.org/abs/2607.06988",
+      "added": "2026-07-10"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
-  "updated": "2026-07-09"
+  "updated": "2026-07-10"
 }
