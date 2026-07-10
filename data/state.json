@@ -8,6 +8,24 @@
       "title": "WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time",
       "arxiv_url": "https://arxiv.org/abs/2607.06988",
       "added": "2026-07-10"
+    },
+    {
+      "id": "2406.09246",
+      "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+      "arxiv_url": "https://arxiv.org/abs/2406.09246",
+      "added": "2026-07-10"
+    },
+    {
+      "id": "2410.24164",
+      "title": "π₀: A Vision-Language-Action Flow Model for General Robot Control",
+      "arxiv_url": "https://arxiv.org/abs/2410.24164",
+      "added": "2026-07-10"
+    },
+    {
+      "id": "2404.08471",
+      "title": "V-JEPA: Revisiting Feature Prediction for Learning Visual Representations from Video",
+      "arxiv_url": "https://arxiv.org/abs/2404.08471",
+      "added": "2026-07-10"
     }
   ],
   "dismissed": [
