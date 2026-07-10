@@ -136,6 +136,11 @@
   <section>
     <h2><span class="n">3</span>Method</h2>
 
+    <figure>
+      <img src="fig/2606.20905/x2.png" alt="Vesta의 제너럴리스트 임바디드 모델 구조와 계층적 제어 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Vesta 모델 개요.</b> 멀티모달 입력과 계층적 제어를 지원하며 로컬라이제이션·내비게이션·임바디드 QA·실세계 플래닝의 네 능력을 하나의 모델로 통합한다. (출처: arXiv:2606.20905)</figcaption>
+    </figure>
+
     <h3>베이스 모델 & 구조</h3>
     <p><b>Qwen3-VL-8B</b>를 파인튜닝(SFT). 포인트·박스 같은 구조적 출력도 자유 답변과 동일한 <b>언어 헤드(language head)</b>로 텍스트 토큰으로 디코딩한다. 계층적 제어에서 <b>상위 플래너</b> 역할을 맡고, 하위 액터가 실제 동작을 실행한다. 비교 대상 베이스라인도 모두 동일한 8B 규모.</p>
 
@@ -183,6 +188,12 @@
 
   <section>
     <h2><span class="n">5</span>실험 결과</h2>
+
+    <figure>
+      <img src="fig/2606.20905/x7.png" alt="실제 로봇 평가에서 Vesta와 베이스라인 성공률 비교 (Figure 7)" loading="lazy">
+      <figcaption><b>Figure 7 — 실제 로봇 평가.</b> 여러 태스크에 걸쳐 Vesta가 actor-only 및 Qwen3-VL 베이스라인을 큰 폭으로 능가한다. (출처: arXiv:2606.20905)</figcaption>
+    </figure>
+
     <div class="callout">
       <b>헤드라인:</b> 4개 능력 평균으로 최강 단일 베이스라인 대비 <span class="win">&gt;20점</span>, 카테고리별 최고 전문가 앙상블(oracle) 대비 <span class="win">&gt;10점</span> 우위. 실제 로봇 기억 집약 태스크에서 평균 성공률 <span class="win">+38.3%</span>.
     </div>

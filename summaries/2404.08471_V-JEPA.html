@@ -211,6 +211,14 @@
 
   <section>
     <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2404.08471/x3.png" alt="V-JEPA 아키텍처: x-encoder·predictor·EMA y-encoder로 표현 공간에서 마스킹 영역을 예측 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — V-JEPA 아키텍처.</b> 보이는 토큰만 x-encoder(E<sub>θ</sub>)로 인코딩하고, mask token을 붙여 predictor(P<sub>ϕ</sub>)가 마스킹 영역의 표현을 예측한다. 목표는 EMA로 갱신되는 y-encoder(Ē<sub>θ</sub>)의 stop-grad 표현이며, 픽셀이 아닌 feature 공간에서 L1 손실로 회귀한다. (출처: arXiv:2404.08471)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2404.08471/x4.png" alt="SSv2 fine-tuning 성능 vs Samples Seen: V-JEPA가 가장 적은 샘플로 최고 성능 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 샘플 효율.</b> SSv2 fine-tuning 성능 대 처리한 샘플 수. V-JEPA(ViT-L/16)가 VideoMAE·OmniMAE 등 픽셀 복원 기법보다 훨씬 적은 샘플로 더 높은 성능에 도달해 feature prediction의 효율을 보여준다. (출처: arXiv:2404.08471)</figcaption>
+    </figure>
     <div class="callout">
       <b>Method 그림 (V-JEPA 개요)</b> — x-encoder / predictor / EMA target encoder의 3-요소와, 픽셀이 아닌 표현 공간에서 마스킹 영역을 예측하는 흐름을 요약. "feature prediction" 목적함수의 핵심 도식.
     </div>
