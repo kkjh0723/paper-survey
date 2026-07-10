@@ -65,6 +65,14 @@
   .qa{border-left:5px solid var(--blue);background:#fbfdff}
   .qa .q{font-weight:700;color:#1c3a57}
   .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
   .divide{height:1px;background:var(--line);margin:14px 0}
   footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
   .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
@@ -213,15 +221,15 @@
 
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
-    <div class="qa-item">
-      <p class="q">Q1. latent action에 로봇 행동뿐 아니라 카메라 이동·환경 변화도 인코딩될 텐데, 이를 "latent action"이라 부를 수 있나?</p>
+    <details class="qa-item">
+      <summary class="q">Q1. latent action에 로봇 행동뿐 아니라 카메라 이동·환경 변화도 인코딩될 텐데, 이를 "latent action"이라 부를 수 있나?</summary>
       <p>지적이 맞다. latent action은 (x<sub>t</sub>, x<sub>t+H</sub>) 두 프레임을 인코더에 넣어 z<sub>t</sub>를 뽑고, 디코더가 x<sub>t</sub>+z<sub>t</sub>로 x<sub>t+H</sub>를 복원하는 <b>미래프레임 복원(역동역학) 목적</b>으로 학습된다(§3.1). 따라서 z는 "두 프레임 사이의 시각적 변화 전부"를 담게 되어, 로봇 행동만이 아니라 카메라 이동·배경 변화까지 인코딩된다. 논문도 이를 명시한다: §5.2 <i>"카메라 시점 변화도 하나의 latent action에 대응한다"</i>, Appendix E에서 특정 코드([3,5,2,7]·[5,6,7,6])가 <i>"약간의 하향 카메라 이동"</i>에 대응한다고 보고. 즉 여기서 "latent action"은 문자 그대로의 로봇 행동이 아니라 <b>양자화된 시각적 전이(atomic visual change)의 프록시</b>다. 논문은 이를 한계로 적으면서도, 동시에 "환경 중심 행동(물체·카메라 이동)"이 다운스트림에 도움이 될 수 있다고 긍정적으로 프레이밍한다(Intro).</p>
-    </div>
+    </details>
     <div class="divide"></div>
-    <div class="qa-item">
-      <p class="q">Q2. latent이 미래 프레임 정보만 통째로 인코딩하는 cheating(정보 누출)이 생길 수 있지 않나?</p>
+    <details class="qa-item">
+      <summary class="q">Q2. latent이 미래 프레임 정보만 통째로 인코딩하는 cheating(정보 누출)이 생길 수 있지 않나?</summary>
       <p>정확히 <b>정보 누출(shortcut)</b> 문제다. 논문은 이 위험을 <b>명시적으로 논하지는 않는다</b>. 다만 암묵적 방어는 <b>매우 작은 이산 병목(VQ codebook)</b>이다: 대부분 실험에서 <b>8<sup>4</sup></b>(vocab 8 × 길이 4) = 4096 코드, 즉 전이당 <b>약 12비트</b>에 불과하다(§4.6에서 "LAPA의 행동공간은 8<sup>4</sup> vs OpenVLA 256<sup>7</sup>", 설정은 Appendix F). 미래 프레임 전체를 복사하기엔 용량이 턱없이 작아, z가 미래를 통째로 담는 대신 <b>가장 두드러진 변화(=행동)</b>만 인코딩하도록 강제된다. 이 외 z를 x<sub>t</sub>에 cross-attention으로 붙이는 설계와 patch embedding stop-gradient(Appendix A)도 붕괴 방지에 기여한다. 단, 논문은 이 병목이 누출을 막는지 <b>이론적으로 분석하지 않는다</b> — 바로 이 지점을 리스트의 <a href="2602.10098_VLA-JEPA.html">VLA-JEPA</a>가 "leakage-free"로 명시적으로 겨냥해 개선한다.</p>
-    </div>
+    </details>
   </section>
 
   <footer>

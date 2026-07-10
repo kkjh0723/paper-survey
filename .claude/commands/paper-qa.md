@@ -26,19 +26,22 @@ allowed-tools: Bash, Read, Edit, WebFetch, WebSearch
 - 답은 한국어로, **논문의 구체적 근거(절·그림·표·수치)를 함께** 밝힌다. 논문에 명시가 없으면
   "논문에 명시 없음"이라고 쓰고 추정임을 표시한다. 수치·주장은 절대 지어내지 않는다.
 - 길게 늘어놓지 말고 2~5문장 + 필요시 짧은 목록으로 정리한다.
+- **관련 논문 링크**: 답변이 리스트의 다른 논문과 연결되면 상대경로 링크를 건다
+  (예: `<a href="2602.10098_VLA-JEPA.html">VLA-JEPA</a>`). 대상 파일이 `summaries/`에 실제로 있는지 확인 후 링크.
 
-## 3. 요약 페이지에 삽입
-대상 파일의 `<section class="qa">` 안을 수정한다. 기존 스타일(`.qa .q`, `.divide`)만 사용하고 CSS는 건드리지 않는다.
-- 기존 항목 수를 세어 다음 번호(Q1, Q2, …)를 정한다.
+## 3. 요약 페이지에 삽입 (접기/펼치기 형식)
+대상 파일의 `<section class="qa">` 안을 수정한다. Q&A는 `<details>`로 만들어 **기본 접힘**, 질문 클릭 시 펼쳐진다.
+모든 요약 페이지에는 접기용 CSS(`details.qa-item …`)가 이미 포함돼 있다(혹시 없으면 `.qa .empty{…}` 규칙 바로 아래에 추가). CSS는 그 외 건드리지 않는다.
+- 기존 항목(`<details class="qa-item">`) 수를 세어 다음 번호(Q1, Q2, …)를 정한다.
 - **첫 항목**: placeholder `<p class="empty">아직 추가 질문이 없습니다…</p>` 를 아래 블록으로 **교체**한다.
 - **이후 항목**: 마지막 항목 뒤(섹션 `</section>` 직전)에 `<div class="divide"></div>` 와 함께 **덧붙인다**.
 
 삽입 블록 형식:
 ```html
-<div class="qa-item">
-  <p class="q">Q{n}. {질문}</p>
+<details class="qa-item">
+  <summary class="q">Q{n}. {질문}</summary>
   <p>{답변 핵심 정리}</p>
-</div>
+</details>
 ```
 - 답변에 목록이 유용하면 `<ul><li>…</li></ul>` 사용 가능. HTML 특수문자는 이스케이프한다.
 
