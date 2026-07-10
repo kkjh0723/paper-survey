@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>OpenVLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Open Source</span>
+    <h1>OpenVLA: An Open-Source Vision-Language-Action Model</h1>
+    <p class="authors">Moo Jin Kim, Karl Pertsch, Siddharth Karamcheti 외 17인 · Stanford · UC Berkeley · Toyota Research Institute · Google DeepMind · MIT · Physical Intelligence · arXiv:2406.09246</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2406.09246" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2406.09246" target="_blank">PDF</a>
+      <a href="https://openvla.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/openvla/openvla" target="_blank">GitHub</a>
+      <span>arXiv:2406.09246</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Open Source</span>
+      <span class="t">Open X-Embodiment</span>
+      <span class="t">LoRA Fine-tuning</span>
+      <span class="t">Robot Manipulation</span>
+    </div>
+    <p class="meta">제출: 2024년 6월 13일 (v1) · 최종 개정 2024년 9월 5일 (v3) · 7B 파라미터 · 백본 Llama 2 7B</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>인터넷 규모 비전-언어 데이터로 사전학습된 VLM 위에, <b>Open X-Embodiment</b>의 <b>97만 개</b> 실로봇 데모를 파인튜닝해 만든 <b>7B 오픈소스 VLA</b>. Llama 2 백본에 <b>DINOv2 + SigLIP</b> 융합 비전 인코더를 얹었다. 파라미터가 <b>7배 적음</b>에도 29개 태스크에서 폐쇄형 <b>RT-2-X(55B) 대비 절대 성공률 +16.5%p</b>(BridgeData V2 WidowX <span class="win">74.4%</span> vs 57.9%) 우위. 소비자용 GPU에서 <b>LoRA</b> 파인튜닝·<b>양자화 배포</b>가 가능하며, 코드·체크포인트를 전부 공개해 VLA 연구의 진입장벽을 크게 낮췄다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>비전-언어 데이터와 다양한 로봇 데모를 결합해 사전학습한 대형 정책(policy)은 로봇에게 새 스킬을 가르치는 방식을 바꿀 잠재력을 지닌다. 그러나 기존 VLA(예: <b>RT-2-X</b>)에는 두 가지 근본적 문제가 있었다: (1) <b>폐쇄성</b> — 모델이 비공개이고 아키텍처·학습 절차·데이터 혼합이 알려지지 않아 커뮤니티가 확장·연구하기 어렵다; (2) <b>파인튜닝 비법 부재</b> — 새 로봇/환경/태스크에 효율적으로 적응시키는 방법이 정립돼 있지 않아 실사용 장벽이 높다. 저자들은 완전 공개된 범용 VLA와 효율적 적응 레시피를 제시하는 것을 목표로 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>OpenVLA: 완전 오픈소스 7B VLA</b> — Open X-Embodiment의 97만 실로봇 데모로 학습. 모델 가중치·PyTorch 학습 코드·노트북을 모두 공개해 재현·확장이 가능.</li>
+      <li><b>SOTA 범용 조작 성능</b> — 7배 작은 파라미터로 폐쇄형 RT-2-X(55B) 대비 29개 태스크 평균 절대 성공률 <b>+16.5%p</b> 우위. 다중 태스크·다중 물체 일반화에서 강함.</li>
+      <li><b>효율적 파인튜닝·배포 레시피</b> — <b>LoRA</b>로 신규 태스크에 파라미터의 1.4%(97.6M)만 학습, <b>양자화(4-bit)</b>로 성능 저하 없이 소비자 GPU 배포. 풀 파인튜닝 대비 GPU 8배 절감.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 & 아키텍처</h3>
+    <p>기반 VLM은 <b>Prismatic-7B</b> 계열 구조로, 언어 모델은 <b>Llama 2 7B</b>. 비전 인코더는 <b>DINOv2 + SigLIP</b> 두 인코더의 특징을 채널 방향으로 <b>융합(fused)</b>해 사용 — DINOv2의 공간/기하 정보와 SigLIP의 의미 정보를 결합한다. 입력 이미지는 <b>224×224</b> 해상도.</p>
+
+    <h3>행동을 토큰으로</h3>
+    <p>연속 로봇 행동(7-DoF end-effector delta)을 차원별로 <b>256개 bin으로 이산화</b>해 토큰화하고, Llama 토크나이저의 사용 빈도가 낮은 256개 토큰을 <b>action token</b>으로 재할당(overwrite)한다. VLA는 언어 지시 + 현재 관찰을 받아 다음 행동 토큰들을 <b>자기회귀적으로</b> 예측하는 표준 언어모델 학습(next-token prediction)으로 훈련된다.</p>
+
+    <h3>학습 데이터 & 절차</h3>
+    <div class="kv">
+      <div>학습 데이터</div><div>Open X-Embodiment 기반 큐레이션 — <b>970K</b> 실로봇 궤적(다양한 embodiment/씬/태스크)</div>
+      <div>학습 규모</div><div>데이터셋 <b>27 epoch</b> 통과(action token 정확도 95% 초과 시까지)</div>
+      <div>비전 인코더</div><div>동결하지 않고 <b>파인튜닝</b> — VLA 성능에 결정적</div>
+      <div>파인튜닝</div><div>신규 셋업엔 LoRA(1.4% 파라미터) / 배포엔 4-bit 양자화</div>
+    </div>
+    <div class="callout">
+      <b>핵심 설계 포인트:</b> 대규모 사전학습 VLM을 그대로 재활용하되 행동을 텍스트 토큰 공간으로 흡수시켜 "언어모델 학습 = 정책 학습"으로 단순화. 비전 인코더를 <b>동결하지 않고 함께 파인튜닝</b>한 점이 기존 VLM 관행과 다르며 성능에 중요하다고 보고.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>BridgeData V2 (WidowX, 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>파라미터</th><th>성공률</th></tr></thead>
+      <tbody>
+        <tr><td><b>OpenVLA</b></td><td>7B</td><td class="win">74.4%</td></tr>
+        <tr><td>RT-2-X</td><td>55B</td><td>57.9%</td></tr>
+        <tr><td>Octo</td><td>93M</td><td>42.1%</td></tr>
+        <tr><td>RT-1-X</td><td>35M</td><td>38.8%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">7배 작은 파라미터로 폐쇄형 RT-2-X 대비 절대 성공률 <b>+16.5%p</b>. 29개 태스크 전반 평가 기준.</p>
+
+    <h3>Google Robot 평가</h3>
+    <p>in-distribution·OOD 태스크 전반에서 RT-2-X와 <b>대등한</b> 성능을 보이며, RT-1-X·Octo를 큰 폭으로 상회. 전체적으로 두 로봇 embodiment(WidowX, Google robot)에 걸쳐 일관된 범용 조작 성능을 입증.</p>
+
+    <h3>신규 로봇 파인튜닝 (LoRA)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>항목</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>성공률</td><td class="win">68.2% (±7.8%)</td></tr>
+        <tr><td>학습 파라미터</td><td>97.6M (전체의 1.4%)</td></tr>
+        <tr><td>VRAM</td><td>59.7 GB</td></tr>
+        <tr><td>GPU 절감</td><td>풀 파인튜닝 대비 8배 감소</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">LoRA만으로 풀 파인튜닝에 근접한 적응 성능을 달성하며, 단일 소비자급 GPU에서 파인튜닝 가능한 수준으로 비용을 낮춤.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>비전 인코더 융합:</b> DINOv2+SigLIP 융합이 단일 SigLIP 대비 다중 물체 언어 grounding 태스크에서 약 <b>+10%</b> 향상. 공간 정보(DINOv2)와 의미 정보(SigLIP)의 상보성.</li>
+      <li><b>비전 인코더 파인튜닝:</b> VLM 관행처럼 동결하지 않고 <b>함께 학습</b>하는 것이 VLA 성능에 결정적.</li>
+      <li><b>이미지 해상도:</b> 224×224 vs 384×384 성능 차이 없음. 고해상도는 학습 시간만 <b>3배</b> 증가 → 224로 충분.</li>
+      <li><b>학습 epoch:</b> 데이터셋을 <b>27 epoch</b> 반복해야 하며, action token 정확도가 95%를 넘을 때까지 성능이 계속 개선됨 — 통상 VLM 학습(1~2 epoch)보다 훨씬 많은 반복 필요.</li>
+      <li><b>양자화:</b> 4-bit 양자화로 메모리를 줄여도 성능 저하가 사실상 없음 → 실배포 친화적.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Main Result Table (BridgeData V2 / Google Robot)</b> — "작지만 강한 오픈 VLA"라는 핵심 주장의 근거. OpenVLA(7B)가 RT-2-X(55B)를 절대 성공률 +16.5%p로 상회함을 정량적으로 제시.
+    </div>
+    <div class="callout">
+      <b>Efficient Fine-tuning / Quantization Figure</b> — LoRA(파라미터 1.4%)와 4-bit 양자화로 소비자 GPU에서 파인튜닝·배포 가능함을 보여, 폐쇄형 VLA와 차별화되는 "접근성" 기여를 뒷받침.
+    </div>
+    <p class="cap">Figure 1: OpenVLA 아키텍처(융합 비전 인코더 → Llama 2 → 이산 action token) 개요.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2406.09246" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2406.09246" target="_blank">PDF</a></li>
+      <li><a href="https://openvla.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/openvla/openvla" target="_blank">GitHub 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2406.09246 · OpenVLA · 요약 생성 2026-07-10
+  </footer>
+</div>
+</body>
+</html>

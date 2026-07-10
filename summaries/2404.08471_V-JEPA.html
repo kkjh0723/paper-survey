@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>V-JEPA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.CV · JEPA · World Model</span>
+    <h1>V-JEPA: Revisiting Feature Prediction for Learning Visual Representations from Video</h1>
+    <p class="authors">Adrien Bardes (1저자), Quentin Garrido, Jean Ponce, Xinlei Chen, Michael Rabbat, Yann LeCun, Mahmoud Assran, Nicolas Ballas · Meta AI (FAIR) · Inria · ENS · Univ. Gustave Eiffel · NYU Courant</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2404.08471" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2404.08471" target="_blank">PDF</a>
+      <a href="https://github.com/facebookresearch/jepa" target="_blank">GitHub</a>
+      <span>arXiv:2404.08471</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Self-Supervised</span>
+      <span class="t">Video</span>
+      <span class="t">JEPA</span>
+      <span class="t">Feature Prediction</span>
+      <span class="t">Frozen Eval</span>
+    </div>
+    <p class="meta">제출: 2024년 2월 15일 · 백본 ViT-L/H · 사전학습 VideoMix2M (공개 영상 2M)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>텍스트·사전학습 인코더·네거티브·픽셀 복원 없이 <b>오직 영상의 feature prediction</b>만으로 시각 표현을 학습하는 자기지도 기법. <b>JEPA(Joint-Embedding Predictive Architecture)</b> 구조로 픽셀이 아닌 <b>표현 공간(latent)</b>에서 마스킹된 미래 시공간 블록을 예측한다. <b>동결(frozen)</b> 백본 + attentive probing만으로 최대 모델 ViT-H/16<sub>384</sub>가 Kinetics-400 <span class="win">81.9</span>, SSv2 <span class="win">72.2</span>, ImageNet-1K <span class="win">77.9</span>를 달성. 특히 모션 이해가 필요한 SSv2에서 DINOv2·OpenCLIP 등 이미지 모델을 <b>+20점 이상</b> 앞선다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>영상 자기지도 학습의 두 큰 축은 (1) <b>마스크드 픽셀 복원</b>(VideoMAE 등)과 (2) 대조/증류 기반 기법이다. 픽셀 복원은 예측 목표가 <b>저수준 외형·세부 텍스처</b>에 묶여 표현이 국소 디테일에 낭비되고, 대조 기법은 손수 설계한 불변성(augmentation)과 네거티브 샘플에 의존한다. 저자들은 이미지 도메인의 I-JEPA 아이디어를 영상으로 확장하여, <b>목표를 픽셀이 아닌 학습된 표현 공간으로 옮기는 feature prediction</b>이 단독 목적함수만으로 강한 시공간 표현을 만들 수 있음을 재조명한다. 핵심 질문: 텍스트·복원·네거티브 없이 <b>영상만으로</b>, 그리고 <b>백본을 동결한 채</b> 얼마나 범용적인 표현을 얻을 수 있는가.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Feature prediction의 단독 목적함수 재조명</b> — 사전학습 인코더·텍스트·네거티브·픽셀 복원 없이, 표현 공간에서의 예측만으로 영상 표현을 학습.</li>
+      <li><b>V-JEPA 모델군 공개</b> — 공개 영상 2M(VideoMix2M)로 학습한 ViT-L/16, ViT-H/16, ViT-H/16<sub>384</sub>. 동결 백본으로 모션·외형 태스크 모두에서 강한 성능.</li>
+      <li><b>픽셀 복원 대비 효율·성능 우위 입증</b> — ViT-L 기준 VideoMAE/OmniMAE보다 <b>훨씬 적은 샘플</b>로 프리트레인하고도 frozen·finetune 모두 우세. 라벨 효율(low-shot)도 개선.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>전체 구조 (JEPA 3-요소)</h3>
+    <p>세 개의 네트워크로 구성된다: (1) <b>x-encoder E<sub>θ</sub></b> — 보이는(visible) 시공간 패치만 인코딩하는 ViT; (2) <b>predictor P<sub>ϕ</sub></b> — x-encoder 출력에 학습형 mask token과 위치 임베딩을 붙여 마스킹 영역의 표현을 예측하는 좁은 트랜스포머(12블록, 임베딩 384); (3) <b>target encoder Ē<sub>θ</sub></b> — x-encoder의 <b>EMA(지수이동평균)</b>로 갱신되며 <b>stop-gradient</b>로 예측 목표(target)를 생성. 픽셀이 아니라 이 <b>표현 공간의 값</b>을 맞추는 것이 핵심.</p>
+
+    <h3>목적함수 (L1 in feature space)</h3>
+    <div class="callout">
+      마스킹 영역 y의 target 표현과 predictor 출력의 <b>L1 회귀</b>를 최소화: <b>min ‖P<sub>ϕ</sub>(E<sub>θ</sub>(x), Δy) − sg(Ē<sub>θ</sub>(y))‖<sub>1</sub></b>. stop-gradient(sg)가 표현 붕괴(collapse)를 막는다. L1은 최적 predictor가 target 분포의 <b>median</b>을 계산하게 해 L2보다 안정적임을 이론·실험으로 뒷받침. <b>픽셀 복원 항이 전혀 없다.</b>
+    </div>
+
+    <h3>3D Multi-block 마스킹</h3>
+    <p>공간적으로 블록을 뽑되 <b>시간축 전체로 확장</b>(temporal 전 구간)해 정보 누출을 억제한다. 두 종류를 함께 사용: <b>short-range</b>(프레임당 15%짜리 8블록)와 <b>long-range</b>(프레임당 70%짜리 2블록), 평균 마스킹 비율 ~90%. 종횡비는 (0.75, 1.5)에서 랜덤. 입력은 16프레임을 frame-skip 4로 샘플(약 3초), 패치는 16×16 공간 × 연속 2프레임.</p>
+
+    <h3>데이터 & 모델</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>VideoMix2M ≈ 공개 영상 2M (Kinetics-710 + Something-Something-v2 + HowTo100M, 검증셋 중복 제거)</div>
+      <div>모델 변형</div><div>ViT-L/16, ViT-H/16 (224²), ViT-H/16<sub>384</sub> (384²)</div>
+      <div>평가 방식</div><div>백본 동결 + attentive probing (frozen evaluation) 중심, 일부 finetune 비교</div>
+      <div>코드</div><div>facebookresearch/jepa (PyTorch)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Frozen evaluation — attentive probing (표)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>K400</th><th>SSv2</th><th>ImageNet</th><th>Places205</th><th>iNat21</th></tr></thead>
+      <tbody>
+        <tr><td>ViT-L/16</td><td>80.8</td><td>69.5</td><td>74.8</td><td>60.3</td><td>67.8</td></tr>
+        <tr><td>ViT-H/16</td><td class="win">82.0</td><td>71.4</td><td>75.9</td><td>61.7</td><td>67.9</td></tr>
+        <tr><td><b>ViT-H/16<sub>384</sub></b></td><td>81.9</td><td class="win">72.2</td><td class="win">77.4</td><td class="win">62.8</td><td class="win">72.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">동결 백본으로 모션(K400·SSv2)과 외형(ImageNet·Places·iNat) 태스크를 모두 커버. 초록의 대표 수치 ImageNet 77.9는 ViT-H/16<sub>384</sub> 기준.</p>
+
+    <h3>이미지 모델과 비교 (frozen, 모션 격차)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>K400</th><th>SSv2</th><th>ImageNet</th></tr></thead>
+      <tbody>
+        <tr><td>DINOv2 (ViT-g/14)</td><td class="win">83.4</td><td>50.6</td><td class="win">86.2</td></tr>
+        <tr><td>OpenCLIP (ViT-G/14)</td><td>81.8</td><td>34.8</td><td>85.3</td></tr>
+        <tr><td><b>V-JEPA ViT-H/16</b></td><td>82.0</td><td class="win">71.4</td><td>75.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">이미지 모델은 ImageNet에서 앞서지만, <b>모션 의존 태스크 SSv2에서 V-JEPA가 +20점 이상</b> 우위. 영상 프리트레인이 시간적/모션 이해에 결정적임을 시사.</p>
+
+    <h3>픽셀 복원 기법과 비교 (ViT-L/16)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>K400</th><th>SSv2</th><th>ImageNet</th><th>K400-ft</th><th>SSv2-ft</th></tr></thead>
+      <tbody>
+        <tr><td>VideoMAE (400K iter)</td><td>77.8</td><td>65.5</td><td>71.1</td><td>85.4</td><td>74.3</td></tr>
+        <tr><td>OmniMAE (1.17M iter)</td><td>65.6</td><td>60.6</td><td class="win">75.1</td><td>84.0</td><td>74.2</td></tr>
+        <tr><td><b>V-JEPA (90K iter)</b></td><td class="win">80.8</td><td class="win">69.5</td><td>74.8</td><td class="win">85.6</td><td class="win">75.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>훨씬 적은 iteration(90K vs 400K~1.17M)</b>으로 frozen·finetune 모두 우세. feature prediction의 샘플 효율을 보여줌.</p>
+
+    <h3>라벨 효율 — low-shot K400 (frozen)</h3>
+    <p>라벨 5%(클래스당 29장) 조건에서 V-JEPA-H <b>67.0</b>로 VideoMAE-H 62.3, VideoMAEv2-g 37.0을 상회. full→5% 성능 하락도 V-JEPA 12%p로 VideoMAE 15.9%p·VideoMAEv2 30%p보다 완만해 <b>라벨 효율</b>이 좋다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Feature vs 픽셀 예측:</b> 동일 세팅에서 feature-space L1이 픽셀-space MSE 대비 일관 우위 — K400 73.7 vs 68.6, SSv2 66.2 vs 66.0, ImageNet 74.8 vs 73.3. <b>표현 공간 예측이 핵심 원인</b>.</li>
+      <li><b>마스킹 전략:</b> random-tube[0.9](K400 51.5/SSv2 46.4) → causal multi-block[12](71.9/63.6) → <b>multi-block(72.9/67.4)</b>로 개선. 시간축 전체 확장 블록이 정보 누출을 억제하고 성능을 크게 끌어올림.</li>
+      <li><b>Attentive pooling:</b> 평균 풀링 대비 attentive probing이 K400 +17.3(56.7→73.7), SSv2 +16.1(50.1→66.2)로 frozen 평가에서 필수적.</li>
+      <li><b>데이터 스케일:</b> K710(0.7M) 평균 70.9 → VideoMix2M(2M) 71.5로 데이터 증가에 따라 단조 향상.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Method 그림 (V-JEPA 개요)</b> — x-encoder / predictor / EMA target encoder의 3-요소와, 픽셀이 아닌 표현 공간에서 마스킹 영역을 예측하는 흐름을 요약. "feature prediction" 목적함수의 핵심 도식.
+    </div>
+    <div class="callout">
+      <b>픽셀 복원 대비 샘플 효율 곡선 (Figure 4)</b> — V-JEPA가 VideoMAE/OmniMAE보다 적은 처리 샘플로 더 높은 frozen 성능에 도달함을 보여, 논문의 효율 주장을 뒷받침하는 핵심 근거.
+    </div>
+    <p class="cap">주요 비교표: 이미지 모델(DINOv2·OpenCLIP) 대비 모션 태스크 우위, 픽셀 복원 대비 iteration 효율, low-shot 라벨 효율.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2404.08471" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2404.08471" target="_blank">PDF</a></li>
+      <li><a href="https://github.com/facebookresearch/jepa" target="_blank">GitHub 코드 (facebookresearch/jepa)</a></li>
+      <li><a href="https://ai.meta.com/blog/v-jepa-yann-lecun-ai-model-video-joint-embedding-predictive-architecture/" target="_blank">Meta AI 블로그 소개</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2404.08471 · V-JEPA · 요약 생성 2026-07-10
+  </footer>
+</div>
+</body>
+</html>

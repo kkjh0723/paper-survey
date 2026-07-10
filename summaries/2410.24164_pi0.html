@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>π0 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Flow Matching</span>
+    <h1>π0: A Vision-Language-Action Flow Model for General Robot Control</h1>
+    <p class="authors">Kevin Black, Noah Brown, Danny Driess, Chelsea Finn, Sergey Levine 외 (24인) · Physical Intelligence · arXiv:2410.24164</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2410.24164" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2410.24164" target="_blank">PDF</a>
+      <a href="https://physicalintelligence.company/blog/pi0" target="_blank">공식 블로그</a>
+      <span>arXiv:2410.24164</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Generalist Policy</span>
+      <span class="t">Dexterous Manipulation</span>
+      <span class="t">PaliGemma</span>
+    </div>
+    <p class="meta">제출: 2024년 10월 31일 (v1, 최종 개정 2026-01-08) · 백본 PaliGemma 3B · 총 3.3B params</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사전학습 VLM(PaliGemma 3B)에 <b>flow matching action expert</b>(약 300M, 총 <b>3.3B</b>)를 결합해 7종 로봇·68개 태스크·약 <b>10,000시간</b>(903M timestep) 데이터로 학습한 범용 VLA. H=<b>50</b> 스텝 action chunk를 <b>10회 적분</b>으로 연속 예측해 50Hz 제어를 지원하며, 셔츠 개기·식탁 치우기 등 out-of-box 태스크에서 OpenVLA·Octo를 큰 폭으로 앞서고 세탁물 접기 같은 복잡한 다단계 태스크에서 <span class="win">50% 이상</span>의 점수를 달성.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇 학습의 핵심 난제는 <b>데이터 효율·일반화·강건성</b>이다. 인터넷 규모 지식을 가진 VLM은 의미 이해에 강하지만, 로봇 제어에 필요한 <b>고빈도·고자유도의 연속 액션</b>을 정밀하게 출력하지 못한다. 기존 VLA(OpenVLA 등)는 액션을 이산 토큰으로 자기회귀 생성해 <b>action chunking</b>과 고주파 제어에 취약하고, diffusion policy 계열(Octo)은 표현 용량이 제한적이다. 저자들은 <b>사전학습 VLM의 의미 지식</b>과 <b>flow matching 기반 연속 액션 생성</b>을 결합해, 단일 모델로 단일팔·양팔·모바일 매니퓰레이터를 아우르는 <b>범용 정책(generalist policy)</b>을 구축하고자 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Flow matching action expert를 얹은 VLA 아키텍처</b> — 사전학습 VLM(PaliGemma)에 별도 가중치의 action expert(≈300M)를 붙여 연속 action chunk를 flow matching으로 생성. 이산 토큰화 없이 고빈도·고자유도 제어를 지원.</li>
+      <li><b>대규모 교차 임베디먼트 사전학습</b> — 7종 로봇 구성·68개 태스크·약 10,000시간(903M timestep)의 자체 데이터 + OXE/Bridge v2/DROID를 통합 학습. "로봇 데이터 양 기준 역대 최대 규모 실험"이라 주장.</li>
+      <li><b>Zero-shot·언어추종·파인튜닝 전반 검증</b> — 사전학습 후 out-of-box 수행, 언어 지시 추종, 신규 태스크 파인튜닝(세탁물 접기·식탁 치우기·박스 조립 등)까지 단일 레시피로 검증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 & 전체 구조</h3>
+    <p>핵심 VLM으로 <b>PaliGemma(3B)</b>를 사용하고, 여기에 액션 전용 가중치인 <b>action expert(≈300M, 처음부터 학습)</b>를 추가해 총 <b>3.3B</b> 파라미터. VLM 백본과 action expert는 <b>mixture-of-experts 스타일</b>로 어텐션을 공유하되 별도 가중치를 갖는다. action expert는 축소된 차원(width=1024, mlp_dim=4096, head_dim=256, multi-query attention)을 사용.</p>
+
+    <h3>Flow Matching Action Head</h3>
+    <p>observation(멀티뷰 이미지 + 언어 지시 + 로봇 상태)을 prefix로 조건화하고, action expert가 길이 H=<b>50</b>의 연속 action chunk를 생성. <b>conditional flow matching</b> 손실을 linear-Gaussian probability path로 학습하며, 노이즈에서 액션으로 향하는 벡터장을 회귀한다.</p>
+    <div class="callout">
+      타임스텝 τ∈[0,1]은 낮은(노이즈 큰) 구간을 강조하는 <b>beta 분포</b> Beta((s−τ)/s; 1.5, 1), cutoff s=0.999에서 샘플링. 추론 시에는 forward Euler 규칙으로 δ=0.1, 총 <b>10회 적분 스텝</b>으로 action chunk를 생성하며, observation prefix의 key/value를 캐싱해 연산량을 줄인다. chunk 전체를 한 번에 만든 뒤 재추론하므로 최대 <b>50Hz</b> 제어가 가능.
+    </div>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>약 10,000시간 / 903M timestep (단일팔 106M + 양팔 797M), 오픈소스 9.1%(OXE·Bridge v2·DROID)</div>
+      <div>로봇 구성 (7종)</div><div>UR5e, Bimanual UR5e, Franka, Bimanual Trossen, Bimanual ARX/AgileX, Mobile Trossen/ARX, Mobile Fibocom</div>
+      <div>태스크</div><div>조작·모바일 조작·복합 행동 등 68개</div>
+      <div>Action chunk</div><div>H=50, 제어 주파수 최대 50Hz</div>
+      <div>추론</div><div>flow matching 10 스텝 (forward Euler, δ=0.1)</div>
+    </div>
+    <p class="note">π0-small은 VLM 사전학습을 사용하지 않는 축소 비교판, π0-FAST는 후속 자기회귀 토큰화 변형(본 논문 핵심은 flow matching π0).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Out-of-box 평가 (사전학습 직후, 정규화 점수 0~1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>π0 (700k)</th><th>π0 (160k)</th><th>π0-small</th><th>OpenVLA</th><th>Octo</th></tr></thead>
+      <tbody>
+        <tr><td>Shirt Folding</td><td class="win">~0.95</td><td>~0.90</td><td>~0.70</td><td>~0.45</td><td>~0.50</td></tr>
+        <tr><td>Bussing Easy</td><td class="win">~0.90</td><td>~0.85</td><td>~0.65</td><td>~0.35</td><td>~0.40</td></tr>
+        <tr><td>Bussing Hard</td><td class="win">~0.75</td><td>~0.70</td><td>~0.50</td><td>~0.20</td><td>~0.25</td></tr>
+        <tr><td>Grocery Bagging</td><td class="win">~0.85</td><td>~0.80</td><td>~0.60</td><td>~0.30</td><td>~0.35</td></tr>
+        <tr><td>Toast Extraction</td><td class="win">~0.80</td><td>~0.75</td><td>~0.55</td><td>~0.25</td><td>~0.30</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">각 태스크 10회 시행. 수치는 원문 막대그래프에서 읽은 <b>근사값</b>이라 오차가 있을 수 있음. 논문 주장: "π0가 전 태스크에서 압도적 최고, 셔츠 개기·쉬운 bussing은 거의 완벽한 성공률."</p>
+
+    <h3>언어 추종 (Language Following)</h3>
+    <p>3개 태스크 × 3개 조건(-flat: 전체 명령만, -human: 전문가 중간 명령, -HL: 상위 VLM 정책 지시), 각 10회. π0는 모든 조건에서 π0-small 대비 <b>유의하게 높은</b> 지시 추종 정확도를 보였고, 중간 지시가 주어질 때 개선폭이 컸다.</p>
+
+    <h3>복잡한 다단계 태스크 (부분 점수 허용, 각 10회)</h3>
+    <p>사전학습에 포함된 태스크(세탁물 접기[정지형]·모바일 세탁·건조기 비우기)와 신규 태스크(식탁 치우기·박스 조립·투고 박스 포장·계란 포장) 전반에서, 전체 모델이 <b>모든 태스크에서 최대 점수의 50% 이상</b>을 달성. 저자는 "로봇 데이터 양 기준 역대 최대 규모의 로봇 학습 실험"이라 표현.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>사전학습 스텝 수:</b> 700k 스텝 모델이 160k 스텝판보다 out-of-box 전반에서 일관되게 우세 — 대규모 사전학습의 이득이 크다.</li>
+      <li><b>VLM 사전학습 유무:</b> VLM 사전학습을 뺀 π0-small은 전 태스크에서 크게 하락 — 인터넷 규모 의미 지식이 로봇 제어 성능에 실질 기여.</li>
+      <li><b>파인튜닝 vs. from-scratch:</b> 사전학습 모델이 scratch 대비 자주 우세하며 때로 <b>최대 2배</b> 성능. 사전학습 데이터와 유사한 태스크일수록 이득이 큼.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Out-of-box 평가 그래프</b> — π0 vs π0-small vs OpenVLA vs Octo를 5개 태스크에서 비교한 막대그래프. 사전학습 직후 zero-shot 성능 우위를 보여주는 논문 핵심 근거. (수치는 그래프 판독 근사값)
+    </div>
+    <div class="callout">
+      <b>모델 아키텍처 그림</b> — 멀티뷰 이미지·언어 지시·로봇 상태를 받는 VLM prefix와, flow matching으로 action chunk를 생성하는 action expert의 mixture-of-experts 어텐션 구조를 도시.
+    </div>
+    <p class="cap">복잡 다단계 태스크(세탁물 접기 등)의 정성 롤아웃은 공식 블로그 영상에서 확인 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2410.24164" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2410.24164" target="_blank">PDF</a></li>
+      <li><a href="https://physicalintelligence.company/blog/pi0" target="_blank">Physical Intelligence 공식 블로그 (영상 포함)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2410.24164 · π0 · 요약 생성 2026-07-10
+  </footer>
+</div>
+</body>
+</html>
