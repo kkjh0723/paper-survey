@@ -1,42 +1,42 @@
 {
-  "generated": "2026-07-10",
+  "generated": "2026-07-11",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.06988",
-          "title": "WAM-TTT: Steering World-Action Models by Watching Human Play at Test Time",
-          "authors": "Yusen Feng, Bingchen Han, Jiangran Lyu, Kai Liu, Yixin Zheng 외 · arXiv:2607.06988",
-          "summary_ko": "로봇 파인튜닝 없이 사람 플레이 영상만으로 world-action 파운데이션 모델의 내부 메모리를 자기지도 비디오 예측으로 튜닝하는 test-time training 프레임워크. 로봇 시연·태스크별 라벨 없이 파운데이션의 일반화를 유지한 채 새 태스크에 조향한다.",
-          "tags": ["World-Action Model", "Test-Time Training", "Learning from Human", "Self-Supervised"],
-          "arxiv_url": "https://arxiv.org/abs/2607.06988",
-          "extra_url": "",
-          "date": "2026-07-08",
-          "reason": "리스트의 RECAP(정책 동결·검색으로 새 태스크 흡수)과 DGAC(인간 영상 동역학으로 자기개선)의 교집합 지점. RECAP의 test-time adaptation을 world-action 모델 층위로 끌어올리고, DGAC처럼 인간 영상만으로 신호를 얻는다는 점에서 두 축을 한 논문으로 잇는다."
+          "id": "2607.02865",
+          "title": "DREAMSTEER: Latent World Models Can Steer VLA Policies During Deployment Without Any Finetuning",
+          "authors": "Hanchen Cui, Sergio Arnaud, Arjun Majumdar, Daniel Dugas, Elie Aljalbout 외 · arXiv:2607.02865",
+          "summary_ko": "사전학습된 VLA를 파인튜닝 없이 배포 시점에 잠재 월드모델과 값함수로 조향하는 프레임워크. 후보 액션·모션 프리미티브를 잠재공간에서 롤아웃한 뒤 언어 지시와의 정합도로 필터링해, 실로봇 미지의 물체에서도 지시 이행률을 크게 끌어올린다.",
+          "tags": ["VLA", "World Model", "Test-Time Steering", "Value Model"],
+          "arxiv_url": "https://arxiv.org/abs/2607.02865",
+          "extra_url": "https://dream-steer.github.io/",
+          "date": "2026-07-03",
+          "reason": "리스트의 RECAP(검색으로 새 태스크 흡수)·WAM-TTT(테스트 시 자기지도 튜닝) 사이를 채우는 세 번째 축이다. 튜닝도 검색도 아닌, VLA-JEPA가 배운 잠재 월드모델을 '배포 시 정책을 실제로 조향하는 장치'로 승격시켰다. VLA-JEPA·RECAP·WAM-TTT와 함께 읽으면 '테스트 시 개입'의 삼각형(retrieve / retrain-lite / steer)이 리스트에서 완성된다."
         },
         {
-          "id": "2607.04927",
-          "title": "DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation",
-          "authors": "Jian Zhu, Jianjun Zhang, Taiyi Su, Tianbin Liu, Zhangyuan Wang 외 · arXiv:2607.04927",
-          "summary_ko": "기본 실행은 System 1 world-action 모델(action prediction + video co-training)이 담당하고, 필요한 경우 vision-language planner가 서브태스크를 분해해주는 이중 시스템 파운데이션. 추론 시에는 직접 행동 생성으로 실시간 실행에 맞춘 최적화까지 포함한다.",
-          "tags": ["World-Action Model", "Dual System", "Foundation Model", "Video Co-Training"],
-          "arxiv_url": "https://arxiv.org/abs/2607.04927",
-          "extra_url": "",
+          "id": "2607.05377",
+          "title": "Cortex: A Bidirectionally Aligned Embodied Agent Framework for Long-horizon Manipulation",
+          "authors": "Jiaqi Peng, Xiqian Yu, Delin Feng, Yuqiang Yang, Wenzhe Cai 외 · arXiv:2607.05377",
+          "summary_ko": "VLA의 장기 태스크 실패를 계획-실행 사이의 정합 문제로 규정하고, 32개의 표준화된 조작 스킬 프리미티브를 정의한 뒤 상하 층을 양방향으로 정렬하는 임보디드 에이전트 프레임워크. 화학 실험 등 실환경 다단계 태스크에서 파인튜닝 없이 제로샷 실행이 가능해진다.",
+          "tags": ["Hierarchical Policy", "Skill Primitive", "Long-Horizon", "Embodied Agent"],
+          "arxiv_url": "https://arxiv.org/abs/2607.05377",
+          "extra_url": "https://steinate.github.io/cortex.github.io/",
           "date": "2026-07-06",
-          "reason": "π0.5의 계층적 추론과 Vesta의 통합 추론(System 2)을 하나의 파운데이션에서 결합한 형태. InternVLA-A1.5의 latent foresight + action처럼 미래 예측을 실행 경로에 붙였지만, 저품질 계획 시 시스템 2를 우회하는 게이팅 설계라 π0.7의 '맥락 조건화' 라인과 비교하기 좋다."
+          "reason": "좋아요한 ASPIRE의 '스킬 라이브러리를 코딩 에이전트가 조립' 아이디어를 VLA 세계로 옮긴 대응물. π0.5의 계층적 추론(고수준 서브태스크 → 저수준 액션)과 Vesta의 임보디드 추론이 하나의 프레임워크로 합쳐진 형태라, 컬렉션에서 흩어져 있던 '스킬·계획·실행'의 결합 축이 이 논문 하나로 정리된다."
         },
         {
-          "id": "2607.06559",
-          "title": "RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation",
-          "authors": "Haoyu Zhao, Xingyue Zhao, Siteng Huang, Xin Li, Deli Zhao 외 · Alibaba DAMO · arXiv:2607.06559",
-          "summary_ko": "단일 RGB-D + 언어 지시에서 미래 RGB·depth·optical flow를 하나의 diffusion으로 동시에 생성하는 4D 임보디드 월드모델. 2.54억 프레임 규모 데이터셋과 역동역학 헤드로 다단계 denoising 없이 직접 행동을 뽑는다.",
-          "tags": ["World Model", "4D Generation", "Diffusion", "Bimanual Manipulation"],
-          "arxiv_url": "https://arxiv.org/abs/2607.06559",
-          "extra_url": "https://alibaba-damo-academy.github.io/RynnWorld-4D.github.io",
-          "date": "2026-07-07",
-          "reason": "VLA-JEPA의 '누출 없는 latent 미래 예측'과 InternVLA-A1.5의 'latent foresight' 라인을 정반대(픽셀+깊이+플로우 명시적 생성) 축으로 확장한 대조 케이스. Lift3D-VLA·Cortex 같은 3D/이중시스템 논문과도 '월드모델을 계획/실행에 어떻게 물릴 것인가'라는 공통 질문을 공유해, 리스트의 월드모델 축에 대비 지점을 하나 더 확보한다."
+          "id": "2607.08354",
+          "title": "SkillPlug: Unsupervised Skill Mining for Few-Shot Adaptation in Robotic Manipulation",
+          "authors": "Zi-han Ding, Ziwei Wang · arXiv:2607.08354",
+          "summary_ko": "기존 visuomotor 정책 위에 학습형 skill-conditioning 모듈을 붙여, 다태스크 시연에서 재사용 가능한 스킬을 비지도로 자동 발굴한다. 새 태스크에는 이 모듈만 가볍게 파인튜닝하면 되어 기존 스킬 지식을 유지한 채 데이터 효율적으로 확장된다.",
+          "tags": ["Skill Discovery", "Unsupervised", "Few-Shot Adaptation", "Continual Learning"],
+          "arxiv_url": "https://arxiv.org/abs/2607.08354",
+          "extra_url": "",
+          "date": "2026-07-09",
+          "reason": "ASPIRE의 '스킬 라이브러리를 코딩 에이전트가 채운다'를 정반대편에서 접근한 케이스 — 라이브러리를 사람/에이전트가 아니라 다태스크 데이터에서 자기지도로 뽑아낸다. LAPA(비디오에서 latent action 학습)와 나란히 두면 '데이터→스킬'과 '데이터→latent action'의 두 흐름이 대비되고, 파인튜닝 대신 스킬 헤드만 재학습해 continual scale-up을 지속하는 라인이라 좋아요한 축을 그대로 넓혀준다."
         }
       ]
     },
@@ -45,37 +45,37 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2410.24164",
-          "title": "π₀: A Vision-Language-Action Flow Model for General Robot Control",
-          "authors": "Kevin Black, Noah Brown, Danny Driess 외 · Physical Intelligence · arXiv:2410.24164",
-          "summary_ko": "사전학습 VLM 위에 flow matching 액션 헤드를 얹어 7개 embodiment·68개 태스크의 로봇 데이터로 학습한 최초의 π 시리즈 파운데이션. 제로샷 지시 수행부터 파인튜닝 신규 스킬 습득까지 포괄하는 세탁물 접기·식탁 정리 등 복합 조작을 시연.",
-          "tags": ["VLA", "Foundation Model", "Flow Matching", "Cross-Embodiment"],
-          "arxiv_url": "https://arxiv.org/abs/2410.24164",
-          "extra_url": "https://www.pi.website/download/pi0.pdf",
-          "date": "2024-10-31",
-          "reason": "리스트의 π0.5·π0.7(좋아요)이 계승·확장하는 직계 원본. π0.5의 co-training, π0.7의 diverse-context conditioning이 '무엇을 π0에서 바꿨는가'로 읽히려면 이 논문이 기준선이다. Diffusion Policy(리스트)의 diffusion action → π0의 flow matching action이라는 계보도 여기서 완결된다."
+          "id": "2307.15818",
+          "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+          "authors": "Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Xi Chen 외 · Google DeepMind · arXiv:2307.15818",
+          "summary_ko": "인터넷 규모 사전학습 VLM 위에 로봇 데이터를 공동학습해 액션을 텍스트 토큰으로 뽑는 최초의 웹지식 전이형 VLA. 학습 데이터에 없는 물체·명령을 이해하고 사슬형 사고로 다단계 의미 추론까지 시연한다.",
+          "tags": ["VLA", "Foundation Model", "Web Knowledge Transfer", "Emergent Reasoning"],
+          "arxiv_url": "https://arxiv.org/abs/2307.15818",
+          "extra_url": "https://robotics-transformer.github.io/",
+          "date": "2023-07-28",
+          "reason": "리스트의 π0·π0.5·π0.7·OpenVLA·Qwen-RobotManip이 공통으로 참조하는 근원. 'VLA를 VLM에서 액션을 나눠 뽑는 형식으로 짜자'는 결정 자체가 여기서 시작됐다. 이후 OpenVLA/π0 라인이 왜 discrete 텍스트 토큰 대신 flow/diffusion 연속 액션으로 갈아탔는지를 이해하려면 RT-2의 tokenization 원본을 봐야 한다."
         },
         {
-          "id": "2406.09246",
-          "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
-          "authors": "Moo Jin Kim, Karl Pertsch, Siddharth Karamcheti 외 · Stanford · UC Berkeley · Toyota Research · Google DeepMind · arXiv:2406.09246",
-          "summary_ko": "97만 실세계 로봇 시연으로 학습한 7B 오픈소스 VLA. RT-2-X(55B) 대비 절대 성공률 16.5%p 우세하며 소비자 GPU에서도 파인튜닝 가능해 이후 대부분의 VLA·latent action 후속 연구의 공통 베이스라인이 되었다.",
-          "tags": ["VLA", "Open Source", "Foundation Model", "Fine-tuning"],
-          "arxiv_url": "https://arxiv.org/abs/2406.09246",
-          "extra_url": "https://openvla.github.io",
-          "date": "2024-06-13",
-          "reason": "리스트의 LAPA·Qwen-RobotManip·RECAP·VLA-JEPA가 모두 OpenVLA를 비교/베이스로 인용. '왜 latent action, JEPA, retrieval을 별도로 붙였는가'는 결국 OpenVLA류 표준 VLA의 한계를 극복하려는 시도라, 원류 정책을 읽지 않으면 후속 논문들의 '개선점'이 잘 안 잡힌다."
+          "id": "2405.12213",
+          "title": "Octo: An Open-Source Generalist Robot Policy",
+          "authors": "Octo Model Team: Dibya Ghosh, Homer Walke, Karl Pertsch, Kevin Black 외 · UC Berkeley · Stanford · CMU · Google DeepMind · arXiv:2405.12213",
+          "summary_ko": "Open X-Embodiment 80만 시연으로 학습한 오픈소스 트랜스포머 정책. 언어·이미지 지시를 모두 받고, 소비자 GPU에서 몇 시간의 파인튜닝만으로 새 센서·액션 공간에 적응해 9종 로봇 플랫폼에서 검증된다.",
+          "tags": ["Generalist Policy", "Open Source", "Cross-Embodiment", "Foundation Policy"],
+          "arxiv_url": "https://arxiv.org/abs/2405.12213",
+          "extra_url": "https://octo-models.github.io",
+          "date": "2024-05-20",
+          "reason": "LAPA·VLA-JEPA·RECAP·Qwen-RobotManip이 공통으로 실험/베이스라인으로 쓰는 '표준 generalist policy'. OpenVLA(리스트)가 VLM 기반 후발주자라면 Octo는 VLM 없이 정책만 스케일한 상보적 뿌리라, 이 두 축의 대비가 없으면 latent action/retrieval/JEPA 후속들의 개선치를 제대로 읽기 어렵다."
         },
         {
-          "id": "2404.08471",
-          "title": "V-JEPA: Revisiting Feature Prediction for Learning Visual Representations from Video",
-          "authors": "Adrien Bardes, Quentin Garrido, Jean Ponce 외 · Meta AI · Inria · arXiv:2404.08471",
-          "summary_ko": "픽셀 복원·대조학습·이미지 인코더 사전학습 없이 순전한 latent feature 예측만으로 비디오 표현을 학습하는 JEPA 계열. 프로즌 백본이 다양한 이미지·행동 벤치마크에서 강한 전이를 보여 이후 로봇 latent world model의 사실상 표준이 된다.",
-          "tags": ["JEPA", "World Model", "Self-Supervised", "Video Representation"],
-          "arxiv_url": "https://arxiv.org/abs/2404.08471",
-          "extra_url": "https://github.com/facebookresearch/jepa",
-          "date": "2024-02-15",
-          "reason": "리스트 VLA-JEPA의 이름 그대로의 뿌리. VLA-JEPA가 강조한 '픽셀 복원 없이 latent만 정렬'이라는 문법이 왜 안전한지, 왜 로봇 사전학습에 잘 맞는지를 이해하려면 V-JEPA의 feature prediction 논거가 원본이다. RynnWorld-4D 같은 픽셀 생성 월드모델과의 대비축으로도 핵심."
+          "id": "2304.13705",
+          "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ACT / ALOHA)",
+          "authors": "Tony Z. Zhao, Vikash Kumar, Sergey Levine, Chelsea Finn · Stanford · arXiv:2304.13705",
+          "summary_ko": "저가 양팔 로봇 하드웨어(ALOHA)와 10분 분량 시연만으로 정밀 조작을 성공시킨 imitation learning 프레임워크. 액션 시퀀스에 대한 생성모델(Action Chunking Transformer, ACT)을 학습해 배터리 삽입·소스컵 오프닝 같은 세밀 조작에서 80~90% 성공률을 달성.",
+          "tags": ["Action Chunking", "Imitation Learning", "Bimanual", "Low-Cost Hardware"],
+          "arxiv_url": "https://arxiv.org/abs/2304.13705",
+          "extra_url": "https://tonyzhaozh.github.io/aloha/",
+          "date": "2023-04-23",
+          "reason": "리스트의 Diffusion Policy·π0·π0.5·π0.7이 공통으로 계승하는 '액션 청크 예측'의 원조. π0류 flow-matching 액션 헤드가 왜 단일 스텝이 아니라 짧은 청크를 통째로 뽑는지, RECAP·VLA-JEPA가 왜 청크 단위로 test-time을 다루는지가 여기서 결정됐다. ALOHA 하드웨어와 함께 이후 bimanual 벤치마크의 사실상 표준이라, VLA 라인과 정책 학습 라인을 잇는 다리 논문."
         }
       ]
     }
