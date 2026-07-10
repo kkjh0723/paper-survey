@@ -56,6 +56,11 @@
   .win{color:var(--accent-d);font-weight:800}
   .tblwrap{overflow-x:auto}
   .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
   .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
   .kv div:nth-child(odd){color:var(--muted);font-weight:600}
   .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
@@ -202,6 +207,14 @@
 
   <section>
     <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2410.11758/x2.png" alt="LAPA 방법 개요 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Overview of Latent Action Pretraining.</b> (1) VQ-VAE로 비지도 latent action 학습 → (2) latent action을 예측하는 latent VLA 사전학습 → (3) 소량 로봇 데이터로 파인튜닝하는 3단계 파이프라인. (출처: arXiv:2410.11758)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2410.11758/x12.png" alt="Latent Action Quantization 모델 구조 (Figure 8)" loading="lazy">
+      <figcaption><b>Figure 8 — Latent Action Quantization Model.</b> (I<sub>t</sub>, I<sub>t+H</sub>)를 인코더에 넣어 discrete latent를 뽑고 x<sub>t</sub>+latent로 미래 프레임을 복원하는 구조 — 위 Q&amp;A의 "정보 누출·카메라 이동" 논의와 직결. (출처: arXiv:2410.11758)</figcaption>
+    </figure>
     <div class="callout">
       <b>실세계 조작 비교 표</b> — LAPA vs OpenVLA. 행동 레이블 없이 사전학습한 LAPA가 3태스크 평균 50.1%로 OpenVLA(43.9%)를 상회한다는, 논문의 핵심 주장을 뒷받침하는 결과.
     </div>

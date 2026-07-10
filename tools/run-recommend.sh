@@ -22,7 +22,8 @@ git pull --rebase --autostash >> "$LOG" 2>&1
 # 권한 게이트를 전부 끄지 않고(--dangerously-skip-permissions 미사용),
 # 이 작업에 실제로 필요한 도구만 허용목록으로 지정한다(그 외 도구 요청 시 실행은 실패).
 ALLOWED=(Read Write Edit WebFetch WebSearch \
-  "Bash(date:*)" "Bash(git add:*)" "Bash(git commit:*)" \
+  "Bash(date:*)" "Bash(curl:*)" "Bash(mkdir:*)" \
+  "Bash(git add:*)" "Bash(git commit:*)" \
   "Bash(git push:*)" "Bash(git pull:*)" "Bash(git status:*)" "Bash(git diff:*)")
 
 # 1) 승인 큐 처리 — 큐에 승인된 논문이 있으면 요약 페이지 생성 + 리스트 추가 + 큐 비움.

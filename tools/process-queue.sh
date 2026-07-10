@@ -20,7 +20,8 @@ echo "===== $(date '+%Y-%m-%d %H:%M:%S') 승인 큐 $QN편 자동 처리 =====" 
 
 # 권한은 이 작업에 필요한 도구만 스코프 허용(--dangerously-skip-permissions 미사용)
 ALLOWED=(Read Write Edit WebFetch WebSearch \
-  "Bash(date:*)" "Bash(git add:*)" "Bash(git commit:*)" \
+  "Bash(date:*)" "Bash(curl:*)" "Bash(mkdir:*)" \
+  "Bash(git add:*)" "Bash(git commit:*)" \
   "Bash(git push:*)" "Bash(git pull:*)" "Bash(git status:*)" "Bash(git diff:*)")
 
 "$CLAUDE" -p "/add-paper 승인 큐 처리" --allowedTools "${ALLOWED[@]}" >> "$LOG" 2>&1

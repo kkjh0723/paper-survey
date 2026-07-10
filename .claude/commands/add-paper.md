@@ -46,6 +46,21 @@ allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch
   - 뒤로가기 링크 `<a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>` 유지.
 - 수치·주장은 반드시 논문 근거에 기반한다. 모르면 지어내지 말고 해당 항목을 비운다.
 
+### 핵심 figure 임베드 (가능하면)
+`6 핵심 Figure/Table` 섹션에 논문의 **실제 figure 이미지**를 넣는다(요약 페이지엔 figure용 CSS가 이미 있음).
+- arXiv HTML(`https://arxiv.org/html/<id>`)에서 figure는 `<img src="xN.png">` 형태의 개별 이미지다.
+  전체 URL은 `https://arxiv.org/html/<id>/xN.png`. figure 캡션을 보고 **핵심 1~2개**(방법/구조도·대표 결과)를 고른다.
+- 저장: `mkdir -p summaries/fig/<id>` 후 `curl -s -o summaries/fig/<id>/xN.png "https://arxiv.org/html/<id>/xN.png"`.
+- 섹션 상단에 삽입:
+  ```html
+  <figure>
+    <img src="fig/<id>/xN.png" alt="설명 (Figure N)" loading="lazy">
+    <figcaption><b>Figure N — 제목.</b> 한 줄 설명. (출처: arXiv:<id>)</figcaption>
+  </figure>
+  ```
+- arXiv HTML이 없거나 적절한 figure를 못 찾으면 이미지는 생략하고 기존처럼 텍스트 callout으로만 정리한다.
+- 커밋 시 `summaries/fig/<id>/` 도 함께 add 한다.
+
 ## 3. index.html에 행 추가
 - `<tbody id="rows">` **맨 위**(첫 `<tr>` 바로 앞)에 새 행을 삽입한다. 최신 논문이 위로 온다.
 - 번호(`.no`)는 현재 맨 위 행 번호 + 1.
