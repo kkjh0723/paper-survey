@@ -10,10 +10,12 @@ LOG="$REPO/tools/queue.log"
 export PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 cd "$REPO" || exit 1
 
-# 브라우저 승인(Worker→GitHub)이 반영된 최신 상태 가져오기
-git pull --rebase --autostash >> "$LOG" 2>&1
+# 브라우저 승인(Worker→GitHub)이 반영된 최신 상태 가져오기 (조용히)
+git pull --rebase --autostash >/dev/null 2>&1
 
 QN=$(python3 -c "import json;print(len(json.load(open('data/state.json')).get('queue',[])))" 2>/dev/null || echo 0)
+# 매 폴링마다 타임스탬프 heartbeat (언제 확인했는지 추적용)
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] poll · queue=$QN" >> "$LOG"
 if [ "$QN" -eq 0 ]; then exit 0; fi   # 큐 비면 조용히 종료 (Claude 미실행)
 
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') 승인 큐 $QN편 자동 처리 =====" >> "$LOG"
