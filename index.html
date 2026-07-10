@@ -82,6 +82,10 @@
   .like-btn .h{font-size:15px}
   .like-btn.liked{color:#e0567a}
   .like-btn .s{font-size:10.5px;font-weight:800;font-variant-numeric:tabular-nums}
+  /* 질문 복사 버튼 (리스트 각 행) */
+  .qa-copy{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--muted);
+    font-size:12px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;margin-top:2px}
+  .qa-copy:hover{border-color:var(--accent);color:var(--accent-d)}
   /* 동기화 배너 */
   .sync-banner{display:none;align-items:center;gap:12px;justify-content:space-between;
     background:#fff8e6;border:1px solid #f0e2b0;border-radius:10px;padding:9px 14px;margin:14px 0 0;
@@ -953,9 +957,30 @@
   }
 
   // ===== 초기화 =====
+  // 각 행에 '/paper-qa <id>' 복사 버튼 주입 (질문용) — 현재·미래 모든 논문에 자동 적용
+  function injectQaButtons(){
+    rows.forEach(function(tr){
+      var id = tr.getAttribute('data-id');
+      var links = tr.querySelector('.links');
+      if(!links || links.querySelector('.qa-copy')) return;
+      var titleEl = tr.querySelector('.ttl a');
+      var title = titleEl ? titleEl.textContent : id;
+      var b = document.createElement('button');
+      b.className = 'qa-copy';
+      b.textContent = '💬 질문';
+      b.title = '/paper-qa ' + id + ' 복사 (Claude에 붙여넣고 질문을 이어 쓰세요)';
+      b.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        copyText('/paper-qa ' + id + ' ', '「' + title.slice(0,28) + '」 질문용 명령 복사됨 — Claude에 붙여넣고 질문을 이어 쓰세요');
+      });
+      links.appendChild(b);
+    });
+  }
+
   function boot(){
     initRows();
     injectLikes();
+    injectQaButtons();
     renderChips();
     applyFilter();
     updateTabCounts();
