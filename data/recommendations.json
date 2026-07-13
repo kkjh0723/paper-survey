@@ -1,42 +1,42 @@
 {
-  "generated": "2026-07-13",
+  "generated": "2026-07-14",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.05377",
-          "title": "Cortex: A Bidirectionally Aligned Embodied Agent Framework for Long-horizon Manipulation",
-          "authors": "Jiaqi Peng, Xiqian Yu, Delin Feng, Yuqiang Yang, Wenzhe Cai 외 · arXiv:2607.05377",
-          "summary_ko": "긴 호흡 매니퓰레이션을 32개의 표준 스킬 프리미티브로 정규화하고, 상위 VLM 플래너와 하위 VLA 실행기를 양방향으로 정렬(bidirectional alignment)해 서로 실패 피드백을 주고받게 한 프레임워크. 화학 실험 같은 다단계 실세계 태스크를 제로샷으로 완주해 스킬 라이브러리형 에이전틱 접근의 실제 가치를 보인다.",
-          "tags": ["Agentic Robotics", "Skill Library", "Long-Horizon", "VLA", "Hierarchical"],
-          "arxiv_url": "https://arxiv.org/abs/2607.05377",
+          "id": "2607.08448",
+          "title": "Harness VLA: Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents",
+          "authors": "Yixian Zhang, Huanming Zhang, Feng Gao, Xiao Li, Zhihao Liu 외 · arXiv:2607.08448",
+          "summary_ko": "동결된 VLA 위에 소수의 해석 가능한 프리미티브와 메모리 기반 계획 에이전트를 얹어, 실행 트레이스와 실패 패턴에서 각 프리미티브의 동작 파라미터·유효 범위를 학습한다. 파인튜닝 없이 LIBERO-Pro와 RoboCasa365에서 각각 +38.6, +25.4pp의 성능 향상을 보여, 프리미티브 조합만으로 사전학습 VLA의 배포 범위를 크게 넓히는 실용적 프레임워크.",
+          "tags": ["Agentic Robotics", "Skill Library", "Frozen VLA", "Memory", "Manipulation"],
+          "arxiv_url": "https://arxiv.org/abs/2607.08448",
           "extra_url": "",
-          "date": "2026-07-06",
-          "reason": "좋아요한 ASPIRE와 가장 정면으로 대응되는 신작. ASPIRE가 'LLM 코딩 에이전트가 스킬을 프로그래밍한다'로 갔다면, Cortex는 '스킬 프리미티브를 고정하고 VLM↔VLA를 양방향 정렬한다'로 갔다. 리스트의 π0.5(계층 추론)와 Vesta(임보디드 리즈닝)를 같은 축으로 붙여 읽을 수 있고, ASPIRE의 결정론적 스킬 조립을 학습 기반으로 재해석한 것으로 볼 수 있어 컬렉션의 '에이전틱' 축을 두껍게 만든다."
+          "date": "2026-07-09",
+          "reason": "좋아요한 ASPIRE(에이전트가 스킬을 프로그래밍)와 직전 추천인 Cortex(양방향 정렬된 32개 프리미티브)와 정확히 같은 축에 서는 신작. ASPIRE·Cortex가 '스킬을 만든다/정렬한다'에 집중했다면, Harness VLA는 '이미 있는 VLA에 프리미티브+메모리 에이전트만 얹어 배포 범위를 넓힌다'로 나가서 세 논문이 하나의 스펙트럼을 이룬다. 리스트의 π0/π0.5/π0.7·OpenVLA 같은 사전학습 정책들을 '어떻게 조립·확장할지'에 대한 실증이라 컬렉션의 에이전틱 축을 확실히 두껍게 만든다."
         },
         {
-          "id": "2607.07076",
-          "title": "PriGo: Test-Time Primitive Guidance to Diffusion and Flow Policies for Adaptive Robotic Manipulation",
-          "authors": "Zezeng Li, Enda Xiang, Thuy Tran, Di Huang, Momath Thiam · arXiv:2607.07076",
-          "summary_ko": "사전학습된 디퓨전·플로우 정책의 액션을 재학습 없이 테스트 시점에 프리미티브 가이드로 미세 조정하는 프레임워크. Diffusion Policy·π0 같은 사전학습 정책 위에 얹혀, 태스크별 프리미티브 신호로 디노이징 경로를 조향해 적응형 실행을 만들어낸다.",
-          "tags": ["Test-Time Adaptation", "Diffusion Policy", "Flow Matching", "Primitive Guidance", "Manipulation"],
-          "arxiv_url": "https://arxiv.org/abs/2607.07076",
+          "id": "2607.08877",
+          "title": "FlowDAgger: Human-in-the-Loop Adaptation of Generative Robot Policies in Latent Space",
+          "authors": "Michael Murray, Daphne Chen, Simran Bagaria, Dean Fortier, Tess Hellebrekers 외 · arXiv:2607.08877",
+          "summary_ko": "사전학습된 플로우·디퓨전 정책을 재학습 없이 인간 개입만으로 적응시키는 프레임워크. 인간 전문가 액션을 노이즈로 역전(inversion)해 잠재 공간의 경량 정책으로 감독 신호를 만들고, 이를 배포 시 베이스 모델의 디노이징을 조향하는 데 쓴다. 양팔·단팔 실기 태스크에서 SFT와 잠재 공간 RL 대비 우수하며, 원 정책의 미학습 태스크 성능은 유지된다.",
+          "tags": ["Test-Time Adaptation", "Flow Matching", "Diffusion Policy", "Human-in-the-Loop", "DAgger"],
+          "arxiv_url": "https://arxiv.org/abs/2607.08877",
           "extra_url": "",
-          "date": "2026-07-08",
-          "reason": "리스트의 WAM-TTT(월드모델 테스트 시 조향)와 RECAP(검색으로 태스크 흡수)로 이어지던 '테스트 시 어떻게 정책을 흔들까' 라인의 정통 후속. 특히 Diffusion Policy·π0·π0.7가 모두 디퓨전/플로우 계열이라 PriGo는 리스트의 정책들 위에 그대로 얹히는 플러그인이 된다. 재학습 없이 성능을 뽑는다는 점에서 ASPIRE의 '스킬 조립'과도 사고방식이 이어진다."
+          "date": "2026-07-09",
+          "reason": "리스트의 WAM-TTT(사람 영상으로 조향), RECAP(검색으로 태스크 흡수), 직전 추천 PriGo(프리미티브 가이드)로 이어져 온 '사전학습 정책을 어떻게 조향할까' 라인의 새 접점. FlowDAgger는 명시적 인간 개입을 '잠재 노이즈로 역전'해 감독을 만든다는 점에서 나머지 세 방식과 상보적이라 함께 두면 TTA 스펙트럼이 완성된다. 정책 백본이 π 시리즈·Diffusion Policy 같은 플로우/디퓨전 계열이라 리스트 정책 위에 그대로 적용 가능하다."
         },
         {
-          "id": "2607.04652",
-          "title": "KAM-WM: Kinematic Affordance Maps from Latent World Models for Robot Manipulation",
-          "authors": "Xinyu Shao, Keru Zhou, Guowei Huang, Yajun Gao, Tongtong Cao · arXiv:2607.04652",
-          "summary_ko": "동결된 비디오 월드모델에서 롤아웃 없이 방향성 상호작용 단서(kinematic affordance map)를 뽑아, Perceiver로 압축해 디퓨전 정책의 컨디셔닝 토큰으로 주입한다. 픽셀·롤아웃·미세조정 없이 잠재 표현만으로 정책을 강화하는 '월드모델을 인지 프라이어로만 쓰는' 접근.",
-          "tags": ["World Model", "Diffusion Policy", "Affordance", "Latent Prior", "Manipulation"],
-          "arxiv_url": "https://arxiv.org/abs/2607.04652",
+          "id": "2607.09185",
+          "title": "CD-LAM: Causally Debiased Latent Action Model for Embodied Action Conditioned World Models",
+          "authors": "Yufan Wei, Kun Zhou, Lingjun Mao, Zijun Zhang, Ziming Xu 외 · arXiv:2607.09185",
+          "summary_ko": "기존 잠재 행동 모델(LAM)이 액션 관련 동역학과 배경 같은 액션 무관 시각 요소를 뒤섞는다는 진단에서 출발해, 임보디먼트 중심 재구성·액션 중심 대조 학습·잠재 공간 캘리브레이션으로 조향 가능한 잠재 액션을 만들어낸다. 대형 백본에서 컨트롤러빌리티와 액션 추종을 크게 개선하며, 로봇 액션 어댑테이션 업데이트를 12배 이상 줄인다.",
+          "tags": ["Latent Action", "World Model", "Causal Disentanglement", "Video Pretraining", "Sample Efficiency"],
+          "arxiv_url": "https://arxiv.org/abs/2607.09185",
           "extra_url": "",
-          "date": "2026-07-06",
-          "reason": "리스트의 V-JEPA·VLA-JEPA·InternVLA-A1.5가 '잠재 월드모델을 정책의 조건으로 넣는다'를 지향했다면 KAM-WM은 그것을 '동결된 월드모델을 affordance 추출기로만 쓴다'로 축소·단순화한 형태. 이 정책 백본이 Diffusion Policy라, 리스트의 Diffusion Policy와 LAPA(잠재 액션)의 접점을 실제 아키텍처에서 잇는 실증이 된다. WAM-TTT·InternVLA-A1.5와 나란히 두면 '월드모델을 얼마나 깊게 정책에 통합하나' 스펙트럼이 촘촘해진다."
+          "date": "2026-07-10",
+          "reason": "리스트의 LAPA(잠재 액션 사전학습)를 '왜 그 잠재가 지저분한가'라는 관점에서 정면으로 손보는 후속. LAPA·V-JEPA·VLA-JEPA·InternVLA-A1.5로 이어진 '동영상에서 액션-관련 잠재를 뽑아 정책의 조건으로 쓴다'는 축에, 인과적 분리를 얹어 실용성 논쟁(어댑테이션 효율)까지 답한다. 직전 추천 KAM-WM이 '동결 월드모델에서 affordance만 뽑는다'였다면 CD-LAM은 '잠재 액션 자체를 정제한다'로 대비되어 두 접근을 나란히 읽으면 잠재 공간의 어느 축이 정책에 중요한지가 선명해진다."
         }
       ]
     },
@@ -45,37 +45,37 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2209.07753",
-          "title": "Code as Policies: Language Model Programs for Embodied Control",
-          "authors": "Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman · Google Robotics · arXiv:2209.07753",
-          "summary_ko": "코드로 사전학습된 LLM이 자연어 지시에서 로봇 제어 파이썬 프로그램을 few-shot으로 생성하는 프레임워크. 공간·기하 추론, 조건부 반복, 미지 명령에 대한 일반화까지 프롬프트로 이끌어내는 초기 '언어 → 실행 코드' 실증.",
-          "tags": ["LLM Coding Agent", "Agentic Robotics", "Skill Library", "Prompting"],
-          "arxiv_url": "https://arxiv.org/abs/2209.07753",
-          "extra_url": "https://code-as-policies.github.io/",
-          "date": "2022-09-16",
-          "reason": "좋아요한 ASPIRE(에이전틱 스킬 프로그래밍)의 직계 조상. ASPIRE가 '반복 탐사로 스킬 라이브러리를 채우고 코딩 에이전트가 조립'하는 구조라면, Code as Policies는 '프롬프팅만으로 로봇 제어 파이썬을 생성'하는 원형. 이번 주 신규 추천인 Cortex의 스킬 프리미티브도 결국 이 라인의 후예라, 세 논문을 붙여 읽으면 '언어→코드→학습된 스킬'의 변천이 하나의 축으로 정리된다."
+          "id": "2307.15818",
+          "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+          "authors": "Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Xi Chen 외 · Google DeepMind · arXiv:2307.15818",
+          "summary_ko": "로봇 액션을 텍스트 토큰으로 표현해 인터넷 규모 VLM과 하나의 아키텍처로 공동학습하면, VLM의 웹 지식이 로봇 제어로 그대로 전이된다는 것을 실증한 논문. 미학습 물체와 지시에 대한 일반화, 다단계 의미 추론 같은 창발 능력이 관측되어 'VLA'라는 용어를 정착시켰다.",
+          "tags": ["VLA", "Foundation Model", "Web-Scale Transfer", "Generalist Policy"],
+          "arxiv_url": "https://arxiv.org/abs/2307.15818",
+          "extra_url": "https://robotics-transformer2.github.io/",
+          "date": "2023-07-28",
+          "reason": "리스트의 OpenVLA·π0·π0.5·π0.7·InternVLA-A1.5·Pelican-VLA류·Qwen-RobotManip이 모두 뿌리로 두는 원류인데 컬렉션에 아직 없다. RT-2를 넣어야 왜 OpenVLA가 오픈소스 재현으로 나왔는지, 왜 π 시리즈가 flow matching 액션 헤드로 갈아탔는지, 그리고 왜 Qwen-RobotManip이 '정렬'과 스케일을 강조했는지의 대비축이 잡힌다. 직전 추천 Octo(오픈 트랜스포머 정책)와 짝을 이루면 'VLM 백본 vs 순수 트랜스포머' 두 계열의 분기점이 명확해진다."
         },
         {
-          "id": "2405.12213",
-          "title": "Octo: An Open-Source Generalist Robot Policy",
-          "authors": "Octo Model Team, Dibya Ghosh, Homer Walke, Karl Pertsch, Kevin Black 외 · Berkeley·Stanford·CMU 등 · arXiv:2405.12213",
-          "summary_ko": "OpenX-Embodiment의 80만 트라젝토리로 학습한 트랜스포머 정책. 언어와 목표 이미지 양쪽으로 지시받으며, 9종 로봇 플랫폼에 일반화되고 새 센서·액션 공간으로 컨슈머 GPU에서 파인튜닝된다.",
-          "tags": ["Generalist Policy", "Open Source", "Open X-Embodiment", "Cross-Embodiment", "Transformer"],
-          "arxiv_url": "https://arxiv.org/abs/2405.12213",
-          "extra_url": "https://octo-models.github.io/",
-          "date": "2024-05-20",
-          "reason": "리스트에 OpenX-Embodiment(데이터셋)와 OpenVLA·π0(정책)는 있지만, 그 사이의 '오픈소스 제너럴리스트 트랜스포머 정책' 자리가 비어 있다. Octo는 정확히 그 사이를 채우고, OpenVLA가 왜 VLM 백본으로 넘어갔는지, π0가 왜 flow matching 액션 헤드로 갈아탔는지의 대비축이 된다. 최근 Qwen-RobotManip이 강조한 '단일 정규 상태-행동 공간'과 Octo의 헤드 스왑 파이프라인을 나란히 두면 cross-embodiment 설계 결정이 훨씬 선명해진다."
+          "id": "2204.01691",
+          "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances (SayCan)",
+          "authors": "Michael Ahn, Anthony Brohan, Noah Brown, Yevgen Chebotar, Omar Cortes 외 · Google Robotics · arXiv:2204.01691",
+          "summary_ko": "LLM이 '무엇을 해야 하는지'의 상위 계획을 내놓고, 사전학습된 로봇 스킬의 어포던스 값 함수가 '지금 여기서 가능한지'로 필터링해 결합한다. 이를 통해 실제 모바일 매니퓰레이터가 자연어 장기 지시를 실행할 수 있음을 보인 스킬-기반 에이전틱 로봇의 원형.",
+          "tags": ["LLM Planner", "Skill Library", "Affordance", "Agentic Robotics"],
+          "arxiv_url": "https://arxiv.org/abs/2204.01691",
+          "extra_url": "https://say-can.github.io/",
+          "date": "2022-04-04",
+          "reason": "좋아요한 ASPIRE와 이번 주 신규 Harness VLA·직전 추천 Cortex의 공통 조상. 세 논문 모두 '고수준 언어 플래너 + 저수준 스킬/프리미티브' 구조인데, SayCan은 그 구조를 어포던스 값 함수로 접합한 최초의 실증. 직전 추천 Code as Policies(스킬을 코드로 즉시 생성)와 나란히 두면 '어포던스로 필터 vs 코드로 조립 vs 학습된 프리미티브로 조향'이라는 세 갈래로 에이전틱 로봇의 계보가 정리된다."
         },
         {
-          "id": "2304.13705",
-          "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA / ACT)",
-          "authors": "Tony Z. Zhao, Vikash Kumar, Sergey Levine, Chelsea Finn · Stanford · arXiv:2304.13705",
-          "summary_ko": "저가 양팔 시스템 ALOHA 위에서 트랜스포머로 액션 청크를 회귀 예측하는 ACT를 제안. 10분 시연으로도 케이블 타이 매기·배터리 슬로팅 같은 정밀 태스크에서 80–90% 성공률을 낸다.",
-          "tags": ["Action Chunking", "Bimanual", "Imitation Learning", "Transformer Policy"],
-          "arxiv_url": "https://arxiv.org/abs/2304.13705",
-          "extra_url": "https://tonyzhaozh.github.io/aloha/",
-          "date": "2023-04-23",
-          "reason": "리스트의 π0·π0.5·π0.7가 공유하는 '액션 청크를 한 번에 예측한다'라는 발상의 실질적 뿌리이자, Diffusion Policy와 함께 최근 매니퓰레이션 정책 백본의 양대 축을 이룬 실증. ALOHA 하드웨어가 π 시리즈·InternVLA·Qwen-RobotManip 벤치마킹의 표준 플랫폼이 된 배경도 여기서 시작된다. RT-1(트랜스포머 정책)·Diffusion Policy(디퓨전 정책)와 삼각 편대로 두면 컬렉션의 '어떻게 액션을 뽑나' 지형이 완성된다."
+          "id": "2301.04104",
+          "title": "DreamerV3: Mastering Diverse Domains through World Models",
+          "authors": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap · DeepMind · arXiv:2301.04104",
+          "summary_ko": "정규화·밸런싱·변환 트릭으로 한 세트의 하이퍼파라미터로 150+ 태스크를 마스터하는 범용 월드모델 강화학습 알고리즘. 인간 데이터 없이 Minecraft에서 다이아몬드를 채굴한 최초 사례로, '월드모델 내부 상상 롤아웃 → 정책 학습'이 도메인 무관하게 통한다는 것을 보였다.",
+          "tags": ["World Model", "Model-Based RL", "Latent Dynamics", "Generalist"],
+          "arxiv_url": "https://arxiv.org/abs/2301.04104",
+          "extra_url": "https://danijar.com/project/dreamerv3/",
+          "date": "2023-01-10",
+          "reason": "리스트의 WAM-TTT·VLA-JEPA·InternVLA-A1.5·DGAC와 이번 주 신규 CD-LAM·직전 추천 KAM-WM이 모두 '월드모델을 정책에 어떻게 결합할까'를 다루는데, 그 축의 표준 참조가 컬렉션에 없다. DreamerV3는 '월드모델을 시뮬레이터로 써서 상상 롤아웃으로 정책을 학습'하는 가장 성숙한 사례라, 최근 논문들이 '롤아웃 없이 잠재만 조건화(KAM-WM)' 또는 '테스트 시 조향(WAM-TTT)'으로 넘어간 이유를 대비적으로 이해할 수 있는 기준점이 된다."
         }
       ]
     }
