@@ -8,6 +8,12 @@
       "title": "CD-LAM: Causally Debiased Latent Action Model for Embodied Action Conditioned World Models",
       "arxiv_url": "https://arxiv.org/abs/2607.09185",
       "added": "2026-07-14"
+    },
+    {
+      "id": "2607.08877",
+      "title": "FlowDAgger: Human-in-the-Loop Adaptation of Generative Robot Policies in Latent Space",
+      "arxiv_url": "https://arxiv.org/abs/2607.08877",
+      "added": "2026-07-14"
     }
   ],
   "dismissed": [
