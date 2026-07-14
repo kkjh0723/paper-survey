@@ -2,9 +2,16 @@
   "likes": {
     "Aspire": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2607.09185",
+      "title": "CD-LAM: Causally Debiased Latent Action Model for Embodied Action Conditioned World Models",
+      "arxiv_url": "https://arxiv.org/abs/2607.09185",
+      "added": "2026-07-14"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
-  "updated": "2026-07-10"
+  "updated": "2026-07-14"
 }
