@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FlowDAgger — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · HITL · Flow Matching</span>
+    <h1>FlowDAgger: Human-in-the-Loop Adaptation of Generative Robot Policies in Latent Space</h1>
+    <p class="authors">Michael Murray, Daphne Chen, Simran Bagaria 외 · Oier Mees · Maya Cakmak · Andrey Kolobov · Microsoft / academic partners · arXiv:2607.08877</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.08877" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.08877" target="_blank">PDF</a>
+      <a href="https://microsoft.github.io/FlowDAgger" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.08877</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Human-in-the-Loop</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">DAgger</span>
+      <span class="t">Action Inversion</span>
+      <span class="t">Latent Adaptation</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 9일 · 백본 π<sub>0.5</sub>, Cosmos-Policy, Gr00t N1.7, DDPM · ~8GB VRAM</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사전학습된 <b>플로우 매칭 기반 생성형 로봇 정책(VLA·WAM·diffusion policy)</b>을 <b>가중치 수정 없이</b> 소수의 인간 개입만으로 배포 현장 적응시키는 DAgger 계열 기법. 핵심은 <b>action inversion</b> — 사람이 시연한 보정 액션 a*를 프로즌 정책이 그것을 생성하도록 하는 <b>latent noise w*</b>로 <b>per-step 고정점 반복(M=5)</b>로 뒤집어내고, 작은 MLP π<sup>w</sup>(s)가 표준 노이즈 대신 이 w*를 예측하도록 학습. MetaWorld 평균 SR <span class="win">+0.25</span>, 실제 하드웨어 Toolbox Packing <span class="win">+0.67</span>, 그리고 <b>미개입 held-out 태스크 성능은 SFT 대비 −0.94 → FlowDAgger −0.08</b>로 사전지식 파괴를 사실상 없앰.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>π<sub>0</sub>·π<sub>0.5</sub> 같은 대형 VLA는 배포 시 예상 못 한 실패 모드를 만난다. 대규모 재수집 파인튜닝(SFT)은 <b>held-out 태스크를 망가뜨리고</b>(0.96 → 0.02), LoRA·잔차(residual) 정책도 사전지식 유지에 실패한다. 온폴리시 RL은 물리 안전·샘플 효율 문제로 현장에서 비현실적이다. FlowDAgger는 이 갭을 인간 개입 <b>수십 회</b> 규모의 데이터로, <b>프로즌 정책을 훼손하지 않으면서</b> 메우려 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Action Inversion — per-step 고정점 반복.</b> 플로우 매칭 정책의 K≈10 Euler 스텝을 각 스텝에서 M=5 반복으로 역산해, 사람이 준 보정 액션 a*와 정확히 대응되는 latent noise w*를 <b>~0.00168 MSE</b>로 복원(Euler-reverse 0.0329 대비 20×↓, trajectory-level 0.0228 대비 14×↓).</li>
+      <li><b>Latent Noise Policy로 프로즌 정책 조종.</b> 표준 가우시안 노이즈 대신 상태 조건부 π<sup>w</sup>(s)가 만든 노이즈를 초기값으로 사용 → base 정책의 가중치는 불변. 자율 성공 rollout과 반전된 개입을 배치당 1:1로 섞어 정규화.</li>
+      <li><b>아키텍처 무관 확장.</b> flow-matching action head(π<sub>0.5</sub>), 비디오 diffusion world-action model(Cosmos-Policy), DiT+DCT(Gr00t N1.7), vanilla DDPM(robomimic)까지 동일 원리로 적용. WAM에서는 <b>공동 latent 프로세스를 반전</b>하되 action 프레임만 섭동.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Per-step 고정점 반전</h3>
+    <p>플로우 매칭 정책은 노이즈 x<sub>K</sub>~N(0,I)에서 시작해 x<sub>k</sub> = x<sub>k+1</sub> − Δt·v<sub>θ</sub>(x<sub>k</sub>, t<sub>k</sub>, s)로 K≈10 스텝 Euler 적분해 액션 x<sub>0</sub>를 만든다. 인간 보정 a*가 주어지면 <b>x<sub>0</sub>=a*</b>로 고정하고 위 재귀식을 뒤에서 앞으로 M=5번 fixed-point iteration으로 풀어 각 스텝의 x<sub>k</sub>를 얻는다. 이는 <i>trajectory 전체</i>를 한꺼번에 뒤집는 방식보다 정확·경제적(0.00168 vs 0.0228 MSE, 456 ms vs 1662 ms).</p>
+
+    <h3>Noise Policy 학습</h3>
+    <p>L(φ) = E<sub>(s,w*)~D</sub> ‖π<sup>w</sup><sub>φ</sub>(s) − w*‖²로 소형 MLP만 지도학습. 데이터셋 D는 반전된 개입 + 자율 성공 rollout을 <b>배치당 동일 비율</b>로 유지해, 개입이 없는 상태에서 base 성능이 붕괴하지 않도록 한다.</p>
+
+    <h3>모델별 적응</h3>
+    <div class="kv">
+      <div>π<sub>0.5</sub> (VLA)</div><div>action-space inversion, 5,280-D noise를 K=10 DCT basis에 사영해 학습</div>
+      <div>Cosmos-Policy (WAM)</div><div>공동 latent 반전 후 action 프레임만 섭동 (예측 상태 보존)</div>
+      <div>Gr00t N1.7</div><div>Qwen3-VL 백본 + DiT flow head, DCT-basis noise 학습</div>
+      <div>Vanilla DDPM</div><div>EDM 변형: 종말 denoise σ<sub>min</sub>에서 국소 Adam solve만 backprop</div>
+      <div>학습 자원</div><div>consumer GPU ~8GB VRAM(π<sub>0.5</sub> 배포 규모)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>MetaWorld (π<sub>0.5</sub>, 50 rollouts로 적응)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>Base</th><th>SFT</th><th>LoRA-DAg</th><th>Res-DAg</th><th>DSRL</th><th>FlowDAgger</th></tr></thead>
+      <tbody>
+        <tr><td>Assembly</td><td>0.64</td><td>0.85</td><td>0.81</td><td>0.53</td><td>0.64</td><td class="win">0.89</td></tr>
+        <tr><td>Hammer</td><td>0.40</td><td>0.80</td><td>0.68</td><td>0.56</td><td>0.27</td><td class="win">0.84</td></tr>
+        <tr><td>Mean SR</td><td>0.53</td><td>0.71</td><td>0.68</td><td>0.64</td><td>0.55</td><td class="win">0.78</td></tr>
+        <tr><td>Δ vs Base</td><td>—</td><td>+0.18</td><td>+0.15</td><td>+0.11</td><td>+0.02</td><td class="win">+0.25</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">5개 태스크 평균 +0.25로 모든 baseline 상회. DSRL(latent RL)은 사실상 개선 없음.</p>
+
+    <h3>사전지식 유지 (π<sub>0.5</sub>, Hammer 50-episode 적응 후 held-out 평균)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Hammer</th><th>Held-out Mean</th><th>Δ vs Base</th></tr></thead>
+      <tbody>
+        <tr><td>Base</td><td>0.40</td><td>0.96</td><td>—</td></tr>
+        <tr><td>SFT</td><td>0.80</td><td>0.02</td><td>−0.94</td></tr>
+        <tr><td>LoRA-DAg</td><td>0.68</td><td>0.30</td><td>−0.66</td></tr>
+        <tr><td>Res-DAg</td><td>0.56</td><td>0.69</td><td>−0.27</td></tr>
+        <tr><td><b>FlowDAgger</b></td><td class="win">0.84</td><td class="win">0.88</td><td class="win">−0.08</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">SFT가 held-out 96 → 2로 완전 붕괴하는 반면 FlowDAgger는 <b>Hammer +0.44 상승 + held-out −0.08</b>만 손실.</p>
+
+    <h3>실제 하드웨어 (FR3 Duo, Dual UR5e)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>Base</th><th>SFT</th><th>FlowDAgger</th><th>Episodes</th></tr></thead>
+      <tbody>
+        <tr><td>Toolbox Packing</td><td>0.13</td><td>0.63</td><td class="win">0.80 (+0.67)</td><td>10</td></tr>
+        <tr><td>Glassware Stacking</td><td>0.26</td><td>0.53</td><td class="win">0.76 (+0.50)</td><td>5</td></tr>
+        <tr><td>Wire Pull</td><td>0.40</td><td>0.53</td><td class="win">0.70 (+0.30)</td><td>10</td></tr>
+        <tr><td>Plug Insertion</td><td>0.60</td><td>0.66</td><td class="win">0.72 (+0.12)</td><td>20</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">모든 실기 태스크에서 SFT 상회. <b>5–20 에피소드</b>만으로 유의미한 적응.</p>
+
+    <h3>교차 아키텍처 (MetaWorld 공통 태스크)</h3>
+    <p>π<sub>0.5</sub>: 평균 0.79 (+0.26 vs base) · Cosmos-Policy(WAM): 평균 0.74 (+0.21) · Assembly에서 Cosmos-Policy는 <b>+0.40</b> 개선. Gr00t N1.7·vanilla DDPM에서도 DSRL를 상회하며 asymptote가 더 높음.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation</h2>
+    <ul>
+      <li><b>반전 절차 비교(Assembly):</b> Per-step FP(M=5) 0.00168 MSE / 456ms / SR 0.87 · Trajectory FP 0.0228 / 1662ms / 0.77 · Euler reverse 0.0329 / 315ms / 0.59. Per-step FP가 정확도·속도·SR 모두 우세.</li>
+      <li><b>반복 횟수 M:</b> Action MSE 0.00397(M=3) → 0.00168(M=5) → 0.00147(M=10). <b>M=5에서 saturate</b>.</li>
+      <li><b>자율 성공 rollout 비율:</b> 개입만 학습하면 sparse-correction 상태에서 오버피팅 발생 → 자율 rollout을 배치에 섞어 넣는 것이 필수.</li>
+      <li><b>메모리 vs 성능(그림 4):</b> FlowDAgger는 Assembly SR-peak memory 평면에서 좌상단(고성능·저메모리). SFT/LoRA는 우측(고메모리) 또는 하단(저성능).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.08877/x1.png" alt="FlowDAgger 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Overview.</b> 인간 보정 액션을 프로즌 정책의 생성 프로세스 안 latent noise로 반전, 소형 정책 π<sup>w</sup>(s)가 이 노이즈를 예측해 base 정책을 조종한다. (출처: arXiv:2607.08877)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.08877/x2.png" alt="MetaWorld 적응 곡선 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Adaptation curves.</b> 5개 MetaWorld 태스크에서 FlowDAgger가 Residual-DAgger·DSRL 대비 더 빠르고 더 높은 asymptote로 수렴. (출처: arXiv:2607.08877)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Prior Preservation Table</b> — SFT/LoRA/Residual이 모두 held-out 태스크를 심각하게 해치는 반면 FlowDAgger만 <b>Δ −0.08</b>로 사전지식 붕괴를 피한다. "가중치를 안 건드리고 noise만 조종"의 실증적 근거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.08877" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.08877" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.08877" target="_blank">HTML</a></li>
+      <li><a href="https://microsoft.github.io/FlowDAgger" target="_blank">프로젝트 페이지</a></li>
+      <li>관련 기법: DAgger · DSRL(latent-space RL) · Residual policy · π<sub>0</sub>/π<sub>0.5</sub> flow-matching VLA</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.08877 · FlowDAgger · 요약 생성 2026-07-14
+  </footer>
+</div>
+</body>
+</html>

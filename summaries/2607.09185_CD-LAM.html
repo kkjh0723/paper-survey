@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CD-LAM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · World Model · Latent Action</span>
+    <h1>CD-LAM: Causally Debiased Latent Action Model for Embodied Action Conditioned World Models</h1>
+    <p class="authors">Yufan Wei, Kun Zhou, Lingjun Mao 외 · Biwei Huang (교신) · arXiv:2607.09185</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.09185" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.09185" target="_blank">PDF</a>
+      <span>arXiv:2607.09185</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Model</span>
+      <span class="t">Latent Action</span>
+      <span class="t">Causal Debiasing</span>
+      <span class="t">ACWM</span>
+      <span class="t">Robot Adaptation</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 10일 · 백본 2B / 14B ACWM · 96× H100</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Latent Action Model(LAM)이 배경·미접촉 물체 같은 <b>행동과 무관한 시각 요인</b>과 실제 행동 동역학을 얽어버리는 문제(=action-irrelevant bias)를 인과적으로 분리하는 3단계 파인튜닝 프레임워크. <b>SAM3 전경 마스크 기반 embodiment 재구성 + 12-way primitive 대조학습 + zero-transition 캘리브레이션</b>으로 2B·14B 두 스케일 ACWM에서 latent action rollout FDCE를 <span class="win">42% / 26%</span> 개선하고, 로봇 행동 적응을 <span class="win">12× 더 적은 업데이트</span>로 baseline 수준에 도달시킨다. 총 1,000 스텝의 가벼운 파인튜닝만 필요.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Action-Conditioned World Model(ACWM)은 embodied 행동에 조건화해 미래 관찰을 시뮬레이션한다. 이때 latent action은 대개 다음 프레임 재구성(reconstruction)만으로 학습되는데, 이 방식은 <b>배경 변화, 카메라 이동, 미접촉 물체의 우연한 상관</b>까지 latent action에 encode해버린다. 결과적으로 (i) 제로 액션 입력에도 embodiment가 계속 움직이는 <b>잔여 모션(residual motion)</b>이 발생하고, (ii) 카메라가 흔들리기만 해도 latent 반응이 크게 튀는 <b>공변량 편향</b>이 나타나며, (iii) 두 궤적 간 target-action 전이 시 <b>action following</b>이 무너진다. 저자들은 이 세 병증을 정량화하는 진단 지표를 새로 정의하고, 이를 최소화하는 인과적 debiasing 목적함수를 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Action-irrelevant bias의 정량 진단</b> — zero-transition response, 카메라 shift 반응(수평·수직), shortcut leakage를 측정하는 새 지표를 정의하고 baseline(DreamDojo)에서 심각한 편향을 실증(표 I).</li>
+      <li><b>CD-LAM: 3단계 인과 debiasing 파이프라인</b> — Stage 1(LAM debiasing, 1,000 스텝) → Stage 2(ACWM 재학습, 2,000 스텝) → Stage 3(로봇 액션 → debiased latent 매핑 MLP). SAM3 전경 마스크 기반 embodiment-centric 재구성, 12-way primitive 대조학습, zero-transition 캘리브레이션을 함께 사용.</li>
+      <li><b>스케일 & 적응 효율 검증</b> — 2B / 14B 두 스케일에서 latent action rollout FDCE 42% / 26% 개선, PSNR 동시 상승. 로봇 액션 적응 단계에서 <b>3k–6k 스텝만으로 baseline 50k 스텝 수준</b>에 도달(12× 효율).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3단계 파이프라인</h3>
+    <p><b>Stage 1 — LAM Debiasing:</b> 사전학습된 DreamDojo LAM을 세 가지 목적으로 파인튜닝. (a) <b>embodiment-centric reconstruction</b>: SAM3로 팔·손·조작물 전경 마스크를 얻고 픽셀 MSE에 α<sub>fg</sub> ≫ α<sub>bg</sub> 가중. (b) <b>action-centric contrastive</b>: 궤적을 12개 coarse primitive(예: 좌/우/상/하/파지 등)로 라벨링해 softplus loss로 <i>같은 primitive → 끌어당김, 다른 primitive → 밀어냄</i>. (c) <b>latent space calibration</b>: free-bit KL + <b>zero-transition anchoring</b> (프레임이 그대로인 클립의 latent 노름이 일반 전이의 m<sub>zero</sub>·RMS 이하가 되도록 제약).</p>
+
+    <h3>Stage 2 — ACWM 재학습</h3>
+    <p>debiased LAM이 만든 latent action으로 2B / 14B ACWM을 2,000 스텝 파인튜닝. 조건화 형식은 원본과 동일하게 유지되어 downstream 인터페이스가 바뀌지 않는다.</p>
+
+    <h3>Stage 3 — Robot Action Adaptation</h3>
+    <p>실제 로봇 액션(관절/그리퍼)을 debiased latent space에 매핑하는 가벼운 MLP bridge만 학습. 이 단계에서 <b>baseline은 50k 스텝 필요</b>했던 반면 CD-LAM은 <b>3k–6k 스텝</b>이면 동일 수준을 넘어선다.</p>
+
+    <h3>주요 하이퍼파라미터 & 인프라</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>EgoDex (egocentric human manipulation, unlabeled) — Stage 1–2</div>
+      <div>Stage 3 데이터</div><div>AgiBot (real robot manipulation with action labels)</div>
+      <div>평가 셋</div><div>held-out EgoDex 300 clips + AgiBot 300 clips</div>
+      <div>하드웨어</div><div>96× NVIDIA H100</div>
+      <div>배치</div><div>LAM 파인튜닝 32 · 2B ACWM 12 · 14B ACWM 2</div>
+      <div>핵심 지표</div><div><b>FDCE</b> (Foreground Displacement Chamfer Error, CoWTracker 기반 전경 궤적 Chamfer 픽셀거리) + PSNR</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Table I — LAM 진단 (낮을수록 좋음)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>DreamDojo</th><th>CD-LAM</th></tr></thead>
+      <tbody>
+        <tr><td>Zero-transition median response</td><td>0.527</td><td class="win">0.043</td></tr>
+        <tr><td>Horizontal camera-shift</td><td>0.555</td><td class="win">0.156</td></tr>
+        <tr><td>Vertical camera-shift</td><td>0.545</td><td class="win">0.110</td></tr>
+        <tr><td>Shortcut leakage</td><td>0.151</td><td class="win">0.014</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">네 진단 지표 모두 3–12× 감소 — latent 공간에서 배경/카메라 잡음이 실제로 분리됨.</p>
+
+    <h3>Table II — Latent Action Rollouts (스케일별)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>2B Baseline</th><th>2B CD-LAM</th><th>14B Baseline</th><th>14B CD-LAM</th></tr></thead>
+      <tbody>
+        <tr><td>FDCE ↓</td><td>34.00</td><td class="win">19.63</td><td>40.29</td><td class="win">29.87</td></tr>
+        <tr><td>PSNR ↑</td><td>20.88</td><td class="win">24.29</td><td>21.04</td><td class="win">23.18</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">FDCE 2B −42%, 14B −26%. PSNR도 동반 상승(재구성 손실 없이 debias 성공).</p>
+
+    <h3>Table III — Robot Action Adaptation</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>2B Baseline</th><th>2B CD-LAM</th><th>14B Baseline</th><th>14B CD-LAM</th></tr></thead>
+      <tbody>
+        <tr><td>FDCE mean ↓</td><td>12.63</td><td class="win">8.24</td><td>11.11</td><td class="win">7.73</td></tr>
+        <tr><td>FDCE median ↓</td><td>8.15</td><td class="win">6.75</td><td>8.98</td><td class="win">5.99</td></tr>
+        <tr><td>PSNR ↑</td><td>19.85</td><td class="win">20.60</td><td>20.01</td><td class="win">21.01</td></tr>
+        <tr><td>Zero-action residual motion ↓</td><td>10.71</td><td class="win">5.03</td><td>9.36</td><td class="win">2.18</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">14B에서 zero-action 잔여 모션이 <b>9.36 → 2.18</b>로 76% 감소 — embodiment가 "가만히 있으라"는 신호에 실제로 정지.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (표 IV·V)</h2>
+    <ul>
+      <li><b>Debiasing 데이터 스케일 (2B, 표 IV):</b> baseline 12.63 → 1h 8.91 → 100h 8.24 → 1000h 7.97 FDCE. <b>1시간 규모만으로도 큰 이득</b>, 100h 이후 saturate.</li>
+      <li><b>Embodiment 가중 제거:</b> FDCE +1.17 px 악화. 전경 강조가 없으면 배경 재구성에 힘이 쏠려 다시 편향 유입.</li>
+      <li><b>Contrastive 제거:</b> FDCE +1.84 px 악화 — 세 목적함수 중 <b>가장 큰 기여</b>.</li>
+      <li><b>Zero-transition 캘리브레이션 제거:</b> 카메라 shift 반응이 <b>4.8–6.3× 폭증</b>. "가만히 있음"을 명시적으로 anchor하는 항이 공변량 편향 억제의 핵심.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.09185/x1.png" alt="CD-LAM 3단계 파이프라인 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — CD-LAM Overview.</b> Stage 1(LAM debiasing) → Stage 2(ACWM 재학습) → Stage 3(로봇 액션 어댑터). downstream 조건화 형식은 그대로 유지된다. (출처: arXiv:2607.09185)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.09185/x5.png" alt="로봇 액션 적응 효율 (Figure 8)" loading="lazy">
+      <figcaption><b>Figure 8 — Adaptation Efficiency.</b> CD-LAM이 baseline 50k 스텝 성능을 3k–6k 스텝만에 달성하는 12× 효율 곡선. (출처: arXiv:2607.09185)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table I (진단 지표)</b> — CD-LAM의 근거. zero-transition·camera shift·shortcut leakage 네 편향이 모두 3–12× 억제됨을 보여, "무엇을 정말 지웠는가"를 정량화한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.09185" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.09185" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.09185" target="_blank">HTML</a></li>
+      <li>연관 논문: DreamDojo(baseline ACWM) · VLA-JEPA(누출 없는 latent action) · V-JEPA2(target encoder)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.09185 · CD-LAM · 요약 생성 2026-07-14
+  </footer>
+</div>
+</body>
+</html>

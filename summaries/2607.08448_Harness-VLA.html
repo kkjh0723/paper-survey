@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Harness VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Agentic · Frozen VLA</span>
+    <h1>Harness VLA: Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents</h1>
+    <p class="authors">Yixian Zhang, Huanming Zhang, Feng Gao, Xiao Li 외 · Yu Wang · Wenbo Ding · Chao Yu · arXiv:2607.08448</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.08448" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.08448" target="_blank">PDF</a>
+      <a href="https://harnessvla.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.08448</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Frozen VLA</span>
+      <span class="t">Agentic Planner</span>
+      <span class="t">Primitive Library</span>
+      <span class="t">Memory</span>
+      <span class="t">Manipulation</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 9일 · 백본 π<sub>0.5</sub>-SFT / RLDX-1 / LingBot-VLA (모두 동결) · 플래너: Codex, Claude Code</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사전학습된 VLA를 <b>파인튜닝하지 않고</b>, LLM 기반 <b>에이전틱 플래너 + 고정 primitive 라이브러리(analytic 6개 + <code>vla_act</code> 1개) + 성공/실패 메모리</b>로 감싸 컨택트-리치 조작을 <b>재시도 가능한 primitive</b>로 노출한다. 플래너가 언어 지시·씬 그라운딩을 담당하고 VLA는 국소 접촉 구간만 맡음. LIBERO-Pro <span class="win">+38.6pt</span>, RoboCasa365 composite-seen <span class="win">+25.4pt</span>, RoboTwin C2R <span class="win">58.4%</span> zero-shot — 모두 <b>VLA 가중치 수정 없이</b> 달성.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>범용 VLA는 언어 이해와 컨택트-리치 조작을 하나의 신경망 안에 얽어 넣는다. 결과적으로 (i) 지시가 조금만 바뀌면 학습된 궤적을 재생하는 경향(instruction rigidity), (ii) 물체 배치·시야 변화에 취약, (iii) 실패 시 재시도가 아니라 그대로 실패 모드로 수렴. 저자들은 VLA를 <b>다시 학습</b>하는 대신 그 위에 <b>메모리와 primitive를 얹은 에이전트 레이어</b>를 두어, 계획·재그라운딩은 심볼릭 수준에서, 접촉 실행은 프로즌 VLA에게 각각 맡기는 분리 구조를 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Frozen VLA를 primitive로 노출.</b> <code>vla_act(target, staging)</code>이라는 재시도 가능한 접촉 primitive를 <code>move_to · rotate_wrist · set_gripper · release · navigate_to</code> 같은 analytic primitive와 나란히 배치, 플래너가 순서·파라미터를 결정.</li>
+      <li><b>메모리 이중화.</b> Task Specific Memory는 성공한 명령 트레이스(JSONL), Global Memory는 재사용 가능한 성공 규칙과 실패 모델을 저장. 파라미터화된 공간 쿼리로 재사용성을 확보.</li>
+      <li><b>퍼터베이션 강건성.</b> LIBERO-Pro의 지시 재지정·위치 스왑에서 이전 SOTA(RATS 43.8%) 대비 <b>+38.6pt</b>, RoboCasa365 composite-seen에서 RLDX-1 대비 <b>+25.4pt</b>, RoboTwin C2R zero-shot에서 <b>58.4%</b> — 모두 VLA 가중치 수정 없이 달성.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Primitive Library</h3>
+    <p>6개 analytic primitive(<code>move_to, rotate_wrist, set_gripper, release, navigate_to</code> + 모바일 베이스 확장 시 총 9개) + 1개 학습형 <code>vla_act</code>. Analytic primitive는 perception-conditioned staging·transport·release를 결정론적으로 처리하고, <code>vla_act</code>는 국소 컨택트-리치 구간(파지·삽입·꼬집기 등)만 담당.</p>
+
+    <h3>Agentic Planner</h3>
+    <p>Codex 또는 Claude Code(CC)를 LLM 플래너로 사용. REPL-style harness가 턴 기반으로 (관찰 → 플래너 결정 → primitive 실행 → 결과) 루프를 돌린다. 부트스트래핑 단계에서는 reset primitive와 넉넉한 예산이 허용되나, 평가 단계에서는 reset 없이 엄격한 스텝 예산으로만 평가.</p>
+
+    <h3>Memory Modules</h3>
+    <div class="kv">
+      <div>Task Specific Memory</div><div>성공 실행 트레이스(JSONL) — 동일 태스크 내 few-shot 예시로 활용</div>
+      <div>Global Memory</div><div>재사용 가능한 성공 규칙 + 실패 모델(교차 태스크)</div>
+      <div>쿼리 형식</div><div>parameterized spatial queries — 물체 위치·방향 조건으로 검색 가능</div>
+    </div>
+
+    <h3>Adaptive VLA Invocation</h3>
+    <p>플래너가 <code>vla_act</code>를 호출하고 실패 시 재그라운딩·재스테이징 후 재호출. 태스크당 최대 호출 수를 늘려도 초기 몇 번 후 성공률이 saturate하는 <b>sparse-but-effective retry</b> 패턴을 보인다(그림 4).</p>
+
+    <h3>백본 & 실험 세팅</h3>
+    <div class="kv">
+      <div>LIBERO / LIBERO-Pro</div><div>RLinf의 π<sub>0.5</sub>-SFT 체크포인트(pi05_libero130_fullshot), 동결</div>
+      <div>RoboCasa365</div><div>RLDX-1 프로즌 체크포인트</div>
+      <div>RoboTwin C2R</div><div>LingBot-VLA 사후학습 체크포인트</div>
+      <div>플래너</div><div>Codex · Claude Code(CC) 두 가지 인스턴스</div>
+      <div>환경</div><div>MuJoCo 물리 시뮬레이션</div>
+      <div>규모</div><div>LIBERO 400 trials · LIBERO-Pro 800 trials · 다중 시드</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO (Task Specific Memory few-shot)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Spatial</th><th>Object</th><th>Goal</th><th>LIBERO-10</th><th>Overall</th></tr></thead>
+      <tbody>
+        <tr><td><b>Harness VLA (CC)</b></td><td>97.0</td><td class="win">100.0</td><td>94.0</td><td class="win">93.0</td><td class="win">96.0</td></tr>
+        <tr><td>RLinf (SOTA VLA)</td><td class="win">99.0</td><td>96.0</td><td class="win">97.0</td><td>89.0</td><td>95.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">기본 LIBERO에서 이미 SOTA에 근접(+0.7pt) — Harness가 성능을 <b>깎지 않는다</b>는 것부터 확인.</p>
+
+    <h3>LIBERO-Pro — 지시 재지정 / 위치 스왑 (핵심 주장)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Overall</th></tr></thead>
+      <tbody>
+        <tr><td><b>Harness VLA (CC)</b></td><td class="win">82.4</td></tr>
+        <tr><td>Harness VLA (Codex)</td><td>72.1</td></tr>
+        <tr><td>RLinf</td><td>50.0</td></tr>
+        <tr><td>RATS (이전 SOTA)</td><td>43.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">RATS 대비 <b>+38.6pt</b>. 플래너의 재그라운딩이 VLA의 지시 경직성을 우회.</p>
+
+    <h3>RoboCasa365 (가정 주방 태스크)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Atomic-Seen</th><th>Composite-Seen</th><th>Composite-Unseen</th></tr></thead>
+      <tbody>
+        <tr><td><b>Harness VLA (Codex)</b></td><td class="win">91.6</td><td class="win">56.3</td><td>13.8</td></tr>
+        <tr><td>Harness VLA (CC)</td><td>79.4</td><td>47.5</td><td class="win">15.0</td></tr>
+        <tr><td>RLDX-1</td><td>60.0</td><td>21.3</td><td>5.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Composite-Seen에서 <b>+25.4pt</b>. 다단계 태스크에서 플래너의 이득이 크다.</p>
+
+    <h3>RoboTwin C2R (Zero-shot Clean-to-Randomized)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Success Rate</th></tr></thead>
+      <tbody>
+        <tr><td><b>Harness VLA (CC)</b></td><td class="win">58.4</td></tr>
+        <tr><td>Harness VLA (Codex)</td><td>58.0</td></tr>
+        <tr><td>LingBot-VLA (frozen baseline)</td><td>50.4</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>LIBERO-Pro Goal (Zero-shot, Task Specific Memory 없음)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Setting</th><th>Harness VLA (CC)</th><th>Cap-X</th></tr></thead>
+      <tbody>
+        <tr><td>Position-Swap</td><td class="win">31.0</td><td>25.6</td></tr>
+        <tr><td>Task-Redirection</td><td class="win">79.0</td><td>16.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Task-Redirection에서 4.7× — 메모리 없이도 플래너의 재그라운딩 이득 자체가 크다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / 핵심 발견</h2>
+    <ul>
+      <li><b>Semantic Re-grounding.</b> 플래너가 언어 해석·씬 바인딩을 심볼 수준에서 담당하면, 프로즌 VLA는 접촉 실행에만 집중하고도 지시-조건 행동을 회복한다.</li>
+      <li><b>Adaptive VLA Invocation.</b> 초기 몇 번의 <code>vla_act</code> 호출로 성공률이 급상승 후 saturate — 재시도가 <b>희소하지만 효과적</b>. 무한 호출이 필요하지 않다.</li>
+      <li><b>Analytic Decomposition.</b> 태스크 완료 원인(그림 6): LIBERO 변형은 대부분 analytic primitive(파랑)로 마무리, RoboCasa365·양팔 태스크는 VLA primitive(주황)로 마무리. 벤치마크 특성에 따라 분업이 자동 최적화됨.</li>
+      <li><b>플래너 인스턴스 비교.</b> Codex와 Claude Code는 상보적 — LIBERO-Pro는 CC가 우세(82.4 vs 72.1), RoboCasa365 Composite-Seen은 Codex가 우세(56.3 vs 47.5).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 1 (System overview)</b> — 에이전틱 플래너가 primitive 라이브러리에서 선택, <code>vla_act</code>가 컨택트-리치 국면을 담당. Task Specific Memory는 성공 트레이스, Global Memory는 재사용 규칙·실패 모델을 저장. (원문 캡션: "The frozen VLA is exposed as <code>vla_act</code> for contact-rich behaviors, while analytic primitives handle perception-conditioned staging and transport.")
+    </div>
+    <div class="callout">
+      <b>Figure 3 (LIBERO-Pro 터미널 상태)</b> — 지시 재지정·위치 스왑에서 RLinf는 원래 궤적을 그대로 재생하고 실패, Harness VLA는 플래너가 대상을 재그라운딩해 재시도.
+    </div>
+    <div class="callout">
+      <b>Figure 4 (Adaptive Invocation)</b> — 최대 <code>vla_act</code> 호출 수 대비 누적 성공률 곡선. 세 벤치마크 모두 초반 급상승 후 saturate — sparse retry가 강건성의 핵심.
+    </div>
+    <div class="callout">
+      <b>Figure 6 (Attribution bars)</b> — 성공 rollout을 최종 완료 primitive 유형(analytic vs VLA)으로 분해. 벤치마크 성격에 따라 자연스러운 분업 형성.
+    </div>
+    <p class="note">Harness VLA는 arXiv HTML 렌더링이 아직 제공되지 않아 figure 이미지는 임베드하지 않고 캡션으로만 정리. 원문 PDF와 프로젝트 페이지에서 확인 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.08448" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.08448" target="_blank">PDF</a></li>
+      <li><a href="https://harnessvla.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li>관련 기법: RLinf (π<sub>0.5</sub>-SFT) · RATS · RLDX-1 · LingBot-VLA · Cap-X</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.08448 · Harness VLA · 요약 생성 2026-07-14
+  </footer>
+</div>
+</body>
+</html>
