@@ -2,9 +2,16 @@
   "likes": {
     "Aspire": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2304.13705",
+      "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA / ACT)",
+      "arxiv_url": "https://arxiv.org/abs/2304.13705",
+      "added": "2026-07-15"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
-  "updated": "2026-07-14"
+  "updated": "2026-07-15"
 }
