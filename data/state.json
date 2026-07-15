@@ -8,6 +8,12 @@
       "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA / ACT)",
       "arxiv_url": "https://arxiv.org/abs/2304.13705",
       "added": "2026-07-15"
+    },
+    {
+      "id": "2405.12213",
+      "title": "Octo: An Open-Source Generalist Robot Policy",
+      "arxiv_url": "https://arxiv.org/abs/2405.12213",
+      "added": "2026-07-15"
     }
   ],
   "dismissed": [
