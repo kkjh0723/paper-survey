@@ -246,7 +246,27 @@
 
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
-    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+    <details class="qa-item">
+      <summary class="q">Q1. 이 논문에서 "메타학습"은 무슨 의미야? 쉽게 설명해줘.</summary>
+      <p>여기서 메타학습은 <b>"테스트타임 학습(TTT)을 잘 하도록 미리 배워두는 것"</b>(learning to learn)이다. 파라미터를 둘로 나눈다 — <b>느린(slow)</b> 파라미터(WAM 본체·TTT 투영 θ<sub>K,V,Q,O</sub>·fast weight 초기값 W<sub>init</sub>)와 <b>빠른(fast)</b> 파라미터(각 TTT 층의 W). 배포 때는 fast weight만 인간 영상으로 몇 스텝 적응시켜 로봇 행동을 조향한다. 메타학습(§3.2)은 "그렇게 인간 영상으로 fast weight를 적응시켰을 때 로봇이 잘 하도록" slow 파라미터를 최적화한다.</p>
+      <p><b>비유:</b> 시험장(배포)에서의 벼락치기(fast weight 적응)를 잘하도록, 평소에 "벼락치기 잘 먹히는 체질"(slow 파라미터)을 길러두는 것. 리스트의 <a href="2606.15631_RECAP.html">RECAP</a>(테스트타임에 새 태스크 흡수)·<a href="2606.21406_DGAC.html">DGAC</a>(인간 영상으로 자기개선)와 같은 축이지만, WAM-TTT는 <b>적응 과정 자체를 메타로 학습</b>한다는 점이 다르다.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q2. key-value 메모리 재구성 손실(ℒ_KVM)이 뭐야?</summary>
+      <p>fast-weight MLP <b>f<sub>W</sub></b>가 인간 시연 정보를 파라미터 안에 <b>"key→value 검색기"</b>로 채워 넣도록 만드는 자기지도 손실이다(Eq. 3). 인간 영상 특징에서 뽑은 Key <b>K<sub>h</sub></b>와 Value <b>V<sub>h</sub></b>에 대해, f<sub>W</sub>(K<sub>h</sub>)가 V<sub>h</sub>를 복원하도록 L2로 학습한다: <b>ℒ<sub>KVM</sub> = (1/·)‖f<sub>W</sub>(K<sub>h</sub>) − V<sub>h</sub>‖²</b>. 즉 "인간 키를 넣으면 인간 값이 나오게" MLP를 채우는 것.</p>
+      <p>배포 때 로봇이 자기 쿼리 Q<sub>r</sub>를 넣으면 <b>attention처럼 관련 인간 값을 검색</b>한다(f<sub>W</sub>*(Q<sub>r</sub>) ∝ Σ(k<sub>i</sub><sup>T</sup>Q<sub>r</sub>)v<sub>i</sub>, Appendix A의 linear-attention witness). <b>핵심:</b> 이 손실은 <b>인간 영상 쪽 정보만</b> 쓰므로(액션 라벨 불필요), 메타학습 때 쓰던 신호를 <b>배포에서도 그대로</b> 쓸 수 있다("both terms in ℒ_adapt depend only on the action-free human side", §3.2). <a href="2602.10098_VLA-JEPA.html">VLA-JEPA</a>가 픽셀 대신 latent로 신호를 만든 것과 같은 "라벨 없는 인간 영상에서 감독을 얻는다"는 결.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q3. 내부 루프와 외부 루프는 어떻게 학습해? 한 번에? 나눠서?</summary>
+      <p><b>전체 파이프라인은 3단계로 "나눠서"</b>, 그 중 메타학습 단계 안에서 내·외부 루프가 "함께(중첩)" 돈다.</p>
+      <ul>
+        <li><b>내부 루프(inner):</b> fast weight <b>W만</b> 인간 쪽 손실 ℒ<sub>adapt</sub>(= 인간 visual-grounding + λ·ℒ<sub>KVM</sub>, Eq. 4)로 <b>N스텝 SGD</b> 적응(Eq. 5). 적응한 W는 예제마다 버리고 W<sub>init</sub>에서 재시작.</li>
+        <li><b>외부 루프(outer):</b> slow 파라미터(WAM·TTT 투영·W<sub>init</sub>)를 <b>로봇 손실 ℒ<sub>meta</sub></b>(로봇 멀티태스크 diffusion, Eq. 6)로 최적화. 내부 업데이트를 <b>통과해 역전파</b>(Spatial-TTT).</li>
+      </ul>
+      <p><b>3단계:</b> (1) 사전학습 LDA(로봇 데이터, 이후 동결) → (2) <b>메타학습</b>(인간-로봇 쌍으로 내부·외부 이중최적화, Algorithm 1) → (3) <b>테스트타임</b>(slow 전부 동결, 인간 영상으로 fast weight만 적응, 외부 루프 없음). 즉 내부·외부는 (2)단계에서 <b>동시에 맞물려</b> 돌지만, 사전학습→메타학습→배포는 <b>분리된 단계</b>다.</p>
+    </details>
   </section>
 
   <footer>
