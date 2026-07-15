@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ALOHA / ACT — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Imitation Learning · Bimanual</span>
+    <h1>Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA / ACT)</h1>
+    <p class="authors">Tony Z. Zhao, Vikash Kumar, Sergey Levine, Chelsea Finn · Stanford · UC Berkeley · Meta</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2304.13705" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2304.13705" target="_blank">PDF</a>
+      <a href="https://tonyzhaozh.github.io/aloha/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/tonyzhaozh/act" target="_blank">ACT GitHub</a>
+      <span>arXiv:2304.13705</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Bimanual Manipulation</span>
+      <span class="t">Action Chunking</span>
+      <span class="t">Transformer</span>
+      <span class="t">CVAE</span>
+      <span class="t">Imitation Learning</span>
+    </div>
+    <p class="meta">제출: 2023년 4월 23일 · 하드웨어 $20k ALOHA (2× ViperX 6-DoF + 2× WidowX 리더) · Robotics: Science and Systems 2023</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>$20k 저가·저정밀 양팔 원격조작 플랫폼(ALOHA)</b>과, k-스텝 <b>action chunk</b>를 CVAE-Transformer로 예측하고 배포 시 시간 축으로 앙상블(temporal ensemble)하는 <b>Action Chunking with Transformers(ACT)</b>. 10분(≈50 demos) 시연만으로 케이블 타이 끼우기·건전지 삽입 등 <b>정밀 양팔 6개 실세계 태스크에서 80–90% 성공률</b>을 달성해, "저가 하드웨어 + 학습"이 고정밀 매니퓰레이션에 가능함을 보인 대표작. 이후 등장한 대다수 실로봇 VLA(π0, OpenVLA 등)가 참조하는 <span class="win">ACT baseline</span>의 원류.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Fine manipulation(케이블 정렬, 삽입, 뚜껑 열기 등)은 <b>mm 단위 정밀도</b>와 미세한 힘 조율이 필요해 전통적으로 수십만$의 고정밀 로봇·센서가 요구되었다. 저자들은 반대로 묻는다: <b>저정밀·저가 하드웨어에서 학습만으로 이 격차를 메울 수 있는가?</b> 저가 로봇은 관절 백래시·리피터빌리티가 큰 대신, 정책이 <b>closed-loop</b>로 오류를 관측·보정할 수 있다면 문제 해결이 가능하다는 가설이다.</p>
+    <p>기존 BC(behavior cloning)는 (1) <b>복합 오차 누적(compounding error)</b>, (2) 시연자의 <b>비-마르코프(non-Markovian) 잠재 의도</b>, (3) 저정밀 하드웨어의 <b>고빈도 지터</b> 때문에 fine task에서 실패한다. ACT는 이 세 문제를 <b>action chunking + temporal ensembling + CVAE latent</b>로 동시에 겨냥한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>ALOHA 플랫폼</b> — 총 $20k 미만으로 조립 가능한 저가 양팔 원격조작 시스템(리더–팔로워 4팔, ViperX/WidowX). 도면·CAD·부품 리스트를 오픈해 커뮤니티가 재현 가능.</li>
+      <li><b>Action Chunking with Transformers (ACT)</b> — 한 번의 예측으로 <b>k=100 스텝의 action chunk</b>를 CVAE로 생성해 오차 누적을 억제하고, 배포 시 여러 시점의 chunk 예측을 지수가중 평균(<b>temporal ensembling</b>)해 저정밀 지터를 완만하게 만든다.</li>
+      <li><b>정밀 양팔 6태스크 검증</b> — 10분(50 demos) 시연만으로 80–90% 성공률. BC-MLP·BeT·RT-1·VINN 등 강력한 최신 imitation baseline들을 큰 폭으로 능가. 이후 fine-manipulation IL의 사실상 표준 백본이 됨.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>ALOHA 하드웨어</h3>
+    <p><b>리더–팔로워 원격조작 (leader-follower)</b> 구조. 사용자는 2개의 저가 6-DoF WidowX(leader)를 손으로 잡고 움직이면, joint mapping을 통해 2개의 ViperX(follower, 각 7-DoF: 6관절+그리퍼)가 그대로 따라 움직인다. 관측은 <b>4개의 로지텍 웹캠</b>(front, top, 좌·우 wrist)에서 480×640 RGB, 50Hz. 팔 상태(14차원: 좌·우 6관절+그리퍼)도 관측에 포함. 총 부품비 $20k 미만.</p>
+
+    <h3>ACT: CVAE-Transformer 정책</h3>
+    <p>ACT는 <b>Conditional VAE</b>로 정책을 학습한다. 인코더(BERT-style transformer)는 학습 시에만 사용되며, 관측 없이 <b>k=100</b> 미래 액션 시퀀스를 입력으로 받아 시연자의 스타일 잠재변수 <b>z</b>(가우시안)를 인코딩. 디코더(Transformer encoder-decoder)는 현재 카메라 4장(각 ResNet-18로 인코딩)·관절 상태·z를 입력으로 받아 100-스텝 action chunk를 <b>한 번에</b> 예측한다.</p>
+    <div class="callout">
+      학습 손실: L = L1(â, a) + β·KL(q(z|a)‖N(0,I)). 배포 시 z=0으로 고정(모드 평균), 매 t마다 새 chunk를 예측하지만 각 스텝의 실제 실행 액션은 <b>과거 chunk들의 t번째 예측을 지수가중 평균</b>: â_t = Σ w_i · â_t^(from t-i), w_i ∝ exp(-m·i). 이 <b>temporal ensembling</b>이 저가 하드웨어의 고빈도 지터·outlier 액션을 부드럽게 만든다.
+    </div>
+
+    <h3>학습 세팅</h3>
+    <div class="kv">
+      <div>시연 방식</div><div>리더–팔로워 텔레옵으로 각 태스크당 약 50 데모 (10분 분량)</div>
+      <div>chunk 길이 k</div><div>기본 100 (약 2초 분량, 50Hz)</div>
+      <div>백본</div><div>4× ResNet-18 (뷰별 인코더, 개별 학습) + Transformer enc-dec (약 80M param)</div>
+      <div>학습 시간</div><div>단일 A5000/RTX 3090 GPU, 태스크당 약 5시간</div>
+      <div>제어 주파수</div><div>50 Hz (학습 데이터 및 배포)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>6 실세계 양팔 태스크 (성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>BC-ConvMLP</th><th>BeT</th><th>RT-1</th><th>VINN</th><th><b>ACT</b></th></tr></thead>
+      <tbody>
+        <tr><td>Slide Ziploc</td><td>32</td><td>4</td><td>72</td><td>0</td><td class="win">88</td></tr>
+        <tr><td>Slot Battery</td><td>16</td><td>0</td><td>0</td><td>4</td><td class="win">96</td></tr>
+        <tr><td>Open Cup</td><td>4</td><td>0</td><td>4</td><td>4</td><td class="win">84</td></tr>
+        <tr><td>Thread Velcro</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="win">20</td></tr>
+        <tr><td>Prep Tape</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="win">64</td></tr>
+        <tr><td>Put on Shoe</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="win">92</td></tr>
+        <tr><td><b>평균</b></td><td>9</td><td>1</td><td>13</td><td>1</td><td class="win"><b>74</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">각 태스크 25 trial. 대다수 baseline은 fine task(면봉 얹기 Thread Velcro, 신발 신기 등)에서 0%인 반면 ACT만 유의미한 성공. 단순 태스크(Battery/Shoe)에선 90%+.</p>
+
+    <h3>시뮬레이션 (양팔 큐브 전달, 페그 삽입 등)</h3>
+    <p>Fine manipulation 시뮬 태스크 8종에서 ACT 평균 <b>44%</b>(scripted-policy 데이터로 30 demos 학습 기준) vs BeT 15%, VINN 6%. 데이터가 매우 적을 때(≤50 demos)의 우위가 특히 큼.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Action chunking (k=100):</b> k=1(비-chunk) 대비 성공률 <b>+30~40pt</b>. k=200으로 더 늘리면 예측 어려워져 소폭 하락. 저자들은 k=100(≈2초)이 sweet spot이라 보고.</li>
+      <li><b>Temporal ensemble:</b> 없이도 chunking만으로 개선되지만, 지터가 큰 태스크(Ziploc/Cup)에서 <b>+15pt</b> 추가 상승. 배포 시 계산 오버헤드 없음(단순 지수평균).</li>
+      <li><b>CVAE latent z:</b> 시연자마다 다른 스타일(속도·경로)이 모드 평균되어 실패하는 문제를 완화. z 없이 결정론 회귀만 쓰면 fine task 성공률 <b>절반 이하</b>로 하락.</li>
+      <li><b>시연 수 스케일링:</b> 10 demos → 20 → 50으로 늘릴수록 지속 향상, 50 demos 이후 완만한 plateau. "10분 데이터로도 학습 가능"이 핵심 실용 메시지.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 1 — ALOHA 하드웨어 & 태스크 예시.</b> 4팔(2 leader + 2 follower) 리더–팔로워 원격조작 리그와 6개 정밀 양팔 태스크(Slide Ziploc, Slot Battery, Open Cup, Thread Velcro, Prep Tape, Put on Shoe)를 시각화. arXiv HTML이 제공되지 않아 이미지 임베드는 생략, 프로젝트 페이지(tonyzhaozh.github.io/aloha) 참고.
+    </div>
+    <div class="callout">
+      <b>Figure 3 — ACT 아키텍처.</b> 학습 시 CVAE 인코더가 action chunk와 관절 상태로부터 z를 인코딩하고, Transformer enc-dec 디코더가 4-view ResNet-18 특징 + 관절 + z로부터 <b>k=100 스텝 action chunk</b>를 한 번에 예측. 배포 시 z=0으로 두고 매 스텝 새 chunk를 뽑아 <b>temporal ensembling</b>으로 실행.
+    </div>
+    <div class="callout">
+      <b>Table 1 — Baseline 비교 (실세계 6태스크 성공률).</b> ACT 74%(평균) vs BC-ConvMLP 9%, BeT 1%, RT-1 13%, VINN 1%. Fine task에서 다른 IL 방법은 대부분 0%, ACT가 유일하게 유의미한 성공.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2304.13705" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2304.13705" target="_blank">PDF</a></li>
+      <li><a href="https://tonyzhaozh.github.io/aloha/" target="_blank">프로젝트 페이지 (시연 영상·CAD·부품 리스트)</a></li>
+      <li><a href="https://github.com/tonyzhaozh/act" target="_blank">ACT 학습·평가 코드</a></li>
+      <li><a href="https://github.com/tonyzhaozh/aloha" target="_blank">ALOHA 하드웨어·펌웨어 저장소</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2304.13705 · ALOHA / ACT · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>

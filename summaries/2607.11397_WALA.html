@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>WALA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Latent Action · Video Pretraining</span>
+    <h1>WALA: Learning Executable Latent Actions from Action-Labeled Demonstrations and Action-Free Videos</h1>
+    <p class="authors">Jiahao Liu, Zhongpu Xia, Shuai Tian, Huangrui Li, Yuhang Zheng 외 · Dongbin Zhao (교신)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.11397" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.11397" target="_blank">PDF</a>
+      <a href="https://liujiahao2077.github.io/WALA.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.11397</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Latent Action</span>
+      <span class="t">DINOv3</span>
+      <span class="t">Depth Prediction</span>
+      <span class="t">World Model</span>
+      <span class="t">Qwen3-VL</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 13일 · 백본 Qwen3-VL-4B · 지도: DINOv3 + Depth · 추론 ~70ms (RTX 4090)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>액션 라벨이 있는 로봇 데모와 <b>액션-프리 영상</b>을 동시에 활용해 <b>실행 가능한(latent) action</b>을 학습. 픽셀 복원 대신 <b>DINOv3 semantic feature + 깊이</b>로 미래를 예측(<b>semantic-geometric LAM</b>)해 외형 편향을 피하고, 로봇 action 예측·latent 정렬·미래 dynamics 예측을 <b>공동 지도</b>. RoboCasa-GR1-Tabletop <span class="win">75.2%</span> SOTA(+21pt vs base), RoboTwin 2.0 random <b>92.8%</b>, 실기 4태스크에서 <b>200 로봇 데모 + 400 인간 영상</b>이 200 데모 단독(75.0)을 넘어 <b>83.3%</b>. 배포 시엔 인코더/월드모델 없이 VLM+action head만 필요(~70ms).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>범용 로봇 정책은 <b>action-labeled 데모</b>에 의존하지만 이는 비싸고 확장이 어렵다. 반면 인간 영상 같은 <b>action-free 영상</b>은 풍부하나 실행 가능한 액션이 없다. LAPA·GR00T·VLA-JEPA 등 최근 latent-action 접근은 (a) 픽셀 복원 손실이 외형에 편향, (b) 카메라 잡음 모션 증폭, (c) 정보 누출 등의 문제를 안고 있다. WALA는 <b>DINOv3 의미 특징 + 깊이</b>라는 <b>semantic-geometric 목표</b>로 이를 완화하고, <b>로봇 action 지도 + latent 정렬 + 미래 dynamics 예측</b>을 하나의 목표에 통합한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Semantic-Geometric LAM</b> — 픽셀 복원 대신 <b>DINOv3 patch feature와 dense depth</b>를 미래 예측 지도로 사용. 외형/조명/배경에 편향되지 않고 <b>물체 정체·기하 변화</b>를 학습.</li>
+      <li><b>Action-labeled + action-free 통합 학습</b> — 하나의 정책에 (i) 로봇 action loss, (ii) latent action target-matching, (iii) 미래 dynamics loss를 <b>공동 부과</b>. 인간 영상만으로도 dynamics·정렬 항이 살아있음.</li>
+      <li><b>SOTA + 데이터 효율</b> — RoboCasa 75.2%, RoboTwin 2.0 random 92.8%. <b>50 로봇 데모 + 400 인간 영상</b>이 200 로봇 데모 단독과 유사(74.2 vs 75.0), <b>4× 데이터 효율</b>. Unseen bread pick-and-place에서 인간 영상만으로 <b>9/10 zero-shot</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 & LAM 구성</h3>
+    <p>VLM 백본은 <b>Qwen3-VL-4B</b>. 학습 시 latent-action model(LAM)은:</p>
+    <ul>
+      <li><b>Encoder</b>: 프로즌 <b>DINOv3</b>(RGB patch semantic) + 프로즌 depth estimator(기하)로 관측을 두 스트림으로 인코딩, 두 스트림을 융합해 <b>latent action</b> 토큰을 생성.</li>
+      <li><b>Decoder (latent world model)</b>: 학습 가능. 미래 프레임의 DINOv3 feature와 dense depth를 예측 — 이 이중 예측이 <b>정책 학습 중 world-model 지도</b>가 됨.</li>
+    </ul>
+
+    <h3>정책 학습 목적함수</h3>
+    <div class="callout">
+      <b>ℒ_policy = m·ℒ_act + λ_align·ℒ_align + λ_wm·ℒ_wm</b>
+      <ul>
+        <li><b>ℒ_act</b>: 액션-라벨 데이터에서 로봇 action 직접 지도.</li>
+        <li><b>ℒ_align</b>: 생성 latent action을 프로즌 LAM encoder 타깃과 정렬 (L1 + cosine).</li>
+        <li><b>ℒ_wm</b>: 트레이너블 LAM decoder로 미래 <b>DINOv3 + depth</b> 예측 손실.</li>
+      </ul>
+      LAM 사전학습 자체도 <b>DINOv3 예측(L1+cosine) + depth 예측(L1 + gradient consistency)</b>로 진행.
+    </div>
+
+    <h3>데이터 구성</h3>
+    <div class="kv">
+      <div>Action-labeled</div><div>RoboTwin 2.0, RoboCasa-GR1-Tabletop 시뮬 데모 + 실기</div>
+      <div>Action-free 영상</div><div>EgoDex, RoboCOIN, RoboTwin 영상 (인간 egocentric grasping·manipulation 다수)</div>
+      <div>배포 필요</div><div>VLM + action head <b>만</b> (LAM encoder/decoder·DINOv3·depth 전부 학습 전용) → 추론 ~70ms/스텝 (RTX 4090)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboCasa-GR1-Tabletop</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Avg SR (%)</th><th>Gain vs Base</th></tr></thead>
+      <tbody>
+        <tr><td>Base policy</td><td>54.2</td><td>—</td></tr>
+        <tr><td>+ Semantic-Geometric World (LAM 미사용)</td><td>67.8</td><td>+13.6</td></tr>
+        <tr><td>+ LAM Pretrain + Semantic 예측</td><td>68.8</td><td>+14.6</td></tr>
+        <tr><td>+ Semantic-Geometric World Model</td><td>71.0</td><td>+16.8</td></tr>
+        <tr><td>+ LAM Target Only</td><td>67.6</td><td>+13.4</td></tr>
+        <tr><td><b>Full WALA</b></td><td class="win">75.2</td><td class="win">+21.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">24 태스크 평균, 태스크별 41–98% 범위. Full WALA가 새 SOTA.</p>
+
+    <h3>RoboTwin 2.0</h3>
+    <ul>
+      <li>Clean: <b>90.6%</b></li>
+      <li>Random: <b>92.8%</b> (비교군 중 최고)</li>
+    </ul>
+
+    <h3>실기 (Table IV) — 4 태스크</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>학습 데이터</th><th>4-task 평균 (%)</th></tr></thead>
+      <tbody>
+        <tr><td>200 robot demos</td><td>75.0</td></tr>
+        <tr><td><b>200 robot + 400 human videos</b></td><td class="win">83.3</td></tr>
+        <tr><td>50 robot + 400 human videos</td><td>74.2 (≈200 demo 단독)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>50 로봇 데모</b>에 <b>400 인간 영상</b>을 더하면 <b>4× 로봇 데모 단독</b>과 유사한 성능 — action-free 영상 활용의 실증.</p>
+
+    <h3>Zero-shot 전이</h3>
+    <p>미지의 bread pick-and-place 태스크에서 인간 영상만으로 학습한 latent가 <b>9/10 trial</b> 성공 — LAM이 학습한 latent 액션이 실제 로봇 실행으로 전달 가능함을 시사.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (핵심 관찰)</h2>
+    <ul>
+      <li><b>Semantic vs Geometric:</b> DINOv3 semantic 예측만도 +14.6pt, 여기에 depth 지도 추가 시 +16.8pt. <b>둘의 결합</b>이 개별보다 우위 — 의미와 기하가 상호보완적.</li>
+      <li><b>LAM 사전학습 + world-model 결합:</b> 사전학습만 하면 +14.6, 사전학습 + 정책 학습 중 world model 유지 시 +21.0 — <b>사전학습 표현을 그대로 동결하기보다 정책과 함께 dynamics 지도를 유지</b>하는 편이 더 좋다.</li>
+      <li><b>Latent target only(정렬만) vs full:</b> 67.6 → 75.2 (+7.6pt). action loss·align·world model의 <b>3항 공동 지도</b>가 필수.</li>
+      <li><b>Attention 시각화 (Fig. attention):</b> RGB 인코더 주의가 <b>손·조작 물체·접촉 영역</b>에 집중 — 정적 배경보다 action-related 변화에 정렬.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.11397/wala_lam.png" alt="WALA LAM 사전학습 개요" loading="lazy">
+      <figcaption><b>Figure 1 — LAM 사전학습.</b> 프로즌 DINOv3 + depth로부터 인코딩된 latent action이 <b>semantic + geometric 미래 예측</b>을 통해 학습됨. 픽셀 복원 없이 물체 정체·기하 변화만 예측하도록 강제. (출처: arXiv:2607.11397)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.11397/wala_policy.png" alt="WALA 정책 학습 아키텍처" loading="lazy">
+      <figcaption><b>Figure 2 — 정책 학습.</b> Qwen3-VL이 latent action과 로봇 action을 함께 예측, 프로즌 encoder가 target 제공, 트레이너블 decoder가 world model 지도 제공. 배포 시 encoder/decoder 제거. (출처: arXiv:2607.11397)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.11397/wala_attention_vis.png" alt="Attention 시각화 (Fig 6)" loading="lazy">
+      <figcaption><b>Figure 6 — Attention 시각화.</b> RGB 인코더의 attention이 손·조작 물체·접촉 영역에 집중 — 정적 배경보다 <b>action-relevant 변화</b>에 정렬됨을 보이는 정성 증거. (출처: arXiv:2607.11397)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table Ablation (RoboCasa 75.2).</b> Base 54.2 → LAM+Semantic 예측 68.8 → +Depth 71.0 → Full WALA 75.2. semantic·geometric·LAM·world-model 4요소가 각각 유의미하게 기여함을 정량 확인.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.11397" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.11397" target="_blank">PDF</a></li>
+      <li><a href="https://liujiahao2077.github.io/WALA.github.io" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="2602.10098_VLA-JEPA.html">관련 논문: VLA-JEPA (2602.10098)</a> — 유사한 latent-action + JEPA 계열</li>
+      <li><a href="2410.11758_LAPA.html">관련 논문: LAPA (2410.11758)</a> — 영상 기반 latent action 사전학습의 원류</li>
+      <li><a href="2607.09185_CD-LAM.html">관련 논문: CD-LAM (2607.09185)</a> — Latent action의 인과 편향 제거</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.11397 · WALA · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>

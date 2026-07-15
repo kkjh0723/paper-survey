@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Octo — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Generalist Policy · Open Source</span>
+    <h1>Octo: An Open-Source Generalist Robot Policy</h1>
+    <p class="authors">Dibya Ghosh, Homer Walke, Karl Pertsch, Kevin Black, Oier Mees, Sudeep Dasari 외 (Octo Model Team) · Chelsea Finn, Sergey Levine · UC Berkeley · Stanford · Carnegie Mellon · Google DeepMind</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2405.12213" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2405.12213" target="_blank">PDF</a>
+      <a href="https://octo-models.github.io" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/octo-models/octo" target="_blank">GitHub</a>
+      <span>arXiv:2405.12213</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Generalist Policy</span>
+      <span class="t">Open X-Embodiment</span>
+      <span class="t">Diffusion Head</span>
+      <span class="t">Block-wise Attention</span>
+      <span class="t">Finetuning</span>
+    </div>
+    <p class="meta">제출: 2024년 5월 20일 (v2 5월 26일) · 백본 Transformer (Octo-Small 27M / Octo-Base 93M) · 학습 TPU v4-128, 14h</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>Open X-Embodiment 25개 데이터셋 800k 궤적</b>으로 사전학습한 최초의 대규모 <b>오픈소스 generalist 로봇 정책</b>. 언어·목표이미지 조건, <b>diffusion action head</b>, 그리고 관찰·태스크 토큰과 분리된 <b>readout token + block-wise attention</b>으로 새 로봇에 카메라·힘 센서·관절 액션 등이 추가돼도 <b>재학습 없이 finetuning</b>이 가능. 9개 로봇에서 zero-shot·finetune 모두 검증(<b>WidowX 72%·RT-1 47%·UR5 40%</b> zero-shot; finetune 6도메인 평균 <span class="win">72%</span> vs from-scratch 20%). 이후 등장한 OpenVLA·π0·InternVLA의 <b>공개 baseline·데이터 조합·아키텍처 참조 표준</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Robotics는 언어·비전 도메인처럼 "<b>사전학습된 generalist 모델을 finetune</b>"하는 워크플로가 정착되지 않았다. RT-1/RT-2 등 대규모 정책이 존재하지만 <b>비공개 checkpoint</b>이거나 특정 관찰/액션 스펙에 하드코딩되어 <b>새 로봇·새 센서·새 액션 공간에 유연하게 붙일 수 없다</b>. Octo는 (a) 대규모·다양한 로봇 데이터 사전학습, (b) 관찰·태스크·액션 공간을 <b>모듈식으로 교체 가능</b>한 아키텍처, (c) <b>완전 공개(가중치·데이터 파이프라인·학습 스크립트)</b>의 세 축으로 이 갭을 메운다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>최초의 대규모 오픈소스 generalist policy</b> — 800k 궤적으로 사전학습된 Octo-Small(27M)/Octo-Base(93M) 가중치를 CC BY 4.0으로 공개. JAX/PyTorch 데이터 로더까지 완비.</li>
+      <li><b>모듈식 finetuning 아키텍처</b> — <b>readout token + block-wise masked attention</b>으로 새 관측(예: F/T 센서)·새 액션 헤드(joint pos, bimanual)를 <b>재사전학습 없이</b> 붙일 수 있음. 9개 이질적 로봇에 5시간 GPU finetuning으로 즉시 배포.</li>
+      <li><b>Diffusion action head + 광범위 ablation</b> — 연속 액션은 <b>DDPM diffusion head</b>가 MSE(35%)·discretization(18%) 대비 압도적(<b>83%</b>). ViT vs ResNet, 25-mix vs 11-mix vs 단일 로봇 데이터, 모델 크기(Tiny/Small/Base) 등 <b>후속 VLA 설계 결정에 참고되는 최초의 체계적 어블레이션</b>을 제공.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>아키텍처</h3>
+    <p>Octo는 <b>단일 트랜스포머 백본</b>이 세 종류의 토큰을 처리한다: (1) 언어 토큰(<b>t5-base</b> 111M로 인코딩된 16개 임베딩), (2) 관측 토큰(third-person 이미지는 <b>16×16 patch → 256 tokens</b>, wrist cam은 64 tokens; 얕은 CNN 임베딩), (3) <b>readout tokens</b>. readout은 다른 토큰들에 <b>attend만 하고 attend 받지 않음</b> — 관측/태스크 토큰의 표현을 오염시키지 않으면서 임의의 action head를 갈아 끼울 수 있다.</p>
+
+    <h3>Block-wise masked attention</h3>
+    <p>토큰들을 [task, obs_t=0, obs_t=1, ..., obs_t=H, readout_t=0, ..., readout_t=H] 블록으로 배열하고, <b>블록 단위 causal mask</b>를 적용. 이 구조 덕에 학습 후 다음이 모두 가능:
+    <ul>
+      <li>새 관측 modality(F/T, 깊이, wrist 추가) 삽입 → 해당 obs 블록 하나만 추가.</li>
+      <li>새 action head 교체 → readout 블록 뒤에 새 head만 연결.</li>
+      <li>언어→goal-image 조건 변경 → task 블록만 교체(사전학습 시 <b>random conditioning dropout</b>으로 이미 둘 다 지원).</li>
+    </ul>
+    </p>
+
+    <h3>Diffusion Action Head</h3>
+    <p>액션 공간이 연속(7-DoF EEF Δpose 등)일 때, readout 표현을 조건으로 하는 <b>DDPM 확산 헤드</b>(3-layer MLP, hidden 256, <b>cosine 노이즈 스케줄, 20 denoising step</b>)로 <b>action chunk(H스텝)</b>를 생성. 트랜스포머 forward는 1회만, 반복 denoising은 lightweight head 안에서만 일어나 실시간 제어 가능.</p>
+
+    <h3>사전학습 데이터 & 학습</h3>
+    <div class="kv">
+      <div>데이터셋</div><div>Open X-Embodiment 중 <b>25개 큐레이션</b>, 총 <b>800k 궤적</b>. 상위 3종 각 17% (Fractal, Kuka, Bridge), 22종 롱테일</div>
+      <div>큐레이션</div><div>비-이미지 데이터·비-delta EEF·중복/저해상도 제외; 다양성 데이터에 가중치 2배</div>
+      <div>사전학습 태스크</div><div>hindsight goal-image + 언어 지시 (<b>random dropout</b>으로 둘 중 하나 또는 둘 다 학습)</div>
+      <div>모델 크기</div><div>Tiny 10M / Small 27M / <b>Base 93M</b>. Base는 12층·hidden 768·MLP 3072·12-head</div>
+      <div>사전학습 자원</div><div>TPU v4-128, batch 2048, 300k steps, 약 <b>14시간</b></div>
+      <div>Finetuning</div><div>단일 <b>A5000 GPU 5시간</b>, ~100 trajectory, 도메인별 동일 하이퍼</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Zero-shot 성능 (Figure 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Robot</th><th>Condition</th><th>Octo-Base</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>WidowX</td><td>Language</td><td class="win">72%</td><td>RT-1-X +29pt 평균</td></tr>
+        <tr><td>WidowX</td><td>Goal-image</td><td class="win">97%</td><td></td></tr>
+        <tr><td>RT-1 Robot</td><td>Language</td><td>47%</td><td>사전학습 도메인 중</td></tr>
+        <tr><td>UR5</td><td>Language</td><td>40%</td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Zero-shot 평균 RT-1-X 대비 +29pt. RT-2-X(55B, 비공개)와 비슷한 수준을 <b>93M 오픈 파라미터</b>로 달성.</p>
+
+    <h3>Finetuning (Table I) — 6개 새 도메인, ~100 데모</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Domain</th><th>새로운 특성</th><th>Octo Ft</th><th>From-scratch</th><th>VC-1</th></tr></thead>
+      <tbody>
+        <tr><td>Berkeley Insertion</td><td>F/T 관측 추가</td><td class="win">70%</td><td>—</td><td>—</td></tr>
+        <tr><td>Stanford Coffee</td><td>새 물체·환경</td><td class="win">75%</td><td>—</td><td>—</td></tr>
+        <tr><td>Berkeley Coke</td><td>새 embodiment</td><td class="win">100%</td><td>—</td><td>—</td></tr>
+        <tr><td>Berkeley Bimanual</td><td>joint-position action</td><td class="win">80%</td><td>—</td><td>—</td></tr>
+        <tr><td><b>6도메인 평균</b></td><td>—</td><td class="win">72%</td><td>20%</td><td>15%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">모두 <b>단일 A5000, 5시간, 도메인별 동일 하이퍼</b>. Octo finetuning이 from-scratch 대비 <b>+52pt</b>, 비전 사전학습 표현(VC-1) 대비 <b>+57pt</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+
+    <h3>Table II — 설계 어블레이션 (aggregate score)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Ablation 축</th><th>변형</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">Action head</td><td class="win">Diffusion (default)</td><td class="win">83</td></tr>
+        <tr><td>MSE (continuous)</td><td>35</td></tr>
+        <tr><td>Discrete tokenization</td><td>18</td></tr>
+        <tr><td rowspan="2">Vision encoder</td><td class="win">ViT patch (default)</td><td class="win">83</td></tr>
+        <tr><td>ResNet-50 + Transformer</td><td>70</td></tr>
+        <tr><td rowspan="3">Pretrain data</td><td class="win">25-dataset OXE mix</td><td class="win">83</td></tr>
+        <tr><td>RT-X 11-dataset mix</td><td>60</td></tr>
+        <tr><td>Single robot (Bridge only)</td><td>43</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>확산 헤드가 압도적:</b> continuous MSE(35), discrete(18) 대비 <b>diffusion 83</b> — Octo의 가장 강한 실용 결론. 이후 대다수 VLA(π0의 flow-matching 등)가 이 방향을 계승.</li>
+      <li><b>데이터 다양성 > 데이터 양:</b> 25-mix(83) > 11-mix(60) > single(43). 단일 로봇 데이터로는 finetuning 이득이 급락.</li>
+      <li><b>모델 스케일:</b> Tiny < Small < Base로 monotonic 향상, Base가 대부분 태스크에서 최고.</li>
+      <li><b>한계:</b> wrist cam은 사전학습 데이터 중 27%만 포함 → wrist 활용 태스크에서 상대적 약세. 언어 label도 56%만 있어 language > goal-image 조건이 살짝 열세.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2405.12213/x1.png" alt="Octo 개요 및 9개 finetune 로봇 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Octo 개요 & finetune 커버리지.</b> Open X-Embodiment 800k 궤적으로 사전학습한 단일 트랜스포머 정책이 9개 서로 다른 로봇(WidowX, Franka, UR5, xArm, 양팔 등)에 finetuning으로 이식되는 그림. (출처: arXiv:2405.12213)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2405.12213/x2.png" alt="Octo 아키텍처 및 block-wise attention (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Octo 아키텍처.</b> [task tokens] + [obs tokens per timestep] + [readout tokens]을 블록 단위 causal mask로 처리하고, readout에 <b>diffusion action head</b>를 붙여 action chunk를 생성. 새 obs/action 붙이려면 블록/헤드만 추가하면 되는 구조. (출처: arXiv:2405.12213)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table II — 어블레이션.</b> Diffusion head 83 vs MSE 35 vs Discrete 18. 25-dataset mix 83 vs 11-mix 60 vs single-robot 43. 후속 VLA 설계에서 <b>확산 head + 다양성 우선 데이터 큐레이션</b>이라는 결론의 근거로 자주 인용됨.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2405.12213" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2405.12213" target="_blank">PDF</a></li>
+      <li><a href="https://octo-models.github.io" target="_blank">프로젝트 페이지 · 데모</a></li>
+      <li><a href="https://github.com/octo-models/octo" target="_blank">GitHub (JAX 학습·finetuning 스크립트)</a></li>
+      <li><a href="https://huggingface.co/rail-berkeley" target="_blank">HuggingFace 모델 (Octo-Small/Base 체크포인트)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2405.12213 · Octo · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>

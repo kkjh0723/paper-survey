@@ -2,44 +2,7 @@
   "likes": {
     "Aspire": 1
   },
-  "queue": [
-    {
-      "id": "2304.13705",
-      "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA / ACT)",
-      "arxiv_url": "https://arxiv.org/abs/2304.13705",
-      "added": "2026-07-15"
-    },
-    {
-      "id": "2405.12213",
-      "title": "Octo: An Open-Source Generalist Robot Policy",
-      "arxiv_url": "https://arxiv.org/abs/2405.12213",
-      "added": "2026-07-15"
-    },
-    {
-      "id": "2212.06817",
-      "title": "RT-1: Robotics Transformer for Real-World Control at Scale",
-      "arxiv_url": "https://arxiv.org/abs/2212.06817",
-      "added": "2026-07-15"
-    },
-    {
-      "id": "2607.11498",
-      "title": "See like a Robot: Robot-Centric Pointmaps for Vision-Language-Action Models",
-      "arxiv_url": "https://arxiv.org/abs/2607.11498",
-      "added": "2026-07-15"
-    },
-    {
-      "id": "2607.08354",
-      "title": "SkillPlug: Unsupervised Skill Mining for Few-Shot Adaptation in Robotic Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2607.08354",
-      "added": "2026-07-15"
-    },
-    {
-      "id": "2607.11397",
-      "title": "WALA: Learning Executable Latent Actions from Action-Labeled Demonstrations and Action-Free Videos",
-      "arxiv_url": "https://arxiv.org/abs/2607.11397",
-      "added": "2026-07-15"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978"
   ],

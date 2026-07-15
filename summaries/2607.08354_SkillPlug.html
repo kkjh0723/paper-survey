@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SkillPlug — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Skill Discovery · Few-Shot</span>
+    <h1>SkillPlug: Unsupervised Skill Mining for Few-Shot Adaptation in Robotic Manipulation</h1>
+    <p class="authors">Zi-han Ding, Ziwei Wang · IEEE RA-L 2026 (vol. 11, no. 8, pp. 9511-9518)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.08354" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.08354" target="_blank">PDF</a>
+      <a href="https://doi.org/10.1109/LRA.2026.3703998" target="_blank">RA-L DOI</a>
+      <span>arXiv:2607.08354</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Skill Mining</span>
+      <span class="t">Few-Shot Adaptation</span>
+      <span class="t">Plug-in Framework</span>
+      <span class="t">ACT / OpenVLA-OFT</span>
+      <span class="t">Manipulation</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 9일 · 백본 ACT · OpenVLA-OFT · 실기 Galaxea A1 · 8p 8fig</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 visuomotor 정책에 <b>플러그인</b>으로 붙는 <b>학습형 skill 라이브러리 + skill router</b>. 4가지 자기지도 손실(재구성·KL·행동 정렬·skill disentanglement)로 <b>K개의 재사용 가능한 원자 스킬</b>을 마이닝, few-shot 적응 시 <b>백본과 skill은 고정, router와 action head만 미세조정</b>. LIBERO 5-demo cross-suite 전이 <b>+38.3pt</b>(Object 47.4→79.6, Goal 45.4→83.2, Spatial 42.0→86.8), 실기 5-demo <b>+28.5pt</b>. K=4가 실용 sweet spot이며 skill이 "gripper 열기" 같은 <b>씬-불변 원시 행동</b>을 실제로 획득함을 정성적으로 검증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>End-to-end visuomotor 정책(ACT, OpenVLA-OFT, DP)은 강력하지만 <b>행동 재사용 구조가 명시적이지 않다</b>. 새 태스크에 소수 데모(5~10개)만 있을 때 전체를 미세조정하면 (1) 표현이 소량 데이터에 과적합되고, (2) 이전 태스크 능력이 무너지며, (3) 조합적 제어(pick+place, approach+release)를 학습 데이터 밖으로 확장하기 어렵다. 저자들은 <b>"백본은 그대로 두고, 학습된 skill을 재조합해 새 태스크에 빠르게 적응"</b>이라는 플러그인 접근을 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Plug-in skill 프레임워크</b> — ACT, OpenVLA-OFT 등 다양한 backbone에 <b>동일 방식</b>으로 부착 가능한 skill library + interactor + router.</li>
+      <li><b>4-loss 자기지도 skill 마이닝</b> — 재구성(BC) + KL + <b>Behavioral Skill Alignment</b>(mutual information 최대화) + <b>Skill Disentanglement</b>(중복 억제)의 조합으로 <b>씬에 불변한, 서로 다른</b> 스킬을 학습.</li>
+      <li><b>초효율 few-shot 적응 프로토콜</b> — 백본 encoder·skill 임베딩 <b>동결</b>, router + action head만 미세조정. LIBERO 5-demo에서 <b>+38.3pt</b> (Object/Goal/Spatial 평균), 실기 5-demo에서 <b>+28.5pt</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>구성 요소</h3>
+    <p>기존 정책을 <b>scene-context encoder</b>와 <b>action head</b>로 분해한 뒤 그 사이에 세 모듈을 삽입:</p>
+    <ul>
+      <li><b>Skill Library</b>: 학습 가능한 K개의 continuous embedding {s_k ∈ ℝ^{d_s}}. 태스크 전반에 공유되는 원자 행동의 잠재 표현.</li>
+      <li><b>Skill Interactor</b>: 씬 표현과 각 skill 임베딩 사이의 cross-attention으로 skill-특화 특징 f_k 계산.</li>
+      <li><b>Router</b>: chunk-단위로 K개 skill에 대한 가중치 π(π_1..π_K)을 예측, f = Σ π_k · f_k를 action head에 전달.</li>
+    </ul>
+    <p>추가로 <b>Trajectory-Skill 사후 인코더 q_φ</b>(VAE 스타일)가 학습 시에만 존재해 <b>action 시퀀스</b>만으로 skill 조건을 만든다 — 관측 없이 행동 구조만 보게 함으로써 <b>skill이 시각 편향에 오염되지 않고 행동 기반</b>이 되도록 유도.</p>
+
+    <h3>자기지도 손실 (skill 마이닝)</h3>
+    <div class="callout">
+      <b>ℒ = ℒ_rec + λ_KL·ℒ_KL + λ_BSA·ℒ_BSA + λ_SD·ℒ_SD</b>
+      <ul>
+        <li><b>ℒ_rec</b>: 예측 action chunk의 ℓ₁ BC 손실.</li>
+        <li><b>ℒ_KL</b>: 사후분포에 정보 병목 → trajectory-specific 세부가 skill에 스며드는 것을 억제.</li>
+        <li><b>ℒ_BSA (Behavioral Skill Alignment)</b>: soft-label 분류로 <b>skill ↔ 궤적-레벨 행동</b> 사이의 mutual info 최대화.</li>
+        <li><b>ℒ_SD (Skill Disentanglement)</b>: skill-조건 특징 간 유사도 패널티로 <b>중복 skill</b> 방지.</li>
+      </ul>
+    </div>
+
+    <h3>Few-shot 적응 프로토콜</h3>
+    <div class="kv">
+      <div>동결</div><div>백본 vision/language encoder + skill library {s_k}</div>
+      <div>미세조정</div><div>Router + action head만 (~수 %의 파라미터)</div>
+      <div>데모</div><div>새 태스크당 5~10개</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>DISCOVERSE (7 태스크, ACT + SkillPlug)</h3>
+    <ul>
+      <li>어려운 태스크 multi-task 개선: jujube pick <b>6.7 → 94.0</b>, stack block <b>15.3 → 80.7</b>, block bridge place <b>0.7 → 36.7</b>, drawer open <b>0.0 → 100.0</b>.</li>
+      <li>Few-shot(10-demo) 개선: cuplid cover 0.7→18.7, block place 36→56, jujube place 0→29.3, mouse push 82→87.3.</li>
+    </ul>
+
+    <h3>LIBERO (OpenVLA-OFT + SkillPlug)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Suite</th><th>OpenVLA-OFT</th><th>+SkillPlug (multi-task)</th><th>5-demo cross-suite</th><th>Baseline 5-demo</th></tr></thead>
+      <tbody>
+        <tr><td>Long</td><td>—</td><td>93.5</td><td>—</td><td>—</td></tr>
+        <tr><td>Object</td><td>—</td><td>97.8</td><td class="win">79.6</td><td>47.4</td></tr>
+        <tr><td>Goal</td><td>—</td><td>96.7</td><td class="win">83.2</td><td>45.4</td></tr>
+        <tr><td>Spatial</td><td>—</td><td>95.6</td><td class="win">86.8</td><td>42.0</td></tr>
+        <tr><td><b>5-demo 평균</b></td><td></td><td></td><td class="win"><b>+38.3pt</b></td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">LIBERO-Long을 사전학습으로 잡고 다른 3 suite로 5-demo 전이. Multi-task는 원본에 비해 손실 없이, few-shot에선 <b>거의 두 배</b> 성능.</p>
+
+    <h3>실기 (Galaxea A1 6-DoF, 6+3 태스크)</h3>
+    <ul>
+      <li>Multi-task 6 태스크: 평균 성공 9.7 → <b>15.7</b> (20 trial 중).</li>
+      <li>Few-shot 3 unseen(5-demo): 평균 6 → <b>11.7</b> (+28.5pt). 예: stand cup 3→12, "banana & bread → plate" 4→9.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation</h2>
+
+    <h3>손실 항목 (DISCOVERSE)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Config</th><th>Multi-task</th><th>Few-shot</th></tr></thead>
+      <tbody>
+        <tr><td>Reconstruction only</td><td>63.7</td><td>27.5</td></tr>
+        <tr><td>+ KL</td><td>68.6</td><td>36.0</td></tr>
+        <tr><td>+ Skill Disentanglement</td><td>83.7</td><td>41.0</td></tr>
+        <tr><td><b>+ Behavioral Skill Alignment (Full)</b></td><td class="win">86.1</td><td class="win">47.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Skill 개수 K</h3>
+    <ul>
+      <li>K=2: 76% (skill이 잘 분리되지만 표현력 부족)</li>
+      <li><b>K=4: 88% (sweet spot, 약간의 중복 시작)</b></li>
+      <li>K=6: 90% (성능 plateau, 중복 증가)</li>
+    </ul>
+
+    <h3>정성 분석 (Figure 3–5, 8)</h3>
+    <p>단일 skill 활성이 <b>다양한 시각 문맥에서 일관되게 gripper-open 동작</b>을 유도(씬-불변). 두 skill을 동일 가중치로 섞으면 <b>"gripper-open + forward motion"</b>의 <b>조합 행동</b>이 나타남(compositionality). 실기 pick-place 궤적에서 phase별로 <b>router 활성이 자동 정렬</b>(approach → grip → transport).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.08354/x1.png" alt="SkillPlug teaser (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 티저.</b> 일반 정책은 few-shot 시 재사용 구조 없어 실패, SkillPlug의 skill interactor+router는 이미 학습된 원자 skill을 <b>재조합</b>해 새 태스크로 빠르게 전이. (출처: arXiv:2607.08354)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.08354/x2.png" alt="SkillPlug 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 아키텍처.</b> Skill library + Interactor + Router + trajectory-skill posterior(학습 전용)로 구성. 4가지 자기지도 손실로 skill을 마이닝. 배포 시 posterior 제거, backbone·skill 동결 후 router+head만 미세조정. (출처: arXiv:2607.08354)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Figure 5 (routing dynamics).</b> kiwi-place 에피소드에서 phase-정렬된 skill 활성: Skill 1이 approach, Skill 2가 gripper 동작, Skill 3이 transport를 지배. skill이 <b>해석 가능한 원자 행동</b>임을 시사.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.08354" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.08354" target="_blank">PDF</a></li>
+      <li><a href="https://doi.org/10.1109/LRA.2026.3703998" target="_blank">IEEE RA-L 논문 DOI</a></li>
+      <li><a href="2304.13705_ALOHA.html">관련 논문: ALOHA/ACT (2304.13705)</a> — 기본 백본 중 하나</li>
+      <li><a href="2406.09246_OpenVLA.html">관련 논문: OpenVLA (2406.09246)</a> — OpenVLA-OFT 백본의 뿌리</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.08354 · SkillPlug · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>

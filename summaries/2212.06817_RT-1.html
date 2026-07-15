@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RT-1 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Robotics Transformer · Real-World Scale</span>
+    <h1>RT-1: Robotics Transformer for Real-World Control at Scale</h1>
+    <p class="authors">Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar 외 (51인) · Chelsea Finn · Karol Hausman · Sergey Levine · Google · Everyday Robots</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2212.06817" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2212.06817" target="_blank">PDF</a>
+      <a href="https://robotics-transformer1.github.io" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/google-research/robotics_transformer" target="_blank">GitHub</a>
+      <span>arXiv:2212.06817</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Robotics Transformer</span>
+      <span class="t">FiLM-EfficientNet</span>
+      <span class="t">TokenLearner</span>
+      <span class="t">Action Discretization</span>
+      <span class="t">Cross-Embodiment</span>
+    </div>
+    <p class="meta">제출: 2022년 12월 13일 (v2 2023년 8월) · 35M 파라미터 · 3Hz 실시간 제어 · 13대 로봇 17개월 · RSS 2023</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>13대 Everyday Robots를 17개월간 운용해 130k 데모·744개 언어 지시</b>를 수집하고, <b>FiLM-EfficientNet(언어 조건 이미지 인코더) → TokenLearner(81토큰→8토큰) → 8-layer Transformer</b>로 <b>11차원 액션을 256-bin으로 이산화</b>해 3Hz 실시간 예측. 200+ seen 지시에서 <span class="win">97%</span>, unseen 지시 76%, 방해물 83%·배경 59%. 20+스텝의 SayCan 롱-호라이즌 태스크를 두 실주방에서 67% 성공. VLA/generalist policy 시대의 <b>스케일링 가능성</b>을 처음 실증한 랜드마크 논문.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>비전·NLP·음성은 이미 <b>대규모 사전학습 → 일반화</b> 패러다임이 정착했지만 <b>로봇 정책은 여전히 태스크별 별도 학습</b>이었다. 로봇 데이터는 (1) 수집이 비싸고, (2) 이질적 하드웨어·환경으로 나뉘고, (3) 폭넓은 태스크 커버리지가 어려워, "task-agnostic 대규모 학습 → 일반화"가 검증되지 못했다. RT-1은 이 세 문제를 (a) 17개월 대규모 데이터 수집, (b) 고용량 트랜스포머, (c) 실시간 3Hz 제어에 맞춘 <b>토큰 압축(TokenLearner)</b>으로 정면 돌파한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Robotics Transformer 아키텍처</b> — FiLM-EfficientNet + TokenLearner + 8-layer Transformer로 이미지·언어를 <b>48 토큰</b>으로 압축해 35M 모델이 <b>3Hz 실시간 제어</b> 달성. TokenLearner + token reuse가 각각 2.4×/1.7× 가속.</li>
+      <li><b>대규모 실세계 데이터셋</b> — 13 로봇, 17개월, <b>130k 에피소드</b>, 744 언어 지시(8 skill 카테고리). 이후 Open X-Embodiment의 Fractal 데이터셋 원본이 됨.</li>
+      <li><b>스케일링 & 일반화의 최초 대규모 실증</b> — seen 97% (Gato +32pt), unseen 76%, 방해물 83%. Kuka QT-Opt 데이터·시뮬 데이터 흡수 시 <b>기존 실주방 성능 유지 + bin-picking 일반화 2× 향상</b>. SayCan 결합으로 50-스텝 롱-호라이즌 계획 실행 시연.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>FiLM-EfficientNet 이미지 인코더</h3>
+    <p><b>ImageNet 사전학습 EfficientNet-B3</b>가 6장의 300×300 이미지를 9×9×512 특징 맵으로 인코딩. 각 MBConv 뒤에 <b>identity-초기화 FiLM</b> 레이어를 삽입, <b>Universal Sentence Encoder</b>로 임베딩한 언어 지시를 이미지 특징에 <b>early fusion</b>으로 주입해 태스크-관련 특징이 강조되도록 학습. 이미지 토크나이저 총 16M 파라미터, 뷰당 81 토큰(9×9).</p>
+
+    <h3>TokenLearner (실시간 제어의 핵심)</h3>
+    <p>81 토큰을 element-wise attention으로 <b>8 토큰</b>으로 압축. 6장 이미지 × 8토큰 = 총 48 토큰만 트랜스포머로 흘려보내 트랜스포머 계산량이 극적으로 감소. 이 압축 덕에 8-layer 19M 트랜스포머가 3Hz로 돌아간다.</p>
+
+    <h3>Action 이산화 & 출력</h3>
+    <p><b>11-DoF 액션</b>을 각 차원 <b>256-bin</b>으로 discretize해 language-model 스타일 <b>토큰 예측</b>으로 학습:
+      <ul>
+        <li>arm 7-DoF: x, y, z, roll, pitch, yaw, gripper</li>
+        <li>base 3-DoF: x, y, yaw</li>
+        <li>제어 모드 1-DoF: {arm, base, terminate}</li>
+      </ul>
+      Cross-entropy 손실로 학습, argmax로 디코딩.
+    </p>
+
+    <h3>데이터 수집</h3>
+    <div class="kv">
+      <div>기간·규모</div><div>17개월, 13 로봇, <b>130k 에피소드</b> (teleoperation)</div>
+      <div>언어 지시</div><div>744개 고유 문장, 8 skill: pick(130), move-near(337), place-upright(8), knock-over(8), open/close drawer(6), place-into-receptacle(84), pick-from-receptacle-place-on-counter(162), long-horizon(9)</div>
+      <div>수집 환경</div><div>로봇 classroom + 2개 실제 오피스 주방(kitchen 1, 2)</div>
+      <div>총 파라미터</div><div>35M (이미지 16M + 트랜스포머 19M)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Table 2 — 메인 성능 (성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Seen (200+ 지시)</th><th>Unseen</th><th>Distractors</th><th>Backgrounds</th></tr></thead>
+      <tbody>
+        <tr><td><b>RT-1</b></td><td class="win">97</td><td class="win">76</td><td class="win">83</td><td class="win">59</td></tr>
+        <tr><td>BC-Z</td><td>72</td><td>19</td><td>47</td><td>41</td></tr>
+        <tr><td>Gato</td><td>65</td><td>52</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">RT-1은 seen에서 BC-Z +25pt·Gato +32pt, unseen에서 +24pt, 방해물 강건성 +36pt로 전방위 우위.</p>
+
+    <h3>Table 3 — Realistic 일반화 (레벨별)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>레벨</th><th>변화</th><th>RT-1 성공률</th></tr></thead>
+      <tbody>
+        <tr><td>L1</td><td>새 카운터·조명</td><td class="win">88</td></tr>
+        <tr><td>L2</td><td>+ 새 방해물</td><td>75</td></tr>
+        <tr><td>L3</td><td>+ 극단적 새 환경·물체·위치</td><td>50</td></tr>
+        <tr><td><b>평균</b></td><td></td><td><b>70</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>SayCan 롱-호라이즌 (Table 6)</h3>
+    <p>Kitchen1 <b>67%</b> · Kitchen2 <b>67%</b> 실행 성공률 (10+ 스텝 태스크). 최대 <b>50-step</b> 태스크 실행. RT-1이 low-level 정책일 때 SayCan 전체 파이프라인이 가장 안정.</p>
+
+    <h3>이질 도메인 흡수 (Table 4·5)</h3>
+    <ul>
+      <li><b>시뮬 데이터 흡수:</b> 시뮬 물체 성공률 <b>23% → 87%</b> (+64pt), unseen skill-object 조합 <b>7% → 33%</b>. <b>실세계 성능 저하 없이</b> 이득만 얻음 — 대규모 트랜스포머가 시뮬-리얼 도메인 shift를 흡수함을 보여줌.</li>
+      <li><b>Kuka QT-Opt 다중 로봇 데이터:</b> Kuka bin-picking 일반화 <b>22% → 39%</b> (≈2×), Everyday Robots 원 태스크는 <b>−2%p</b>만 하락. 최초의 <b>cross-embodiment positive transfer</b> 실증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견) — Table 7</h2>
+    <ul>
+      <li><b>데이터 양:</b> 100% 데이터 → unseen 76%, 51% → 52%, 22% → 14%. 데이터 양이 결정적.</li>
+      <li><b>데이터 다양성:</b> 75% 태스크·97% 데이터 유지 시 unseen <b>67%</b>. 저자 결론: <b>"데이터 다양성이 데이터 양보다 더 결정적"</b> — 소량 다양 > 다량 좁음.</li>
+      <li><b>TokenLearner:</b> 제거 시 3Hz 실시간 제어 불가능. 성능 손실 없이 <b>2.4× 속도 향상</b>.</li>
+      <li><b>ImageNet 사전학습:</b> 제거 시 seen 태스크에도 유의미한 성능 하락.</li>
+      <li><b>모델 크기 스케일링:</b> 파라미터 증가 시 unseen·일반화 지속 향상 — 후속 RT-2·Octo·OpenVLA로 이어지는 스케일링 근거.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2212.06817/x1.png" alt="RT-1 개요와 실험 규모 시각화 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — RT-1 개요 & 실험 규모.</b> 13 로봇·17개월·130k 데모·744 지시로 학습한 정책이 새 물체·환경으로 일반화되는 그림. (출처: arXiv:2212.06817)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2212.06817/x2.png" alt="RT-1 아키텍처 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — RT-1 아키텍처.</b> 언어 지시 → Universal Sentence Encoder → <b>FiLM-EfficientNet</b>에 조건 주입 → 9×9×512 특징을 <b>TokenLearner</b>로 8 토큰으로 압축 → 6뷰×8토큰 = 48 토큰을 <b>8-layer Transformer</b>가 처리 → 11-DoF × 256-bin 이산 action 토큰 예측. (출처: arXiv:2212.06817)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 2 (seen/unseen/방해물/배경)</b> — RT-1이 BC-Z·Gato를 큰 폭으로 상회. <b>Table 7 (데이터 양·다양성 ablation)</b>은 이후 대규모 VLA(OpenVLA, π0 등)들이 인용하는 "다양성 우선" 원칙의 근거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2212.06817" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2212.06817" target="_blank">PDF</a></li>
+      <li><a href="https://robotics-transformer1.github.io" target="_blank">프로젝트 페이지 · 시연 영상</a></li>
+      <li><a href="https://github.com/google-research/robotics_transformer" target="_blank">GitHub (모델 코드)</a></li>
+      <li><a href="index.html">관련 논문: Open X-Embodiment (2310.08864)</a> — RT-1 데이터셋(Fractal)이 포함된 대규모 크로스-embodiment 데이터</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2212.06817 · RT-1 · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>

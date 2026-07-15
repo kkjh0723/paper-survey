@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pointmap-VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · 3D Representation</span>
+    <h1>See like a Robot: Robot-Centric Pointmaps for Vision-Language-Action Models</h1>
+    <p class="authors">Byungkun Lee, Dongyoon Hwang, Dongjin Kim, Hojoon Lee, Minho Park, Jaegul Choo · KAIST DAVIAN Lab</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.11498" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.11498" target="_blank">PDF</a>
+      <a href="https://davian-robotics.github.io/pointmap/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.11498</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Pointmap</span>
+      <span class="t">Viewpoint Generalization</span>
+      <span class="t">Robot-Centric</span>
+      <span class="t">π0.5 / SmolVLA</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 13일 · 백본 π0.5 / SmolVLA · 실기 Franka Research 3 + RealSense</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 VLA는 <b>카메라 프레임의 관측 → 로봇 프레임의 액션</b>이라는 좌표계 불일치로 카메라 세팅이 바뀔 때 일반화가 무너진다. <b>Robot-centric pointmap</b> — 각 픽셀에 <b>end-effector 원점의 3D 좌표</b>를 저장한 H×W 이미지 —을 도입하고, 같은 2D 백본을 재사용해 element-wise <b>additive fusion</b>으로 RGB에 얹는다. 아키텍처 변경 최소, RoboCasa에서 π0.5 55.3→<span class="win">62.9</span>, SmolVLA 37.2→<span class="win">41.4</span>, 실기 <b>미지 카메라 뷰에서 55.0→66.7</b>, RGB 대비 뷰포인트 변화 저하폭 −9.6pt vs 오직 <b>−1.8pt</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA는 시각 관측(H×W RGB)에서 로봇 액션을 예측한다. 그러나 <b>액션은 로봇 좌표계</b>에서 정의되는 반면 <b>관측은 카메라 좌표계</b>이므로, 카메라 위치/각도가 학습·배포 사이에 바뀌면 모델이 관측→액션 매핑을 새로 배워야 한다. 다양한 3D 접근(포인트클라우드 + Point Transformer, 카메라 파라미터 조건화 등)이 시도됐지만 2D 사전학습 이점을 잃거나 별도 3D 백본을 요구했다. 이 논문의 문제: <b>"기존 2D VLA의 사전학습을 최대한 유지하면서, 뷰포인트 강건성을 어떻게 얻는가?"</b></p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Robot-centric pointmap 표현</b> — H×W 이미지 그리드 형태로 각 픽셀에 <b>end-effector 원점 좌표</b>의 3D 위치를 저장. 이미지-격자 구조를 그대로 유지해 2D 인코더 재사용 가능.</li>
+      <li><b>최소 아키텍처 수정 통합</b> — RGB 인코더를 복제한 pointmap 인코더가 별도 토큰 생성 없이 <b>element-wise addition</b>으로 RGB 특징에 병합. π0.5, SmolVLA 두 오픈 VLA에 동일 방식으로 삽입.</li>
+      <li><b>뷰포인트 강건성 대규모 검증</b> — RoboCasa 24환경 5카테고리에서 π0.5 +7.6pt·SmolVLA +4.2pt. 실기 미지 카메라에서 pointmap은 <b>−1.8pt</b>만 하락 vs RGB <b>−9.6pt</b>. KYC(카메라 조건)·PointVLA(3D 추가) 등 강한 3D baseline보다도 우위.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Pointmap 구성 (3단계)</h3>
+    <ol>
+      <li><b>Depth → 3D lift:</b> 각 픽셀 (u,v)의 깊이 d와 카메라 내부 K로 카메라 프레임 3D 점 X_c = K⁻¹·(u,v,1)ᵀ·d 계산.</li>
+      <li><b>Robot base로 변환:</b> 카메라-로봇 외부 파라미터 T_cam→base로 X_base = T_cam→base · X_c.</li>
+      <li><b>End-effector 재중심화:</b> X^EE = X_base − p_ee (현재 EE 위치 뺌). "각 픽셀은 EE에서 본 3D 오프셋"이라는 <b>액션-정렬 표현</b>이 됨.</li>
+    </ol>
+
+    <h3>인코더 & 융합</h3>
+    <p>Pointmap 인코더 g_φ는 RGB 인코더 f_θ와 <b>동일 아키텍처, RGB 가중치로 초기화</b>. 두 스트림의 토큰을 element-wise 합으로 병합:
+    </p>
+    <div class="callout">
+      <b>z_c = f_θ(I_c) + g_φ(P^EE_c)</b> — 이미지 격자 구조가 살아있어 (u,v) 대응이 유지되므로 <b>덧셈만으로</b> RGB 특징을 3D 신호로 보강할 수 있다. 별도 3D 브랜치·추가 토큰 없음.
+    </div>
+
+    <h3>VLA 통합</h3>
+    <p>π0.5(≈3B PaliGemma+expert)와 SmolVLA(≈2B) 둘 다에 pointmap 인코더만 추가하고 나머지 백본은 <b>동일 사전학습 가중치 유지</b>. Finetune 시 pointmap 인코더 + 원래 트랜스포머 함께 학습.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboCasa (24환경, 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>평균</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>π0.5 baseline</td><td>55.3</td><td>RGB only</td></tr>
+        <tr><td><b>π0.5 + Pointmap</b></td><td class="win">62.9</td><td><b>+7.6pt</b>, 5 카테고리 모두 향상</td></tr>
+        <tr><td>SmolVLA baseline</td><td>37.2</td><td></td></tr>
+        <tr><td><b>SmolVLA + Pointmap</b></td><td class="win">41.4</td><td>+4.2pt</td></tr>
+        <tr><td>KYC (Know-Your-Camera)</td><td>59.1</td><td>카메라 파라미터 조건화</td></tr>
+        <tr><td>PointVLA</td><td>57.3</td><td>3D 증강 baseline</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>실기 (Franka Research 3, 4태스크 × 3카메라 = 180 데모)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>조건</th><th>π0.5</th><th><b>π0.5 + Pointmap</b></th><th>DP3</th></tr></thead>
+      <tbody>
+        <tr><td>Seen camera</td><td>73.3</td><td class="win">78.3</td><td>63.3</td></tr>
+        <tr><td>Unseen camera</td><td>55.0</td><td class="win">66.7</td><td>48.3</td></tr>
+        <tr><td><b>Δ (Seen−Unseen)</b></td><td>−18.3</td><td class="win"><b>−11.6</b></td><td>−15.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Held-out 카메라 위치에서 pointmap의 우위가 확대 — "뷰포인트 강건성" 핵심 주장의 근거.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation</h2>
+
+    <h3>RQ1 — 사전계산 vs 학습된 변환</h3>
+    <ul>
+      <li>RGB only: 27.9%</li>
+      <li>RGB + Plücker rays + Depth(변환을 정책이 학습): 31.6%</li>
+      <li><b>RGB + Pointmap (사전계산 변환): 34.7%</b> (+3.1pt vs 학습)</li>
+    </ul>
+    <p>결론: <b>로봇-프레임 기하 정보를 미리 계산해 넣는 편이</b> 정책이 스스로 좌표 변환을 학습하기를 기대하는 것보다 낫다.</p>
+
+    <h3>RQ2 — Pointmap vs Point Cloud</h3>
+    <ul>
+      <li>RGB + Point cloud (MLP): 24.2</li>
+      <li>RGB + Point cloud (Point Transformer v3): 32.8</li>
+      <li>RGB + Pointmap (concat): 30.7</li>
+      <li><b>RGB + Pointmap (element-wise add): 34.7</b></li>
+    </ul>
+    <p>이미지-격자 유지 + additive fusion이 <b>가장 강력</b>. 격자 없는 point cloud는 강한 3D 네트워크가 필요.</p>
+
+    <h3>RQ3 — 좌표 원점 (Robot base vs EE)</h3>
+    <ul>
+      <li>Robot base 중심: 뷰변화 시 34.7 → 32.7 (−2.0pt)</li>
+      <li><b>End-effector 중심: 36.9 → 36.6 (−0.3pt)</b></li>
+    </ul>
+    <p>EE 중심은 <b>물체 절대 위치와 무관</b>한 표현이 되어 훨씬 강건.</p>
+
+    <h3>RQ4 — 뷰포인트 다양성 스케일링 (Figure 6)</h3>
+    <ul>
+      <li>변화 없음: RGB 34.5 vs +Pointmap 37.6</li>
+      <li>High 변화: RGB 24.9 vs +Pointmap <b>35.8</b></li>
+      <li>동일 폭 변화에서 RGB <b>−9.6pt</b>, Pointmap <b>−1.8pt</b>만 하락 — 강건성 격차의 정량 근거.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.11498/x1.png" alt="Robot-centric pointmap 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 아이디어 개요.</b> 서로 다른 카메라 뷰가 같은 장면을 관찰하지만, 로봇-프레임 pointmap은 뷰와 무관하게 같은 3D 좌표를 픽셀에 저장 — 관측-액션 매핑이 뷰 변화에 불변하도록 만든다. (출처: arXiv:2607.11498)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.11498/x3.png" alt="Pointmap 생성 파이프라인 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Pointmap 파이프라인.</b> RGB-D → 카메라 프레임 3D lift → T_cam→base로 base 프레임 변환 → EE 위치 빼서 EE 중심 재정렬. 결과는 H×W 이미지 형태로 유지되어 기존 2D 인코더에 그대로 투입. (출처: arXiv:2607.11498)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Figure 6 — 뷰포인트 다양성 스케일링.</b> 학습 데이터의 카메라 뷰포인트 다양성이 증가할수록 RGB baseline은 급격히 저하되지만(−9.6pt), pointmap을 붙이면 저하가 <b>−1.8pt</b>에 그침. "카메라 세팅이 바뀌어도 정책이 안정"의 시각적 증거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.11498" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.11498" target="_blank">PDF</a></li>
+      <li><a href="https://davian-robotics.github.io/pointmap/" target="_blank">프로젝트 페이지 (KAIST DAVIAN)</a></li>
+      <li><a href="2504.16054_pi05.html">관련 논문: π0.5</a> · <a href="2607.04988_InternVLA-A15.html">InternVLA-A1.5</a> — 이 논문의 백본/비교 VLA</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.11498 · Pointmap-VLA · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>
