@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ENPIRE — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Agentic Robotics · Self-Improvement</span>
+    <h1>ENPIRE: Agentic Robot Policy Self-Improvement in the Real World</h1>
+    <p class="authors">Wenli Xiao, Jia Xie, Tonghe Zhang, Letian Fu, Haoru Xue 외 (17인) · NVIDIA · CMU · UC Berkeley</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2606.19980" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2606.19980" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2606.19980" target="_blank">HTML</a>
+      <span>arXiv:2606.19980</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Agentic Robotics</span>
+      <span class="t">Self-Improvement</span>
+      <span class="t">Coding Agent</span>
+      <span class="t">Real-World RL</span>
+      <span class="t">Robot Fleet</span>
+    </div>
+    <p class="meta">제출: 2026년 6월 18일 (v1) · CoRL 2026 · 8× YAM 양팔 로봇 · RTX 5090</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>코딩 에이전트</b>(Codex·Claude Code·Kimi)가 실세계 로봇 정책을 사람 개입 없이 자율 개선하는 harness. <b>2단계</b>로 나눠, (1) 사람 안내로 <b>리셋·리워드·안전제약 환경 API</b>를 한 번 구축하고, (2) 그 뒤 에이전트가 <b>로그 분석 → 가설 → 학습코드 수정 → 롤아웃 → 자동 검증</b> 루프로 성공률을 hill-climb 한다. <b>8대 YAM 양팔 로봇 함대</b>에 N개 에이전트를 붙여 Git으로 학습 recipe를 공유(분산 협업)한다. Pin insertion에서 <span class="win">100%</span>(50연속 성공)로 human-in-the-loop을 앞질렀고, 에이전트를 <b>1→8개</b>로 늘리면 수렴 시간이 <b>1.5시간+ → ~40분</b>으로 단축된다. "physical autoresearch"를 정식 문제로 정의하고 자원 효율 지표(MRU·MTU)를 제안.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>실세계 정교(dexterous) 조작은 <b>데이터 수집·평가/리셋 사이클·알고리즘 엔지니어링</b>에 사람 손이 크게 든다 — 물리적 지능을 스케일업하는 핵심 병목이다. 코딩 에이전트는 디지털 환경의 연구를 자동화하는 데는 성공했지만, 실세계로 옮기면 두 가지가 없다: (1) 닫힌 루프 가설 검증을 위한 <b>실세계 환경 인터페이스</b>(자동 리셋·배포·검증), (2) 자원 효율을 지키며 <b>로봇 함대로 확장</b>하는 메커니즘. 저자들은 이 문제를 <b>physical autoresearch</b>로 정식화한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>physical autoresearch 정식화</b> — 사람이 안내하는 환경 구축과 실세계 피드백 기반의 완전 자율 정책 개선을 결합한 문제로 정의.</li>
+      <li><b>ENPIRE harness</b> — 코딩 에이전트가 재사용 가능한 로봇 툴을 개발하고, tool call로 리워드·리셋을 구성하며, 실로봇에서 학습 알고리즘을 개입 없이 최적화.</li>
+      <li><b>확장성 실증</b> — dexterous 태스크에서 99% 성공, 에이전트 1→8개로 pin insertion 수렴을 1.5시간+에서 ~40분으로 단축.</li>
+      <li><b>효율 지표 제안</b> — Mean Robot Utilization(MRU), Mean Token Utilization(MTU)으로 physical autoresearch의 자원 소비를 벤치마크.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>4개 모듈 (ENPIRE)</h3>
+    <div class="kv">
+      <div>EN — Environment</div><div>자동 리셋·안전 제약·자동 검증을 procedural tool call로 수행</div>
+      <div>PI — Policy Improvement</div><div>정책 개선 시작. 에이전트가 학습 코드(BC·RL·heuristic)를 수정</div>
+      <div>R — Rollout</div><div>단일/다중 실로봇에서 정책을 병렬 평가</div>
+      <div>E — Evolution</div><div>분산 멀티에이전트 협업. Git으로 아이디어 공유·성공 recipe cherry-pick</div>
+    </div>
+
+    <h3>2단계 피드백 루프</h3>
+    <p><b>Stage 1 — 환경 구축(사람 안내, 1회):</b> 에이전트가 <b>SAM3</b>(세그멘테이션)·<b>cuRobo</b>(충돌 계획)·<b>BundleSDF</b>(포즈 추적) 같은 tool call로 리셋 함수를 합성하고, 성공/실패 데모로부터 <b>이진 리워드</b>(시각 정렬·힘 피드백·삽입 깊이)를 설계하며, 하드 안전 제약(관절 한계·접촉 임계)을 구현한다. 이 비용은 1회성으로 이후 태스크에 amortize된다.</p>
+    <p><b>Stage 2 — 자율 정책 개선(온라인):</b> 에이전트는 태스크 설명과 <b>불변 Gym API</b> 환경만 받아, <b>궤적 로깅 → 통계 관찰 → 가설 수립 → 학습 코드 수정 → 롤아웃 → 자동 리워드 검증</b>을 반복한다. heuristic 학습, behavior cloning(BC), online/offline RL, code-as-policy 등 다양한 방법을 탐색한다.</p>
+    <div class="callout">
+      <b>분산 함대 협업(Evolution):</b> N개 에이전트를 N대 로봇에 붙여 N개 학습 recipe를 비동기로 시험하고, Git 브랜치를 병합·cherry-pick 해 성공 recipe를 흡수하고 실패 아이디어는 버린다. 원문: <i>"agents spontaneously cherry-pick, copy, or merge successful training recipes"</i>.
+    </div>
+
+    <h3>테스트한 코딩 에이전트</h3>
+    <div class="kv">
+      <div>Codex</div><div>GPT-5.5 (xhigh)</div>
+      <div>Claude Code</div><div>Opus 4.7</div>
+      <div>Kimi Code</div><div>Kimi K2.6</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>세팅</h3>
+    <div class="kv">
+      <div>하드웨어</div><div>8× YAM 양팔 6-DoF 스테이션 · 각 RTX 5090 · RealSense(top-down + 손목 2)</div>
+      <div>성공 기준</div><div>8회 재시도 내 1 롤아웃 완료(불확실성 하 회복력 반영)</div>
+    </div>
+
+    <h3>태스크별 성공률</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>성공률</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>Pin Insertion (4mm 여유)</td><td class="win">100%</td><td>50연속 성공 · human-in-the-loop 상회</td></tr>
+        <tr><td>Push-T (비파지 정렬)</td><td>95% (sim)</td><td>Claude·Codex ~2시간 내 도달</td></tr>
+        <tr><td>GPU Insertion</td><td>높음</td><td>기존 대비 넓은 domain randomization</td></tr>
+        <tr><td>Zip-tie Cutting</td><td>성공</td><td>VLA + code planning 시너지 발견</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>함대 스케일링 (Pin Insertion 수렴 시간)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>에이전트 수</th><th>수렴 시간</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>1.5시간+</td></tr>
+        <tr><td>4</td><td>~1시간</td></tr>
+        <tr><td>8</td><td class="win">~40분</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">시뮬(RoboCasa365)에서 ENPIRE는 end-to-end VLA(GR00T)와 zero-shot tool use(CaP-X)를 다단계 조작에서 상회. 효율: MTU는 4 에이전트까지 선형이나 8에서 초선형 급증, MRU(로봇당 활용도)는 함대가 커질수록 감소(에이전트가 브랜치 병합에 시간 소모).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>비전 방식(Codex):</b> 네이티브 비전이 가장 빠르고, function-call 비전은 중간(반복 호출 오버헤드), <b>비전 없이도 성공</b> — 에이전트가 텍스트 로그만으로 상태를 추론.</li>
+      <li><b>모델·harness 비교:</b> 단순화 Push-T에서 <b>Codex가 가장 빠르게</b> 해결, Claude Opus 4.7은 이 태스크에선 상대적으로 덜 효율적.</li>
+      <li><b>Idea tree(Pin Insertion):</b> <b>BC regularization이 +10.8pp</b>로 진전의 대부분을 차지, 이후 batch size(1024→512)·controller 보정 등은 +0.9~1.3pp의 미세 개선.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2606.19980/x1.png" alt="ENPIRE 프레임워크 개요 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — ENPIRE 개요.</b> 왼쪽: tool call로 리셋·리워드·관측을 담은 환경(env.py) 구축. 가운데: Human User → Coding Agent → Tool APIs(인식·계획·제어) → 실로봇 환경. 오른쪽: 정책 개선 루프(문헌조사→알고리즘 변형 제안→인프라 최적화→결과 요약). 하단: hill-climb 타임라인(BC regularization +10.8pp 등)과 4개 실세계 태스크. (출처: arXiv:2606.19980)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2606.19980/x2.png" alt="코딩 에이전트 벤치마킹·함대 스케일링 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — physical autoresearch 벤치마킹.</b> Push-T·Pin Insertion에서 프런티어 코딩 에이전트가 자율적으로 정책 성공률을 끌어올리며, 로봇 에이전트 워커 수를 늘릴수록 벽시계 시간이 단축됨을 보인다. (출처: arXiv:2606.19980)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2606.19980" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2606.19980" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2606.19980" target="_blank">HTML 전문</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2606.19980 · ENPIRE · 요약 생성 2026-07-15
+  </footer>
+</div>
+</body>
+</html>
