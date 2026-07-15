@@ -32,6 +32,12 @@
       "title": "SkillPlug: Unsupervised Skill Mining for Few-Shot Adaptation in Robotic Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2607.08354",
       "added": "2026-07-15"
+    },
+    {
+      "id": "2607.11397",
+      "title": "WALA: Learning Executable Latent Actions from Action-Labeled Demonstrations and Action-Free Videos",
+      "arxiv_url": "https://arxiv.org/abs/2607.11397",
+      "added": "2026-07-15"
     }
   ],
   "dismissed": [
