@@ -11,6 +11,12 @@
       "title": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
       "arxiv_url": "https://arxiv.org/abs/2607.10350",
       "added": "2026-07-16"
+    },
+    {
+      "id": "2607.11643",
+      "title": "Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model",
+      "arxiv_url": "https://arxiv.org/abs/2607.11643",
+      "added": "2026-07-16"
     }
   ],
   "dismissed": [
