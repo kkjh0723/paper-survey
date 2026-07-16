@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GR00T N1 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Humanoid · VLA · Foundation Model</span>
+    <h1>GR00T N1: An Open Foundation Model for Generalist Humanoid Robots</h1>
+    <p class="authors">NVIDIA GEAR 팀 (41명 공저) · Project leads: Linxi "Jim" Fan · Yuke Zhu</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2503.14734" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2503.14734" target="_blank">PDF</a>
+      <a href="https://developer.nvidia.com/isaac/gr00t" target="_blank">NVIDIA Isaac GR00T</a>
+      <span>arXiv:2503.14734</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Humanoid</span>
+      <span class="t">VLA</span>
+      <span class="t">Diffusion Transformer</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Data Pyramid</span>
+    </div>
+    <p class="meta">제출: 2025년 3월 18일 (v1), 3월 27일 (v2) · 백본 Eagle-2 VLM 1.34B · 총 2.2B · 학습 1024×H100</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>System-2 <b>Eagle-2 VLM(1.34B, 10Hz)</b> + System-1 <b>flow-matching DiT(120Hz, H=16)</b>의 이중 시스템 오픈소스 휴머노이드 파운데이션 모델. 실로봇·인간 영상·합성(시뮬+뉴럴 트래젝토리)의 <b>Data Pyramid</b>로 사전학습. 3개 시뮬 벤치 평균 <span class="win">45.0</span>(diffusion policy 33.4 대비 +11.6pt), Fourier GR-1 실기 4개 카테고리 평균 <span class="win">76.8</span>(DP 46.4 대비 +30pt), 10% 데이터에서도 <span class="win">42.6</span>로 DP 46.4 근접.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>휴머노이드는 다양한 embodiment·자유도·태스크에 걸쳐 <b>일반화</b>해야 하지만, 로봇 실데이터는 소규모·값비쌈. 저자들은 (a) 시뮬레이션 대량 자동 생성, (b) 인간 영상, (c) 실로봇 데이터를 한 <b>데이터 피라미드</b>로 묶고, (d) 언어 이해 담당의 느린 System-2 VLM과 (e) 반응성 담당의 빠른 System-1 flow-matching Diffusion Transformer를 <b>엔드투엔드 공동학습</b>해 이 문제를 풀고자 한다. 결과물을 <b>오픈소스</b>로 공개해 커뮤니티가 활용할 수 있게 하는 것이 목표.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>이중 시스템 VLA 파운데이션 모델 (총 2.2B)</b> — System-2로 Eagle-2 VLM(1.34B, layer-12 특징, 10Hz)과 System-1으로 flow-matching DiT(H=16 액션 청크, 120Hz, 63.9ms). Embodiment별 state/action MLP로 <b>탁상형·양팔·휴머노이드</b> 모두 지원.</li>
+      <li><b>Data Pyramid: 인간 영상 + 시뮬 + 뉴럴 트래젝토리 + 실기</b> — 인간 데이터(Ego4D 등)에 <b>LAPA 잠재 액션</b>, 실기 데이터엔 GT 액션, 합성 영상엔 <b>IDM 유사 액션</b>을 부여해 이질 데이터에서 공동학습. DexMimicGen 6,500시간 시뮬 궤적 + 뉴럴 트래젝토리 300k(3,600×L40, 1.5일).</li>
+      <li><b>실기 실증 + 오픈소스 공개</b> — Fourier GR-1 실기 4카테고리 평균 76.8, 사전학습만으로 zero-shot bimanual handover 76.6%, novel-container 73.3%. 코드·체크포인트 모두 공개해 후속 연구가 파인튜닝 가능(A6000 단일 GPU).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>이중 시스템 구조 (System 2 + System 1)</h3>
+    <p><b>System 2 (VLM)</b>: NVIDIA <b>Eagle-2</b> VLM(1.34B). 224×224 이미지 → 프레임당 64 토큰, chat 포맷의 언어 지시 함께 입력. 최종층이 아닌 <b>layer 12</b>의 hidden features를 System 1에 넘겨 속도·성능 개선. L40 GPU에서 10Hz.<br>
+    <b>System 1 (DiT)</b>: Flow matching을 쓰는 Diffusion Transformer. 노이즈 낀 액션 청크 A<sub>t</sub><sup>τ</sup>(H=16 시점)와 상태 q<sub>t</sub>, VLM 특징 ϕ<sub>t</sub>를 입력. <b>Cross-attention</b>으로 VLM feature를 조회하고 액션 임베딩 간 self-attention. Embodiment마다 별도 MLP 인코더·디코더로 가변 자유도 지원. 120Hz 동작, 16-액션 청크당 63.9ms.</p>
+
+    <h3>Flow-matching Loss (수식)</h3>
+    <div class="callout">
+      학습 목적은 <b>flow-matching 회귀</b>: <b>ℒ<sub>fm</sub>(θ) = 𝔼<sub>τ</sub>‖V<sub>θ</sub>(ϕ<sub>t</sub>, A<sub>t</sub><sup>τ</sup>, q<sub>t</sub>) − (ε − A<sub>t</sub>)‖²</b>. 액션 인코딩엔 <b>확산 timestep + 노이즈 액션</b>을 함께 embed. 추론 시 <b>K=4 스텝 forward Euler</b>로 denoise.
+    </div>
+
+    <h3>Data Pyramid (3-Layer)</h3>
+    <div class="kv">
+      <div>Base — 인간 영상</div><div>Ego4D · Ego-Exo4D · Assembly-101 · EPIC-KITCHENS · HOI4D · HoloAssist · RH20T-Human</div>
+      <div>Middle — 합성 데이터</div><div>DexMimicGen 시뮬 궤적 <b>540k(6,500시간)</b> · 뉴럴 트래젝토리 <b>300k(827시간)</b> (Video model, 88h GR-1 파인튜닝, 3,600×L40으로 1.5일)</div>
+      <div>Peak — 실로봇</div><div>GR00T-N1 Humanoid <b>88h GR-1 텔레옵</b>(VIVE + Xsens, 20Hz) · Open X-Embodiment · AgiBot-Alpha 140k</div>
+    </div>
+
+    <h3>이질 데이터의 액션 라벨링</h3>
+    <ul>
+      <li><b>Latent action (LAPA):</b> 모든 이질 데이터에 공동 학습한 VQ-VAE 인코더로 (x<sub>t</sub>, x<sub>t+H</sub>) → 잠재 액션 임베딩. 인간 영상·뉴럴 트래젝토리에 부여.</li>
+      <li><b>IDM (Inverse Dynamics):</b> 실로봇 데이터로 학습한 IDM으로 합성 영상에 pseudo-action 라벨을 회수.</li>
+      <li><b>GT actions:</b> 실로봇 데이터셋엔 그대로 사용.</li>
+    </ul>
+
+    <h3>학습 인프라</h3>
+    <p>NVIDIA <b>OSMO</b> 오케스트레이션 + Ray 기반 fault-tolerant 분산. 사전학습에 <b>1024× H100 (~50k H100-hour)</b>. 파인튜닝은 <b>A6000 1대</b>로 어댑터 배치 200, 비전 인코더 튜닝 배치 16 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Table 2 — 3개 시뮬 벤치 (100 demo/task)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Benchmark</th><th>BC-Transformer</th><th>Diffusion Policy</th><th>GR00T-N1-2B</th></tr></thead>
+      <tbody>
+        <tr><td>RoboCasa Kitchen (24 tasks)</td><td>26.3</td><td>25.6</td><td class="win">32.1</td></tr>
+        <tr><td>DexMG Bimanual (9 tasks)</td><td>53.9</td><td>56.1</td><td class="win">66.5</td></tr>
+        <tr><td>GR-1 Tabletop (24 tasks)</td><td>16.1</td><td>32.7</td><td class="win">50.0</td></tr>
+        <tr><td><b>Average</b></td><td>26.4</td><td>33.4</td><td class="win">45.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">평균 <b>+11.6pt vs Diffusion Policy</b>. GR-1 Tabletop은 18개 unseen source→target rearrangement + 6 articulated.</p>
+
+    <h3>Table 3 — Fourier GR-1 실기 4카테고리 (전체 데이터 vs 10%)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task Category</th><th>DP (10%)</th><th>DP (Full)</th><th>N1 (10%)</th><th>N1 (Full)</th></tr></thead>
+      <tbody>
+        <tr><td>Pick-and-Place</td><td>3.0</td><td>36.0</td><td>35.0</td><td class="win">82.0</td></tr>
+        <tr><td>Articulated Objects</td><td>14.3</td><td>38.6</td><td>62.0</td><td class="win">70.9</td></tr>
+        <tr><td>Industrial Tasks</td><td>6.7</td><td>61.0</td><td>31.0</td><td class="win">70.0</td></tr>
+        <tr><td>Coordination</td><td>27.5</td><td>62.5</td><td>50.0</td><td class="win">82.5</td></tr>
+        <tr><td><b>Average</b></td><td>10.2</td><td>46.4</td><td>42.6</td><td class="win">76.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>10% 데이터 GR00T-N1(42.6)</b>이 Full-data DP(46.4)와 거의 대등 → 사전학습이 데이터 효율을 크게 끌어올림.</p>
+
+    <h3>Zero-shot 사전학습 평가 (파인튜닝 없이)</h3>
+    <ul>
+      <li>Coordinated bimanual handover: <b>76.6%</b> (11.5/15)</li>
+      <li>Novel object → 미지 container 배치: <b>73.3%</b> (11/15)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>뉴럴 트래젝토리 co-training:</b> RoboCasa 100 demo 학습 시 <b>+8.8pt</b>, 실기 산업 태스크 10% 데이터에서 <b>+5.8pt</b> — 실기 부족 상황일수록 이득이 커짐.</li>
+      <li><b>LAPA vs IDM:</b> <b>저데이터(30 demo)</b>에선 LAPA가 우세, 데이터가 늘면 IDM 이점이 커짐 — 라벨링 전략을 데이터 규모에 맞춰 선택해야.</li>
+      <li><b>VLM 중간층(layer 12) 특징</b>이 최종층보다 정책 학습에 유리 — VLM 최상단 CLS 특징은 언어 편향이 커 저수준 시각·기하 정보가 압축된다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2503.14734/x1.png" alt="Data Pyramid (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Data Pyramid.</b> Base(대량 인간 영상) → Middle(합성/뉴럴 트래젝토리) → Peak(실로봇)로 층을 쌓고, 각 층 사이의 규모 차와 embodiment 특이성을 이 논문의 핵심 구성으로 삼음. (출처: arXiv:2503.14734)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2503.14734/x2.png" alt="GR00T N1 architecture (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — GR00T N1 아키텍처.</b> System-2 Eagle-2 VLM이 이미지·언어를 받아 layer-12 hidden을 System-1 DiT에 넘기고, DiT가 flow-matching으로 H=16 액션 청크를 노이즈 → 청정 상태로 반복 denoise. Embodiment별 state/action MLP가 자유도 차를 흡수. (출처: arXiv:2503.14734)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3 (실기 4카테고리)</b> — 오픈소스 파운데이션의 실기 성능 증거. 10% 데이터로 42.6%를 내며, 전체 데이터로는 76.8%로 DP 46.4를 크게 상회. 사전학습 스케일이 데이터 효율의 핵심임을 보이는 표.
+    </div>
+    <p class="cap">Figure 3: 상세 아키텍처(state·action encoder, cross-attention) · Figure 5: 뉴럴 트래젝토리의 counterfactual 시나리오 · Figure 9: 뉴럴 트래젝토리 co-training ablation.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2503.14734" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2503.14734" target="_blank">PDF</a></li>
+      <li><a href="https://developer.nvidia.com/isaac/gr00t" target="_blank">NVIDIA Isaac GR00T 프로젝트</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2503.14734 · GR00T N1 · 요약 생성 2026-07-16
+  </footer>
+</div>
+</body>
+</html>

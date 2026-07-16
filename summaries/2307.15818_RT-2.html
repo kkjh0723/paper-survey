@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RT-2 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Foundational</span>
+    <h1>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</h1>
+    <p class="authors">Anthony Brohan, Noah Brown 외 (Google DeepMind Robotics 팀, 55명) · Karol Hausman · Sergey Levine · Chelsea Finn · Brian Ichter</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2307.15818" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2307.15818" target="_blank">PDF</a>
+      <a href="https://robotics-transformer2.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2307.15818</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA (원조)</span>
+      <span class="t">PaLI-X 55B</span>
+      <span class="t">PaLM-E 12B</span>
+      <span class="t">Action-as-Token</span>
+      <span class="t">Emergent Skills</span>
+    </div>
+    <p class="meta">제출: 2023년 7월 28일 (v1) · Google DeepMind · 실기 6,000회 평가</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>인터넷 규모 <b>VLM(PaLI-X 55B, PaLM-E 12B)</b>에 로봇 액션을 <b>텍스트 토큰</b>으로 표현해 <b>VQA + 로봇 데이터를 co-fine-tuning</b>한 최초의 대규모 VLA. 미지 물체·배경·환경 일반화가 RT-1 대비 <b>~2×</b>, 상징 이해·추론·인간 인식 등 <b>emergent 능력</b>에서 <b>~3×</b> 향상. Language Table 시뮬 <b>90%</b>(이전 SOTA 77%). 6,000회 실기 평가로 검증. <b>Chain-of-thought</b>로 "즉석 망치로 뭘 쓸까?"·"목마른 사람에게 뭘 줄까?" 같은 다단계 추론을 자연스럽게 수행.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>기존 로봇 정책은 <b>로봇 데이터 안에서만 학습</b>돼 웹 규모의 상식·상징·추론 지식이 없다. RT-1처럼 임팩트 있는 실기 정책도 학습 셋을 넘는 대상·상황엔 취약. 저자들은 이미 웹 이미지+텍스트로 사전학습된 대형 <b>VLM</b>(PaLI-X 55B, PaLM-E 12B)을 로봇 데이터에 <b>공동 파인튜닝</b>하면 이 웹 지식이 <b>제로샷 시맨틱 일반화·추론·상징 이해</b>로 전이될 수 있다고 가설한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Action-as-Text 표현</b> — 로봇 액션(6-DoF 델타 pose + 그리퍼 + 종료 플래그)을 각 차원을 256 bin으로 <b>discretize</b>해 VLM 텍스트 어휘의 토큰으로 매핑. VLM의 언어 디코딩 파이프라인을 그대로 재사용해 로봇 액션을 생성.</li>
+      <li><b>VQA·로봇 데이터 Co-fine-tuning</b> — 파인튜닝 시 로봇 궤적만이 아니라 원본 <b>VQA/캡셔닝 데이터도 계속 함께</b> 학습. 이 방식이 파국적 망각을 막고 웹 지식을 유지해 <b>미지 개념 일반화</b>가 크게 향상.</li>
+      <li><b>Emergent capabilities 실증</b> — 상징 이해(숫자·아이콘 위 배치), 추론(가장 작은/큰/가까운 물체 선택), 인간 인식(예: Taylor Swift 사진)에서 RT-1 대비 <b>~3×</b>. Chain-of-Thought로 다단계 시맨틱 추론(도구 대용·음료 추천 등) 성공.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Action Tokenization</h3>
+    <div class="callout">
+      로봇 액션 벡터를 <b>terminate ∆x ∆y ∆z ∆roll ∆pitch ∆yaw grip</b> 8개 차원으로 정의하고, 각 차원을 <b>256 bin으로 균등 이산화</b>. PaLI-X는 이미 자연스레 정수 토큰이 있어 그대로 매핑, PaLM-E는 자주 안 쓰는 어휘 256개를 재할당. 최종 출력 시퀀스: "1 128 91 241 5 101 127 217"처럼 단일 토큰 시퀀스.
+    </div>
+
+    <h3>Co-Fine-Tuning 데이터 & 백본</h3>
+    <div class="kv">
+      <div>로봇 데이터</div><div>RT-1의 <b>13대 로봇 · 17개월 · 130k 시연</b> (Everyday Robots 팔)</div>
+      <div>VLM 데이터</div><div>원본 PaLI-X/PaLM-E VQA·캡셔닝·다국어 웹 데이터를 <b>동시 학습</b>(파국적 망각 방지)</div>
+      <div>대형 백본</div><div><b>RT-2-PaLI-X 55B</b> (5B 소형 변형도 학습) · <b>RT-2-PaLM-E 12B</b></div>
+      <div>추론</div><div>클라우드 TPU 서비스에 쿼리 → 3~10Hz 제어(모델 크기에 따라)</div>
+    </div>
+
+    <h3>Chain-of-Thought (PaLM-E 변형)</h3>
+    <p>PaLM-E 12B 변형은 액션 토큰 직전에 <b>"Plan: <자연어 계획>. Action: <토큰>"</b> 형태로 학습해, 실행 전 <b>중간 자연어 추론</b>을 생성. "즉석 망치로 뭘 쓸까?" → "돌"이라고 계획한 뒤 그 물체를 집는 식.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>일반화 (Seen vs Unseen, 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Seen Tasks</th><th>Unseen Objects</th><th>Unseen Backgrounds</th><th>Unseen Envs</th><th>Unseen Avg</th></tr></thead>
+      <tbody>
+        <tr><td>RT-1</td><td>92</td><td>43</td><td>17</td><td>0</td><td>32</td></tr>
+        <tr><td>VC-1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>~30</td></tr>
+        <tr><td>R3M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>~28</td></tr>
+        <tr><td>MOO</td><td>—</td><td>—</td><td>—</td><td>—</td><td>~50</td></tr>
+        <tr><td><b>RT-2-PaLI-X 55B</b></td><td>91</td><td class="win">76</td><td class="win">76</td><td class="win">50</td><td class="win">62</td></tr>
+        <tr><td>RT-2-PaLM-E 12B</td><td>93</td><td>73</td><td>50</td><td>25</td><td>49</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Unseen 평균 <b>RT-1 32 → RT-2 62 (~2×)</b>. Seen은 동등 유지 → <b>망각 없이</b> 일반화만 늘어남.</p>
+
+    <h3>Emergent Skills (RT-1 대비)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>능력</th><th>RT-1</th><th>VC-1</th><th>RT-2-PaLI-X 55B</th><th>RT-2-PaLM-E 12B</th></tr></thead>
+      <tbody>
+        <tr><td>Symbol Understanding</td><td>16</td><td>—</td><td>62</td><td class="win">67</td></tr>
+        <tr><td>Reasoning</td><td>25</td><td>—</td><td class="win">67</td><td>54</td></tr>
+        <tr><td>Human Recognition</td><td>20</td><td>—</td><td>55</td><td class="win">65</td></tr>
+        <tr><td><b>Avg</b></td><td>20</td><td>~19</td><td>61</td><td class="win">62</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Emergent 평균 <b>RT-1 20 → RT-2 ~62 (~3×)</b>. PaLM-E 12B가 상징·인식에서 최고, PaLI-X 55B가 추론에서 최고.</p>
+
+    <h3>Language Table (시뮬)</h3>
+    <p>기존 SOTA(BC-Z 등) <b>77%</b> → RT-2 <b>90%</b>. 실기 미지 물체(케첩·바나나 등)에도 zero-shot 성공.</p>
+
+    <h3>총 실기 평가</h3>
+    <p>6,000회 트라이얼 규모의 실기 평가로 위 결과들을 통계적으로 검증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Co-fine-tuning의 필요성:</b> 로봇 데이터 <b>only</b> 파인튜닝은 unseen 일반화가 크게 저하 — VQA/이미지-텍스트 데이터를 함께 유지해야 웹 지식이 유지된다.</li>
+      <li><b>모델 크기 스케일:</b> PaLI-X 5B < 55B, PaLM-E도 크기↑로 emergent가 강해짐 — VLM 규모가 로봇 일반화의 주요 요인.</li>
+      <li><b>Chain-of-Thought:</b> PaLM-E 12B에서 CoT를 학습시키면 다단계 추론(도구 대용, 음료 추천 등)이 안정적으로 개선.</li>
+      <li><b>속도-크기 트레이드오프:</b> 55B는 표현력 최고지만 실행 3Hz대로 낮음, 5B는 10Hz 이상 — 실기 응답성엔 소형이 유리.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 1 (원문 캡션)</b> — <i>"RT-2 overview: we represent robot actions as another language, which can be cast into text tokens and trained together with Internet-scale vision-language datasets. During inference, the text tokens are de-tokenized into robot actions, enabling closed loop control."</i> 이 그림은 "액션=텍스트 토큰"이라는 논문의 핵심 아이디어를 요약한다.
+    </div>
+    <div class="callout">
+      <b>Figure 4 (Emergent Evaluations)</b> — RT-1, VC-1과 3개 카테고리(Symbol/Reasoning/Human)에서 RT-2가 <b>~3× 우위</b>를 보이는 대표 결과 그림.
+    </div>
+    <div class="callout">
+      <b>Figure 5 (Generalization)</b> — Unseen Objects/Backgrounds/Envs 축에서 RT-2가 RT-1을 크게 상회하는 막대그래프. RT-2의 <b>웹 지식 전이</b> 주장을 뒷받침.
+    </div>
+    <p class="cap">Figure 2: PaLI-X/PaLM-E 백본에 로봇 데이터를 co-fine-tune하는 데이터 흐름 · Figure 6: Chain-of-thought로 다단계 태스크를 계획하고 액션을 생성하는 실제 롤아웃 예시.</p>
+    <div class="note">arXiv HTML(v1)에서 개별 figure 이미지가 404를 반환해 로컬 임베드는 생략. 원문 그림은 <a href="https://robotics-transformer2.github.io/" target="_blank">프로젝트 페이지</a>와 PDF에서 확인 가능.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2307.15818" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2307.15818" target="_blank">PDF</a></li>
+      <li><a href="https://robotics-transformer2.github.io/" target="_blank">RT-2 프로젝트 페이지 (Google DeepMind)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2307.15818 · RT-2 · 요약 생성 2026-07-16
+  </footer>
+</div>
+</body>
+</html>

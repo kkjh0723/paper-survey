@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SmolVLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.LG · cs.RO · Efficient VLA</span>
+    <h1>SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics</h1>
+    <p class="authors">Mustafa Shukor, Dana Aubakirova, Francesco Capuano, Pepijn Kooijmans 외 · Andres Marafioti · Simon Alibert · Matthieu Cord · Thomas Wolf · <b>Remi Cadene</b> (교신) · Hugging Face LeRobot 팀</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2506.01844" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2506.01844" target="_blank">PDF</a>
+      <a href="https://github.com/huggingface/lerobot" target="_blank">GitHub (lerobot)</a>
+      <span>arXiv:2506.01844</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Efficient VLA</span>
+      <span class="t">SmolVLM-2</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Async Inference</span>
+      <span class="t">Community Data</span>
+    </div>
+    <p class="meta">제출: 2025년 6월 2일 (v1) · 백본 SmolVLM-2 · 총 <b>0.45B</b> (action expert ~100M) · 학습 <b>4 GPU · 배치 256</b></p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>SmolVLM-2 기반의 <b>0.45B</b> 초경량 VLA — VLM의 앞쪽 절반만(N=L/2) 쓰고, action expert에 <b>CA(cross)·SA(self) 교차 배치 + causal SA</b>를 넣어 flow matching으로 n=50 액션 청크 생성. <b>커뮤니티 LeRobot 481개 데이터셋(22.9K 에피소드)</b>만으로 사전학습해 LIBERO 평균 <span class="win">87.3</span>(π0 86.0, OpenVLA 76.5), Meta-World 평균 <span class="win">57.3</span>(π0 47.9). 저가 SO-100 실기 평균 <span class="win">78.3</span> vs π0 61.7, <b>비동기 추론</b>으로 30% 빠르고 고정 시간 pick-and-place 19회 vs 동기 9회.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>기존 VLA(OpenVLA 7B, π0 3.3B, GR00T 2.2B 등)는 수십억 파라미터로 <b>학습 비용·배포 난이도</b>가 실제 로봇 커뮤니티(저가 SO-100 등)엔 진입 장벽이 크다. 또 학습 데이터도 대기업이 폐쇄적으로 보유한 실기 텔레옵에 크게 의존. 저자들은 <b>단일 GPU 파인튜닝·소비자 하드웨어(심지어 CPU)에서 실행</b>가능한 규모의 VLA를 <b>공개 커뮤니티 데이터</b>로만 만들 수 있음을 목표로 삼는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>초경량 VLA 아키텍처(0.45B)</b> — SmolVLM-2 백본에서 <b>앞쪽 절반 층만 사용(N=L/2)</b>하고 시각 토큰은 프레임당 <b>64개</b>로 축소(pixel-shuffle). Action expert는 hidden 0.75×d로 슬림.</li>
+      <li><b>CA·SA 교차 배치 액션 전문가</b> — 각 블록이 CA 또는 SA. SA는 causal 마스크로 과거 액션만 참조. Flow matching으로 n=50 액션 청크 예측. Ablation에서 CA-only 79.0, SA-only 74.5 대비 <b>85.5</b>로 우수.</li>
+      <li><b>커뮤니티 데이터만으로 SOTA급 성능 + 비동기 추론</b> — LeRobot 커뮤니티 <b>481 데이터셋 / 22.9K 에피소드 / 10.6M 프레임</b>(경쟁 모델보다 한 자리수 작음)으로 사전학습. RobotClient/PolicyServer 분리로 관측·행동을 <b>디커플</b>해 30% 빠르고 처리량 2배.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 SmolVLM-2 & 입력 처리</h3>
+    <p><b>SigLIP</b> 비전 인코더 + <b>SmolLM2</b> 언어 디코더의 다중 이미지·영상 최적화 VLM. 이미지엔 <b>global-view + pixel-shuffle</b>로 프레임당 64 토큰만 사용(계산 감소). 로봇 <b>state는 선형층으로 단일 토큰</b>. 언어 지시 텍스트와 함께 SmolVLM-2에 입력.</p>
+
+    <h3>Layer Skipping (VLM 압축)</h3>
+    <div class="callout">
+      전체 L개 LLM 층 중 <b>앞쪽 N=L/2 층</b>의 hidden만 action expert에 넘긴다. Ablation(Table 8): 첫 16층 78.5, 32층(=L/2) <b>80.3(최적)</b>, 격층 스킵 75.5. → 후반 층의 언어·추론 특화 특징보다 <b>중간층의 시각·기하 특징</b>이 액션에 유리.
+    </div>
+
+    <h3>Action Expert (CA·SA 교차, Flow Matching)</h3>
+    <p>액션 청크 길이 <b>n=50</b>. 각 블록이 <b>CA(cross-attention, gold)</b> 또는 <b>SA(self-attention, light yellow)</b>를 번갈아 배치. SA는 <b>causal 마스크</b>로 과거 액션만 attend. Hidden dim은 VLM의 <b>0.75×d</b>. Flow-matching으로 학습(회귀 대비 +5pt: 80.25 vs 75.25). 청크 크기 sweep: 1→50 성공률 50→84, 100은 오히려 74.5로 하락.</p>
+
+    <h3>커뮤니티 데이터셋 표준화</h3>
+    <p>Hugging Face 커뮤니티에 올라온 <b>481개 LeRobot 데이터셋 / 22.9K 에피소드 / 10.6M 프레임</b>. 자동/수동 전처리:</p>
+    <ul>
+      <li><b>태스크 설명 자동 생성</b>: Qwen2.5-VL-3B-Instruct로 짧은 언어 지시 자동 생성.</li>
+      <li><b>카메라 매핑</b>: 각 카메라를 top/wrist/side로 표준화 매핑.</li>
+    </ul>
+
+    <h3>학습 설정</h3>
+    <div class="kv">
+      <div>사전학습</div><div>200k steps, batch 256, <b>GPU 4장</b>, LR 1e-4 → 2.5e-6 cosine(100 step warmup)</div>
+      <div>파인튜닝</div><div>시뮬 100k / 실기 200k steps, batch 64</div>
+      <div>총 파라미터</div><div><b>0.45B</b> (action expert ~100M) · Ablation은 0.24B, 2.25B 변형도 존재</div>
+    </div>
+
+    <h3>비동기 추론 (Async)</h3>
+    <p>로봇 측 <b>RobotClient</b>가 관측을 보내면 <b>PolicyServer</b>가 액션 청크를 계산해 반환. 관측 유사도 기반 필터로 큐 사이즈를 조절(g=0 순차, g=0.7 균형, g=1 컴퓨트 집중). 관측 취득과 계산을 겹치게 해 <b>실시간성</b>을 확보.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO (성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델 (파라미터)</th><th>Spatial</th><th>Object</th><th>Goal</th><th>Long</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td><b>SmolVLA (0.45B)</b></td><td class="win">90.0</td><td class="win">96.0</td><td>92.0</td><td>71.0</td><td class="win">87.3</td></tr>
+        <tr><td>π<sub>0</sub> (3.3B)</td><td class="win">90.0</td><td>86.0</td><td class="win">95.0</td><td class="win">73.0</td><td>86.0</td></tr>
+        <tr><td>OpenVLA (7B)</td><td>84.7</td><td>88.4</td><td>79.2</td><td>53.7</td><td>76.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">SmolVLA는 π0의 <b>1/7 크기</b>로 평균 최고 성능.</p>
+
+    <h3>Meta-World (난이도별 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Easy</th><th>Medium</th><th>Hard</th><th>Very Hard</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td><b>SmolVLA (0.45B)</b></td><td class="win">82.5</td><td>41.8</td><td class="win">45.0</td><td class="win">60.0</td><td class="win">57.3</td></tr>
+        <tr><td>π<sub>0</sub> (3.5B)</td><td>71.8</td><td class="win">48.2</td><td>41.7</td><td>30.0</td><td>47.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>실기 (저가 SO-100 팔)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>π<sub>0</sub></th><th>SmolVLA</th></tr></thead>
+      <tbody>
+        <tr><td>Pick-Place</td><td>—</td><td>75.0</td></tr>
+        <tr><td>Stacking</td><td>—</td><td class="win">90.0</td></tr>
+        <tr><td>Sorting</td><td>—</td><td>70.0</td></tr>
+        <tr><td><b>Multi-task Avg</b></td><td>61.7</td><td class="win">78.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>미지 embodiment 일반화 (SO-101, Pick-Place-Lego)</h3>
+    <p>In-distribution 90.0, Out-of-distribution 50.0 — 학습에 없던 로봇 폼팩터에서도 다수 성공.</p>
+
+    <h3>Async vs Sync 추론</h3>
+    <p>동일 태스크 완료 시간 <b>9.7s</b>(async) vs <b>13.75s</b>(sync) — <b>~30% 빠름</b>. 고정 시간 내 pick-and-place 성공 횟수 async <b>19회</b> vs sync 9회 — 처리량 2배.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Attention 배치 (Table 6):</b> CA-only 79.0 / SA-only 74.5 / <b>Interleaved CA+SA 85.5</b> — 교차 배치가 결정적.</li>
+      <li><b>VLM Layer 개수 (Table 8):</b> 첫 32층(=L/2) <b>80.3(최적)</b> / 16층 78.5 / 격층 스킵 75.5 — 앞쪽 절반이 sweet spot.</li>
+      <li><b>Loss (Table 10):</b> Flow matching <b>80.25</b> vs L1 회귀 75.25 — flow matching이 +5pt.</li>
+      <li><b>Chunk Size (Table 12):</b> chunk 1 → 50.0, chunk 10~50 → 80~84 (sweet spot), chunk 100 → 74.5 (과다 롤아웃 예측 부담).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2506.01844/x16.png" alt="SmolVLA 아키텍처 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — SmolVLA 전체 구조.</b> SmolVLM-2를 <b>앞쪽 절반 층</b>까지만 쓰고(scissors 아이콘), 언어·이미지·state를 통합한 토큰을 Action Expert에 넘겨 <b>CA(gold)와 SA(light yellow)를 번갈아</b> 통과. Flow matching으로 n=50 액션 청크를 출력. (출처: arXiv:2506.01844)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2506.01844/x17.png" alt="Asynchronous inference (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 비동기 추론 스택.</b> RobotClient가 관측을 PolicyServer로 보내고, 서버는 액션 청크를 계산해 반환. 관측 취득·행동 예측·행동 실행을 <b>디커플</b>해 실기 실시간성 확보. (출처: arXiv:2506.01844)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (LIBERO)</b> — <b>SmolVLA 0.45B의 평균 87.3</b>이 π0(3.3B) 86.0, OpenVLA(7B) 76.5를 앞선다는 핵심 표. 저자 주장인 "10× 작은 모델로 대등/우수한 성능"의 정량적 근거.
+    </div>
+    <p class="cap">Figure 3: async 큐 사이즈 진화(g=0/0.7/1) · Figure 4: 실기 태스크 이미지.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2506.01844" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2506.01844" target="_blank">PDF</a></li>
+      <li><a href="https://github.com/huggingface/lerobot" target="_blank">GitHub: huggingface/lerobot</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2506.01844 · SmolVLA · 요약 생성 2026-07-16
+  </footer>
+</div>
+</body>
+</html>
