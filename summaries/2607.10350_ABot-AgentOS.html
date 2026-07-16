@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ABot-AgentOS — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.AI · Robotic Agent OS · Lifelong Memory</span>
+    <h1>ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory</h1>
+    <p class="authors">Jiayi Tian, Shiao Liu, Yuting Xu 외 · Mu Xu (교신 추정) · AMap CV-Lab · arXiv:2607.10350 (v2)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.10350" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.10350" target="_blank">PDF</a>
+      <a href="https://amap-cvlab.github.io/ABot-AgentOS" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/amap-cvlab/ABot-AgentOS" target="_blank">GitHub</a>
+      <span>arXiv:2607.10350</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Agent OS</span>
+      <span class="t">Lifelong Memory</span>
+      <span class="t">Multi-modal Graph</span>
+      <span class="t">Edge-Cloud</span>
+      <span class="t">Self-Evolution</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 11일 (v1) · 백본 DeepSeek-V4-Pro / Qwen3.6-Plus · EmbodiedWorldBench 자체 구축</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>단일 컨트롤러형 로봇 에이전트를 대체하는 <b>3계층 Agent OS</b>(Agent Harness · Skills&Tools · Memory) + <b>edge-cloud 이중 LLM</b> + <b>실패 기반 자기진화 루프</b>. 대화·시각·공간·시간 정보를 하나의 <b>타입 지정 다중모달 그래프</b>로 관리하며 프라이버시 게이팅(>99% 정확)으로 edge/cloud 메모리를 분리 저장. 자체 EmbodiedWorldBench에서 단일 컨트롤러 대비 <b>TSR +12%, GCR +10.8%</b>(DeepSeek-V4-Pro 사용 시 <span class="win">TSR 68.18 / GCR 74.62</span>), LoCoMo 87.5→<span class="win">88.7</span>, OpenEQA 59.9→60.4, Mem-Gallery 88.6→89.0.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>기존 로봇 LLM 에이전트는 (1) 단일 LLM이 계획·기술 실행·검증을 다 감당해 컨텍스트가 오염되고, (2) 시각·공간·시간·정체성 등 이질 정보를 한 메모리로 통합하기 어렵고, (3) 실패로부터 <b>자기 개선(self-evolution)</b>이 어렵고, (4) 온보드 저지연 요구와 대형 모델 추론이 충돌한다. ABot은 이를 <b>OS 관점</b>으로 재정리한다: 계획·기술·검증을 각기 다른 컨텍스트로 분리하고, 메모리는 유형 그래프로 표준화하며, 실패 로그를 게이팅된 assets로 승화시키는 evo 루프를 두고, edge-cloud 이중 LLM으로 지연·프라이버시를 함께 관리한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>3계층 Agent OS 아키텍처</b> — Agent Harness(계획 + Skill Runner + Verifier의 reasoning-execution-verification 루프), Skills & Tools(embodiment-agnostic 인터페이스), 다중모달 Memory 시스템.</li>
+      <li><b>Universal Multi-modal Graph Memory</b> — 대화·관측·공간·시간·정체성·근거를 하나의 타입 그래프 𝒢=(𝒱,ℰ)로 저장. 근거 유닛·개체·장소·세션·의미 이벤트 스키마.</li>
+      <li><b>Failure-Driven Self-Evolution</b> — split-wise 프로토콜로 gt 누출 방지. 실패 진단→수정안→gated JSON DSL evo-asset 컴파일. 개선 ≥ τ_gain, 회귀 ≤ τ_reg일 때만 승인해 다음 split에 propagate.</li>
+      <li><b>Edge-Cloud 이중 LLM</b> — 소형 edge LLM이 저지연 처리, 복잡 추론은 클라우드 대형 LLM. Edge에 사적 메모리, cloud에 공유 지식. 프라이버시 게이팅 정확도 >99%.</li>
+      <li><b>EmbodiedWorldBench</b> — 16 scenes / 4 난이도 / 200+ compound task 벤치. 네비게이션·NPC 상호작용·환경 인지가 얽힌 시나리오.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Agent Harness — 3-stage Verifier</h3>
+    <p>메인 LLM이 현재 장면을 조건으로 <b>계획(planning)</b>을 수행하고, 절차형 서브태스크는 <b>Skill Runner</b>가 격리된 로컬 컨텍스트에서 실행. <b>Verifier</b>는 runtime·skill-level·finish-time 세 단계에서 감독하며 실패 시 메인 LLM으로 피드백해 reasoning-execution-verification 루프를 형성.</p>
+
+    <h3>Memory Graph 스키마</h3>
+    <p>노드는 <b>source container</b>(원본 컨테이너), <b>evidence unit</b>(근거 조각), <b>entity</b>(개체), <b>place</b>(장소), <b>session</b>(세션), <b>semantic event</b>(의미 이벤트). 엣지는 시간·의미·공간·정체성·근거 관계를 인코딩. 온라인 경로는 관측/상호작용 → source-grounded 메모리 그래프 → 태스크 관련 근거 검색; 오프라인 경로는 실패 trace → 진단 → evo-asset 생성.</p>
+
+    <h3>Split-wise Self-Evolution 프로토콜</h3>
+    <div class="callout">
+      <b>gt 누출 방지 규약:</b> split 𝒟ₜ에서 <b>이전 assets A&lt;t만</b> 써서 추론 → 실패 진단 → 수정안 제안 → gated JSON DSL로 evo-asset 컴파일 → 개선 ≥ τ_gain, 회귀 ≤ τ_reg인 경우만 <b>승인</b> → 승인된 asset만 다음 split 𝒟ₜ₊₁, …에 propagate. 이는 자기평가로 스스로를 튜닝하는 것이 아니라, 별도 split에서 <b>지연 검증된 asset만 채택</b>하는 안전 규약이다.
+    </div>
+
+    <h3>Edge-Cloud 이중 LLM</h3>
+    <div class="kv">
+      <div>Edge</div><div>Tiny LLM · 저지연 routine 처리 · 사적 메모리 (개인 정보)</div>
+      <div>Cloud</div><div>Large LLM · 복잡 추론 · 공유 지식 저장</div>
+      <div>프라이버시 게이팅</div><div>공유 가능 항목 vs 민감 항목 분류 정확도 >99%</div>
+      <div>동기화</div><div>공유 가능 항목만 cloud에 반영, 사적 항목은 edge에만 유지</div>
+    </div>
+
+    <h3>학습 파이프라인 (그림 6)</h3>
+    <p>텍스트 기반 환경 구성 → teacher trajectory distillation → SFT → LLM-as-a-Judge 보상과 GiGPO advantage를 사용하는 <b>online RL</b>로 마무리.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>EmbodiedWorldBench — 에이전트 평가 (표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>에이전트</th><th>모델</th><th>TSR (%)</th><th>GCR (%)</th></tr></thead>
+      <tbody>
+        <tr><td>ReAct Baseline (단일 컨트롤러)</td><td>Qwen3.6-Plus</td><td>49.97</td><td>57.95</td></tr>
+        <tr><td>ABot-AgentOS</td><td>Qwen3.6-Plus</td><td>61.96</td><td>68.79</td></tr>
+        <tr><td><b>ABot-AgentOS</b></td><td>DeepSeek-V4-Pro</td><td class="win">68.18</td><td class="win">74.62</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">같은 백본에서 hierarchical harness가 단일 컨트롤러 대비 TSR +12pt, GCR +10.8pt. 아키텍처 이득이 모델 크기와 독립.</p>
+
+    <h3>메모리 벤치 (자기진화 유무)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치</th><th>Static</th><th>Self-evolved</th></tr></thead>
+      <tbody>
+        <tr><td>LoCoMo</td><td>87.5</td><td class="win">88.7</td></tr>
+        <tr><td>OpenEQA (EM-EQA)</td><td>59.9</td><td class="win">60.4</td></tr>
+        <tr><td>Mem-Gallery</td><td>88.6</td><td class="win">89.0</td></tr>
+        <tr><td>NExT-QA (Acc@All, static)</td><td colspan="2">76.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">자기진화 루프가 세 벤치 모두에서 소폭이지만 <b>일관된</b> 개선. 큰 튜닝 없이도 실패 로그만으로 개선이 축적됨.</p>
+
+    <h3>Privacy Gating</h3>
+    <p>공유 가능 vs 민감 항목 이진 분류 정확도 <b>>99%</b>. Edge-only 유지가 필요한 사적 정보를 클라우드로 잘못 승격시키는 사고를 실질적으로 억제.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>단일 컨트롤러 → 계층형 harness</b>: 같은 백본(Qwen3.6-Plus)에서 TSR 49.97→61.96, GCR 57.95→68.79. 모델 크기가 아니라 <b>컨텍스트 분리 + 검증</b> 자체가 이득의 원천임을 보임.</li>
+      <li><b>Static memory → Self-evolved memory</b>: LoCoMo +1.2, OpenEQA +0.5, Mem-Gallery +0.4. 승인 게이팅이 개선을 안전하게 축적함을 시사.</li>
+      <li><b>Failure-to-evolution 사례</b>: 시각 identity QA에서 견종 단서 누락, 시간 텍스트 QA에서 정규화 오류가 정확히 지목되고 assets로 승화(그림 4).</li>
+      <li><b>Compound task 난이도</b>: 네비 + NPC 상호작용 + 인지가 겹치는 4단계 난이도 구간에서 harness 이득이 특히 큼.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.10350/architecture.png" alt="ABot-AgentOS 시스템 아키텍처 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 시스템 아키텍처.</b> Edge Tiny LLM + Cloud Large LLM의 이중 코어, verification-aware ReAct를 갖춘 Agent Harness, 확장 가능한 skill library, 그리고 edge 사적 메모리와 cloud 메모리를 동기화하는 계층형 메모리. (출처: arXiv:2607.10350)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.10350/agent_method.png" alt="Agent Harness 방법론 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Agent Harness 상세.</b> Main LLM이 메모리·컨텍스트를 활용해 scene-conditioned planning을 수행하고, 절차형 서브태스크는 Skill Runner가 격리 컨텍스트에서 실행. Verifier가 3단계 감독으로 피드백을 발생시켜 reasoning-execution-verification 루프를 완성. (출처: arXiv:2607.10350)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (EmbodiedWorldBench)</b> — 같은 백본에서 TSR +12pt / GCR +10.8pt. "모델을 키우지 않아도 OS 계층 재설계만으로 큰 폭 개선"이라는 핵심 주장의 정량 증거.
+    </div>
+    <div class="callout">
+      <b>Split-wise self-evolution</b> — LoCoMo/OpenEQA/Mem-Gallery에서 모두 소폭 향상. 승인 게이팅(τ_gain, τ_reg) 덕분에 "회귀 없는 점진 개선"이 가능함을 보이는 부분.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.10350" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.10350" target="_blank">PDF</a></li>
+      <li><a href="https://amap-cvlab.github.io/ABot-AgentOS" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/amap-cvlab/ABot-AgentOS" target="_blank">GitHub 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.10350 · ABot-AgentOS · 요약 생성 2026-07-16
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

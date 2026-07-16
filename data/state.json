@@ -5,26 +5,7 @@
     "2607.08448": 1,
     "2607.11397": 1
   },
-  "queue": [
-    {
-      "id": "2607.10350",
-      "title": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
-      "arxiv_url": "https://arxiv.org/abs/2607.10350",
-      "added": "2026-07-16"
-    },
-    {
-      "id": "2607.11643",
-      "title": "Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model",
-      "arxiv_url": "https://arxiv.org/abs/2607.11643",
-      "added": "2026-07-16"
-    },
-    {
-      "id": "2607.13017",
-      "title": "FlowWAM: Optical Flow as a Unified Action Representation for World Action Models",
-      "arxiv_url": "https://arxiv.org/abs/2607.13017",
-      "added": "2026-07-16"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978"
   ],

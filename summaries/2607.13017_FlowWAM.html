@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FlowWAM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · World Action Model · Optical Flow</span>
+    <h1>FlowWAM: Optical Flow as a Unified Action Representation for World Action Models</h1>
+    <p class="authors">Yixiang Chen, Peiyan Li, Yuan Xu, Qisen Ma 외 · Yan Huang, Liang Wang (교신) · CASIA / MAIS 그룹 추정</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.13017" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.13017" target="_blank">PDF</a>
+      <a href="https://flow-wam.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.13017</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Action Model</span>
+      <span class="t">Optical Flow</span>
+      <span class="t">Dual-Stream Diffusion</span>
+      <span class="t">Wan2.2-TI2V-5B</span>
+      <span class="t">Action-Free Pretrain</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 14일 (v1) · 백본 Wan2.2-TI2V-5B DiT · cs.RO / cs.CV</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 action을 <b>HSV 색상 코딩된 optical flow 영상</b>으로 재표현해 사전학습된 5B 영상 생성기(Wan2.2-TI2V)의 시각 prior를 그대로 재활용하는 <b>World Action Model</b>. RGB·flow 두 스트림을 한 DiT에서 공동 처리해 (i) policy 모드는 flow→action, (ii) world-model 모드는 flow→미래 RGB의 두 모드를 하나의 모델로 지원. RoboTwin 2.0 clean <span class="win">92.94%</span>, WorldArena EWMScore <span class="win">63.71</span>(trajectory accuracy +18.4% 상대 개선), 실기 평균 <span class="win">75.7%</span>(π0.5 61.4, Motus 57.1).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>사전학습된 대규모 영상 생성기의 시각 prior를 로봇 정책·월드모델에 이식하는 흐름이 강해지고 있으나, <b>action의 표현 형식이 사전학습 데이터와 불일치</b>한다는 근본적 병목이 있다. 수치 action 시퀀스는 임베딩 형태로 삽입돼 RGB 토큰과 이질적이고, 별도 액션 헤드/어댑터를 요구해 사전학습 prior가 잘 전이되지 않는다. 반면 <b>optical flow</b>는 이미 RGB와 동일한 픽셀 격자·픽셀당 벡터로 표현 가능해, 사전학습 tokenizer와 정확히 같은 포맷으로 다룰 수 있다. 저자들은 flow를 <b>정책과 월드모델을 연결하는 통합 action 표현</b>으로 삼는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Flow-as-Action 통합 표현</b> — per-pixel 변위를 HSV(방향=Hue, 크기=Saturation, Value=1) 인코딩으로 RGB 형태 영상화. 사전학습 VAE·DiT를 재학습 없이 그대로 재사용.</li>
+      <li><b>Dual-Stream World Action Model</b> — Wan2.2-TI2V-5B DiT의 트랜스포머 블록을 RGB·flow가 <b>토큰 concat 방식으로 공유</b>. patch embed와 출력 head만 스트림별로 분리해 파라미터 오버헤드 최소화.</li>
+      <li><b>Action-Free 사전학습 + Action-Labeled 미세조정</b> — 1단계 EgoDex(에고센트릭 인간 영상)에서 flow 시각 prior를 자기지도로 익히고, 2단계 RoboTwin에서 action expert가 flow latent를 실행 가능한 로봇 명령으로 decode.</li>
+      <li><b>Policy와 World Model의 대칭적 결합</b> — 같은 모델을 (i) flow 생성→action decode(policy) 또는 (ii) flow 조건부 RGB 예측(world model)로 스위치. Trajectory accuracy를 크게 끌어올려 WorldArena SOTA.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Flow-as-Image 인코딩</h3>
+    <p>optical flow (u,v)를 HSV 이미지로 변환: <b>H=atan2(v,u)</b>, <b>S=‖(u,v)‖/max</b>, <b>V=1.0</b>. 결과 flow 프레임은 형식적으로 RGB와 동일해 <b>같은 VAE</b>로 latent를 얻는다. 이로써 사전학습된 시각 encoder의 semantics를 flow 채널에도 그대로 상속.</p>
+
+    <h3>Dual-Stream DiT (Wan2.2-TI2V-5B)</h3>
+    <p>RGB latent 토큰과 flow latent 토큰을 sequence 축으로 concat해 <b>공유 transformer block</b>에 통과. patch embedding·최종 head만 스트림별로 분리. 노이즈 스케줄과 flow-matching 목적은 두 스트림 모두 표준 형식을 유지.</p>
+
+    <h3>Motion-Aware Reweighting (Eq. 4)</h3>
+    <p>매니퓰레이션 flow는 배경이 거의 정지된 sparse 신호이므로, 픽셀별 flow 크기를 기반으로 loss를 재가중해 <b>정지 배경이 그라디언트를 지배하지 않도록</b> 한다. 없으면 성공률 89.8→83.9로 하락.</p>
+
+    <h3>Stochastic Latent Conditioning (Eq. 2)</h3>
+    <p>추론 시 flow 조건이 denoising residual을 포함한 노이즈 있는 latent인 반면 학습은 clean latent만 사용해 <b>train/inference gap</b> 발생. 학습 중 50% step에서 σ∈[0,1] 노이즈를 시각 latent에 섞어 완화. 없으면 89.8→82.1.</p>
+
+    <h3>두 가지 모드</h3>
+    <div class="kv">
+      <div>Policy 모드</div><div>RGB latent(clean)→ flow latent 생성 → action expert로 로봇 명령 decode</div>
+      <div>World-Model 모드</div><div>flow latent(조건) + 텍스트 → 미래 RGB 프레임 생성 (액션 지도된 영상 예측)</div>
+      <div>Backbone</div><div>Wan2.2-TI2V-5B (5B 파라미터 DiT), VAE·transformer 대부분 재학습 최소</div>
+      <div>학습 단계</div><div>Stage 1 EgoDex action-free 사전학습 → Stage 2 RoboTwin action-labeled 공동학습</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboTwin 2.0 — 50 bimanual task 정책 성공률</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Clean</th><th>Random</th></tr></thead>
+      <tbody>
+        <tr><td>π0.5</td><td>42.98</td><td>—</td></tr>
+        <tr><td>X-VLA</td><td>72.88</td><td>—</td></tr>
+        <tr><td>X-WAM</td><td>91.88</td><td>91.78</td></tr>
+        <tr><td>Fast-WAM</td><td>91.78</td><td>91.78</td></tr>
+        <tr><td><b>FlowWAM</b></td><td class="win">92.94</td><td class="win">92.14</td></tr>
+        <tr><td>FlowWAM (사전학습 X)</td><td>82.40</td><td>80.80</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">50 태스크 벤치의 clean/random 배치 성공률. 사전학습 제거 시 −10pt 이상 하락 — Wan2.2 prior + EgoDex 액션-free 사전학습의 기여가 큼.</p>
+
+    <h3>WorldArena — 월드모델 벤치 (100+ 모델 중)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Trajectory Acc</th><th>EWMScore</th></tr></thead>
+      <tbody>
+        <tr><td>GigaWorld-1</td><td>54.27</td><td>—</td></tr>
+        <tr><td>Ctrl-World</td><td>48.20</td><td>—</td></tr>
+        <tr><td>텍스트 조건 (최상)</td><td>—</td><td>~59</td></tr>
+        <tr><td>수치 action 조건</td><td>—</td><td>54.18</td></tr>
+        <tr><td>이미지 마스크 조건</td><td>—</td><td>57.84</td></tr>
+        <tr><td><b>FlowWAM (RGB flow 조건)</b></td><td class="win">64.26</td><td class="win">63.71</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">JEPA 유사도 97.14 · Subject 일관성 82.46 · 배경 89.97 · Depth 정확도 98.97 · 의미 정렬 89.93. Trajectory accuracy 기준 <b>+18.4%</b> 상대 개선.</p>
+
+    <h3>실기 로봇 — 7태스크 평균 성공률</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>단일팔 Franka(4)</th><th>양팔 ARX(3)</th><th>평균</th></tr></thead>
+      <tbody>
+        <tr><td>Motus</td><td>—</td><td>—</td><td>57.1</td></tr>
+        <tr><td>π0.5</td><td>—</td><td>—</td><td>61.4</td></tr>
+        <tr><td><b>FlowWAM</b></td><td>—</td><td>—</td><td class="win">75.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">양팔 태스크(수건 접기·그릇 쌓기·접시 정리)에서 π0.5 대비 <b>+17.1pt</b> 격차가 특히 크다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Policy 모드 (RoboTwin, 성공률):</b> 수치 action만 69.8 → 원(u,v) flow 72.3 → motion 재가중 없음 83.9 → 확률적 latent 조건 없음 82.1 → <b>Full FlowWAM 89.8</b>. HSV flow 표현 자체가 큰 이득의 핵심.</li>
+      <li><b>World-Model 모드 (WorldArena EWMScore):</b> 텍스트 49.31 → 수치 action 54.18 → 원(u,v) flow 56.72 → 이미지 마스크 57.84 → <b>RGB flow 65.23</b>. Flow 조건이 궤적 충실도를 결정적으로 끌어올린다.</li>
+      <li><b>Flow decodability = policy 품질의 예측지표:</b> 예측 flow 오차와 정책 성공률의 Pearson 상관 <b>r = −0.81</b>. 성능 향상이 액션 헤드 지름길이 아닌 <b>flow 예측 품질</b>에서 온다는 강한 증거.</li>
+      <li><b>EgoDex 사전학습:</b> 없으면 clean 82.4 vs 있음 92.9(+10.5pt). Action-free 인간 영상 사전학습이 flow 시각 prior 전이의 핵심.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.13017/x1.png" alt="FlowWAM 통합 프레임워크 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — FlowWAM 통합 프레임워크.</b> Optical flow가 로봇 action과 사전학습된 영상 prior 사이의 다리 역할을 하며, action-unlabeled 사전학습·policy 추론·world modeling 세 시나리오를 하나의 시스템 안에서 다룬다. (출처: arXiv:2607.13017)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.13017/x2.png" alt="Dual-stream DiT 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Dual-stream 아키텍처.</b> 공유 diffusion transformer block에서 RGB·flow 토큰이 concat되어 함께 처리되고, patch embedding과 head만 스트림별로 분리. Policy 모드와 World-Model 모드가 대칭적으로 정의됨. (출처: arXiv:2607.13017)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table (Ablation)</b> — 수치 action 69.8 → 원 flow 72.3 → 이미지 마스크 → HSV flow 89.8의 계단식 증가는 "표현이 사전학습 prior와 정렬될수록 사전학습 신호가 잘 전이된다"는 논문 핵심 주장의 정량 증거.
+    </div>
+    <div class="callout">
+      <b>Correlation r = −0.81</b> — 예측 flow 오차와 정책 성공률의 강한 음의 상관은, 정책 개선이 flow 품질 자체에서 파생됨을 시사(디코더 shortcut이 아님).
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.13017" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.13017" target="_blank">PDF</a></li>
+      <li><a href="https://flow-wam.github.io" target="_blank">프로젝트 페이지</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.13017 · FlowWAM · 요약 생성 2026-07-16
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

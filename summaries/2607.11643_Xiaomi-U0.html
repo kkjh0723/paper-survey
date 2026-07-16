@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Xiaomi-Robotics-U0 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · World Foundation Model · Unified Synthesis</span>
+    <h1>Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model</h1>
+    <p class="authors">Xinghang Li, Jun Guo, Qiwei Li 외 · Xiaomi Robotics · arXiv:2607.11643 (v1)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.11643" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.11643" target="_blank">PDF</a>
+      <a href="https://robotics.xiaomi.com/xiaomi-robotics-u0.html" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.11643</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Foundation Model</span>
+      <span class="t">38B AR Multimodal</span>
+      <span class="t">EMU3.5</span>
+      <span class="t">Qwen-3-32B</span>
+      <span class="t">Embodied Data Aug</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 13일 (v1) · 백본 EMU3.5 + Qwen-3-32B · IBQ 토크나이저 · FlashAR+ 27.22× 가속</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>텍스트→이미지, 이미지 편집, embodied 장면 생성, embodied transfer, embodied 영상 생성의 5개 태스크를 <b>단일 next-token 예측 프레임</b>으로 통합한 <b>38B 자기회귀 멀티모달 world foundation model</b>. GPT-Image-2.0을 사람 평가·기하 정합성(SI-RMSE 0.14 vs 0.40, mIoU 0.76 vs 0.41)에서 앞서고, WorldArena 100+ 모델 중 <b>EWMScore 73.64로 1위</b>. 생성 증강을 정책 학습에 투입하면 π0.5 실기 성공률 <span class="win">36.9→63.2%</span>. FlashAR+ 추론 가속으로 1024×1024 이미지가 <b>27.22×</b> 빨라짐(450.77s → 16.56s).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Embodied 파운데이션 모델은 실제 로봇 데이터가 희소해 시뮬레이터·증강에 의존하나, 기존 T2I/VLM은 <b>3D·기하 일관성</b>과 <b>플랫폼 간 embodied transfer</b>가 약해 정책 사전학습에 그대로 쓰기 어렵다. 저자들은 (i) 단일 자기회귀 모델이 텍스트/이미지/영상 모든 embodied 합성 태스크를 다뤄야 하고, (ii) 실제 정책 성공률을 실질적으로 끌어올릴 만큼 <b>기하·의미 정합성이 확보된 데이터</b>가 필요하며, (iii) 시뮬 없이 <b>물체 배치·조명·시점 무작위화</b>가 가능한 데이터 증강 파이프라인이 필요하다고 본다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Unified Embodied Synthesis 프레임워크</b> — T2I·편집·embodied 장면 생성·embodied transfer·영상 생성을 하나의 자기회귀 next-token 목적으로 통합.</li>
+      <li><b>38B 스케일 World Foundation Model</b> — EMU3.5 계열 + Qwen-3-32B 트랜스포머, 16×16 공간 압축 IBQ 토크나이저. 9.5M single-step(56.4B token) + 2.6M video(49.6B token)로 학습.</li>
+      <li><b>정책 성능으로 검증된 생성 증강</b> — 생성 데이터를 π0.5 정책 학습에 투입 → 배경/물체/조명 분포 이동에서 실기 성공률 36.9→63.2%(interference group에서 특히 큰 이득).</li>
+      <li><b>FlashAR+ 추론 가속</b> — anti-diagonal 병렬 생성 + step-causal attention 마스킹으로 27.22× 가속, vLLM 통합 시 추가 3.04×.</li>
+      <li><b>End-to-end World Arena 1위</b> — 100+ 월드 모델과 견주어 종합 EWMScore 73.64, 명령 추종 93.86, 상호작용 물리 정합 87.30.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>모델 스택</h3>
+    <p>EMU3.5의 자기회귀 멀티모달 구조를 확장해 <b>Qwen-3-32B</b> 트랜스포머 백본(총 38B) 위에 <b>IBQ 토크나이저(16×16 공간 압축)</b>를 붙임. 모든 태스크가 하나의 next-token 예측으로 표현되며, 각 태스크는 입력·출력 스페셜 토큰과 컨디셔닝 프리픽스로만 구별된다.</p>
+
+    <h3>5 태스크 통합 목적</h3>
+    <div class="kv">
+      <div>T2I</div><div>텍스트 → 이미지 토큰 시퀀스 생성</div>
+      <div>Image Editing</div><div>이미지+텍스트 → 편집된 이미지</div>
+      <div>Embodied Scene Gen</div><div>텍스트+로봇/카메라 컨디션 → 조작 가능한 embodied 장면 (배경·조명·배치)</div>
+      <div>Embodied Transfer</div><div>한 embodiment의 관측을 다른 embodiment 시점/그리퍼로 변환 (depth·시맨틱 유지)</div>
+      <div>Embodied Video Gen</div><div>초기 프레임 + 텍스트 → 미래 프레임 시퀀스</div>
+    </div>
+
+    <h3>학습 데이터 (도메인 6종)</h3>
+    <p>일반 이미지, embodied 조작, 자율주행, 에고센트릭 영상, 3D 재구성, 게임 데이터. <b>공동 학습(co-training)</b>으로 일반 T2I/X2I와 embodied-specific 태스크를 함께 학습해 <b>catastrophic forgetting</b>을 억제. 9.5M single-step (56.4B 토큰) + 2.6M video (49.6B 토큰).</p>
+
+    <h3>FlashAR+ 추론 가속</h3>
+    <p>표준 AR은 이미지 토큰을 순차 생성해 1024×1024이면 <b>450.77초</b>가 걸린다. FlashAR+는 <b>anti-diagonal parallel decoding</b>(대각선 방향으로 조건부 독립인 토큰을 배치 처리) + <b>step-causal attention mask</b>로 병렬화해 <b>16.56초(27.22×)</b>로 단축. vLLM 통합 시 추가 3.04× 가속.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Embodied Transfer 정량 지표 (vs GPT-Image-2.0)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>SI-RMSE ↓ (depth)</th><th>mIoU ↑ (semantic)</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-Image-2.0</td><td>0.40</td><td>0.41</td></tr>
+        <tr><td><b>Xiaomi-U0</b></td><td class="win">0.14</td><td class="win">0.76</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Depth 일관성 오차는 1/3 이하, 시맨틱 정합은 거의 2배. embodied transfer가 기하·의미 정합성을 요구하는 조건에서 GPT-Image-2.0 대비 명확한 우위.</p>
+
+    <h3>정책 학습에의 실전 기여 (π0.5, 실기)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>실기 조건</th><th>π0.5 (baseline)</th><th>π0.5 + Xiaomi-U0 증강</th></tr></thead>
+      <tbody>
+        <tr><td>in-distribution</td><td>~비슷</td><td>~비슷</td></tr>
+        <tr><td>distribution shift / interference</td><td>36.9</td><td class="win">63.2</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Store Earphones / Fold Towel / Pack Box 세 태스크에서 일관되게 개선. 생성 증강이 <b>OOD 강건성</b>을 실측 정책 수준에서 끌어올림.</p>
+
+    <h3>World Arena — 월드 모델 종합 순위</h3>
+    <ul>
+      <li>EWMScore <b>73.64로 1위</b> (100+ 모델 비교).</li>
+      <li>Instruction Following <b>93.86 (최고)</b>.</li>
+      <li>Interaction Quality <b>87.30 (물리 정합 최고)</b>.</li>
+    </ul>
+
+    <h3>FlashAR+ 추론 지연</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>디코딩</th><th>1024×1024 이미지 소요</th><th>배속</th></tr></thead>
+      <tbody>
+        <tr><td>표준 AR</td><td>450.77 s</td><td>1.00×</td></tr>
+        <tr><td><b>FlashAR+</b></td><td class="win">16.56 s</td><td class="win">27.22×</td></tr>
+        <tr><td>FlashAR+ + vLLM</td><td>—</td><td class="win">~82.7×</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Co-training</b>: 일반 T2I/X2I를 embodied-specific과 함께 학습 → 일반 능력과 embodied 능력이 상호 보완, catastrophic forgetting 억제.</li>
+      <li><b>도메인 다양성 (6개)</b>: 자율주행·에고센트릭·3D·게임 데이터를 포함해 시점/조명/카메라 분포를 확장. embodied transfer의 시점 일반화에 기여.</li>
+      <li><b>정책 검증의 함의</b>: 생성 이미지가 시각적으로 그럴듯한 것과 <b>정책 성공률을 실제로 올리는 것</b>은 다른 문제. Xiaomi-U0는 π0.5 실기에서 +26.3pt로 후자에도 유효함을 입증.</li>
+      <li><b>FlashAR+ 병렬성</b>: 인접 anti-diagonal 토큰들의 조건부 독립성을 활용해 원본 AR 품질을 유지하면서 순차 디코딩 대비 지연을 27배 단축.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.11643/x1.png" alt="Xiaomi-Robotics-U0 능력 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Xiaomi-Robotics-U0의 embodied·일반 능력 개요.</b> 같은 embodiment 초기 관측, pairwise transfer 샘플, embodied video의 키프레임을 나란히 배치해 5가지 태스크 커버리지를 보임. 모든 프레임은 참조·생성된 이미지. (출처: arXiv:2607.11643)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.11643/x2.png" alt="5 태스크 통합 개요 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 5 태스크 통합 개요.</b> Gray는 입력, Orange는 출력. T2I·편집·embodied 장면 생성·transfer·영상 생성이 동일한 자기회귀 프레임에서 정의됨. (출처: arXiv:2607.11643)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>SI-RMSE 0.14 vs GPT-Image-2.0 0.40</b> — 단순 사실적 렌더링이 아닌 <b>기하 정합</b>이 embodied 파운데이션 모델의 실질 지표임을 강조하는 핵심 수치.
+    </div>
+    <div class="callout">
+      <b>π0.5 36.9→63.2%</b> — 생성 데이터가 실제 로봇 정책의 OOD 강건성을 끌어올린다는 <b>end-to-end</b> 검증. 세대별 embodied 파운데이션 모델의 성패는 결국 이 지표로 판가름 난다는 저자 주장.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.11643" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.11643" target="_blank">PDF</a></li>
+      <li><a href="https://robotics.xiaomi.com/xiaomi-robotics-u0.html" target="_blank">프로젝트 페이지</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.11643 · Xiaomi-Robotics-U0 · 요약 생성 2026-07-16
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>
