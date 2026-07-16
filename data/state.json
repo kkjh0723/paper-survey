@@ -1,8 +1,28 @@
 {
   "likes": {
-    "Aspire": 1
+    "Aspire": 1,
+    "2606.19980": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2503.14734",
+      "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
+      "arxiv_url": "https://arxiv.org/abs/2503.14734",
+      "added": "2026-07-16"
+    },
+    {
+      "id": "2506.01844",
+      "title": "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics",
+      "arxiv_url": "https://arxiv.org/abs/2506.01844",
+      "added": "2026-07-16"
+    },
+    {
+      "id": "2307.15818",
+      "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+      "arxiv_url": "https://arxiv.org/abs/2307.15818",
+      "added": "2026-07-16"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
