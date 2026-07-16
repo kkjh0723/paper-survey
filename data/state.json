@@ -8,6 +8,12 @@
       "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
       "arxiv_url": "https://arxiv.org/abs/2503.14734",
       "added": "2026-07-16"
+    },
+    {
+      "id": "2506.01844",
+      "title": "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics",
+      "arxiv_url": "https://arxiv.org/abs/2506.01844",
+      "added": "2026-07-16"
     }
   ],
   "dismissed": [
