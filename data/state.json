@@ -2,9 +2,16 @@
   "likes": {
     "Aspire": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2503.14734",
+      "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
+      "arxiv_url": "https://arxiv.org/abs/2503.14734",
+      "added": "2026-07-16"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
-  "updated": "2026-07-15"
+  "updated": "2026-07-16"
 }
