@@ -248,12 +248,24 @@
         <li>이를 뒤집으면 암시적 식 x<sub>k</sub> = x<sub>k+1</sub> − Δt·v<sub>θ</sub>(x<sub>k</sub>, ·)가 되는데, x<sub>k</sub>가 양변에 있어 닫힌 형태로 못 푼다 → <b>고정점 반복</b>으로 푼다(Eq. 3): <b>x<sub>k</sub><sup>(m+1)</sup> = x<sub>k+1</sub> − Δt·v<sub>θ</sub>(x<sub>k</sub><sup>(m)</sup>, t<sub>k</sub>, s)</b>, 초기값 x<sub>k</sub><sup>(0)</sup>=x<sub>k+1</sub></li>
         <li>이를 x<sub>K</sub>=a*에서 시작해 backward로 x<sub>0</sub>=w*까지 복원.</li>
       </ul>
+      <p><b>고정점 반복이란:</b> 우변에 현재 추측 x<sub>k</sub><sup>(m)</sup>을 넣어 다음 값 x<sub>k</sub><sup>(m+1)</sup>을 얻는 과정을 반복하는 것이다. x<sub>k</sub><sup>(0)</sup>=x<sub>k+1</sub>에서 시작해 M번(기본 5) 반복하면 <b>입력=출력이 되는 값(고정점 = 진짜 해)</b>으로 수렴한다. Δt·v가 작은 섭동이라 이 사상이 <b>수축(contraction)</b>이어서 오차가 기하급수적으로 줄어든다.</p>
       <p>리스트의 <a href="2410.24164_pi0.html">π0</a>·<a href="2303.04137_DiffusionPolicy.html">Diffusion Policy</a>가 쓰는 flow/diffusion 액션 헤드를 그대로 <b>역방향</b>으로 활용하는 셈.</p>
     </details>
     <div class="divide"></div>
     <details class="qa-item">
       <summary class="q">Q2. diffusion(DDIM inversion)이랑 비슷한 거야?</summary>
-      <p>비슷하지만 <b>두 가지 수정</b>이 필요하다. DDIM inversion은 diffusion 샘플의 결정론적 latent를 복원하는데, FlowDAgger는 이를 <b>flow-matching 액션 헤드와 WAM</b>으로 가져온다(§2). 핵심 차이(§4.1): 각 스텝을 <b>암시적으로(고정점) 풀지</b>, 한 번의 명시적 역스텝으로 근사하지 않는다. 명시적 역스텝은 속도 v를 x<sub>k</sub> 대신 x<sub>k+1</sub>에서 평가해 <b>O(Δt) 오차</b>가 생기는데, 이미지 diffusion(Δt~10<sup>−3</sup>)에선 무시할 만하지만 <b>few-step 액션 헤드(K=10, Δt=0.1)</b>에선 무시할 수 없다 — 그래서 고정점 반복이 "여기서 신뢰성 있게 만드는" 핵심이라고 논문은 말한다. 리스트의 <a href="2607.06988_WAM-TTT.html">WAM-TTT</a>와 같은 '월드-액션 모델을 배포시 적응'하는 축의 다른 접근.</p>
+      <p>비슷하지만 <b>두 가지 수정</b>이 필요하다. DDIM inversion은 diffusion 샘플의 결정론적 latent를 복원하는데, FlowDAgger는 이를 <b>flow-matching 액션 헤드와 WAM</b>으로 가져온다(§2). 핵심 차이(§4.1): 각 스텝을 <b>암시적으로(고정점) 풀지</b>, 한 번의 명시적 역스텝으로 근사하지 않는다. 명시적 역스텝은 속도 v를 x<sub>k</sub> 대신 x<sub>k+1</sub>에서 평가해 <b>O(Δt) 오차</b>가 생기는데, 이미지 diffusion(Δt~10<sup>−3</sup>)에선 무시할 만하지만 <b>few-step 액션 헤드(K=10, Δt=0.1)</b>에선 무시할 수 없다 — 그래서 고정점 반복이 "여기서 신뢰성 있게 만드는" 핵심이라고 논문은 말한다.</p>
+      <div class="tblwrap">
+      <table>
+        <thead><tr><th></th><th>스텝 수</th><th>Δt</th><th>O(Δt) 오차</th></tr></thead>
+        <tbody>
+          <tr><td>이미지 diffusion</td><td>수백~수천</td><td>~10<sup>−3</sup></td><td>극히 작음 → 무시</td></tr>
+          <tr><td>few-step 액션 헤드</td><td>K=10</td><td>0.1</td><td>~100배 커 누적 → 치명적</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><b>쉽게:</b> 명시적 역스텝은 속도 v를 (정작 필요한) x<sub>k</sub> 대신 (이미 아는) x<sub>k+1</sub>에서 평가한다. 두 점 거리 ≈ Δt라서 오차도 ≈ Δt. diffusion은 <b>보폭이 작아</b>(Δt 작음) 끝점 기준으로 방향을 대충 재도 거의 안 틀리지만, 액션 헤드는 <b>보폭이 커</b>(Δt=0.1) 끝점의 방향과 실제 필요한 방향이 크게 달라 그 오차가 backward 내내 누적된다 → 복원한 noise w*가 어긋나 적응이 깨진다. 그래서 성큼 가는 액션 헤드에선 고정점 반복(암시적)으로 "그 지점의 방향"을 제대로 풀어야 한다.</p>
+      <p><b>비유:</b> 왔던 길 되짚기 — 보폭이 작으면(diffusion) 도착점 기준으로 방향을 잡아도 거의 안 틀리지만, 보폭이 크면(few-step) 도착점 기준 방향으로 되짚다간 엉뚱한 데로 간다. 리스트의 <a href="2607.06988_WAM-TTT.html">WAM-TTT</a>와 같은 '월드-액션 모델을 배포시 적응'하는 축의 다른 접근이다.</p>
     </details>
     <div class="divide"></div>
     <details class="qa-item">
