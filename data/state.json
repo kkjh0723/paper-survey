@@ -14,6 +14,12 @@
       "title": "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics",
       "arxiv_url": "https://arxiv.org/abs/2506.01844",
       "added": "2026-07-16"
+    },
+    {
+      "id": "2307.15818",
+      "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+      "arxiv_url": "https://arxiv.org/abs/2307.15818",
+      "added": "2026-07-16"
     }
   ],
   "dismissed": [
