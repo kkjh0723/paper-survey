@@ -240,7 +240,32 @@
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
     <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
-    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+    <details class="qa-item">
+      <summary class="q">Q1. per-step 고정점 반전은 flow matching을 거꾸로 하는 거야? action을 noise로 바꾸는 거고, 수식이 있어?</summary>
+      <p>맞다. FlowDAgger는 정책의 <b>flow-matching 생성 과정을 거꾸로</b> 돌려, 전문가 액션 <b>a*</b>를 그 (동결된) 정책이 만들어낼 <b>noise 벡터 w*</b>로 되돌린다(latent space에서 적응). 즉 <b>action → noise</b> 변환이 맞다.</p>
+      <ul>
+        <li>순방향 한 스텝(Eq. 2): <b>x<sub>k+1</sub> = x<sub>k</sub> + Δt·v<sub>θ</sub>(x<sub>k</sub>, t<sub>k</sub>, s)</b></li>
+        <li>이를 뒤집으면 암시적 식 x<sub>k</sub> = x<sub>k+1</sub> − Δt·v<sub>θ</sub>(x<sub>k</sub>, ·)가 되는데, x<sub>k</sub>가 양변에 있어 닫힌 형태로 못 푼다 → <b>고정점 반복</b>으로 푼다(Eq. 3): <b>x<sub>k</sub><sup>(m+1)</sup> = x<sub>k+1</sub> − Δt·v<sub>θ</sub>(x<sub>k</sub><sup>(m)</sup>, t<sub>k</sub>, s)</b>, 초기값 x<sub>k</sub><sup>(0)</sup>=x<sub>k+1</sub></li>
+        <li>이를 x<sub>K</sub>=a*에서 시작해 backward로 x<sub>0</sub>=w*까지 복원.</li>
+      </ul>
+      <p>리스트의 <a href="2410.24164_pi0.html">π0</a>·<a href="2303.04137_DiffusionPolicy.html">Diffusion Policy</a>가 쓰는 flow/diffusion 액션 헤드를 그대로 <b>역방향</b>으로 활용하는 셈.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q2. diffusion(DDIM inversion)이랑 비슷한 거야?</summary>
+      <p>비슷하지만 <b>두 가지 수정</b>이 필요하다. DDIM inversion은 diffusion 샘플의 결정론적 latent를 복원하는데, FlowDAgger는 이를 <b>flow-matching 액션 헤드와 WAM</b>으로 가져온다(§2). 핵심 차이(§4.1): 각 스텝을 <b>암시적으로(고정점) 풀지</b>, 한 번의 명시적 역스텝으로 근사하지 않는다. 명시적 역스텝은 속도 v를 x<sub>k</sub> 대신 x<sub>k+1</sub>에서 평가해 <b>O(Δt) 오차</b>가 생기는데, 이미지 diffusion(Δt~10<sup>−3</sup>)에선 무시할 만하지만 <b>few-step 액션 헤드(K=10, Δt=0.1)</b>에선 무시할 수 없다 — 그래서 고정점 반복이 "여기서 신뢰성 있게 만드는" 핵심이라고 논문은 말한다. 리스트의 <a href="2607.06988_WAM-TTT.html">WAM-TTT</a>와 같은 '월드-액션 모델을 배포시 적응'하는 축의 다른 접근.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q3. M=5는 무슨 뜻이야? 5번 반복하는 거야?</summary>
+      <p><b>맞다.</b> M은 <b>inversion 스텝당 고정점 반복 횟수</b>(Eq. 3의 m)다. M=5 = 각 스텝마다 5번 반복(기본값, §4.1). 반복이 기하급수적으로 수렴해 몇 번이면 충분한데, Table 6이 이를 뒷받침한다:</p>
+      <ul>
+        <li>M=3 → 액션 MSE 0.00397</li>
+        <li><b>M=5 → 0.00168 (기본값)</b></li>
+        <li>M=10 → 0.00147 (개선 미미, 1.3배 느림)</li>
+      </ul>
+      <p>즉 "per-step 수축이 M=5에서 사실상 수렴"하므로 기본값으로 채택했다. (참고: 여기 M과 별개로, flow 적분 스텝 수는 K=10.)</p>
+    </details>
   </section>
 
   <footer>
