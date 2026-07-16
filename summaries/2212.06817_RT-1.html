@@ -69,6 +69,10 @@
   .qa{border-left:5px solid var(--blue);background:#fbfdff}
   .qa .q{font-weight:700;color:#1c3a57}
   .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
   details.qa-item{margin:2px 0}
   details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
   details.qa-item>summary.q::-webkit-details-marker{display:none}
@@ -234,6 +238,7 @@
 
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
     <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
   </section>
 
@@ -241,5 +246,15 @@
     arXiv:2212.06817 · RT-1 · 요약 생성 2026-07-15
   </footer>
 </div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ \u00ab'+t+'\u00bb \ubcf5\uc0ac\ub428 \u2014 Claude\uc5d0 \ubd99\uc5ec\ub123\uace0 \uc9c8\ubb38';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
 </body>
 </html>

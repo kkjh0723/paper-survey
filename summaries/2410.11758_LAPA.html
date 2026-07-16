@@ -70,6 +70,10 @@
   .qa{border-left:5px solid var(--blue);background:#fbfdff}
   .qa .q{font-weight:700;color:#1c3a57}
   .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
   /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
   details.qa-item{margin:2px 0}
   details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
@@ -234,6 +238,7 @@
 
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
     <details class="qa-item">
       <summary class="q">Q1. latent action에 로봇 행동뿐 아니라 카메라 이동·환경 변화도 인코딩될 텐데, 이를 "latent action"이라 부를 수 있나?</summary>
       <p>지적이 맞다. latent action은 (x<sub>t</sub>, x<sub>t+H</sub>) 두 프레임을 인코더에 넣어 z<sub>t</sub>를 뽑고, 디코더가 x<sub>t</sub>+z<sub>t</sub>로 x<sub>t+H</sub>를 복원하는 <b>미래프레임 복원(역동역학) 목적</b>으로 학습된다(§3.1). 따라서 z는 "두 프레임 사이의 시각적 변화 전부"를 담게 되어, 로봇 행동만이 아니라 카메라 이동·배경 변화까지 인코딩된다. 논문도 이를 명시한다: §5.2 <i>"카메라 시점 변화도 하나의 latent action에 대응한다"</i>, Appendix E에서 특정 코드([3,5,2,7]·[5,6,7,6])가 <i>"약간의 하향 카메라 이동"</i>에 대응한다고 보고. 즉 여기서 "latent action"은 문자 그대로의 로봇 행동이 아니라 <b>양자화된 시각적 전이(atomic visual change)의 프록시</b>다. 논문은 이를 한계로 적으면서도, 동시에 "환경 중심 행동(물체·카메라 이동)"이 다운스트림에 도움이 될 수 있다고 긍정적으로 프레이밍한다(Intro).</p>
@@ -249,5 +254,15 @@
     arXiv:2410.11758 · LAPA · 요약 생성 2026-07-09
   </footer>
 </div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ \u00ab'+t+'\u00bb \ubcf5\uc0ac\ub428 \u2014 Claude\uc5d0 \ubd99\uc5ec\ub123\uace0 \uc9c8\ubb38';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
 </body>
 </html>

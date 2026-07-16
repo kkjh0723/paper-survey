@@ -44,6 +44,15 @@ allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch
     → `3 Method` → `4 실험 결과`(수치 표, 최고값은 `class="win"`) → `5 Ablation`
     → `6 핵심 Figure/Table` → `7 관련 링크` → `Q 추가 질문 & 답변`
   - 뒤로가기 링크 `<a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>` 유지.
+  - `Q 추가 질문 & 답변` 섹션의 `</h2>` 바로 뒤에 질문 버튼을 넣는다:
+    `<button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>`
+    그리고 `</body>` 바로 앞에 아래 스크립트를 포함한다(파일명에서 id 추출→`/paper-qa <id>` 복사):
+    ```html
+    <script>
+    function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+    </script>
+    ```
+    (`.ask-btn` CSS는 템플릿 스타일 블록에 이미 포함돼 있다.)
 - 수치·주장은 반드시 논문 근거에 기반한다. 모르면 지어내지 말고 해당 항목을 비운다.
 
 ### 핵심 figure 임베드 (가능하면)

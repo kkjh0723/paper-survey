@@ -70,6 +70,10 @@
   .qa{border-left:5px solid var(--blue);background:#fbfdff}
   .qa .q{font-weight:700;color:#1c3a57}
   .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
   /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
   details.qa-item{margin:2px 0}
   details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
@@ -246,6 +250,7 @@
 
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
     <details class="qa-item">
       <summary class="q">Q1. 이 논문에서 "메타학습"은 무슨 의미야? 쉽게 설명해줘.</summary>
       <p>여기서 메타학습은 <b>"테스트타임 학습(TTT)을 잘 하도록 미리 배워두는 것"</b>(learning to learn)이다. 파라미터를 둘로 나눈다 — <b>느린(slow)</b> 파라미터(WAM 본체·TTT 투영 θ<sub>K,V,Q,O</sub>·fast weight 초기값 W<sub>init</sub>)와 <b>빠른(fast)</b> 파라미터(각 TTT 층의 W). 배포 때는 fast weight만 인간 영상으로 몇 스텝 적응시켜 로봇 행동을 조향한다. 메타학습(§3.2)은 "그렇게 인간 영상으로 fast weight를 적응시켰을 때 로봇이 잘 하도록" slow 파라미터를 최적화한다.</p>
@@ -273,5 +278,15 @@
     arXiv:2607.06988 · WAM-TTT · 요약 생성 2026-07-10
   </footer>
 </div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ \u00ab'+t+'\u00bb \ubcf5\uc0ac\ub428 \u2014 Claude\uc5d0 \ubd99\uc5ec\ub123\uace0 \uc9c8\ubb38';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
 </body>
 </html>
