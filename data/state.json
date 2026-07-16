@@ -5,7 +5,14 @@
     "2607.08448": 1,
     "2607.11397": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2607.10350",
+      "title": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
+      "arxiv_url": "https://arxiv.org/abs/2607.10350",
+      "added": "2026-07-16"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
