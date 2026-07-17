@@ -1,42 +1,42 @@
 {
-  "generated": "2026-07-17",
+  "generated": "2026-07-18",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.11270",
-          "title": "Lumo-2: Towards Predictive, Aligned, and Scalable Robot Learning",
-          "authors": "Peijun Tang, Shangjin Xie, Baifu Huang 외 · arXiv:2607.11270",
-          "summary_ko": "잠재 공간에서 세계 다이내믹스에 대해 추론해 액션을 생성하는 latent world-action model. 기존 reconstruction 기반 액션 토크나이저가 저수준 시그널 충실도에 편향돼 언어·비전·다이내믹스와 misalign된다는 문제를 지적하고, 액션 표현을 world dynamics → vision → language 순으로 단계별로 정렬하는 다단계 모달리티 사전 정렬을 도입한다. temporal reasoning·덱스터러스 조작 벤치서 VLA·WAM 베이스라인을 일관되게 상회.",
-          "tags": ["Latent World-Action Model", "Modality Alignment", "Predictive Learning", "Dexterous Manipulation", "Video Pretraining"],
-          "arxiv_url": "https://arxiv.org/abs/2607.11270",
-          "extra_url": "",
-          "date": "2026-07-13",
-          "reason": "좋아요한 WALA(DINOv3/depth latent로 액션 추출)와 InternVLA-A1.5(WAN2.2 latent foresight), CD-LAM(causally debiased latent action model)의 공통 고민 — '무엇을 잠재 액션으로 삼을 것인가, 그리고 그것이 언어·비전과 어떻게 정렬되는가' — 를 정면으로 다룬다. WALA/LAPA가 supervision 소스와 아키텍처를 바꿔가며 잠재 액션을 조립했다면, Lumo-2는 정렬 순서 자체(다이내믹스→비전→언어의 단계 정렬)를 설계 변수로 승격시켰다는 대비축. 이번 주 함께 공개된 FlowWAM(플로우를 통합 표현으로), Xiaomi-U0(멀티모달 AR 통합)와 함께 놓으면 '통합 표현/정렬'을 서로 다른 층위에서 밀어붙인 2026년 7월 세 갈래가 정리된다."
-        },
-        {
-          "id": "2607.14047",
-          "title": "PhysClaw-0: A Symbiotic Agentic System for Robot Autonomy via Language Corrections",
-          "authors": "Boyuan Wang, Zhenyuan Zhang, Zhiqin Yang 외 · arXiv:2607.14047",
-          "summary_ko": "사람의 자연어 지시를 그때그때 반영하고, 그 교정을 Corrective Memory에 구조화해 다음 회차에 재사용하는 인간-로봇 공생형 에이전트 시스템. 수집 루프는 리트라이 예산이 소진될 때만 사람에게 넘겨주며 대부분을 자율로 돌리고, LLM 파서가 발화를 구조화된 조정으로 매핑한다. 데스크탑 정리 태스크서 텔레오퍼레이션 수준 성공률을 유지하면서 사람 작업시간을 16%로 줄이고, 단회 시도 성공률을 12.5→47.5%로 끌어올렸다.",
-          "tags": ["Symbiotic Agent", "Corrective Memory", "Language Corrections", "Data Collection", "Autonomous Loop"],
-          "arxiv_url": "https://arxiv.org/abs/2607.14047",
+          "id": "2607.13818",
+          "title": "Learning Robust Execution in Robotic Manipulation with Agentic Reinforcement Learning",
+          "authors": "Xiaopeng Zhang, Yueyang Weng, Qi Liu 외 · arXiv:2607.13818",
+          "summary_ko": "VLA 정책은 일반화가 뛰어나지만 실행 중 상태가 나빠졌는지 판별하거나 복구하는 메커니즘이 없다는 문제의식에서 출발한다. 런타임 실행 품질을 재는 두 가지 지표를 정의하고, 그 위에 상위 결정을 담당하는 agentic RL 정책을 얹어 실행 히스토리를 보고 여러 실행 모드 중 하나를 고르게 한다. 실행이 흔들리면 적절한 복구 서브루틴을 발동시켜 안정 상태로 되돌린 뒤 태스크를 계속한다. LIBERO 표준 성공률 +13.7%p, 외란 조건 +39.2%p 개선.",
+          "tags": ["Agentic RL", "Frozen VLA", "Recovery Policy", "Runtime Quality", "LIBERO"],
+          "arxiv_url": "https://arxiv.org/abs/2607.13818",
           "extra_url": "",
           "date": "2026-07-15",
-          "reason": "좋아요 4편 전부와 정확히 겹치는 축을 짚는다. Aspire(에이전트가 스킬 라이브러리를 프로그래밍)·ENPIRE(코딩 에이전트의 실기 자기개선)가 '스킬을 자기가 축적한다'였다면, PhysClaw-0은 사람의 언어 교정을 그 스킬 축적의 원천으로 삼아 자율 루프를 유지한다. Harness-VLA(프로즌 VLA를 메모리 기반 에이전트가 부린다)와도 짝을 이루는데, 여기서는 '메모리'가 태스크 트레이스가 아닌 사람 교정 로그이며, ABot-AgentOS의 self-evolution 루프에 어떤 신호를 어떻게 넣을지를 구체화한다. FlowDAgger(액션 인버전으로 사람 개입을 latent에 흡수)의 자연어 버전으로도 읽힌다."
+          "reason": "좋아요 4편 중 3편(Aspire·ENPIRE·Harness-VLA)이 공유하는 축 — '저수준 VLA를 그대로 두고 상위 에이전트가 실행을 관리·개선한다' — 위에 정확히 얹힌다. Harness-VLA(프로즌 VLA를 프리미티브 라이브러리+메모리로 부린다)가 계획 층에 에이전트를 두었다면, 이 논문은 실행 층에 에이전트를 두어 '실행 품질 → 모드 전환 → 복구 서브루틴' 루프를 만든다. Aspire·ENPIRE의 자기개선이 훈련·수집 루프에서 일어났다면 여기서는 추론 루프에서 일어난다는 대비축이 선명. 최근 등록한 FlowDAgger(사람 개입을 latent에 흡수)와도 이웃이라 '실행 실패를 어떤 신호로 잡고 어디에 되먹일 것인가'라는 질문의 여러 답이 컬렉션 안에서 나란히 서게 된다."
         },
         {
-          "id": "2607.11119",
-          "title": "VIA: Visual Interface Agent for Robot Control",
-          "authors": "Hengyuan Hu, Priya Sundaresan, Jensen Gao 외 · arXiv:2607.11119",
-          "summary_ko": "기초모델을 소형 VLA로 파인튜닝하는 대신, 로봇 제어를 '브라우저 기반 3D 인터페이스를 조작하는 에이전틱 태스크'로 재정의한다. 오프더셸프 FM 에이전트가 스크린샷을 보고 직관적 명령을 내리고 결과를 관찰하며 조정하며, 로봇 특화 학습 없이 시각 입력과 범용 도구만 쓴다. Claude Code·Codex로 실험해 LIBERO-Goal 96.7%, 롱-호라이즌 조립 100%(최강 모델 기준)로 제로샷 성공.",
-          "tags": ["FM-as-Agent", "Zero-Shot Control", "Visual Interface", "Training-Free", "Browser 3D"],
-          "arxiv_url": "https://arxiv.org/abs/2607.11119",
+          "id": "2607.15275",
+          "title": "RoboTTT: Context Scaling for Robot Policies",
+          "authors": "Yunfan Jiang, Yevgen Chebotar, Ruijie Zheng 외 · arXiv:2607.15275",
+          "summary_ko": "로봇 파운데이션 모델의 시각-운동 컨텍스트를 기존 대비 압도적인 8,000 타임스텝까지 확장하되 추론 지연은 늘리지 않는다. Test-Time Training을 VLA 정책 안에 통합해, 학습·추론 시 gradient descent로 갱신되는 fast weights를 도입하고 sequence action forcing + truncated BPTT로 학습 컨텍스트를 확장한다. 사람 비디오에서의 원샷 학습, 적응적 정책 갱신, 외란 회복, 멀티 스테이지 태스크 성능이 열리고, 5분·10단계 조립을 유일하게 완수. 1K 컨텍스트 대비 8K 컨텍스트가 +62% 성능.",
+          "tags": ["Test-Time Training", "Context Scaling", "Fast Weights", "Long-Horizon", "One-Shot from Video"],
+          "arxiv_url": "https://arxiv.org/abs/2607.15275",
           "extra_url": "",
-          "date": "2026-07-13",
-          "reason": "컬렉션의 축을 이루는 'VLM에 액션을 얹어 VLA를 학습한다'(RT-2·OpenVLA·π 시리즈·Qwen-RobotManip) 노선에 대한 정면 반증 시도라 대비축으로 매우 유용하다. 좋아요한 Harness-VLA가 프로즌 VLA를 상위 에이전트가 부리는 방향이었다면, VIA는 그 프로즌 대상마저 없애고 범용 FM만으로 브라우저 UI를 통해 로봇을 조작한다. 최근 SmolVLA·FabriVLA·XS-VLA 흐름의 '얼마나 작게 만들 것인가'와 정반대로 '얼마나 학습을 안 할 것인가'를 실험한 셈. Aspire·ENPIRE의 코딩 에이전트 자기개선과도 방법론적으로 이웃하며, LIBERO에서 96.7%를 찍었다는 점이 두 진영을 비교하기 좋은 벤치마크가 된다."
+          "date": "2026-07-16",
+          "reason": "좋아요한 WALA와 이미 등록된 2607.06988(Test-Time Training WAM)의 축을 정면에서 확장한다. 2607.06988이 사람 비디오로 test-time에 적응하는 WAM이었다면, RoboTTT는 그 아이디어를 VLA 정책 자체의 컨텍스트 스케일링 문제로 재프레임한다. 컬렉션 상당수가 '컨텍스트 짧음 + 정책 강함' 조합이었는데(π0, OpenVLA, SmolVLA, ACT 등) 여기는 '컨텍스트를 스케일링 축으로 승격'이라는 새 방향을 연다. 좋아요한 Harness-VLA(외부 메모리로 컨텍스트를 늘림)와 대비되게 정책 안쪽에서 컨텍스트를 늘리는 방식이라, 롱-호라이즌·원샷 학습이라는 두 목표에 대한 '메모리 외부화 vs 컨텍스트 내부화' 프레이밍이 컬렉션 안에서 완결된다."
+        },
+        {
+          "id": "2607.13960",
+          "title": "GigaWorld-Policy-0.5: A Faster and Stronger WAM Empowered by AutoResearch",
+          "authors": "GigaWorld Team, Angen Ye, Angyuan Ma 외 · arXiv:2607.13960",
+          "summary_ko": "World Action Model의 배포 지연 문제를 정면으로 다룬다. 시각 다이내믹스는 학습 때만 쓰고 배포 시엔 액션 디코딩만 수행하는 action-centered 구조로 바꾸고, Mixture-of-Transformers를 도입해 시각 모델링용 전문가와 액션 생성용 전문가를 분리했다. 로컬 RTX 4090 기준 85ms 추론 지연을 달성. 하이퍼파라미터 탐색은 AutoResearch 파이프라인이 자동 수행. 시각 다이내믹스 학습의 이득을 유지하면서 실제 로봇 제어에 필요한 처리량을 확보.",
+          "tags": ["World Action Model", "Mixture-of-Transformers", "Fast Inference", "Action-Centered", "AutoResearch"],
+          "arxiv_url": "https://arxiv.org/abs/2607.13960",
+          "extra_url": "",
+          "date": "2026-07-15",
+          "reason": "이번 주 함께 공개된 세 WAM(FlowWAM·Xiaomi-U0·LingBot-VA 2.0)과 정확히 짝을 이루는 네 번째 갈래. LingBot-VA 2.0이 Sparse MoE + Async Inference로 지연을 낮췄다면, GigaWorld-Policy-0.5는 Mixture-of-Transformers + 배포 시 액션-온리 디코딩으로 같은 문제를 다르게 푼다. 좋아요한 WALA와도 방향이 겹치는데, WALA가 '무엇을 latent action으로 볼 것인가'라는 표현 축을 다뤘다면, 이 논문은 '학습·배포 계산을 어떻게 분리할 것인가'라는 시스템 축을 다뤄 상보적이다. 이번 주 이미 등록된 FlowWAM(듀얼 스트림 확산)의 지연 병목에 대한 자연스러운 다음 답."
         }
       ]
     },
@@ -45,37 +45,37 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2402.15391",
-          "title": "Genie: Generative Interactive Environments",
-          "authors": "Jake Bruce, Michael Dennis, Ashley Edwards 외 · Google DeepMind · arXiv:2402.15391",
-          "summary_ko": "라벨 없는 인터넷 비디오만으로 비지도 학습된 첫 대규모 생성형 인터랙티브 환경. 11B 파운데이션 모델이 텍스트·이미지·스케치를 입력으로 액션-제어 가능한 가상 세계를 생성하고, 그 과정에서 학습한 잠재 액션 공간으로 미학습 비디오 시연에서 에이전트를 훈련시킬 수 있다. 이후 LAPA·WALA·CD-LAM 등 '비디오에서 잠재 액션을 뽑는' 모든 후속 연구의 원형이자, 월드모델과 액션 학습을 하나로 묶은 대표 논문.",
-          "tags": ["Foundation World Model", "Latent Action", "Video Pretraining", "Interactive Environment", "Unsupervised"],
-          "arxiv_url": "https://arxiv.org/abs/2402.15391",
-          "extra_url": "https://sites.google.com/view/genie-2024/",
-          "date": "2024-02-23",
-          "reason": "좋아요한 WALA와 LAPA, 그리고 새로 등록된 CD-LAM·FlowWAM·InternVLA-A1.5가 모두 인용·비교 대상으로 삼는 원조 논문인데 정작 컬렉션에 없다. Genie를 두면 '비디오→잠재 액션'의 계보 (Genie 원형 → LAPA VQ latent → WALA DINOv3/depth latent → CD-LAM causal debiasing → InternVLA-A1.5 WAN2.2 latent → FlowWAM optical-flow-as-action)가 한눈에 정렬된다. 또 이번 주 새로 공개된 Xiaomi-Robotics-U0(멀티모달 자기회귀 통합 world foundation model)의 사상적 선조로도 정확히 대응된다."
+          "id": "2209.07753",
+          "title": "Code as Policies: Language Model Programs for Embodied Control",
+          "authors": "Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman · Google Robotics · arXiv:2209.07753",
+          "summary_ko": "코드 완성 능력을 학습한 LLM이 자연어 명령을 받아 로봇 제어 정책 코드를 직접 생성한다. 인지 출력을 처리하고 제어 프리미티브 API를 파라미터화하는 함수·피드백 루프를 코드로 표현하며, few-shot 프롬프팅으로 새 태스크마다 정책 코드를 자율 조립한다. 미정의 함수를 재귀적으로 정의하는 계층적 코드 생성으로 공간·기하 추론, 새 명령 적응, 모호한 지시의 정밀 제어값 변환을 가능하게 한다.",
+          "tags": ["LLM Coding", "Policy as Code", "Few-Shot", "Control Primitive API", "Hierarchical Generation"],
+          "arxiv_url": "https://arxiv.org/abs/2209.07753",
+          "extra_url": "https://code-as-policies.github.io/",
+          "date": "2022-09-16",
+          "reason": "좋아요한 Aspire·ENPIRE의 직계 조상이다. 두 논문 모두 'LLM 코딩 에이전트가 로봇 스킬을 프로그래밍한다'는 아이디어의 실기·산업화 버전인데, 그 원형이 정작 컬렉션에 없다. Code as Policies가 '한 번 프롬프트로 코드를 짜서 넘긴다'라는 정적 형태였다면, Aspire는 커리큘럼·리트라이·라이브러리 축적으로, ENPIRE는 로봇 플릿의 실세계 RL로 이 아이디어를 확장한 것으로 정확히 대응된다. 지난 주 추천한 Voyager(오픈-엔디드 스킬 라이브러리)와도 짝을 이뤄 '로봇용 Voyager 계보'의 두 축(스킬 축적 vs 코드 생성)이 완결된다. 이번 주 새 그룹으로 뽑은 GigaWorld-Policy-0.5의 AutoResearch 파이프라인이 왜 자연스러운 다음 진화인지도 이 원문으로부터 이해된다."
         },
         {
-          "id": "2305.16291",
-          "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
-          "authors": "Guanzhi Wang, Yuqi Xie, Yunfan Jiang 외 · NVIDIA·Caltech·UT Austin · arXiv:2305.16291",
-          "summary_ko": "Minecraft 환경에서 LLM이 자동 커리큘럼·실행 가능한 스킬 라이브러리·환경 피드백/오류 교정 프롬프트 루프를 돌리며 사람 개입 없이 새 스킬을 계속 축적하는 오픈-엔디드 평생 학습 에이전트. LLM을 도구/컨트롤러가 아니라 자기 코드 생성기·자기 커리큘럼 설계자로 세운 초기 사례로, 이후 로봇 도메인의 스킬 라이브러리·자기개선 에이전트가 공통으로 물려받는 3요소 구조를 처음 정착시킨 참조.",
-          "tags": ["LLM Agent", "Lifelong Learning", "Skill Library", "Self-Improvement", "Code Generation"],
-          "arxiv_url": "https://arxiv.org/abs/2305.16291",
-          "extra_url": "https://voyager.minedojo.org/",
-          "date": "2023-05-25",
-          "reason": "좋아요한 네 편 중 두 편(Aspire·ENPIRE)이 정확히 Voyager의 로봇 버전이다. Aspire는 커리큘럼+스킬 프로그래밍+iterative refinement를 sim-to-real 로봇으로, ENPIRE는 코딩 에이전트 자기개선을 실기 로봇 플릿으로 이식한 것으로 읽을 수 있다. 이번 주 새 그룹으로 뽑은 PhysClaw-0(자연어 교정 재사용)과 이미 등록된 ABot-AgentOS(그래프 메모리·자기 진화 루프)도 Voyager의 삼각 구조를 각각 변주한 것. 원문을 두면 '왜 이 계열이 스킬 라이브러리를 그렇게 강조하는가'의 근거가 컬렉션 안에 앵커된다."
+          "id": "2204.01691",
+          "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances (SayCan)",
+          "authors": "Michael Ahn, Anthony Brohan, Noah Brown 외 · Google Robotics · arXiv:2204.01691",
+          "summary_ko": "LLM의 광범위한 의미 지식과 로봇의 실제 실행 가능성을 결합한다. 사전 학습된 로봇 스킬의 value function을 어포던스로 사용해 LLM 출력이 물리적으로 실행 가능한지 걸러내고, 언어 모델이 상위 태스크 지식을, 로봇이 '언어 모델의 손과 눈'을 담당하는 역할 분담을 처음 제도화했다. 모바일 매니퓰레이터로 길고 추상적인 자연어 지시를 실행하는 능력을 실증.",
+          "tags": ["LLM Planner", "Affordance Grounding", "Value Function", "High-Level Planning", "Mobile Manipulation"],
+          "arxiv_url": "https://arxiv.org/abs/2204.01691",
+          "extra_url": "https://say-can.github.io/",
+          "date": "2022-04-04",
+          "reason": "좋아요한 Harness-VLA(프로즌 VLA + 상위 agentic planner + 프리미티브 라이브러리)의 개념적 원형이다. Harness-VLA가 '어포던스 필터를 학습된 정책 value가 아니라 실제 VLA 실행 확률로 대체한' 후속으로 정확히 읽힌다. 컬렉션에 이미 있는 ABot-AgentOS(멀티모달 그래프 메모리+자기 진화)도 SayCan의 'LLM 계획+어포던스' 이후 계획-실행 인터페이스가 어떻게 진화했는지를 보이는 지점이며, 이번 주 새 그룹의 2607.13818(agentic RL로 실행 복구)이 왜 다시 상위 결정 층으로 돌아왔는지도 SayCan을 기준으로 놓으면 명확해진다. Code as Policies와 나란히 배치되면 'LLM은 코드로 뿌리나 vs 어포던스로 걸러 뿌리나'라는 2022년의 두 답이 컬렉션 안에 정합적으로 앵커된다."
         },
         {
-          "id": "2302.00111",
-          "title": "UniPi: Learning Universal Policies via Text-Guided Video Generation",
-          "authors": "Yilun Du, Mengjiao Yang, Bo Dai 외 · Google·MIT · arXiv:2302.00111",
-          "summary_ko": "순차 의사결정 문제를 '텍스트-조건 비디오 생성 문제'로 재정의한 첫 논문. 에이전트가 실행하려는 태스크를 텍스트로 받으면 그 태스크 수행 영상을 먼저 생성하고, 인버스 다이내믹스로 그 영상에서 액션을 뽑아내 실행한다. 프리트레인 텍스트/비전 임베딩을 활용해 새 목표에도 조합적 일반화가 가능함을 보였고, 이후 모든 '비디오 생성을 정책으로 쓰는' World Action Model 라인의 개념적 원형.",
-          "tags": ["Video-as-Policy", "Universal Policy", "Text-to-Video", "Inverse Dynamics", "Combinatorial Generalization"],
-          "arxiv_url": "https://arxiv.org/abs/2302.00111",
-          "extra_url": "https://universal-policy.github.io/",
-          "date": "2023-01-31",
-          "reason": "컬렉션 상위권을 차지한 WAM 계열(FlowWAM·Xiaomi-U0·LingBot-VA 2.0·CD-LAM·InternVLA-A1.5)과 이번 주 새 그룹의 Lumo-2·GigaWorld-Policy-0.5까지, 모두 '비디오 생성을 정책 신호로 쓰는' 아이디어의 후손이다. UniPi를 두면 이 계보의 출발점(2023.01: 비디오 생성+인버스 다이내믹스)에서 최신(2026.07: 통합 자기회귀·MoT·플로우 표현)까지의 3년 궤적이 컬렉션 안에서 완결된다. WALA(액션-프리 비디오+액션-라벨 데모)·LAPA(비지도 잠재 액션) 같은 잠재 액션 계열과의 대비 — '픽셀에서 뽑을까 vs 잠재에서 뽑을까' — 를 이해하는 기준점 역할."
+          "id": "2301.04104",
+          "title": "Mastering Diverse Domains through World Models (DreamerV3)",
+          "authors": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap · DeepMind · arXiv:2301.04104",
+          "summary_ko": "고정된 하이퍼파라미터 하나로 150개 이상 태스크에서 강력한 성능을 내는 범용 world-model RL. 학습된 잠재 다이내믹스 모델로 미래를 상상하고, 그 상상 롤아웃 위에서 정책을 개선한다. 정규화·밸런싱·변환 기법으로 로봇, 아타리, DMLab, 크래프터, 마인크래프트까지 도메인 특화 튜닝 없이 통과했고, 사람 시연·커리큘럼 없이 마인크래프트에서 다이아몬드를 처음으로 회수한 알고리즘.",
+          "tags": ["World Model", "Model-Based RL", "Imagined Rollouts", "Latent Dynamics", "Generalization"],
+          "arxiv_url": "https://arxiv.org/abs/2301.04104",
+          "extra_url": "https://danijar.com/project/dreamerv3/",
+          "date": "2023-01-10",
+          "reason": "컬렉션의 WAM 라인(LingBot-VA·FlowWAM·Xiaomi-U0·CD-LAM·InternVLA-A1.5) 전체가 '상상 롤아웃으로 정책을 개선한다'는 아이디어의 후손인데, 그 원조 격 world-model RL 논문이 컬렉션에 없다. 지난 주 추천한 UniPi(비디오 생성=정책)와 Genie(생성형 인터랙티브 환경)이 '생성 모델을 어떻게 정책 신호로 쓰나'였다면, DreamerV3는 그보다 더 오래된 '잠재 다이내믹스로 상상하고 그 위에서 정책 학습' 라인의 대표작이다. V-JEPA(이미 컬렉션)와 좋아요한 WALA가 정확히 이 축의 시각·지각 담당 자매 라인이므로, DreamerV3을 두면 컬렉션의 world-model 지형이 '픽셀 상상(UniPi→Genie→FlowWAM), 잠재 상상(Dreamer→WALA→CD-LAM), 표현 상상(V-JEPA→InternVLA-A1.5)' 세 갈래로 정돈된다. 이번 주 새 그룹의 GigaWorld-Policy-0.5가 '학습 때만 상상, 배포는 액션-온리'로 가는 이유도 이 원조 흐름에서 파생된 시스템적 선택으로 이해된다."
         }
       ]
     }
