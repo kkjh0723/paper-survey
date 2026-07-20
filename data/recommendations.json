@@ -1,42 +1,42 @@
 {
-  "generated": "2026-07-20",
+  "generated": "2026-07-21",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.13429",
-          "title": "Anchor-Align: Generalizable VLA Finetuning via Representation Anchoring and Language-Action Alignment",
-          "authors": "Dwip Dalal, Shivansh Patel 외 · arXiv:2607.13429",
-          "summary_ko": "표준 BC 파인튜닝이 VLM의 프리트레인 시각·의미 표현을 침식해 일반화가 무너지는 문제를 정면으로 다룬다. 두 가지 축을 결합해 방어하는데, Vision-Language Anchoring은 프로즌 프리트레인 모델을 향한 distillation으로 표현을 붙잡아 두고, Language-Action Alignment는 연속 액션을 이산 모션 라벨로 바꿔 언어·액션 예측을 같은 관측 위에서 공동으로 학습시킨다. 실기 성공률이 아키텍처별로 28%→54%, 37%→60%로 뛰고 LIBERO-PRO/Plus·CALVIN의 OOD 교란과 롱호라이즌에서 일관된 향상. 즉 VLA를 파인튜닝하면서 대형 VLM 지식이 왜, 어떻게 남아 있어야 하는지에 대한 실전 레시피.",
-          "tags": ["VLA Finetuning", "Representation Anchoring", "Language-Action Alignment", "Distillation", "OOD Generalization"],
-          "arxiv_url": "https://arxiv.org/abs/2607.13429",
-          "extra_url": "",
-          "date": "2026-07-15",
-          "reason": "좋아요한 Harness-VLA(2607.08448, 프로즌 VLA를 위·아래로 감싸는 접근)와 정확히 짝을 이루는 반대편 답이다. Harness-VLA가 '건드리지 말고 감싸라'라면, Anchor-Align은 '건드리되 프리트레인 표현을 앵커로 잡아라'로 같은 문제(VLM 지식 붕괴)를 파인튜닝 내부에서 푼다. 지난 주 새 그룹으로 뽑은 SkillPlug(플러그인 스킬 헤드)와 어제 새 그룹의 LifelongVLA(dual-LoRA), 어제 관련 그룹의 PaLM-E(파인튜닝해도 QA 유지)를 잇는 실선이다. 좋아요한 WALA(DINOv3+depth로 latent action)도 결국 프리트레인 시각 표현을 어떻게 지키느냐의 문제라서, 이 논문은 컬렉션의 '프리트레인 표현 보존'축을 완결한다. 실기 28→54, 37→60의 수치도 좋아요 성향 강함."
+          "id": "2607.15330",
+          "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
+          "authors": "Xiaomi Robotics Team, Jun Guo, Piaopiao Jin · arXiv:2607.15330",
+          "summary_ko": "UMI 디바이스로 모은 10만+ 시간 실기 조작 궤적으로 사전학습한 대형 VLA. 궤적 클립에 '장면 상태 전이'를 자연어로 붙이는 확장 가능한 자동 라벨링 파이프라인을 만들어 조건부 학습 신호를 풍부하게 준 뒤, 사후학습 단계에서 사람이 실제로 쓰는 명령형 지시와 로봇 임보드먼트에 맞춘다. 데이터·모델 스케일링 곡선이 사전→사후로 그대로 이전되고, RoboCasa365에서 SOTA 57.6%(직전 46.6%), RoboDojo에서 평균 20.07(직전 13.07)로 큰 폭 갱신. 다운스트림 소량 파인튜닝으로 복잡·정밀 태스크에서도 데이터 효율이 좋다는 것을 보이는 '스케일링이 여전히 통한다'의 최신 사례.",
+          "tags": ["Foundation VLA", "UMI Data", "100K Hours", "Auto-Labeling", "RoboCasa365"],
+          "arxiv_url": "https://arxiv.org/abs/2607.15330",
+          "extra_url": "https://robotics.xiaomi.com/xiaomi-robotics-1.html",
+          "date": "2026-07-16",
+          "reason": "컬렉션에 이미 있는 Xiaomi-U0(2607.11643, 38B AR 멀티모달 임보디드 파운데이션)의 짝이 되는 '정책' 축이다. Xiaomi-U0가 '데이터·씬 생성' 파운데이션이면 이 논문은 '행동 정책' 파운데이션이라 Xiaomi 진영의 두 축이 컬렉션에서 완성된다. 좋아요한 ENPIRE(2606.19980, 실기 자기개선 플릿)와 Aspire의 '어떻게 실기 데이터를 대규모로 만들 것인가' 질문에 UMI 10만 시간 + 자동 라벨링 파이프라인이라는 다른 답을 낸다. RoboCasa365 57.6%(직전 46.6%)라는 수치는 어제 새 그룹의 GigaWorld-Policy-0.5(2607.13960)·엊그제 Reflex(2607.14695)와 나란히 놓을 '동시대 정책 SOTA' 기준점이 되고, 좋아요한 Harness-VLA(2607.08448)가 프로즌으로 감쌌던 '베이스 VLA'가 결국 이런 대형 사전학습 모델이 될 것이라는 흐름을 명확히 보여준다."
         },
         {
-          "id": "2607.15065",
-          "title": "DriftWorld: Fast World Modeling through Drifting",
-          "authors": "Susie Lu, Haonan Chen 외 · arXiv:2607.15065",
-          "summary_ko": "확산 기반 월드 모델의 반복 디노이징 병목을 없애고 액션 조건부 drift 함수를 한 번에 적분해 30+fps로 미래 프레임을 뽑는 world model. 확산 베이스라인 대비 17배 빠르면서 Bridge-V2·RT-1·Push-T에서 SOTA를 유지하고, 온라인 계획뿐 아니라 오프라인 정책 랭킹 시뮬레이터로도 GT와 상관계수 0.99를 기록. '월드 모델을 계획에 실시간으로 쓰려면 얼마나 빨라야 하나'라는 질문에 단발 forward로 답한 셈.",
-          "tags": ["World Model", "Fast Inference", "Drift Function", "Policy Ranking", "Single-Pass"],
-          "arxiv_url": "https://arxiv.org/abs/2607.15065",
+          "id": "2607.14943",
+          "title": "Steering Robustness into World Action Models via Mechanistic Interpretability and Optimal Control",
+          "authors": "Jihoon Hong, Julian Skifstad, Qiyue Dai · arXiv:2607.14943",
+          "summary_ko": "WAM이 분포 이동에 취약한 이유를 '학습 실패'가 아니라 '활성 공간에서의 표현 구조' 관점에서 파고든다. 성공/실패 롤아웃의 활성을 비교해 일부 WAM(Cosmos-Policy, DiT4DiT)은 견고성 특징이 저차원 선형으로 분리되지만 LingBot-VA는 그렇지 않음을 보이고, 이 선형 분리성을 이용해 학습 없이 대조 활성 방향으로 스티어링. 나아가 활성 다이내믹스가 국소 선형이라는 관찰에서 축소 차수 LQR(WA-LQR)을 유도해 최소 침습 피드백 제어를 붙인다. 카메라·그리퍼·시각 노이즈 교란에서 무보정·프롬프트 스티어링 대비 견고성이 유의미하게 개선. WAM을 '분석 가능한 시스템'으로 다시 열고, 파인튜닝 없이 배포 후 강건화하는 실전 도구를 제시한다.",
+          "tags": ["World Action Model", "Mechanistic Interpretability", "Activation Steering", "LQR Control", "Training-Free Robustness"],
+          "arxiv_url": "https://arxiv.org/abs/2607.14943",
           "extra_url": "",
           "date": "2026-07-16",
-          "reason": "컬렉션의 WAM 축 — FlowWAM(2607.13017), Xiaomi-U0(2607.11643), LingBot-VA 2.0(2607.08639), CD-LAM(2607.09185), 어제 추천 BadWAM/RoboTTT(2607.15275)/GigaWorld-Policy-0.5(2607.13960) — 이 전부 부딪히는 실시간성 벽에 다른 답을 낸다. FlowWAM은 optical flow 표현으로, GigaWorld-Policy-0.5는 MoT 아키텍처로 지연을 줄였는데, DriftWorld는 '디노이징을 아예 없앤다'는 근본 답. 특히 어제 새 그룹의 Reflex(2607.14695, 스트리밍 flow-matching)와 대응 — Reflex가 정책 측 스트리밍이라면 DriftWorld는 월드 모델 측 스트리밍이라 두 편을 나란히 두면 '실시간 로봇 파운데이션'의 앞·뒤가 완성된다. 정책 랭킹 시뮬레이터 용도(오프라인 평가 코릴레이션 0.99)는 좋아요한 ENPIRE(2606.19980, 실기 자기개선 플릿)의 데이터 선별에도 그대로 적용 가능."
+          "reason": "어제 컬렉션에 들어간 BadWAM(2607.15207, 액션과 이매지네이션의 분리 취약성을 블랙박스로 공격)의 정확한 방어측 짝이다. BadWAM이 '왜 무너지는가'를 실증했다면 WA-LQR은 '왜 무너지는지 활성에서 읽고, 학습 없이 밀어 되돌린다'로 같은 문제를 반대편에서 푼다. 어제 새 그룹으로 뽑은 DiMaS(2607.14280, flow-matching VLA를 분포 수송으로 조종)와도 짝: DiMaS는 정책의 표현 분포를, WA-LQR은 WAM의 활성 방향을 배포-후에 옮긴다. 지지난 주 관련 그룹의 DreamerV3(2301.04104)와 컬렉션의 FlowWAM(2607.13017)·LingBot-VA 2.0(2607.08639) 등 WAM 라인 전체에 '해석 가능성+제어 이론'이라는 축을 추가한다는 점에서 새로 열리는 갈래. Cosmos-Policy·DiT4DiT를 대상으로 삼은 것도 최신 아키텍처와 곧바로 연결된다."
         },
         {
-          "id": "2607.14280",
-          "title": "DiMaS: Distribution Matching for Steering Vision-Language-Action Models",
-          "authors": "Pegah Khayatan, Sara Meziane 외 · arXiv:2607.14280",
-          "summary_ko": "flow-matching VLA의 행동을 세밀하게 조종(steering)하려면 LLM에서 흔한 '선형 방향으로 활성 밀기'가 통하지 않는다는 관찰에서 출발. action expert의 표현 분석으로 '행동 특징은 디코딩은 되지만 선형으로는 조종되지 않는다'를 보이고, 그 대신 두 표현 분포 사이의 분포 수송으로 행동을 옮기는 DiMaS를 제안한다. 두 SOTA VLA에서 검증하고 태스크 유사도가 낮아질수록 일반화가 어떻게 무너지는지도 정량화. 파인튜닝 없이 배포 후 정책의 행동을 세팅에 맞춰 밀어붙일 수 있는 실용 도구.",
-          "tags": ["Flow Matching VLA", "Behavioral Steering", "Distribution Transport", "Representation Analysis", "Post-hoc Control"],
-          "arxiv_url": "https://arxiv.org/abs/2607.14280",
+          "id": "2607.12356",
+          "title": "VistaVLA: Geometry- and Semantic-Aware 3D Gaussian-Grounded VLA for Robotic Manipulation",
+          "authors": "Mohan Liu, Zhihao Gu, Xuanyu Chen · arXiv:2607.12356",
+          "summary_ko": "2D 관측→액션의 표준 VLA가 '3D 시맨틱 인지 지도'를 갖지 못한다는 문제의식에서 출발. 멀티뷰 vision-language 특징을 3D Gaussian 원시에 리프팅해 기하-정박된 시맨틱 토큰을 만들고, 이를 VLA의 컨텍스트로 그라운딩한다. 무거운 3D 표현을 다루기 위해 Merge-then-Query(MtQ)로 밀집 Gaussian을 극도로 압축(토큰 99% 감소)하면서 액션 관련 3D 레이아웃·시맨틱은 보존. 실기 7태스크 성공률 +22.8%, VLA-Adapter 대비 OOD 태스크에서 +30.0%. '3D를 VLA에 넣되 시맨틱까지 유지하고 계산은 감당 가능하게'라는 세 마리 토끼를 잡는 실용 프레임워크.",
+          "tags": ["3D Gaussian VLA", "Semantic 3D Grounding", "Multi-View Lifting", "Token Compression", "OOD Generalization"],
+          "arxiv_url": "https://arxiv.org/abs/2607.12356",
           "extra_url": "",
-          "date": "2026-07-15",
-          "reason": "컬렉션의 지배적 백본인 flow-matching VLA(π0/π0.5, SmolVLA, GR00T N1, FabriVLA)의 배포 후 조종 문제를 정면으로 다룬 첫 편에 가깝다. 좋아요한 Harness-VLA(프로즌 VLA + 에이전틱 플래너)와 상보적 — Harness-VLA는 '외부 플래너로 감싸서' 행동을 조절했다면, DiMaS는 '표현 분포를 옮겨서' 조절한다. 지난 주 추천 DREAMSTEER(2607.02865, latent world model로 배포 중 steering)와도 정확히 짝: DREAMSTEER는 월드 모델 예측으로, DiMaS는 표현 분포로 같은 배포-중 조종을 다르게 푼다. FlowDAgger(2607.08877, latent space 인간 개입)까지 셋을 나란히 놓으면 '파인튜닝 없이 flow-matching VLA를 배포 후 다루는 세 갈래'가 완성된다. 특히 '선형은 안 된다'는 분석 자체가 컬렉션의 latent action(WALA·LAPA·CD-LAM) 계열에도 시사가 크다."
+          "date": "2026-07-14",
+          "reason": "컬렉션의 See-like-a-Robot(2607.11498, 로봇 중심 pointmap)이 '기하'를, 좋아요한 WALA(2607.11397, DINOv3+depth latent action)가 '시각 표현'을 각각 강화했다면 VistaVLA는 그 둘의 접점 — 기하와 시맨틱을 동시에 3D로 그라운딩 — 을 정확히 채운다. 어제 관련 그룹으로 뽑은 PerAct(2209.05451, voxel Perceiver)와 오늘 관련 그룹의 RVT(2306.14896, 멀티뷰 트랜스포머)가 3D 조작의 계보를 만들어놓았는데, VistaVLA는 그 계보의 최신 지점 — voxel/pointmap을 지나 3D Gaussian으로 — 을 잇는 자연스러운 다음 노드. 특히 MtQ의 토큰 99% 감소는 컬렉션의 실시간성 축(Reflex 2607.14695, Xiaomi-Robotics-1 위의 배포 문제)과 곧바로 연결되어 '3D를 VLA에 넣으면서 지연을 어떻게 감당하는가'에 대한 실전적 답이 된다."
         }
       ]
     },
@@ -45,37 +45,37 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2209.05451",
-          "title": "PerAct: Perceiver-Actor — A Multi-Task Transformer for Robotic Manipulation",
-          "authors": "Mohit Shridhar, Lucas Manuelli, Dieter Fox · arXiv:2209.05451",
-          "summary_ko": "RGB-D 관측을 3D 복셀로 만들고 언어 목표와 함께 Perceiver Transformer에 넣어 '다음 최적 복셀 액션'을 이산 예측하는 언어 조건부 BC 에이전트. 이미지-투-액션이나 3D ConvNet 대비 몇 shots만으로 RLBench 18개·실기 7개 태스크를 한 정책이 다태스크로 해결. 3D 표현이 주는 구조적 사전지식이 데이터 효율에 결정적임을 실증한 초기 언어 조건부 3D VLA의 원형.",
-          "tags": ["Language-Conditioned Manipulation", "3D Voxel", "Perceiver Transformer", "Multi-Task BC", "RLBench"],
-          "arxiv_url": "https://arxiv.org/abs/2209.05451",
-          "extra_url": "https://peract.github.io/",
-          "date": "2022-09-12",
-          "reason": "컬렉션의 최근 축 — 좋아요한 WALA(DINOv3 latent+depth), 최근 등록 See-like-a-Robot(2607.11498, 로봇 중심 pointmap), VistaVLA(3D Gaussian grounded VLA)의 원조 지점이다. 이들은 모두 '언어 조건부인데 3D를 왜 그리고 어떻게 넣나'라는 질문의 후예인데, PerAct는 그 질문을 처음 스케일러블하게 답해 이후 RVT·Act3D·3D Diffuser Actor 계보를 열었다. 이미 컬렉션에 있는 RT-1(2212.06817), ACT(2304.13705), Diffusion Policy(2303.04137)와 나란히 두면 '2022~2023 언어 조건부 다태스크 조작'의 세 축(2D 토큰 이산화·2D 이미테이션·3D 복셀 이산화)이 완성된다. 지난 주 관련 그룹의 SayCan·Code as Policies와도 다른 갈래 — SayCan/CaP가 '언어로 계획·코드'라면 PerAct는 '언어로 3D 액션 그 자체'."
+          "id": "2306.11706",
+          "title": "RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation",
+          "authors": "Konstantinos Bousmalis, Giulia Vezzani, Dushyant Rao · Google DeepMind · arXiv:2306.11706",
+          "summary_ko": "여러 로봇·태스크에서 모은 이종 경험을 하나의 시각 목표 조건부 결정 트랜스포머로 소화하는 멀티임보디먼트·멀티태스크 제너럴리스트 에이전트. 시뮬·실기의 다양한 관측·액션 공간을 아우르며 새 태스크·로봇에 제로샷은 물론 100~1000개 예시 파인튜닝으로 빠르게 적응하고, 결정적으로 '학습된 모델이 다음 학습 회차용 데이터를 스스로 생성'하는 자율 개선 루프를 처음 스케일 있게 실증. 세 종류의 실기 로봇에서 대규모 평가를 수행했으며, 데이터가 커지고 다양해질수록 태스크 간 전이와 적응 효율이 함께 증가한다는 스케일링 성질을 보였다.",
+          "tags": ["Self-Improving Agent", "Multi-Embodiment", "Goal-Conditioned Transformer", "Data Bootstrapping", "Foundation Manipulation"],
+          "arxiv_url": "https://arxiv.org/abs/2306.11706",
+          "extra_url": "",
+          "date": "2023-06-20",
+          "reason": "좋아요한 Aspire와 ENPIRE(2606.19980)의 직계 조상이다. '학습된 모델이 다음 회차 데이터를 만든다'는 자율 개선 루프의 스케일 있는 최초 실증이 바로 RoboCat인데, Aspire가 '코딩 에이전트가 스킬을 진화'시키고 ENPIRE가 '플릿이 실기에서 자기개선'하는 두 흐름 모두 이 원형에서 출발한다. 컬렉션에 이미 있는 RT-1(2212.06817)·RT-X(2310.08864)·Octo(2405.12213)와 나란히 두면 '한 정책이 여러 임보디먼트를 배우는' 2022~2024 계보의 DeepMind 축이 완성. 좋아요한 Harness-VLA(2607.08448, 프로즌 VLA + 에이전틱 플래너)와도 대비 — RoboCat은 '한 모델이 모든 걸 흡수', Harness-VLA는 '한 모델을 감싼다' — 로 컬렉션의 '베이스 모델 통합 vs. 분리' 논쟁을 정면으로 지지한다. 오늘 새 그룹의 Xiaomi-Robotics-1의 '스케일링이 답'이라는 주장도 결국 RoboCat이 열어둔 노선 위에 서 있다."
         },
         {
-          "id": "2307.05973",
-          "title": "VoxPoser: Composable 3D Value Maps for Robotic Manipulation with Language Models",
-          "authors": "Wenlong Huang, Chen Wang 외 · Stanford · arXiv:2307.05973",
-          "summary_ko": "LLM이 태스크 어포던스·제약을 언어에서 유추하고 code-writing으로 VLM과 협업해 3D 값맵(가치·비용 필드)을 합성, 이 필드 위에서 모델 기반 플래너가 6-DoF 궤적을 만든다. 프리트레인 정책 없이도 open-set 물체·open-language 지시로 6-DoF 궤적을 폐루프로 실행하고, 온라인 경험으로 다이내믹스 모델을 학습해 컨택트 리치 태스크까지 확장. 파인튜닝 없이 LLM+VLM 조합만으로 6-DoF 조작이 가능함을 실증한 이정표.",
-          "tags": ["LLM Planning", "3D Value Maps", "Code-Writing", "Zero-Shot Manipulation", "Model-Based Planning"],
-          "arxiv_url": "https://arxiv.org/abs/2307.05973",
-          "extra_url": "https://voxposer.github.io/",
-          "date": "2023-07-12",
-          "reason": "좋아요한 Harness-VLA(2607.08448)와 좋아요한 Aspire의 개념적 부모다. Harness-VLA는 '프로즌 VLA를 프리미티브 라이브러리로 감싼다'인데, VoxPoser는 그보다 앞서 '프리트레인 정책 없이 LLM이 3D 어포던스·값맵을 짜서 플래너를 굴린다'로 파운데이션 모델 조합만으로 조작을 성립시켰다. 지난 주 관련 그룹의 SayCan(2204.01691, 어포던스 필터)과 Code as Policies(2209.07753, LLM 코드 생성)와 정확히 짝: SayCan+CaP+VoxPoser 셋이면 'LLM을 로봇에 얹는 세 가지 방식(선택·코드·값맵)'의 2022~2023 계보가 컬렉션에 다 들어온다. 이후 CD-LAM(2607.09185)·WALA(2607.11397) 같은 latent action이 '값맵을 학습으로 대체'한 흐름의 대비축으로도 필수."
+          "id": "2310.17596",
+          "title": "MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations",
+          "authors": "Ajay Mandlekar, Soroush Nasiriany, Bowen Wen · NVIDIA · arXiv:2310.17596",
+          "summary_ko": "약 200개의 사람 시연만으로 18개 태스크에 걸쳐 5만+ 시연을 자동 합성해 스케일러블한 조작 학습을 가능케 하는 데이터 생성 시스템. 시연을 새 씬 구성·객체 인스턴스·로봇 팔에 맞춰 자동 적응·리타깃해 다양한 초기 상태 분포를 확보하고, 이 합성 데이터로 학습한 이미테이션 정책이 긴 호라이즌·고정밀 태스크(다부품 조립, 커피 준비)에서 강한 성능을 보인다. '추가 사람 시연을 모으는 것' 대비 유용성·경제성에서 유리하다는 것을 여러 방식으로 검증해, 이후 RoboCasa·DemoStart·MimicGen-Diffusion까지 이어지는 '합성 시연으로 조작 데이터를 확장하자'는 흐름을 열었다.",
+          "tags": ["Demonstration Synthesis", "Data Augmentation", "Manipulation Scaling", "Long-Horizon", "RoboSuite"],
+          "arxiv_url": "https://arxiv.org/abs/2310.17596",
+          "extra_url": "https://mimicgen.github.io",
+          "date": "2023-10-26",
+          "reason": "오늘 새 그룹의 Xiaomi-Robotics-1(10만 시간 실기 궤적 + 자동 라벨링)이 서 있는 '데이터를 어떻게 스케일하는가' 축의 반대편 답이다. Xiaomi는 '많이 모은다', MimicGen은 '적게 모은 뒤 합성으로 뻥튀긴다'. 그리고 Xiaomi-Robotics-1이 SOTA를 세운 RoboCasa365 자체가 MimicGen 계보의 위에 서 있는 벤치마크이기도 하다. 좋아요한 Aspire와 ENPIRE(2606.19980)의 '데이터를 스스로 만든다' 사이클과도 짝: MimicGen이 '시연을 씬으로 뻥튀기'라면 Aspire/ENPIRE는 '스킬·태스크 자체를 뻥튀기'다. 컬렉션의 Diffusion Policy(2303.04137)·ACT(2304.13705)·RT-1(2212.06817) 모두 결국 데이터가 병목이었는데, MimicGen은 '어떻게 뚫었는가'의 2023 표준 답이라 컬렉션에 반드시 들어와야 하는 배경 논문."
         },
         {
-          "id": "2203.12601",
-          "title": "R3M: A Universal Visual Representation for Robot Manipulation",
-          "authors": "Suraj Nair, Aravind Rajeswaran 외 · Stanford/Meta AI · arXiv:2203.12601",
-          "summary_ko": "Ego4D의 인간 자기중심 비디오로 time-contrastive·video-language alignment·L1 sparsity를 결합해 학습한 로봇 조작용 범용 시각 표현. 프로즌으로 얹기만 해도 12개 시뮬 조작 태스크에서 from-scratch 대비 +20%, CLIP·MoCo 대비 +10% 이상을 달성하고, 실기 Franka에서도 태스크당 시연 20개만으로 실환경 조작을 학습. '로봇용 시각 인코더는 인간 비디오에서 나와야 한다'를 스케일 있게 처음 실증.",
-          "tags": ["Robot Visual Representation", "Ego4D Pretraining", "Time-Contrastive", "Frozen Encoder", "Video-Language Alignment"],
-          "arxiv_url": "https://arxiv.org/abs/2203.12601",
-          "extra_url": "https://sites.google.com/view/robot-r3m/",
-          "date": "2022-03-23",
-          "reason": "좋아요한 WALA(2607.11397, DINOv3+depth로 latent action)가 서 있는 '로봇용 시각 표현' 라인의 원류다. 지난 주 관련 그룹의 DINOv2(2304.07193)가 '라벨 없는 이미지 SSL'로 로봇의 시각 백본을 열었다면, R3M은 그보다 1년 앞서 '라벨 없는 인간 비디오'로 같은 문제를 풀었고 이후 V-JEPA(2404.08471, 컬렉션 있음)·Voltron·MVP·VC-1까지의 갈래를 낳았다. R3M(인간 비디오 SSL) → V-JEPA(비디오 feature prediction) → DINOv2(이미지 SSL) → WALA(DINOv3+depth로 latent action)의 계보가 나란히 서면 컬렉션의 시각 백본 축이 완성. 좋아요한 ENPIRE·Aspire도 결국 로봇 데이터가 부족한 실기에서 굴러야 하는데, R3M의 데이터 효율(20 시연) 성질은 이들의 자기수집·업데이트 사이클과 곧바로 이어진다."
+          "id": "2306.14896",
+          "title": "RVT: Robotic View Transformer for 3D Object Manipulation",
+          "authors": "Ankit Goyal, Jie Xu, Yijie Guo · NVIDIA · arXiv:2306.14896",
+          "summary_ko": "3D 조작에서 explicit 3D 표현(voxel)은 정확하지만 계산이 커서 스케일이 어렵다는 문제를 풀기 위해, 카메라 입력을 로봇 워크스페이스 주변의 가상 뷰에서 재렌더링한 뒤 뷰 간 어텐션으로 정보를 취합하는 멀티뷰 트랜스포머. 단일 RVT 모델이 RLBench 18태스크(249 변형)에서 PerAct 대비 상대 성공률 26% 개선, 같은 성능까지 학습은 36배 빠르고 추론은 2.3배 빠름. 실기에서도 태스크당 ~10개 시연으로 다양한 조작을 수행. voxel 없이도 '3D를 이해하는' 표현을 어떻게 만들 것인가에 대한 결정적인 대안.",
+          "tags": ["Multi-View Transformer", "3D Manipulation", "Virtual Re-Rendering", "RLBench", "Scalable 3D"],
+          "arxiv_url": "https://arxiv.org/abs/2306.14896",
+          "extra_url": "https://robotic-view-transformer.github.io/",
+          "date": "2023-06-26",
+          "reason": "오늘 새 그룹으로 뽑은 VistaVLA(3D Gaussian-Grounded VLA)의 직접적 조상이다. VistaVLA는 멀티뷰 특징을 3D Gaussian에 리프팅하는데, 그 발상의 원류가 RVT — '멀티뷰를 트랜스포머로 취합해 3D를 얻는다'. 어제 관련 그룹의 PerAct(2209.05451, voxel Perceiver)와 나란히 두면 2022~2023 '언어 조건부 3D 조작'의 두 축(voxel vs. multi-view transformer)이 컬렉션에 다 들어오고, 이후 3D Diffuser Actor·RVT-2·GR00T·VistaVLA까지의 계보가 자연스럽게 이어진다. 컬렉션의 See-like-a-Robot(2607.11498, 로봇 중심 pointmap)과도 대비축 — RVT는 '가상 뷰 재렌더링', See-like-a-Robot은 '로봇 프레임 pointmap'으로 같은 뷰 일반화 문제를 다르게 푼다. 좋아요한 WALA(2607.11397)의 depth+DINOv3 조합도 결국 '3D를 어떻게 값싸게 넣나'의 후예라 RVT의 계산 효율 논거는 그대로 유효하다."
         }
       ]
     }
