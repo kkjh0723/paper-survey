@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BadWAM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.LG · Robustness · World-Action Model</span>
+    <h1>BadWAM: When World-Action Models Dream Right but Act Wrong</h1>
+    <p class="authors">Qi Li (NUS), Xingyi Yang (HK PolyU), Xinchao Wang (NUS, 교신)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.15207" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.15207" target="_blank">PDF</a>
+      <span>arXiv:2607.15207</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World-Action Model</span>
+      <span class="t">Adversarial Attack</span>
+      <span class="t">Robustness</span>
+      <span class="t">Black-box</span>
+      <span class="t">LIBERO</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 16일 · ϵ=0.06 (ℓ∞) · zeroth-order (finite-difference) · 8 queries/replan</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Action 생성과 미래 예측(imagination)을 결합한 <b>World-Action Model(WAM)</b>이 시각적 관찰에 대한 작은 적대적 교란에 취약함을 최초로 체계 분석. <b>Action-only 공격</b>은 미래 예측을 무시하고 action만 왜곡, <b>Imagination-preserving 공격</b>은 λ 가중 라그랑주 완화로 미래 예측은 그럴듯하게 유지하면서 action은 실패시킴. 블랙박스 zeroth-order 최적화(17 forward/replan)만으로 LIBERO Action-only WAM 성공률 <b>96.5%→<span class="win">43.1%</span> (−53.4pp)</b>. Joint·IDM WAM으로도 35~40pp <b>전이(transfer)</b>. 기존 방어(Gaussian blur, JPEG-noise) 실효 없음.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>최근 로봇 정책은 <b>Vision-Language-Action</b>과 <b>세계 모델(world model)</b>을 결합해 "미래를 상상하고 행동한다". 이 결합은 통상적으로 강건성에 도움이 될 것으로 여겨졌으나, 저자들은 반대로 <b>상상(imagination)과 실행(action)이 분리될 수 있다</b>는 점을 지적한다. Fig. 1의 관찰: 실패 에피소드는 action shift가 크고, 그런데도 <b>미래 예측 shift는 성공/실패 사이 큰 차이가 없다</b>. 즉 공격자가 미래 예측의 "그럴듯함"을 유지하면서 action만 무너뜨릴 여지가 있다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>WAM용 통일 공격 프레임워크(BadWAM)</b> — visual observation에 ℓ∞≤ϵ 교란만 가하는 블랙박스 공격을 정식화. 공격 목표를 (a) action 최대 왜곡, (b) 미래 예측 왜곡 제한으로 분리해 정의.</li>
+      <li><b>두 가지 변종:</b> Action-only(Eq. 8, 순수 실패 유도)와 Imagination-preserving(Eq. 9, 라그랑주 완화로 미래는 그럴듯하게 유지). λ 하나로 stealth-강도 trade-off 조절.</li>
+      <li><b>실증:</b> 블랙박스 zeroth-order(17 forward/replan)만으로 LIBERO 성공률 폭락(최대 −53.4pp). 서로 다른 WAM 변종 간 <b>공격 전이</b>(35~40pp)와 기존 방어의 무력함(AUROC 0.65~0.68) 보고.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>위협 모델</h3>
+    <p>공격자는 <b>전처리 전 시각 관찰만 교란</b>할 수 있고 모델 가중치·기울기 접근 불가. Action-only 시나리오는 action 관측만, Imagination-visible 시나리오는 예측 미래 rollout도 관측. 훈련 오염·물리환경 변경·프롬프트 주입은 대상 아님. 기본 예산 <b>ϵ=0.06</b>(ℓ∞, 픽셀 강도).</p>
+
+    <h3>일반 목적함수</h3>
+    <div class="callout">
+      <b>max<sub>||δ||∞≤ϵ</sub> D<sub>act</sub>(a<sup>δ</sup>, a) s.t. D<sub>img</sub>(z<sup>δ</sup>, z) ≤ τ<sub>img</sub></b> (Eq. 7)<br>
+      Imagination-preserving은 라그랑주 완화(Eq. 9): <b>arg max [D<sub>act</sub> − λ·D<sub>img</sub>]</b>. λ↑ → 미래 예측 더 유사하게 유지하면서 action 왜곡.
+    </div>
+
+    <h3>Zeroth-order 최적화</h3>
+    <p>Rademacher 방향 u<sub>i</sub>로 8쌍의 finite-difference update: <b>∇̂J(δ) = (1/m)Σ[J(δ+cu<sub>i</sub>) − J(δ−cu<sub>i</sub>)]/(2c)·u<sub>i</sub></b> (Eq. 11), 이후 projected gradient ascent <b>δ ← Π<sub>[−ϵ,ϵ]</sub>(δ+η·∇̂J)</b> (Eq. 12). 기본값: c=0.02, η=0.02, 16 교란 쿼리 + 1 reference = 총 <b>17 forward/replan</b>.</p>
+
+    <h3>Closed-loop 실행</h3>
+    <p>매 replanning 단계마다 교란을 재계산. 로봇이 교란된 이미지를 관찰 → WAM이 action 생성 → 로봇 실행 → 환경 피드백 → 다음 replan.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Table 1 — Closed-loop 공격 결과 (ϵ=0.06, 8 iter/replan)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치</th><th>모델</th><th>Clean</th><th>Action-only</th><th>Drop</th><th>Imagination-Preserving</th><th>Drop</th></tr></thead>
+      <tbody>
+        <tr><td>LIBERO</td><td>Action-only WAM</td><td>96.5</td><td class="win">43.1</td><td>−53.4</td><td>—</td><td>—</td></tr>
+        <tr><td>LIBERO</td><td>Joint WAM</td><td>98.1</td><td>61.5</td><td>−36.6</td><td>63.0</td><td>−35.1</td></tr>
+        <tr><td>LIBERO</td><td>IDM WAM</td><td>98.4</td><td>66.1</td><td>−32.3</td><td>68.1</td><td>−30.3</td></tr>
+        <tr><td>RoboTwin</td><td>Action-only WAM</td><td>92.1</td><td>84.4</td><td>−7.7</td><td>—</td><td>—</td></tr>
+        <tr><td>RoboTwin</td><td>Joint WAM</td><td>90.9</td><td>84.4</td><td>−6.5</td><td>85.2</td><td>−5.7</td></tr>
+        <tr><td>RoboTwin</td><td>IDM WAM</td><td>91.4</td><td>83.7</td><td>−7.7</td><td>85.1</td><td>−6.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">가장 큰 취약성은 <b>LIBERO의 Action-only WAM</b>(−53.4pp). RoboTwin은 태스크 구조상 상대적으로 강건(5.7~7.7pp).</p>
+
+    <h3>Table 2 — WAM 변종 간 전이 (LIBERO)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Objective</th><th>Source→Target</th><th>Clean</th><th>Under Attack</th><th>Drop</th></tr></thead>
+      <tbody>
+        <tr><td>Action-only</td><td>Action→Joint</td><td>98.3</td><td>64.2</td><td>−34.2</td></tr>
+        <tr><td>Action-only</td><td>Joint→IDM</td><td>100.0</td><td>59.2</td><td>−40.8</td></tr>
+        <tr><td>Action-only</td><td>IDM→Joint</td><td>98.3</td><td>61.7</td><td>−36.7</td></tr>
+        <tr><td>Imagination-Pres.</td><td>Joint→IDM</td><td>100.0</td><td>60.8</td><td>−39.2</td></tr>
+        <tr><td>Imagination-Pres.</td><td>IDM→Joint</td><td>98.3</td><td>63.3</td><td>−35.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">교차 아키텍처 전이 35~40pp — WAM 계열 전반이 <b>공유된 관찰공간 취약성</b>을 안고 있음을 시사.</p>
+
+    <h3>Table 3 — 방어 baseline (LIBERO)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>방어</th><th>Clean</th><th>공격 하 성공률</th></tr></thead>
+      <tbody>
+        <tr><td>Joint WAM</td><td>None</td><td>98.3</td><td>57.1</td></tr>
+        <tr><td>Joint WAM</td><td>Gaussian Blur</td><td>98.3</td><td>85.0</td></tr>
+        <tr><td>Joint WAM</td><td>Resize-Crop Ens.</td><td>52.5</td><td>0.0</td></tr>
+        <tr><td>Joint WAM</td><td>JPEG-Noise Ens.</td><td>94.2</td><td>89.2</td></tr>
+        <tr><td>IDM WAM</td><td>None</td><td>100.0</td><td>54.6</td></tr>
+        <tr><td>IDM WAM</td><td>JPEG-Noise Ens.</td><td>93.3</td><td>90.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">JPEG-noise ensemble은 공격 하 89~90% 유지하나 <b>clean도 6.7pp 손실</b>. Resize-Crop은 clean을 파괴. 검출기(Fig. 15) AUROC 0.65~0.68 — 실전 배포에 부적합.</p>
+
+    <h3>White-box 상한 & 랜덤 baseline (Fig. 6)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Random 교란</th><th>BadWAM (black-box)</th><th>White-box</th></tr></thead>
+      <tbody>
+        <tr><td>Joint WAM</td><td>71.0</td><td>61.5</td><td class="win">49.2</td></tr>
+        <tr><td>IDM WAM</td><td>75.2</td><td>66.1</td><td class="win">52.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">White-box는 12~15pp 추가 하락 — 상한(취약성 ceiling)을 나타내며, BadWAM은 블랙박스로도 그 상당 부분을 커버.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>λ (Fig. 13):</b> Joint WAM에서 λ=0 → D<sub>img</sub>=14.70·성공률 61.7%, λ=0.015(기본) → D<sub>img</sub>=14.34·56.7%. λ↑은 미래 예측 유사도↑, 그러나 action 왜곡 개선은 고λ에서 포화. 최적 λ ∈ [0.01, 0.03].</li>
+      <li><b>교란 예산 ϵ (Fig. 14):</b> ϵ=0.01은 미미(공격 하 95.8%), ϵ=0.06 강한 공격(56.7%), ϵ=0.20은 완전 붕괴(0%). 강도는 ϵ에 선형적.</li>
+      <li><b>쿼리 예산 B:</b> B=1도 상당 효과(64.2%), B=8~16에서 포화(56.7%), B=32는 시간만 낭비(27.84s/replan).</li>
+      <li><b>Per-suite 분석 (Fig. 8):</b> LIBERO Action-only WAM에서 <b>Spatial 96.5→16.0 (−80.5pp)</b>가 최악, 반면 Object는 <b>변화 없음(93.0→93.0)</b> — affordance-rich 태스크는 action 교란 허용범위가 큼.</li>
+      <li><b>Failure 누적 (Fig. 10):</b> 성공 에피소드는 4 replan 후 action shift 2.0~3.0, 실패는 5.0~7.0으로 <b>2~3배</b>. 실패는 즉시 아닌 <b>점진적 drift</b>.</li>
+      <li><b>검출성 (Fig. 15):</b> 5% false positive에서 검출률 13.4%(Joint) / 21.4%(IDM). 실용적 안전 조치로 불충분.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.15207/x1.png" alt="Empirical motivation — failed episodes와 action shift 관계 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Empirical motivation.</b> 실패 에피소드는 action shift가 크지만 predicted-future shift는 성공/실패에서 겹침 — action과 imagination이 분리 가능함을 보이며 imagination-preserving 공격의 근거가 됨. (출처: arXiv:2607.15207)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.15207/x2.png" alt="채널 수준 action shift 구조 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Channel-level action structure.</b> Action-only 공격이 만들어내는 action shift가 무작위가 아니라 특정 연속 action 채널(주로 translation·gripper)과 특정 시점에 집중돼 구조적임을 시각화. (출처: arXiv:2607.15207)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.15207/x9.png" alt="Qualitative rollout — clean vs attacked (Figure 9)" loading="lazy">
+      <figcaption><b>Figure 9 — Qualitative rollout comparison.</b> LIBERO-10 sequential manipulation에서 공격받은 WAM은 초기에는 그럴듯하게 움직이다가 점차 drift하며 인접 물체를 넘어뜨리고 두 번째 grasp에서 실패 — <b>점진적 실패 누적</b>. (출처: arXiv:2607.15207)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1</b> — 논문의 핵심 주장(WAM은 미묘한 시각 교란에 취약)의 정량 근거. LIBERO Action-only WAM 96.5→43.1은 저비용 블랙박스 공격(17 forward/replan)만의 결과. <b>Fig. 6</b>이 white-box(49.2/52.8)를 상한으로 제시.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.15207" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.15207" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.15207 · BadWAM · 요약 생성 2026-07-20
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

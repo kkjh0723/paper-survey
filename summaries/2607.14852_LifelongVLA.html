@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LifelongVLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Lifelong Learning · VLA</span>
+    <h1>Towards Human-like Physical Intelligence: Lifelong Vision-Language-Action Learning for Robotic Manipulation</h1>
+    <p class="authors">Yao He, Gan Sun (교신), Fazeng Li, Yang Cong (SCUT) · Wenqi Liang (Univ. of Trento)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.14852" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.14852" target="_blank">PDF</a>
+      <span>arXiv:2607.14852</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Lifelong Learning</span>
+      <span class="t">VLA</span>
+      <span class="t">LoRA Gating</span>
+      <span class="t">Replay</span>
+      <span class="t">xArm</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 16일 · 백본 PaliGemma (Gemma 2B VLM + 300M action decoder) · 7-DoF action</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>배포된 로봇이 새 조작 스킬을 순차적으로 습득하면서 이전 능력을 잊지 않아야 하는 <b>lifelong VLA</b> 세팅을 다룸. 핵심은 두 가지: (1) <b>Dual-Timescale LoRA Gating</b> — 짧은 학습률의 short-term LoRA와 낮은 학습률의 long-term LoRA를 task-aware gate α<sup>t,l</sup>(c)로 가중 결합해 <b>plasticity–stability</b> 자동 조율. (2) <b>Cache-Efficient Stochastic Replay</b> — 원 궤적 대신 <b>stop-grad prefix 토큰만 캐시</b>하고 suffix는 매번 새 noise로 재생성. 메모리 <span class="win">167.62→95.70 MiB/task (−43%)</span>, 평균 SR <span class="win">83.2%</span>(ER 70.2, upper bound Joint 89.6), Forgetting Rate <span class="win">11.4%</span>(ER 19.6, SFT 76.8). 실기 xArm 5-task 순차 학습에서 모든 태스크 80% 이상 유지.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>범용 VLA는 오프라인 대규모 학습에 강하나 배포 후 <b>새 태스크를 하나씩 습득</b>해야 하는 실제 서비스 로봇 시나리오에서 두 가지 벽에 부딪친다: (a) 이전 태스크의 <b>catastrophic forgetting</b>, (b) 모든 궤적을 저장해 replay하는 방식의 <b>비현실적 메모리 비용</b>. 저자들은 이 <b>plasticity–stability trade-off</b>를 이중 시간 척도(dual-timescale) 학습과 압축 replay로 동시에 공략한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Dual-Timescale LoRA Gating</b> — 동일한 base 가중치에 두 LoRA(Δ𝐖<sup>sh</sup>, Δ𝐖<sup>lg</sup>)를 붙이되 학습률을 이원화: short-term은 현재 태스크 denoising loss로 빠르게, long-term은 replay·distillation으로 천천히. Frozen prefix 특징 c = Pool(stopgrad(E<sub>pre</sub>(u))) 기반 gate α<sup>t,l</sup>(c) = σ(W<sup>g,l</sup>φ<sup>l</sup>(c)+b<sup>g,l</sup>)가 <b>가중치 수준으로</b> 두 LoRA를 결합.</li>
+      <li><b>Cache-Efficient Stochastic Replay</b> — 궤적 전체가 아닌 stop-grad prefix 토큰과 (state, action) supervision만 저장(reservoir sampling). 매 replay 시 <b>새 diffusion noise (τ<sub>j</sub>', ε<sub>j</sub>')</b>로 suffix를 재계산해 stochastic 다양성 확보. <b>167.62→95.70 MiB/task (−43%)</b>.</li>
+      <li><b>Masked New-Replay + Distillation 목적함수</b> — 현재/replay 항을 별도 정규화, teacher snapshot의 detached prediction으로 distillation. <b>ℒ<sub>t</sub> = ℒ<sub>new</sub> + λℒ<sub>rep</sub> + βℒ<sub>dist</sub></b> (λ=1.0, β=0.1).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Dual LoRA + Gating (수식)</h3>
+    <div class="callout">
+      각 계층: <b>Δ𝐖̂<sup>t,l</sup>(c) = (1−α<sup>t,l</sup>(c))·Δ𝐖<sup>sh,t,l</sup> + α<sup>t,l</sup>(c)·Δ𝐖<sup>lg,t,l</sup></b><br>
+      Short-term (η<sub>sh</sub> ≫ η<sub>lg</sub>): 현재 태스크 신속 적응 담당. Long-term (η<sub>lg</sub>): replay·distillation으로 통합 지식 축적. Gate는 <b>context c</b>에 따라 두 pathway를 태스크 인식적으로 혼합.
+    </div>
+
+    <h3>Stochastic Replay</h3>
+    <p>스킬-수준 prefix cache ℛ<sub>t</sub>는 reservoir sampling으로 |ℛ<sub>t</sub>| = min(c<sub>t</sub>, |Ω<sub>t</sub>|). 캐시 항목당 <b>여러 stochastic suffix 인스턴스</b> 생성: <b>h<sub>j,t</sub><sup>suf,rep</sup> = E<sub>suf</sub>(s<sub>j</sub>, ỹ<sub>τ<sub>j</sub>'</sub><sup>rep</sup>, τ<sub>j</sub>'; Θ̂<sub>t</sub>(c<sub>j</sub><sup>rep</sup>))</b>. 원 궤적 저장 대비 <b>정보 손실 최소·메모리 절약 동시</b>.</p>
+
+    <h3>하이퍼파라미터</h3>
+    <div class="kv">
+      <div>LoRA rank / scaling</div><div>r=16, γ=16</div>
+      <div>Replay cache / skill</div><div>M=500, c<sub>t</sub>=50</div>
+      <div>손실 가중치</div><div>λ=1.0, β=0.1</div>
+      <div>Steps / task</div><div>10,000</div>
+      <div>Backbone</div><div>PaliGemma (Gemma 2B VLM + 300M action decoder, frozen)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Table 1 — 평균 성공률 (SR, %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Avg SR</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>Joint (upper bound)</td><td><b>89.6</b></td><td>모든 태스크 데이터로 동시 학습</td></tr>
+        <tr><td><b>LifelongVLA</b></td><td class="win">83.2</td><td>제안 (upper bound와 −6.4pp)</td></tr>
+        <tr><td>ER (Experience Replay, 2019)</td><td>70.2</td><td>표준 replay baseline</td></tr>
+        <tr><td>Info-VLA (2026)</td><td>28.6</td><td>—</td></tr>
+        <tr><td>AtomicVLA (2026)</td><td>28.6</td><td>스킬 전문화 접근</td></tr>
+        <tr><td>LwF-LoRA (2017)</td><td>7.8</td><td>Learning without Forgetting</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Task-specific peaks: Task 5 (96%), Task 9 (98%), Task 10 (96%).</p>
+
+    <h3>Table 2 — 망각률 (FOR, %, 낮을수록 좋음)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Avg FOR</th></tr></thead>
+      <tbody>
+        <tr><td><b>LifelongVLA</b></td><td class="win">11.4</td></tr>
+        <tr><td>ER</td><td>19.6</td></tr>
+        <tr><td>Info-VLA</td><td>21.2</td></tr>
+        <tr><td>AtomicVLA</td><td>39.2</td></tr>
+        <tr><td>LwF-LoRA</td><td>72.6</td></tr>
+        <tr><td>SFT</td><td>76.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Task 9는 <b>FOR=0</b>(완전 무망각). ER 대비 SR +13.0pp, FOR −8.2pp.</p>
+
+    <h3>Table 3 — 메모리·파라미터·성능 종합 (Ablation 포함)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Variant</th><th>Mem/Task (MiB)</th><th>Trainable Params</th><th>Avg SR</th><th>Avg FOR</th></tr></thead>
+      <tbody>
+        <tr><td>Raw data replay</td><td>167.62</td><td>49.99M</td><td>81.8</td><td>18.44</td></tr>
+        <tr><td>Single LoRA (latent replay)</td><td>95.70</td><td>49.99M</td><td>74.6</td><td>21.78</td></tr>
+        <tr><td><b>Latent + Dual LoRA (본 논문)</b></td><td class="win">95.70</td><td>99.97M</td><td class="win">83.2</td><td class="win">11.4</td></tr>
+        <tr><td>AtomicVLA</td><td>452.98</td><td>226.49M</td><td>28.6</td><td>39.2</td></tr>
+        <tr><td>Info-VLA</td><td>138.32</td><td>49.99M</td><td>28.6</td><td>21.2</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Single→Dual LoRA로 <b>SR +8.6pp, FOR −10.38pp</b>. AtomicVLA 대비 파라미터 <b>절반 이하</b>(99.97M vs 226.49M)로 크게 앞섬.</p>
+
+    <h3>실기 xArm — 5-task 순차 학습</h3>
+    <p>Task당 50 데모 학습, 50 에피소드 평가. 5개 태스크 모두 학습 완료 후 <b>모든 태스크 성공률 80%↑</b>. 시뮬레이션 이외의 실환경에서도 제안 retention 메커니즘이 유효함을 확인.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Cache 표현:</b> Raw trajectory replay(167.62 MiB) → latent prefix replay(95.70 MiB). SR 유지·FOR 개선이 동시에 관찰됨. <b>정보의 압축이 오히려 안정성에 유리</b>.</li>
+      <li><b>Dual-timescale 이득:</b> Single LoRA(74.6% / 21.78%) → Dual LoRA(83.2% / 11.4%). Short/long 분리 학습 + gate가 <b>plasticity와 stability를 동시에</b> 얻는 핵심.</li>
+      <li><b>Parameter efficiency:</b> Dual LoRA는 99.97M로 AtomicVLA(226.49M)의 <b>절반 이하</b>. LoRA를 두 개 두는 것이 압도적으로 효율적.</li>
+      <li><b>Task-aware gate 필요성:</b> Fig. 3에서 LifelongVLA만이 SR/FOR 평면의 <b>상단좌측 이상영역</b>에 근접 — 여타 방법은 plasticity 또는 stability 한쪽에 편중.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.14852/x1.png" alt="Motivation and overview (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Motivation and overview.</b> (a) 증분 태스크·plasticity-stability·저메모리 replay가 얽힌 lifelong VLA 개념도. (b) 경쟁 baseline과의 성능 비교. (출처: arXiv:2607.14852)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.14852/x2.png" alt="LifelongVLA 알고리즘 도식 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Algorithmic diagram.</b> 상단: dual-timescale LoRA gating(short/long-term pathway와 task-aware gate). 하단: cache-efficient stochastic replay(compact prefix 토큰과 재계산된 suffix). (출처: arXiv:2607.14852)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.14852/x3.png" alt="Process-level analysis (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Process-level analysis.</b> 왼쪽: SR vs FOR로 본 stability-plasticity trade-off (LifelongVLA만 좌상단 이상영역 근접). 오른쪽: 태스크 진행에 따른 incremental accuracy 궤적. (출처: arXiv:2607.14852)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3</b> — 논문의 핵심 주장(dual LoRA + latent replay)의 종합 근거. Raw replay(167.62 MiB, 81.8%) → Dual LoRA + latent(95.70 MiB, 83.2%, FOR 11.4)로 <b>메모리↓·SR↑·FOR↓</b> 동시 달성.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.14852" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.14852" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.14852 · LifelongVLA · 요약 생성 2026-07-20
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

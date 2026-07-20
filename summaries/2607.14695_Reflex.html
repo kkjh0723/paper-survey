@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Reflex — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Streaming Inference</span>
+    <h1>Reflex: Real-Time VLA Control through Streaming Inference</h1>
+    <p class="authors">Yuanchun Guo, Bingyan Liu · NSFC 62302054 지원 · ICML 2026 채택</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.14695" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.14695" target="_blank">PDF</a>
+      <a href="https://github.com/9yc/Reflex" target="_blank">GitHub</a>
+      <span>arXiv:2607.14695</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Streaming Inference</span>
+      <span class="t">KV Cache</span>
+      <span class="t">Real-Time</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 16일 · 백본 π0 / π0.5 / SmolVLA · RTX 4090 (3090 검증)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Flow-matching VLA의 반복적 denoising이 실시간 로봇 제어와 근본적으로 충돌한다는 문제를 <b>timestep-invariance 특성</b>(perception encoder ∂Enc/∂tₖ=0)으로 해결. <b>Partitioned Attention</b>(Static Prefix + Sliding History + Dynamic Suffix)으로 KV-cache를 오차 없이 재사용하고, <b>AdaRMSNorm</b>으로 BFloat16 스트리밍 안정성 확보, <b>비동기 파이프라인 + Future-State Predictor</b>로 vision·policy를 병렬화. π0.5 기준 LIBERO에서 <span class="win">2.58×</span> inference 가속, 반응 지연 <span class="win">−47~−54%</span>, stall rate 100%→<span class="win">0%</span>, 성공률 오히려 소폭 상승(long-horizon +3.6~+4.0pp). 실기 성공률 +11~+17pp.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Flow-matching VLA(π0, π0.5 등)는 연속 action 궤적을 정밀하게 예측하지만, 매 step마다 <b>timestep t를 글로벌 주입</b>하는 구조라 <b>KV 캐시가 무효화</b>된다. 결과적으로 매 denoising step에서 O(N²) 전체 재계산을 하거나, 캐시 재사용을 강행해 수학적으로 잘못된 출력을 얻는 두 갈래 중 하나를 골라야 한다. 여기에 (a) 동기 실행이 필연적 <b>100% stall</b>을 유발하고 로봇이 chunk 사이마다 멈춤, (b) 초당 50회 이상 반복 추론에서 BFloat16 activation spike로 NaN/Inf가 자주 발생하는 문제가 겹친다.</p>
+    <p>Reflex의 관점: perception encoder는 denoising loop와 <b>기능적으로 독립</b>(∂Enc/∂tₖ=0)이라는 점을 활용하면, 관찰 인코딩과 timestep-의존 흐름 상태를 <b>구조적으로 분리</b>해 캐시를 안전하게 재사용할 수 있다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Timestep-Invariance + Partitioned Attention</b> — context를 Static Prefix(시스템 지시) / Sliding History(관찰 FIFO, N=10 프레임 ≈300ms) / Dynamic Suffix(흐름 상태·timestep 임베딩) 3구역으로 분할. Suffix만 O(1)로 재계산해 <b>full-batch attention과 MSE=0.00 동일</b>한 출력.</li>
+      <li><b>AdaRMSNorm</b> — RMS는 FP32로, gating MLP는 BF16으로 유지. 조건 c=[tₖ, sₜ]에서 γ(c)=1+MLP(c)를 예측. BF16 baseline은 120~220 step에서 NaN 발생, AdaRMSNorm은 <b>2,000+ step 안정</b>(+0.4ms 오버헤드).</li>
+      <li><b>Async 파이프라인 + Future-State Predictor</b> — Vision 스레드(관찰 인코딩)와 Policy 스레드(action 생성)를 분리. Predictor가 오래된 sensor 상태 sₜ 대신 <b>마지막 명령 aₜᶜᵐᵈ ≈ ŝₜ₊Δ</b>로 단기 dynamics 선형화. Adaptive Overlap Scheduling이 lookahead K=⌈τ̄ᵢₙf/τₛₜₑₚ⌉를 실시간 조정.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Partitioned Attention (핵심 수식)</h3>
+    <div class="callout">
+      <b>Attn(x⁽ᵏ⁾) = Softmax(Q⁽ᵏ⁾[K<sub>pin</sub>; K<sub>slide</sub>(t); K<sub>dyn</sub>(k)]ᵀ/√d) × [V<sub>pin</sub>; V<sub>slide</sub>(t); V<sub>dyn</sub>(k)]</b><br>
+      Pin(정적 지시)는 초기 1회 계산 후 영구 캐시. Slide(관찰 FIFO)는 매 프레임 push/pop. Dyn(흐름 상태·timestep)은 denoising cycle마다 리셋. <b>고정 관찰창 하에서 원본 full attention과 정확히 동일한 출력</b>이 보장된다.
+    </div>
+
+    <h3>AdaRMSNorm — BF16 스트리밍 안정성</h3>
+    <p><b>AdaRMSNorm(x, c) = x/RMS(x) ⊙ γ(c)</b> where <b>γ(c)=1+MLP(c)</b>, RMS는 FP32. "Robust Dtype Inference"가 초기화 시 output projection 계층을 probing해 하드웨어 precision을 판별한다. 이는 지연이 아닌 <b>안정성</b>을 겨냥한 컴포넌트.</p>
+
+    <h3>Asynchronous Pipeline</h3>
+    <p>Thread A(Vision)는 카메라 프레임을 계속 인코딩해 KV pair를 push, Thread B(Policy)는 최신 캐시를 조회해 action chunk를 denoising. Predictor: <b>ŝₜ₊Δ ≈ aₜᶜᵐᵈ</b> (Eq. 3). Scheduler(Alg. 1)는 현재 chunk가 (C−K) iteration 남았을 때 다음 inference를 launch해 계산·실행을 겹치게 한다.</p>
+
+    <h3>시스템 최적화</h3>
+    <div class="kv">
+      <div>Operator Fusion</div><div>WQKV = [W<sub>Q</sub>; W<sub>K</sub>; W<sub>V</sub>] 단일 CUDA 커널, SwiGLU Gate·Up 합침 → 커널 launch 50%↓, wall-clock 15~20% 가속</div>
+      <div>Ring Buffer</div><div>ℬ ∈ ℝ<sup>L×Nmax×H×D</sup> pre-allocate, 원형 인덱싱 → 제어 루프 중 동적 할당 0, 24/7 배포용</div>
+      <div>Cache Merging</div><div>Prefix + Sliding을 denoising loop 이전에 하나의 buffer로 pre-merge (torch.cat 오버헤드 제거)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>System Efficiency (Fig. 6, π0.5 · LIBERO K=10)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>방식</th><th>Latency (ms)</th><th>Speedup</th><th>VRAM 절감</th></tr></thead>
+      <tbody>
+        <tr><td>π0.5 (2.3B)</td><td>Standard</td><td>135.2</td><td>—</td><td>—</td></tr>
+        <tr><td>π0.5</td><td><b>Reflex</b></td><td class="win">52.4</td><td class="win">2.58×</td><td class="win">27%</td></tr>
+        <tr><td>π0 (3.1B)</td><td>Reflex</td><td>—</td><td class="win">2.73×</td><td>24% (Kinetix)</td></tr>
+        <tr><td>SmolVLA (500M)</td><td>Reflex</td><td>21.2 (평균)</td><td>2.29×</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">모델이 클수록 가속률↑ — 관찰 재인코딩 비용이 capacity에 비례하기 때문 ("scale invariance").</p>
+
+    <h3>반응 지연 & Stall Rate (Table 1, π0.5)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Suite</th><th>Sync (ms)</th><th>Async-Naive</th><th>Reflex (ms)</th><th>Stall</th></tr></thead>
+      <tbody>
+        <tr><td>LIBERO-Spatial</td><td>148.2</td><td>112.4 (−24%)</td><td class="win">78.5 (−47%)</td><td>0%</td></tr>
+        <tr><td>LIBERO-Object</td><td>152.6</td><td>118.6</td><td class="win">82.3 (−46%)</td><td>0%</td></tr>
+        <tr><td>LIBERO-Goal</td><td>156.4</td><td>122.8</td><td class="win">85.1 (−46%)</td><td>0%</td></tr>
+        <tr><td>LIBERO-Long</td><td>168.8</td><td>134.2</td><td class="win">84.2 (−50%)</td><td>0%</td></tr>
+        <tr><td>Kinetix</td><td>172.4</td><td>138.6</td><td class="win">86.8 (−50%)</td><td>0%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Sync는 chunk 사이 100% stall(로봇 멈춤). Reflex는 stall 0%, 50Hz 스무스 제어. π0(3.1B)는 LIBERO-Long에서 <b>−54%</b>(226.8→105.2ms)로 최대 감소.</p>
+
+    <h3>태스크 성공률 (Table 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Suite</th><th>Standard</th><th>Naive Cache</th><th>Async</th><th>Reflex</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>π0.5-Long</td><td>68.8</td><td>8.4</td><td>69.6</td><td class="win">72.4</td><td>+3.6</td></tr>
+        <tr><td>π0-Long</td><td>71.0</td><td>9.2</td><td>72.2</td><td class="win">75.0</td><td>+4.0</td></tr>
+        <tr><td>Kinetix (π0.5)</td><td>baseline</td><td>—</td><td>—</td><td>+7.4pp</td><td>+7.4</td></tr>
+        <tr><td>Kinetix (π0)</td><td>baseline</td><td>—</td><td>—</td><td>+6.7pp</td><td>+6.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Naive Cache는 timestep 조건을 무시해 <b>MSE≫1.0, 완전 실패</b>. Reflex는 성공률을 잃지 않으면서 가속 — 오히려 long-horizon·dynamic 태스크에서 상승.</p>
+
+    <h3>실기 로봇 (AgileX PiPer, Table 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>Sync</th><th>Async-Naive</th><th>Reflex</th><th>Δ vs Sync</th></tr></thead>
+      <tbody>
+        <tr><td>Pick-Place</td><td>65±8%</td><td>62±8%</td><td class="win">76±7%</td><td>+11pp</td></tr>
+        <tr><td>Articulated</td><td>52±9%</td><td>48±11%</td><td class="win">66±9%</td><td>+14pp</td></tr>
+        <tr><td>Dynamic Recovery</td><td>38±8%</td><td>32±8%</td><td class="win">55±9%</td><td>+17pp</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Latency Breakdown (Table 7, π0.5 · RTX 4090)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구성요소</th><th>Standard</th><th>Reflex</th><th>Reduction</th></tr></thead>
+      <tbody>
+        <tr><td>Vision Encoder (Prefill)</td><td>42.1</td><td class="win">8.2</td><td>−81%</td></tr>
+        <tr><td>Observation Fusion</td><td>12.4</td><td>3.6</td><td>−71%</td></tr>
+        <tr><td>Denoising Loop (×10)</td><td>68.4</td><td>32.8</td><td>−52%</td></tr>
+        <tr><td>Action Decoding</td><td>8.1</td><td>3.6</td><td>−56%</td></tr>
+        <tr><td><b>Total</b></td><td>135.2</td><td class="win">52.4</td><td>−61%</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Partitioned Attention 정확성 (Table 4):</b> Naive Caching MSE 1.42 / 성공률 12.5%, Full Re-comp 85.2%, Partitioned <b>MSE 0.00 / 85.4%</b> — 정확도 손실 없이 캐싱.</li>
+      <li><b>BF16 안정성 (Table 5):</b> BF16 baseline 120~220 step에서 NaN, AdaRMSNorm은 <b>2,000+ step 무 NaN</b>(+0.4ms). LIBERO 300~500 step, Kinetix 200~400 step 커버.</li>
+      <li><b>컨텍스트 K (Fig. 10):</b> K=1은 최고 speedup이나 성공률 급락, <b>K=10이 스위트스팟</b>(2.58×, ~79%). K=50에서는 speedup<1×.</li>
+      <li><b>Predictor 강건성 (Fig. 9, Kinetix):</b> 4 delay step에서 Reflex <b>+11pp</b>(predictor 무 대비), Async-Naive 대비 <b>+22pp</b>.</li>
+      <li><b>Chunk 크기 (Table 9):</b> 기본 50이 최적 균형(2.58×, 19.1Hz, 79.5%). 100은 speedup 소폭↑나 응답성↓.</li>
+      <li><b>Operator Fusion (Fig. 11):</b> FlashNorm(-2.7ms) + FusedAdaLN(-1.5ms) → action expert 지연 <b>18% 감소</b>. 20ms/step 예산 달성의 필수 요소.</li>
+      <li><b>Hardware (Table 8):</b> RTX 3090에서도 2.47× — <b>아키텍처 세대 무관</b>하게 가속 유지.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.14695/x1.png" alt="Standard blocking vs Reflex streaming 비교 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Standard blocking vs Reflex streaming.</b> 위: 동기식 flow matching이 실행을 blocking해 움직이는 목표를 놓침. 아래: Reflex가 VLA 백본을 독립 스트림으로 분할해 실행을 겹치게 함. (출처: arXiv:2607.14695)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.14695/x3.png" alt="Reflex 시스템 아키텍처 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — The Reflex System Architecture.</b> Vision Stream이 관찰을 Ring Buffer(3-zone 분할)로 흘려보내고, Policy Stream(Action Expert + Flow Matching denoiser)이 그것을 조회해 action chunk를 생성. Future State Predictor가 async 보상. (출처: arXiv:2607.14695)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.14695/x4.png" alt="Partitioned Attention mask (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — Partitioned Attention Mask.</b> Pinned(정적 prefix) / Sliding(관찰 FIFO) / Dynamic(흐름 상태·timestep) 3구역. Dynamic suffix만 재계산해 O(1) 캐시 업데이트를 실현. (출처: arXiv:2607.14695)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (Control Responsiveness)</b> — Reflex의 핵심 주장(반응 지연 47~54%↓ + stall 0%)의 정량적 근거. Sync가 강제하는 chunk-경계 stall을 async + predictor로 완전 제거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.14695" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.14695" target="_blank">PDF</a></li>
+      <li><a href="https://github.com/9yc/Reflex" target="_blank">GitHub 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.14695 · Reflex · 요약 생성 2026-07-20
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

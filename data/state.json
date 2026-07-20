@@ -5,26 +5,7 @@
     "2607.08448": 1,
     "2607.11397": 1
   },
-  "queue": [
-    {
-      "id": "2607.14695",
-      "title": "Reflex: Real-Time VLA Control through Streaming Inference",
-      "arxiv_url": "https://arxiv.org/abs/2607.14695",
-      "added": "2026-07-20"
-    },
-    {
-      "id": "2607.15207",
-      "title": "BadWAM: When World-Action Models Dream Right but Act Wrong",
-      "arxiv_url": "https://arxiv.org/abs/2607.15207",
-      "added": "2026-07-20"
-    },
-    {
-      "id": "2607.14852",
-      "title": "Towards Human-like Physical Intelligence: LifelongVLA",
-      "arxiv_url": "https://arxiv.org/abs/2607.14852",
-      "added": "2026-07-20"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978"
   ],
