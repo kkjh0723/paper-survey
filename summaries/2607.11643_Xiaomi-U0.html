@@ -260,6 +260,17 @@
       </ul>
       <p>즉 U0는 '정책을 직접 바꾸는' 게 아니라 <b>정책이 먹을 데이터를 생성·증강</b>하는 방식으로 성공률을 올린다.</p>
     </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q4. (Q2 후속) IBQ는 VQ-VAE나 FSQ와 관계가 있어?</summary>
+      <p><b>IBQ는 VQ-VAE 계열의 개선판</b>이다(<a href="https://arxiv.org/abs/2412.02692" target="_blank">IBQ 원문</a>, ICCV 2025). 학습형 코드북 <b>C∈R<sup>K×D</sup></b> + 최근접 조회를 쓰는 정통 VQ-VAE/VQGAN 뼈대(§3.1).</p>
+      <ul>
+        <li><b>핵심 개선(코드북 붕괴 해결):</b> 기존 VQ는 선택된 코드만 갱신(partial update)해 비활성 코드가 죽는 <b>코드북 붕괴</b>가 생긴다(VQGAN은 대형 코드북에서 사용률 68%→0.002%/1epoch). IBQ는 feature–코드북 유사도의 <b>softmax 분포에 straight-through</b>를 적용해(Eq.6: <code>Ind = Ind_hard − sg[Ind_soft] + Ind_soft</code>) <b>모든 코드에 유사도 비례 그래디언트</b>를 흘려 붕괴를 막는다(∂ℒ/∂C<sub>k</sub> = −2p<sub>k</sub>(z−z<sub>q</sub>)).</li>
+        <li><b>스케일:</b> 처음으로 코드북 <b>2<sup>18</sup>(262,144)</b>·차원 256을 높은 활용률(2<sup>18</sup>에서 84%, 16,384에서 96%, rFID 1.00)로 학습.</li>
+        <li><b>FSQ/LFQ와의 관계:</b> 원문은 FSQ를 직접 언급하진 않고 <b>LFQ(Lookup-Free Quantization, 코드 차원 0)</b>와 비교해 능가한다(Table 6). FSQ·LFQ는 "학습 코드북을 버리고 고정 스칼라 격자/lookup-free로" 붕괴를 원천 회피하는 계열이고, IBQ는 정반대로 <b>학습 코드북을 유지하되(차원 256) 학습 방식을 고쳐</b> 붕괴를 해결한다 — 그래서 "차원을 키워 복원력을 높인다"가 LFQ 대비 이점이다.</li>
+      </ul>
+      <p>U0(§2.2)가 IBQ로 이미지를 이산 토큰화해 통합 어휘를 만드는 만큼, 이런 <b>대형·고활용 코드북</b>이 통합 생성 품질의 바탕이 된다.</p>
+    </details>
   </section>
 
   <footer>
