@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GaP — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Agentic · Robot Policy</span>
+    <h1>GaP: A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks</h1>
+    <p class="authors">Kaiyuan Chen, Shuangyu Xie, Letian Fu 외 · UC Berkeley · NVIDIA 등 (교신 Ken Goldberg, Linxi "Jim" Fan, Yuke Zhu) · arXiv:2607.05369</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.05369" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.05369" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2607.05369" target="_blank">HTML</a>
+      <a href="https://graph-robots.github.io/gap" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.05369</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Graph-as-Policy</span>
+      <span class="t">Multi-Agent</span>
+      <span class="t">Self-Learning</span>
+      <span class="t">Robot Manipulation</span>
+      <span class="t">Agentic Coding</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 6일 · LLM/VLM 에이전트 Gemini-3.1-Flash-Lite · 8개 태스크(시뮬 4 + 실세계 4)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 정책을 하나의 신경망(VLA)이 아니라 <b>지각·계획·제어 노드로 이루어진 방향성 계산 그래프(directed computation graph)</b>로 표현하고, <b>다중 에이전트(오케스트레이터·스킬·피드백 에이전트)</b>가 자연어 지시를 그래프로 합성한 뒤, 시뮬레이터 내 <b>리허설 기반 자기학습(self-learning)</b>으로 실패 원인을 분석해 그래프를 반복 수정하는 프레임워크. "Fulfill Grocery Orders"의 어려운 mixed_all 조건에서 GaP <span class="win">0.97</span> vs π0.5·MolmoAct2 0.20, "Pack Grocery" fixed <span class="win">0.99</span> vs 최고 baseline 0.34로 압도. 실세계에서도 8개 태스크에서 90% 이상 성공률을 달성하며 해석 가능성과 개방세계 적응성을 결합.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>상업·산업 현장에서 로봇이 신뢰성 있게 동작하려면, 물체의 기하·자세는 변하지만 작업셀(workcell)은 알려져 있는 <b>Variational Automation(VA) 태스크</b>를 안정적으로 처리해야 한다. 기존 접근은 양극단이다: (1) <b>수작업 로봇 프로그래밍</b>은 해석 가능·검증 가능하지만 변동에 취약하고, (2) <b>model-free 정책(VLA 등)</b>은 개방세계 적응성은 좋으나 블랙박스라 실패 원인 분석·검증이 어렵다.</p>
+    <p>저자들은 최근 <b>agentic coding 시스템</b>의 발전을 활용해 이 둘을 결합할 수 있는가를 묻는다. 핵심 아이디어는 정책을 <b>코드(그래프)로 표현</b>해 해석 가능성을 확보하되, 다중 에이전트 합성과 시뮬레이터 리허설로 <b>자동 생성·자동 개선</b>하여 적응성을 확보하는 것이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Graph-as-Policy (GaP) 표현</b> — 로봇 정책을 지각·계획·제어 노드로 구성된 방향성 계산 그래프 𝒢=(V,E)로 정의. 코드보다 구조적이라 정적 검증(타입·엣지 체크)이 가능하고 실행 전 오류를 잡는다.</li>
+      <li><b>다중 에이전트 그래프 합성</b> — 오케스트레이션 에이전트가 자연어 태스크를 기능 단위로 분할하고, 스킬 에이전트가 국소 서브그래프를 생성하며, 오케스트레이터가 이를 실행 가능한 그래프로 배선(wire).</li>
+      <li><b>리허설 기반 자기학습 하네스</b> — Isaac 시뮬레이터에서 병렬 리허설 → 실패 분석 → LLM 에이전트가 그래프 위상/파라미터 수정을 반복해 성능을 자동 향상 (예: Make Popcorn 33% → 시뮬 94% / 실세계 90%).</li>
+      <li><b>MORSL 스킬 라이브러리 + 광범위 평가</b> — 51개 초기 스킬의 Modular Open Robot Skill Library를 구축, 시뮬 4 + 실세계 4 = 8개 VA 태스크에서 baseline을 큰 폭으로 상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Graph-as-Policy 표현</h3>
+    <p>정책은 모듈형 "스킬" 노드로 이루어진 방향성 계산 그래프 <b>𝒢=(V,E)</b>다. 노드는 세 유형으로 나뉜다.</p>
+    <div class="kv">
+      <div>지각 노드(Perception)</div><div>객체 탐지·분할용 VLM — SAM2/3, Grounding DINO, OWL-ViT, Molmo</div>
+      <div>계획 노드(Planning)</div><div>모션 플래닝(cuRobo/cuRobov2), 파지 생성(GraspGen, Contact-GraspNet, M2T2), IK 솔버</div>
+      <div>제어 노드(Control)</div><div>로봇·그리퍼 명령, 궤적 실행, ROS 연동 환경 상호작용</div>
+    </div>
+
+    <h3>다중 에이전트 그래프 생성</h3>
+    <p><b>오케스트레이션 에이전트</b>가 자연어 태스크 기술을 기능 세그먼트로 분할하고, 각 세그먼트를 <b>스킬 에이전트</b>가 원자 노드들의 국소 서브그래프로 합성한다. 오케스트레이터가 서브그래프를 모아 실행 가능한 계산 그래프로 배선한 뒤 엣지 인터프리터로 전송해 로봇이 실행한다. 그래프는 실행 전 <b>정적 구조 검증</b>(타입·엣지·dangling 참조 체크)을 통과해야 한다.</p>
+
+    <h3>리허설 기반 자기학습 (Self-Learning)</h3>
+    <p>M라운드에 걸쳐 다음을 반복한다: (1) belief space ℬ에서 N개의 병렬 태스크 인스턴스 <b>Scene Sampling</b> → (2) NVIDIA Isaac 시뮬레이터에서 <b>병렬 리허설</b>(지각 노드 렌더링·물리·접촉 계산) → (3) 로봇·물체 상태 변화를 등록해 <b>기하적 실패 근본원인 분석</b> → (4) LLM 에이전트가 노드 교체·엣지 변경·파라미터 갱신으로 <b>그래프 정제</b>. 성능이 정체(plateau)될 때까지 진행.</p>
+    <div class="callout">
+      <b>백본:</b> GaP와 baseline CaP-X의 LLM/VLM 에이전트로 <b>Gemini-3.1-Flash-Lite</b>(temperature 0.1) 사용. 에이전트 역할은 오케스트레이션·행동(behavior)·스킬·피드백 에이전트로 분화된다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Fulfill Grocery Orders (시뮬 I-a, 성공률, 표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>LIBERO-Pro</th><th>X-Y 20×20</th><th>basket_swap</th><th>permutation</th><th>mixed_all</th></tr></thead>
+      <tbody>
+        <tr><td>CaP-X</td><td>0.22</td><td>0.07</td><td>0.05</td><td>0.11</td><td>0.10</td></tr>
+        <tr><td>π0.5</td><td>0.24</td><td>0.78</td><td>0.15</td><td>0.20</td><td>0.20</td></tr>
+        <tr><td>MolmoAct2</td><td>0.43</td><td>0.90</td><td>0.26</td><td>0.10</td><td>0.20</td></tr>
+        <tr><td>TipTop</td><td>0.22</td><td>0.29</td><td>0.24</td><td>0.31</td><td>0.24</td></tr>
+        <tr><td><b>GaP</b></td><td class="win">0.95</td><td class="win">0.95</td><td class="win">0.97</td><td class="win">0.93</td><td class="win">0.97</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">기하·순열 변동이 커질수록 VLA baseline은 급락하나 GaP는 0.93~0.97로 유지. 셀당 100 인스턴스, 총 5,500 trial.</p>
+
+    <h3>Pack Grocery Items (시뮬 II-a, 표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>fixed</th><th>varied</th></tr></thead>
+      <tbody>
+        <tr><td>CaP-X</td><td>0.01</td><td>0.01</td></tr>
+        <tr><td>π0.5</td><td>0.17</td><td>0.18</td></tr>
+        <tr><td>MolmoAct2</td><td>0.18</td><td>0.18</td></tr>
+        <tr><td>TipTop</td><td>0.34</td><td>0.46</td></tr>
+        <tr><td><b>GaP</b></td><td class="win">0.99</td><td class="win">0.98</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>실세계 결과 (표 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>GaP</th><th>TipTop (비교)</th></tr></thead>
+      <tbody>
+        <tr><td>Fulfill Grocery Orders (I-b)</td><td class="win">25/25 (100%)</td><td>8/25 (32%)</td></tr>
+        <tr><td>Pack Grocery Items (II-b)</td><td class="win">28/30 (93.3%)</td><td>10/30 (33.3%)</td></tr>
+        <tr><td>Make Popcorn (III-b)</td><td class="win">18/20 (90%)</td><td>—</td></tr>
+        <tr><td>USB-C Cable Insertion (IV)</td><td class="win">121/130 (93%)</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">USB-C 삽입은 포트 위치·방향 변동과 5가지 삽입 목표에 걸친 130 trial. Popcorn 실패는 IK 오류 1건, 누적 kinematic drift로 인한 파지 오류 1건.</p>
+
+    <h3>양팔(bimanual) Wash Crates (시뮬 V, 표 4, 150 trial)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>성공률</th><th>평균 소요(s)</th><th>처리량(성공/시간)</th></tr></thead>
+      <tbody>
+        <tr><td>Hand-Engineered</td><td>0.99</td><td>176</td><td>19</td></tr>
+        <tr><td><b>GaP</b></td><td>0.95</td><td>179</td><td>18</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">자동 생성 그래프가 사람이 직접 짠 파이프라인과 성공률·처리량에서 근접(0.95 vs 0.99).</p>
+
+    <h3>VLA 성능 향상 도구로서의 GaP</h3>
+    <p>GaP를 사용하면 wrist 카메라를 타깃 위에 중앙 정렬해 VLA 입력을 분포 내(in-distribution)로 옮겨준다. 그 결과 mixed_all 조건에서 π0.5는 0.20 → <b>0.66</b>, MolmoAct2도 0.20 → <b>0.66</b>으로 향상.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>그래프 없이 raw Python 생성:</b> 성공률 <b>0%로 붕괴</b> — 문법·인터페이스 오류 다발. 구조화된 그래프 표현이 필수.</li>
+      <li><b>단일 LLM(다중 에이전트 제거):</b> 역시 <b>0%로 붕괴</b> — 단일 에이전트는 정적 구조 검증을 통과 못 하고 dangling 참조를 남김.</li>
+      <li><b>그래프 검증(validation) 제거:</b> 일부 첫 시도 서브그래프가 런타임 전 타입/엣지 체크에 걸리는데, 검증이 크래시를 막음.</li>
+      <li><b>자기학습 궤적(Make Popcorn III-a):</b> 33% 시작 → 반복 1~3에서 GraspGen을 하이브리드 OBB grasp planner로 교체(파지 실패 근본원인) → 반복 4에서 팬 손잡이 지각 국소화 → 반복 4~8에서 스토브 대비 배치 오프셋 미세조정 → <b>시뮬 94% / 실세계 90%</b>.</li>
+    </ul>
+    <div class="note">각 아키텍처 요소(그래프 구조·다중 에이전트 분해·검증)가 모두 신뢰성에 필수임을 확인. 다만 실행속도는 아직 산업 표준(500 units/hr, 인스턴스당 7초)에 못 미쳐 VLM 추론·IK 계산 최적화 여지가 크다고 저자들이 명시.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.05369/x1.png" alt="Graph-as-Policy 프레임워크 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Graph-as-Policy 개요.</b> 자연어 지시를 다중 에이전트(오케스트레이터·스킬 에이전트)가 지각·계획·제어 노드로 이루어진 방향성 계산 그래프로 합성하고, 정적 검증 후 로봇이 실행하는 전체 파이프라인. (출처: arXiv:2607.05369)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.05369/rehearsal-new.png" alt="리허설 기반 자기학습 루프 (Figure)" loading="lazy">
+      <figcaption><b>Figure — 리허설 기반 자기학습(self-learning).</b> belief space에서 병렬 인스턴스를 샘플링해 Isaac 시뮬레이터에서 리허설하고, 실패의 기하적 근본원인을 분석해 LLM 에이전트가 그래프 위상·파라미터를 반복 수정한다. (출처: arXiv:2607.05369)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (시뮬 성공률)</b> — 논문 핵심 주장의 근거. 물체 기하·순열 변동이 커지는 조건(mixed_all)에서 VLA baseline은 0.10~0.24로 급락하는 반면 GaP는 0.93~0.97을 유지, 해석 가능한 그래프 정책이 VA 태스크의 변동 강건성에서 우위임을 보인다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.05369" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.05369" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.05369" target="_blank">HTML 전문</a></li>
+      <li><a href="https://graph-robots.github.io/gap" target="_blank">프로젝트 페이지 (graph-robots.github.io/gap)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.05369 · GaP · 요약 생성 2026-07-21
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+</body>
+</html>

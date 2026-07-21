@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ScaleBFM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Humanoid · Behavior Foundation Model</span>
+    <h1>Scaling Behavior Foundation Model for Humanoid Robots</h1>
+    <p class="authors">Weishuai Zeng, Kangning Yin, Xiaojie Niu (공동 1저자) 외 15명 · CUHK · SJTU · ZJU · PKU · Tsinghua · Galbot · Shanghai AI Laboratory · 교신저자 Jiangmiao Pang, Jingbo Wang</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.15163" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.15163" target="_blank">PDF</a>
+      <a href="https://scalebfm.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.15163</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Humanoid</span>
+      <span class="t">Behavior Foundation Model</span>
+      <span class="t">Motion Tracking</span>
+      <span class="t">Scaling</span>
+      <span class="t">Unitree G1</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 16일 (v1) · 로봇 Unitree G1 (29 DoF) · IsaacLab 학습 · MuJoCo 평가</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>휴머노이드용 <b>행동 기반 모델(Behavior Foundation Model, BFM)</b>을 효과적으로 확장(scaling)하는 세 가지 핵심 요소 — (1) <b>전역 좌표계(global frame)에서 전신 궤적을 재현</b>하는 motion-tracking 학습 패러다임, (2) <b>on-policy 롤아웃 양 × 참조 동작 다양성</b>의 시너지, (3) 확장성 높은 <b>Humanoid Transformer</b> 아키텍처 — 를 체계적으로 규명한 논문. 102M 프레임 규모 인간 동작 데이터로 PPO 학습, 기존 컨트롤러 대비 테스트셋 <b>MPKPE(평균 키포인트 위치 오차)</b>를 로컬 모드 <span class="win">10% 이상</span>, 글로벌 모드 <span class="win">82%</span> 감소. 단 <b>3M 파라미터</b> 모델이 GMT·TWIST·SONIC 등 기존 전신 컨트롤러를 성공률·추적정확도 모두에서 앞섬.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>휴머노이드 전신 제어(WBC)는 자연스러운 전신 협응, 실시간 정밀 반응, 다양한 환경에서의 강건한 일반화를 동시에 요구한다. 기존 방식은 태스크별 보상 설계에 의존해 <b>범용성·일반화가 제한</b>됐다. 이를 극복하려는 <b>BFM</b>(대규모 행동 데이터로 사전학습된 범용 컨트롤러)이 부상했으나, "BFM을 <b>어떻게 확장</b>하면 성능이 오르는가"에 대한 원리는 불분명했다. 선행 연구(SONIC 등)는 참조 동작 수·모델 크기·GPU 시간을 늘리는 예비적 증거만 제시했을 뿐, <b>학습 패러다임·데이터·아키텍처가 어떻게 맞물려야 확장이 효과적인지</b>는 규명하지 못했다. 이 논문은 그 확장 레시피(scaling recipe)를 체계적으로 재검토한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>글로벌 프레임 통합 전신 추적 패러다임</b> — 다양한 제어 문제를 "전역 좌표계에서 <b>통합 전신 궤적을 재현</b>하는 문제"로 재정식화. 루트 위치를 무시하거나(예: 전진 vs 제자리걸음이 구분 불가) 루트–자세 추적을 분리하는 선행 설계의 <b>행동 모호성·협응 붕괴</b> 문제를 해소하고, 하나의 BFM으로 글로벌 제어와 로컬 제어를 모두 지원.</li>
+      <li><b>데이터 확장의 재정의: 양 × 다양성 시너지</b> — PPO에서 실제 학습 데이터는 참조 동작 수가 아니라 환경 상호작용으로 얻는 <b>on-policy 롤아웃</b>임을 명확화. 데이터 <b>양</b>은 병렬 환경 수·롤아웃 horizon(width·depth) 확장으로, <b>다양성</b>은 참조 동작 코퍼스 확장으로 얻으며, 둘의 <b>동종/이종 확장(homogeneous / heterogeneous)</b> 구분이 성능을 좌우함을 규명.</li>
+      <li><b>Humanoid Transformer 아키텍처</b> — MLP 백본을 대체하는 확장성 높은 트랜스포머. 별도 보조 손실 없이 <b>구조화된 행동 latent 표현</b>이 자연 발생하도록 설계(RMSNorm 기반 구면 latent 공간). 중간 크기 트랜스포머가 훨씬 큰 MLP에 필적/상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>문제 정식화 (GCRL + Motion Tracking)</h3>
+    <p>BFM 사전학습을 <b>목표조건 강화학습(GCRL)</b>으로 구성하고, 대리 태스크(proxy task)로 <b>전신 motion tracking</b>을 채택 — 보상은 참조 동작을 얼마나 충실히 따르는가로 정의된다. 행동 B는 태스크별 목표(goal state)를 배제한 <b>고유수용성 상태·행동의 궤적</b>으로 정의되어, 행동 학습을 제어 모드와 분리한다. 최적화는 <b>PPO</b>로 수행하나 정식화 자체는 알고리즘 불가지론적.</p>
+
+    <h3>학습 패러다임 · 제어 인터페이스</h3>
+    <p><b>비대칭 actor-critic</b>: actor는 배포 가능한 고유수용성(각속도·투영중력·관절위치/속도)만, critic은 시뮬레이터 특권정보(링크 위치/자세/속도 등)를 사용. 제어 인터페이스는 루트 상대 직교공간의 <b>마스킹된 전신 목표 자세</b>로, 사전 정의된 마스크 집합에서 링크별 마스크를 샘플링해 <b>8가지 제어 모드</b>(Root / Bimanual / Root-and-Hand / End-Effector / Root-and-End-Effector / Upper-Body / Root-and-Upper-Body / Whole-Body)를 구성. critic에는 마스킹 없는 완전한 목표를 제공.</p>
+    <div class="callout">
+      <b>보상 핵심:</b> 루트 위치 추적을 제거하거나(BeyondMimic 등) 루트–자세 추적을 분리하는 대신, 로봇이 참조 동작을 <b>전역 좌표계의 통합 전신 궤적</b>으로 재현하도록 요구. 루트 이동의 편차가 전신으로 전파되어 <b>더 일관된 행동 지도(coherent guidance)</b>를 제공한다.
+    </div>
+
+    <h3>학습 데이터 구성</h3>
+    <div class="kv">
+      <div>참조 동작 코퍼스</div><div>LAFAN · AMASS · OMOMO · GRAB · SnapMoGen · FineDance · BONES-SEED · Embody3D — 총 <b>102M 프레임 @ 50 FPS</b></div>
+      <div>리타게팅</div><div>2단계 파이프라인(스켈레톤 정렬 → 프레임별 IK)로 SMPL·BVH 이종 포맷을 Unitree G1 형태로 변환</div>
+      <div>Early Termination / RSI</div><div>어떤 링크든 참조 대비 0.5m 이탈 시 종료, 종료 지점 <b>다음 참조 상태</b>로 재초기화해 궤적 다양체로 복귀</div>
+      <div>Adaptive Sampling</div><div>실패한 시퀀스에 가중치↑(T<sub>eval</sub>=200, β=0.999, w∈[0.03,1.0]) — 어려운 동작 집중 + 파국적 망각 방지</div>
+    </div>
+
+    <h3>Humanoid Transformer 아키텍처</h3>
+    <p>고유수용성·목표·행동을 유한 시간 윈도로 확장하고 모달리티별 토크나이저로 인코딩. <b>상태·행동 토큰을 인터리브</b>한 컨텍스트 뒤에 학습형 query 토큰을 붙여 self-attention으로 이력을 집계하고(query는 컨텍스트로부터 attend 받지 않음), <b>목표 상태는 시간 오프셋과 함께 cross-attention으로 주입</b>. <b>RMSNorm으로 목표 임베딩을 구면(hypersphere)에 정규화</b>해 별도 정규화 손실 없이 구조화된 latent 공간이 자연 발생. actor는 미래 5프레임 {0..4} + [5,32]에서 무작위 1프레임의 <b>stochastic future offset</b>(배포 지연 완화), critic은 지수 간격 {0,1,2,4,8,16,32}을 사용.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+    <p>Unitree G1(키 1.3m, 29 DoF), IsaacLab 학습·MuJoCo 평가(동역학 전이 강건성). 평가지표: 성공률(Succ, 링크 0.5m 이탈 시 실패), 글로벌/로컬 <b>MPKPE·MPKRE</b>(키포인트 위치·회전 오차). 두 테스트셋 — <b>BONES Test Set</b>(1만 시퀀스, ~3.6M 프레임)과 <b>Ours Test Set</b>(Xsens 839 + 100Style 810, 미학습 신규 동작, ~4.5M 프레임).</p>
+
+    <h3>전신 제어 벤치마크 (표 3, 제안 3M 파라미터 모델)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Test Set</th><th>방법</th><th>Succ↑</th><th>G-MPKPE↓</th><th>G-MPKRE↓</th><th>L-MPKPE↓</th><th>L-MPKRE↓</th></tr></thead>
+      <tbody>
+        <tr><td>BONES</td><td>GMT</td><td>0.441</td><td>0.5674</td><td>0.4789</td><td>0.0761</td><td>0.3177</td></tr>
+        <tr><td>BONES</td><td>TWIST</td><td>0.423</td><td>0.6212</td><td>0.5487</td><td>0.0704</td><td>0.3337</td></tr>
+        <tr><td>BONES</td><td>SONIC†</td><td>0.924</td><td>0.1740</td><td>0.1810</td><td>0.0436</td><td>0.1762</td></tr>
+        <tr><td>BONES</td><td>BFM-Bym (ablation)</td><td>0.964</td><td>0.1005</td><td>0.1406</td><td>0.0406</td><td>0.1360</td></tr>
+        <tr><td>BONES</td><td><b>BFM (로컬 모드)</b></td><td>0.729</td><td>0.2281</td><td class="win">0.1279</td><td class="win">0.0398</td><td class="win">0.1312</td></tr>
+        <tr><td>BONES</td><td><b>BFM (글로벌 모드)</b></td><td class="win">0.968</td><td class="win">0.0798</td><td>0.1342</td><td>0.0400</td><td>0.1366</td></tr>
+        <tr><td>Ours</td><td>GMT</td><td>0.086</td><td>1.8693</td><td>0.9829</td><td>0.0896</td><td>0.3158</td></tr>
+        <tr><td>Ours</td><td>TWIST</td><td>0.083</td><td>2.2744</td><td>1.0705</td><td>0.0596</td><td>0.3002</td></tr>
+        <tr><td>Ours</td><td>SONIC</td><td>0.594</td><td>0.5035</td><td>0.2098</td><td>0.0430</td><td>0.1974</td></tr>
+        <tr><td>Ours</td><td>BFM-Bym (ablation)</td><td>0.971</td><td>0.1224</td><td>0.1648</td><td>0.0403</td><td>0.1592</td></tr>
+        <tr><td>Ours</td><td><b>BFM (로컬 모드)</b></td><td>0.255</td><td>0.4731</td><td>0.1473</td><td class="win">0.0388</td><td class="win">0.1474</td></tr>
+        <tr><td>Ours</td><td><b>BFM (글로벌 모드)</b></td><td class="win">0.978</td><td class="win">0.0915</td><td class="win">0.1556</td><td>0.0396</td><td>0.1542</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">제안 BFM(글로벌 모드)은 두 테스트셋 모두 최고 성공률·최저 글로벌 오차. 특히 신규 동작(Ours)에서 SONIC 대비 G-MPKPE 0.5035→0.0915로 <b>약 82% 감소</b>, 로컬 L-MPKPE 0.0430→0.0388로 <b>약 10% 감소</b> — 초록의 핵심 주장과 일치. GMT·TWIST는 미학습 동작에서 성능 급락(Succ ≤0.09). †: BONES는 SONIC 학습셋과 일부 겹칠 수 있음(SONIC에 유리).</p>
+    <div class="callout">
+      <b>BFM-Bym</b>은 파이프라인은 동일하되 <b>BeyondMimic 보상</b>으로 학습한 제거 실험 기준선. 제안 보상(글로벌 통합 추적)이 BFM-Bym보다 <b>글로벌 오차를 일관되게 낮춰</b>, 루트–전신 협응을 해치지 않으면서 더 응집적인 지도를 줌을 시사.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (스케일링 발견)</h2>
+    <ul>
+      <li><b>On-policy 데이터 확장(양):</b> 병렬 GPU 수(width)와 롤아웃 horizon(depth)를 함께 키우면 대부분 실험에서 성능 향상, <b>최대 구성 64 GPU × horizon 64</b>가 거의 모든 실험에서 최고. 단, <b>한쪽만 키우면 일관된 개선이 없음</b> — width·depth의 적절한 균형이 중요.</li>
+      <li><b>참조 동작 확장(다양성):</b> 데이터를 XXS→XS→S→M→L 중첩 부분집합으로 나눠 <b>occupancy rate</b>(행동 군집 점유율)로 다양성 측정: XXS 0.9365 → S 0.9365(거의 불변) → <b>L 0.9995</b>(급증). <b>동종 확장</b>(XXS→S, 양만↑)은 미미한 개선, <b>이종 확장</b>(S→L, 행동 커버리지↑)은 <b>신규 동작(Ours)에서만 큰 이득</b>. 즉 새 행동이 <b>평가 대상과 관련될 때</b>에만 효과적.</li>
+      <li><b>아키텍처:</b> Humanoid Transformer가 MLP보다 대체로 높은 성공률·낮은 오차. <b>중간 크기 트랜스포머가 훨씬 큰 MLP에 필적/상회</b>하며, 더 키우면 수익 체감. 일부 제어 모드는 조기 포화(난이도 불균형·모드 간 결합).</li>
+      <li><b>Latent 공간:</b> 보조 손실 없이도 지역성·전역 조직성·강건성을 갖춘 구조화 latent 자연 발생(표 2: latent에 노이즈 레벨 20까지 회전 섭동을 줘도 성공률·오차 유지). 모델을 키우면 여러 제어 모드의 latent 표현이 수렴.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.15163/fig3_arch.png" alt="Humanoid Transformer 모델 구조도 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Humanoid Transformer 아키텍처.</b> 인터리브된 상태·행동 토큰(Context) + 학습형 query 토큰 e에 self-attention을 적용하고, RMSNorm으로 구면 latent에 정규화된 목표(Future Window·task token)를 cross-attention으로 주입하는 N층 블록. 좌측은 8가지 제어 모드. (출처: arXiv:2607.15163)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.15163/fig1_teaser.png" alt="다양한 휴머노이드 행동 예시 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — BFM이 지원하는 다양한 행동.</b> 손재주 조작, 자연·민첩 보행, 전신 협응 loco-manipulation 등 폭넓은 태스크를 하나의 행동 기반 모델로 수행(Unitree G1 실기 배포). (출처: arXiv:2607.15163)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3 (전신 제어 벤치마크)</b> — 논문의 핵심 성능 근거. 캡션(원문): <i>"Performance Benchmark on Whole-body Control."</i> 3M 파라미터 BFM을 GMT·TWIST·SONIC 및 BeyondMimic 보상 제거 기준선(BFM-Bym)과 비교, 로컬·글로벌 모드 모두에서 우위.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.15163" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.15163" target="_blank">PDF</a></li>
+      <li><a href="https://scalebfm.github.io" target="_blank">프로젝트 페이지 (scalebfm.github.io)</a></li>
+      <li>관련: <a href="https://arxiv.org/abs/2509.13780" target="_blank">BFM for Humanoid Robots (동일 그룹, 2509.13780)</a> · <a href="https://arxiv.org/abs/2511.07820" target="_blank">SONIC (2511.07820)</a> · <a href="https://arxiv.org/abs/2508.08241" target="_blank">BeyondMimic (2508.08241)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.15163 · ScaleBFM · 요약 생성 2026-07-21
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

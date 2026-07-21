@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RoboTTT — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Test-Time Training</span>
+    <h1>RoboTTT: Context Scaling for Robot Policies</h1>
+    <p class="authors">Yunfan Jiang, Yevgen Chebotar, Ruijie Zheng 외 · NVIDIA · Stanford · UT Austin · 공동 지도 Li Fei-Fei, Yuke Zhu, Linxi "Jim" Fan</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.15275" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.15275" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2607.15275" target="_blank">HTML</a>
+      <a href="https://research.nvidia.com/labs/gear/robottt/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.15275</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Test-Time Training</span>
+      <span class="t">Long Context</span>
+      <span class="t">Fast Weights</span>
+      <span class="t">In-Context Learning</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 16일 · 백본 GR00T N1.7 · 사전학습 16× GB200</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 정책의 <b>문맥 길이(context length)</b> 자체를 스케일링 축으로 삼아, <b>Test-Time Training(TTT)</b>의 fast weight를 VLA(GR00T N1.7)의 DiT action head에 삽입해 시각-운동 문맥을 <b>8,000 timestep(≈5분, SOTA 대비 3자릿수 확장)</b>까지 늘리면서도 추론 지연은 늘리지 않는다. 이를 통해 (1) 인간 영상으로부터의 <b>one-shot in-context 모방</b>, (2) 추론 중 <b>on-the-fly 정책 개선</b>, (3) 외란 강건성을 얻는다. 실로봇 조립 3태스크 평균 완성도 <span class="win">79%</span>로 단일 스텝 대비 <span class="win">+87%</span>, 최고 베이스라인(GDN) 대비 +41%. 문맥 8K 사전학습은 1K 대비 <span class="win">+63%</span> (71.5% vs 43.9%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>현재 로봇 파운데이션 정책 대부분은 단일 시점(또는 매우 짧은 히스토리)만 보고 행동한다. 데이터·모델·계산량은 스케일 축으로 활발히 탐구됐지만, <b>문맥 길이는 여전히 짧은 채로 남아</b> 있었다. 문제는 단순히 트랜스포머 문맥을 늘리면 <b>추론 지연과 메모리가 시퀀스 길이에 비례해 폭증</b>한다는 점이다. 5분짜리 다단계 조립처럼 긴 시간지평 태스크에서는 과거의 조립 상태·이미 완료한 단계·최근 실패를 기억해야 하는데, 짧은 문맥 정책은 이를 유지하지 못한다.</p>
+    <p>저자들은 문맥 길이를 <b>명시적 토큰 시퀀스</b>가 아니라 <b>fast weight(빠르게 갱신되는 파라미터)에 압축</b>하는 Test-Time Training으로 해결한다. 과거 정보를 파라미터 공간에 눌러 담으므로 문맥이 길어져도 <b>추론당 계산량은 상수</b>로 유지된다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>문맥 길이를 로봇 정책의 스케일링 축으로 정립</b> — 시각-운동 문맥을 8K timestep(≈5분)까지 확장, 기존 SOTA 대비 약 3자릿수(1000배) 확장하면서 추론 지연을 늘리지 않음.</li>
+      <li><b>TTT의 VLA 통합(RoboTTT)</b> — TTT fast-weight 층을 GR00T N1.7의 DiT action head에 삽입. attention은 시점 내부(within-timestep), TTT는 시점 간(cross-timestep)을 담당하도록 역할 분리하고, tanh 게이팅으로 사전학습 지식을 보존.</li>
+      <li><b>긴 문맥을 위한 학습 레시피</b> — <b>sequence action forcing</b>(청크별 독립 노이즈 샘플링)과 <b>truncated BPTT</b>로 8K 시퀀스를 안정적으로 학습. fast weight는 세그먼트 경계를 넘어 이어지되 gradient는 경계에서 절단.</li>
+      <li><b>새로운 능력 실증</b> — 인간 영상 one-shot in-context 모방, DAgger Distillation을 통한 on-the-fly 회복/개선, 외란 강건성을 실로봇 bimanual 조립 태스크에서 검증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Test-Time Training (fast weight) 개요</h3>
+    <p>TTT는 학습·추론 <b>양쪽에서 gradient descent로 갱신되는 fast weight W<sub>t</sub></b>를 도입해 문맥을 동적으로 모델링한다. 각 시점의 key/value로 내부 손실(MSE)을 최소화하도록 fast weight를 한 스텝 갱신하고(<b>update:</b> W<sub>t</sub> ← W<sub>t−1</sub> − η∇<sub>W</sub>ℒ<sub>FW</sub>(f<sub>W<sub>t−1</sub></sub>(K<sub>t</sub>), V<sub>t</sub>)), 갱신된 가중치로 query를 사상한다(<b>apply:</b> O<sub>t</sub>=f<sub>W<sub>t</sub></sub>(Q<sub>t</sub>)). 내부 학습률 η는 학습된다. fast model은 <b>GeLU 2층 MLP</b>(비선형)로, ablation에서 선형 fast model보다 27% 우수.</p>
+
+    <h3>아키텍처 통합</h3>
+    <p>TTT 층을 DiT action head의 self-/cross-attention <b>뒤</b>에 배치한다. <b>attention은 시점 내부, TTT는 시점 간</b> 정보를 처리하도록 역할을 나눈다. 시점마다 학습형 <b>register token N=16개(R<sub>t</sub>)</b>를 prepend해 TTT의 시간 모델링을 돕고, Vision-Language 토큰 Φ<sub>t</sub>는 계산 효율을 위해 TTT를 우회한다. 입력 시퀀스는 시점별로 [R<sub>t</sub>, Φ<sub>t</sub>, q<sub>t</sub>, Ã<sub>t</sub>]가 반복되는 구조. TTT 층당 약 10M 파라미터 추가(538M → 690M).</p>
+    <div class="callout">
+      <b>tanh 게이팅(식 3):</b> O = tanh(α) ⊙ O<sub>TTT</sub> + O<sub>attn</sub>. α는 DiT 층별로 <b>0.001로 초기화</b>되어 학습 초기에는 TTT 기여를 아주 작게 유지 → 사전학습된 GR00T 지식을 훼손하지 않고 점진적으로 TTT를 켠다.
+    </div>
+
+    <h3>Sequence Action Forcing (학습 목적)</h3>
+    <p>시퀀스 flow-matching 손실을 쓰되, <b>노이즈 레벨 τ<sub>t</sub>를 청크마다 독립적으로 샘플링</b>한다(τ<sub>t</sub>=s(1−u), u~Beta(1.5,1), s=0.999). 전체 시퀀스에 동일 노이즈를 걸면 시퀀스 전체가 일률적으로 쉽거나 어려워져 학습이 불안정해지는 것을 방지한다. ablation에서 이 요소를 제거하면 학습 불안정으로 성능이 크게 저하.</p>
+
+    <h3>Truncated BPTT (긴 문맥 학습)</h3>
+    <p>시퀀스를 세그먼트로 나눠 <b>세그먼트 내부에서만 gradient를 흘리고</b>, 경계에서 gradient를 절단한다. 단, <b>fast weight는 경계를 넘어 계속 이어져</b> TTT가 전체 시퀀스에 걸쳐 작동한다. 덕분에 GPU 메모리는 전체 길이가 아니라 <b>세그먼트 길이</b>로 결정되어 8K 문맥 학습이 가능.</p>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>tabletop bimanual 로봇 데이터 + egocentric 인간 영상, 긴 궤적 위주로 큐레이션</div>
+      <div>문맥 길이</div><div>사전학습 최대 8K timestep(≈5분@30Hz), 포스트학습 1K</div>
+      <div>하드웨어</div><div>사전학습 16× GB200(30K step) / 태스크별 포스트학습 8 GPU(20K step)</div>
+      <div>로봇 · 추론</div><div>YAM bimanual + RealSense D405 ×4(480p), RTX 5090에서 30Hz 제어</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>메인 조립 태스크 — 완전 성공 시행 (표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Pup Go Car</th><th>Circuit</th><th>Gear Bot</th></tr></thead>
+      <tbody>
+        <tr><td><b>RoboTTT</b></td><td class="win">9/20</td><td class="win">13/20</td><td class="win">2/10</td></tr>
+        <tr><td>GR00T N1.7</td><td>3/20</td><td>3/20</td><td>0/10</td></tr>
+        <tr><td>GR00T N1.7 Hist.</td><td>0/20</td><td>8/20</td><td>0/10</td></tr>
+        <tr><td>GDN</td><td>3/20</td><td>8/20</td><td>0/10</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">완료도(rubric) 평균 <b>RoboTTT 79%</b> — 단일 스텝(42%) 대비 +87%, 최고 베이스라인 GDN(56%) 대비 +41%. 10단계·5분 조립 <b>Gear Bot에서 완전 성공한 유일한 방법</b>.</p>
+
+    <h3>문맥 길이 스케일링 (그림 8)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>사전학습 문맥</th><th>128</th><th>1K</th><th>8K</th></tr></thead>
+      <tbody>
+        <tr><td><b>RoboTTT (평균 완료도)</b></td><td>경쟁적이나 하위</td><td>43.9</td><td class="win">71.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">문맥이 길수록 <b>일관되게 상승, 포화 징후 없음</b>. 8K는 1K 대비 +63%, 최고 단문맥 베이스라인 대비 +57%. 반면 <b>GDN은 문맥을 늘려도 이득 없음</b>.</p>
+
+    <h3>One-shot in-context 모방 — Circuit (표 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>완료도</th><th>성공 rollout</th></tr></thead>
+      <tbody>
+        <tr><td><b>RoboTTT</b></td><td class="win">65%</td><td class="win">6/10</td></tr>
+        <tr><td>GDN</td><td>33%</td><td>0/10</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">동일 언어 프롬프트 하에 <b>목표 형상은 인간 영상에서만 식별 가능</b>. RoboTTT는 문맥의 인간 데모를 보고 미학습 형상을 재현.</p>
+
+    <h3>외란 강건성 (표 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Roof 교란</th><th>Tire 교란</th></tr></thead>
+      <tbody>
+        <tr><td><b>RoboTTT</b></td><td class="win">15/20</td><td class="win">18/20</td></tr>
+        <tr><td>GR00T N1.7</td><td>10/20</td><td>11/20</td></tr>
+        <tr><td>GR00T N1.7 Hist.</td><td>3/20</td><td>5/20</td></tr>
+        <tr><td>GDN</td><td>13/20</td><td>18/20</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>DAgger Distillation (on-the-fly 개선)</h3>
+    <p>실행된 모든 행동은 fast weight를 갱신하되 flow-matching 손실은 <b>인간 교정(correction)에만</b> 계산하는 방식. 동일 DAgger 데이터로 표준 DAgger(+9%)를 크게 상회하는 <b>평균 +33%</b> 개선(RoboTTT +36%, GDN +29%). 이를 통해 실패한 나사 조임을 팔을 들어 재시도해 성공하는 <b>on-the-fly 회복</b>을 학습(그림 11).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (그림 12, Pup Go Car)</h2>
+    <ul>
+      <li><b>Sequence action forcing 제거:</b> 학습 불안정으로 성능 크게 저하 → 긴 시퀀스 학습에 필수.</li>
+      <li><b>Fast model 구조:</b> 선형(TTT Linear)은 MLP 대비 27% 저조. "표현력 있는 비선형 fast model이 가장 중요".</li>
+      <li><b>토큰 구성 누적:</b> state 토큰 기준 → action 토큰 추가로 +23%(상대) → register 토큰 추가로 추가 +18%(상대).</li>
+      <li><b>Register 토큰의 조건부 효과:</b> GR00T N1.7 단독에 붙이면 무이득, RoboTTT와 결합해야 시너지. "register 토큰은 TTT의 시간 모델링과 짝을 이룰 때만 유효".</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.15275/x2.png" alt="RoboTTT 모델 구조·학습·추론 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — RoboTTT 아키텍처·학습·추론.</b> DiT action head의 attention 층 뒤에 TTT 층을 추가해 attention은 시점 내부, TTT는 시점 간을 담당. 청크별 독립 노이즈(sequence action forcing)로 시퀀스 flow-matching 학습, 추론 시 초기값 W₀에서 관찰마다 fast weight를 갱신·전파. (출처: arXiv:2607.15275)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.15275/x8.png" alt="문맥 길이에 따른 폐루프 성능 스케일링 (Figure 8)" loading="lazy">
+      <figcaption><b>Figure 8 — 문맥 길이 스케일링.</b> 사전학습 문맥이 128→8K로 늘수록 평균 완료도가 꾸준히 상승(1K부터 최고 단문맥 베이스라인 추월, 포화 없음). GDN은 긴 문맥으로부터 이득을 얻지 못함 — 논문 핵심 주장("문맥 = 스케일링 축")의 근거. (출처: arXiv:2607.15275)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (메인 완전 성공 시행)</b> — RoboTTT는 세 조립 태스크 모두 최고, 특히 10단계 Gear Bot에서 완전 성공한 유일한 방법. 완료도 평균 79%로 단일 스텝 대비 +87%.
+    </div>
+    <div class="callout">
+      <b>Figure 11 (on-the-fly 회복)</b> — 원문 캡션: <i>"While tightening the roof screw on Pup Go Car, RoboTTT misses the screw ... raises the arm and re-attempts ... then re-adjusts once more and succeeds."</i> DAgger Distillation으로 학습된 실시간 회복 능력의 정성적 증거.
+    </div>
+    <p class="cap">Figure 1: 개요 · Figure 3: tanh 게이팅 계산 흐름 · Figure 4: TBPTT · Figure 5: 평가 태스크(Pup Go Car / Circuit / Gear Bot).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.15275" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.15275" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.15275" target="_blank">HTML 전문</a></li>
+      <li><a href="https://research.nvidia.com/labs/gear/robottt/" target="_blank">프로젝트 페이지 (NVIDIA GEAR Lab)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.15275 · RoboTTT · 요약 생성 2026-07-21
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+</body>
+</html>
