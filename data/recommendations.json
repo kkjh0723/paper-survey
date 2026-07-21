@@ -1,42 +1,42 @@
 {
-  "generated": "2026-07-21",
+  "generated": "2026-07-22",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.15330",
-          "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
-          "authors": "Xiaomi Robotics Team, Jun Guo, Piaopiao Jin · arXiv:2607.15330",
-          "summary_ko": "UMI 디바이스로 모은 10만+ 시간 실기 조작 궤적으로 사전학습한 대형 VLA. 궤적 클립에 '장면 상태 전이'를 자연어로 붙이는 확장 가능한 자동 라벨링 파이프라인을 만들어 조건부 학습 신호를 풍부하게 준 뒤, 사후학습 단계에서 사람이 실제로 쓰는 명령형 지시와 로봇 임보드먼트에 맞춘다. 데이터·모델 스케일링 곡선이 사전→사후로 그대로 이전되고, RoboCasa365에서 SOTA 57.6%(직전 46.6%), RoboDojo에서 평균 20.07(직전 13.07)로 큰 폭 갱신. 다운스트림 소량 파인튜닝으로 복잡·정밀 태스크에서도 데이터 효율이 좋다는 것을 보이는 '스케일링이 여전히 통한다'의 최신 사례.",
-          "tags": ["Foundation VLA", "UMI Data", "100K Hours", "Auto-Labeling", "RoboCasa365"],
-          "arxiv_url": "https://arxiv.org/abs/2607.15330",
-          "extra_url": "https://robotics.xiaomi.com/xiaomi-robotics-1.html",
-          "date": "2026-07-16",
-          "reason": "컬렉션에 이미 있는 Xiaomi-U0(2607.11643, 38B AR 멀티모달 임보디드 파운데이션)의 짝이 되는 '정책' 축이다. Xiaomi-U0가 '데이터·씬 생성' 파운데이션이면 이 논문은 '행동 정책' 파운데이션이라 Xiaomi 진영의 두 축이 컬렉션에서 완성된다. 좋아요한 ENPIRE(2606.19980, 실기 자기개선 플릿)와 Aspire의 '어떻게 실기 데이터를 대규모로 만들 것인가' 질문에 UMI 10만 시간 + 자동 라벨링 파이프라인이라는 다른 답을 낸다. RoboCasa365 57.6%(직전 46.6%)라는 수치는 어제 새 그룹의 GigaWorld-Policy-0.5(2607.13960)·엊그제 Reflex(2607.14695)와 나란히 놓을 '동시대 정책 SOTA' 기준점이 되고, 좋아요한 Harness-VLA(2607.08448)가 프로즌으로 감쌌던 '베이스 VLA'가 결국 이런 대형 사전학습 모델이 될 것이라는 흐름을 명확히 보여준다."
+          "id": "2607.18060",
+          "title": "RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning",
+          "authors": "Jinbang Huang, Yuanzhao Hu, Zhiyuan Li · arXiv:2607.18060",
+          "summary_ko": "긴 호라이즌 태스크는 한 정책으로 감당이 안 된다는 문제에서 출발해, 서로 다른 종류의 로봇 정책(VLA·RL·TAMP·MPC·World-Action Model 등)을 재사용 가능한 에이전틱 스킬로 캡슐화하는 통합 프레임워크를 제안. 멀티모달 실행 기억과 온라인 증거로 각 정책의 '능력 경계'를 특성화해 능력 기반 태스크 분해·라우팅을 하고, 정책 간 핸드오프를 안정화하기 위해 Memory Bridge가 다음 정책의 in-distribution 상태 영역을 추정해 로봇을 그쪽으로 유도(공동 재학습 없이). 3개 공개 벤치마크 + 500 커스텀 태스크 + 135건의 실기 실험에서 능력 기반 라우팅과 안정적 정책 오케스트레이션을 검증. 각각 개별로 개발된 컨트롤 시스템을 그대로 조합해 쓰는 실전 표준을 지향.",
+          "tags": ["Heterogeneous Policy Orchestration", "Agentic Skill Encapsulation", "Memory Bridge", "Long-Horizon Planning", "Capability Boundary"],
+          "arxiv_url": "https://arxiv.org/abs/2607.18060",
+          "extra_url": "",
+          "date": "2026-07-20",
+          "reason": "좋아요한 Harness-VLA(2607.08448)의 정확한 확장·일반화 판. Harness-VLA가 '프로즌 VLA 하나를 에이전틱 플래너·프리미티브 라이브러리로 감쌌다'면, RoboHarness는 VLA·RL·TAMP·MPC·WAM 등 이종 정책 여러 개를 스킬로 캡슐화하고 Memory Bridge로 핸드오프를 안정화한다. 이름 자체가 'Harness' 계보를 잇는 후속작 성격이라 컬렉션의 '베이스 모델 통합 vs. 분리' 논쟁에서 분리 측에 결정적인 데이터를 더한다. 좋아요한 Aspire(에이전틱 스킬 진화)와 컬렉션의 ABot-AgentOS(2607.10350)·GaP(2607.05369)·PhyAgentOS 라인의 최신 조각이며, 좋아요한 ENPIRE(2606.19980, 플릿 자기개선)와도 결이 같은 '조립·조합'의 축을 컬렉션에 명확히 세운다."
         },
         {
-          "id": "2607.14943",
-          "title": "Steering Robustness into World Action Models via Mechanistic Interpretability and Optimal Control",
-          "authors": "Jihoon Hong, Julian Skifstad, Qiyue Dai · arXiv:2607.14943",
-          "summary_ko": "WAM이 분포 이동에 취약한 이유를 '학습 실패'가 아니라 '활성 공간에서의 표현 구조' 관점에서 파고든다. 성공/실패 롤아웃의 활성을 비교해 일부 WAM(Cosmos-Policy, DiT4DiT)은 견고성 특징이 저차원 선형으로 분리되지만 LingBot-VA는 그렇지 않음을 보이고, 이 선형 분리성을 이용해 학습 없이 대조 활성 방향으로 스티어링. 나아가 활성 다이내믹스가 국소 선형이라는 관찰에서 축소 차수 LQR(WA-LQR)을 유도해 최소 침습 피드백 제어를 붙인다. 카메라·그리퍼·시각 노이즈 교란에서 무보정·프롬프트 스티어링 대비 견고성이 유의미하게 개선. WAM을 '분석 가능한 시스템'으로 다시 열고, 파인튜닝 없이 배포 후 강건화하는 실전 도구를 제시한다.",
-          "tags": ["World Action Model", "Mechanistic Interpretability", "Activation Steering", "LQR Control", "Training-Free Robustness"],
-          "arxiv_url": "https://arxiv.org/abs/2607.14943",
+          "id": "2607.17977",
+          "title": "RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model",
+          "authors": "Kehan Li, Bohan Hou, Minghao Zhu · arXiv:2607.17977",
+          "summary_ko": "2B / 9B / 122B-A10B(MoE) 3개 규모의 임보디드 파운데이션 모델 패밀리. 통합 시공간·물리 그라운딩 프레임으로 지각·공간 추론·로컬라이제이션·플래닝을 한 모델에 담고, 1.0 대비 contact-point 예측과 native 3D grounding을 파운데이션 능력으로 추가해 조작에 직접 정렬된 표현을 만든다. RynnBrain-VLA는 통합 크로스 임보디먼트 액션 공간 + embodiment-specific masking으로 Unitree G1·Astribot-S1·Tianji-Wuji 3개 임보디먼트에 배포. 122B-A10B가 다수 벤치마크에서 평가된 proprietary·오픈소스 모델을 상회하고, RynnBrain 초기화 정책이 Qwen 기반 및 대표 generalist VLA를 실기에서 능가. 멀티태스크·멀티임보디먼트 공동 학습이 태스크별 학습보다 더 잘 됨을 확인.",
+          "tags": ["Embodied Foundation Model", "Cross-Embodiment", "Native 3D Grounding", "Contact-Point Prediction", "MoE Scaling"],
+          "arxiv_url": "https://arxiv.org/abs/2607.17977",
           "extra_url": "",
-          "date": "2026-07-16",
-          "reason": "어제 컬렉션에 들어간 BadWAM(2607.15207, 액션과 이매지네이션의 분리 취약성을 블랙박스로 공격)의 정확한 방어측 짝이다. BadWAM이 '왜 무너지는가'를 실증했다면 WA-LQR은 '왜 무너지는지 활성에서 읽고, 학습 없이 밀어 되돌린다'로 같은 문제를 반대편에서 푼다. 어제 새 그룹으로 뽑은 DiMaS(2607.14280, flow-matching VLA를 분포 수송으로 조종)와도 짝: DiMaS는 정책의 표현 분포를, WA-LQR은 WAM의 활성 방향을 배포-후에 옮긴다. 지지난 주 관련 그룹의 DreamerV3(2301.04104)와 컬렉션의 FlowWAM(2607.13017)·LingBot-VA 2.0(2607.08639) 등 WAM 라인 전체에 '해석 가능성+제어 이론'이라는 축을 추가한다는 점에서 새로 열리는 갈래. Cosmos-Policy·DiT4DiT를 대상으로 삼은 것도 최신 아키텍처와 곧바로 연결된다."
+          "date": "2026-07-20",
+          "reason": "좋아요한 Xiaomi-U0(2607.11643, 38B AR 멀티모달 world foundation)의 직접적 경쟁 상대. Xiaomi-U0가 '씬·비디오 생성' 축이라면, RynnBrain 1.1은 '인지+정책'을 한 파운데이션으로 통합한 세 번째 답 — 컬렉션의 Xiaomi-Robotics-1(2607.15330, 정책 축)까지 세 축이 나란히 놓인다. 122B-A10B MoE는 컬렉션의 파운데이션 스케일링 축의 새 지점이고, 어제 컬렉션에 들어온 ScaleBFM(2607.15163, Unitree G1)·크로스 임보디먼트 라인(RT-X 2310.08864·Octo 2405.12213)의 최신 통합점이 된다. contact-point 예측과 3D grounding을 파운데이션 능력으로 넣는다는 발상은 좋아요한 WALA(2607.11397)의 depth+DINOv3 잠재 액션과도 결이 같아, '파운데이션 자체에 3D를 심는다'는 흐름의 최신 사례."
         },
         {
-          "id": "2607.12356",
-          "title": "VistaVLA: Geometry- and Semantic-Aware 3D Gaussian-Grounded VLA for Robotic Manipulation",
-          "authors": "Mohan Liu, Zhihao Gu, Xuanyu Chen · arXiv:2607.12356",
-          "summary_ko": "2D 관측→액션의 표준 VLA가 '3D 시맨틱 인지 지도'를 갖지 못한다는 문제의식에서 출발. 멀티뷰 vision-language 특징을 3D Gaussian 원시에 리프팅해 기하-정박된 시맨틱 토큰을 만들고, 이를 VLA의 컨텍스트로 그라운딩한다. 무거운 3D 표현을 다루기 위해 Merge-then-Query(MtQ)로 밀집 Gaussian을 극도로 압축(토큰 99% 감소)하면서 액션 관련 3D 레이아웃·시맨틱은 보존. 실기 7태스크 성공률 +22.8%, VLA-Adapter 대비 OOD 태스크에서 +30.0%. '3D를 VLA에 넣되 시맨틱까지 유지하고 계산은 감당 가능하게'라는 세 마리 토끼를 잡는 실용 프레임워크.",
-          "tags": ["3D Gaussian VLA", "Semantic 3D Grounding", "Multi-View Lifting", "Token Compression", "OOD Generalization"],
-          "arxiv_url": "https://arxiv.org/abs/2607.12356",
+          "id": "2607.15065",
+          "title": "DriftWorld: Fast World Modeling through Drifting",
+          "authors": "Susie Lu, Haonan Chen, Weirui Ye · arXiv:2607.15065",
+          "summary_ko": "예측 월드 모델의 가치는 '많은 롤아웃을 빠르게 뽑는 것'에 달려 있는데, 디퓨전 기반 월드 모델은 다단계 샘플링 때문에 인퍼런스에서 대규모 액션 탐색이 사실상 불가능. DriftWorld는 액션 조건부 drift generative model로 이를 정면 돌파 — 학습 단계에서 액션 조건부 drift를 배워두고, 인퍼런스에서는 iterative denoising 없이 단일 forward로 후속 프레임을 생성. 결과는 평균 30fps+로 디퓨전 대비 17배 빠름. Bridge-V2·RT-1·Language Table·Push-T·Robomimic 등 표준 비주얼 조작 벤치마크에서 SOTA 결정 성능을 훨씬 적은 인퍼런스 시간에 달성. 온라인 컨트롤뿐 아니라 오프라인 시뮬레이터로 실기 정책 랭킹까지 가능한데, 롤아웃 기반 점수와 정답의 상관이 최대 0.99에 이름.",
+          "tags": ["Drift Generative Model", "Single-Forward Rollout", "30+ FPS World Model", "Offline Policy Simulator", "Real-Time WAM"],
+          "arxiv_url": "https://arxiv.org/abs/2607.15065",
           "extra_url": "",
-          "date": "2026-07-14",
-          "reason": "컬렉션의 See-like-a-Robot(2607.11498, 로봇 중심 pointmap)이 '기하'를, 좋아요한 WALA(2607.11397, DINOv3+depth latent action)가 '시각 표현'을 각각 강화했다면 VistaVLA는 그 둘의 접점 — 기하와 시맨틱을 동시에 3D로 그라운딩 — 을 정확히 채운다. 어제 관련 그룹으로 뽑은 PerAct(2209.05451, voxel Perceiver)와 오늘 관련 그룹의 RVT(2306.14896, 멀티뷰 트랜스포머)가 3D 조작의 계보를 만들어놓았는데, VistaVLA는 그 계보의 최신 지점 — voxel/pointmap을 지나 3D Gaussian으로 — 을 잇는 자연스러운 다음 노드. 특히 MtQ의 토큰 99% 감소는 컬렉션의 실시간성 축(Reflex 2607.14695, Xiaomi-Robotics-1 위의 배포 문제)과 곧바로 연결되어 '3D를 VLA에 넣으면서 지연을 어떻게 감당하는가'에 대한 실전적 답이 된다."
+          "date": "2026-07-16",
+          "reason": "어제 컬렉션에 들어간 Reflex(2607.14695)의 정확한 '월드 모델 측 대응'이다. Reflex가 flow-matching VLA의 O(N²) 재계산 문제를 캐시 파티셔닝으로 O(1)로 만든 것이 정책 측 답이라면, DriftWorld는 월드 모델 측의 iterative sampling 병목을 아예 학습 시점의 drift로 흡수해 단일 forward에 넘긴다(디퓨전 대비 17배). 컬렉션의 FlowWAM(2607.13017)·LingBot-VA 2.0(2607.08639)·BadWAM(2607.15207) 등 WAM 라인이 공통으로 겪는 '롤아웃 비용' 문제를 정면으로 해결. 특히 실기 정책의 오프라인 시뮬레이터로 랭킹 상관 0.99를 낸다는 결과는 좋아요한 Aspire·ENPIRE(2606.19980) 같은 자기개선 루프에서 '실기 없이 정책 순위'를 매기는 실용적 함의가 크고, 어제 rec의 WA-LQR(2607.14943) 활성 스티어링과 함께 놓으면 'WAM을 배포 가능한 도구로 만든다'는 새 축이 완성된다."
         }
       ]
     },
@@ -45,37 +45,37 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2306.11706",
-          "title": "RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation",
-          "authors": "Konstantinos Bousmalis, Giulia Vezzani, Dushyant Rao · Google DeepMind · arXiv:2306.11706",
-          "summary_ko": "여러 로봇·태스크에서 모은 이종 경험을 하나의 시각 목표 조건부 결정 트랜스포머로 소화하는 멀티임보디먼트·멀티태스크 제너럴리스트 에이전트. 시뮬·실기의 다양한 관측·액션 공간을 아우르며 새 태스크·로봇에 제로샷은 물론 100~1000개 예시 파인튜닝으로 빠르게 적응하고, 결정적으로 '학습된 모델이 다음 학습 회차용 데이터를 스스로 생성'하는 자율 개선 루프를 처음 스케일 있게 실증. 세 종류의 실기 로봇에서 대규모 평가를 수행했으며, 데이터가 커지고 다양해질수록 태스크 간 전이와 적응 효율이 함께 증가한다는 스케일링 성질을 보였다.",
-          "tags": ["Self-Improving Agent", "Multi-Embodiment", "Goal-Conditioned Transformer", "Data Bootstrapping", "Foundation Manipulation"],
-          "arxiv_url": "https://arxiv.org/abs/2306.11706",
+          "id": "2402.15391",
+          "title": "Genie: Generative Interactive Environments",
+          "authors": "Jake Bruce, Michael Dennis, Ashley Edwards · Google DeepMind · arXiv:2402.15391",
+          "summary_ko": "인터넷 비디오만으로 액션 라벨 없이 학습해 사용자 입력으로 프레임 단위 상호작용이 가능한 가상 세계를 생성하는 11B 파라미터 파운데이션 모델. 텍스트·이미지·사진·스케치 등 다양한 프롬프트를 초기 상태로 받고, 시공간 비디오 토크나이저 + 자기회귀 다이내믹스 모델 + 스케일러블 잠재 액션(latent action) 메커니즘으로 구성. 결정적인 것은 '잠재 액션'을 지도학습 없이 뽑아 사용자가 그 액션 공간에서 세계와 상호작용할 수 있게 한 점 — 로봇 데이터가 없어도 대규모 웹 비디오에서 액션 표현을 만들 수 있다는 것을 처음으로 실증한 대형 스케일 결과다. WAM/World Model/Latent Action 계열 전체의 시발점.",
+          "tags": ["World Model", "Latent Action", "Unsupervised Video Pretraining", "Interactive Generation", "Foundation Model"],
+          "arxiv_url": "https://arxiv.org/abs/2402.15391",
           "extra_url": "",
-          "date": "2023-06-20",
-          "reason": "좋아요한 Aspire와 ENPIRE(2606.19980)의 직계 조상이다. '학습된 모델이 다음 회차 데이터를 만든다'는 자율 개선 루프의 스케일 있는 최초 실증이 바로 RoboCat인데, Aspire가 '코딩 에이전트가 스킬을 진화'시키고 ENPIRE가 '플릿이 실기에서 자기개선'하는 두 흐름 모두 이 원형에서 출발한다. 컬렉션에 이미 있는 RT-1(2212.06817)·RT-X(2310.08864)·Octo(2405.12213)와 나란히 두면 '한 정책이 여러 임보디먼트를 배우는' 2022~2024 계보의 DeepMind 축이 완성. 좋아요한 Harness-VLA(2607.08448, 프로즌 VLA + 에이전틱 플래너)와도 대비 — RoboCat은 '한 모델이 모든 걸 흡수', Harness-VLA는 '한 모델을 감싼다' — 로 컬렉션의 '베이스 모델 통합 vs. 분리' 논쟁을 정면으로 지지한다. 오늘 새 그룹의 Xiaomi-Robotics-1의 '스케일링이 답'이라는 주장도 결국 RoboCat이 열어둔 노선 위에 서 있다."
+          "date": "2024-02-23",
+          "reason": "컬렉션의 World Action Model 라인 전체 — FlowWAM(2607.13017), LingBot-VA 2.0(2607.08639), BadWAM(2607.15207), 오늘 new의 DriftWorld까지 — 가 서 있는 계보의 시발점. Genie가 '라벨 없이 잠재 액션을 뽑는다'는 발상을 대규모로 실증한 덕분에 이후 액션 라벨 없는 비디오 사전학습 → 로봇 정책 파인튜닝이 가능해졌고, 좋아요한 WALA(2607.11397, DINOv3+depth 잠재 액션)와 컬렉션의 Latent Action VQ-VAE(2410.11758)·ACWM(2607.09185)·XR-1 latent action 라인 모두 여기서 파생. FlowWAM이 optical flow, Genie가 latent action을 각각 '어떤 액션 표현을 쓸까'의 두 큰 답을 대표한다는 점에서, 이 조상이 컬렉션에 없으면 오늘 new의 DriftWorld/RxBrain을 놓을 좌표축이 성립하지 않는다. '지금 넣지 않으면 계속 빠져 있을 논문'."
         },
         {
-          "id": "2310.17596",
-          "title": "MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations",
-          "authors": "Ajay Mandlekar, Soroush Nasiriany, Bowen Wen · NVIDIA · arXiv:2310.17596",
-          "summary_ko": "약 200개의 사람 시연만으로 18개 태스크에 걸쳐 5만+ 시연을 자동 합성해 스케일러블한 조작 학습을 가능케 하는 데이터 생성 시스템. 시연을 새 씬 구성·객체 인스턴스·로봇 팔에 맞춰 자동 적응·리타깃해 다양한 초기 상태 분포를 확보하고, 이 합성 데이터로 학습한 이미테이션 정책이 긴 호라이즌·고정밀 태스크(다부품 조립, 커피 준비)에서 강한 성능을 보인다. '추가 사람 시연을 모으는 것' 대비 유용성·경제성에서 유리하다는 것을 여러 방식으로 검증해, 이후 RoboCasa·DemoStart·MimicGen-Diffusion까지 이어지는 '합성 시연으로 조작 데이터를 확장하자'는 흐름을 열었다.",
-          "tags": ["Demonstration Synthesis", "Data Augmentation", "Manipulation Scaling", "Long-Horizon", "RoboSuite"],
-          "arxiv_url": "https://arxiv.org/abs/2310.17596",
-          "extra_url": "https://mimicgen.github.io",
-          "date": "2023-10-26",
-          "reason": "오늘 새 그룹의 Xiaomi-Robotics-1(10만 시간 실기 궤적 + 자동 라벨링)이 서 있는 '데이터를 어떻게 스케일하는가' 축의 반대편 답이다. Xiaomi는 '많이 모은다', MimicGen은 '적게 모은 뒤 합성으로 뻥튀긴다'. 그리고 Xiaomi-Robotics-1이 SOTA를 세운 RoboCasa365 자체가 MimicGen 계보의 위에 서 있는 벤치마크이기도 하다. 좋아요한 Aspire와 ENPIRE(2606.19980)의 '데이터를 스스로 만든다' 사이클과도 짝: MimicGen이 '시연을 씬으로 뻥튀기'라면 Aspire/ENPIRE는 '스킬·태스크 자체를 뻥튀기'다. 컬렉션의 Diffusion Policy(2303.04137)·ACT(2304.13705)·RT-1(2212.06817) 모두 결국 데이터가 병목이었는데, MimicGen은 '어떻게 뚫었는가'의 2023 표준 답이라 컬렉션에 반드시 들어와야 하는 배경 논문."
+          "id": "2402.10885",
+          "title": "3D Diffuser Actor: Policy Diffusion with 3D Scene Representations",
+          "authors": "Tsung-Wei Ke, Nikolaos Gkanatsios, Katerina Fragkiadaki · CMU · arXiv:2402.10885",
+          "summary_ko": "3D 신 표현·언어 지시·proprioception을 하나의 3D denoising 트랜스포머로 융합해 6-DoF 조작 액션을 디퓨전으로 생성하는 정책. 명시적 voxel 격자를 쓰지 않으면서도 3D 기하 정보를 액션 생성에 그대로 넣어, RLBench 멀티뷰 벤치마크에서 절대 18.1% 개선의 큰 폭 SOTA를 달성. 실기에서도 극소량 시연으로 조작 학습이 가능함을 보였다. 'diffusion policy + 3D scene representation'을 한 모델에 통합하는 표준 방식을 제시한 논문으로, 이후 3D-aware VLA·3D Gaussian VLA 계보의 시작점이 되었다.",
+          "tags": ["3D Diffusion Policy", "3D Scene Representation", "Denoising Transformer", "RLBench SOTA", "6-DoF Manipulation"],
+          "arxiv_url": "https://arxiv.org/abs/2402.10885",
+          "extra_url": "https://3d-diffuser-actor.github.io/",
+          "date": "2024-02-16",
+          "reason": "컬렉션의 Diffusion Policy(2303.04137, 2D→2D)와 See-like-a-Robot(2607.11498, pointmap 3D)·좋아요한 WALA(2607.11397, depth 잠재)·어제 rec의 VistaVLA(2607.12356, 3D Gaussian VLA) 사이의 '잃어버린 고리'. Diffusion Policy가 열어둔 policy diffusion 계보에 명시적 3D를 처음으로 접목한 결정적 논문이라, '3D를 정책에 어떻게 넣는가' 계보의 2024년 표준 답이자, 지지난 주 관련 그룹의 RVT(2306.14896, 멀티뷰 트랜스포머)와 짝 — RVT는 '가상 뷰 재렌더링→트랜스포머', 3D Diffuser Actor는 '3D 신 표현→디퓨전'. 컬렉션의 π0(2410.24164)·OpenVLA(2406.09246) 시대 이전 3D 조작의 근본을 채우면, 오늘 new의 RynnBrain 1.1(native 3D grounding)·이전 rec의 VistaVLA가 왜 지금 나오는지가 자연스러워진다."
         },
         {
-          "id": "2306.14896",
-          "title": "RVT: Robotic View Transformer for 3D Object Manipulation",
-          "authors": "Ankit Goyal, Jie Xu, Yijie Guo · NVIDIA · arXiv:2306.14896",
-          "summary_ko": "3D 조작에서 explicit 3D 표현(voxel)은 정확하지만 계산이 커서 스케일이 어렵다는 문제를 풀기 위해, 카메라 입력을 로봇 워크스페이스 주변의 가상 뷰에서 재렌더링한 뒤 뷰 간 어텐션으로 정보를 취합하는 멀티뷰 트랜스포머. 단일 RVT 모델이 RLBench 18태스크(249 변형)에서 PerAct 대비 상대 성공률 26% 개선, 같은 성능까지 학습은 36배 빠르고 추론은 2.3배 빠름. 실기에서도 태스크당 ~10개 시연으로 다양한 조작을 수행. voxel 없이도 '3D를 이해하는' 표현을 어떻게 만들 것인가에 대한 결정적인 대안.",
-          "tags": ["Multi-View Transformer", "3D Manipulation", "Virtual Re-Rendering", "RLBench", "Scalable 3D"],
-          "arxiv_url": "https://arxiv.org/abs/2306.14896",
-          "extra_url": "https://robotic-view-transformer.github.io/",
-          "date": "2023-06-26",
-          "reason": "오늘 새 그룹으로 뽑은 VistaVLA(3D Gaussian-Grounded VLA)의 직접적 조상이다. VistaVLA는 멀티뷰 특징을 3D Gaussian에 리프팅하는데, 그 발상의 원류가 RVT — '멀티뷰를 트랜스포머로 취합해 3D를 얻는다'. 어제 관련 그룹의 PerAct(2209.05451, voxel Perceiver)와 나란히 두면 2022~2023 '언어 조건부 3D 조작'의 두 축(voxel vs. multi-view transformer)이 컬렉션에 다 들어오고, 이후 3D Diffuser Actor·RVT-2·GR00T·VistaVLA까지의 계보가 자연스럽게 이어진다. 컬렉션의 See-like-a-Robot(2607.11498, 로봇 중심 pointmap)과도 대비축 — RVT는 '가상 뷰 재렌더링', See-like-a-Robot은 '로봇 프레임 pointmap'으로 같은 뷰 일반화 문제를 다르게 푼다. 좋아요한 WALA(2607.11397)의 depth+DINOv3 조합도 결국 '3D를 어떻게 값싸게 넣나'의 후예라 RVT의 계산 효율 논거는 그대로 유효하다."
+          "id": "2406.10454",
+          "title": "HumanPlus: Humanoid Shadowing and Imitation from Humans",
+          "authors": "Zipeng Fu, Qingqing Zhao, Qi Wu · Stanford · arXiv:2406.10454",
+          "summary_ko": "사람의 몸 전체 모션을 실시간으로 휴머노이드가 shadowing하고, 그 shadowing 데이터로 imitation 정책을 학습하는 파이프라인을 처음으로 실기에서 실증. Humanoid Shadowing Transformer가 사람 자세 → 휴머노이드 조인트 액션을 저지연으로 리타깃하며, 이렇게 모은 사람-매핑 궤적을 뒤이어 imitation learning으로 오토노머스 태스크 정책으로 굳힌다. Unitree H1에서 사람의 walking·복싱·피아노 연주·박수·다양한 loco-manipulation을 재현하고, 사람 비디오/모캡을 휴머노이드 학습 데이터로 대규모 활용하는 표준 파이프라인을 제시. '휴머노이드는 사람 데이터로 배운다'는 이후 흐름의 원형.",
+          "tags": ["Humanoid", "Human Shadowing", "Whole-Body Teleop", "Imitation Learning", "Unitree H1"],
+          "arxiv_url": "https://arxiv.org/abs/2406.10454",
+          "extra_url": "https://humanoid-ai.github.io/",
+          "date": "2024-06-15",
+          "reason": "어제 컬렉션에 들어간 ScaleBFM(2607.15163, 휴머노이드 Behavior Foundation Model)과 오늘 new의 RynnBrain 1.1(Unitree G1 배포)의 직계 조상. HumanPlus가 사람 모션 → 휴머노이드 shadowing → imitation 파이프라인을 H1에서 처음 실증한 덕분에 이후 ScaleBFM 같은 3M 파라미터 스케일링이 가능해졌다. 컬렉션의 크로스 임보디먼트 라인(RT-X 2310.08864, Octo 2405.12213)과 Human video 사전학습 라인(2410.11758 Latent Action VQ-VAE)의 정확한 교집합에 앉는 논문으로, '휴머노이드에 어떤 데이터를 앞단으로 놓을 것인가'의 답을 사람 모션으로 확정한 표준. 좋아요한 Xiaomi-U0(2607.11643)의 embodied 데이터 증강도 결국 사람 비디오/모션의 활용을 전제하기 때문에, 이 파운데이션이 컬렉션에 있어야 휴머노이드/embodied 데이터 축의 좌표계가 완성된다."
         }
       ]
     }
