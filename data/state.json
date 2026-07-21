@@ -5,9 +5,16 @@
     "2607.08448": 1,
     "2607.11397": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2607.15330",
+      "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
+      "arxiv_url": "https://arxiv.org/abs/2607.15330",
+      "added": "2026-07-21"
+    }
+  ],
   "dismissed": [
     "2607.04978"
   ],
-  "updated": "2026-07-20"
+  "updated": "2026-07-21"
 }
