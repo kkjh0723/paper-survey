@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MimicGen — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Data Generation · Imitation Learning</span>
+    <h1>MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations</h1>
+    <p class="authors">Ajay Mandlekar, Soroush Nasiriany, Bowen Wen, Iretiayo Akinola, Yashraj Narang, Linxi Fan, Yuke Zhu, Dieter Fox · NVIDIA · UT Austin</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2310.17596" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2310.17596" target="_blank">PDF</a>
+      <a href="https://mimicgen.github.io" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/NVlabs/mimicgen_environments" target="_blank">GitHub</a>
+      <span>arXiv:2310.17596 · CoRL 2023</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Data Generation</span>
+      <span class="t">Imitation Learning</span>
+      <span class="t">Behavioral Cloning</span>
+      <span class="t">Manipulation</span>
+      <span class="t">Sim-to-Sim</span>
+    </div>
+    <p class="meta">제출: 2023년 10월 26일 · CoRL 2023 · 18개 태스크 · 200개 인간 데모 → 50K+ 합성 데모</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>단 <b>~200개 인간 데모</b>를 <b>객체 중심(object-centric) subtask 단위</b>로 분해·변환·재실행해 <b>50,000개+ 합성 데모</b>를 자동 생성하는 시스템. 각 subtask에서 현재 물체 pose에 맞게 원본 end-effector 궤적을 SE(3) 변환하고 선형 보간으로 연결·실행해 데이터를 확장. 다양한 초기 상태·물체 인스턴스·로봇 팔(Panda/Sawyer/IIWA/UR5e)에서 BC 정책이 강한 성능(Nut-and-Bolt Assembly <span class="win">96%</span>, Coffee <span class="win">93%</span>, Stack Three <span class="win">91%</span>). MimicGen 200개 ≈ 인간 200개(<span class="win">79%</span> vs 84% on Square D0). 이후 이 데이터·프레임워크는 π0·RoboCasa 등 후속 대규모 파운데이션 학습의 <b>데이터 파이프라인 표준</b>이 됨.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Behavioral cloning으로 실용 조작 정책을 얻으려면 수천~수만 개의 인간 데모가 필요하지만 <b>수집 비용이 극도로 비싸다</b>. 시뮬레이션에선 초기 상태 분포가 넓어질수록 데모가 더 필요해 확장이 힘들다. MimicGen은 이 병목을 우회하는 <b>자동 데이터 생성</b> 시스템으로, 소수의 인간 데모를 다양한 새 컨텍스트(scene, object 위치, 로봇 팔)에 <b>adapt</b>해 대규모 데이터셋을 만든다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>MimicGen 시스템</b> — 인간 데모를 object-centric subtask로 분해하고, 각 subtask에서 target object pose에 맞춰 원본 궤적을 SE(3) 변환한 뒤 실행. 실패한 궤적은 폐기하고 성공만 데이터에 포함.</li>
+      <li><b>18개 태스크 · 50K+ 데모 생성</b> — Stack/Square/Coffee/Threading/Assembly류·Kitchen·Mobile Kitchen·Nut-and-Bolt/Gear/Frame Assembly 등 long-horizon·high-precision 태스크 커버.</li>
+      <li><b>Cross-arm / cross-scene 일반화</b> — 동일 인간 데모(대개 Panda로 수집)에서 Sawyer, IIWA, UR5e용 데이터 자동 생성. 다양한 reset 분포·물체 인스턴스에서도 데이터 확장.</li>
+      <li><b>MimicGen ≈ 인간 데모</b> — 200 MimicGen 데모(합성)로 학습한 BC 정책이 200 인간 데모 학습 정책과 유사(예: Square D0 <b>79% vs 84%</b>). 자동 생성이 인간 수집 대안으로 경쟁력.</li>
+      <li><b>오픈소스 · 후속 영향</b> — robomimic·robosuite 스택 위 코드/데이터셋 공개. 이후 RoboCasa365, π0/π0.5 등 대규모 학습의 표준 데이터 파이프라인으로 채택.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3.1 Subtask 분해 (object-centric)</h3>
+    <p>인간 데모를 <b>subtask termination signal</b>(예: "gripper closed on object", "object placed")로 분해해 <b>segments</b>로 만든다. 각 segment는 시점별 <b>end-effector pose · object pose · gripper action · termination flag</b>를 담은 <code>DatagenInfo</code> 시퀀스. 각 subtask는 <b>참조 물체 하나</b>에 결부되어(object-centric) 그 물체의 pose 프레임에서 궤적을 표현할 수 있게 된다.</p>
+
+    <h3>3.2 Source segment 선택</h3>
+    <p><b>SelectionStrategy</b>가 새 subtask마다 참고할 원본 segment를 고른다. 대표 전략인 <b>NearestNeighborObjectStrategy</b>는 <i>"현재 scene의 물체 pose와 가장 가까운 pose를 가진 원본 데모"</i>를 선택 (position·rotation weighting + k-NN). 매 subtask마다 다시 고르거나(하이브리드), 한 생성 시도 내내 유지할 수도 있다.</p>
+
+    <h3>3.3 Pose 변환 (transform)</h3>
+    <p>선택된 source segment를 현재 물체 pose로 재정렬. <code>transform_source_data_segment_using_object_pose</code>가 원본 물체 pose에서 목표 물체 pose로의 <b>SE(3) 변환</b>을 원본 EE 궤적에 적용해, 물체 상대적으로는 "같은" 조작이지만 새 위치·자세에 맞는 새 EE 궤적을 얻는다.</p>
+
+    <h3>3.4 실행 (transform-then-linear-interpolate)</h3>
+    <p><b>WaypointTrajectory</b>가 (1) 현재 EE pose에서 (2) 변환된 첫 waypoint까지 <b>선형 보간</b>(연결 구간)한 뒤, (3) 변환된 subtask 궤적을 그대로 재생. <code>execute</code>가 각 waypoint를 action으로 변환해 시뮬 환경에 인가하고, 관찰·grip 성공 여부를 저장. 매 subtask 성공을 검증해 실패 시 폐기 → <b>성공 궤적만 데이터셋에 포함</b>.</p>
+
+    <div class="callout">
+      <b>핵심 아이디어:</b> "물체 프레임에서의 조작 궤적은 물체 위치에 (거의) 불변"이라는 가정 하에, 원본 인간 데모를 <i>충분히 유사한</i> 물체 pose로 옮겨 재사용. 이 가정이 깨질 때(장애물·복잡 접근 경로)엔 실패율이 높아지지만, 대량 시도 후 성공만 채택하므로 데이터 품질은 유지된다.
+    </div>
+
+    <h3>데이터·환경</h3>
+    <div class="kv">
+      <div>소스 데모</div><div>~200개 (태스크당 ~10개, 인간 원격조작)</div>
+      <div>생성 데이터</div><div>50,000+ 궤적 (태스크당 ~1,000개 × 여러 reset 분포)</div>
+      <div>로봇 팔</div><div>Panda(주로 소스) · Sawyer · IIWA · UR5e</div>
+      <div>시뮬</div><div>robosuite / robomimic</div>
+      <div>실세계</div><div>Stack (Real), Coffee (Real)에서도 검증</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>대표 태스크별 BC 성공률 (프로젝트 페이지)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>성공률(%)</th></tr></thead>
+      <tbody>
+        <tr><td>Nut-and-Bolt Assembly</td><td class="win">96</td></tr>
+        <tr><td>Coffee</td><td class="win">93</td></tr>
+        <tr><td>Stack Three</td><td class="win">91</td></tr>
+        <tr><td>Kitchen</td><td>78</td></tr>
+        <tr><td>Mobile Kitchen</td><td>77</td></tr>
+        <tr><td>Gear Assembly</td><td>76</td></tr>
+        <tr><td>Frame Assembly</td><td>71</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">태스크당 ~1,000개 MimicGen 데모로 학습한 BC 정책 (robomimic 기본 아키텍처).</p>
+
+    <h3>MimicGen 데이터 vs 인간 데모 (Square D0)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>데이터 소스</th><th>200 데모</th></tr></thead>
+      <tbody>
+        <tr><td>MimicGen (합성)</td><td>79</td></tr>
+        <tr><td>Human (인간 수집)</td><td class="win">84</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">동일 200개 규모에서 <b>인간과 5pp 이내</b>. 대량 규모(수천 개)에서는 데이터 품질 격차가 성능에 미치는 영향이 줄어든다는 관찰.</p>
+
+    <h3>Cross-arm / Cross-scene 확장</h3>
+    <ul>
+      <li>같은 소스 인간 데모(Panda) → Sawyer, IIWA, UR5e에서 <b>새로 데모 수집 없이</b> 훈련 데이터 생성.</li>
+      <li>여러 reset 분포(D0/D1/D2, 초기 상태 범위 확장)에서 태스크당 1,000 데모 자동 생성.</li>
+      <li>Stack, Coffee 등 <b>실 로봇</b>에서도 sim→real 후 정책 실행 성공을 시연.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>데이터 품질 vs 양:</b> 소수 데이터 regime에서는 인간 데이터가 우세하지만, 대규모 regime에서는 <b>MimicGen 데이터 품질 저하가 성능에 큰 영향을 주지 않음</b>. → "많이 뽑아 성공만 남기는" 전략이 통함.</li>
+      <li><b>Source 데모 개수:</b> 태스크당 <b>~10개 인간 데모</b>만 있어도 대부분 태스크에서 1,000개 이상 성공 데이터 생성 가능.</li>
+      <li><b>Cross-embodiment:</b> Panda 데모로 만든 궤적이 Sawyer/IIWA/UR5e에서도 잘 재생됨(EE-space 궤적이므로 로봇 kinematic 차이에 상대적 강건).</li>
+      <li><b>실패 요인:</b> subtask segmentation이 잘못되거나 물체 접근 경로에 장애물이 있으면 성공률 급락 — 이때 대량 시도 후 성공만 채택하는 방식으로 우회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>대표 Figure (프로젝트 페이지)</b> — 원본 인간 데모의 궤적이 새 물체 pose로 transform되어 재실행되는 파이프라인 도식. 각 subtask는 파란 화살표(연결 선형 보간) + 초록 곡선(변환된 원본 궤적)으로 표현.
+    </div>
+    <div class="callout">
+      <b>대표 Table (18 tasks)</b> — 프로젝트 페이지에 태스크별 성공률 그리드. Assembly 계열(Nut-Bolt·Gear·Frame)과 Coffee/Kitchen 등 long-horizon 태스크에서 BC 정책이 70~96% 성공을 기록.
+    </div>
+    <p class="cap">이 논문은 arXiv HTML 버전이 없어 요약 페이지에 figure 이미지를 임베드하지 않았다. 원본 그림은 <a href="https://mimicgen.github.io" target="_blank">프로젝트 페이지</a>와 <a href="https://arxiv.org/pdf/2310.17596" target="_blank">PDF</a>에서 확인.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2310.17596" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2310.17596" target="_blank">PDF</a></li>
+      <li><a href="https://mimicgen.github.io" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/NVlabs/mimicgen_environments" target="_blank">GitHub — NVlabs/mimicgen_environments</a></li>
+      <li><a href="https://mimicgen.github.io/docs/introduction/overview.html" target="_blank">공식 문서</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2310.17596 · MimicGen · 요약 생성 2026-07-21
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Xiaomi-Robotics-1 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Foundation Model</span>
+    <h1>Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories</h1>
+    <p class="authors">Jun Guo, Piaopiao Jin, Jason Li 외 30여 명 · Xiaomi Robotics Team</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.15330" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.15330" target="_blank">PDF</a>
+      <a href="https://robotics.xiaomi.com/xiaomi-robotics-1.html" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.15330</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Foundation Model</span>
+      <span class="t">UMI</span>
+      <span class="t">Scaling Law</span>
+      <span class="t">Flow Matching</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 16일 · 백본 Qwen3-VL + DiT (MoT) · 2B/5B/10B 세 규모</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>UMI 그리퍼로 수집한 <b>10만 시간+ 실세계 조작 궤적</b>과 자동 라벨링 파이프라인으로 학습한 VLA 파운데이션. VLM(Qwen3-VL) + Flow-matching DiT를 <b>Mixture-of-Transformers</b>로 결합하고, "pre-training → post-training" 2단계 레시피와 데이터·모델 <b>스케일링 커브</b>를 실증. RoboCasa365 평균 <span class="win">57.4</span> (SOTA 46.6), RoboDojo <span class="win">20.07</span> (SOTA 13.07), 저데이터 파인튜닝에서 π0.5(40%) 대비 <span class="win">75%</span> 성공률.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA는 언어·시각을 로봇 action으로 매핑하지만, 대규모 학습에 필요한 <b>실세계 조작 궤적</b>은 여전히 병목이다. 원격조작(teleop)은 비용이 크고, 시뮬레이션은 sim-to-real 갭이 있으며, 인간 영상(SSv2, Ego4D)은 low-level action 라벨이 없다. Xiaomi 팀은 <b>UMI(Universal Manipulation Interface)</b>라는 그리퍼 형태 휴대장치로 인간이 직접 조작하며 <b>action-쌍이 있는 실세계 조작 궤적</b>을 확장 가능하게 수집하고, 이를 10만 시간 이상으로 스케일하여 GPT/LLaMA 스케일 법칙에 준하는 <b>로봇 파운데이션 모델의 스케일링 실증</b>을 목표로 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>100K시간+ UMI 사전학습 코퍼스</b> — Qwen3.5-27B 기반 자동 라벨링 파이프라인(producer-consumer)으로 상태 전이를 자연어로 캡셔닝, 약 2주 만에 대규모 라벨링 완료.</li>
+      <li><b>MoT 기반 VLA 아키텍처</b> — Qwen3-VL VLM + Flow-matching DiT(action head)를 Mixture-of-Transformers로 결합. Choice policy로 VLM에 보조 action supervision, action 토큰은 DiT attention에서 제외해 shortcut 차단.</li>
+      <li><b>Pre-training + Post-training 2단계 학습</b> — UMI로 broad capability 학습 후, 10K시간 크로스-임보디먼트(모바일 조작기·dual-arm·오픈소스 데이터)로 embodiment alignment.</li>
+      <li><b>스케일링 커브 실증</b> — 데이터 0%→100%: 26%→75%, 모델 2B→10B: 61%→75%→79%. 사전학습 데이터·모델 크기 모두에서 일관된 성능 향상.</li>
+      <li><b>다중 벤치마크 SOTA</b> — RoboCasa365 평균 57.4(+10.8pp), RoboDojo 평균 20.07(+7.0pp), VLABench 75.6% ID 성공률. 저데이터 파인튜닝에서 π0.5 대비 큰 우위.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>아키텍처: Mixture-of-Transformers (MoT)</h3>
+    <p>VLM(Qwen3-VL)이 관측·언어 지시를 인코딩하고, <b>DiT(Diffusion Transformer)</b>가 flow-matching으로 action chunk를 생성. DiT는 로봇 proprioceptive state와 <b>VLM의 KV cache</b>를 조건으로 받으며, action 관련 토큰은 DiT의 attention에서 제외되어 예측 shortcut을 방지한다. <b>Choice policy</b>가 VLM 내부에서 보조 action supervision을 제공해 VLM 표현도 action-aware하게 만든다.</p>
+    <div class="kv">
+      <div>2B 모델</div><div>VLM 2.1B + DiT 470M = 2.6B</div>
+      <div>5B 모델</div><div>VLM 4.4B + DiT 604M = 5.1B</div>
+      <div>10B 모델</div><div>VLM 8.8B + DiT 1.5B = 10.5B</div>
+    </div>
+
+    <h3>학습 목적</h3>
+    <p><b>Flow-matching loss</b>(action 궤적 예측, beta-분포 timestep 샘플링) + <b>Regression loss</b>(winner-takes-all: 최우수 후보 action만 supervision) + <b>NTP loss</b>(vision-language 공동학습, 비율 1:9). 전체 목적: <b>L = L<sub>Flow</sub> + L<sub>Regression</sub> + λ·L<sub>NTP</sub></b>, λ=0.1.</p>
+
+    <h3>Auto-labeling 파이프라인</h3>
+    <p>Qwen3.5-27B가 UMI 궤적을 시청하며 <b>상태 전이(state transition)</b>를 자연어로 캡셔닝. Producer-consumer 아키텍처로 GPU/CPU 활용을 극대화, 10만 시간 규모 데이터를 <b>약 2주</b> 만에 라벨링 완료. VLM 학습 시 (관측, 언어 지시) 쌍을 대량 확보하는 것이 핵심.</p>
+
+    <h3>데이터 파이프라인</h3>
+    <div class="kv">
+      <div>Pre-training</div><div>100,000+ 시간 UMI 실세계 조작 궤적, 자동 언어 라벨</div>
+      <div>Post-training</div><div>~10K시간 크로스-임보디먼트 (모바일 조작기·dual-arm 7,200시간+, 지시 라벨 UMI 1,000시간+, Bridge V2·RT-1·DROID)</div>
+      <div>샘플링 비율</div><div>0.5 : 0.5 : 0.5 : 8.5 (자체 데이터가 지배적)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboCasa365 (표 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Average</th><th>Atomic</th><th>Comp.-Seen</th><th>Comp.-Unseen</th></tr></thead>
+      <tbody>
+        <tr><td><b>Xiaomi-Robotics-1</b></td><td class="win">57.4</td><td class="win">80.2</td><td class="win">57.1</td><td class="win">32.1</td></tr>
+        <tr><td>ABot-M0.6</td><td>46.6</td><td>79.4</td><td>48.3</td><td>7.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">특히 <b>Compositional-Unseen에서 4배 이상</b>(32.1 vs 7.9) 격차. 조합 일반화 능력이 스케일링에서 크게 개선됨을 시사.</p>
+
+    <h3>RoboDojo (표 5, %success/progress)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Gen.</th><th>Precision</th><th>Long-H.</th><th>Memory</th><th>Open</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td><b>Xiaomi-Robotics-1</b></td><td class="win">23.55/17.0</td><td class="win">26.69/18.83</td><td class="win">38.39/23.67</td><td>7.81/6.56</td><td class="win">3.94/3.58</td><td class="win">20.07/13.93</td></tr>
+        <tr><td>Hy-Embodied-0.5</td><td>11.77/8.39</td><td>13.81/8.0</td><td>25.74/14.92</td><td class="win">13.37/12.11</td><td>0.65/0.58</td><td>13.07/8.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">5개 축 중 4개 우위. Memory에서만 Hy-Embodied 뒤짐.</p>
+
+    <h3>RoboCasa (표 2) · VLABench (표 4)</h3>
+    <ul>
+      <li><b>RoboCasa</b>: Xiaomi-Robotics-1 평균 74.5% vs World2Act 72.6%.</li>
+      <li><b>VLABench (ID)</b>: 성공률 75.6 / 진행률 85.0 / intention 79.8.</li>
+    </ul>
+
+    <h3>실세계 out-of-box (5B 모델)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>사전학습 데이터</th><th>0%</th><th>25%</th><th>50%</th><th>100%</th></tr></thead>
+      <tbody>
+        <tr><td>성공률</td><td>26</td><td>—</td><td>—</td><td class="win">75</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>모델 스케일링 (20K시간 데이터 고정)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델 크기</th><th>2B</th><th>5B</th><th>10B</th></tr></thead>
+      <tbody>
+        <tr><td>실세계 성공률</td><td>61</td><td>75</td><td class="win">79</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>다운스트림 파인튜닝 (저데이터, task당 &lt;10시간)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>성공률</th><th>진행률</th></tr></thead>
+      <tbody>
+        <tr><td><b>Xiaomi-Robotics-1</b></td><td class="win">75</td><td class="win">90</td></tr>
+        <tr><td>π0.5</td><td>40</td><td>66</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">저데이터 신규 task에서 π0.5 대비 성공률 +35pp, 진행률 +24pp.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>사전학습 데이터 스케일링:</b> 데이터 0→100%에서 실세계 성공률 26→75%로 <b>거의 3배</b>. 스케일링이 계속 이득을 준다.</li>
+      <li><b>모델 크기 스케일링:</b> 2B→5B에서 큰 점프(61→75), 5B→10B는 완만한 상승(75→79). Chinchilla 유사한 데이터-모델 균형 존재 시사.</li>
+      <li><b>Auto-labeling의 가치:</b> 언어 라벨 없는 UMI 궤적만으로는 VLM alignment가 안 됨. 자동 캡셔닝이 (관측, 언어) 페어를 만들어 VLM 활용을 가능케 함.</li>
+      <li><b>Cross-embodiment post-training:</b> UMI로만 학습한 모델은 실 로봇에 못 씀. post-training 단계의 embodiment alignment가 필수.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.15330/x1.png" alt="Xiaomi-Robotics-1 전체 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Xiaomi-Robotics-1 개요.</b> 10만 시간+ UMI 궤적으로 pre-training → 크로스-임보디먼트 데이터로 post-training. 다양한 real-robot 태스크에서 실행 가능. (출처: arXiv:2607.15330)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.15330/x2.png" alt="Mixture-of-Transformers 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — MoT 아키텍처.</b> Qwen3-VL VLM이 관측·언어를 인코딩하고, flow-matching DiT가 action chunk를 생성. Choice policy·action-token masking으로 shortcut 차단. (출처: arXiv:2607.15330)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.15330/x5.png" alt="사전학습 데이터·모델 스케일링 커브 (Figure 5)" loading="lazy">
+      <figcaption><b>Figure 5 — 스케일링 커브.</b> 데이터 0→100%에서 실세계 성공률 26→75%. 모델 2B→10B에서 61→79%로 일관된 향상. 로봇 파운데이션 모델도 <i>정말로</i> 스케일한다는 실증. (출처: arXiv:2607.15330)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3 (RoboCasa365)</b> — Compositional-Unseen에서 32.1 vs 7.9의 큰 격차가 이 논문의 핵심 주장(대규모 사전학습 → 조합 일반화)을 뒷받침.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.15330" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.15330" target="_blank">PDF</a></li>
+      <li><a href="https://robotics.xiaomi.com/xiaomi-robotics-1.html" target="_blank">프로젝트 페이지</a></li>
+      <li>코드·체크포인트는 추후 공개 예정</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.15330 · Xiaomi-Robotics-1 · 요약 생성 2026-07-21
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+</body>
+</html>
