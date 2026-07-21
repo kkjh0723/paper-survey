@@ -11,6 +11,12 @@
       "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
       "arxiv_url": "https://arxiv.org/abs/2607.15330",
       "added": "2026-07-21"
+    },
+    {
+      "id": "2310.17596",
+      "title": "MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations",
+      "arxiv_url": "https://arxiv.org/abs/2310.17596",
+      "added": "2026-07-21"
     }
   ],
   "dismissed": [
