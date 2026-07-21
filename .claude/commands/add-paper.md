@@ -55,19 +55,34 @@ allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch
     (`.ask-btn` CSS는 템플릿 스타일 블록에 이미 포함돼 있다.)
 - 수치·주장은 반드시 논문 근거에 기반한다. 모르면 지어내지 말고 해당 항목을 비운다.
 
-### 핵심 figure 임베드 (가능하면)
-`6 핵심 Figure/Table` 섹션에 논문의 **실제 figure 이미지**를 넣는다(요약 페이지엔 figure용 CSS가 이미 있음).
-- arXiv HTML(`https://arxiv.org/html/<id>`)에서 figure는 `<img src="xN.png">` 형태의 개별 이미지다.
-  전체 URL은 `https://arxiv.org/html/<id>/xN.png`. figure 캡션을 보고 **핵심 1~2개**(방법/구조도·대표 결과)를 고른다.
-- 저장: `mkdir -p summaries/fig/<id>` 후 `curl -s -o summaries/fig/<id>/xN.png "https://arxiv.org/html/<id>/xN.png"`.
-- 섹션 상단에 삽입:
-  ```html
-  <figure>
-    <img src="fig/<id>/xN.png" alt="설명 (Figure N)" loading="lazy">
-    <figcaption><b>Figure N — 제목.</b> 한 줄 설명. (출처: arXiv:<id>)</figcaption>
-  </figure>
+### 핵심 figure 임베드
+`6 핵심 Figure/Table` 섹션에 논문의 **실제 figure 이미지** 1~2개(방법/구조도 + 대표 결과)를 넣는다(요약 페이지엔 figure CSS 있음). `mkdir -p summaries/fig/<id>` 후 아래 우선순위로 확보:
+
+**A. arXiv HTML이 있으면 (우선)**
+- `https://arxiv.org/html/<id>` 를 열어 figure `<img src="...">` 의 **실제 src 경로**를 확인한다. **경로 주의**: 논문에 따라 `xN.png` 또는 버전 접두사가 붙은 `<id>vN/xN.png`(예: `2606.19980v1/x1.png`)다. src를 그대로 붙여 전체 URL을 만든다: `https://arxiv.org/html/<src경로>`.
+- `curl -s -o summaries/fig/<id>/xN.png "<URL>"` 로 받고 `file summaries/fig/<id>/xN.png` 로 정상 PNG/JPG인지 확인한다(HTML 오류페이지가 받아지면 실패 → 경로 재확인 후 재시도, 안 되면 B로).
+
+**B. arXiv HTML이 없으면(404) → PDF에서 렌더 (폴백)**
+- PDF 다운로드: `curl -s -o /tmp/<id>.pdf "https://arxiv.org/pdf/<id>"`
+- **PyMuPDF(fitz)**로 핵심 figure가 있는 페이지(보통 1p 티저, 2~4p 구조도)를 고해상도로 렌더/크롭해 PNG로 저장한다:
+  ```python
+  import fitz
+  doc = fitz.open("/tmp/<id>.pdf")
+  page = doc[PAGENUM]                       # 0-based. 캡션으로 페이지 특정
+  # (선택) 캡션 위치로 figure 영역 추정: rects = page.search_for("Figure 3")
+  clip = fitz.Rect(x0, y0, x1, y1)          # figure 영역(pt). 페이지 전체면 clip 생략
+  page.get_pixmap(dpi=200, clip=clip).save("summaries/fig/<id>/figN.png")
   ```
-- arXiv HTML이 없거나 적절한 figure를 못 찾으면 이미지는 생략하고 기존처럼 텍스트 callout으로만 정리한다.
+  텍스트가 많이 섞이면 `clip`으로 figure 박스만 잘라낸다. `file`로 정상 PNG 확인.
+
+**삽입** (섹션 상단):
+```html
+<figure>
+  <img src="fig/<id>/<파일명>.png" alt="설명 (Figure N)" loading="lazy">
+  <figcaption><b>Figure N — 제목.</b> 한 줄 설명. (출처: arXiv:<id>)</figcaption>
+</figure>
+```
+- A·B 모두 실패하면 이미지는 생략하고 텍스트 callout으로만 정리한다.
 - 커밋 시 `summaries/fig/<id>/` 도 함께 add 한다.
 
 ## 3. index.html에 행 추가
