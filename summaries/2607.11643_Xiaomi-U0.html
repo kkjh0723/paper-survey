@@ -241,7 +241,25 @@
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
     <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
-    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+    <details class="qa-item">
+      <summary class="q">Q1. EMU3.5가 뭐야?</summary>
+      <p><b>Emu3.5</b>는 U0가 <b>초기화 모델(백본)로 쓰는 오픈소스 멀티모달 자기회귀 파운데이션 모델</b>이다. §2.2: <i>"open-sourced EMU3.5를 초기화 모델로 채택, Qwen-3-32B decoder-only Transformer 기반이며 이미지 생성·이미지-텍스트 인터리브 모델링에 강함"</i>. 즉 대규모 비전 생성·언어 이해 prior를 제공하고, U0는 이를 통합 지속학습(continual training)으로 보존한 채 임보디드 태스크로 확장한다.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q2. IBQ 토크나이저가 뭐야?</summary>
+      <p>이미지를 <b>이산 토큰으로 바꾸는 비주얼 토크나이저</b>다(§2.2). 공간 압축비 <b>16×16</b>로 이미지를 토큰화하고, 기존 Qwen 어휘를 <b>IBQ 코드북으로 확장</b>해 텍스트·비전을 하나의 이산 어휘로 통합한다. 덕분에 모든 모달리티를 동일한 next-token 예측으로 다룰 수 있다 — U0가 T2I·T2V·씬 생성·transfer를 한 자기회귀 모델로 처리하는 근간.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q3. 정책 학습에는 어떻게 기여해? 데이터를 생성해서 쓰는 거야? 성공률 올리는 특별한 설계가 있어?</summary>
+      <p><b>맞다 — U0가 데이터를 생성해서 정책 학습에 쓴다.</b> U0의 <b>embodied scene generation / embodied transfer</b>가 합성 증강 데이터를 만들고, 정책을 그것으로 파인튜닝한다.</p>
+      <ul>
+        <li><b>구체 메커니즘(§3.2–3.3):</b> 태스크별 clean 시연 ~40시간을 모은 뒤, U0로 <b>배경·조명·텍스처만 바꾸고 로봇 state·action 라벨은 그대로 보존</b>한 style-transfer 에피소드 ~40시간을 태스크당 생성. 정책을 clean + 이 증강으로 학습(U0-Aug).</li>
+        <li><b>성공률 올리는 핵심 설계 = "행동 보존형 시각 증강":</b> 외형만 다양화하고 행동은 유지하므로, 학습 때 못 본 시각 조건(held-out 테이블보·조명)에 강건해진다. 그 결과 π0.5(<a href="2504.16054_pi05.html">리스트</a>)의 <b>OOD 성공률 36.9→63.2%</b>(Fig.17 interference group). in-distribution은 약간 trade-off이나 OOD 이득이 압도.</li>
+      </ul>
+      <p>즉 U0는 '정책을 직접 바꾸는' 게 아니라 <b>정책이 먹을 데이터를 생성·증강</b>하는 방식으로 성공률을 올린다.</p>
+    </details>
   </section>
 
   <footer>
