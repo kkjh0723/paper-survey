@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RynnBrain 1.1 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Embodied FM · 3D Grounding</span>
+    <h1>RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model</h1>
+    <p class="authors">Kehan Li, Bohan Hou, Minghao Zhu, Tianyi Zhang 외 31인 · Alibaba DAMO Academy</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.17977" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.17977" target="_blank">PDF</a>
+      <a href="https://alibaba-damo-academy.github.io/RynnBrain" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/alibaba-damo-academy/RynnBrain" target="_blank">GitHub</a>
+      <a href="https://huggingface.co/collections/Alibaba-DAMO-Academy/rynnbrain-11" target="_blank">HuggingFace</a>
+      <span>arXiv:2607.17977</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Embodied Foundation Model</span>
+      <span class="t">Spatial Reasoning</span>
+      <span class="t">3D Grounding</span>
+      <span class="t">Contact Point</span>
+      <span class="t">VLA</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 20일 · 백본 Qwen3.5 (2B / 9B / 122B-A10B) · 실로봇 Unitree G1 · Astribot-S1 · Tianji-Wuji</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>공간·시간·물리 지반(spatio-temporal, physically grounded) 표현</b>을 통합한 <b>Embodied Foundation Model</b> 시리즈. 2B / 9B / 122B-A10B 3규모로 확장하고, 이전 버전 대비 <b>contact point 예측</b>과 <b>native 3D grounding</b>을 추가해 조작·계획 능력을 강화했다. 공간 벤치 3종(VSI-Bench, MMSI, RefSpatial-Bench)에서 122B가 모든 오픈·상용 모델 상회(VSI <span class="win">75.0</span>, MMSI <span class="win">52.0</span>, RefSpatial <span class="win">79.1</span>). 실로봇 파생 <b>RynnBrain-VLA</b>는 3태스크 평균 성공률 <span class="win">86.67%</span>(Qwen-Based-VLA 60.0, π0.5 65.0), Generalist 버전은 <span class="win">91.67%</span>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>범용 MLLM은 시각·언어 이해엔 강하지만 로봇에게 필요한 <b>공간 지반(spatial grounding)</b>, <b>3D 추론</b>, <b>물리 상호작용 계획</b>에는 약하다. 특히 (1) 자유 텍스트로만 답하는 모델은 로봇이 실행할 좌표·궤적을 산출하기 어렵고, (2) 2D bbox나 텍스트로 접촉 정보를 우회 서술해도 그리퍼 자세로 변환하려면 별도 후처리가 필요하다. RynnBrain 1.1은 <b>spatio-temporal memory</b>와 <b>물리-지반된 명시적 공간 출력</b>(box/point/trajectory/3D box/접촉점)을 하나의 자기회귀 프레임에 통합해, VLA로 이어지는 파이프라인을 단일 모델로 압축한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>3-규모 통합 Embodied FM</b> — 2B / 9B / 122B-A10B(MoE) 3규모 릴리즈. Qwen3.5 백본 위 DeepStack + Interleaved MRoPE로 다중모달 통합.</li>
+      <li><b>Contact-point 예측 + Native 3D Grounding 추가</b> — 그리퍼 중심점(x,y)과 in-plane 각도 θ를 직접 예측(2.6M 학습 샘플). 9-D 3D bounding box(중심·크기·방향)를 텍스트 없이 네이티브 출력.</li>
+      <li><b>RynnBrain-VLA + 통합 action space</b> — <b>81-D cross-embodiment</b> action + embodiment-specific 마스킹. Flow-matching 단일 스트림 DiT 헤드. Unitree G1·Astribot-S1·Tianji-Wuji 3플랫폼 실배치.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>아키텍처</h3>
+    <p>Qwen3.5 원리를 따른 <b>decoder-only VLM</b>: 비전 인코더 + 비전-언어 projector + LLM 백본. <b>DeepStack</b>과 <b>Interleaved MRoPE</b>로 이미지/비디오 토큰과 시간 위치 정보를 결합한다. 이미지·비디오는 시간 위치 정보를 붙인 <b>토큰 시퀀스</b>로 인코딩되고, 텍스트뿐 아니라 <b>공간 토큰(bbox, point, trajectory)</b>도 <b>자기회귀</b>로 생성된다.</p>
+
+    <h3>새 학습 태스크 (1.1 신규)</h3>
+    <ul>
+      <li><b>Contact point 예측:</b> 그리퍼 중심점 p=(x,y) + in-plane 회전각 θ. Grasp-Anything·GraspNet-1B·GraspFactory·Jacquard V2·GraspCluster6D 통합 <b>2.6M 샘플</b>.</li>
+      <li><b>Native 3D grounding:</b> 9-D 3D bbox(center 3, dims 3, orientation 3) 자기회귀 출력. WildDet3D-Essential 102,979 + WildDet3D-Synthetic 896,004 + FoundationPose 1,849K.</li>
+    </ul>
+
+    <h3>사전학습 하이퍼파라미터</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>파라미터</th><th>2B</th><th>9B</th><th>122B-A10B</th></tr></thead>
+      <tbody>
+        <tr><td>백본</td><td>Qwen3.5-2B</td><td>Qwen3.5-9B</td><td>Qwen3.5-122B-A10B (MoE)</td></tr>
+        <tr><td>LM LR</td><td>5×10⁻⁶</td><td>2×10⁻⁶</td><td>2×10⁻⁶</td></tr>
+        <tr><td>Vision LR</td><td>1×10⁻⁶</td><td>2×10⁻⁶</td><td>2×10⁻⁶</td></tr>
+        <tr><td>Batch</td><td>512</td><td>1,024</td><td>1,024</td></tr>
+        <tr><td>Warmup</td><td>0.03</td><td>0.03</td><td>0.03</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>RynnBrain-VLA (실로봇 파생)</h3>
+    <div class="kv">
+      <div>Action space</div><div><b>81-D</b> 통합: Arm-Joint 14, Arm-EEF 18, Gripper 2, Hand 40, Torso 4, Head 3</div>
+      <div>Embodiment 마스킹</div><div>플랫폼마다 물리적으로 유효한 차원만 활성화</div>
+      <div>Action head</div><div>Flow-matching 단일 스트림 DiT (base VLM이 그대로 DiT 역할)</div>
+      <div>Real-Time Chunking</div><div>32-step chunk, 매 5 step마다 재추론</div>
+    </div>
+
+    <h3>사전학습 데이터 (요약)</h3>
+    <ul>
+      <li>범용 MLLM: LLaVA-OV-SI · ShareGPT-4o-video · CinePile · ActivityNet · YouCook2</li>
+      <li>다차원 인지: object/spatial understanding · counting · OCR · egocentric</li>
+      <li>시공간 지반화: object/area/affordance localization · trajectory prediction</li>
+      <li>물리-aware 계획: AgibotWorld · Open X-Embodiment · Galaxea-G0</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>2B 스케일 비교 (Table 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치</th><th>RynnBrain 1.1-2B</th><th>1.0-2B</th><th>Cosmos 3-Edge</th><th>Qwen3.5-2B</th></tr></thead>
+      <tbody>
+        <tr><td>VSI-Bench</td><td class="win">72.9</td><td>70.5</td><td>59.2</td><td>46.3</td></tr>
+        <tr><td>MMSI</td><td class="win">40.5</td><td>34.1</td><td>32.3</td><td>28.3</td></tr>
+        <tr><td>RefSpatial</td><td class="win">58.5</td><td>52.7</td><td>48.4</td><td>30.0</td></tr>
+        <tr><td>RynnBrain-Aff.</td><td class="win">90.2</td><td>89.4</td><td>77.6</td><td>80.4</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>9B 스케일 (Table 4)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치</th><th>RynnBrain 1.1-9B</th><th>1.0-8B</th><th>Qwen3.5-9B</th><th>Molmo2-ER-5B</th></tr></thead>
+      <tbody>
+        <tr><td>VSI-Bench</td><td class="win">74.9</td><td>70.9</td><td>61.0</td><td>74.5</td></tr>
+        <tr><td>MMSI</td><td class="win">47.0</td><td>39.6</td><td>13.4</td><td>27.7</td></tr>
+        <tr><td>MindCube</td><td class="win">86.9</td><td>56.6</td><td>33.1</td><td>39.0</td></tr>
+        <tr><td>RefSpatial</td><td class="win">67.2</td><td>59.2</td><td>37.3</td><td>61.0</td></tr>
+        <tr><td>RynnBrain-Ground.</td><td class="win">85.4</td><td>81.6</td><td>33.0</td><td>2.4</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>122B-A10B 최대 스케일 (Table 5)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치</th><th>1.1-122B-A10B</th><th>Cosmos 3 Super</th><th>Qwen3.5-122B-A10B</th><th>Pelican-VL-72B</th></tr></thead>
+      <tbody>
+        <tr><td>VSI-Bench</td><td class="win">75.0</td><td>60.9</td><td>66.6</td><td>57.3</td></tr>
+        <tr><td>MMSI</td><td class="win">52.0</td><td>41.8</td><td>9.2</td><td>30.7</td></tr>
+        <tr><td>MindCube</td><td class="win">89.6</td><td>40.2</td><td>30.8</td><td>32.5</td></tr>
+        <tr><td>RefSpatial</td><td class="win">79.1</td><td>57.0</td><td>69.3</td><td>49.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">모든 규모에서 자체 이전 버전(1.0)과 Qwen3.5 백본 대비 큰 개선. 122B는 <b>평가된 모든 상용·오픈 모델을 상회</b>.</p>
+
+    <h3>3D Grounding (SUN RGB-D · WildDet3D)</h3>
+    <ul>
+      <li>SUN RGB-D AP@15: 2B <b>34.28</b> · 9B <b>41.12</b></li>
+      <li>WildDet3D-Bench AP3D: 2B <b>17.36</b> · 9B <b>23.44</b></li>
+    </ul>
+
+    <h3>실로봇 3태스크 성공률 (Table 6, Process/Success)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Sprinkle Petals</th><th>Pour Wine</th><th>Grab Spatulas</th><th>Avg Proc</th><th>Avg Succ</th></tr></thead>
+      <tbody>
+        <tr><td>Qwen-Based-VLA</td><td>75.0 / 65.0</td><td>75.0 / 65.0</td><td>55.0 / 50.0</td><td>68.33</td><td>60.00</td></tr>
+        <tr><td>GR00T N1.7</td><td>86.25 / 75.0</td><td>77.0 / 65.0</td><td>86.67 / 80.0</td><td>83.31</td><td>73.33</td></tr>
+        <tr><td>π0.5</td><td>65.0 / 60.0</td><td>69.0 / 65.0</td><td>83.33 / 70.0</td><td>72.44</td><td>65.00</td></tr>
+        <tr><td><b>RynnBrain-VLA</b></td><td>87.5 / 85.0</td><td>88.0 / 80.0</td><td class="win">98.33 / 95.0</td><td>91.28</td><td>86.67</td></tr>
+        <tr><td><b>RynnBrain-VLA-Generalist</b></td><td class="win">88.75 / 85.0</td><td class="win">97.0 / 95.0</td><td>96.67 / 95.0</td><td class="win">94.14</td><td class="win">91.67</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Astribot-S1(petals·wine) + Tianji-Wuji(spatulas). Generalist 버전이 태스크 전반에서 최고 성공률.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>비균일 스케일링 법칙(non-uniform scaling laws):</b> 일반 인지는 모델 크기에 단조 증가, 반면 <b>reasoning-intensive</b> 항목은 RynnBrain 1.1은 <b>+38.6%</b>를 얻는 사이 Qwen3.5는 <b>−39.2%</b>로 하락(스케일이 오히려 해가 됨). 로컬라이제이션은 <b>모델 확장보다 데이터 확장</b>이 더 효과적.</li>
+      <li><b>Contact-point + 3D grounding 데이터 도입:</b> 소규모 모델(2B)의 조작 관련 벤치(RynnBrain-Affordance)와 3D grounding에서 큰 이득. 대규모 모델은 원래 강한 부분에는 이득이 작지만 <b>공간 벤치 전반에 일관된 향상</b>.</li>
+      <li><b>RynnBrain 초기화 vs Qwen 백본:</b> VLA 파인튜닝 시 RynnBrain 초기화가 <b>동일한 아키텍처·데이터로도</b> 실로봇 성공률을 크게 끌어올림 → 사전학습 단계의 물리·공간 지반이 후속 VLA에 이식된다는 근거.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.17977/x3.png" alt="RynnBrain 1.1 모델 계열 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — RynnBrain 1.1 model family overview.</b> 2B/9B/122B-A10B 3규모, 공통 spatio-temporal + physically grounded 프레임에서 embodied perception·공간 추론·로컬라이제이션·계획을 자기회귀 출력으로 통합. (출처: arXiv:2607.17977)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.17977/x5.png" alt="RynnBrain-VLA 구조 및 통합 action space (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — RynnBrain-VLA 아키텍처.</b> 81-D cross-embodiment action space + embodiment-specific 마스킹, base VLM이 단일 스트림 DiT 역할을 하는 flow-matching action head. (출처: arXiv:2607.17977)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 5 (122B 스케일 공간 벤치)</b> — VSI 75.0, MMSI 52.0(Qwen3.5 백본 9.2), MindCube 89.6(다음 40.2), RefSpatial 79.1. Qwen3.5-122B 대비 MMSI 스코어가 <b>5배 이상</b> 상승한 점이 spatio-temporal 사전학습의 효과를 극단적으로 보여준다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.17977" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.17977" target="_blank">PDF</a></li>
+      <li><a href="https://alibaba-damo-academy.github.io/RynnBrain" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/alibaba-damo-academy/RynnBrain" target="_blank">GitHub</a></li>
+      <li><a href="https://huggingface.co/collections/Alibaba-DAMO-Academy/rynnbrain-11" target="_blank">HuggingFace</a> · <a href="https://modelscope.cn/collections/DAMO_Academy/RynnBrain-11" target="_blank">ModelScope</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.17977 · RynnBrain 1.1 · 요약 생성 2026-07-22
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>
