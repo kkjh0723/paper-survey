@@ -12,6 +12,12 @@
       "title": "RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning",
       "arxiv_url": "https://arxiv.org/abs/2607.18060",
       "added": "2026-07-22"
+    },
+    {
+      "id": "2607.17977",
+      "title": "RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model",
+      "arxiv_url": "https://arxiv.org/abs/2607.17977",
+      "added": "2026-07-22"
     }
   ],
   "dismissed": [
