@@ -261,7 +261,26 @@
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
     <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
-    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+    <details class="qa-item">
+      <summary class="q">Q1. "attention은 시점 내부, TTT는 시점 간"에서 '시점'이 뭐야?</summary>
+      <p>여기서 <b>시점(timestep)</b>은 <b>로봇 궤적의 한 타임스텝 t</b>(한 관측→행동 스텝, ≈한 프레임)다. 각 시점 t는 여러 토큰 묶음으로 이뤄진다 — register 토큰 R<sub>t</sub>(16개)·Vision-Language 토큰 Φ<sub>t</sub>·proprioception q<sub>t</sub>·노이즈 액션 Ã<sub>t</sub>. 입력 시퀀스는 시점별로 <code>[R<sub>t</sub>, Φ<sub>t</sub>, q<sub>t</sub>, Ã<sub>t</sub>]</code>가 반복되는 구조.</p>
+      <ul>
+        <li><b>attention = 시점 내부:</b> 한 시점 t의 토큰들(R<sub>t</sub>, q<sub>t</sub>, Ã<sub>t</sub>)끼리 처리하고 그 시점의 VL 토큰 Φ<sub>t</sub>에 cross-attend. 즉 "그 순간(프레임) 안"의 정보를 섞는다.</li>
+        <li><b>TTT = 시점 간:</b> 시점별 attention 출력을 <b>시간축으로 이어 붙여</b> TTT 층에 통과. 여러 시점(과거 전체)에 걸친 정보를 fast weight에 압축해 전달한다 — "시간을 가로지르는" 역할.</li>
+      </ul>
+      <p>정리하면 시점=한 타임스텝(프레임), attention=프레임 <b>내부(공간)</b> 정보, TTT=프레임들 <b>사이(시간)</b> 정보. 리스트의 <a href="2607.06988_WAM-TTT.html">WAM-TTT</a>와 같은 TTT/fast-weight 계열이다.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q2. TTT fast weight는 어떻게 동작해? (내부 손실·apply·추론 속도 전체 flow)</summary>
+      <p><b>fast weight = 매 순간 쓰고 읽는 작은 "연상 메모리"(GeLU 2층 MLP)</b>다. "이런 단서(K)를 보면 이 정보(V)가 쓸모 있다"를 적어두고, 나중에 힌트(Q)로 꺼낸다. attention의 key/value/query와 같은 발상인데, 저장을 KV 캐시가 아니라 <b>가중치에</b> 한다.</p>
+      <p><b>매 시점 t 준비:</b> 토큰 x<sub>t</sub>에서 (느린) projection으로 <b>K<sub>t</sub>=θ<sub>K</sub>x<sub>t</sub>(단서)·V<sub>t</sub>=θ<sub>V</sub>x<sub>t</sub>(딸린 정보)·Q<sub>t</sub>=θ<sub>Q</sub>x<sub>t</sub>(질의)</b> 세 개를 뽑는다.</p>
+      <p><b>① 쓰기(update):</b> 현재 메모리 f<sub>W<sub>t−1</sub></sub>에 <b>K<sub>t</sub>를 넣어</b> 예측을 보고, 그게 V<sub>t</sub>에 가까워지도록 <b>딱 한 스텝</b> 밀어 새 메모리 f<sub>W<sub>t</sub></sub>를 만든다. 내부 손실 <b>ℒ<sub>FW</sub>=‖f<sub>W<sub>t−1</sub></sub>(K<sub>t</sub>)−V<sub>t</sub>‖²</b>, 갱신 <b>W<sub>t</sub>←W<sub>t−1</sub>−η∇<sub>W</sub>ℒ<sub>FW</sub></b>(η도 학습). 의미 = "앞으로 K<sub>t</sub> 비슷한 단서가 오면 V<sub>t</sub>를 내놓아라"를 <b>써 넣는</b> 것. 여기서 K와 V를 <b>같게 만드는 게 아니라</b>(둘은 같은 x<sub>t</sub>의 서로 다른 projection), <b>K→V 연관</b>을 저장한다.</p>
+      <p><b>② 읽기(apply):</b> 방금 갱신한 f<sub>W<sub>t</sub></sub>에 이번엔 <b>Q<sub>t</sub>를 통과</b>시켜 <b>O<sub>t</sub>=f<sub>W<sub>t</sub></sub>(Q<sub>t</sub>)</b>를 얻는다("사상"=그 MLP에 입력). 그동안 쌓인 (K→V)들 중 Q<sub>t</sub>와 닮은 key의 value를 섞어 돌려주는 <b>검색(retrieval)</b>이다 — attention의 "query가 key 조회→value 가중합"을 softmax·KV캐시 대신 MLP 실행으로 하는 것(linear-attention f<sub>W</sub>*(Q)∝Σ(k<sub>i</sub><sup>T</sup>Q)v<sub>i</sub>와 동치). O<sub>t</sub>는 tanh 게이팅(O=tanh(α)·O<sub>TTT</sub>+O<sub>attn</sub>)으로 attention 출력과 합쳐진다.</p>
+      <p><b>표기 주의:</b> f<sub>W<sub>t</sub></sub>의 <b>아래첨자 W<sub>t</sub></b>는 "어느 시점의 가중치"(t에서 갱신된 버전), <b>괄호 (·)</b>는 "입력". 그래서 쓰기 때 입력은 K<sub>t</sub>, 읽기 때 입력은 Q<sub>t</sub>로 다르다.</p>
+      <p><b>시퀀스로 이어지면:</b> t마다 [쓰기(K<sub>t</sub>,V<sub>t</sub>): W<sub>t−1</sub>→W<sub>t</sub>] → [읽기 O<sub>t</sub>=f<sub>W<sub>t</sub></sub>(Q<sub>t</sub>)]를 반복해, <b>W<sub>t</sub> 하나에 t까지의 과거 전체가 압축</b>된다. 그래서 8,000 토큰을 다 들고 있지 않아도 긴 문맥을 참조한다. (예: t=5 "빨간 기어 집음(K)→왼쪽 축에 끼움(V)"을 써 두면, t=30에 "손에 기어·왼쪽 축 빔(Q)"으로 그 문맥을 꺼냄.)</p>
+      <p><b>추론 속도:</b> 추론 때도 <b>매 시점 1스텝</b>씩 갱신한다. attention은 문맥에 비례해 비용이 커지지만, TTT는 과거를 파라미터에 눌러 담아 <b>추론당 계산이 상수</b>(8K여도 안 늘어남) — 추가 비용은 작은 fast model(층당 ~10M, 538M→690M)의 1스텝뿐. "지연을 늘리지 않고 문맥을 3자릿수 확장"이 핵심 주장. 이 안쪽 루프(fast weight 학습)는 flow-matching 액션 손실 같은 <b>바깥 학습과 별개</b>다. (리스트의 <a href="2607.06988_WAM-TTT.html">WAM-TTT</a>의 KV 메모리 재구성과 같은 계열.)</p>
+    </details>
   </section>
 
   <footer>
