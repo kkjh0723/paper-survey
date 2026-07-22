@@ -265,7 +265,37 @@
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
     <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
-    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+    <details class="qa-item">
+      <summary class="q">Q1. Mixture-of-Transformer는 새 구조야? π(PI) 모델과 비슷해? 다른 구조와 차이는?</summary>
+      <p><b>새 구조는 아니다</b> — 선행연구의 <b>Mixture-of-Transformers(MoT)</b>를 채택한다(§2.1). 구조: 사전학습 <b>VLM(Qwen3-VL)</b> + <b>DiT(Diffusion Transformer)</b>. VLM이 관측·언어를 인코딩하고, DiT가 로봇 state와 VLM의 KV cache에 조건화해 <b>flow-matching으로 연속 액션</b>을 생성한다(단, VLM의 action 관련 토큰은 DiT attention에서 제외해 shortcut 방지).</p>
+      <ul>
+        <li><b>π0/π0.5와 비슷한 점:</b> "VLM 백본 + 별도 action expert(DiT)" 큰 틀은 <a href="2410.24164_pi0.html">π0</a>·<a href="2504.16054_pi05.html">π0.5</a>의 분리형과 유사(π0도 flow matching action expert).</li>
+        <li><b>차이:</b> π 시리즈엔 없는 <b>VLM 내부 action 감독(Choice Policy, Q2)</b>을 추가로 둔다. 또 <a href="2406.09246_OpenVLA.html">OpenVLA</a>류(단일 트랜스포머 + 이산 액션 토큰)와 달리 연속 액션+flow matching이다.</li>
+      </ul>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q2. "Choice policy가 VLM 내부에서 보조 action supervision을 준다"는 게 무슨 의미야?</summary>
+      <p>VLM이 언어·비전만 보지 않고 <b>직접 액션도 예측해보게 만드는 보조 감독</b>이다(§2.1). Choice Policy를 써서 action·score query 토큰이 <b>K개 후보 action chunk와 그 K개 점수</b>를 예측하고, <b>winner-takes-all</b>(L1 손실이 가장 작은 후보만 action loss에 반영)로 학습한다. 손실 = ‖â − a‖₁(회귀) + Σₖ‖ŝₖ − sₖ‖²(점수).</p>
+      <p><b>목적:</b> "VLM 표현을 <b>액션 생성에 더 유리한 특징</b>으로 유도해 DiT 학습을 더 효과적으로" 만든다. 즉 VLM에도 액션 gradient를 흘려 표현을 정렬하는 장치.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q3. RoboCasa365 Compositional-Unseen에서 4배 이상 오른 원인은?</summary>
+      <p><b>Compositional-Unseen</b> = 학습한 atomic skill·의미 지식을 <b>재조합</b>해 새 long-horizon 태스크를 푸는 <b>zero-shot 평가</b>(§3.4). 직전 SOTA(ABot-M0.6) <b>7.9% → Xiaomi-1 32.1%</b>(≈4.1배).</p>
+      <p>원인은 <b>대규모 사전학습 데이터 스케일링</b>(§3.2.1): 성공률이 데이터 양에 <b>단조 증가</b>(액션 사전학습 없음 26% → 100% 데이터 75%). 이를 가능케 한 건 VLM으로 궤적 구간에 "<b>씬 상태 전이</b>"를 자연어로 붙이는 확장형 auto-labeling 파이프라인이다. 특별한 아키텍처 트릭이 아니라 "스케일이 여전히 통한다"가 핵심.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q4. 표 5의 RoboDojo 실험은 뭐야?</summary>
+      <p><b>RoboDojo</b>는 제너럴리스트 조작 정책을 종합 평가하는 <b>통합 시뮬+실기 벤치마크</b>(42+ 시뮬 태스크, 물체·배치·언어 목표 다양화)로, <b>5개 능력 차원</b>(Generalization·Precision·Long-Horizon·Memory·Open)으로 구성된다(§3.4). 표 5는 <b>능력 차원별 평균 점수·성공률</b>을 잰다.</p>
+      <p>결과: Xiaomi-1 <b>평균 20.07점 / 13.93%</b> vs 직전 SOTA(Hy-Embodied-0.5-VLA) 13.07 / 8.80%.</p>
+    </details>
+    <div class="divide"></div>
+    <details class="qa-item">
+      <summary class="q">Q5. VLM 학습에 쓴 action token은 latent action 같은 거야?</summary>
+      <p><b>아니다.</b> <a href="2410.11758_LAPA.html">LAPA</a>류 <b>latent action</b>이나 FAST 같은 <b>이산화 토큰</b>을 쓰지 않는다. Choice Policy가 <b>연속 action chunk를 회귀(L1)</b>로 예측하고(점수는 L2), DiT도 flow-matching으로 <b>연속 액션</b>을 낸다. 즉 VLM에 붙는 것은 latent/discrete 토큰이 아니라 <b>연속 액션 회귀 감독</b>이다.</p>
+    </details>
   </section>
 
   <footer>
