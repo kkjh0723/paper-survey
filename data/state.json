@@ -26,6 +26,12 @@
       "title": "RDT-1B: A Diffusion Foundation Model for Bimanual Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2410.07864",
       "added": "2026-07-23"
+    },
+    {
+      "id": "2303.03378",
+      "title": "PaLM-E: An Embodied Multimodal Language Model",
+      "arxiv_url": "https://arxiv.org/abs/2303.03378",
+      "added": "2026-07-23"
     }
   ],
   "dismissed": [
