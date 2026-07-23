@@ -14,6 +14,12 @@
       "title": "Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents",
       "arxiv_url": "https://arxiv.org/abs/2607.19190",
       "added": "2026-07-23"
+    },
+    {
+      "id": "2209.07753",
+      "title": "Code as Policies: Language Model Programs for Embodied Control",
+      "arxiv_url": "https://arxiv.org/abs/2209.07753",
+      "added": "2026-07-23"
     }
   ],
   "dismissed": [
