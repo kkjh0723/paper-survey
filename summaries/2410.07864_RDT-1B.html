@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RDT-1B — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Diffusion Policy · Bimanual</span>
+    <h1>RDT-1B: A Diffusion Foundation Model for Bimanual Manipulation</h1>
+    <p class="authors">Songming Liu, Lingxuan Wu, Bangguo Li, Hengkai Tan, Huayu Chen, Zhengyi Wang, Ke Xu, Hang Su, Jun Zhu · Tsinghua University (TSAIL)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2410.07864" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2410.07864" target="_blank">PDF</a>
+      <a href="https://rdt-robotics.github.io/rdt-robotics/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2410.07864</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Diffusion Policy</span>
+      <span class="t">Foundation Model</span>
+      <span class="t">Bimanual</span>
+      <span class="t">ALOHA</span>
+      <span class="t">ICLR 2025</span>
+    </div>
+    <p class="meta">제출: 2024년 10월 10일 (v1) → 2025년 3월 1일 (v2, ICLR 2025) · 1.2B DiT · SigLIP + T5-XXL 인코더 · 사전학습 46개 데이터셋 1M+ 궤적, 파인튜닝 6K+ 이중팔 에피소드 · 48× H100 80GB × 1개월</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>이중팔(bimanual) 조작</b>을 위한 최초의 <b>10억 파라미터급 확산 모델</b>. Diffusion Transformer(DiT) 백본을 <b>QKNorm·RMSNorm·MLP 디코더·교대 조건 주입(ACI)</b>으로 스케일 안정화. 서로 다른 로봇(ALOHA·xArm 등)의 이질적 행동 공간을 하나로 묶기 위해 <b>Physically Interpretable Unified Action Space</b>를 도입 — 각 슬롯이 물리적 의미(관절각/그리퍼 등)를 가지므로 다양한 로봇 데이터로 사전학습 후 특정 하드웨어로 파인튜닝 가능. 46개 데이터셋 1M+ 궤적 사전학습 + 6K+ 이중팔 에피소드 파인튜닝. Unseen object <span class="win">62.5%</span>, unseen scene <span class="win">62.5%</span>, 정밀 명령("물을 1/3만 부어라") <span class="win">87.5%</span>, 5-shot handover <span class="win">100%</span>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>이중팔 조작은 <b>두 팔의 조율 → 다중 모달 행동 분포</b>를 낳아 회귀 기반 정책이 mode collapse에 취약하고, <b>공개 이중팔 데이터가 극히 부족</b>하다. 저자들은 확산 모델(다중 모달 분포 표현에 강함)을 로봇 정책의 백본으로 삼고, 여러 로봇의 이질적 데이터를 한꺼번에 소화할 수 있는 <b>통합 행동 공간</b>과 안정적 대형 학습을 위한 아키텍처 개선을 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>1.2B DiT 기반 이중팔 확산 정책</b> — 당시 확산 계열 로봇 정책 중 최대 규모. 이미지·언어·저차원 상태를 모두 조건으로.</li>
+      <li><b>Physically Interpretable Unified Action Space</b> — 서로 다른 로봇의 행동 벡터를 물리적 의미에 따라 통일 슬롯에 채우고 나머지 패딩. 하나의 사전학습으로 여러 하드웨어 커버.</li>
+      <li><b>스케일 안정화 3가지 개선</b> — <b>QKNorm</b>(주의 안정), <b>RMSNorm</b>(시계열 대칭 보존), <b>MLP 디코더</b>(비선형 행동 예측), <b>ACI</b>(이미지·언어 교대 주입).</li>
+      <li><b>대규모 코퍼스 & 6K+ 이중팔 데이터셋</b> — 46개 데이터셋 1M+ 궤적 사전학습, 자체 수집 6K+ 이중팔 에피소드(공개 최대급) 파인튜닝.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 — Diffusion Transformer</h3>
+    <p>DiT 위에 3가지 수정: <b>(1) QKNorm</b> — 로봇 물리량의 불안정 수치 범위로 인한 어텐션 기울기 폭주를 억제. <b>(2) RMSNorm</b> — LayerNorm이 시계열 대칭을 깨는 문제를 해결. <b>(3) MLP 디코더</b> — 선형 디코더를 비선형 MLP로 교체해 행동 비선형성 근사.</p>
+
+    <h3>다중 모달 입력 인코딩</h3>
+    <ul>
+      <li><b>저차원(관절각·EE 포즈)</b>: Fourier feature + MLP</li>
+      <li><b>이미지(외부/손목 카메라)</b>: 사전학습 <b>SigLIP</b> 인코더 (확률적 독립 마스킹으로 카메라별 편차 강건화)</li>
+      <li><b>언어 지시</b>: <b>T5-XXL</b>로 임베딩</li>
+    </ul>
+
+    <h3>교대 조건 주입 (Alternating Condition Injection, ACI)</h3>
+    <p>연속 DiT 블록의 cross-attention에서 이미지와 언어를 <b>교대로</b> 주입. 텍스트 조건이 시각을 압도하는 편향을 방지하며 두 모달의 균형 잡힌 활용 유도.</p>
+
+    <h3>Physically Interpretable Unified Action Space</h3>
+    <p>ALOHA(이중팔 14D), Franka(단일팔 7D), xArm 등 다양한 로봇의 행동을 <b>고정 크기 통합 슬롯 벡터</b>로 매핑. 슬롯은 "왼팔 관절 1, 왼팔 그리퍼, 오른팔 관절 1, ..." 등 물리 의미 고정. 로봇에 없는 슬롯은 <b>패딩</b>. 손실은 존재하는 슬롯에서만 계산.</p>
+
+    <h3>학습 목적</h3>
+    <p>MSE 노이즈 예측 손실: <b>ℒ = ‖a<sub>t</sub> − f<sub>θ</sub>(ℓ, o<sub>t</sub>, √ᾱ<sup>k</sup>a<sub>t</sub>+√(1−ᾱ<sup>k</sup>)ε, k)‖²</b>. 행동 청크(action chunk) 예측으로 시간 일관성 확보. 추론은 확산 청크당 6 Hz, 개별 행동 381 Hz.</p>
+
+    <h3>데이터·자원</h3>
+    <div class="kv">
+      <div>사전학습</div><div>46개 데이터셋, 1M+ 궤적, 21TB</div>
+      <div>파인튜닝</div><div>자체 이중팔 6K+ 에피소드 (공개 최대급)</div>
+      <div>모델 규모</div><div>1.2B 파라미터</div>
+      <div>하드웨어</div><div>48× NVIDIA H100 80GB × 1개월</div>
+      <div>백본</div><div>DiT + SigLIP + T5-XXL</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>주요 태스크 성공률 (Table 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크 / 조건</th><th>ACT</th><th>OpenVLA</th><th>Octo</th><th>RDT (scratch)</th><th><b>RDT-1B</b></th></tr></thead>
+      <tbody>
+        <tr><td>Wash Cup (unseen object)</td><td>0%</td><td>0%</td><td>0%</td><td>—</td><td class="win">62.5%</td></tr>
+        <tr><td>Pour Water (unseen scene)</td><td>12.5%</td><td>0%</td><td>12.5%</td><td>—</td><td class="win">62.5%</td></tr>
+        <tr><td>Pour Water-L-1/3 (정밀 명령)</td><td>—</td><td>0%</td><td>0%</td><td>25%</td><td class="win">87.5%</td></tr>
+        <tr><td>Handover (5-shot 학습)</td><td>88%</td><td>84%</td><td>100%</td><td>—</td><td class="win">100%</td></tr>
+        <tr><td>Fold Shorts (1-shot 학습)</td><td>—</td><td>—</td><td>4%</td><td>40%</td><td class="win">68%</td></tr>
+        <tr><td>Robot Dog Walk Straight</td><td>32%</td><td>0%</td><td>0%</td><td>—</td><td class="win">48%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">unseen object·scene·정밀 명령 추종·소수샷 학습 모두에서 ACT/OpenVLA/Octo 대비 큰 차이. Handover는 5-shot으로 완벽.</p>
+
+    <h3>Ablation (Table 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>변형</th><th>Unseen object</th><th>Unseen scene</th><th>Instruction</th></tr></thead>
+      <tbody>
+        <tr><td>회귀 헤드 (확산 X)</td><td>12.5%</td><td>50%</td><td>12.5%</td></tr>
+        <tr><td>소형 166M</td><td>37.5%</td><td>62.5%</td><td>25%</td></tr>
+        <tr><td>스크래치 (사전학습 X)</td><td>0%</td><td>25%</td><td>62.5%</td></tr>
+        <tr><td><b>RDT-1B (full)</b></td><td class="win">50%</td><td class="win">62.5%</td><td class="win">100%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">확산 헤드·1.2B 스케일·46데이터셋 사전학습 모두 개별적으로 성능에 크게 기여.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>확산 vs 회귀:</b> 이중팔의 다중 모달 행동 분포에서 회귀는 mode collapse. 확산은 unseen scene에서 5배 성능(50% → 12.5%).</li>
+      <li><b>사전학습 효과:</b> 46개 데이터셋 사전학습이 unseen object에서 결정적. 스크래치는 0%, RDT-1B는 50%.</li>
+      <li><b>ACI (교대 조건 주입):</b> 일반 cross-attention은 텍스트가 시각을 압도. ACI로 두 모달 균형 → 정밀 명령 성능 향상.</li>
+      <li><b>통합 행동 공간:</b> 이질적 로봇 데이터를 한 모델로 흡수. 새 하드웨어 파인튜닝 시 초기값 우수.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2410.07864/x1.png" alt="RDT-1B 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — RDT-1B 개요.</b> 언어 지시 + 다중 카메라 + 저차원 상태를 조건으로 확산 트랜스포머가 이중팔 행동 청크를 예측하는 구조와 대표 태스크 시연. (출처: arXiv:2410.07864)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2410.07864/x4.png" alt="RDT-1B 프레임워크 상세 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — RDT 프레임워크.</b> SigLIP·T5-XXL·MLP로 인코딩된 조건이 DiT의 ACI(Alternating Condition Injection) cross-attention에 교대 주입되고, MLP 디코더가 통합 행동 슬롯을 예측. QKNorm·RMSNorm으로 대형 학습 안정화. (출처: arXiv:2410.07864)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3 (실 로봇 성공률)</b> — 논문의 핵심 주장(사전학습된 대형 확산 정책이 이중팔에서 SOTA 큰 격차)의 근거. 특히 unseen object/scene에서 ACT·OpenVLA·Octo 대비 몇 배 이상 성공률.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2410.07864" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2410.07864" target="_blank">PDF</a></li>
+      <li><a href="https://rdt-robotics.github.io/rdt-robotics/" target="_blank">프로젝트 페이지</a> (영상·코드 링크)</li>
+      <li>관련: ALOHA, Diffusion Policy, Octo, OpenVLA, ACT, π0</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2410.07864 · RDT-1B · ICLR 2025 · 요약 생성 2026-07-23
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

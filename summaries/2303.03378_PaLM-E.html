@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PaLM-E — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.LG · Embodied LLM · Multimodal</span>
+    <h1>PaLM-E: An Embodied Multimodal Language Model</h1>
+    <p class="authors">Danny Driess, Fei Xia, Mehdi S. M. Sajjadi 외 22인 · Google Robotics · Google Research Brain Team · TU Berlin</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2303.03378" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2303.03378" target="_blank">PDF</a>
+      <a href="https://palm-e.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2303.03378</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Embodied LLM</span>
+      <span class="t">Multimodal</span>
+      <span class="t">PaLM</span>
+      <span class="t">ViT-22B</span>
+      <span class="t">ICML 2023</span>
+    </div>
+    <p class="meta">제출: 2023년 3월 6일 · 백본 PaLM(최대 540B) + ViT(최대 22B), 최대 562B 통합 · SayCan·TAMP·Language-Table 실증 · ICML 2023</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>사전학습된 대형 LLM</b>(PaLM)에 <b>연속 관찰(이미지·상태·객체 중심 신경장)</b>을 <b>단어 임베딩 공간에 직접 임베드</b>해 넣는 <b>구현체(embodied) LLM</b>. 별도 어댑터·API 브리지 없이 시각·언어·로봇 계획을 하나의 시퀀스로 처리한다. 최대 <b>562B</b>(PaLM-540B + ViT-22B) 규모. TAMP·Language-Table·모바일 매니퓰레이션 세 로봇 도메인과 일반 VQA를 <b>한 모델로 동시 학습</b>해 강한 <b>긍정 전이(positive transfer)</b>를 확인. <b>PaLM-E-562B는 OK-VQA SOTA</b>와 함께 로봇 계획 능력을 유지·향상. "언어 모델을 로봇의 브레인으로" 흐름의 전환점 논문.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>당시(2023 초) 대형 LLM은 텍스트 위주 지식엔 강했지만 <b>실제 물리 세계와의 grounding</b>이 없어 로봇 계획에 그대로 쓰기 어려웠다. SayCan 같은 앞선 시도는 LLM이 "가능한 스킬 텍스트"를 뽑고 별도의 affordance 모델이 필터링하는 <b>텍스트 브릿지</b> 방식. PaLM-E는 이 브릿지를 없애고 <b>이미지·상태 관찰을 언어 토큰과 동일한 임베딩 공간</b>에 넣어 <b>end-to-end 학습</b>으로 grounding까지 얻어낸다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Embodied LLM 프레임워크</b> — 사전학습 LLM의 embedding 공간에 이미지·상태·객체 중심 표현을 직접 주입하는 통합 아키텍처.</li>
+      <li><b>다중 로봇 도메인 & VQA 공동 학습으로 긍정 전이</b> — 하나의 PaLM-E를 TAMP·Language-Table·모바일 매니퓰레이션·인터넷 VQA 데이터로 동시 학습해 각 도메인 성능 향상 확인. 인터넷 시각-언어 데이터가 로봇 성능을 크게 끌어올림.</li>
+      <li><b>스케일업의 실질적 이점 실증</b> — 모델 규모(12B→84B→562B)를 키울수록 <b>catastrophic forgetting 감소</b>와 로봇+VQA 성능 동시 개선. OK-VQA에서 당시 SOTA.</li>
+      <li><b>다양한 입력 표현 실험</b> — 단순 ViT 토큰, <b>OSRT</b>(객체 중심 신경 씬 표현), 상태 벡터, 엔티티 referral 등을 비교.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>구조 — 관찰을 임베딩으로</h3>
+    <p>이미지 I에 대해 인코더 φ<sub>vision</sub>(I)를 통과시켜 얻은 특징을 학습형 projection으로 <b>LLM 단어 임베딩 차원</b>에 매핑, 텍스트 토큰과 <b>혼합된 시퀀스</b>를 만든다. LLM은 이 혼합 시퀀스에서 autoregressive하게 텍스트 출력을 생성. 로봇 계획은 <b>텍스트로 표현된 스킬 시퀀스</b>(예: "1. pick red block. 2. place on green bowl")로 뽑히고, 저수준 정책이 실행.</p>
+
+    <h3>입력 표현 종류 비교</h3>
+    <ul>
+      <li><b>ViT 토큰</b> — 일반 ViT/ViT-22B feature를 그대로 projection.</li>
+      <li><b>OSRT (Object Scene Representation Transformer)</b> — 객체 중심 3D 신경 표현으로, 씬을 물체별 슬롯으로 분해해 임베딩.</li>
+      <li><b>상태 벡터</b> — 로봇 관절/객체 포즈 등 저차원 상태를 MLP로 임베딩.</li>
+      <li><b>엔티티 referral</b> — "&lt;obj_1&gt; = 파란 블록" 식으로 텍스트-객체 바인딩을 미리 프롬프트에 삽입.</li>
+    </ul>
+
+    <h3>백본 구성 & 규모</h3>
+    <div class="kv">
+      <div>LLM 백본</div><div>PaLM (8B / 62B / 540B)</div>
+      <div>비전 인코더</div><div>ViT-4B → ViT-22B</div>
+      <div>최대 통합</div><div><b>PaLM-E-562B</b> (PaLM-540B + ViT-22B)</div>
+      <div>학습</div><div>여러 로봇 데이터 + WebLI 등 인터넷 시각-언어 데이터 공동 학습</div>
+    </div>
+
+    <h3>학습 방식</h3>
+    <p>Cross-entropy 언어 모델링 손실 하나로 <b>모든 도메인 통합 학습</b>. 이미지 인코더는 함께 fine-tuning(스케일에 따라 부분 동결). 모델 규모가 커질수록 <b>여러 도메인 공동 학습으로 인한 forgetting이 줄고</b>, 오히려 각 도메인 성능이 올라가는 <b>positive transfer</b> 관찰.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>3개 로봇 도메인</h3>
+    <ul>
+      <li><b>TAMP (Task and Motion Planning)</b> — 계획 단계별 성공률에서 <b>OSRT 입력이 ViT보다 유리</b>. 인터넷 시각-언어 데이터 공동 학습이 성능을 크게 향상.</li>
+      <li><b>Language-Table</b> — "빨간 별을 파란 삼각형에 옮겨" 같은 조작 지시. PaLM-E가 <b>SayCan+PaLI 대비 큰 폭 성능 향상</b>.</li>
+      <li><b>모바일 매니퓰레이션 (Google Robot)</b> — 주방 환경 장기 조작. PaLM-E-562B가 SayCan 대비 planning success 큰 폭 개선.</li>
+    </ul>
+
+    <h3>일반 VQA / 비전-언어</h3>
+    <p><b>OK-VQA</b>에서 PaLM-E-562B가 당시 <b>SOTA</b> 달성. VQAv2·COCO caption에서도 강한 성능을 유지 — 로봇 학습이 VQA 성능을 손상시키지 않고 오히려 함께 개선.</p>
+
+    <h3>스케일 & 긍정 전이</h3>
+    <p>PaLM-E-12B → 84B → 562B로 갈수록 로봇+VQA 공동 학습에서 <b>언어 능력 저하가 완화</b>. 562B에서는 로봇 데이터를 함께 학습해도 언어 성능이 거의 유지되며, 개별 로봇 태스크 성능은 대형 모델일수록 더 좋음.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>입력 표현:</b> 로봇 조작 계획에서 <b>OSRT(객체 중심 3D 표현)</b>가 순수 ViT 토큰보다 sample efficiency와 최종 성능 모두에서 우세.</li>
+      <li><b>인터넷 시각-언어 공동 학습:</b> 로봇 데이터만 학습할 때보다 <b>VQA·WebLI 등 대규모 인터넷 데이터를 함께</b> 학습한 편이 로봇 태스크 성능이 훨씬 좋음.</li>
+      <li><b>스케일과 catastrophic forgetting:</b> 작은 모델은 로봇 데이터를 붙이면 원래 언어 능력이 크게 하락. 562B는 하락이 미미 → <b>스케일이 다중 도메인 융합의 안전장치</b>.</li>
+      <li><b>사전학습된 LLM 얼리는 vs 파인튜닝:</b> LLM을 함께 파인튜닝할 때가 성능 최고. 큰 모델일수록 튜닝의 forgetting 위험이 낮음.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2303.03378/fig1.png" alt="PaLM-E 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — PaLM-E 개요.</b> 이미지·상태 관찰을 언어 임베딩 공간으로 사영해 텍스트 토큰과 하나의 시퀀스로 만들고, PaLM이 로봇 계획·VQA·캡션을 모두 텍스트로 출력. (출처: arXiv:2303.03378)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2303.03378/fig2.png" alt="PaLM-E 도메인 & 표현 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 다중 도메인 & 다양한 입력 표현.</b> TAMP, Language-Table, 모바일 매니퓰레이션 세 로봇 도메인과 ViT·OSRT·상태 벡터 입력 표현을 하나의 모델로 처리. (출처: arXiv:2303.03378)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 결과 요약</b> — <b>PaLM-E-562B</b>가 OK-VQA SOTA + 모바일 매니퓰레이션·Language-Table·TAMP 계획 능력을 동시에 달성. "언어 능력을 유지하며 로봇 계획을 임베드"의 실증. 이후 RT-2, PaLI-X, Gemini Robotics 등 embodied VLM 흐름의 시발점.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2303.03378" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2303.03378" target="_blank">PDF</a></li>
+      <li><a href="https://palm-e.github.io" target="_blank">프로젝트 페이지 (영상·데모)</a></li>
+      <li>관련: SayCan, RT-2, PaLI-X, Gemini Robotics, ViT-22B, OSRT</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2303.03378 · PaLM-E · ICML 2023 · 요약 생성 2026-07-23
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

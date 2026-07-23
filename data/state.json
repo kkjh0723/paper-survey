@@ -8,32 +8,7 @@
     "2607.15330": 1,
     "2607.05369": 1
   },
-  "queue": [
-    {
-      "id": "2607.19190",
-      "title": "Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents",
-      "arxiv_url": "https://arxiv.org/abs/2607.19190",
-      "added": "2026-07-23"
-    },
-    {
-      "id": "2209.07753",
-      "title": "Code as Policies: Language Model Programs for Embodied Control",
-      "arxiv_url": "https://arxiv.org/abs/2209.07753",
-      "added": "2026-07-23"
-    },
-    {
-      "id": "2410.07864",
-      "title": "RDT-1B: A Diffusion Foundation Model for Bimanual Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2410.07864",
-      "added": "2026-07-23"
-    },
-    {
-      "id": "2303.03378",
-      "title": "PaLM-E: An Embodied Multimodal Language Model",
-      "arxiv_url": "https://arxiv.org/abs/2303.03378",
-      "added": "2026-07-23"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978"
   ],

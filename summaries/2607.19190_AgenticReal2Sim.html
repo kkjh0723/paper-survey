@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Agentic Real2Sim — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Real2Sim · VLM Agents</span>
+    <h1>Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents</h1>
+    <p class="authors">Guanxiong Chen, Qianjun Xia 외 22인 · UBC · JHU · NUS · Columbia · UCLA · Style3D · 교신저자 Peter Yichen Chen (UBC)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.19190" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.19190" target="_blank">PDF</a>
+      <a href="https://agentic-real2sim.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.19190</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Real2Sim</span>
+      <span class="t">World Model</span>
+      <span class="t">VLM Agent</span>
+      <span class="t">DROID</span>
+      <span class="t">Digital Twin</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 21일 (v1) → 7월 22일 (v2) · 백엔드 Gemma 4 31B / Qwen 3.6 35B / Claude Haiku 4.5 / GPT-5.4 · 시뮬레이터 MuJoCo</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>실제 로봇 상호작용 영상(DROID 등)을 <b>비전-언어 에이전트</b>로 자동 분석해 시뮬레이션 <b>디지털 트윈(에피소드 트윈)</b>으로 변환하는 통합 파이프라인. 4개의 전문 에이전트(시각처리·물리사전추론·장면준비·그래스프최적화)가 SAM 3/SAM 3D/FoundationPose 등을 도구로 호출해 기하·포즈·재료·질량을 복구하고 MuJoCo 트윈을 생성. DROID-100에서 <span class="win">48/100 성공 + 8/100 부분</span>(오픈 31B VLM 기준, 총비용 <span class="win">$2.62</span>), GPT-5.4 대비 <b>31.4× 저렴</b>하면서 유사한 재생 성공률. 강체 조작뿐 아니라 <b>변형 객체(PhysTwin)</b>·<b>휴머노이드(BFM-Zero, Unitree G1)</b>까지 동일 계약으로 확장.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇 정책 학습·평가에는 대규모 시뮬레이션이 필수지만, 실세계 로봇 영상 데이터를 시뮬레이터에서 재현 가능한 <b>디지털 트윈</b>으로 만드는 작업은 지금까지 <b>수작업</b>이었다. 각 에피소드마다 객체 감지, 3D 메시 복원, 6-DoF 포즈 추적, 재료·질량 추정, 카메라·로봇 베이스 캘리브레이션이 필요해 확장이 어렵다. 저자들은 이 전 과정을 <b>비전-언어 에이전트</b>가 도구를 호출하며 자동 수행하도록 만들고, DROID 규모(100 에피소드)에서 검증한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>DROID 에피소드 → MuJoCo 트윈 변환 파이프라인</b> — 시각처리·물리사전추론·장면준비·시뮬레이터기반 그래스프 최적화의 4개 에이전트가 파이프라인을 이룬다.</li>
+      <li><b>다중 VLM 백엔드 지원 & 비용 효율</b> — 오픈 웨이트 31B VLM(Gemma 4)이 proprietary 대형 모델과 유사한 재생 성공률을 내며 <b>31.4× 비용 절감</b>. 프론티어 모델 의존 없이도 스케일 가능.</li>
+      <li><b>도메인 확장성</b> — 동일 <b>에피소드 계약(episode contract)</b> 위에서 DROID 강체, PhysTwin 변형 객체, BFM-Zero 휴머노이드까지 커버.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>에피소드 트윈 표현</h3>
+    <p>각 에피소드를 <b>𝒯=(𝒪, 𝒜, 𝒢, 𝒮<sub>1:T</sub>, Θ, ℬ, ℳ)</b> 튜플로 정의: 실제 관찰 𝒪, 액터/엔드이펙터 𝒜, 기하·외형 자산 𝒢, 시뮬레이터 상태열 𝒮<sub>1:T</sub>, 물리·정렬 매개변수 Θ, 시뮬레이터 백엔드 ℬ, 메트릭 ℳ. 이 계약을 공유 폴더 구조에 저장해 강체·변형·휴머노이드 어댑터가 재사용한다.</p>
+
+    <h3>4개 전문 에이전트 & 도구 호출</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>블록</th><th>도구</th><th>스킬</th><th>목적</th></tr></thead>
+      <tbody>
+        <tr><td>객체 발견</td><td>—</td><td>object_discovery, object_relevance</td><td>장면 객체 나열 & 작업 관련 필터</td></tr>
+        <tr><td>분할</td><td>SAM 3</td><td>keyframe + mask critic</td><td>깨끗한 프레임 선택 & 마스크</td></tr>
+        <tr><td>기하</td><td>SAM 3D, mesh_scale</td><td>scale_critic</td><td>메시 재구성 & 실제 크기 설정</td></tr>
+        <tr><td>포즈 추적</td><td>FoundationPose</td><td>tracking_critic</td><td>6-DoF 포즈 추적</td></tr>
+        <tr><td>물리 사전추론</td><td>—</td><td>material_classify</td><td>재료·질량 추론</td></tr>
+        <tr><td>장면 준비</td><td>calibration, base-pose opt.</td><td>camera_select, ground_ref</td><td>카메라·바닥·로봇 베이스 배치</td></tr>
+        <tr><td>그래스프 최적화</td><td>grasp sweep</td><td>—</td><td>객체 배치 후 시뮬레이터 기반 그립 검증</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Table 1을 요약. 각 스킬은 VLM이 <b>critic</b> 역할로 결과를 점수화해 실패 시 재실행하는 self-correction 구조.</p>
+
+    <h3>확장 어댑터 — PhysTwin & BFM-Zero</h3>
+    <p><b>PhysTwin 어댑터</b>는 로프·천·탄성 재료 등 변형 객체를, <b>BFM-Zero 어댑터</b>는 Unitree G1 휴머노이드 로컬로모션(LAFAN1에서 리타겟팅)을 동일 계약에서 지원. 공유 폴더 구조·시각적 증거·구조화 재생 메트릭을 재사용한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>재생 성공 메트릭</h3>
+    <p>VLM 판사가 시뮬레이션 렌더 vs 실제 키프레임을 비교해 <b>목표 객체 정체성 · 최종 위치 · 행동 유사성 · 그리퍼 위치</b> 4축으로 10점 만점 채점. <span class="pill">≥8/10 성공</span> <span class="pill">7/10 부분</span> <span class="pill">≤6/10 실패</span>.</p>
+
+    <h3>DROID-100 스케일 변환 (Table 2 / Fig 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>VLM 백엔드</th><th>성공</th><th>부분</th><th>실패</th><th>총 비용 (USD)</th><th>상대 비용</th></tr></thead>
+      <tbody>
+        <tr><td><b>Gemma 4 31B</b> (오픈)</td><td class="win">48</td><td>8</td><td>44</td><td class="win">$2.62</td><td>1.0×</td></tr>
+        <tr><td>Qwen 3.6 35B (오픈)</td><td>45</td><td>—</td><td>—</td><td>$13.10</td><td>5.0×</td></tr>
+        <tr><td>Claude Haiku 4.5</td><td>37</td><td>—</td><td>—</td><td>$9.17</td><td>3.5×</td></tr>
+        <tr><td>GPT-5.4</td><td>43</td><td>—</td><td>—</td><td>$82.30</td><td>31.4×</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">오픈 31B가 GPT-5.4를 성공률에서 앞서며 비용은 1/31 수준. proprietary 프론티어 모델 의존 없이도 대규모 Real2Sim 가능함을 시사.</p>
+
+    <h3>변형 & 휴머노이드 확장 (Fig 4)</h3>
+    <p>PhysTwin 스타일 로프/천/탄성 재료 에피소드 변환 성공. Unitree G1 휴머노이드에 대해 LAFAN1 모션 캡처를 리타겟팅해 BFM-Zero 상에서 재생.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>오픈 vs 프론티어 VLM:</b> Gemma 4 31B가 GPT-5.4보다 성공 수(48 vs 43)에서도 앞서며, 비용은 3% 수준. Real2Sim에서 시각 도구 호출·critic 판단은 프론티어 모델이 아니어도 충분함.</li>
+      <li><b>critic 없는 파이프라인:</b> mask critic·scale critic·tracking critic이 없으면 상류 지각 오류가 하류 시뮬로 그대로 전파. self-correction 루프가 실패율 감소에 기여.</li>
+      <li><b>도메인 계약 재사용:</b> 강체용 계약을 최소 수정으로 변형·휴머노이드에 확장 가능. 어댑터 층이 얇아 새 도메인 추가 비용이 낮음.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.19190/teaser.png" alt="Agentic Real2Sim 파이프라인 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Agentic Real2Sim 아키텍처.</b> DROID 에피소드가 시각처리 → 물리사전추론 → 장면준비 → 그래스프 최적화의 4개 에이전트를 거쳐 MuJoCo 시뮬레이션 트윈으로 변환되는 과정. (출처: arXiv:2607.19190)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.19190/results.png" alt="VLM 백엔드별 재생 결과와 비용 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — VLM 백엔드별 재생 결과 및 모델 비용.</b> 왼쪽: 100 에피소드 성공/부분/실패 분해. 오른쪽: 로그 스케일 비용 비교. 오픈 31B(Gemma 4)가 최고 성공률+최저 비용. (출처: arXiv:2607.19190)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (파이프라인 도구맵)</b> — 각 단계의 도구·스킬·critic이 명시된 계약. 새 도메인 추가는 이 표에 어댑터 행을 추가하는 형태로 이뤄진다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.19190" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.19190" target="_blank">PDF</a></li>
+      <li><a href="https://agentic-real2sim.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li>관련: DROID 데이터셋, SAM 3, SAM 3D, FoundationPose, PhysTwin, BFM-Zero, LAFAN1</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.19190 · Agentic Real2Sim · 요약 생성 2026-07-23
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>
