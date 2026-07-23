@@ -20,6 +20,12 @@
       "title": "Code as Policies: Language Model Programs for Embodied Control",
       "arxiv_url": "https://arxiv.org/abs/2209.07753",
       "added": "2026-07-23"
+    },
+    {
+      "id": "2410.07864",
+      "title": "RDT-1B: A Diffusion Foundation Model for Bimanual Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2410.07864",
+      "added": "2026-07-23"
     }
   ],
   "dismissed": [
