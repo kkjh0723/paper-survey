@@ -1568,10 +1568,11 @@
       wrap.innerHTML = '<div class="reco-empty">아직 추천이 없습니다. 매일 아침 자동 생성되거나, 맥의 Claude에 "오늘 추천해줘"라고 요청하세요.</div>';
       meta.textContent = ''; updateTabCounts(); return;
     }
-    meta.textContent = '생성일 ' + (recosData.generated || '-');
+    meta.textContent = '최근 갱신 ' + (recosData.generated || '-') + ' · 추가/제외할 때까지 목록에 유지됩니다';
     var html = '';
     recosData.groups.forEach(function(g){
-      var items = (g.items||[]).filter(function(it){ return !isDismissed(it.id); });
+      var items = (g.items||[]).filter(function(it){ return !isDismissed(it.id) && !inSurvey(it.id); });
+      items.sort(function(a,b){ return String(b.rec_date||'').localeCompare(String(a.rec_date||'')); });
       if(!items.length) return;
       html += '<div class="reco-group"><h2>'+escapeHtml(g.label||'')+' <span class="badge">'+items.length+'</span></h2>';
       items.forEach(function(it){
@@ -1585,6 +1586,7 @@
         html += '<div class="reco-card'+(approved?' approved':'')+'">'+
           '<div class="rtitle">'+escapeHtml(it.title||'')+'</div>'+
           '<div class="rauthors">'+escapeHtml(it.authors||'')+(it.date?' · '+escapeHtml(it.date):'')+'</div>'+
+          (it.rec_date?'<div class="cap" style="margin:.1em 0 .45em">🗓 추천일 '+escapeHtml(it.rec_date)+'</div>':'')+
           (it.summary_ko?'<div class="rsum">'+escapeHtml(it.summary_ko)+'</div>':'')+
           (it.reason?'<div class="rreason"><b>추천 이유:</b> '+escapeHtml(it.reason)+'</div>':'')+
           (tags?'<div class="rtags">'+tags+'</div>':'')+
