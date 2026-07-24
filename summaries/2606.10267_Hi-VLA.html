@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Hi-VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Hierarchical VLA · Study</span>
+    <h1>What Matters in Orchestrating Robot Policies: A Systematic Study of Hierarchical VLA Agents</h1>
+    <p class="authors">Jiaheng Hu, Mohit Shridhar, Dhruv Shah, Jie Tan, Annie Xie 외 · Google DeepMind</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2606.10267" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2606.10267" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2606.10267" target="_blank">HTML</a>
+      <a href="http://jiahenghu.github.io/hi-vla" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2606.10267</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Hierarchical VLA</span>
+      <span class="t">Options Framework</span>
+      <span class="t">VLM Planner</span>
+      <span class="t">Termination</span>
+      <span class="t">Benchmark Study</span>
+    </div>
+    <p class="meta">제출: 2026년 6월 9일 (v1) · Google DeepMind · MuJoCo ALOHA + 실기 ALOHA</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>계층적 VLA(Hi-VLA) 에이전트 — <b>고수준 VLM 플래너가 언어 서브골을 내고 저수준 VLA가 실행</b>하는 구조 — 의 설계 선택을 <b>옵션(options) 프레임워크로 통합</b>해 체계적으로 벤치마크한 Google DeepMind의 연구. 플래너·컨트롤러·종료(termination)·관측표현·메모리 다섯 축을 각각 비교해 실용 설계 원칙을 뽑는다. 핵심 결과: <b>원칙적 계층 &gt; 순진한 계층 &gt; flat VLA</b>로, 장기 태스크 <span class="win">67.1%</span>(flat 25.3%, +41.8pp)·추론 태스크 80.9%(flat 50.9%, +30pp)·실기 ALOHA 12/15(flat 3/15, <b>4배</b>). 발견 요지: 플래너는 <b>크기보다 "추론(thinking)"</b>, VLA는 <b>파인튜닝보다 "steerability"</b>, 종료는 <b>success detection</b>, 관측은 <b>bounding box 텍스트</b>, 메모리는 <b>episode 간 요약</b>이 유효.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>단일(monolithic) VLA는 단기 태스크엔 강하지만 <b>장기·추론 태스크에 약하다</b>. 원인은 (1) VLA가 "짧고 모으기 쉬운 궤적 세그먼트"로 주로 학습되고, (2) 액션 데이터로 VLM을 파인튜닝하면 <b>원래의 추론·조합 능력이 파국적으로 손상</b>되기 때문. 계층 구조 — 고수준 VLM이 장면·태스크를 추론해 <b>언어 서브골</b>을 내고 저수준 VLA에 실행을 위임 — 가 이를 완화하지만, <b>Hi-VLA의 설계 원칙은 거의 탐구되지 않았다</b>. 플래너/컨트롤러 선택, 관측 표현, 전환(switching) 방식, 메모리 등 수많은 설계 축이 성능을 좌우한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>옵션 기반 통합 프레임워크</b> — 대표적 Hi-VLA 시스템들을 options-style 제어(서브골=option, 종료조건=termination)로 하나의 틀에 통합.</li>
+      <li><b>설계 축 체계 평가</b> — 고수준 플래너·저수준 컨트롤러·종료 조건·관측 표현·메모리의 다섯 축을 태스크 복잡도별로 비교.</li>
+      <li><b>실용 설계 원칙 도출</b> — 더 강한 계층 로봇 시스템을 만드는 구체 가이드라인. 시뮬 + 실기 ALOHA로 검증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method — 옵션(options) 프레임워크</h2>
+    <p>Hi-VLA를 <b>options</b>로 형식화한다:</p>
+    <div class="kv">
+      <div>고수준 VLM (옵션 선택)</div><div>π<sub>VLM</sub>(l | <b>o</b>, I) — 관측·태스크 지시 I로부터 언어 지시 l을 선택</div>
+      <div>저수준 VLA (intra-option)</div><div>π<sub>VLA</sub>(a | o, l) — 언어 지시 l과 관측으로 행동 a 생성</div>
+      <div>종료 조건 β(o,t)</div><div>같은 l을 언제까지 실행할지 결정. 트리거되면 제어가 <b>VLA→VLM</b>으로 복귀</div>
+      <div>메모리 / 관측표현</div><div><b>o</b> ← mem([o<sub>i</sub>]<sub>i≤t</sub>), o' ← φ(o)로 과거·원시 관측을 후처리</div>
+    </div>
+    <div class="callout">
+      통합 정책: <b>π<sub>HiVLA</sub>(a | [o<sub>i</sub>]<sub>i≤t</sub>, I) = ∫<sub>l</sub> π<sub>VLA</sub>(a|o<sub>t</sub>, l) · π<sub>VLM</sub>(l|<b>o</b>, I) dl</b>. 이 다섯 요소(플래너·컨트롤러·종료·관측·메모리)를 각각 바꿔가며 "무엇이 중요한가"를 측정한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+    <p>MuJoCo ALOHA(양팔 시뮬) + 실기 ALOHA. 카테고리별 5태스크 × 200 trial. 태스크: <b>단기</b>(한 스텝, "바나나를 그릇에")·<b>장기</b>(다단계 조합)·<b>추론</b>(추상 지시, 예 "가장 신 과일을 그릇에" = 라임).</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구성</th><th>단기</th><th>장기</th><th>추론</th><th>실기 ALOHA</th></tr></thead>
+      <tbody>
+        <tr><td><b>Best 계층(Hi-VLA)</b></td><td class="win">78.22</td><td class="win">67.08</td><td class="win">80.89</td><td class="win">12/15</td></tr>
+        <tr><td>순진한 계층(Naive)</td><td>69.57</td><td>40.56</td><td>66.49</td><td>9/15</td></tr>
+        <tr><td>Flat VLA</td><td>69.63</td><td>25.30</td><td>50.90</td><td>3/15</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">계층 이득(Best vs Flat): 단기 +8.6pp, <b>장기 +41.8pp, 추론 +30pp</b>, 실기 <b>4배</b>(3→12). 단, <b>순진한 계층</b>은 장기·추론에서 오히려 flat보다 나쁠 수 있어 — "계층으로 묶기만 하면 되는 게 아니라 잘 설계해야 한다"가 핵심.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>설계 축별 발견 (핵심)</h2>
+    <ul>
+      <li><b>고수준 VLM 플래너(§4.2):</b> <b>추론(thinking) 활성화가 크게 중요</b> — 모든 카테고리에서 일관 향상, 장기일수록 이득 큼. 반면 <b>모델 크기는 영향 미미</b>(Gemini Lite+thinking ≈ Pro). "크기보다 추론 능력".</li>
+      <li><b>저수준 VLA 컨트롤러(§4.3):</b> <b>클수록 우수</b>(instruction following↑). 그러나 <b>시뮬 데이터로 파인튜닝하면 급락</b> — steerability(미묘한 언어 변형 추종)를 잃기 때문. "파인튜닝보다 steerability 보존".</li>
+      <li><b>종료 조건(§4.4):</b> <b>success detection이 최고</b>(10% 오류도 거의 무영향, 30%+에서 저하). VLM이 실행시간을 예측하는 방식은 <b>최악</b>(저수준 VLA의 확률성 때문). fixed 방식은 <b>4~8초</b>가 비용-성능 균형.</li>
+      <li><b>관측 표현(§4.5):</b> <b>텍스트 서술 &gt; 원시 이미지</b>. <b>bounding box</b> 정보는 특권정보 없이도 큰 향상, 시뮬 contact 정보는 최강. "태스크가 어려워질수록 VLM이 이미지 입력을 무시" → 명시적 텍스트 표현이 중요.</li>
+      <li><b>메모리(§4.6):</b> <b>episode 내부</b> 원시/요약 메모리는 효과 미미~오히려 해로움. 반면 <b>episode 간 요약</b>(특히 성공 사례)은 유효 — 단기 79.45%(무메모리 75.81%). "affordance를 과거 성공에서 뽑는 게 이득".</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2606.10267/x1.png" alt="Hi-VLA 프레임워크 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 계층적 VLA의 잠재력.</b> 고수준이 적절한 명령을 생성해 저수준 VLA의 약점을 보완 → 장기·추론 태스크에서 compositional generalization 달성. (출처: arXiv:2606.10267)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2606.10267/x2.png" alt="설계 선택별 성능 영향 개요 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 실험 결과 개요.</b> 각 설계 선택이 태스크 유형별로 계층 VLA 성능을 올리는지(빨강)/내리는지(파랑)를 한눈에 정리. (출처: arXiv:2606.10267)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2606.10267" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2606.10267" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2606.10267" target="_blank">HTML 전문</a></li>
+      <li><a href="http://jiahenghu.github.io/hi-vla" target="_blank">프로젝트 페이지</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2606.10267 · Hi-VLA · 요약 생성 2026-07-24
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>
