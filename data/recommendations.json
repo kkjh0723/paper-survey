@@ -1,10 +1,64 @@
 {
-  "generated": "2026-07-24",
+  "generated": "2026-07-25",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.20771",
+          "title": "Emergent Compositional Skills in Mixture-of-Experts VLAs",
+          "authors": "Shlok Shah, Rhiaan Jhaveri, Tharun Kumar Tiruppali Kalidoss, Chirayu Nimonkar, Ishaan Javali · arXiv:2607.20771",
+          "summary_ko": "VLA의 액션 헤드를 단순한 Mixture-of-Experts로 바꿔 놓기만 해도, 명시적 계층 감독 없이 태스크가 재사용 가능한 저수준 primitives로 자동 분해되는지를 정면으로 검증한다. 학습된 experts는 태스크 간에 재사용되며 질적으로 구별되는 저수준 행동에 대응하고, router는 암묵적으로 고수준 시퀀싱을 수행 — expert는 compositional building block, router는 planner처럼 자연히 창발한다. '스킬 라이브러리'와 'planner'를 손으로 짜지 않고도 표준 VLA 파이프라인 안에서 그대로 나온다는 실증.",
+          "tags": [
+            "MoE VLA",
+            "Emergent Primitives",
+            "Compositional Skills",
+            "Router-as-Planner",
+            "Interpretability"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.20771",
+          "extra_url": "",
+          "date": "2026-07-22",
+          "reason": "좋아요한 Harness-VLA(2607.08448)와 컬렉션의 Hi-VLA(2606.10267)는 각각 '수작업 primitive 라이브러리 + planner'와 '옵션 프레임워크로 명시적 위계'를 붙인 반면, 이 논문은 아무 감독 없이 MoE만으로 동일 구조가 창발한다는 것을 보인다. 좋아요한 GaP(2607.05369)의 graph-as-policy와도 정확히 짝 — GaP가 그래프를 명시적으로 짜면 이건 router가 그래프를 학습으로 내재화한다. 컬렉션의 LingBot-VA(2607.08639, sparse MoE VA)와 라인이 같지만 초점이 다르다: LingBot-VA는 성능 향상, 이 논문은 해석 가능한 스킬 분해의 창발 자체. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 파운데이션 스케일링과 결합하면 '더 크게 스케일하면 primitive 라이브러리도 저절로 자란다'는 강한 시사점이 된다.",
+          "rec_date": "2026-07-25"
+        },
+        {
+          "id": "2607.18840",
+          "title": "WorldScape Policy 2.0: Empowering Steerable World Action Modeling with Reasoning-Augmented Memory",
+          "authors": "Haisheng Su, Zongdai Liu, Xin Jin, Haoxuan Dou, Chengming Hu, Baorun Li, Zhanwang Liu, Ruiyan Xu, Jianjie Fang, Xin Zhang, Zhenjie Yang, Xue Yang, Chen Gao, Junchi Yan, Yong Li, Wei Wu · arXiv:2607.18840",
+          "summary_ko": "제어 가능한 World Action Model에 reasoning-augmented long/short-term memory를 결합한 조작 정책. 단기 시각 메모리는 상호작용 dynamics를 보존하고, 이벤트 메모리는 진행 상태를 인지한 검색을 위해 히스토리를 조직화한다. ManipEvent-5M(약 500만 이벤트 세그먼트와 정렬된 액션 궤적)을 새로 구축해 자율 planning과 세밀한 controllable 실행 양쪽을 지원한다. WAM 라인에서 '단순 latent 예측'을 넘어 '이벤트 단위로 조직된 메모리 위에서 reasoning'을 하는 방향의 두 번째 세대(2.0)라는 자기 위치.",
+          "tags": [
+            "World Action Model",
+            "Reasoning Memory",
+            "Event Memory",
+            "Long-Horizon",
+            "ManipEvent-5M"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.18840",
+          "extra_url": "",
+          "date": "2026-07-21",
+          "reason": "컬렉션 WAM 라인의 정확한 다음 세대. FlowWAM(2607.13017)·LingBot-VA(2607.08639)·ACWM(2607.09185)·BadWAM(2607.15207)이 '어떤 잠재 표현이 좋은가'를 다뤘다면, WorldScape 2.0은 그 위에 '이벤트 단위 메모리 + reasoning'을 얹어 planner처럼 동작하게 만든다. 좋아요한 WALA(2607.11397)와 Xiaomi-U0(2607.11643)의 world foundation 축에 memory·reasoning 축이 붙는 흐름. 어제 pool에 들어온 Masked Visual Actions(2607.19343)가 '픽셀=액션'으로 인터페이스를 통일했다면, 이 논문은 '이벤트=조직화 단위'로 시간 축을 통일한다. 컬렉션의 RoboHarness(2607.18060, memory-driven orchestration)·Aspire·ENPIRE(2606.19980)의 self-improvement 루프와도 직결 — 이벤트 메모리가 있으면 재학습 없이 상호작용 결과를 축적할 수 있다.",
+          "rec_date": "2026-07-25"
+        },
+        {
+          "id": "2607.18016",
+          "title": "Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation",
+          "authors": "Peng Ren, Haoyang Ge, Jiang Zhao, Cong Huang, Yukun Shi, Pei Chi, Kai Chen · arXiv:2607.18016",
+          "summary_ko": "휴머노이드의 장시간 loco-manipulation을 위해 태스크 오브젝트를 '이동·접촉·가려짐·복구를 가로지르는 지속적 물리 엔티티'로 다뤄야 한다는 문제 인식에서 출발. RGB-D 관측에서 역할별로 인덱싱된 3D 오브젝트 레코드를 유지하는 Persistent Object Tokenization(POT)로 오브젝트 상태 divergence를 해결하고, POT-VLA는 오브젝트 상태를 action 생성뿐 아니라 기하학적 검증에도 함께 사용하는 closed-loop 실행을 가능하게 한다. Unitree G1에서 8개 태스크 패밀리에 걸쳐 성공률 39/80 → 71/80으로 개선.",
+          "tags": [
+            "Humanoid VLA",
+            "Persistent 3D Tokens",
+            "Loco-Manipulation",
+            "Closed-Loop Verification",
+            "Unitree G1"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.18016",
+          "extra_url": "",
+          "date": "2026-07-20",
+          "reason": "컬렉션의 휴머노이드 축(2607.15163 Behavior Foundation Model, 2503.14734 Humanoid VLA, 2607.17977 RynnBrain 1.1)과 3D grounding 축(2607.11498 pointmap, 2607.17977의 3D alignment)의 교집합 지점을 정면으로 채운다. 좋아요한 WALA(2607.11397)가 latent action + depth로 관측 표현을 강화했다면, POT-VLA는 오브젝트를 시간 축에 걸쳐 identity-persistent하게 유지하는 표현 층을 추가한다. 좋아요한 Harness-VLA(2607.08448)의 primitive-library, GaP(2607.05369)의 graph-as-policy와도 상보적 — 이 둘이 '스킬 조합'이라면 POT는 '스킬의 대상이 되는 오브젝트 상태 지속성'을 보장한다. 컬렉션 어제 rec으로 언급됐던 개념을 정식 pool에 편입하는 것이라 계보상으로도 자연스럽다.",
+          "rec_date": "2026-07-25"
+        },
         {
           "id": "2607.18231",
           "title": "FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation",
@@ -24,24 +78,6 @@
           "rec_date": "2026-07-24"
         },
         {
-          "id": "2607.16636",
-          "title": "PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution",
-          "authors": "Yang Liu, Weixing Chen, Xinshuai Song, Tao Pu, Siwen Mo, Yongjie Bai, Zihao Chen, Qianran Sun, Liruo Zhong, Ying Shen, Liang Lin · arXiv:2607.16636",
-          "summary_ko": "'VLA·world model·planner를 어떻게 하나의 시스템으로 엮어 자기 진화시킬 것인가'라는 문제를 OS 관점에서 접근한 자기진화형 임보디드 에이전트 OS. 스케줄링·검증·메모리·벤치마킹·안전성을 시스템 서비스로 제공한다. 개별 action이 아니라 session 단위로 처리하는 Session-Centered Runtime, 인지와 물리 실행을 Markdown·YAML 파일로 분리하는 State-as-a-File 프로토콜, evidence-grounded 검증을 내리는 SessionVerifier, 검증된 결과를 재학습 없이 재사용 가능한 지식으로 통합하는 파이프라인, 다층 안전 메커니즘을 갖췄다. 게임 → 시뮬 → 실기의 세 단계로 Optimus-67, StarDojo, DST-Dojo에서 검증.",
-          "tags": [
-            "Agent OS",
-            "Self-Evolution",
-            "Session-Centered Runtime",
-            "State-as-a-File",
-            "Cognitive-Physical Decoupling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.16636",
-          "extra_url": "",
-          "date": "2026-07-18",
-          "reason": "좋아요한 Aspire·ENPIRE(2606.19980)의 self-improving 루프와 컬렉션의 ABot-AgentOS(2607.10350, 엣지-클라우드 lifelong memory OS)를 정면으로 확장한 후속. 두 흐름 모두 '재학습 없이 어떻게 지식을 축적할 것인가'를 다루지만, PhyAgentOS는 이를 State-as-a-File + SessionVerifier로 파일 시스템·검증 서비스 층까지 내려 표준화한다. 좋아요한 Harness-VLA(2607.08448)와 GaP(2607.05369)가 각각 planner/graph-as-policy로 이질 정책을 조율한다면, PhyAgentOS는 그 조율의 기반이 되는 runtime을 만든다. 어제 컬렉션에 들어온 RoboHarness(2607.18060, memory-driven orchestration)와도 동일 문제 다른 층위 — RoboHarness가 policy-level 오케스트레이션이면 PhyAgentOS는 OS-level 실행·검증·안전이다. Aspire·ENPIRE 이후 '자기진화 인프라' 축의 두 번째 주요 논문.",
-          "rec_date": "2026-07-24"
-        },
-        {
           "id": "2607.19343",
           "title": "Masked Visual Actions for Unified World Modeling",
           "authors": "Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang · Stanford · arXiv:2607.19343",
@@ -58,6 +94,24 @@
           "date": "2026-07-21",
           "reason": "컬렉션의 WAM(World-Action Model) 라인 — FlowWAM(2607.13017, optical-flow dual-stream), LingBot-VA(2607.08639, video-action MoE), BadWAM(2607.15207, adversarial WAM), ACWM(2607.09185, latent action WAM) — 과 좋아요한 WALA(2607.11397, latent action + world model), Xiaomi-U0(2607.11643, world foundation) 전체의 표현 문제를 정면으로 재정의한다. 이 논문들이 각자 '어떤 잠재 action 표현이 좋은가'를 다뤘다면, Masked Visual Actions는 '아예 픽셀 자체가 액션이면 된다'는 극단적 단순화를 실증한다. Fei-Fei·Wu·Yilun Du·Agrawala 등 Stanford 그룹의 조합이라 이후 파운데이션 규모로 확장될 가능성이 크다. 좋아요한 GaP(2607.05369, graph-as-policy)와 결합하면 '픽셀 궤적을 노드로 하는 정책 그래프' 같은 하이브리드도 자연스러워진다. WAM 라인의 표현 축을 한 단계 재정의하는 조각.",
           "rec_date": "2026-07-24"
+        },
+        {
+          "id": "2607.16636",
+          "title": "PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution",
+          "authors": "Yang Liu, Weixing Chen, Xinshuai Song, Tao Pu, Siwen Mo, Yongjie Bai, Zihao Chen, Qianran Sun, Liruo Zhong, Ying Shen, Liang Lin · arXiv:2607.16636",
+          "summary_ko": "'VLA·world model·planner를 어떻게 하나의 시스템으로 엮어 자기 진화시킬 것인가'라는 문제를 OS 관점에서 접근한 자기진화형 임보디드 에이전트 OS. 스케줄링·검증·메모리·벤치마킹·안전성을 시스템 서비스로 제공한다. 개별 action이 아니라 session 단위로 처리하는 Session-Centered Runtime, 인지와 물리 실행을 Markdown·YAML 파일로 분리하는 State-as-a-File 프로토콜, evidence-grounded 검증을 내리는 SessionVerifier, 검증된 결과를 재학습 없이 재사용 가능한 지식으로 통합하는 파이프라인, 다층 안전 메커니즘을 갖췄다. 게임 → 시뮬 → 실기의 세 단계로 Optimus-67, StarDojo, DST-Dojo에서 검증.",
+          "tags": [
+            "Agent OS",
+            "Self-Evolution",
+            "Session-Centered Runtime",
+            "State-as-a-File",
+            "Cognitive-Physical Decoupling"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.16636",
+          "extra_url": "",
+          "date": "2026-07-18",
+          "reason": "좋아요한 Aspire·ENPIRE(2606.19980)의 self-improving 루프와 컬렉션의 ABot-AgentOS(2607.10350, 엣지-클라우드 lifelong memory OS)를 정면으로 확장한 후속. 두 흐름 모두 '재학습 없이 어떻게 지식을 축적할 것인가'를 다루지만, PhyAgentOS는 이를 State-as-a-File + SessionVerifier로 파일 시스템·검증 서비스 층까지 내려 표준화한다. 좋아요한 Harness-VLA(2607.08448)와 GaP(2607.05369)가 각각 planner/graph-as-policy로 이질 정책을 조율한다면, PhyAgentOS는 그 조율의 기반이 되는 runtime을 만든다. 어제 컬렉션에 들어온 RoboHarness(2607.18060, memory-driven orchestration)와도 동일 문제 다른 층위 — RoboHarness가 policy-level 오케스트레이션이면 PhyAgentOS는 OS-level 실행·검증·안전이다. Aspire·ENPIRE 이후 '자기진화 인프라' 축의 두 번째 주요 논문.",
+          "rec_date": "2026-07-24"
         }
       ]
     },
@@ -65,6 +119,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2402.15391",
+          "title": "Genie: Generative Interactive Environments",
+          "authors": "Jake Bruce, Michael Dennis, Ashley Edwards, Jack Parker-Holder, Yuge Shi, Edward Hughes, Matthew Lai, Aditi Mavalankar, Richie Steigerwald, Chris Apps, Yusuf Aytar, Sarah Bechtle, Feryal Behbahani, Stephanie Chan, Nicolas Heess, Lucy Gonzalez, Simon Osindero, Sherjil Ozair, Scott Reed, Jingwei Zhang, Konrad Zolna, Jeff Clune, Nando de Freitas, Satinder Singh, Tim Rocktäschel · DeepMind · arXiv:2402.15391",
+          "summary_ko": "레이블 없는 인터넷 비디오만으로 학습된 11B 파라미터의 파운데이션 world model. spatiotemporal video tokenizer + autoregressive dynamics model + 단순·스케일러블한 latent action model 세 요소로, 텍스트·이미지·스케치로부터 action-controllable한 가상 환경을 생성한다. Ground-truth 액션 라벨이 전혀 없이도 프레임 단위로 상호작용 가능한 세상을 만들어낸다는 점에서 '비디오만 있으면 world model + action space가 나온다'는 가능성을 대규모로 실증한 논문. 이후 로보틱스의 latent action / video pretraining 라인 전체의 촉매가 됐다.",
+          "tags": [
+            "Foundation World Model",
+            "Latent Action",
+            "Video Pretraining",
+            "Unsupervised Action",
+            "Interactive Simulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2402.15391",
+          "extra_url": "https://sites.google.com/view/genie-2024",
+          "date": "2024-02-23",
+          "reason": "컬렉션의 latent action 축 전체(LAPA 2410.11758·ACWM 2607.09185·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643·오늘 rec의 WorldScape 2.0·Masked Visual Actions)의 실질적 원류. 이 논문들이 서로 다른 방식으로 '레이블 없는 비디오에서 액션을 뽑아 학습에 쓴다'를 시도하는데, 그 아이디어를 파운데이션 스케일(11B)로 처음 성공시킨 것이 Genie다. 컬렉션에 이미 있는 V-JEPA(2404.08471, feature prediction)와 짝을 이루는 '비디오 파운데이션' 축의 반대편 — V-JEPA가 표현 학습이면 Genie는 액션·dynamics 학습이다. 좋아요한 Xiaomi-U0의 '38B AR 멀티모달 world foundation'이 지향하는 스케일과 구조가 Genie와 계보상 동일선이라 반드시 좌표계로 필요하다. DreamerV3(어제 rec, 상태-기반 RL의 원류)와 함께 컬렉션의 world model 축을 완성하는 짝.",
+          "rec_date": "2026-07-25"
+        },
+        {
+          "id": "2402.10885",
+          "title": "3D Diffuser Actor: Policy Diffusion with 3D Scene Representations",
+          "authors": "Tsung-Wei Ke, Nikolaos Gkanatsios, Katerina Fragkiadaki · CMU · arXiv:2402.10885",
+          "summary_ko": "3D 씬 표현과 diffusion policy를 결합한 조작 정책. 3D denoising transformer가 시각·언어·proprioception 입력으로부터 로봇 궤적을 예측하며, RLBench와 CALVIN 벤치마크에서 SOTA를 달성. Diffusion Policy의 2D 관측 위 정책 학습을 3D 씬 그라운딩으로 확장한 논문으로, '왜 3D가 조작에 유리한가'와 'diffusion이 3D 씬 위에서 어떻게 학습되는가'를 잇는 대표작.",
+          "tags": [
+            "3D Scene Representation",
+            "Diffusion Policy",
+            "Manipulation",
+            "RLBench / CALVIN",
+            "Denoising Transformer"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2402.10885",
+          "extra_url": "https://3d-diffuser-actor.github.io/",
+          "date": "2024-02-16",
+          "reason": "컬렉션에 있는 Diffusion Policy(2303.04137, DDPM 원조)와 3D-grounding 논문들(2607.11498 pointmap, 2607.17977 RynnBrain 1.1의 3D alignment, 오늘 rec의 POT-VLA 2607.18016)의 중간 다리. Diffusion Policy가 2D에서 열렸다면, 3D Diffuser Actor는 이를 3D 씬 위로 끌어올리는 표준 방식을 제시한다. 좋아요한 WALA(2607.11397)가 depth 예측으로 3D 정보를 뽑는 것과 짝 — 이 논문은 그 3D 정보 위에서 diffusion policy를 학습하는 파이프라인의 원형. π0(2410.24164)·SmolVLA(2506.01844) 같은 flow-matching VLA 계열이 diffusion과 짝인데 3D-grounded 계보의 좌표가 컬렉션에 비어 있었다. RLBench·CALVIN 벤치마크의 SOTA 참조로도 자주 인용되기 때문에 컬렉션의 '표현 + 정책' 축을 완성하는 조각.",
+          "rec_date": "2026-07-25"
+        },
+        {
+          "id": "2503.22020",
+          "title": "CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models",
+          "authors": "Qingqing Zhao, Yao Lu, Moo Jin Kim, Zipeng Fu, Zhuoyang Zhang, Yecheng Wu, Zhaoshuo Li, Qianli Ma, Song Han, Chelsea Finn, Ankur Handa, Ming-Yu Liu, Donglai Xiang, Gordon Wetzstein, Tsung-Yi Lin · Stanford / NVIDIA · arXiv:2503.22020",
+          "summary_ko": "VLA에 visual chain-of-thought를 통합한 대표작. 액션을 바로 뱉는 대신, 먼저 미래 이미지 프레임을 '시각 목표(visual goal)'로 예측하고 그 위에서 액션 시퀀스를 생성한다. 7B 모델이 실기 조작에서 기존 SOTA VLA 대비 17% 성능 향상을 달성. '텍스트 CoT'가 아니라 '이미지 CoT'를 VLA에 붙였다는 점이 핵심 — LLM의 reasoning 성공 공식을 시각 도메인으로 옮겨 담은 시도.",
+          "tags": [
+            "Chain-of-Thought VLA",
+            "Visual Goal Prediction",
+            "Future Frame Reasoning",
+            "Manipulation",
+            "7B Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2503.22020",
+          "extra_url": "https://cot-vla.github.io/",
+          "date": "2025-03-27",
+          "reason": "컬렉션에 latent action(WALA·LAPA·ACWM), world model 예측(WAM 라인), 그리고 planner/agentic 축(Aspire·Harness-VLA·GaP·PhyAgentOS)은 두터운데 정작 '개별 VLA 안에 명시적 reasoning을 넣는' 축이 비어 있다. CoT-VLA가 그 공백을 채우는 대표작 — 오늘 rec의 WorldScape 2.0(reasoning-augmented memory)과 개념적으로 짝을 이룬다: WorldScape 2.0은 시스템 층의 reasoning, CoT-VLA는 정책 층의 reasoning. 좋아요한 WALA(latent action + world model)와도 계보가 이어진다 — 잠재 액션 vs. 시각 goal이라는 두 인터페이스. 컬렉션의 hierarchical 축(Hi-VLA 2606.10267, π0.5 2504.16054의 hierarchical inference)의 저수준 reasoning 파트너로도 자연스러워, agentic·hierarchical·reasoning 세 갈래가 만나는 지점을 놓는다.",
+          "rec_date": "2026-07-25"
+        },
         {
           "id": "2204.01691",
           "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances",
