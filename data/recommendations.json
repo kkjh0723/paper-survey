@@ -1,10 +1,64 @@
 {
-  "generated": "2026-07-25",
+  "generated": "2026-07-26",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.17454",
+          "title": "Test-Time Scaling for World Action Models via Zero-Shot Geometric Evaluation",
+          "authors": "Zesen Zhao, Minkyoung Cho, Hui Shen, Boyuan Zheng, Kunxiao Gao, Yulong Cao, Z. Morley Mao · arXiv:2607.17454",
+          "summary_ko": "World Action Model에 학습 없이 test-time compute를 얹는 첫 체계적 프레임워크. WAM이 자연스럽게 노출하는 롤아웃 예측을 프로즌 geometry foundation model로 cross-view depth reprojection consistency에 따라 순위 매겨 Best-of-N을 뽑고, 롤아웃이 내부적으로 불일치할 때만 추가 샘플링을 발동하는 gate까지 붙였다. Cosmos Policy·X-WAM 등 다섯 조합에서 RoboCasa 성공률을 66.3%→68.4%, 80.8%→82.5%로 끌어올리고, gated 버전은 결정의 26.2%에서만 추가 계산을 쓰면서 성능 향상의 74.8%를 회수한다. '언제 더 생각해야 하는가'를 태스크 무관 기하 신호로 처음 정식화.",
+          "tags": [
+            "Test-Time Scaling",
+            "World Action Model",
+            "Geometric Evaluation",
+            "Best-of-N",
+            "Training-Free"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.17454",
+          "extra_url": "",
+          "date": "2026-07-20",
+          "reason": "컬렉션의 두 핵심 축인 WAM 라인(FlowWAM 2607.13017·LingBot-VA 2607.08639·BadWAM 2607.15207·ACWM 2607.09185·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643)과 Test-Time Training 라인(2607.15275)이 정확히 만나는 지점. TTT 논문은 fast weights로 정책을 업데이트했다면 이 논문은 기하 일관성으로 롤아웃을 선택 — 같은 문제(추론 시 계산 확장)의 반대 축. 어제 rec의 WorldScape 2.0(reasoning-augmented memory)이 '메모리로 계산을 조직화'한다면, 이 논문은 '기하 검증으로 계산을 트리거'한다. 좋아요한 Aspire·ENPIRE(2606.19980)의 self-improvement 루프에도 직결 — 어떤 롤아웃을 실기에 쓸지 자동 선별하는 게이트로 즉시 사용 가능. Cosmos·X-WAM에서 검증됐다는 점에서 컬렉션의 WAM 라인 전체에 곧바로 적용 가능한 실용 툴.",
+          "rec_date": "2026-07-26"
+        },
+        {
+          "id": "2607.19876",
+          "title": "KineBench: Benchmarking Embodied World Models via IDM-Free Kinematic Grounding",
+          "authors": "Zeyu Liu, Zhangzhe Zhu, Yang Zhang, Chenyou Fan, Chenjia Bai, Xuelong Li · arXiv:2607.19876",
+          "summary_ko": "임보디드 world model 평가의 근본 문제 — 기존 closed-loop 평가가 IDM(Inverse Dynamics Model)에 의존해 '세계 모델이 틀린 건지, 액션 추출기가 틀린 건지' 구분이 안 된다는 attribution ambiguity — 를 정면으로 해결. IDM을 완전히 제거하고 프레임에서 직접 6D end-effector pose를 뽑아 물리 시뮬레이터에서 실행하는 IDM-Free 평가 프로토콜을 제안. 4단계(기본 실행 → 태스크 전이 → 시각 OOD → 복잡도 스케일링) 평가 스위트와 Spectral Arc Length·Maruyama Manipulability Index 같은 로봇공학적 kinematic 지표를 붙여 궤적 부드러움·물리 실행 가능성까지 함께 본다. WAM 시대의 '올바른' 평가 척도 후보.",
+          "tags": [
+            "World Model Benchmark",
+            "IDM-Free Evaluation",
+            "Kinematic Grounding",
+            "6D Pose Extraction",
+            "OOD Generalization"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.19876",
+          "extra_url": "",
+          "date": "2026-07-22",
+          "reason": "컬렉션의 WAM 라인 전체(FlowWAM·LingBot-VA·BadWAM·ACWM·WorldScape 2.0·Masked Visual Actions·좋아요한 WALA·Xiaomi-U0)가 서 있는 평가 기반 자체를 문제 삼는 논문 — 이 라인의 모든 성능 주장이 IDM 기반 평가에 의존해왔다면 그 결과는 재해석되어야 한다. 오늘 함께 rec하는 2607.17454(Test-Time Scaling)와 짝: 그 논문은 '롤아웃을 어떻게 선택할까'였다면 KineBench는 '어떤 롤아웃이 좋은 롤아웃인가'를 먼저 정의한다. 좋아요한 Xiaomi-U0(2607.11643)의 38B 스케일링과 좋아요한 Xiaomi-Robotics-1(2607.15330)의 실기 스케일링에도 직결 — 스케일링 곡선을 그릴 때 신뢰할 수 있는 척도가 필요하다. 4단계 평가 스위트는 컬렉션의 cross-embodiment(2606.15631·2606.17846·2607.03570) 논문들의 OOD 클레임을 재검증하는 도구로도 즉시 쓰인다.",
+          "rec_date": "2026-07-26"
+        },
+        {
+          "id": "2607.14943",
+          "title": "Steering Robustness into World Action Models via Mechanistic Interpretability and Optimal Control",
+          "authors": "Jihoon Hong, Julian Skifstad, Qiyue Dai, Alice Chan, Glen Chou · arXiv:2607.14943",
+          "summary_ko": "World Action Model의 활성화 공간에서 '어떤 방향이 견고성을 담당하는가'를 mechanistic interpretability로 찾고, 그 방향을 활성화 dynamics의 local linearity에 기대 optimal control로 유도(steer)하는 첫 시도. World-Action LQR(WA-LQR)이라는 최소 개입 제어기가 재학습 없이 카메라·그리퍼·시각 노이즈 perturbation에 대한 강건성을 개선한다. Cosmos-Policy·DiT4DiT은 steerability가 강하고 LingBot-VA는 약해 아키텍처마다 steerability가 다르다는 실증도 함께 제공. 'WAM의 내부 표현을 이해하고 밖에서 조작한다'는 새 축을 연 논문.",
+          "tags": [
+            "Mechanistic Interpretability",
+            "World Action Model",
+            "Optimal Control",
+            "Robustness Steering",
+            "WA-LQR"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.14943",
+          "extra_url": "",
+          "date": "2026-07-16",
+          "reason": "컬렉션의 BadWAM(2607.15207, adversarial 공격)과 정확한 짝인 방어측 논문 — BadWAM이 '어떻게 WAM을 부술 수 있는가'였다면 이 논문은 '어떻게 훈련 없이 WAM을 견고하게 만들 수 있는가'다. 특히 두 논문 모두 Cosmos-Policy·LingBot-VA 같은 동일 백본을 다루므로 컬렉션 안에서 직접 비교 가능. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 WAM에 사후에 얹을 수 있는 도구라 실용 가치가 크고, 오늘 함께 rec하는 2607.17454(Test-Time Scaling)와 함께 'WAM에 재학습 없이 무언가를 붙이는' 3부작을 이룬다. 컬렉션에는 아직 mechanistic interpretability 축이 완전히 비어 있어 이 논문이 그 첫 좌표가 된다. 좋아요한 GaP(2607.05369)의 graph-as-policy처럼 정책의 내부 구조를 이해하려는 흐름과도 계보상 연결.",
+          "rec_date": "2026-07-26"
+        },
         {
           "id": "2607.20771",
           "title": "Emergent Compositional Skills in Mixture-of-Experts VLAs",
@@ -119,6 +173,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2209.05451",
+          "title": "Perceiver-Actor: A Multi-Task Transformer for Robotic Manipulation",
+          "authors": "Mohit Shridhar, Lucas Manuelli, Dieter Fox · UW / NVIDIA · arXiv:2209.05451",
+          "summary_ko": "언어 목표와 RGB-D voxel 관측을 Perceiver Transformer로 인코딩해 이산화된 6-DoF 로봇 액션을 생성하는 3D voxel 기반 조작 정책. 관측과 액션 모두를 3D voxel 공간에 표현하는 것이 6-DoF 조작을 학습하는 데 구조적 이점을 준다는 점을 보였고, 하나의 모델로 RLBench 18개 시뮬 태스크와 실기 7개 태스크를 최소 데모로 학습해 이미지 기반·3D CNN 기반 베이스라인을 크게 이겼다. '3D + 언어 목표 + 트랜스포머'라는 조작 정책의 후속 계보(3D Diffuser Actor, RVT, POT-VLA 등)의 표준 원형.",
+          "tags": [
+            "3D Voxel",
+            "Perceiver Transformer",
+            "Multi-Task Manipulation",
+            "6-DoF Action",
+            "RLBench"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2209.05451",
+          "extra_url": "https://peract.github.io/",
+          "date": "2022-09-12",
+          "reason": "컬렉션에 이미 있는 3D Diffuser Actor(2402.10885, 어제 rec)와 pointmap(2607.11498), 오늘 rec의 POT-VLA(2607.18016)로 이어지는 '3D 그라운드 조작' 계보의 실질적 시조. 3D Diffuser Actor가 'diffusion + 3D 씬'이면 PerAct는 'voxel + Perceiver'로 같은 문제의 다른 답이자 그 이전 세대의 표준. RLBench 벤치마크의 표준 베이스라인으로 컬렉션의 여러 논문(2410.24164 π0·2504.16054 π0.5·2607.11498)이 비교하는 근거점이라, 계보 좌표계로 반드시 필요하다. 좋아요한 WALA(2607.11397, DINOv3+depth 잠재)와도 짝을 이룬다 — PerAct가 voxel로 3D를 명시하면 WALA는 latent로 3D를 학습한다. 컬렉션에 3D 계열이 여러 편인데 정작 그 시조가 비어 있던 공백을 채운다.",
+          "rec_date": "2026-07-26"
+        },
+        {
+          "id": "2210.03094",
+          "title": "VIMA: General Robot Manipulation with Multimodal Prompts",
+          "authors": "Yunfan Jiang, Agrim Gupta, Zichen Zhang, Guanzhi Wang, Yongqiang Dou, Yanjun Chen, Li Fei-Fei, Anima Anandkumar, Yuke Zhu, Linxi Fan · Stanford / NVIDIA · arXiv:2210.03094",
+          "summary_ko": "텍스트·이미지·데모를 하나의 인터리브된 멀티모달 프롬프트로 받아 자기회귀적으로 모터 액션을 뱉는 트랜스포머 조작 에이전트. one-shot 데모, 언어 명령, 시각 목표 등 서로 다른 태스크 형식을 단일 프롬프트 프로토콜로 통합해 놓고, 가장 어려운 zero-shot 일반화 세팅에서 대안 설계 대비 성공률을 최대 2.9배 개선한다. '무엇이 프롬프트로 표현 가능한가'라는 인터페이스 질문을 정면으로 던진 초기 대표작으로, 이후의 모든 language·visual-conditioned VLA의 프롬프트 설계 기반이 됐다.",
+          "tags": [
+            "Multimodal Prompting",
+            "Object-Centric",
+            "Zero-Shot Generalization",
+            "Autoregressive Action",
+            "ICML 2023"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2210.03094",
+          "extra_url": "https://vimalabs.github.io/",
+          "date": "2022-10-06",
+          "reason": "컬렉션의 초기 VLA 삼각(RT-1 2212.06817·RT-2 2307.15818·PaLM-E 2303.03378)과 후속 VLA(OpenVLA·π0·SmolVLA·Xiaomi-U0)의 프롬프트 인터페이스 설계의 실질적 원형. 이 삼각이 '언어→액션'이라면 VIMA는 '언어+이미지+데모→액션'으로 인터페이스 자체를 확장한 최초의 성공 사례. 오늘 rec의 Masked Visual Actions(2607.19343)와도 계보로 이어진다 — VIMA가 '멀티모달 프롬프트'라면 Masked Visual Actions는 '픽셀 자체가 프롬프트이자 액션'으로 인터페이스를 더 극단화한 버전. 좋아요한 Harness-VLA(2607.08448)·Xiaomi-U0(2607.11643)의 프롬프트 기반 planning에도 계보상 뿌리. 컬렉션에는 아직 명시적 프롬프트 프로토콜의 원형이 없어 이 논문이 그 좌표를 놓는다.",
+          "rec_date": "2026-07-26"
+        },
+        {
+          "id": "2306.11706",
+          "title": "RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation",
+          "authors": "Konstantinos Bousmalis, Giulia Vezzani, Dushyant Rao, Coline Devin, Alex X. Lee, et al. · DeepMind · arXiv:2306.11706",
+          "summary_ko": "여러 로봇 플랫폼·태스크의 액션 레이블된 시각 경험을 소비하는 visual goal-conditioned decision transformer. 서로 다른 로봇이 서로 다른 조작 스킬을 수행한 이질적 데이터에서 학습해 새 태스크·임보디먼트에 소수 예제만으로 일반화하고, 결정적으로 학습된 모델이 스스로 다음 반복의 훈련 데이터를 생성해 재학습하는 자율 개선 사이클을 돌린다. 데이터가 늘수록 cross-task 이전과 적응 효율이 함께 개선된다는 것을 대규모 실험으로 실증 — 'RL 없이 데이터 생성만으로 self-improvement'가 가능한지에 대한 첫 대규모 답.",
+          "tags": [
+            "Self-Improvement",
+            "Generalist Agent",
+            "Decision Transformer",
+            "Cross-Embodiment",
+            "Foundation Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2306.11706",
+          "extra_url": "https://www.deepmind.com/blog/robocat-a-self-improving-robotic-agent",
+          "date": "2023-06-20",
+          "reason": "좋아요한 Aspire·ENPIRE(2606.19980)와 컬렉션의 PhyAgentOS(오늘 rec 2607.16636)·ABot-AgentOS(2607.10350)·RoboHarness(2607.18060) 등 self-improvement 축 전체의 원류. Aspire·ENPIRE가 '코딩 에이전트를 통한 스킬 자기개선'이라면 RoboCat은 '데이터 생성을 통한 정책 자기개선'으로 같은 문제의 다른 답. DeepMind가 대규모로 처음 실증했다는 점에서 이 축의 좌표계로 필수. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 대형 파운데이션 스케일링, 컬렉션의 cross-embodiment(2310.08864 RT-X, 2606.15631, 2606.17846, 2607.03570) 축의 실질적 첫 대규모 사례이기도 하다. 어제 rec한 SayCan(2204.01691, Google)과 함께 산업계 대형 랩의 두 대표 계보를 컬렉션에 놓는다.",
+          "rec_date": "2026-07-26"
+        },
         {
           "id": "2402.15391",
           "title": "Genie: Generative Interactive Environments",
