@@ -1,10 +1,64 @@
 {
-  "generated": "2026-07-26",
+  "generated": "2026-07-27",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.21588",
+          "title": "AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation",
+          "authors": "Mengfei Zhao, Dihong Huang, Yikai Tang, et al. · arXiv:2607.21588",
+          "summary_ko": "브라우저 기반 원격조작 플랫폼으로 207개 태스크에 걸쳐 50K+ 로봇 궤적을 수집하는 성장형 커뮤니티 데이터 엔진. 시스템이 데모 성공 여부를 자동 검증하고 다양한 증강 기법을 붙여 훈련 데이터로 만든다. 이 데이터로 지속 사전학습된 VLA 정책은 성공률이 5.8% 개선 — 데이터 스케일링 병목을 '크라우드소싱 + 자동 검증 + 자동 증강' 삼단으로 완화하는 데이터 인프라 계보의 대표작.",
+          "tags": [
+            "Community Data Engine",
+            "VLA Data Scaling",
+            "Continual Pretraining",
+            "Auto-Validation",
+            "Teleoperation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.21588",
+          "extra_url": "",
+          "date": "2026-07-23",
+          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330)·Xiaomi-U0(2607.11643)의 대규모 스케일링과 좋아요한 Aspire·ENPIRE(2606.19980)의 self-improving 루프, pool의 RoboCat(2306.11706, DeepMind self-improving 데이터 사이클)의 자연스러운 후속. 세 편이 '더 많은 데이터가 어디서 나올 것인가'에 서로 다른 답을 냈다면(스케일링·코딩 에이전트·자기 생성), AXIS는 '커뮤니티 크라우드소싱 + 자동 검증'이라는 네 번째 답을 표준화한다. 컬렉션의 Open X-Embodiment(2310.08864)와 MimicGen(2310.17596) 계보를 잇는 '데이터셋 인프라' 축의 최신 세대. 오늘 함께 rec하는 Data Scaling Laws(2410.18647)와 정확한 짝 — AXIS가 '어떻게 모을 것인가'라면 그 논문은 '얼마나 모아야 하는가'의 이론. 오늘 rec의 LENS(2607.19633)와도 짝을 이룬다: LENS가 씬 축약이라면 AXIS는 씬 다양성 확장.",
+          "rec_date": "2026-07-27"
+        },
+        {
+          "id": "2607.19633",
+          "title": "LENS: LLM-guided Environment Simplification for Planning and Control in Clutter",
+          "authors": "Aileen Liao, Rachel Holladay, Dinesh Jayaraman, Michael Posa · arXiv:2607.19633",
+          "summary_ko": "LLM이 태스크 진행 상태에 반응해 씬의 오브젝트를 병합·제거·단순화하는 방식으로 태스크별 씬 추상화를 자동 생성하는 플러그인 모듈. 클래식 planner, model-based control, VLA 정책 세 종류 모두에 얹을 수 있어 정책 백본을 바꾸지 않고 clutter 상황의 성능을 함께 개선한다. '무엇을 계산할지'를 정책에게 맡기지 않고 '무엇을 무시할지'를 LLM에게 위임한다는 관점 전환이 핵심 — 정책 층은 그대로 두고 표현 층을 LLM으로 얇게 감싼다.",
+          "tags": [
+            "LLM Scene Abstraction",
+            "Clutter Manipulation",
+            "Plug-in Module",
+            "Cross-Policy",
+            "Planner + VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.19633",
+          "extra_url": "",
+          "date": "2026-07-22",
+          "reason": "좋아요한 Harness-VLA(2607.08448)의 primitive-library + planner, 좋아요한 GaP(2607.05369)의 graph-as-policy, 컬렉션의 RoboHarness(2607.18060)와 pool의 PhyAgentOS(2607.16636)가 '스킬을 어떻게 조합할까'였다면 LENS는 그 이전 단계에서 '무엇을 무시할까'를 다룬다 — 정확한 짝. pool의 VoxPoser(2307.05973)와 SayCan(2204.01691)의 계보 위에 있으면서, 값장 생성/스킬 선택이 아니라 씬 자체를 축약하는 새 축을 연다. 플러그인 방식이라 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 VLA에 재학습 없이 얹을 수 있어 컬렉션의 여러 정책 백본과 즉시 조합 가능하고, Penn의 Jayaraman·Posa 조합이라 이후 model-based control 라인의 확장 촉매가 될 가능성이 크다. 오늘 rec의 AXIS(2607.21588)와 짝: AXIS가 씬 다양성 확장이라면 LENS는 개별 씬 축약.",
+          "rec_date": "2026-07-27"
+        },
+        {
+          "id": "2607.19719",
+          "title": "Koopman Dreamer: Spectrally Constrained Latent Dynamics for Stable World-Model Imagination",
+          "authors": "Jiaqi Li, Xinglong Zhang, Haibin Xie, Yixing Lan, Wei Pan, Xin Xu · arXiv:2607.19719",
+          "summary_ko": "회귀 스펙트럼 구조(회전-스케일링 블록)로 잠재 dynamics를 제약해 long-horizon imagination의 오차 누적을 구조적으로 억제하는 world model. Damping과 periodic mode를 명시적으로 분리 표현해 다단계 롤아웃이 발산하는 것을 처음부터 막고, Dreamer 계열이 안고 있던 '멀리 갈수록 상상이 폭발한다'는 근본 문제를 Koopman operator 관점으로 해결한다. 표현 층에서 안정성을 보장하려는 첫 체계적 시도.",
+          "tags": [
+            "Koopman Operator",
+            "Latent Dynamics",
+            "Stable Imagination",
+            "Spectral Constraint",
+            "Model-Based RL"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.19719",
+          "extra_url": "",
+          "date": "2026-07-22",
+          "reason": "pool의 DreamerV3(2301.04104)의 정확한 이론적 후속·수정판 — DreamerV3가 '한 세팅으로 다양한 도메인'을 열었다면 Koopman Dreamer는 '얼마나 멀리까지 안정적으로 상상할 수 있는가'라는 남은 문제를 정면으로 다룬다. 컬렉션의 WAM 라인(FlowWAM 2607.13017·LingBot-VA 2607.08639·ACWM 2607.09185·BadWAM 2607.15207) 전체가 언젠가 부딪히게 될 롤아웃 안정성의 이론적 답. pool의 WorldScape 2.0(2607.18840, reasoning-augmented memory)이 '이벤트 메모리로 안정성 보완'이라면 Koopman Dreamer는 '표현 자체를 스펙트럼으로 제약'이라는 더 근본적 접근. pool의 2607.17454(Test-Time Scaling)·2607.19876(KineBench)가 각각 '롤아웃 선택'과 '롤아웃 평가'였다면 이 논문은 '롤아웃 생성 자체의 안정화' — WAM 라인의 세 축이 모인다. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643)의 대형 world foundation이 스케일업할 때 반드시 부딪힐 문제라 실용 가치도 크다.",
+          "rec_date": "2026-07-27"
+        },
         {
           "id": "2607.17454",
           "title": "Test-Time Scaling for World Action Models via Zero-Shot Geometric Evaluation",
@@ -173,6 +227,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2409.20537",
+          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
+          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He · MIT / Meta · arXiv:2409.20537",
+          "summary_ko": "서로 다른 임보디먼트(팔·손·다리·차량)와 태스크의 이질적(heterogeneous) 데이터에서 공유 policy trunk를 사전학습하는 프레임워크. 프로프리오셉션과 시각 입력을 임보디먼트별 stem tokenizer로 짧은 토큰 시퀀스로 표준화한 뒤 공유 트랜스포머 trunk로 통과시키고, 임보디먼트별 head가 액션을 뱉는다. 이질 데이터를 하나의 정책으로 '흡수'하는 아키텍처 원형을 제시해 이후 RT-X·OpenVLA 계열의 이론적 좌표계를 놓은 NeurIPS 2024 논문.",
+          "tags": [
+            "Heterogeneous Pretraining",
+            "Cross-Embodiment",
+            "Policy Trunk",
+            "NeurIPS 2024",
+            "Scaling"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.20537",
+          "extra_url": "https://liruiw.github.io/hpt/",
+          "date": "2024-09-30",
+          "reason": "컬렉션의 Cross-Embodiment 축(2310.08864 RT-X, 2606.15631, 2606.17846, 2607.03570) 전체가 '어떻게 이질 데이터를 하나의 정책으로 흡수할 것인가'를 다루는데, HPT는 그 문제를 policy trunk 사전학습으로 정면 답한 대표작이면서도 컬렉션에는 좌표가 비어 있다. 좋아요한 Xiaomi-Robotics-1(2607.15330)·Xiaomi-U0(2607.11643)의 파운데이션 스케일링과 정확한 짝 — HPT가 '이질 데이터의 공유 사전학습'을 처음 정식화했고, Xiaomi 라인은 그 아이디어를 대규모로 확장한 후속. Kaiming He 그룹의 조합이라 이후 파운데이션 규모 확장의 촉매가 된 논문. 오늘 rec의 AXIS(2607.21588)와도 짝: AXIS가 데이터 크라우드소싱이면 HPT는 그 이질 데이터를 흡수하는 아키텍처다. pool의 RoboCat(2306.11706, DeepMind self-improving)과 함께 컬렉션의 '이질 데이터 흡수 파운데이션' 세 계보(오픈 커뮤니티·자율 개선·이질 흡수)를 완성한다.",
+          "rec_date": "2026-07-27"
+        },
+        {
+          "id": "2405.15223",
+          "title": "iVideoGPT: Interactive VideoGPTs are Scalable World Models",
+          "authors": "Jialong Wu, Shaofeng Yin, Ningya Feng, Xu He, Dong Li, Jianye Hao, Mingsheng Long · Tsinghua / Huawei · arXiv:2405.15223",
+          "summary_ko": "자연 비디오 코퍼스에서 학습한 인터랙티브 비디오 트랜스포머 world model. 액션·리워드·프레임을 하나의 시퀀스로 tokenize해 GPT-스타일 자기회귀로 학습하고, 예측된 비디오를 planning·policy learning에 그대로 사용할 수 있게 만들었다. Genie 계열의 '비디오로부터 world model'이라는 흐름을 GPT 프레임워크로 재해석해 후속 확장(action-conditioned video prediction·model-based RL·VLA 사전학습)의 표준 레시피가 된 NeurIPS 2024 논문.",
+          "tags": [
+            "Video World Model",
+            "Autoregressive",
+            "Interactive Prediction",
+            "Video Pretraining",
+            "NeurIPS 2024"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2405.15223",
+          "extra_url": "https://thuml.github.io/iVideoGPT/",
+          "date": "2024-05-24",
+          "reason": "pool의 Genie(2402.15391)와 정확한 짝 — Genie가 '레이블 없는 비디오에서 액션-controllable 시뮬레이션'을 열었다면 iVideoGPT는 같은 문제를 'GPT 시퀀스 인터페이스'로 접근한 두 번째 대표 답. 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM)과 pool의 Masked Visual Actions(2607.19343)·WorldScape 2.0(2607.18840)이 모두 '비디오를 어떻게 액션 학습에 쓸까'인데, iVideoGPT는 그 계보의 실질적 시조 중 하나. 좋아요한 WALA(2607.11397, latent action + world model)와 Xiaomi-U0(2607.11643, 38B AR 멀티모달 world foundation)의 AR 방식이 iVideoGPT의 인터페이스를 계승한다. V-JEPA(2404.08471, 컬렉션)와 함께 컬렉션의 비디오 파운데이션 축의 두 대표 계열(예측 vs. 표현)을 완성하는 조각. 오늘 rec의 Koopman Dreamer(2607.19719)와 짝: Koopman이 '어떻게 안정적으로 상상할까'라면 iVideoGPT는 '무엇을 상상의 매체로 삼을까'.",
+          "rec_date": "2026-07-27"
+        },
+        {
+          "id": "2410.18647",
+          "title": "Data Scaling Laws in Imitation Learning for Robotic Manipulation",
+          "authors": "Fanqi Lin, Yingdong Hu, Pingyue Sheng, Chuan Wen, Jiacheng You, Yang Gao · Tsinghua · arXiv:2410.18647",
+          "summary_ko": "로봇 조작의 모방학습에서 '얼마나 많은 데모가 필요한가'를 정면으로 정량화한 스케일링 법칙 논문. 태스크·환경·오브젝트 다양성 세 축을 각각 늘렸을 때 zero-shot 일반화 오차가 어떻게 감소하는지 파워로우로 fit하고, 각 축의 지수와 예산 배분 최적점(어디에 데이터를 더 쓸까)을 실증적으로 도출. '데이터 다양성이 데이터 양보다 훨씬 중요하다'는 실용적 결론과, 정량화된 curve로 이후 대형 VLA 스케일업의 예산 계획 기준선이 됐다.",
+          "tags": [
+            "Scaling Law",
+            "Imitation Learning",
+            "Data Efficiency",
+            "Generalization",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.18647",
+          "extra_url": "https://data-scaling-laws.github.io/",
+          "date": "2024-10-24",
+          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330)의 'Scaling Law' 태그와 좋아요한 Xiaomi-U0(2607.11643)의 38B 파운데이션의 정확한 이론적 기반. 컬렉션의 π0.5(2504.16054)·π0(2410.24164)·OpenVLA(2406.09246)·MimicGen(2310.17596) 같은 스케일링 시대 VLA들이 서 있는 실증 기반이면서, 정작 스케일링 법칙 논문 자체가 컬렉션에 비어 있어 결정적 공백을 채운다. 오늘 rec의 AXIS(2607.21588, 커뮤니티 데이터 스케일링)와 정확한 짝 — AXIS가 '어떻게 모을 것인가'라면 이 논문은 '얼마나 모아야 하는가, 어디에 예산을 쓸 것인가'의 답. pool의 RoboCat(2306.11706, self-improving 데이터 사이클)에도 직결 — 자기 생성 데이터의 스케일링 효율을 논할 이론적 좌표계가 필요하다. Fanqi Lin·Yang Gao(Tsinghua) 조합이라 이후 중국 대형 랩의 VLA 스케일링 계보 전체의 참조점이 됐다.",
+          "rec_date": "2026-07-27"
+        },
         {
           "id": "2209.05451",
           "title": "Perceiver-Actor: A Multi-Task Transformer for Robotic Manipulation",
