@@ -26,6 +26,12 @@
       "title": "CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models",
       "arxiv_url": "https://arxiv.org/abs/2503.22020",
       "added": "2026-07-27"
+    },
+    {
+      "id": "2410.18647",
+      "title": "Data Scaling Laws in Imitation Learning for Robotic Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2410.18647",
+      "added": "2026-07-27"
     }
   ],
   "dismissed": [
