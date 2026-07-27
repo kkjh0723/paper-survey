@@ -50,6 +50,12 @@
       "title": "Emergent Compositional Skills in Mixture-of-Experts VLAs",
       "arxiv_url": "https://arxiv.org/abs/2607.20771",
       "added": "2026-07-27"
+    },
+    {
+      "id": "2607.17454",
+      "title": "Test-Time Scaling for World Action Models via Zero-Shot Geometric Evaluation",
+      "arxiv_url": "https://arxiv.org/abs/2607.17454",
+      "added": "2026-07-27"
     }
   ],
   "dismissed": [
