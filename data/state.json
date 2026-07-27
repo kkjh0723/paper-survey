@@ -32,6 +32,12 @@
       "title": "Data Scaling Laws in Imitation Learning for Robotic Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2410.18647",
       "added": "2026-07-27"
+    },
+    {
+      "id": "2607.16636",
+      "title": "PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution",
+      "arxiv_url": "https://arxiv.org/abs/2607.16636",
+      "added": "2026-07-27"
     }
   ],
   "dismissed": [
