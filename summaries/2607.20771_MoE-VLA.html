@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MoE-VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Mixture-of-Experts</span>
+    <h1>Emergent Compositional Skills in Mixture-of-Experts VLAs</h1>
+    <p class="authors">Shlok Shah, Rhiaan Jhaveri, Tharun Kumar Tiruppali Kalidoss, Chirayu Nimonkar, Ishaan Javali · 2nd Workshop on Compositional Learning, ICML 2026</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.20771" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.20771" target="_blank">PDF</a>
+      <span>arXiv:2607.20771</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Mixture-of-Experts</span>
+      <span class="t">LoRA</span>
+      <span class="t">Compositional</span>
+      <span class="t">Interpretability</span>
+    </div>
+    <p class="meta">제출: 2026-07-22 · 백본 π₀ + SmolVLA · LIBERO-10 벤치 · LoRA rank r=16 · 라우팅 top-k</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>과제 계층을 명시적으로 정의하지 않아도, 단순화된 <b>MoE action head</b>를 가진 VLA는 <b>재사용 가능한 해석 가능한 원시 스킬</b>로 태스크를 <b>자발적으로 분해</b>한다. 액션 익스퍼트의 FFN을 <b>LoRA(rank 16) 델타</b>로 만든 MoE로 대체하고, <b>포워드당 1회 라우팅</b>(모든 MoE FFN 레이어에 동일 가중치 적용)만으로 π₀·SmolVLA 백본을 위에 얹어 학습. LIBERO-10에서 dense baseline과 성능은 동일하되, <b>Expert A/B/C</b> 등이 "이동·놓기", "그리퍼 해제", "얇은 손잡이 접근"에 대응하도록 자연스레 나뉜다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>기존 계층 조작(HRL·option framework·hierarchical VLA)은 사람이 <b>스킬 라이브러리</b>를 미리 설계해야 하고, 학습 후에도 스킬 경계가 모델과 일치하지 않는 경우가 많다. 저자들은 다음 질문을 던진다: <b>"태스크 계층 없이 학습된 flat VLA에서, 단지 MoE 구조만 얹으면 스킬 분해가 emergent 하게 일어날까?"</b> 답은 예: 라우터 하나가 태스크 초기 시각·언어·상태를 보고 <b>하나의 익스퍼트를 선택</b>하면, 각 익스퍼트가 재사용 가능한 원시 행동에 자발적으로 특화된다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>단순화된 MoE Action Head</b> — 액션 익스퍼트의 <b>FFN sublayer만 MoE화</b>, self-attention은 익스퍼트 공유. 각 익스퍼트는 <b>LoRA(r=16) 델타</b>로 표현 → 파라미터 절약 + 초기 재현성(0-init).</li>
+      <li><b>Global one-shot routing</b> — 시각·언어·proprioceptive를 concat한 라우터 MLP가 <b>포워드 1회</b>만 top-k 선택 → 모든 MoE FFN 레이어에 동일 게이팅. Token/layer별 라우팅보다 <b>일관된 end-to-end 행동</b>을 만든다.</li>
+      <li><b>Emergent skills 발견</b> — 학습 후 익스퍼트가 (a) <b>전송/배치 phase</b>, (b) <b>그리퍼 open&retract</b>, (c) <b>가느다란 손잡이 접근·파지</b> 같은 원시 행동에 특화되며, 특정 익스퍼트는 <b>여러 태스크에서 35–45% 선택</b>되는 재사용성.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>LoRA-MoE FFN</h3>
+    <p>액션 익스퍼트 트랜스포머의 각 FFN을 다음처럼 확장:</p>
+    <div class="callout">
+      <b>FFN<sub>MoE</sub>(x) = FFN<sub>base</sub>(x) + Σ<sub>e∈TopK</sub> w<sub>e</sub> · ΔW<sub>e</sub>(x)</b>,<br>
+      <b>ΔW<sub>e</sub></b>는 rank r=16 LoRA, <b>초기 0</b>이라 학습 초에는 dense baseline과 <b>정확히 동일한 정책</b>을 출력.
+    </div>
+    <p>Self-attention은 전 익스퍼트 공유(=파라미터 증가 억제, 라우팅이 layer-wise가 아닌 <b>스킬-wise</b>가 되도록).</p>
+
+    <h3>One-shot Global Routing</h3>
+    <p>라우터 = 2-layer MLP. 입력은 <b>비전 임베딩 + 언어 임베딩 + proprioceptive 상태</b>의 concat. <b>softmax(logits) → top-k 선택 → 재정규화</b>된 가중치를 모든 MoE FFN 층에 <b>동일하게</b> 적용. 즉 라우팅 결정이 forward 전체에서 한 번만 일어남 → 익스퍼트가 <b>coherent skill</b>을 표현하게 강제.</p>
+
+    <h3>학습 목적</h3>
+    <p>기존 flow-matching 손실에 <b>load-balancing 정규화</b>(λ<sub>LB</sub>=0.01)를 추가해 routing collapse(한 익스퍼트에만 몰림) 방지.</p>
+
+    <h3>구성</h3>
+    <div class="kv">
+      <div>백본</div><div>π₀ (7B급) · SmolVLA (경량) 둘 다 검증</div>
+      <div>익스퍼트 수 E</div><div>4~8 실험 (top-k=2 기본)</div>
+      <div>LoRA rank</div><div>r = 16</div>
+      <div>Load-balancing</div><div>λ<sub>LB</sub> = 0.01</div>
+      <div>벤치</div><div>LIBERO-10 (조작 다수 태스크)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>정량: dense baseline 매칭</h3>
+    <p>LIBERO-10에서 <b>MoE 확장이 dense baseline과 동등한 성공률</b>을 유지(작은 차이). 즉 MoE 구조가 <b>성능 저하 없이</b> 해석 가능성을 얻어낸다는 것이 정량 주장 — 이 워크숍 논문의 핵심 취지는 성능 SOTA가 아닌 <b>emergent decomposition의 존재 증명</b>.</p>
+
+    <h3>정성: 익스퍼트별 특화 (그림 참조)</h3>
+    <ul>
+      <li><b>Expert A</b>: 파지 후 최종 <b>이송·배치</b> 국면. 여러 태스크에서 반복 사용(재사용율 35–45%).</li>
+      <li><b>Expert B</b>: <b>그리퍼 open + retract</b>(놓기+빼기). 대부분 태스크의 종료 국면.</li>
+      <li><b>Expert C</b>: <b>얇은 손잡이 물체 접근·파지</b>(펜·플라이어). 특정 파지 스타일에 특화.</li>
+      <li><b>Task-specific</b>: 1–2 태스크에만 집중되는 익스퍼트도 존재 → 재사용/전용 스킬이 자연 분리.</li>
+    </ul>
+
+    <h3>Expert 재사용 분석</h3>
+    <p>여러 태스크에서 특정 익스퍼트가 <b>동일 phase</b>(예: 최종 배치)에 선택되는 빈도를 히트맵으로 표시. 이는 라우터가 태스크 라벨 없이도 <b>phase-level 유사성</b>을 학습했음을 시사.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Global routing → Token/Layer 라우팅</b>으로 바꾸면 익스퍼트가 뒤섞여 phase-level 해석 가능성 붕괴.</li>
+      <li><b>Self-attention도 MoE화</b>: 학습 불안정 + emergent 스킬 분해 약화. FFN-only가 sweet spot.</li>
+      <li><b>Load balancing 제거</b>: 특정 익스퍼트로 라우팅이 몰려 다양성/해석 가능성 하락.</li>
+      <li><b>Zero-init LoRA</b>: 초기부터 dense와 동일 정책 → 성능 저하 없이 안전한 파인튜닝 워머업 가능.</li>
+      <li>수동으로 "이 태스크는 Expert A" 강제해 보면 baseline 대비 유사하거나 살짝 낮음 → <b>학습된 라우터가 사람 라벨보다 자연스러운 분해</b>를 찾음.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.20771/architecture.png" alt="MoE-VLA 아키텍처 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — MoE Action Head 아키텍처.</b> 액션 익스퍼트의 각 FFN을 LoRA 델타의 MoE로 대체, self-attention은 공유. 라우터는 vision·language·state를 보고 forward당 1회 top-k를 결정. (출처: arXiv:2607.20771)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.20771/expert_reuse.png" alt="Expert 재사용 히트맵" loading="lazy">
+      <figcaption><b>Expert Reuse.</b> 태스크 × 익스퍼트 히트맵: 특정 익스퍼트가 여러 태스크에서 반복 선택(재사용 phase), 다른 익스퍼트는 특정 태스크에 집중(전용 스킬). 라우터가 <b>emergent 스킬 분해</b>를 학습했음을 시각적으로 증명. (출처: arXiv:2607.20771)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>메시지</b> — 이 워크숍 논문은 "MoE 구조 그 자체가 <b>compositional prior</b>가 된다"는 관찰을 최소 실험으로 명확히 보여준다. Compositional VLA 후속 연구의 하한선 baseline으로 유용.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.20771" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.20771" target="_blank">PDF</a></li>
+      <li>ICML 2026 Compositional Learning Workshop (2nd)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.20771 · MoE-VLA · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

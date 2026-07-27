@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>DreamerV3 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.LG · World Model · Model-based RL</span>
+    <h1>Mastering Diverse Domains through World Models</h1>
+    <p class="authors">Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap · Google DeepMind · University of Toronto</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2301.04104" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2301.04104" target="_blank">PDF</a>
+      <a href="https://danijar.com/project/dreamerv3/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/danijar/dreamerv3" target="_blank">GitHub</a>
+      <span>arXiv:2301.04104</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Model</span>
+      <span class="t">RSSM</span>
+      <span class="t">Symlog</span>
+      <span class="t">Minecraft Diamond</span>
+      <span class="t">General RL</span>
+    </div>
+    <p class="meta">제출: 2023-01-10 (v1) / 2024-04-17 (final) · 백본 RSSM(GRU) · Nature 2025 게재</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>단일 고정 하이퍼파라미터</b>로 150+ 태스크(연속·이산·픽셀·상태·희소보상)를 모두 마스터하는 첫 범용 model-based RL. 핵심은 크기가 여러 자릿수로 변하는 신호를 안정적으로 다루는 <b>symlog·symexp twohot·KL balancing·free bits·return normalization</b>. 인간 데이터·커리큘럼 없이 <b>Minecraft 다이아몬드 자동 채취</b>를 최초로 달성(≤1억 스텝, 모든 시드가 발견). Atari·DMLab·ProcGen·Atari100k·DMC visual/proprio 전 벤치에서 각 도메인 SOTA를 하나의 알고리즘으로 갱신.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>모델기반 RL은 데이터 효율에서 유망하나, 지금까지는 벤치마크마다 하이퍼파라미터를 새로 튜닝해야 했다. 그 원인은 (1) 보상·리턴의 <b>크기 스케일</b>이 도메인마다 수 자릿수로 달라 예측기가 폭주하거나 죽고, (2) latent dynamics의 <b>KL 두 항</b>(prior/posterior)이 균형을 잃어 잠재 표현이 붕괴하며, (3) 픽셀·희소보상·연속·이산 등 <b>이질적 입력·출력</b>을 한 파이프라인에서 다루기 어렵기 때문이다. DreamerV3는 이 세 축을 각각 <b>변환·정규화·분포 예측</b>으로 해결해 "한 세트의 설정으로 모든 도메인"이라는 목표에 도달한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>도메인 무관 안정화 레시피</b> — symlog 변환 + symexp twohot 손실 + KL balancing/free bits + return normalization(5–95 분위)로 <b>고정 hyperparam</b> 학습을 실현.</li>
+      <li><b>DreamerV3 아키텍처</b> — RSSM(GRU)+MLP/CNN 인코더·디코더, 카테고리컬 임베딩 z<sub>t</sub>와 recurrent state h<sub>t</sub>를 결합한 model state, <b>상상 궤적 T=16</b>에서 학습하는 actor-critic.</li>
+      <li><b>일반성 실증</b> — 8개 벤치마크(Atari 57, DMLab 30, ProcGen 16, Atari100k 26, DMC 20, DMC-proprio 18, BSuite, Minecraft 다이아몬드)를 <b>단일 설정</b>으로 SOTA 갱신, 특히 <b>1억 스텝 내 Minecraft 다이아몬드 첫 달성</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>World Model (RSSM)</h3>
+    <p>인코더(픽셀은 CNN, 벡터는 MLP)가 관찰 x<sub>t</sub>를 카테고리컬 잠재 z<sub>t</sub>로 매핑하고, GRU가 결정론 hidden h<sub>t+1</sub>을 갱신한다. Dynamics predictor는 z<sub>t</sub>의 <b>prior</b>를 h<sub>t</sub>만으로 예측(observation-free rollout에 필요). Decoder는 model state (h,z)에서 관찰을 복원하고, reward/continue predictor는 각각 리턴·에피소드 종료를 예측한다. 모든 <b>continuous</b> 예측 대상(관찰·리워드·리턴)은 target에 <b>symlog</b>를 씌워 <b>symlog(x)=sign(x)·ln(1+|x|)</b> 스케일에서 학습한다. 확률적 대상(리워드·리턴)은 지수 간격 bin에 대한 <b>twohot 소프트타깃 분포</b>로 학습해 큰-작은 값 스케일 문제를 흡수한다.</p>
+
+    <h3>KL Balancing + Free Bits</h3>
+    <p>Dynamics KL(prior→posterior)과 representation KL(posterior→prior)을 <b>다른 계수</b>(β_dyn=1, β_rep=0.1)로 학습하고, 각각 <b>1 nat 이하</b>에서는 손실을 자르는 free bits로 <b>과규제로 인한 표현 붕괴</b>를 방지한다. 카테고리컬 z<sub>t</sub>는 <b>1% uniform</b>을 섞어 결정론화를 막는다.</p>
+
+    <h3>Actor-Critic (imagined trajectories)</h3>
+    <p>Critic은 exponentially-spaced bin에 대한 <b>카테고리컬 리턴 분포</b>를 예측하고, actor는 <b>REINFORCE</b> 그래디언트(고정 entropy scale 3e-4)로 정책을 개선한다. Return은 5–95 분위 범위로 나눠 <b>대형만 눌러 스케일링</b>(작은 리턴은 그대로) → 희소보상 태스크에서도 신호가 사라지지 않음. 학습 신호는 <b>상상 궤적 가중 1.0</b> + <b>리플레이 실제 궤적 가중 0.3</b>로 혼합.</p>
+
+    <h3>단일 고정 설정</h3>
+    <div class="kv">
+      <div>상상 horizon</div><div>T = 16</div>
+      <div>할인율</div><div>γ = 0.997</div>
+      <div>Loss 가중</div><div>β_pred=1, β_dyn=1, β_rep=0.1, β_critic-replay=0.3</div>
+      <div>Actor entropy</div><div>3 × 10⁻⁴ (모든 도메인 공통)</div>
+      <div>모델 크기</div><div>XS(8M) ~ XL(200M) 5단계 · 성능은 크기·스텝에 대해 <b>단조 개선</b></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>단일 설정으로 8개 벤치 SOTA</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치마크(스텝)</th><th>이전 SOTA</th><th>DreamerV3 성과</th></tr></thead>
+      <tbody>
+        <tr><td>Atari (57 games, 200M)</td><td>MuZero, Rainbow, IQN</td><td class="win">평균 SOTA (도메인 튜닝 없이)</td></tr>
+        <tr><td>DMLab (30 tasks, 100M)</td><td>IMPALA, R2D2+ (1B에서)</td><td class="win">+ <span class="win">≥10×</span> 데이터 효율(1억 스텝에서 초과)</td></tr>
+        <tr><td>ProcGen (16 games, 50M)</td><td>PPG (expert)</td><td class="win">매칭 · Rainbow 상회</td></tr>
+        <tr><td>Atari100k (26 games, 400K)</td><td>IRIS/TWM/SPR/SimPLe</td><td class="win">SOTA(데이터 효율 벤치)</td></tr>
+        <tr><td>DMC Proprio (18 tasks)</td><td>D4PG/DMPO/MPO</td><td class="win">SOTA</td></tr>
+        <tr><td>DMC Visual (20 tasks, 1M)</td><td>DrQ-v2/CURL</td><td class="win">SOTA</td></tr>
+        <tr><td>Minecraft Diamond</td><td>—</td><td class="win">최초 달성(≤100M, 인간 데이터·커리큘럼 없이)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">단 하나의 하이퍼파라미터 셋으로 모든 태스크를 학습 — 도메인마다 튜닝 필요 없음이 이 논문의 핵심 empirical claim.</p>
+
+    <h3>Minecraft 다이아몬드 (핵심 결과)</h3>
+    <p>희소·복잡·오래된 <b>Minecraft Diamond Challenge</b>: 나무→돌→철→다이아몬드까지 12+ 단계 crafting을 <b>인간 데이터·커리큘럼 없이</b> 처음부터 학습. 우리가 훈련한 모든 Dreamer 에이전트가 <b>1억 환경 스텝 내에 다이아몬드를 발견</b>한다. 이는 이전에 시연·모방 없이는 불가능하다고 여겨지던 목표.</p>
+
+    <h3>스케일링</h3>
+    <p>모델 크기 XS→XL로 키우면 <b>최종 성능도 sample efficiency도 동시에 향상</b>되며, 스텝 수를 늘리면 성능이 <b>단조 개선</b>. 이 pattern은 언어 모델의 스케일 곡선과 유사하며, MBRL에서 "크게 만들수록 좋아진다"는 첫 대규모 실증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>symlog / twohot 제거</b>: 크기 스케일이 다른 도메인(Atari vs Control)에서 학습 불안정·발산. → 안정화의 핵심.</li>
+      <li><b>KL balancing / free bits 제거</b>: 잠재 표현이 붕괴하거나 dynamics가 관찰을 무시. → 예측 품질 저하.</li>
+      <li><b>return normalization 제거</b>: 희소보상(Minecraft·Atari)에서 actor 학습 실패.</li>
+      <li><b>리플레이 critic 학습(가중 0.3)</b>: 상상만으로 학습할 때보다 <b>일관되게 향상</b> — 상상-리얼 gap을 메움.</li>
+      <li>모든 안정화 요소가 <b>서로 대체 불가</b>하며 개별 제거 시 특정 도메인에서 실패 → 세트 전체가 "generalist" 조건.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2301.04104/x1.png" alt="DreamerV3 벤치마크 요약 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 벤치마크 요약.</b> 단일 하이퍼파라미터로 학습한 DreamerV3가 8개 도메인에서 이전 SOTA 대비 매칭/능가함을 보이는 요약 다이어그램. Minecraft 다이아몬드 최초 달성. (출처: arXiv:2301.04104)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2301.04104/x2.png" alt="DreamerV3 world model 구조 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — World Model 학습.</b> RSSM(GRU)+categorical z + symlog decoder + KL balancing/free bits로 픽셀·상태 관찰을 모두 안정적으로 예측하는 구조. Dynamics predictor는 관찰 없이도 미래 상상을 위한 prior를 산출. (출처: arXiv:2301.04104)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 표</b> — 실험 섹션의 모든 벤치마크 결과가 <b>동일 hyperparam</b>으로 얻어졌다는 것이 이 논문의 유일무이한 empirical contribution이다. 즉 성능 값 자체보다 "한 설정으로 다 된다"는 <b>메타-메시지</b>가 핵심.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2301.04104" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2301.04104" target="_blank">PDF</a></li>
+      <li><a href="https://danijar.com/project/dreamerv3/" target="_blank">프로젝트 페이지</a> · <a href="https://github.com/danijar/dreamerv3" target="_blank">GitHub</a></li>
+      <li>Nature 2025 게재 (원저 v1은 2023-01)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2301.04104 · DreamerV3 · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

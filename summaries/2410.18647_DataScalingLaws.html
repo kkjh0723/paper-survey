@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Data Scaling Laws (Manipulation) — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Imitation Learning · Scaling Laws</span>
+    <h1>Data Scaling Laws in Imitation Learning for Robotic Manipulation</h1>
+    <p class="authors">Fanqi Lin, Yingdong Hu, Pingyue Sheng, Chuan Wen, Jiacheng You, Yang Gao · Tsinghua IIIS · Shanghai Qi Zhi · Shanghai AI Lab · RSS 2025</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2410.18647" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2410.18647" target="_blank">PDF</a>
+      <a href="https://data-scaling-laws.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/Fanqi-Lin/Data-Scaling-Laws" target="_blank">GitHub</a>
+      <span>arXiv:2410.18647</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Scaling Laws</span>
+      <span class="t">Imitation Learning</span>
+      <span class="t">UMI</span>
+      <span class="t">Diffusion Policy</span>
+      <span class="t">Generalization</span>
+    </div>
+    <p class="meta">제출: 2024-10-24 (v1) / 2026-06-26 (v4) · 40K+ 데모 · 15K+ 실로봇 롤아웃 · UMI 그리퍼 수집</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>단일 태스크 모방학습에서 <b>정책 일반화가 데이터 규모에 대해 어떻게 스케일 하는가</b>를 4개 실태스크·수만 롤아웃으로 empirically 정립. 결론: 성능은 <b>학습 환경 수 M과 학습 물체 수 O에 대해 거듭제곱(power-law)</b>로 향상되며, <b>수는 다양성보다 훨씬 덜 중요</b>. 한 환경-물체 pair당 데모 개수는 어느 임계(≈50)를 넘으면 이득이 급감. 이 원리를 따라 <b>4명이 오후 하루</b>에 pair당 50 데모(총 <b>1,600 데모</b>) 수집만으로 <b>미지 환경·미지 물체에서 평균 ~90%</b> zero-shot 성공.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>NLP·비전에서 <b>스케일 법칙</b>(모델·데이터를 키우면 성능이 예측 가능하게 향상)이 확립되어 왔지만, 로봇 조작에서는 (a) 데모 수집이 매우 비싸고, (b) "무엇을 스케일해야 하는가"(환경·물체·데모 수)에 대한 empirical guidance가 부족했다. 이 논문은 <b>단일 태스크</b> 조건에서 이 세 축을 독립적으로 변주하며 정책 일반화의 스케일 법칙을 정량화한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>3축 스케일 실험 설계</b> — 환경 수 M · 물체 수 O · pair당 데모 수 N을 격자로 변주해 각각의 <b>optimality gap</b>이 어떤 함수로 감소하는지 측정.</li>
+      <li><b>Power-law 발견</b> — 미지 환경/물체에서의 gap이 M, O에 대해 대략 <b>거듭제곱</b>으로 감소. 반면 <b>N(pair당 데모 수)</b>는 <b>임계 이후 이득 급감</b>(≈50개면 충분).</li>
+      <li><b>실용 프로토콜</b> — 4명×오후 반나절, <b>UMI 손잡이 그리퍼</b>로 32 pair×50 데모 = 1,600 데모 수집만으로 4개 실태스크에서 <b>~90% 미지 환경·물체 성공률</b>. Diffusion Policy 백본에 그대로 삽입 가능.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>데이터 수집: UMI (Universal Manipulation Interface)</h3>
+    <p>사람이 <b>손잡이형 그리퍼(UMI)</b>를 직접 들고 데모를 촬영하면, iPhone/GoPro의 <b>비주얼 SLAM</b>이 그리퍼 위치를 추적해 로봇 훈련 데이터를 생성한다. 이 방식은 로봇 없이도 다양한 환경에서 저비용으로 데모를 얻을 수 있게 해 스케일 실험을 가능케 함. <b>SLAM 실패</b>(~10%)한 데모는 자동 필터.</p>
+
+    <h3>학습 · 모델</h3>
+    <p>백본은 <b>Diffusion Policy</b>(image-conditioned). 각 태스크마다 환경-물체-데모 축을 변주한 학습셋을 만들고, <b>미지 환경 + 미지 물체</b>에서 실로봇 평가. 성공률은 각 조건 20 rollout × 4 태스크의 평균.</p>
+
+    <h3>측정 지표</h3>
+    <p>일반화 성능은 "<b>새 환경·새 물체 성공률</b>", scaling curve는 <b>optimality gap</b>(=상한 대비 부족한 정도)를 종축, M/O/N을 횡축으로 log–log fit. 회귀는 <b>Gap ∝ x<sup>−α</sup></b> 형태.</p>
+
+    <h3>4개 태스크</h3>
+    <div class="kv">
+      <div>Pour Water</div><div>주전자에서 컵에 물 붓기</div>
+      <div>Mouse Arrangement</div><div>마우스를 지정 패드 위 정렬</div>
+      <div>Fold Towels</div><div>수건을 반으로 접기</div>
+      <div>Unplug Charger</div><div>충전기 케이블 뽑기</div>
+    </div>
+    <p>전 실험 총 <b>&gt;40,000 데모</b> 수집 · <b>&gt;15,000 실로봇 rollout</b>으로 평가.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Power-law 요약</h3>
+    <ul>
+      <li><b>환경 수 M ↑</b>: 미지 환경 gap이 <b>대략 M<sup>−α</sup></b>로 감소 (Pearson r 강함).</li>
+      <li><b>물체 수 O ↑</b>: 미지 물체 gap이 <b>O<sup>−β</sup></b>로 감소.</li>
+      <li><b>Env-Object pair 수 M·O ↑</b>: 종합 gap이 pair 수에 대해 일관된 거듭제곱 감소.</li>
+      <li><b>Pair당 데모 수 N</b>: N&gt;≈50이면 이득 미미 → <b>다양성 &gt; 수</b>.</li>
+    </ul>
+
+    <h3>실제 4-태스크 성공률 (미지 환경·미지 물체, 20 rollout)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>성공률 (%)</th></tr></thead>
+      <tbody>
+        <tr><td>Pour Water</td><td>85.0 ± 19.4</td></tr>
+        <tr><td>Mouse Arrangement</td><td class="win">92.5 ± 9.7</td></tr>
+        <tr><td>Fold Towels</td><td>87.5 ± 17.1</td></tr>
+        <tr><td>Unplug Charger</td><td class="win">90.0 ± 14.1</td></tr>
+        <tr><td><b>평균</b></td><td class="win">~90</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">이 결과는 <b>4명×오후 반나절 = 1,600 데모</b>만으로 얻은 값. 다양성 우선 수집이 절대 데이터량보다 효과적.</p>
+
+    <h3>초기 대규모 실험 (Pour Water, Mouse Arrangement)</h3>
+    <p>32 환경 × 32 물체 × pair당 120 데모(=3,650–3,820 유효). Power-law fit 계수와 상관(Pearson r)이 강함. 이 대규모 셋이 이후 축소 프로토콜(pair당 50)의 안전한 상한 근거를 제공.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / 실무 통찰</h2>
+    <ul>
+      <li><b>초기 그리퍼 pose·orientation 랜덤화가 중요</b> — 하지 않으면 성공률이 급감. 정책이 초기 관찰에 과적합.</li>
+      <li><b>SLAM 신뢰성</b>: 환경에 시각적 특징이 풍부해야 UMI 궤적 추정이 안정. 흰 벽/균질 배경은 실패율↑.</li>
+      <li><b>데모 임계 N≈50</b>: 그 이상 수집은 성능 미미, 시간을 <b>새 환경·새 물체</b>로 돌리는 게 이득.</li>
+      <li><b>Diffusion Policy 백본</b> 기준이지만, 데이터 규모/다양성 효과는 백본-불변에 가까움(추가 실험 시사).</li>
+      <li>본 논문의 실용적 결론은 "<b>다양성을 최대화하고 pair당 데모는 최소화</b>"라는 데이터 수집 rubric.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2410.18647/tasks.jpg" alt="4개 실태스크 (Figure 1 앞부분)" loading="lazy">
+      <figcaption><b>4개 실태스크.</b> Pour Water, Mouse Arrangement, Fold Towels, Unplug Charger — 각기 다른 조작 프리미티브(부동·정렬·유연물·전기 커넥터)를 대표. 미지 환경·미지 물체에서 평가. (출처: arXiv:2410.18647)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2410.18647/x4.png" alt="스케일 법칙 회귀 (Figure 5)" loading="lazy">
+      <figcaption><b>Figure 5 — Power-law fit.</b> 환경 수·물체 수·pair 수에 대한 optimality gap의 log–log 회귀. 강한 거듭제곱 관계가 4 태스크 모두에서 관찰. (출처: arXiv:2410.18647)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 rubric</b> — "환경·물체 다양성은 <b>넓게</b>, pair당 데모는 <b>얕게(≈50)</b>". 이 원칙에 따라 수집한 <b>1,600 데모</b>가 <b>~90%</b> 미지 환경·물체 성공을 냈다는 것이 이 논문의 실무적 결정타.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2410.18647" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2410.18647" target="_blank">PDF</a></li>
+      <li><a href="https://data-scaling-laws.github.io/" target="_blank">프로젝트 페이지</a> · <a href="https://github.com/Fanqi-Lin/Data-Scaling-Laws" target="_blank">GitHub 코드</a></li>
+      <li>RSS 2025 발표</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2410.18647 · Data Scaling Laws · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

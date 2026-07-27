@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PhyAgentOS — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Embodied OS · Agent Runtime</span>
+    <h1>PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution</h1>
+    <p class="authors">Yang Liu, Weixing Chen, Xinshuai Song, Tao Pu, Siwen Mo, Yongjie Bai, Zihao Chen, Qianran Sun, Liruo Zhong, Ying Shen, Liang Lin · Sun Yat-sen University 외</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.16636" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.16636" target="_blank">PDF</a>
+      <span>arXiv:2607.16636</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Embodied OS</span>
+      <span class="t">Session Runtime</span>
+      <span class="t">State-as-a-File</span>
+      <span class="t">Safety</span>
+      <span class="t">Epistemic Memory</span>
+    </div>
+    <p class="meta">제출: 2026-07-18 · 19+ 시뮬·실체 검증 (Minecraft/StarDojo/DST/LIBERO/Calvin/RoboCasa365)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Embodied AI 스택은 planner·controller·simulator·real robot이 <b>임시 스크립트로 접합</b>되어 재현성·안전성·재사용성이 취약하다. PhyAgentOS는 이를 <b>운영체제 유사 런타임</b>으로 재정의해 <b>세션(Session)</b>을 최소 스케줄 단위로, <b>Markdown+YAML 파일들의 집합</b>을 상태 표현으로 통일한다(<i>State-as-a-File</i>). SessionVerifier는 "실행 종료 ≠ 의미적 성공"을 판별하고, <b>epistemic memory</b>가 검증된 결과를 지식/교훈으로 축적한다. Minecraft <b>Optimus-67</b>·<b>StarDojo</b>·<b>Don't Starve(DST)</b> 및 LIBERO/Calvin/RoboCasa365 등 <b>19+</b> 환경에서 계획·검증·안전을 동일 프로토콜로 제공.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>기존 embodied agent 파이프라인은 (1) planner LLM, (2) VLA/RL controller, (3) simulator/real robot, (4) verification 스크립트가 <b>애드혹으로 연결</b>돼 있어 실패 원인 추적이 어렵고 재사용이 어렵다. 저자들은 이 상태를 "OS 없는 컴퓨팅과 유사"라 진단하고, <b>세션 스케줄·검증·메모리·안전</b>을 시스템 서비스로 제공하는 embodied OS를 제안한다. 핵심 설계 원칙 두 가지: (a) <b>인지-실행의 명시적 디커플</b>, (b) <b>파일 기반 상태 표현</b>으로 사람과 다양한 컴포넌트가 동시에 관찰·수정 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Session-Centered Runtime</b> — 실행 단위를 개별 액션이 아닌 "세션"으로 두고, <b>WatchdogSupervisor</b>가 SESSIONS.md의 대기 세션을 잡아 어댑터 계약 검증→하트비트 모니터링→결과 기록의 <b>bounded lifecycle</b>로 관리.</li>
+      <li><b>State-as-a-File 프로토콜</b> — 모든 크로스-프로세스 상태를 사람이 읽는 <b>Markdown+YAML</b> 문서 5종(SESSIONS·SKILLRUNTIME·TARGETS·ENVIRONMENT·LESSONS)로 통일. 스크립트 없이도 사람이 열어 실패 원인 추적·수동 편집 가능.</li>
+      <li><b>SessionVerifier + Epistemic Memory + Layered Safety</b> — V(G,S₀,S<sub>T</sub>,τ,H)로 <b>의미적 성공/실패/재계획</b>을 결정, 검증된 결과를 KNOWLEDGE.md/LESSONS.md에 <b>episodic→semantic→methodological</b>로 축적. 5중 안전 레이어(preflight·bridges·SafetyGuard·heartbeat·target-local)로 원리적 fail-safe.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Session-Centered Runtime</h3>
+    <p>세션은 목표 G, 초기 상태 S₀, 계약 τ(호환성 요구), 예산·타임아웃 H를 담은 요청. <b>WatchdogSupervisor</b>는 SESSIONS.md에서 pending을 pull → <b>Compatibility Preflight</b>(어댑터 IO·능력 검증) → 실행자에게 위임 → <b>Heartbeat</b>로 살아있는지 감시 → 결과·증거를 다시 기록. 실패 시 <b>재시도/취소/재계획</b>을 정책으로 결정.</p>
+
+    <h3>State-as-a-File (5개 문서)</h3>
+    <div class="kv">
+      <div>SESSIONS.md</div><div>목표·계약·결과의 <b>트랜잭션 원장</b> (모든 실행의 진실 소스)</div>
+      <div>SKILLRUNTIME.md</div><div>실행 방법·리소스 요건 (어댑터가 세션을 어떻게 수행하는지)</div>
+      <div>TARGETS.md</div><div>사용 가능한 실체·엔티티와 그 능력 카탈로그</div>
+      <div>ENVIRONMENT.md</div><div>구조화된 환경 스냅샷(관측·객체·좌표계 등)</div>
+      <div>LESSONS.md</div><div>실패 원인·시정 조치의 축적 (자기-진화의 씨앗)</div>
+    </div>
+
+    <h3>SessionVerifier (의미적 성공 판정)</h3>
+    <p><b>V(G, S₀, S<sub>T</sub>, τ, H) → {success, failure, replan}</b>. 컨트롤러 return code 대신 <b>증거-기반 판정</b>(관찰·로그·해시)을 통해 "실행이 끝났다"와 "목표가 실제로 달성됐다"를 분리. 판정 결과가 epistemic memory 갱신을 트리거.</p>
+
+    <h3>Epistemic Memory (3계층)</h3>
+    <p>Episodic(개별 세션 기록) → Semantic(태스크 레벨 요약) → Methodological(재사용 가능한 절차). 검증된 결과는 <b>KNOWLEDGE.md</b>(성공 패턴), 실패는 <b>LESSONS.md</b>(정정 규칙)으로 통합. 다음 계획 단계에서 planner가 이를 컨텍스트로 활용해 <b>자기-진화</b>.</p>
+
+    <h3>Layered Safety</h3>
+    <p>다섯 층 방어: (1) <b>Compatibility Preflight</b>(어댑터·리소스 사전 검증) → (2) <b>Action Bridges</b>(결정론적 IO 변환) → (3) <b>SafetyGuard</b>(명령 허용성 실시간 검사) → (4) <b>Heartbeat</b>(오류 감지) → (5) <b>Target-Local Constraints</b>(장치 측 안전 최종 강제).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Minecraft — Optimus-67 (성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>계층</th><th>Wood</th><th>Stone</th><th>Iron</th><th>Gold</th><th>Diamond</th><th>RedStone</th><th>Armor</th></tr></thead>
+      <tbody>
+        <tr><td>PhyAgentOS</td><td class="win">99</td><td class="win">96</td><td class="win">52</td><td>6</td><td>19</td><td>30</td><td>15</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">기초 크래프팅(Wood/Stone) 거의 완결, 상위 티어에서도 유의미한 성공. 세션 재계획·LESSONS 축적으로 상위 티어 학습이 progressively 개선.</p>
+
+    <h3>StarDojo Lite-100 & DST-Dojo</h3>
+    <ul>
+      <li><b>StarDojo Lite-100</b>: 전체 성공 <b>22.0%</b>, Crafting <b>50.0%</b>(baseline 23.8%), Easy <b>37.5%</b>.</li>
+      <li><b>DST (Don't Starve)</b>: 평균 생존 <b>2.10±0.88 일</b>(+106% 대비), <b>Day-3 생존 30%</b>(baseline 0%).</li>
+    </ul>
+
+    <h3>LIBERO / Calvin / RoboCasa365</h3>
+    <p>Unified protocol을 유지한 채 <b>19+ 시뮬·실체 embodiment</b>에서 다수 VLA 모델의 성능·유용성 향상. (구체 수치는 논문 내 부록 표를 참조; 프로토콜 통일이 재사용성 이득의 핵심 주장.)</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation & 통찰</h2>
+    <ul>
+      <li><b>SessionVerifier 제거</b>: "완료 신호"만 믿는 컨트롤러에서 조용한 실패(silent failure) 급증 → 상위 계획이 잘못된 전제 위에서 진행됨.</li>
+      <li><b>State-as-a-File 제거</b>: 실패 재현·인간 개입이 어려워지고 <b>LESSONS 축적이 무너져 자기-진화 소실</b>.</li>
+      <li><b>Layered Safety의 각 층</b>은 서로 다른 실패 모드를 커버 → 하나라도 빠지면 실체 실험에서 dangerous behavior 발생.</li>
+      <li>OS-스타일 설계는 개별 벤치마크 성능 극대화가 목표라기보다 <b>재현성·안전성·자기-진화</b> 축을 통일하는 데 방점.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.16636/x1.png" alt="PhyAgentOS 아키텍처 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — PhyAgentOS 아키텍처.</b> 인지(Cognition)와 실행(Execution)이 State-as-a-File(중앙 5개 문서)로 매개되고, Runtime이 세션을 스케줄·검증·안전 감시. (출처: arXiv:2607.16636)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.16636/x2.png" alt="Session lifecycle & Verifier (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Session Lifecycle.</b> 대기 세션 pull → preflight → 실행 위임 → heartbeat → SessionVerifier 의미 판정 → epistemic memory 갱신 → 다음 계획. (출처: arXiv:2607.16636)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 메시지</b> — 성능 표 자체보다 "<b>동일 프로토콜로 Minecraft·StarDojo·DST·LIBERO·Calvin·RoboCasa365를 한꺼번에 다룰 수 있다</b>"는 OS-스타일 통합 가능성이 이 논문의 결정타.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.16636" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.16636" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.16636 · PhyAgentOS · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

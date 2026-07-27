@@ -8,56 +8,7 @@
     "2607.15330": 1,
     "2607.05369": 1
   },
-  "queue": [
-    {
-      "id": "2301.04104",
-      "title": "Mastering Diverse Domains through World Models",
-      "arxiv_url": "https://arxiv.org/abs/2301.04104",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2204.01691",
-      "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances",
-      "arxiv_url": "https://arxiv.org/abs/2204.01691",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2503.22020",
-      "title": "CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models",
-      "arxiv_url": "https://arxiv.org/abs/2503.22020",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2410.18647",
-      "title": "Data Scaling Laws in Imitation Learning for Robotic Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2410.18647",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2607.16636",
-      "title": "PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution",
-      "arxiv_url": "https://arxiv.org/abs/2607.16636",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2607.18231",
-      "title": "FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2607.18231",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2607.20771",
-      "title": "Emergent Compositional Skills in Mixture-of-Experts VLAs",
-      "arxiv_url": "https://arxiv.org/abs/2607.20771",
-      "added": "2026-07-27"
-    },
-    {
-      "id": "2607.17454",
-      "title": "Test-Time Scaling for World Action Models via Zero-Shot Geometric Evaluation",
-      "arxiv_url": "https://arxiv.org/abs/2607.17454",
-      "added": "2026-07-27"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

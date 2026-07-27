@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gated GeoBoN — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · World Model · Test-Time Scaling</span>
+    <h1>Test-Time Scaling for World Action Models via Zero-Shot Geometric Evaluation</h1>
+    <p class="authors">Zesen Zhao, Minkyoung Cho, Hui Shen, Boyuan Zheng, Kunxiao Gao, Yulong Cao, Z. Morley Mao</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.17454" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.17454" target="_blank">PDF</a>
+      <span>arXiv:2607.17454</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Action Model</span>
+      <span class="t">Best-of-N</span>
+      <span class="t">Geometry FM</span>
+      <span class="t">Gating</span>
+      <span class="t">TTS</span>
+    </div>
+    <p class="meta">제출: 2026-07-20 · 프리즈된 VGGT-Ω · Cosmos Policy · X-WAM · Motus 백본에 적용</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>World Action Model(WAM)은 <b>미래 프레임</b>과 <b>액션</b>을 동시에 예측한다. 저자들은 이 예측이 <b>기하학적으로 self-consistent</b>한지를 <b>동결된 geometry foundation model</b>(VGGT-Ω)로 zero-shot 채점해 Best-of-N을 뽑는다. 나아가 <b>Action–Future Gate</b>로 필요할 때만 추가 샘플링해 대부분의 이득을 낮은 비용으로 회수. RoboCasa <b>66.3→68.4</b>(Cosmos Policy)/<b>80.8→82.5</b>(X-WAM), LIBERO Long <b>97.5→99.3</b>, RoboTwin 2.0 <b>87.8→89.9</b>. Gate는 이득의 <b>63.6–85.7%</b>를 <b>14.2–34.5%</b> 결정에만 트리거해 회수.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>WAM(Cosmos·X-WAM·Motus 등)은 이미지·언어·상태에서 <b>미래 프레임과 액션 궤적을 함께 생성</b>한다. 확률 정책이므로 여러 rollout을 sampling해 최선을 고르는 <b>Best-of-N</b>은 자연스러운 test-time scaling 전략이지만, "최선"을 판단할 <b>보상/검증 신호</b>가 없다. 기존 방법은 태스크 라벨이나 성공 판별기를 학습해야 했다. 이 논문의 통찰: <b>WAM이 예측한 미래 프레임과 실행 rollout이 물리적으로 정합해야 한다</b> — 즉 서로 다른 카메라 뷰의 <b>깊이 재투영이 일관</b>해야 한다. 이는 태스크 라벨 없이 <b>frozen geometry FM</b>만으로 점수화 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>GeoBoN (fixed-budget)</b> — WAM에서 N=8 rollout을 뽑고, 각 rollout의 <b>1인칭·손목 카메라 예측 프레임 간 cross-view depth reprojection inconsistency</b>를 VGGT-Ω로 계산해 최소값을 선택. 훈련 없음, task-label 없음.</li>
+      <li><b>Gated GeoBoN</b> — 초기 rollout에 대해 <b>Action–Future Gate</b>(광학 흐름 + 그리퍼 궤적 재투영 정합) 검사. 정합이면 그대로 통과, 불일치 시에만 GeoBoN을 트리거. <b>거의 대부분 이득 회수 + 지연 대폭 감소</b>.</li>
+      <li><b>범용성</b> — Cosmos Policy·X-WAM·Motus 등 다른 WAM 백본, RoboCasa·LIBERO Long·RoboTwin 2.0 등 다른 벤치에서 일관 향상. 훈련 데이터 접근 불필요, plug-in.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>WAM 예측 구조</h3>
+    <p>WAM은 (관찰, 언어, 상태)에서 (a) 미래 프레임 시퀀스 F̂ = {F̂<sub>1</sub>,…,F̂<sub>H</sub>}와 (b) 액션 궤적 â = {â<sub>1</sub>,…,â<sub>H</sub>}를 동시에 산출. WAM은 보통 <b>주 뷰 + 손목 뷰</b> 두 카메라를 예측하도록 학습됨.</p>
+
+    <h3>Cross-View Geometric Evaluator</h3>
+    <div class="callout">
+      <b>Score(rollout) = Reproj-Inconsistency( VGGT-Ω(F̂<sup>main</sup>), VGGT-Ω(F̂<sup>wrist</sup>) )</b> — 두 뷰의 예측 프레임을 동결 geometry FM으로 3D 복원한 뒤, 서로에게 재투영해 <b>깊이·픽셀 불일치를 픽셀 오차로 축약</b>. 낮을수록 물리적으로 정합. 태스크 라벨 없음.
+    </div>
+    <p>이렇게 얻은 점수로 <b>Best-of-N</b> 선택. 저자들은 이 점수가 실제 태스크 성공률과 강하게 상관됨을 실험적으로 보인다.</p>
+
+    <h3>Action–Future Gate</h3>
+    <p>초기 rollout 1개를 뽑아 두 가지 정합성만 검사: (i) 예측 프레임 <b>광학 흐름</b>과 예측 액션이 시사하는 그리퍼 이동 방향이 일치하는가, (ii) 그리퍼 3D 궤적을 미래 프레임에 재투영했을 때 시각적으로 그럴싸한가. 두 검사 모두 통과하면 그대로 실행(비용 x1), 실패하면 <b>N=8 GeoBoN</b>을 트리거(비용 x8).</p>
+
+    <h3>구현 요약</h3>
+    <div class="kv">
+      <div>Geometry FM</div><div>VGGT-Ω (frozen, zero-shot 3D reconstruction)</div>
+      <div>N (BoN)</div><div>8</div>
+      <div>대상 WAM</div><div>Cosmos Policy · X-WAM · Motus</div>
+      <div>벤치</div><div>RoboCasa · LIBERO Long · RoboTwin 2.0</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Fixed-budget GeoBoN (N=8) 성공률 %</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치 · 백본</th><th>Base</th><th>+ GeoBoN</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>RoboCasa · Cosmos Policy</td><td>66.3</td><td class="win">68.4</td><td>+2.1</td></tr>
+        <tr><td>RoboCasa · X-WAM</td><td>80.8</td><td class="win">82.5</td><td>+1.7</td></tr>
+        <tr><td>LIBERO Long · Cosmos Policy</td><td>97.5</td><td class="win">99.3</td><td>+1.8</td></tr>
+        <tr><td>RoboTwin 2.0 · Motus</td><td>87.8</td><td class="win">89.9</td><td>+2.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">서로 다른 3개 벤치·3개 WAM 백본에서 모두 <b>+1.7 ~ +2.1 pp</b> 일관 향상. 훈련 없음.</p>
+
+    <h3>Gated GeoBoN 효율</h3>
+    <ul>
+      <li>always-on GeoBoN이 낸 향상분의 <b>63.6–85.7%</b>를 회수.</li>
+      <li>추가 sampling은 결정 지점의 <b>14.2–34.5%</b>에만 트리거.</li>
+      <li>평균 지연은 base 대비 크게 감소하여 <b>실시간 제어(≥10Hz)</b> 관점에서 실용적.</li>
+    </ul>
+
+    <h3>정성 분석</h3>
+    <p>실패 예시: (예: 컵을 잘못된 접시로 놓기) 잘못된 rollout은 예측 미래 프레임과 실제 카메라 재투영에서 <b>큰 3D 불일치</b>를 보이며, Geometric Evaluator가 이를 <b>낮은 순위</b>로 뽑아냄. 이는 이 방법의 <b>물리적 근거</b>가 실제로 작동함을 보여주는 정성적 증거.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Cross-view depth reprojection → single-view</b>: 점수 품질 저하 → 서로 다른 뷰의 정합이 핵심 신호.</li>
+      <li><b>N=8 → 16</b>: 미미한 추가 향상, 지연은 2배. N=8이 sweet spot.</li>
+      <li><b>Gate 제거(=always-on)</b>: 이득 소폭 상승하나 지연 8배 → Gate가 <b>Pareto-optimal</b>.</li>
+      <li><b>VGGT-Ω → 다른 3D FM</b>: 정확도 비슷하나 최신 VGGT-Ω가 zero-shot에서 안정적.</li>
+      <li><b>학습 필요 없음</b>: 정책·벤치 변경 시에도 별도 훈련 없이 즉시 적용 가능 — 이 논문의 실용성 우위.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.17454/x1.png" alt="Gated GeoBoN 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Gated GeoBoN 개요.</b> 초기 rollout이 Action–Future Gate를 통과하면 그대로 실행, 실패 시 N=8 GeoBoN을 트리거. 채점은 두 뷰 예측 프레임의 cross-view depth reprojection 정합. (출처: arXiv:2607.17454)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.17454/x2.png" alt="False low-score selection rate by budget (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 예산 대비 오선택율.</b> N을 늘려도 오선택율(false low-score selection)이 크게 개선되지 않아 N=8이 실용적. 좌·우 뷰의 3D 정합 점수가 실제 성공률과 상관. (출처: arXiv:2607.17454)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>메시지</b> — "훈련 없이, 태스크 라벨 없이, 프리즈된 geometry FM으로 <b>물리적 self-consistency</b>만 채점해도 WAM의 test-time 이득을 얻을 수 있다"는 매우 general한 recipe. 향후 world model 계열 로봇 정책의 표준 TTS 추가로 자리잡을 가능성.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.17454" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.17454" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.17454 · Gated GeoBoN · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

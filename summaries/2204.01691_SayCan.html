@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SayCan — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · LLM Planner · Affordance</span>
+    <h1>Do As I Can, Not As I Say: Grounding Language in Robotic Affordances</h1>
+    <p class="authors">Michael Ahn, Anthony Brohan, Noah Brown, Yevgen Chebotar, Omar Cortes, Byron David, Chelsea Finn 외 37인 · Robotics at Google · Everyday Robots · CoRL 2022</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2204.01691" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2204.01691" target="_blank">PDF</a>
+      <a href="https://say-can.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/google-research/google-research/tree/master/saycan" target="_blank">GitHub</a>
+      <span>arXiv:2204.01691</span>
+    </div>
+    <div class="taglist">
+      <span class="t">LLM Planner</span>
+      <span class="t">Affordance</span>
+      <span class="t">Value Function</span>
+      <span class="t">Long-Horizon</span>
+      <span class="t">CoRL 2022</span>
+    </div>
+    <p class="meta">제출: 2022-04-04 (v1) / 2022-08-16 (v2) · LLM PaLM-540B · Everyday Robot mobile manipulator</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>LLM은 "무엇을 해야 할지"는 알지만 <b>지금 이 상황에서 무엇이 가능한지</b>는 모른다. SayCan은 <b>LLM(=Say)</b>의 스킬 유용성 점수 <b>p(skill|instruction)</b>과 <b>value function(=Can)</b>의 affordance 점수 <b>p(success|skill, state)</b>을 <b>곱</b>해 다음 스킬을 선택하는 매우 단순한 계획 프레임. 텍스트로 학습된 LLM이 로봇 스킬 라이브러리를 통해 <b>"눈과 손"</b>을 갖는다. 101개 실세계 인스트럭션(추상·다단계·부정문 포함)에서 PaLM-SayCan은 <b>plan 성공 84% · 실행 성공 74%</b>를 달성, LLM만 쓴 baseline 대비 크게 우위.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>대형 언어모델은 계획 지식과 상식을 풍부하게 담고 있으나, "부엌에서 사과가 어디에 있는지, 지금 로봇 팔로 컵을 정말 집을 수 있는지"에 대한 <b>물리적 grounding</b>이 없다. 예를 들어 "물을 흘렸어" 라는 지시에 LLM은 "청소기를 가져다 진공청소를 해라"라고 답할 수 있지만, 지금 이 로봇이 사용할 수 있는 스킬은 <b>스펀지·수건 집기</b>뿐일 수 있다. SayCan은 <b>사전학습된 저수준 스킬 라이브러리</b>와 각 스킬의 <b>가치함수(성공 확률)</b>를 활용해 LLM이 선택 가능한 스킬만을, 그 순간 <b>실행 가능한 형태로</b> 계획하게 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>SayCan 원리</b> — 스킬 π에 대해 <b>p(π | instr)</b>(LLM, "이 스킬이 지시를 진전시키는가")와 <b>p(success | π, s)</b>(가치함수, "이 스킬이 현재 상태에서 성공할 확률") 두 점수를 <b>곱</b>해 argmax로 다음 스킬을 뽑는 매우 심플한 planner. 별도 훈련 없이 LLM을 로봇에 결합.</li>
+      <li><b>모바일 조작에서 실사용 스킬 라이브러리 통합</b> — Everyday Robot 모바일 매니퓰레이터 상에서 pick·place·find·navigate 등 다수 스킬을 BC·RL로 학습, 각 스킬의 <b>affordance는 학습된 Q-value</b>로 근사.</li>
+      <li><b>다양성·규모 검증</b> — 101개 자연어 지시(추상·다단계·부정·의역·부탁형 포함, 최대 <b>~17 스킬 chain</b>)로 사무실 주방 실환경 평가. LLM 스케일이 클수록(PaLM > FLAN > GPT-3 클래스) plan 정확도↑.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>스킬 라이브러리 · Value Function</h3>
+    <p>저수준 스킬은 "pick coke can", "go to counter", "put down apple" 등 <b>짧은 자연어 라벨</b>이 붙은 개별 policy π<sub>i</sub>. 각 π<sub>i</sub>는 image-based BC-Z + RL(오프폴리시)로 훈련되고, 훈련 중 학습되는 <b>가치함수 Q(s,π<sub>i</sub>)</b>가 곧 현재 상태에서의 <b>affordance 근사</b>가 된다. affordance 점수는 sigmoid로 정규화해 확률로 사용.</p>
+
+    <h3>LLM Say 점수: 프롬프트 스코어링</h3>
+    <p>LLM 프롬프트에 지시와 지금까지의 실행 히스토리를 넣고, 스킬 라벨을 후보로 두어 <b>토큰 로그확률</b>로 점수화. 여러 후보 스킬을 병렬 스코어링하고, 가장 유용한 것을 뽑는 대신 아래와 곱한다.</p>
+
+    <h3>선택 규칙 (핵심 한 줄)</h3>
+    <div class="callout">
+      <b>π<sub>t</sub>* = argmax<sub>π</sub> p(π | instr, h) · p(success | π, s<sub>t</sub>)</b><br>
+      "LLM이 유용하다 판단(<b>Say</b>) × 지금 실제로 성공 가능(<b>Can</b>)". 종료 스킬 "done"이 최고 점수면 계획 종료.
+    </div>
+
+    <h3>Chain-of-Thought / Instruction 확장</h3>
+    <p>PaLM 대상으로 <b>Chain-of-Thought</b> 프롬프트(추론 이유를 앞에 서술)와 <b>다국어/부정/명령 재구성</b>도 실험. 어려운 지시("음식을 흘렸어, 도와줄래?")에서도 CoT가 plan 성공률을 유의미하게 올린다.</p>
+
+    <h3>구현</h3>
+    <div class="kv">
+      <div>로봇</div><div>Everyday Robot 모바일 매니퓰레이터 (7-DoF 팔 + 모바일 베이스)</div>
+      <div>스킬 수</div><div>551 (pick 30 + place/manipulate/navigate 등)</div>
+      <div>LLM</div><div>PaLM-540B (주 실험) · FLAN-137B · GPT-3 급 비교</div>
+      <div>평가 지시</div><div>101개 (사무실 주방 · 다단계 · 부탁형 · 추상 · 부정문)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>101개 인스트럭션 (모바일 매니퓰레이터, 표 5)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Plan 성공률 (%)</th><th>실행 성공률 (%)</th></tr></thead>
+      <tbody>
+        <tr><td><b>PaLM-SayCan</b> (전체 문항 평균)</td><td class="win">84</td><td class="win">74</td></tr>
+        <tr><td>FLAN-SayCan</td><td>73</td><td>66</td></tr>
+        <tr><td>PaLM (affordance 제거)</td><td>73</td><td>—</td></tr>
+        <tr><td>Generative planner baseline</td><td>낮음</td><td>낮음</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Plan = LLM이 뽑은 스킬 순서가 옳은가, 실행 = 실제 로봇 결과. Value function을 곱하면 plan은 물론 실행 성공까지 상승.</p>
+
+    <h3>스킬 chain 길이 · 어려움 등급</h3>
+    <p>길이 1~3 스킬 지시는 대체로 90%+, 8+ 체인(청소 다단계 등)에서도 40–60% 대로 상당한 성공. Chain-of-Thought 프롬프트는 "부정문/역설/취소" 어려운 지시에서 <b>plan +10~15pp</b> 향상.</p>
+
+    <h3>Ablation 요지</h3>
+    <ul>
+      <li><b>Say only</b>(affordance 없이): 로봇이 실제로 못하는 계획 자주 산출 → 실행 성공률 급락.</li>
+      <li><b>Can only</b>(LLM 없이): 목표 없이 유의미한 순서를 못 만듦.</li>
+      <li>LLM <b>스케일↑ → plan 정확도↑</b>. PaLM > FLAN > 소형 LLM. CoT 프롬프트 시 격차 더 벌어짐.</li>
+      <li>스킬 라벨의 <b>자연어 표현 품질</b>(짧고 명확)이 성공률에 크게 영향.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation & 한계</h2>
+    <ul>
+      <li><b>LLM 편향에 취약</b>: PaLM이 "이해 못한" 지시(비영어·강한 방언·기술적 상식 부재)에서 실패.</li>
+      <li><b>가치함수 오차의 취약성</b>: value 학습 태스크 외 상태에서 affordance가 잘못되면 잘못된 스킬 선택. 실환경 새 물체·조명 변화 등.</li>
+      <li><b>고수준 상태만 사용</b>: SayCan은 "어떤 스킬"만 뽑고, 저수준 실행은 각 스킬 policy가 담당. 스킬 자체가 실패하면 재계획은 다음 스텝에서 다시 argmax.</li>
+      <li>이후 후속작(RT-1/RT-2, PaLM-E, Inner Monologue)에서 스킬 policy·LLM 상호작용 형태로 대폭 확장.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2204.01691/p1.png" alt="SayCan 티저 (Figure 1, 렌더링)" loading="lazy">
+      <figcaption><b>Figure 1 (첫 페이지 티저) — "Say" × "Can" 프레임워크.</b> LLM이 뽑은 스킬 유용성 확률과 가치함수의 affordance 확률을 곱해 <b>지금 실제 가능하고 유용한</b> 스킬을 매 스텝 선택하는 파이프라인. (출처: arXiv:2204.01691, PDF 렌더링)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2204.01691/p3.png" alt="SayCan 방법 도식 (page 3, 렌더링)" loading="lazy">
+      <figcaption><b>Method 개요 (p.3 렌더링).</b> 상단: 지시·히스토리 → 스킬 후보들의 LLM 스코어링. 하단: 각 스킬의 value function을 통한 affordance. 두 점수의 곱을 argmax하여 다음 액션을 선택. (출처: arXiv:2204.01691, PDF 렌더링)</figcaption>
+    </figure>
+    <div class="callout">
+      SayCan의 <b>핵심 수식은 매우 단순</b>하지만, 그 단순함이 강점: LLM 재학습 없이(=zero-shot) 임의의 스킬 라이브러리와 결합 가능하고, 스킬 라이브러리를 늘리면 곧바로 새 능력을 얻는다. 이후 로보틱스 LLM planner 계열의 사실상 표준 baseline이 됨.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2204.01691" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2204.01691" target="_blank">PDF</a></li>
+      <li><a href="https://say-can.github.io/" target="_blank">프로젝트 페이지 (영상·데모)</a></li>
+      <li><a href="https://github.com/google-research/google-research/tree/master/saycan" target="_blank">GitHub 코드</a></li>
+      <li>CoRL 2022 발표</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2204.01691 · SayCan · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>

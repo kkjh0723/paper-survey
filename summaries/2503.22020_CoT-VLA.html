@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CoT-VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Visual CoT</span>
+    <h1>CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models</h1>
+    <p class="authors">Qingqing Zhao, Yao Lu, Moo Jin Kim, Zipeng Fu, Zhuoyang Zhang 외 15인 · Stanford · NVIDIA · MIT · CVPR 2025</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2503.22020" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2503.22020" target="_blank">PDF</a>
+      <a href="https://cot-vla.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2503.22020</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Visual CoT</span>
+      <span class="t">Subgoal Image</span>
+      <span class="t">Hybrid Attention</span>
+      <span class="t">CVPR 2025</span>
+    </div>
+    <p class="meta">제출: 2025-03-27 · 백본 VILA-U 7B(discrete visual tokens) · action chunk 크기 10</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 VLA는 관찰→행동을 곧바로 매핑해 "왜 이렇게 움직여야 하는가"를 표현할 방법이 없다. CoT-VLA는 <b>먼저 미래 이미지 프레임(=서브골 이미지 ŝ<sub>t+n</sub>)을 autoregressive하게 예측하는 "visual chain-of-thought"</b>를 거친 뒤 그 서브골로 조건화된 <b>action chunk(길이 10)</b>를 생성한다. Text/Image는 causal + next-token, action은 full attention을 쓰는 <b>하이브리드 어텐션</b>으로 학습. 7B VILA-U 백본 기반. Real Franka에서 SOTA 대비 <b>+17%</b>, LIBERO 평균 <b>81.13%</b>(Long <span class="win">69.0</span>), simulation 벤치에서 <b>+6%</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>OpenVLA·RT-2 등 기존 VLA는 관찰과 언어에서 곧바로 discrete action token을 생성한다. 그러나 조작은 "무엇을 이룰지 → 어떻게 움직일지"의 <b>계층적 문제</b>다. LLM에서 chain-of-thought가 다단계 추론에 도움 되듯, VLA에도 <b>중간 시각적 계획(서브골 이미지)</b>이라는 CoT를 부여하면 특히 <b>다단계·언어 접지·물체 상호작용</b>에서 이득이 크다. 하지만 <b>full autoregressive 이미지+action</b> 구조는 지연이 커 로봇 실시간에 부적합 — CoT-VLA는 이미지는 AR로, action은 <b>bidirectional/chunked</b>로 뽑아 성능-속도를 동시에 잡는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Visual Chain-of-Thought VLA</b> — 관찰·언어 → <b>서브골 이미지(discrete visual token, 16×16×4)</b> AR 생성 → 그 위에서 action chunk를 예측하는 명시적 시각 추론 파이프라인.</li>
+      <li><b>하이브리드 어텐션</b> — 텍스트·이미지 토큰은 <b>causal + next-token</b>, action 토큰은 서로 <b>full attention</b>으로 한꺼번에 예측(=chunk를 병렬 생성). 정확도·지연 균형.</li>
+      <li><b>실측 성능 향상</b> — Franka Real-world <b>+17%</b>, Bridge-V2 시나리오별(visual/motion/semantic/language) 각 <b>50–70%</b> 성공, LIBERO 평균 <b>81.1%</b>(SOTA VLA 대비 +6%).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 & 토큰</h3>
+    <p>백본은 <b>VILA-U 7B</b>(unified vision-language, <b>discrete visual token 사용</b>, residual quantization). 이미지 1장 = 256×256을 <b>16×16×4 discrete token</b>으로 인코딩. Action은 7-DoF × 256 bin으로 <b>7 토큰 per action</b> discretization. Action chunk 크기 <b>K=10</b> (총 70 action token).</p>
+
+    <h3>Visual CoT (서브골 이미지 예측)</h3>
+    <p>주어진 관찰 o<sub>t</sub>와 언어 ℓ에서 먼저 <b>n 스텝 뒤 관찰의 discrete visual token 시퀀스</b>를 next-token으로 예측 → 이것이 <b>subgoal image ŝ<sub>t+n</sub></b>. 이 서브골이 "무엇을 달성해야 하는가"의 시각적 스케치가 되어 action 예측을 조건화. 학습 시 n은 (전문가 궤적에서) 미래 스텝을 sampling.</p>
+
+    <h3>하이브리드 어텐션</h3>
+    <p>토큰 시퀀스는 [text ℓ, image o<sub>t</sub>, subgoal ŝ<sub>t+n</sub>, action a<sub>t:t+K−1</sub>] 형태. 앞부분(text·image·subgoal)은 <b>strict causal + next-token</b>으로 AR 생성/학습. 마지막 action 블록은 <b>full attention</b>으로 서로 참조 가능 → K개 action이 한 번의 forward로 동시에 예측(chunk generation), 지연을 K배 절감.</p>
+
+    <h3>학습</h3>
+    <p>OpenX Embodiment의 다양한 데이터로 사전학습 → 각 태스크(LIBERO, Bridge-V2, Franka)에 파인튜닝. 손실은 표준 next-token CE(text·image·action 모두 discrete token).</p>
+
+    <h3>구현 요약</h3>
+    <div class="kv">
+      <div>백본</div><div>VILA-U 7B (unified VL, discrete image tokens)</div>
+      <div>이미지 토큰</div><div>256×256 → 16×16×4 (residual quantization)</div>
+      <div>서브골 예측</div><div>n-step 미래 관찰 프레임 AR 생성</div>
+      <div>Action</div><div>7-DoF × 256 bin, chunk 10, full attention</div>
+      <div>어텐션</div><div>text/image=causal, action block=bidirectional</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO (표: 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Spatial</th><th>Object</th><th>Goal</th><th>Long</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA (7B)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>~75</td></tr>
+        <tr><td><b>CoT-VLA-7B</b></td><td class="win">87.5 ±1.4</td><td class="win">91.6 ±0.5</td><td class="win">87.6 ±0.6</td><td class="win">69.0 ±0.8</td><td class="win">81.13 ±0.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">LIBERO 4개 suite 모두 SOTA. 특히 Long-horizon +큰 폭. OpenVLA 대비 평균 +6%.</p>
+
+    <h3>Bridge-V2 real-world (일반화 유형별, 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>일반화 유형</th><th>Visual</th><th>Motion</th><th>Semantic</th><th>Language grounding</th></tr></thead>
+      <tbody>
+        <tr><td>CoT-VLA</td><td class="win">65</td><td class="win">60</td><td class="win">50</td><td class="win">70</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">특히 <b>language grounding</b>(색·물체 지칭 정확히 따라가기)에서 큰 이득.</p>
+
+    <h3>Franka-Tabletop real-world</h3>
+    <p>다양한 실물 조작(pick·place·pour·wipe·open drawer 등) 평균 <b>+17%</b> vs SOTA VLA. 특히 다단계 지시(예: "빨간 컵을 집어서 파란 접시 위에 뒤집어 놓아")에서 서브골 시각화가 성공 여부를 크게 좌우.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Subgoal 제거</b>: LIBERO Long에서 성공률 급락 → 시각적 CoT가 <b>장기 계획</b>에 결정적.</li>
+      <li><b>Chunk size K</b>: K=1(스텝별)은 지연↑ + 성능도 감소, K=10이 정확도-지연 sweet spot.</li>
+      <li><b>Full attention (action block) → causal</b>로 바꾸면 chunk 내부 일관성이 떨어져 성공률 하락.</li>
+      <li><b>Discrete image token(VILA-U)</b>이 diffusion 서브골보다 학습·추론 파이프라인 단순 + 언어와의 joint AR에 유리.</li>
+      <li><b>서브골 horizon n</b>: 너무 가까우면 예측이 trivial, 너무 멀면 부정확. n≈5–10 스텝이 최적.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2503.22020/x1.png" alt="CoT-VLA 프레임워크 비교 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 프레임워크 비교.</b> 기존 VLA(관찰→행동 직접)와 달리 CoT-VLA는 미래 서브골 이미지를 AR 예측한 뒤 action chunk를 생성. 시각적 chain-of-thought로 다단계·언어 접지 강화. (출처: arXiv:2503.22020)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2503.22020/x2.png" alt="CoT-VLA 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 하이브리드 어텐션 아키텍처.</b> Text·image·subgoal은 causal + next-token, action block은 full attention으로 10-step chunk를 병렬 생성. VILA-U 7B 백본. (출처: arXiv:2503.22020)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 표(LIBERO)</b> — CoT-VLA-7B 평균 81.13%(Long 69.0). 서브골 CoT의 이득은 <b>Long-horizon suite</b>에서 특히 두드러진다. Real-world에서도 <b>+17%</b> 향상은 서브골 이미지가 언어 지시를 시각적으로 <b>anchor</b>한 결과로 해석.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2503.22020" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2503.22020" target="_blank">PDF</a></li>
+      <li><a href="https://cot-vla.github.io/" target="_blank">프로젝트 페이지 (video demos)</a></li>
+      <li>CVPR 2025 발표</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2503.22020 · CoT-VLA · 요약 생성 2026-07-27
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+</body>
+</html>
