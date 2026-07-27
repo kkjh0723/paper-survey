@@ -44,6 +44,12 @@
       "title": "FM-VLA: Force-based Memory for Vision-Language-Action Models in Contact-Rich Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2607.18231",
       "added": "2026-07-27"
+    },
+    {
+      "id": "2607.20771",
+      "title": "Emergent Compositional Skills in Mixture-of-Experts VLAs",
+      "arxiv_url": "https://arxiv.org/abs/2607.20771",
+      "added": "2026-07-27"
     }
   ],
   "dismissed": [
