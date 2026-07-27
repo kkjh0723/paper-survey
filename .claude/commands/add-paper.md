@@ -51,8 +51,11 @@ allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch
     <script>
     function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
     </script>
+    <script>
+    (function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+    </script>
     ```
-    (`.ask-btn` CSS는 템플릿 스타일 블록에 이미 포함돼 있다.)
+    (`.ask-btn`·figure 라이트박스(`.imgzoom-overlay`) CSS는 템플릿 스타일 블록에 이미 포함돼 있다.)
 - 수치·주장은 반드시 논문 근거에 기반한다. 모르면 지어내지 말고 해당 항목을 비운다.
 
 ### 핵심 figure 임베드
