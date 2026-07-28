@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Patch Policy — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Policy Learning · Dense Visual Features</span>
+    <h1>Patch Policy: Efficient Embodied Control via Dense Visual Representations</h1>
+    <p class="authors">Gaoyue Zhou, Zichen Jeff Cui, Ada Langford, Bowen Tan, Yann LeCun, Lerrel Pinto · New York University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.18236" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.18236" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2607.18236" target="_blank">HTML</a>
+      <a href="https://patch-policy.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.18236</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Dense ViT Features</span>
+      <span class="t">DINOv2 / WebSSL</span>
+      <span class="t">Block-Causal Attention</span>
+      <span class="t">Frozen Backbone</span>
+      <span class="t">Efficient Policy</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 20일 · 동결 ViT(DINOv2·WebSSL 등) + 정책 트랜스포머만 학습 · 51.55M 파라미터 · 1×L40S 6.5 GPU-hour</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사전학습 ViT의 <b>dense patch 토큰</b>을 <b>global pooling 없이</b> 그대로 정책에 먹이는 경량 조작 정책. 프레임 <b>내부는 양방향, 프레임 간은 causal</b>인 <b>block-causal attention</b>으로 공간 디테일과 시간 인과성을 동시에 확보. 동결 ViT + 작은 정책 트랜스포머만 학습해, global-pooled 표현 대비 <span class="win">+40%</span>, 파인튜닝 OpenVLA-OFT 대비 <span class="win">+18%</span>를 <b>파라미터 0.7%</b>(51.55M vs 7.61B)·지연 <b>10.99ms</b>(vs 61.71ms)로 달성. 실로봇 Cable Insertion 완전삽입 <span class="win">70%</span>(OpenVLA-OFT 30%), Tool Hanging <span class="win">90%</span>(65%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>ViT의 사전학습 <b>dense feature</b>는 강력하지만 로봇 학습에서 저활용돼 왔다. 현재 정책은 둘 중 하나로 치우친다: (1) 각 관찰을 <b>단일 global 토큰</b>(ResNet 풀링·ViT CLS)으로 압축 → <b>세밀한 공간 정보 소실</b>; (2) 수십억 파라미터 <b>VLM을 통째로 파인튜닝</b> → 막대한 연산 비용. 논문의 질문: "<b>대규모 비전 사전학습의 표현 이득을, 수십억 파라미터 생성 모델의 비용 없이 물려받을 수 있는가?</b>"</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Dense patch 토큰의 직접 활용</b> — 동결 ViT의 patch feature(예: 16×16×384)를 풀링 없이 정책에 공급, 조작에 필수적인 <b>세밀한 공간 밀도</b>를 보존.</li>
+      <li><b>Block-causal attention mask</b> — 프레임 내부는 <b>완전 양방향</b>으로 patch들이 서로 참조, 프레임 간에는 <b>causal 마스킹</b>으로 시간 인과성 유지. 표준 정책의 시간 구조를 깨지 않으면서 관찰당 다수 patch 토큰에 attend.</li>
+      <li><b>극한의 효율</b> — 동결 백본 + 작은 정책 트랜스포머만 학습. OpenVLA-OFT의 <b>0.7% 파라미터</b>, <b>~1/6 지연</b>, <b>1×L40S 6.5 GPU-hour</b>로 학습하면서 성능은 상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Observation Trunk (관찰 인코딩)</h3>
+    <p>이미지 관찰 o<sub>t</sub> ∈ ℝ<sup>C×H×W</sup>를 <b>동결 ViT</b>로 인코딩해 P×D 형태의 <b>patch feature</b>를 얻는다(P=patch 수, D=임베딩 차원). 길이 T의 컨텍스트 윈도우면 <b>T×P×D</b> 시퀀스가 된다. 목표 조건화는 <b>이미지 기반</b>(concat → T×P×2D)이나 <b>벡터 기반</b>(concat → T×P×(D+G)) 모두 지원. 멀티뷰(o<sub>t</sub><sup>view0</sup>, o<sub>t</sub><sup>view1</sup>)와 goal image/vector가 각각 ViT/Linear로 인코딩돼 하나의 토큰열 z<sub>t</sub>로 합쳐진다.</p>
+
+    <h3>Block-Causal Attention (핵심)</h3>
+    <p>feature를 T×P 길이 시퀀스로 펼치고 1D 위치 임베딩을 더한 뒤, <b>block-causal mask</b>를 적용:</p>
+    <ul>
+      <li><b>프레임 내부(intra-frame):</b> 같은 프레임의 patch들끼리 <b>완전 양방향</b> attention → 프레임 내 공간 정보 통합.</li>
+      <li><b>프레임 간(inter-frame):</b> <b>causal 마스킹</b> — 현재/과거 프레임 patch만 참조, 미래 프레임은 차단 → 정책의 시간 인과성 보존.</li>
+    </ul>
+    <div class="callout">
+      직관: CLS 하나로 압축하면 공간이 사라지고, 전 프레임 full-attention이면 시간 인과성이 깨진다. block-causal은 "프레임 안에서는 이미지를 넓게 보되, 프레임 사이에서는 미래를 못 보게" 하는 절충으로 두 이점을 모두 취한다.
+    </div>
+
+    <h3>비전 인코더 & 정책 헤드</h3>
+    <div class="kv">
+      <div>평가한 동결 백본</div><div>DINOv2(ViT-S/14, 16×16×384) · DINOv3 · WebSSL(16×16×1024) · V-JEPA 2(14×14×1024) · SigLIP 2(14×14×768)</div>
+      <div>학습 대상</div><div>인코더는 동결, <b>정책 트랜스포머만</b> 학습</div>
+      <div>정책 헤드</div><div>임의의 트랜스포머형 액션 예측기 호환 — 실험은 VQ-BeT, Diffusion Policy 사용</div>
+      <div>목적함수</div><div>행동 복제(BC) 손실 ℒ<sub>BC</sub></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>시뮬레이션 (4개 환경, 점수↑)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>표현 / 정책</th><th>BlockPush</th><th>Cube</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>WebSSL <b>CLS</b> (global-pooled)</td><td>0.77</td><td>0.23</td><td>단일 토큰 압축</td></tr>
+        <tr><td><b>Patch Policy</b> (WebSSL, VQ-BeT)</td><td class="win">1.68</td><td class="win">1.68</td><td>BlockPush +118%, Cube +631%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Push-T·LIBERO Goal 포함 4개 환경 전반에서 global-pooled 대비 큰 폭 상승, 파인튜닝 OpenVLA-OFT도 4개 환경 모두 상회. 평균적으로 global-pooled 대비 <b>+40% 상대 개선</b>.</p>
+
+    <h3>실로봇 (Franka arm, 3태스크, 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>Patch Policy</th><th>OpenVLA-OFT</th></tr></thead>
+      <tbody>
+        <tr><td>Cable Insertion (완전 삽입)</td><td class="win">70%</td><td>30%</td></tr>
+        <tr><td>Pen Collection (펜 3개)</td><td class="win">85%</td><td>60%</td></tr>
+        <tr><td>Tool Hanging</td><td class="win">90%</td><td>65%</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>효율 (Table 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>Patch Policy (DINOv2)</th><th>OpenVLA-OFT</th></tr></thead>
+      <tbody>
+        <tr><td>파라미터</td><td class="win">51.55M</td><td>7.61B (≈143배)</td></tr>
+        <tr><td>추론 지연</td><td class="win">10.99ms</td><td>61.71ms</td></tr>
+        <tr><td>학습 비용</td><td class="win">6.5 GPU-hour (1×L40S)</td><td>16 GPU-hour</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">파인튜닝 OpenVLA-OFT 대비 <b>+18% 성능</b>을 <b>0.7% 파라미터</b>로 달성. Small &amp; Effective / Fast &amp; Effective.</p>
+
+    <h3>제로샷 일반화</h3>
+    <p>실 Franka 물체 집기 <b>87%</b>(global-pooled CAP 79%). EgoGym pickup 79.50% / open 71.40% / close 92.44%로 각각 global-pooled(75.78 / 67.88 / 86.50)를 상회.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>공간 밀도가 핵심(Table 4):</b> 학습형 convolution으로 patch 해상도를 256→1로 압축하면 Push-T가 <b>0.69→0.48</b>로 급락. "원본 토큰의 세밀한 공간 밀도가 결정적"임을 확인.</li>
+      <li><b>attention mask(Table 12):</b> block-causal이 full-attention·token-causal과 같거나 우위. <b>full-attention은 태스크 인과성 위반</b>, token-causal은 Diffusion Policy에 프레임 맥락이 불충분(Cube 0.11 vs 1.24).</li>
+      <li><b>모델 크기(Table 13):</b> VQ-BeT·Diffusion Policy 모두 용량에 따라 일관 향상. Push-T coverage 0.50(4층)→0.57(6층)→0.69(8층).</li>
+      <li><b>인코더 선택(Figure 5):</b> <b>WebSSL·DINOv2가 최강</b>, SigLIP 2는 약함 — 언어-이미지 정렬을 우선해 조작에 필요한 <b>기하 특징</b>이 부족하다는 가설.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.18236/x1.png" alt="효율 대비 성능 · 인코더 비교 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 효율성 티저.</b> (좌) 모델 크기 vs 성공률: Patch Policy가 OpenVLA-OFT보다 훨씬 작으면서 더 높음(Small &amp; Effective). (중) 지연 vs 성공률: 더 빠르면서 더 높음(Fast &amp; Effective). (우) 동결 인코더별 평균 태스크 성능 — WebSSL·DINOv2 최상, SigLIP 2 최하. (출처: arXiv:2607.18236)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.18236/x2.png" alt="Patch Policy 구조도 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Patch Policy 구조.</b> (좌) Observation Trunk: 멀티뷰 관찰과 goal image/vector를 동결 ViT/Linear로 인코딩해 patch 토큰열 z<sub>t</sub> 구성. (우) Policy: T×P patch 토큰에 <b>frame-wise(block-causal) attention mask</b>를 적용, action head가 행동 복제 손실 ℒ<sub>BC</sub>로 액션 예측. (출처: arXiv:2607.18236)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.18236" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.18236" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.18236" target="_blank">HTML</a></li>
+      <li><a href="https://patch-policy.github.io" target="_blank">프로젝트 페이지</a></li>
+      <li>관련(이 사이트): <a href="2602.10098_VLA-JEPA.html">VLA-JEPA — V-JEPA2 dense 표현 활용</a></li>
+      <li>관련(이 사이트): <a href="2410.11758_LAPA.html">LAPA — latent action 사전학습</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.18236 · Patch Policy · 요약 생성 2026-07-28
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

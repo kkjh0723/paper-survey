@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>τ0-VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Hierarchical VLA · Test-Time Computation</span>
+    <h1>τ0-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation</h1>
+    <p class="authors">Xiaowei Cai, Jianlan Luo, Buqing Nie, Xiangyu Yue 외 40여 명 (알파벳순) · Agibot Finch · Shanghai Institute of Innovation · CUHK</p>
+    <div class="chips">
+      <a href="https://tau0-vla.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://tau0-vla.github.io/tau0-vla.pdf" target="_blank">PDF</a>
+      <span>arXiv 번호 미부여</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Hierarchical VLA</span>
+      <span class="t">World Model</span>
+      <span class="t">Test-Time Computation</span>
+      <span class="t">Beam Search</span>
+      <span class="t">Long-Horizon</span>
+    </div>
+    <p class="meta">High-level Qwen3.5-9B · Low-level Qwen3.5-2B + MoT action expert · 40,115시간 실세계 데이터</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>긴 호라이즌 조작에서 <b>상위 정책(subtask 생성)</b>을 한 번의 forward pass로 끝내지 않고, <b>월드모델 기반 test-time computation(TTC)</b>으로 여러 후보 subtask를 탐색·검증하는 계층형 로봇 파운데이션 모델. 상위 정책이 후보를 제안(P)하면 <b>월드모델(W)</b>이 실행 후 이미지를 상상하고 <b>가치모델(V)</b>이 진행도를 채점, <b>beam search</b>로 상위 분기만 남겨 깊이 D까지 확장한 뒤 <b>reflect & commit</b>. 40,115시간 데이터로 학습한 하위 VLA가 실행. 장기 태스크 평균 성공률 <span class="win">45%</span>(π0.5 22.5%, GR00T N1.7 2.5%), 분포 이탈(OOD) 다음-subtask 예측 정확도 <span class="win">74%</span>(Plan-Once 50%, Best-of-N 57.5%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>방 청소·요리·음료 준비 같은 <b>장기(long-horizon) 조작</b>은 수분~수시간에 걸친 <b>연속적 의사결정</b>을 요구한다. 로봇은 무엇이 끝났고 무엇이 남았는지 추론하고, 중간 결과를 검증하며 국소 실패를 복구해야 한다. 핵심은 "<b>잘못된 subtask 선택은 정밀한 모터 제어로도 되돌릴 수 없다</b>"는 점 — 로봇이 엉뚱한 subtask를 완벽하게 수행할 뿐이다.</p>
+    <p>대부분의 계층형 VLA는 이 <b>subtask 결정</b>을 매 스텝 <b>단일 forward pass</b>로 내려, 어렵거나 결정적인 선택에 <b>추가 연산을 배분할 메커니즘이 없다</b>. τ0-VLA는 상위 subtask 생성을 <b>연산량으로 확장 가능한 추론(compute-scalable inference) 문제</b>로 재정의한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>월드모델 유도 Test-Time Computation</b> — 상위 정책이 필요할 때만 후보 subtask를 탐색. 제안(VLM)→월드모델의 결과 예측→가치모델 채점→beam search→reflect&commit의 파이프라인으로, 추가 연산이 다음-subtask 예측 정확도를 실제로 끌어올림을 실증.</li>
+      <li><b>실행 메모리 기반 계층 구조</b> — 상위 정책이 관찰 정렬 실행 메모리 M<sub>t</sub>를 유지하며 언제 추가 연산을 쓸지 스스로 결정. 하위 VLA는 committed subtask를 여러 임바디먼트에서 실행.</li>
+      <li><b>대규모 다임바디먼트 파운데이션</b> — 40,115시간 이질적 실세계 데이터(원격조작·자율수집·UMI)로 멀티모달 공동학습. 장기 이동조작·정밀조작·교차 임바디먼트 일반화를 한 모델로 커버.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>계층 구조 개요</h3>
+    <p>매 논리적 추론 스텝에서 <b>상위 정책 µ</b>가 먼저 subtask z<sup>★</sup><sub>t</sub>를 생성하고, <b>하위 정책 π<sub>θ</sub></b>가 그 subtask를 조건으로 액션 청크를 생성한다. 상위 정책은 결정 맥락 h<sub>t</sub> = (ℓ, M<sub>t−1</sub>, z<sup>★</sup><sub>t−1</sub>, o<sub>t</sub>)를 구성 — 언어 지시 ℓ, 이전 실행 메모리 M<sub>t−1</sub>, 직전 subtask, 현재 관찰 o<sub>t</sub>. 그리고 (M<sub>t</sub>, z<sup>★</sup><sub>t</sub>) = µ(h<sub>t</sub>)로 메모리를 갱신하고 subtask를 낸다. subtask가 유지되면 실행을 이어가고, 바뀌면 새 subtask 실행을 시작.</p>
+
+    <h3>상위 정책 (High-Level Policy)</h3>
+    <p><b>Qwen3.5-9B</b> VLM. 멀티뷰 관찰 + 태스크 지시 + 실행 메모리 + 직전 subtask를 받아, <think> 추론과 함께 <b>갱신된 메모리</b> M<sub>t</sub>와 <b>직접 제안(direct proposal)</b> z<sup>dir</sup><sub>t</sub>를 산출. 여기서 <b>직접 제안에 곧장 commit</b>하거나, 어려운 결정이면 <b>추가 test-time computation을 호출</b>할 수 있다.</p>
+
+    <h3>월드모델 유도 TTC (핵심)</h3>
+    <p>TTC 경로에서는 각 유지 분기마다 제안 모델을 <b>N번</b> 호출해 N개 후보 subtask를 생성한다. 그 뒤:</p>
+    <ul>
+      <li><b>P (Propose)</b> — VLM이 후보 subtask 제안 (예: "Pick Up Spoon", "Place Cup", "Pick Up Cup").</li>
+      <li><b>W (World Model)</b> — 분기의 head-camera 이미지 + 후보를 받아 <b>실행 후 종단 head-camera 이미지</b>를 상상(예측).</li>
+      <li><b>V (Value Model)</b> — 태스크 지시·후보·예측 이미지를 조건으로 <b>후보 품질 점수</b>를 부여(예: 0.95 / 0.50 / 0.95).</li>
+      <li><b>Beam Search</b> — 누적 점수 기준 상위 <b>B개 분기</b>만 유지하고, 이를 재귀적으로 <b>깊이 D</b>까지 확장.</li>
+      <li><b>F (Reflect &amp; Commit)</b> — 깊이 D 후, 유지된 분기와 그 예측 결과를 근거로 <b>reflective 모델</b>이 다음 subtask를 최종 확정.</li>
+    </ul>
+    <div class="callout">
+      즉 TTC는 "제안 → 상상 → 채점 → 가지치기 → 반성"의 탐색이며, 연산 예산(PFLOPs/sample)을 늘릴수록 subtask 예측 정확도가 <b>단조 증가·포화</b>하는 test-time scaling 곡선을 보인다(그림 5).
+    </div>
+
+    <h3>하위 정책 (Low-Level Policy)</h3>
+    <p><b>Qwen3.5-2B</b> VLM 백본 + <b>MoT(Mixture-of-Transformers) action expert</b>. committed subtask, 멀티뷰 관찰 o<sub>t</sub>, 고유수용 상태 s<sub>t</sub>, 텍스트 제어 메타데이터 η를 조건으로, 노이즈 액션 청크에서 <b>조건부 flow matching</b>으로 액션 청크 a<sub>t:t+H−1</sub>를 생성.</p>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>학습 데이터</div><div>40,115시간 이질적 실세계 궤적 — 원격조작(Teleop) + 자율수집(Autonomous) + UMI 그리퍼 데이터</div>
+      <div>공동학습</div><div>멀티모달 co-training (사전학습 데이터 + 로봇 궤적)</div>
+      <div>상위/하위 백본</div><div>Qwen3.5-9B (상위) · Qwen3.5-2B + MoT (하위)</div>
+      <div>탐색 구성요소</div><div>Proposal(P) · World Model(W) · Value Model(V) · Reflective(F)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>장기 태스크 성능 (Table I · 태스크당 물리로봇 10회)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Clean Room</th><th>Prepare Ingr.</th><th>Tomato&amp;Egg</th><th>Make Milk Tea</th><th>Avg SR</th><th>Avg Progress</th></tr></thead>
+      <tbody>
+        <tr><td>GR00T N1.7</td><td>0/10</td><td>1/10</td><td>0/10</td><td>0/10</td><td>2.50%</td><td>45.29%</td></tr>
+        <tr><td>LingBot-VLA</td><td>0/10</td><td>0/10</td><td>0/10</td><td>0/10</td><td>0.00%</td><td>44.43%</td></tr>
+        <tr><td>π0.5</td><td>4/10</td><td>2/10</td><td>0/10</td><td>3/10</td><td>22.50%</td><td>73.05%</td></tr>
+        <tr><td>τ0-VLA (직접 실행)</td><td>4/10</td><td>2/10</td><td>0/10</td><td>5/10</td><td>27.50%</td><td>80.10%</td></tr>
+        <tr><td><b>τ0-VLA (계층+Plan Once)</b></td><td class="win">5/10</td><td class="win">4/10</td><td class="win">4/10</td><td class="win">5/10</td><td class="win">45.00%</td><td class="win">87.85%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">계층 시스템(Plan Once)이 직접 실행 대비 평균 성공률을 27.5%→45.0%로 끌어올림. 특히 Tomato&amp;Egg Stir Fry(22스텝) 같은 초장기 태스크에서 0/10 → 4/10.</p>
+
+    <h3>Test-Time Computation의 효과 (다음-subtask 예측 정확도)</h3>
+    <div class="callout">
+      OOD Book Organization 설정(초기 배치가 학습에 없음)에서 <b>TTC 74.0%</b> vs <b>Plan Once 50.0%</b> vs <b>Best-of-N 57.5%</b>. 분포 이탈로 단일 예측이 취약해질수록, 월드모델로 미래를 상상하고 가치모델로 채점하는 탐색이 크게 이득.
+    </div>
+    <p>그림 5: <b>연산량(PFLOPs/sample)↑ → 정확도↑·포화</b>. Make Milk Tea는 Plan Once 64.7%에서 추가 연산으로 상승, Book Organization은 Plan Once 55.3%에서 상승. 즉 상위 의사결정에 test-time scaling이 성립.</p>
+
+    <h3>교차 임바디먼트 직접 실행 (Table II)</h3>
+    <p>Collect Laundry, Tidy Makeup Table(지시추종 3그룹: T-shirt/Cotton Pad/Eyelash Curler/Makeup Puff) 등 서로 다른 임바디먼트·태스크를 상위 정책 없이 전체 지시로 직접 실행 — 단일 하위 VLA가 다양한 로봇에서 동작함을 확인.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>주요 관찰 · 분석</h2>
+    <ul>
+      <li><b>계층 + 탐색의 결합이 핵심:</b> 단순히 하위 VLA를 잘 만드는 것(직접 실행 27.5%)만으로는 부족하고, 상위 subtask 결정에 <b>월드모델 유도 탐색</b>을 얹을 때(45.0%) 초장기 태스크에서 급격한 이득.</li>
+      <li><b>분포 이탈에서 특히 강함:</b> in-domain보다 <b>OOD</b>에서 TTC의 상대 이득이 크다(74% vs Plan Once 50%). 학습 분포 밖 관찰에서 단일 예측이 흔들릴 때 상상·검증 탐색이 보정.</li>
+      <li><b>연산-정확도 트레이드오프가 부드러움:</b> 어려운 결정에만 연산을 더 쓰고 쉬운 결정은 직접 제안으로 처리 — 예산을 선택적으로 배분.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/tau0-VLA/fig1_overview.png" alt="τ0-VLA 전체 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — τ0-VLA 개요.</b> 상위 정책이 월드모델 유도 TTC로 subtask 시퀀스를 탐색: 각 확장 스텝에서 VLM이 후보(P)를 제안, 월드모델(W)이 시각 결과를 예측, 가치모델(V)이 진행도를 채점. beam search로 유망 분기를 남기고 reflective 모델이 다음 subtask를 확정. 선택된 subtask가 40,115시간 데이터로 학습된 하위 VLA를 조건화(그림은 N=3 단일 확장 예시). (출처: tau0-vla.github.io)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/tau0-VLA/fig2_arch.png" alt="τ0-VLA 계층 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 계층 아키텍처.</b> (a) 상위 정책: Qwen3.5-9B가 관찰·지시·메모리·직전 subtask로 갱신 메모리와 직접 제안 생성. (b) 하위 정책: Qwen3.5-2B + MoT action expert가 committed subtask를 조건으로 flow matching 액션 청크 생성. (c) TTC: 제안(P)→월드모델 상상(W)→가치모델 채점(V)→beam search 상위-B 유지→깊이 D까지 확장→reflect&commit. (출처: tau0-vla.github.io)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://tau0-vla.github.io/" target="_blank">프로젝트 페이지</a> · <a href="https://tau0-vla.github.io/tau0-vla.pdf" target="_blank">PDF</a></li>
+      <li>관련(이 사이트): <a href="2607.15275_RoboTTT.html">RoboTTT — VLA의 test-time training/context scaling</a></li>
+      <li>관련(이 사이트): <a href="2606.10267_Hi-VLA.html">Hi-VLA — 계층형 VLA 에이전트 체계 연구</a></li>
+      <li>관련(이 사이트): <a href="2602.10098_VLA-JEPA.html">VLA-JEPA — latent world model 기반 VLA</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    τ0-VLA (Agibot Finch) · 요약 생성 2026-07-28
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
