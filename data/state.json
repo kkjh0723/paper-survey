@@ -10,7 +10,14 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2607.19343",
+      "title": "Masked Visual Actions for Unified World Modeling",
+      "arxiv_url": "https://arxiv.org/abs/2607.19343",
+      "added": "2026-07-28"
+    }
+  ],
   "dismissed": [
     "2607.04978",
     "2405.15223",
@@ -19,5 +26,5 @@
     "2402.15391",
     "2607.21588"
   ],
-  "updated": "2026-07-27"
+  "updated": "2026-07-28"
 }
