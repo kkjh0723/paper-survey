@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Rofacto — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · World Model · Robot Rendering</span>
+    <h1>Robot-Factored World Models via Robot Rendering</h1>
+    <p class="authors">Byungjun Kim, Taeksoo Kim, Hyunsoo Cha, Hanbyul Joo · Seoul National University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.22535" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.22535" target="_blank">PDF</a>
+      <a href="https://bjkim95.github.io/rofacto/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/bjkim95/rofacto" target="_blank">GitHub</a>
+      <span>arXiv:2607.22535</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Model</span>
+      <span class="t">Video Diffusion</span>
+      <span class="t">URDF Rendering</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Wan 2.1</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 24일 · 백본 Wan 2.1 14B · 480×832, 81 프레임 · LoRA r=64</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Action-conditioned video world model에서 <b>액션→관측</b> 과정을 (i) 로봇 컨트롤러/기구학이 처리하는 <b>action realization</b>과 (ii) 씬 반응 예측으로 <b>분리(factor)</b>한 후, 앞 부분은 시뮬레이터의 URDF 렌더러로 뽑아 <b>렌더된 로봇 지오메트리 + EEF depth + 씬 depth</b>를 조건으로 넣는다. 이 인터페이스는 (a) 로봇 body 학습 부담을 제거하고 (b) 미래 관측을 컨디션에 안 흘려서 <b>정보 누출도 없다</b>. Wan 2.1 14B + LoRA로 DROID PSNR <span class="win">21.87</span>·LPIPS <span class="win">0.178</span>(vs AdaLN 18.57/0.224), RoboCasa-GR1 PSNR <span class="win">24.61</span>·LPIPS <span class="win">0.131</span>, unseen embodiment까지 zero-shot 일반화.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Action-conditioned 비디오 world model은 액션 a가 관측 o를 바꾸는 확률 p(o<sub>t+1</sub>|o<sub>t</sub>, a<sub>t</sub>)을 배운다. 그런데 이 사상은 실제로 두 단계로 분해된다: <b>(1) action realization</b> — 컨트롤러/기구학이 명령을 실제 로봇 body의 상태 시퀀스로 만드는 결정적(deterministic) 과정, <b>(2) scene response</b> — 로봇 body가 씬과 상호작용해 물체 반응이 일어나는 확률적 과정. 기존 방법들은 둘을 뭉뚱그려 처리해 두 실패 모드를 낳는다:</p>
+    <ul>
+      <li><b>Vector-conditioned (AdaLN 등)</b> — 로봇 body의 시공간 형상을 모델이 처음부터 배워야 하고, embodiment마다 재학습.</li>
+      <li><b>Future-state leakage</b> — 학습 중 미래 관측/실제 pose를 조건에 넣으면 모델이 상호작용 결과를 "미리 알고" cheating (배포 시에는 얻을 수 없음).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Robot-Factored 인터페이스</b> — 액션 a를 <b>nominal trajectory τ<sub>N</sub></b>(컨트롤러+기구학만으로 결정되는 씬-무관 로봇 궤적)으로 결정적으로 realize한 뒤, 이를 <b>URDF 렌더</b>로 시각화해 world model에 넣는다. World model은 이제 "씬 반응"만 배우면 된다.</li>
+      <li><b>Depth-aware 시각 조건화</b> — 렌더된 RGB에 <b>EEF depth + 씬 depth</b>를 함께 조건화해 2D 오버랩만으로는 애매한 접촉/가림을 해소.</li>
+      <li><b>Embodiment-agnostic + 누출 없음</b> — 시각 인터페이스는 로봇 종류·시점과 무관해 unseen embodiment에 zero-shot 일반화하고, 나아가 <b>사람 손 시연을 리타깃해 로봇 지오메트리로 렌더</b>하는 것만으로 human-to-robot 비디오 생성까지 지원.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>세 개의 결정론적 연산자</h3>
+    <div class="kv">
+      <div>Φ<sub>R</sub> (Realization)</div><div>액션 a → 컨트롤러/기구학 → nominal trajectory τ<sub>N</sub>. DROID는 teleop 명령을 Isaac Lab의 씬-free env에서 replay, RoboCasa-GR1은 DiT4DiT 액션을 collision-free shadow rollout으로 replay.</div>
+      <div>Π<sub>R</sub> (Robot render)</div><div>τ<sub>N</sub>을 URDF 메쉬로 카메라 좌표 렌더 → 로봇 RGB + EEF depth (link geometry·gripper shape 보존).</div>
+      <div>Π<sub>S</sub> (Static context)</div><div>초기 씬 상태를 로봇 없이 RGB+depth로 렌더. 예측 프레임 전반에 걸쳐 유지.</div>
+    </div>
+
+    <h3>Depth를 함께 넣는 이유</h3>
+    <p>RGB 렌더만으로는 로봇 EE와 물체가 카메라에서 겹쳐 보여도 <b>실제 접촉인지, 앞뒤로 얼마나 떨어져 있는지</b>를 모른다. EEF depth D<sup>eef</sup>와 씬 depth D<sup>scene</sup>를 함께 조건화하면 근접·접촉·가림 순서를 명시적으로 알려줄 수 있다.</p>
+
+    <h3>Backbone과 학습</h3>
+    <div class="kv">
+      <div>백본</div><div>Wan 2.1 14B (latent video diffusion). 사전학습된 video VAE 인코더가 모든 조건 스트림을 처리</div>
+      <div>주입</div><div>Patch embedding 확장으로 추가 조건 채널 삽입. Transformer에 <b>LoRA r=64, α=64</b> 부착</div>
+      <div>목적</div><div>Flow matching</div>
+      <div>해상도 / 프레임</div><div>480×832 픽셀, 81 프레임 @ 16 fps</div>
+      <div>보조 실험 백본</div><div>SVD 1.5B (192×320, DROID-only ablation)</div>
+    </div>
+
+    <div class="callout">
+      <b>왜 leakage-free인가:</b> τ<sub>N</sub>은 씬-무관하게 컨트롤러/기구학만으로 결정된다. 즉 배포 시에도 액션 명령만 있으면 얻을 수 있는 정보다. 반면 <b>실제 로봇 pose는 씬과의 상호작용 결과</b>라서 그것을 조건에 넣으면 미래를 부분적으로 유출한다. Robot rendering은 이 경계를 깨끗이 유지한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Wan 2.1 (480×832, 두 데이터셋 통합 학습)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th colspan="3">DROID</th><th colspan="3">RoboCasa-GR1</th></tr>
+      <tr><th></th><th>PSNR ↑</th><th>SSIM ↑</th><th>LPIPS ↓</th><th>PSNR ↑</th><th>SSIM ↑</th><th>LPIPS ↓</th></tr></thead>
+      <tbody>
+        <tr><td>AdaLN state vector (baseline)</td><td>18.57</td><td>0.824</td><td>0.224</td><td>17.67</td><td>0.835</td><td>0.194</td></tr>
+        <tr><td><b>Rendered mesh + depth (ours)</b></td><td class="win">21.87</td><td class="win">0.859</td><td class="win">0.178</td><td class="win">24.61</td><td class="win">0.889</td><td class="win">0.131</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">DROID(고정 외부 카메라, 로봇 팔)와 RoboCasa-GR1(에고센트릭, 휴머노이드) 모두에서 vector 조건 baseline을 큰 폭 상회. 특히 RoboCasa-GR1의 LPIPS 0.194 → 0.131로 −32%.</p>
+
+    <h3>SVD 1.5B (DROID-only, 192×320)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>PSNR ↑</th><th>SSIM ↑</th><th>LPIPS ↓</th></tr></thead>
+      <tbody>
+        <tr><td>Ctrl-World pose</td><td>23.15</td><td>0.884</td><td>0.104</td></tr>
+        <tr><td><b>Rendered mesh (ours)</b></td><td class="win">25.05</td><td class="win">0.899</td><td class="win">0.091</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Zero-shot embodiment (Figure 6) & Human-to-robot (Figure 7)</h3>
+    <p>학습 때 보지 못한 로봇 조합에도 렌더 인터페이스만 바꾸면 그럴싸한 씬 반응 예측. 사람 손 시연을 URDF 로봇 지오메트리로 리타깃 렌더하면 <b>사람 → 로봇 상호작용 비디오</b>도 생성 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (DROID)</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Variant</th><th>PSNR ↑</th><th>SSIM ↑</th><th>LPIPS ↓</th></tr></thead>
+      <tbody>
+        <tr><td>Raw action → mesh render</td><td>21.57</td><td>0.860</td><td>0.175</td></tr>
+        <tr><td>Nominal trajectory → mesh render</td><td>22.44</td><td>0.872</td><td>0.164</td></tr>
+        <tr><td><b>Nominal + EEF/scene depth (full)</b></td><td class="win">23.08</td><td class="win">0.874</td><td class="win">0.161</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">두 factoring 요소가 모두 기여: (1) raw → nominal 궤적으로 realization을 결정론적 파이프로 정리하면 이득, (2) 여기에 depth를 붙이면 접촉·가림 애매성 해소로 또 이득. LPIPS 0.175 → 0.164 → 0.161로 단계적 개선.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.22535/x1.png" alt="Rofacto 시각 world-model 인터페이스 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Robot-factored visual interface.</b> 정적 씬 컨텍스트 + nominal 로봇 궤적을 URDF로 렌더한 RGB·EEF depth를 조건으로 넣어 world model이 씬 반응만 예측하도록 만든다. Vector-conditioned 방식과 달리 embodiment-agnostic. (출처: arXiv:2607.22535)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.22535/x3.png" alt="정성적 비교 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Qualitative comparison.</b> AdaLN state vector 대비 rendered mesh + depth 방식이 로봇 body 형상·접촉·가림을 훨씬 정확하게 예측함. (출처: arXiv:2607.22535)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 2 (DROID/RoboCasa-GR1 결과)</b> — Rendered mesh + depth가 vector 조건 baseline을 두 도메인 모두에서 상회 (LPIPS 0.224 → 0.178, 0.194 → 0.131).<br>
+      <b>Table 3 (Ablation)</b> — raw action → nominal trajectory → +depth 순으로 단계적 개선. Factoring의 각 축이 개별 기여.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.22535" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.22535" target="_blank">PDF</a></li>
+      <li><a href="https://bjkim95.github.io/rofacto/" target="_blank">프로젝트 페이지 (bjkim95.github.io/rofacto)</a></li>
+      <li><a href="https://github.com/bjkim95/rofacto" target="_blank">GitHub 코드 (bjkim95/rofacto)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.22535 · Rofacto · 요약 생성 2026-07-28
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

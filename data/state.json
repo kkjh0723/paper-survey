@@ -10,20 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2607.19343",
-      "title": "Masked Visual Actions for Unified World Modeling",
-      "arxiv_url": "https://arxiv.org/abs/2607.19343",
-      "added": "2026-07-28"
-    },
-    {
-      "id": "2607.22535",
-      "title": "Robot-Factored World Models via Robot Rendering",
-      "arxiv_url": "https://arxiv.org/abs/2607.22535",
-      "added": "2026-07-28"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

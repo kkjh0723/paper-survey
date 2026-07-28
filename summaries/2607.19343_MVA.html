@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MVA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Video World Model · VLA</span>
+    <h1>Masked Visual Actions for Unified World Modeling</h1>
+    <p class="authors">Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang · Stanford · University of Maryland College Park · Harvard</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.19343" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.19343" target="_blank">PDF</a>
+      <a href="https://masked-visual-actions.github.io" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/HadiZayer/masked-visual-actions" target="_blank">GitHub</a>
+      <span>arXiv:2607.19343</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Video World Model</span>
+      <span class="t">Masked Actions</span>
+      <span class="t">Forward/Inverse</span>
+      <span class="t">DROID</span>
+      <span class="t">Wan-Fun</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 21일 · 백본 Wan-Fun-Control 2.2 14B · 8× H200, LoRA r=256, 약 4일</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>액션을 <b>픽셀 공간 안의 부분적으로 노출된 궤적 영상</b>(masked visual action)으로 표현해, 사전학습된 비디오 모델을 그대로 <b>robotic world model</b>로 쓸 수 있게 한 통합 인터페이스. 같은 체크포인트가 <b>forward(로봇 → 장면 반응 예측)</b>와 <b>inverse(원하는 물체 움직임 → 로봇 동작 회수)</b>를 모두 zero-shot으로 수행한다. DROID·시뮬레이션의 <b>단 15시간</b> 마스크 예시로 LoRA(r=256) 파인튜닝만 하고도 DROID LPIPS <span class="win">0.0945</span> (Ctrl-World 0.362 대비 −73%), 정책 평가에서 실제와 상관 <span class="win">r=0.982</span>, 새 embodiment 일반화까지 달성.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>비디오 생성 모델은 강력한 시각 prior와 물리 감각을 이미 갖고 있지만, 이를 로봇 world model로 쓰려면 <b>액션 조건화</b> 방식이 문제다. 기존 접근은 (a) low-dim end-effector 상태를 concat/AdaLN으로 주입하거나, (b) 스켈레톤·6D pose 등 별도 표현을 배우는데, 이 signals는 <b>사전학습된 비디오 모델의 native 표현(픽셀 공간)과 mismatch</b>가 있어 새 embodiment·새 뷰포인트로 잘 옮겨가지 않고 학습 데이터도 많이 필요하다.</p>
+    <p>또한 world model의 두 방향성 — 미래 예측(forward)과 desired outcome으로부터 동작 회수(inverse) — 는 통상 <b>별도로 학습</b>되어야 하는데, 둘 다 "장면의 시공간적 인과관계"를 필요로 한다는 점에서 <b>하나의 표현으로 통합</b>할 수 있다는 게 저자들의 통찰이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Masked Visual Actions</b> — 액션을 "임의 개체(entity)의 부분적으로 노출된 시공간 궤적"으로 정의. 마스크 M∈{0,1}<sup>T×H×W</sup>와 참조 프레임 I₀로부터 <b>p<sub>θ</sub>(V | M⊙V, I₀)</b> 를 학습해 픽셀 공간에서 조건화가 완결.</li>
+      <li><b>Forward & Inverse 통합</b> — 어떤 entity를 "revealed"로 조건화하느냐만 바꾸면 같은 모델이 forward(로봇 노출→장면 예측)와 inverse(물체 노출→로봇 동작 예측)를 zero-shot으로 수행. 별도 학습 불필요.</li>
+      <li><b>15시간 데이터로 사전학습 비디오 모델 적응</b> — 세그멘테이션 기반(DROID + SAM)과 URDF 렌더 기반의 두 마스크 생성 파이프라인. Wan-Fun-Control 2.2 14B에 LoRA(r=256)만 얹어 4일 학습으로 DROID 기준 SOTA·새 embodiment 일반화까지 달성.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>표현: masked visual action</h3>
+    <p>비디오 V∈ℝ<sup>T×H×W×3</sup>, 마스크 M∈{0,1}<sup>T×H×W</sup>에 대해 모델 입력은 <b>M⊙V</b>(공개된 픽셀만 남기고 나머지는 균일 회색). 참조 이미지 I₀와 함께 넣으면 모델은 나머지 마스크된 영역을 채워 넣도록 학습된다. 마스크가 로봇만 덮으면 forward, 물체만 덮으면 inverse가 된다.</p>
+
+    <h3>백본과 조건화</h3>
+    <div class="kv">
+      <div>백본</div><div>Wan-Fun-Control 2.2 14B (사전학습된 video diffusion / I2V 계열)</div>
+      <div>파인튜닝</div><div>LoRA rank 256 (backbone 동결 + 저랭크 어댑터)</div>
+      <div>주입 방식</div><div>M⊙V를 채널 concat으로 공간 정렬해 조건화. 미공개 픽셀은 uniform gray</div>
+      <div>학습</div><div>batch 4 × 8 H200, 약 10,000 step / 4일</div>
+    </div>
+
+    <h3>마스크 데이터 구축 (두 파이프라인)</h3>
+    <ul>
+      <li><b>Segmentation 기반</b> — DROID 실측 영상에 SegmentAnything를 "robotic arm" 프롬프트로 돌려 각 프레임의 로봇 실루엣 마스크 획득. 실제 로봇 픽셀을 그대로 노출.</li>
+      <li><b>URDF 렌더 기반</b> — 로봇 상태(관절각)와 URDF 메쉬를 카메라 좌표에 맞춰 렌더링해 <b>합성 로봇 실루엣</b>을 만든다. RoboCasa 시뮬레이션 데이터에서 4,000 예시 확보. Cross-embodiment 학습에 유리.</li>
+    </ul>
+    <p>총 학습 데이터: DROID demonstrations 약 <b>1,000개</b> + Robocasa <b>4,000</b> 예시 ≈ 15시간 상당. 이 양으로 14B 비디오 모델을 world model로 전환.</p>
+
+    <h3>Forward vs Inverse</h3>
+    <div class="callout">
+      같은 학습 목적 하나로 두 방향을 얻는다: 로봇 마스크만 조건에 넣으면 → forward dynamics (씬 반응 생성), 물체 마스크만 넣으면 → inverse (관측된 물체 움직임을 만들 수 있는 로봇 동작을 픽셀로 합성). Inverse의 결과는 렌더된 로봇 실루엣이므로, 별도의 <b>video-to-action</b> 회귀(간단한 CNN+MLP)로 실제 joint action을 뽑아낼 수 있다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Video reconstruction quality (Table 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Dataset</th><th>LPIPS ↓</th><th>SSIM ↑</th><th>PSNR ↑</th></tr></thead>
+      <tbody>
+        <tr><td>DROID (Ctrl-World 참고)</td><td>0.362</td><td>—</td><td>—</td></tr>
+        <tr><td><b>DROID (Ours)</b></td><td class="win">0.0945</td><td class="win">0.887</td><td class="win">23.74</td></tr>
+        <tr><td><b>BEHAVIOR (Ours)</b></td><td>0.123</td><td>0.843</td><td>22.90</td></tr>
+        <tr><td><b>Real-world (Ours)</b></td><td>0.148</td><td>0.864</td><td>22.79</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Ctrl-World 대비 DROID LPIPS 0.362 → 0.0945 (약 −73%). 시뮬·실세계 모두 단일 체크포인트에서 안정적.</p>
+
+    <h3>Policy evaluation (그림 9) — 실제와의 상관</h3>
+    <p>RoboCasa 상에서 여러 정책을 world model이 imagined rollout으로 시뮬레이션 → task 진행률 스코어를 VLM으로 평가. 실제 성공률과의 상관 <b>r = <span class="win">0.982</span></b>. 정책들의 순위·상대 성능을 실제 롤아웃 없이 안정적으로 예측. (미세한 positive bias 존재.)</p>
+
+    <h3>Planning (그림 8) — best-of-N 롤아웃 랭킹</h3>
+    <p>초기 이미지에서 N=10 개의 자유 궤적을 모델로 상상한 뒤 VLM 스코어로 최선을 선택 → 실 로봇에 실행. 다양한 태스크에서 baseline 대비 성공률 개선.</p>
+
+    <h3>Action extraction (그림 11) — inverse의 실용</h3>
+    <p>사용자가 물체의 목표 궤적만 보여주면 모델이 그에 맞는 로봇 실루엣 비디오를 생성 → 간단한 video-to-action 회귀로 실 joint 명령 회수. <b>CoffeeServeMug</b> 태스크에서 <span class="win">90%</span> 성공률, Diffusion Policy·ACT·SmolVLA와 경쟁적. 태스크별 비디오 모델 재학습 불필요.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (Table 2, 그림 7)</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Conditioning</th><th>DROID LPIPS</th><th>Real LPIPS</th><th>BEHAVIOR LPIPS</th></tr></thead>
+      <tbody>
+        <tr><td>End-effector 3D 시각화</td><td>0.107</td><td>0.183</td><td>0.171</td></tr>
+        <tr><td>Skeleton 시각화</td><td>0.106</td><td>0.169</td><td>0.162</td></tr>
+        <tr><td><b>Masked actions (ours)</b></td><td class="win">0.0945</td><td class="win">0.148</td><td class="win">0.123</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Sparse signal(EE·skeleton)은 훈련에서 못 본 embodiment/뷰포인트에 특히 취약. Masked actions는 픽셀 공간 signal이라 <b>정보량이 자연스럽게 매치</b>되어 gracefully 일반화. 새 grippers·bimanual·심지어 orangutan movement 같은 OOD action도 그럴싸하게 재현.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.19343/x1.png" alt="Masked Visual Actions 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Masked visual actions as a unified interface.</b> 참조 프레임 + 로봇/물체 영역만 부분 노출된 비디오를 조건으로 넣으면 사전학습된 비디오 모델이 그대로 world model이 된다. 로봇을 노출하면 forward(장면 반응), 물체를 노출하면 inverse(로봇 동작 회수). (출처: arXiv:2607.19343)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.19343/x3.png" alt="세 가지 응용: policy evaluation, planning, action extraction (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Three applications.</b> 단일 체크포인트로 (i) 정책 평가(상상 롤아웃 → 순위), (ii) best-of-N 계획(N 궤적 상상 → VLM 랭킹), (iii) 물체 목표만으로부터의 action extraction까지 커버. (출처: arXiv:2607.19343)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (Reconstruction)</b> — DROID/BEHAVIOR/실세계에서 LPIPS 각각 0.0945/0.123/0.148. Ctrl-World 0.362 대비 큰 폭 감소. <br>
+      <b>Table 2 (Conditioning ablation)</b> — Masked actions가 sparse EE/skeleton 대비 세 도메인 모두에서 우위, 새 embodiment로의 이전에서 gap이 더 커진다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.19343" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.19343" target="_blank">PDF</a></li>
+      <li><a href="https://masked-visual-actions.github.io" target="_blank">프로젝트 페이지 (masked-visual-actions.github.io)</a></li>
+      <li><a href="https://github.com/HadiZayer/masked-visual-actions" target="_blank">GitHub 코드 (HadiZayer/masked-visual-actions)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.19343 · MVA · 요약 생성 2026-07-28
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
