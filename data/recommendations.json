@@ -1,10 +1,64 @@
 {
-  "generated": "2026-07-28",
+  "generated": "2026-07-29",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.24744",
+          "title": "Data Pyramid for Embodied Manipulation",
+          "authors": "Yifan Ye, Yankai Fu, Yaoxu Lv, Bohan Hou, Jun Cen · arXiv:2607.24744",
+          "summary_ko": "실물 로봇 데이터·시뮬레이션·vision-language 자원을 계층 피라미드로 조직화해 임보디드 파운데이션 모델의 사전학습 데이터 구성을 정식 분석. 각 계층의 조합이 perception·reasoning·action generation 능력에 어떻게 영향을 미치는지 추적하고, tactile 데이터셋 부족·실패 복구 데이터 부재·cross-embodiment 액션 정렬 등 여섯 가지 오픈 과제를 도출한다. GR00T가 '데이터 피라미드'라는 은유를 처음 던졌다면 이 논문은 그것을 체계적 프레임워크로 확장한 첫 시도.",
+          "tags": [
+            "Data Pyramid",
+            "Embodied Foundation Model",
+            "Data Curation",
+            "Cross-Embodiment Data",
+            "Scaling Analysis"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.24744",
+          "extra_url": "",
+          "date": "2026-07-27",
+          "reason": "컬렉션의 GR00T-1(2503.14734)이 던진 'Data Pyramid' 은유를 정식 분석 프레임워크로 확장한 정통 후속. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI+스케일링)·Xiaomi-U0(2607.11643, 38B world foundation)·좋아요한 WALA(2607.11397)의 사전학습 스택이 모두 이 피라미드의 어느 계층을 얼마나 쌓느냐로 재해석 가능하다. 컬렉션의 RT-X(2310.08864, 이질 데이터)·MimicGen(2310.17596, 합성 데이터)·pool의 AXIS(2607.21588 dismissed)·HPT(2409.20537)·오늘 rec의 HumanPlus(2406.10454)까지 서로 다른 데이터 소스 논문들을 하나의 좌표계로 배치할 수 있게 해준다. 특히 저자들이 지적한 6개 오픈 과제 중 tactile·failure recovery·cross-embodiment action alignment는 각각 좋아요한 FM-VLA(2607.18231)·좋아요한 GaP(2607.05369)의 self-learning·pool의 Robot-Factored WM(오늘 index 진입)·ViTacWorld(2607.22530)와 정확히 대응 — 컬렉션이 이미 그 축들을 실증하고 있어 이 논문이 메타-지도 역할을 한다.",
+          "rec_date": "2026-07-29"
+        },
+        {
+          "id": "2607.24159",
+          "title": "DeVA: Decoupled Video-Action Model with physical guidance for robot policy learning",
+          "authors": "Mengqi Zhang, Sahil Khose, Simar Kareer, Yuchen Song, Unnat Jain · arXiv:2607.24159",
+          "summary_ko": "비디오와 액션 예측을 두 개의 전문가 브랜치로 분리하고 그 사이 multi-level feature transfer로 연결한 아키텍처. 특징 학습에는 affordance·depth 같은 물리적으로 유의미한 신호를 감독으로 붙여 데이터 효율을 크게 개선. 통합 아키텍처보다 수렴이 빠르고 시뮬레이션·실기에서 강한 성능을 낸다. 'video-action을 한 몸으로 뭉치지 말고 분리하되 물리 감독으로 정렬한다'는 관점 전환.",
+          "tags": [
+            "Decoupled Video-Action",
+            "Physical Guidance",
+            "Affordance Supervision",
+            "Depth Supervision",
+            "Data Efficiency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.24159",
+          "extra_url": "",
+          "date": "2026-07-27",
+          "reason": "오늘 index에 추가된 Robot-Factored WM(2607.22535)의 '무엇을 world model 밖으로 분리할까' 사상의 액션 축 버전 — 그쪽이 로봇 geometry를 factoring했다면 DeVA는 video-action 자체를 factoring하고 물리 감독으로 재정렬한다. 컬렉션의 FlowWAM(2607.13017, optical-flow dual-stream)·LingBot-VA(2607.08639, video-action MoE)·ACWM(2607.09185)의 dual-stream/MoE 계보의 다음 좌표. 좋아요한 WALA(2607.11397, DINOv3+depth 잠재)와 특히 짝 — WALA는 depth를 latent에 흡수했다면 DeVA는 depth를 명시적 감독 신호로 사용한다. affordance 감독은 컬렉션의 RynnBrain 1.1(2607.17977, contact prediction+3D grounding)·pool의 POT-VLA(2607.18016, persistent 3D tokens)와 계보상 연결. 좋아요한 GaP(2607.05369)의 그래프 구조·pool의 Masked Visual Actions(오늘 index 진입)의 픽셀=액션과 함께 '정책 아키텍처를 어떻게 구조화할까' 축의 새 좌표.",
+          "rec_date": "2026-07-29"
+        },
+        {
+          "id": "2607.23602",
+          "title": "Action from Adjacent Set in Physical Space Outperforms the Best Prediction in World Models",
+          "authors": "Liangyu Li, Qingwen Liu, Mingqing Liu · arXiv:2607.23602",
+          "summary_ko": "World model 기반 controller의 근본 실패 모드 — residual prediction error 때문에 실현 불가능한 시퀀스가 이상하게 낮은 cost를 받는 proposal overgeneration —를 정면으로 지적. 해법 ASAR(Adjacent Set Action Reconstruction)은 최소 cost 하나를 뽑는 대신 낮은 cost 후보들의 밀도를 재어 인접 집합에서 시퀀스를 재구성한다. 큐브 조작 태스크에서 proposal pool 크기·cost 함수를 바꿔가며 이벤트 완료 성공률 최대 28%p 개선. WM planning의 방법론을 'best 하나 선택'에서 '집합 기반 재구성'으로 전환.",
+          "tags": [
+            "World Model Planning",
+            "Proposal Overgeneration",
+            "Adjacent Set",
+            "Cost Function",
+            "Planning Failure Mode"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.23602",
+          "extra_url": "",
+          "date": "2026-07-26",
+          "reason": "컬렉션 2607.17454(WAM Test-Time Scaling, Best-of-N + Geometry FM gating)의 정확한 대칭·비판적 짝 — 그쪽이 'best 하나를 잘 고르기'였다면 ASAR은 'best 하나를 고르는 것 자체가 잘못'이라고 지적한다. pool의 Koopman Dreamer(2607.19719, 롤아웃 안정화)·KineBench(2607.19876, IDM-free 평가)와 3부작을 이룬다: Koopman이 '롤아웃을 안정적으로 만들자', KineBench가 '올바른 척도로 평가하자', ASAR이 '롤아웃 사용 방식을 바꾸자'. 컬렉션의 WAM 라인 전체(FlowWAM 2607.13017·LingBot-VA 2607.08639·ACWM 2607.09185·BadWAM 2607.15207·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643·오늘 index의 Robot-Factored WM·Masked Visual Actions)가 자기도 모르게 안고 있는 planning 실패 모드를 드러낸다. 좋아요한 Harness-VLA(2607.08448)·GaP(2607.05369)의 primitive/graph 조합에도 '어느 후보를 실행할까'라는 같은 질문이 걸리므로 즉시 적용 가능. 저자 3인의 소논문이지만 진단이 매우 날카롭다.",
+          "rec_date": "2026-07-29"
+        },
         {
           "id": "2607.22530",
           "title": "ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation",
@@ -20,25 +74,7 @@
           "arxiv_url": "https://arxiv.org/abs/2607.22530",
           "extra_url": "",
           "date": "2026-07-24",
-          "reason": "좋아요한 FM-VLA(2607.18231)의 정확한 다음 세대 — FM-VLA가 힘 히스토리를 VAE로 토큰화해 VLA에 얹었다면 ViTacWorld는 그 힘·촉각 modality를 world model 층까지 확장해 롤아웃 생성·평가 인프라로 만든다. 컬렉션의 WAM 라인(FlowWAM 2607.13017·LingBot-VA 2607.08639·BadWAM 2607.15207·ACWM 2607.09185·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643)이 모두 '시각 world model'이었다면 이 논문은 첫 '촉각을 포함한 world model'. 오늘 함께 rec하는 Robot-Factored WM(2607.22535)과 짝을 이룬다: 그 논문이 '시각 축으로 어떤 신호를 외부화할까'라면 ViTacWorld는 '어떤 새 modality를 내부화할까'. pool의 WorldScape 2.0(2607.18840, reasoning 메모리)·Masked Visual Actions(2607.19343, 픽셀=액션)의 인터페이스 확장 축을 촉각 축으로 옮긴 것이라 표현 축에서 완전히 새 좌표를 놓는다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 실기 접촉 스킬 스케일링에도 즉시 결합 가능.",
-          "rec_date": "2026-07-28"
-        },
-        {
-          "id": "2607.22535",
-          "title": "Robot-Factored World Models via Robot Rendering",
-          "authors": "Byungjun Kim, Taeksoo Kim, Hyunsoo Cha, Hanbyul Joo · Seoul National Univ. · arXiv:2607.22535",
-          "summary_ko": "action-conditioned video world model의 근본 문제 — 액션 명령으로 조건화하면 '액션→로봇 모션 실현'까지 world model이 배워야 하고, 미래 상태로 조건화하면 예측해야 할 상호작용 결과를 누출한다 — 를 정면으로 짚는다. 해법은 로봇 특유의 두 요소를 world model 밖으로 factoring하는 것: (1) 액션 실현은 로봇 컨트롤러/kinematics로 nominal trajectory로 롤아웃하고, (2) 그 trajectory를 URDF로 렌더링해 로봇 geometry를 명시적 픽셀로 만든 뒤 씬 depth와 짝지어 입력에 넣는다. 뷰포인트·임보디먼트에 일관된 '렌더된 로봇 geometry'가 공유 인터페이스가 되어 임보디먼트 이전과 인간 데모 리타게팅까지 가능.",
-          "tags": [
-            "Robot-Factored WM",
-            "Robot Rendering",
-            "Cross-Embodiment",
-            "Action Realization",
-            "URDF Interface"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.22535",
-          "extra_url": "",
-          "date": "2026-07-24",
-          "reason": "컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643)과 Cross-Embodiment 라인(2310.08864 RT-X·2606.15631·2606.17846·2607.03570)이 만나는 지점의 새 좌표. WAM 논문들이 자기도 모르게 '액션 실현 + 씬 응답'을 한 모델에 뭉뚱그렸다면, 이 논문은 그 둘을 URDF 렌더링으로 분리해 world model이 '오브젝트 응답만' 배우게 만든다. 오늘 함께 rec하는 ViTacWorld와 정확한 짝 — 이쪽은 시각 축에서 '무엇을 외부화할까'를 답하고, ViTacWorld는 촉각 축에서 '무엇을 내부화할까'를 답한다. pool의 Koopman Dreamer(2607.19719)와도 짝: Koopman이 '표현 공간에서 안정성 제약'이라면 이 논문은 '표현에 들어오기 전 액션을 URDF로 grounding'. 좋아요한 GaP(2607.05369)의 graph-as-policy처럼 정책 구조를 명시화하는 흐름의 world model 버전이라 계보상 자연스럽다. 인간 데모→로봇 리타게팅이 되면 좋아요한 Xiaomi-Robotics-1(2607.15330)의 실기 데이터 확장 인프라와 직결.",
+          "reason": "좋아요한 FM-VLA(2607.18231)의 정확한 다음 세대 — FM-VLA가 힘 히스토리를 VAE로 토큰화해 VLA에 얹었다면 ViTacWorld는 그 힘·촉각 modality를 world model 층까지 확장해 롤아웃 생성·평가 인프라로 만든다. 컬렉션의 WAM 라인(FlowWAM 2607.13017·LingBot-VA 2607.08639·BadWAM 2607.15207·ACWM 2607.09185·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643)이 모두 '시각 world model'이었다면 이 논문은 첫 '촉각을 포함한 world model'. 오늘 index에 진입한 Robot-Factored WM(2607.22535)과 짝을 이룬다: 그 논문이 '시각 축으로 어떤 신호를 외부화할까'라면 ViTacWorld는 '어떤 새 modality를 내부화할까'. pool의 WorldScape 2.0(2607.18840, reasoning 메모리)·오늘 index의 Masked Visual Actions(2607.19343, 픽셀=액션)의 인터페이스 확장 축을 촉각 축으로 옮긴 것이라 표현 축에서 완전히 새 좌표를 놓는다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 실기 접촉 스킬 스케일링에도 즉시 결합 가능.",
           "rec_date": "2026-07-28"
         },
         {
@@ -166,24 +202,6 @@
           "date": "2026-07-20",
           "reason": "컬렉션의 휴머노이드 축(2607.15163 Behavior Foundation Model, 2503.14734 Humanoid VLA, 2607.17977 RynnBrain 1.1)과 3D grounding 축(2607.11498 pointmap, 2607.17977의 3D alignment)의 교집합 지점을 정면으로 채운다. 좋아요한 WALA(2607.11397)가 latent action + depth로 관측 표현을 강화했다면, POT-VLA는 오브젝트를 시간 축에 걸쳐 identity-persistent하게 유지하는 표현 층을 추가한다. 좋아요한 Harness-VLA(2607.08448)의 primitive-library, GaP(2607.05369)의 graph-as-policy와도 상보적 — 이 둘이 '스킬 조합'이라면 POT는 '스킬의 대상이 되는 오브젝트 상태 지속성'을 보장한다. 컬렉션 어제 rec으로 언급됐던 개념을 정식 pool에 편입하는 것이라 계보상으로도 자연스럽다.",
           "rec_date": "2026-07-25"
-        },
-        {
-          "id": "2607.19343",
-          "title": "Masked Visual Actions for Unified World Modeling",
-          "authors": "Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang · Stanford · arXiv:2607.19343",
-          "summary_ko": "'action'을 픽셀 공간에서 임의 오브젝트의 부분적으로 드러낸 궤적으로 표현하는 통일된 인터페이스. 드러낸 부분이 무엇이냐에 따라 같은 비디오 모델이 forward dynamics predictor(다음 프레임 예측)로도, inverse model(액션 추론)로도 자연스럽게 동작한다. 단 15시간짜리 masked 데모만으로 파인튜닝해도 다양한 씬과 임보디먼트에 잘 이전되며, policy evaluation·planning·inverse modeling 세 가지에 그대로 쓴다. '픽셀 = 액션'이라는 극단적으로 단순한 표현으로 world modeling과 policy learning의 인터페이스를 하나로 통합하려는 시도.",
-          "tags": [
-            "Unified World Model",
-            "Pixel-Space Action",
-            "Masked Video",
-            "Cross-Embodiment",
-            "Policy Evaluation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.19343",
-          "extra_url": "https://masked-visual-actions.github.io",
-          "date": "2026-07-21",
-          "reason": "컬렉션의 WAM(World-Action Model) 라인 — FlowWAM(2607.13017, optical-flow dual-stream), LingBot-VA(2607.08639, video-action MoE), BadWAM(2607.15207, adversarial WAM), ACWM(2607.09185, latent action WAM) — 과 좋아요한 WALA(2607.11397, latent action + world model), Xiaomi-U0(2607.11643, world foundation) 전체의 표현 문제를 정면으로 재정의한다. 이 논문들이 각자 '어떤 잠재 action 표현이 좋은가'를 다뤘다면, Masked Visual Actions는 '아예 픽셀 자체가 액션이면 된다'는 극단적 단순화를 실증한다. Fei-Fei·Wu·Yilun Du·Agrawala 등 Stanford 그룹의 조합이라 이후 파운데이션 규모로 확장될 가능성이 크다. 좋아요한 GaP(2607.05369, graph-as-policy)와 결합하면 '픽셀 궤적을 노드로 하는 정책 그래프' 같은 하이브리드도 자연스러워진다. WAM 라인의 표현 축을 한 단계 재정의하는 조각.",
-          "rec_date": "2026-07-24"
         }
       ]
     },
@@ -191,6 +209,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2312.13139",
+          "title": "Unleashing Large-Scale Video Generative Pre-training for Visual Robot Manipulation (GR-1)",
+          "authors": "Hongtao Wu, Ya Jing, Chilam Cheang, Guangzeng Chen, Jiafeng Xu · ByteDance / CUHK · arXiv:2312.13139",
+          "summary_ko": "GPT 스타일의 대규모 비디오 생성 사전학습을 로봇 조작에 처음 본격 적용한 대표작. 인터넷 규모 비디오로 미래 프레임을 예측하도록 사전학습한 뒤 로봇 데이터로 파인튜닝해 로봇 액션과 미래 관측을 end-to-end로 함께 예측한다. CALVIN 벤치마크에서 94.9%, zero-shot generalization에서 85.4%로 당시 SOTA를 큰 폭으로 갱신. '비디오 → 액션'이라는 학습 파이프라인의 실용성을 처음 실증한 결정적 조각.",
+          "tags": [
+            "Video Pretraining",
+            "GPT-style",
+            "CALVIN",
+            "Future Prediction",
+            "ICLR 2024"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2312.13139",
+          "extra_url": "https://gr1-manipulation.github.io/",
+          "date": "2023-12-20",
+          "reason": "컬렉션의 '비디오 → 액션' 계보 — 좋아요한 WALA(2607.11397, latent action + world model)·컬렉션 2607.04988(Latent Foresight)·2410.11758(VQ-VAE latent action)·2607.06988(WA-TTT, human video)·오늘 index에 진입한 Masked Visual Actions·Robot-Factored WM — 의 실질적 원류다. GR-1이 '대규모 비디오로 미래를 예측한 뒤 액션 헤드를 붙인다'는 두 단계 학습을 처음 크게 실증했고, 이 패턴이 이후 π0(2410.24164)·SmolVLA(2506.01844)·좋아요한 Xiaomi-U0(2607.11643)의 사전학습 스택에 그대로 흡수됐다. 오늘 함께 rec하는 Cosmos(2501.03575)와 짝: Cosmos가 '어떤 world foundation을 만들까'라면 GR-1은 '만든 world foundation을 로봇 정책으로 어떻게 착지시킬까'. Bytedance RynnBrain 시리즈(컬렉션 2607.17977 RynnBrain 1.1)의 사상적 원형이라 그 라인을 이해하는 데도 필수. 컬렉션에는 GR-1 자체의 좌표가 비어 있어 계보를 완성한다.",
+          "rec_date": "2026-07-29"
+        },
+        {
+          "id": "2406.10454",
+          "title": "HumanPlus: Humanoid Shadowing and Imitation from Humans",
+          "authors": "Zipeng Fu, Qingqing Zhao, Qi Wu, Gordon Wetzstein, Chelsea Finn · Stanford · arXiv:2406.10454",
+          "summary_ko": "휴머노이드가 인간 모션 데이터에서 스킬을 획득하는 완전한 시스템. 대규모 인간 모션 데이터셋으로 RL로 저수준 shadowing 정책(HST)을 사전학습하고, 그 위에 인간 텔레옵으로 모은 데모를 behavior cloning으로 얹어 태스크별 자율 정책(HIT)을 만든다. 조작·이동·전신 다양한 태스크에서 60~100% 성공률을 실증. '인간 데이터를 어떻게 휴머노이드까지 전달할까'라는 문제의 실질적 표준 답이 됐다.",
+          "tags": [
+            "Humanoid Learning from Humans",
+            "Motion Shadowing",
+            "Behavior Cloning",
+            "Full-Body Control",
+            "CoRL 2024"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2406.10454",
+          "extra_url": "https://humanoid-ai.github.io/",
+          "date": "2024-06-15",
+          "reason": "컬렉션의 휴머노이드 축(2607.15163 Behavior Foundation Model·2503.14734 GR00T·2607.17977 RynnBrain 1.1)과 pool의 POT-VLA humanoid(2607.18016)의 실질적 사상적 뿌리 중 하나. 최근 논문들이 모두 '인간 → 휴머노이드'라는 파이프라인을 전제하는데, HumanPlus는 그 파이프라인을 하드웨어·저수준 정책·데이터 수집·태스크 정책까지 통째로 처음 실증했다. 오늘 index에 진입한 Robot-Factored WM(2607.22535)이 인간 데모→로봇 리타게팅을 언급하는데, HumanPlus가 그 리타게팅의 초기 답. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 UMI 스케일링과도 계보상 연결 — 둘 다 '어떻게 값싸게 대규모 로봇 데이터를 만들 것인가'의 답. Fu·Finn 조합이라 이후 Stanford 휴머노이드 라인의 참조점이 됐다. 오늘 rec의 Data Pyramid(2607.24744)가 지적한 '인간 비디오 계층'의 정통 실증 사례이기도 하다.",
+          "rec_date": "2026-07-29"
+        },
+        {
+          "id": "2501.03575",
+          "title": "Cosmos World Foundation Model Platform for Physical AI",
+          "authors": "NVIDIA, Niket Agarwal, Arslan Ali, Maciej Bala, Yogesh Balaji · NVIDIA · arXiv:2501.03575",
+          "summary_ko": "Physical AI를 위한 오픈소스 world foundation model 플랫폼. 대규모 비디오 큐레이션 파이프라인, 사전학습된 world foundation model, 비디오 토크나이저를 통합 제공하며 모두 관용적 라이선스로 공개. 사후 파인튜닝을 통해 다양한 도메인의 커스텀 world model로 발전시킬 수 있는 기반. 산업 규모 world model 학습의 인프라 문법을 통일한 대표작.",
+          "tags": [
+            "World Foundation Model",
+            "Video Tokenizer",
+            "Data Curation",
+            "Physical AI",
+            "NVIDIA Cosmos"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2501.03575",
+          "extra_url": "https://www.nvidia.com/en-us/ai/cosmos/",
+          "date": "2025-01-07",
+          "reason": "컬렉션의 WAM 라인 — FlowWAM(2607.13017)·LingBot-VA(2607.08639)·ACWM(2607.09185)·BadWAM(2607.15207)·좋아요한 WALA(2607.11397)·좋아요한 Xiaomi-U0(2607.11643)·오늘 index에 진입한 Robot-Factored WM·Masked Visual Actions — 전체의 산업 인프라적 기반. pool의 2607.14943(Steering Robustness)이 명시적으로 'Cosmos-Policy'를 백본으로 언급하며, 최근 WAM 논문 대부분이 Cosmos 계열 백본을 파인튜닝 대상으로 삼는다. 오늘 함께 rec하는 GR-1(2312.13139)과 짝: GR-1이 '비디오→액션의 학습 파이프라인'을 열었다면 Cosmos는 '그 파이프라인의 산업 규모 인프라'를 통일했다. 좋아요한 Xiaomi-U0(2607.11643, 38B AR)와 정확한 대응 — 둘 다 world foundation을 대규모 오픈 자원으로 만들려는 시도. 컬렉션의 여러 논문이 암묵적으로 참조하는 인프라라 좌표에 놓아 두는 것이 자연스럽다.",
+          "rec_date": "2026-07-29"
+        },
         {
           "id": "2302.00111",
           "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
@@ -206,7 +278,7 @@
           "arxiv_url": "https://arxiv.org/abs/2302.00111",
           "extra_url": "https://universal-policy.github.io/unipi/",
           "date": "2023-01-31",
-          "reason": "pool의 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 iVideoGPT(2405.15223, dismissed지만 개념적으로 계보)와 짝을 이루는 대표작 — iVideoGPT가 'GPT 방식으로 통합'이면 UniPi는 'text→video 방식으로 통합'. 오늘 rec의 ViTacWorld(2607.22530)·Robot-Factored WM(2607.22535)이 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
+          "reason": "오늘 index에 진입한 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 iVideoGPT(2405.15223, dismissed지만 개념적으로 계보)와 짝을 이루는 대표작 — iVideoGPT가 'GPT 방식으로 통합'이면 UniPi는 'text→video 방식으로 통합'. 오늘 rec의 Cosmos(2501.03575)·GR-1(2312.13139)이 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
           "rec_date": "2026-07-28"
         },
         {
@@ -224,7 +296,7 @@
           "arxiv_url": "https://arxiv.org/abs/2306.14896",
           "extra_url": "https://robotic-view-transformer.github.io/",
           "date": "2023-06-26",
-          "reason": "pool의 PerAct(2209.05451, dismissed지만 계보상 연결)와 3D Diffuser Actor(2402.10885)를 잇는 '3D 조작' 계보의 실질적 중간 좌표. PerAct의 voxel 방식이 스케일링에서 한계에 부딪히자 RVT가 multi-view attention으로 재정식화했고, 이 흐름이 3D Diffuser Actor·POT-VLA(2607.18016 pool)·2607.11498 pointmap으로 이어진다. 좋아요한 WALA(2607.11397, DINOv3+depth 잠재)와 짝 — RVT는 명시적 multi-view rendering으로 3D를 만들고, WALA는 latent depth로 3D를 학습. NVIDIA Dieter Fox 그룹의 대표작이라 이후 산업계 3D 조작 표준이 됐다. 오늘 rec의 Robot-Factored WM(2607.22535)이 URDF로 로봇 geometry를 렌더링하는 아이디어의 사상적 뿌리 — RVT가 '입력을 재렌더링해 뷰 문제를 푼다'는 아이디어를 처음 정식화. 컬렉션의 3D 계보의 두 번째 세대 좌표를 놓는다.",
+          "reason": "pool의 PerAct(2209.05451, dismissed지만 계보상 연결)와 3D Diffuser Actor(2402.10885)를 잇는 '3D 조작' 계보의 실질적 중간 좌표. PerAct의 voxel 방식이 스케일링에서 한계에 부딪히자 RVT가 multi-view attention으로 재정식화했고, 이 흐름이 3D Diffuser Actor·POT-VLA(2607.18016 pool)·2607.11498 pointmap으로 이어진다. 좋아요한 WALA(2607.11397, DINOv3+depth 잠재)와 짝 — RVT는 명시적 multi-view rendering으로 3D를 만들고, WALA는 latent depth로 3D를 학습. NVIDIA Dieter Fox 그룹의 대표작이라 이후 산업계 3D 조작 표준이 됐다. 오늘 index에 진입한 Robot-Factored WM(2607.22535)이 URDF로 로봇 geometry를 렌더링하는 아이디어의 사상적 뿌리 — RVT가 '입력을 재렌더링해 뷰 문제를 푼다'는 아이디어를 처음 정식화. 컬렉션의 3D 계보의 두 번째 세대 좌표를 놓는다.",
           "rec_date": "2026-07-28"
         },
         {
@@ -242,7 +314,7 @@
           "arxiv_url": "https://arxiv.org/abs/2309.01918",
           "extra_url": "https://robopen.github.io/",
           "date": "2023-09-05",
-          "reason": "컬렉션의 데이터 인프라 축(2310.17596 MimicGen, 2310.08864 RT-X, pool의 AXIS 2607.21588 dismissed)과 hierarchical / multi-skill 축(좋아요한 Hi-VLA 2606.10267, 좋아요한 Harness-VLA 2607.08448, 좋아요한 GaP 2607.05369)이 만나는 지점의 원형. RoboAgent가 처음 정식화한 두 아이디어 — semantic augmentation과 action chunking — 은 이후 ACT(2304.13705, 컬렉션)·π0(2410.24164, 컬렉션)·SmolVLA(2506.01844, 컬렉션) 계열의 action head 설계에 그대로 흡수됐다. 오늘 rec의 Robot-Factored WM(2607.22535)이 로봇 rendering으로 임보디먼트를 factoring하는 것과 짝 — RoboAgent는 semantic augmentation으로 씬을 factoring한다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 대규모 스케일링에도 data augmentation 원류로 참조되는 논문. 컬렉션의 '적은 데이터로 많은 태스크' 축의 좌표계 완성.",
+          "reason": "컬렉션의 데이터 인프라 축(2310.17596 MimicGen, 2310.08864 RT-X, pool의 AXIS 2607.21588 dismissed)과 hierarchical / multi-skill 축(좋아요한 Hi-VLA 2606.10267, 좋아요한 Harness-VLA 2607.08448, 좋아요한 GaP 2607.05369)이 만나는 지점의 원형. RoboAgent가 처음 정식화한 두 아이디어 — semantic augmentation과 action chunking — 은 이후 ACT(2304.13705, 컬렉션)·π0(2410.24164, 컬렉션)·SmolVLA(2506.01844, 컬렉션) 계열의 action head 설계에 그대로 흡수됐다. 오늘 index에 진입한 Robot-Factored WM(2607.22535)이 로봇 rendering으로 임보디먼트를 factoring하는 것과 짝 — RoboAgent는 semantic augmentation으로 씬을 factoring한다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 대규모 스케일링에도 data augmentation 원류로 참조되는 논문. 컬렉션의 '적은 데이터로 많은 태스크' 축의 좌표계 완성.",
           "rec_date": "2026-07-28"
         },
         {
@@ -278,7 +350,7 @@
           "arxiv_url": "https://arxiv.org/abs/2210.03094",
           "extra_url": "https://vimalabs.github.io/",
           "date": "2022-10-06",
-          "reason": "컬렉션의 초기 VLA 삼각(RT-1 2212.06817·RT-2 2307.15818·PaLM-E 2303.03378)과 후속 VLA(OpenVLA·π0·SmolVLA·Xiaomi-U0)의 프롬프트 인터페이스 설계의 실질적 원형. 이 삼각이 '언어→액션'이라면 VIMA는 '언어+이미지+데모→액션'으로 인터페이스 자체를 확장한 최초의 성공 사례. 오늘 rec의 Masked Visual Actions(2607.19343)와도 계보로 이어진다 — VIMA가 '멀티모달 프롬프트'라면 Masked Visual Actions는 '픽셀 자체가 프롬프트이자 액션'으로 인터페이스를 더 극단화한 버전. 좋아요한 Harness-VLA(2607.08448)·Xiaomi-U0(2607.11643)의 프롬프트 기반 planning에도 계보상 뿌리. 컬렉션에는 아직 명시적 프롬프트 프로토콜의 원형이 없어 이 논문이 그 좌표를 놓는다.",
+          "reason": "컬렉션의 초기 VLA 삼각(RT-1 2212.06817·RT-2 2307.15818·PaLM-E 2303.03378)과 후속 VLA(OpenVLA·π0·SmolVLA·Xiaomi-U0)의 프롬프트 인터페이스 설계의 실질적 원형. 이 삼각이 '언어→액션'이라면 VIMA는 '언어+이미지+데모→액션'으로 인터페이스 자체를 확장한 최초의 성공 사례. 오늘 index에 진입한 Masked Visual Actions(2607.19343)와도 계보로 이어진다 — VIMA가 '멀티모달 프롬프트'라면 Masked Visual Actions는 '픽셀 자체가 프롬프트이자 액션'으로 인터페이스를 더 극단화한 버전. 좋아요한 Harness-VLA(2607.08448)·Xiaomi-U0(2607.11643)의 프롬프트 기반 planning에도 계보상 뿌리. 컬렉션에는 아직 명시적 프롬프트 프로토콜의 원형이 없어 이 논문이 그 좌표를 놓는다.",
           "rec_date": "2026-07-26"
         },
         {
@@ -296,7 +368,7 @@
           "arxiv_url": "https://arxiv.org/abs/2402.10885",
           "extra_url": "https://3d-diffuser-actor.github.io/",
           "date": "2024-02-16",
-          "reason": "컬렉션에 있는 Diffusion Policy(2303.04137, DDPM 원조)와 3D-grounding 논문들(2607.11498 pointmap, 2607.17977 RynnBrain 1.1의 3D alignment, 오늘 rec의 POT-VLA 2607.18016)의 중간 다리. Diffusion Policy가 2D에서 열렸다면, 3D Diffuser Actor는 이를 3D 씬 위로 끌어올리는 표준 방식을 제시한다. 좋아요한 WALA(2607.11397)가 depth 예측으로 3D 정보를 뽑는 것과 짝 — 이 논문은 그 3D 정보 위에서 diffusion policy를 학습하는 파이프라인의 원형. π0(2410.24164)·SmolVLA(2506.01844) 같은 flow-matching VLA 계열이 diffusion과 짝인데 3D-grounded 계보의 좌표가 컬렉션에 비어 있었다. RLBench·CALVIN 벤치마크의 SOTA 참조로도 자주 인용되기 때문에 컬렉션의 '표현 + 정책' 축을 완성하는 조각.",
+          "reason": "컬렉션에 있는 Diffusion Policy(2303.04137, DDPM 원조)와 3D-grounding 논문들(2607.11498 pointmap, 2607.17977 RynnBrain 1.1의 3D alignment, pool의 POT-VLA 2607.18016)의 중간 다리. Diffusion Policy가 2D에서 열렸다면, 3D Diffuser Actor는 이를 3D 씬 위로 끌어올리는 표준 방식을 제시한다. 좋아요한 WALA(2607.11397)가 depth 예측으로 3D 정보를 뽑는 것과 짝 — 이 논문은 그 3D 정보 위에서 diffusion policy를 학습하는 파이프라인의 원형. π0(2410.24164)·SmolVLA(2506.01844) 같은 flow-matching VLA 계열이 diffusion과 짝인데 3D-grounded 계보의 좌표가 컬렉션에 비어 있었다. RLBench·CALVIN 벤치마크의 SOTA 참조로도 자주 인용되기 때문에 컬렉션의 '표현 + 정책' 축을 완성하는 조각.",
           "rec_date": "2026-07-25"
         },
         {
@@ -314,7 +386,7 @@
           "arxiv_url": "https://arxiv.org/abs/2307.05973",
           "extra_url": "https://voxposer.github.io",
           "date": "2023-07-12",
-          "reason": "컬렉션에 있는 Code as Policies(2209.07753)의 정통 후속이면서, 좋아요한 Aspire·Harness-VLA·GaP 세 편의 공통 관심사(LLM이 low-level 로봇 실행을 어떻게 구체적으로 지휘하는가)의 두 번째 대표 답. Code as Policies가 '언어 → 실행 코드'였다면 VoxPoser는 '언어 → 3D 값장 → planner'로 표현을 한 단계 올렸다. 오늘 rec의 Masked Visual Actions와도 좌표를 이룬다: Masked Visual Actions가 '픽셀 = 액션'이면 VoxPoser는 '3D 값장 = 태스크 objective'. 좋아요한 WALA(2607.11397, DINOv3+depth)와 컬렉션의 See-like-a-Robot(2607.11498, pointmap)의 3D 표현 축과 정확히 만난다. Fei-Fei/Wu 그룹의 대표적 agentic-manipulation 논문으로, 컬렉션의 언어-정책 계보를 완성한다.",
+          "reason": "컬렉션에 있는 Code as Policies(2209.07753)의 정통 후속이면서, 좋아요한 Aspire·Harness-VLA·GaP 세 편의 공통 관심사(LLM이 low-level 로봇 실행을 어떻게 구체적으로 지휘하는가)의 두 번째 대표 답. Code as Policies가 '언어 → 실행 코드'였다면 VoxPoser는 '언어 → 3D 값장 → planner'로 표현을 한 단계 올렸다. 오늘 index에 진입한 Masked Visual Actions와도 좌표를 이룬다: Masked Visual Actions가 '픽셀 = 액션'이면 VoxPoser는 '3D 값장 = 태스크 objective'. 좋아요한 WALA(2607.11397, DINOv3+depth)와 컬렉션의 See-like-a-Robot(2607.11498, pointmap)의 3D 표현 축과 정확히 만난다. Fei-Fei/Wu 그룹의 대표적 agentic-manipulation 논문으로, 컬렉션의 언어-정책 계보를 완성한다.",
           "rec_date": "2026-07-24"
         }
       ]
