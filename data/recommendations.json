@@ -1,10 +1,64 @@
 {
-  "generated": "2026-07-29",
+  "generated": "2026-07-30",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.25337",
+          "title": "Temporal-Distance JEPA: Plan-Aware Representation Learning for Latent World Model Predictive Control",
+          "authors": "Jiaxin Bai, Jiaxuan Xiong · arXiv:2607.25337",
+          "summary_ko": "JEPA 기반 world model이 짧은 잠재 예측을 최적화하지만 planning은 다단계 이미네이션을 goal progress로 랭킹하는 것이라는 근본 mismatch를 정면 지적. TD-JEPA는 LeWM의 encoder-predictor 백본을 유지한 채, 보상 없는 오프라인 궤적에서 same-trajectory step ordering을 positive, cross-trajectory pair를 negative로 삼아 방향성 있는 temporal cost를 직접 채굴한다. Rollout-consistency matching으로 planner horizon과 정렬. Two-Room 100%, OGB-Cube +14.2점, Push-T에서 개선. '표현을 planning에 맞게 조각한다'는 관점 전환.",
+          "tags": [
+            "JEPA",
+            "Latent World Model",
+            "Model Predictive Control",
+            "Temporal Cost",
+            "Plan-Aware Representation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.25337",
+          "extra_url": "",
+          "date": "2026-07-28",
+          "reason": "컬렉션의 JEPA 라인(2602.10098 JEPA-VLA·2404.08471 V-JEPA)과 좋아요한 WALA(2607.11397, JEPA-스타일 latent action + world model)의 planning 축 후속 — WALA가 '어떤 잠재가 좋은가'였다면 TD-JEPA는 '어떤 잠재가 planning에 좋은가'다. pool의 Koopman Dreamer(2607.19719, 스펙트럼으로 롤아웃 안정화)·ASAR(2607.23602, 후보 선택 재구성)·KineBench(2607.19876, IDM-Free 롤아웃 평가)와 4부작을 이룬다: KineBench가 '무엇이 좋은 롤아웃인가', Koopman이 '롤아웃을 어떻게 안정적으로 만들까', ASAR이 '롤아웃을 어떻게 쓸까', TD-JEPA가 '롤아웃을 위한 표현 자체를 어떻게 학습할까'. 컬렉션의 WAM 라인(FlowWAM 2607.13017·LingBot-VA 2607.08639·ACWM 2607.09185·BadWAM 2607.15207·좋아요한 Xiaomi-U0 2607.11643) 전체의 planning 층을 정면으로 개선한다. 좋아요한 Harness-VLA(2607.08448)·GaP(2607.05369)의 hierarchical planner에도 temporal cost로 쉽게 얹을 수 있어 즉시 실용성이 있다.",
+          "rec_date": "2026-07-30"
+        },
+        {
+          "id": "2607.25516",
+          "title": "A Causality-aware Infer-diagnose-refine Framework for Test-time Modality Adaptation in VLA Models",
+          "authors": "Haoyu Zhang, Yuwei Wu, Jin Chen · arXiv:2607.25516",
+          "summary_ko": "조작 태스크는 시각 정보의 중요도가 phase마다 변한다는 관찰에서 출발. IDR은 훈련 없는 test-time 프레임워크로, factual과 counterfactual 시각 시나리오(zero-padding intervention) 아래에서 액션을 뽑고, 인과 효과를 norm 기반으로 진단해 시각 modality의 dynamic importance를 추정한 뒤, gated residual fusion으로 예측을 재정제한다. 모델 무관해 다양한 VLA 백본에 얹을 수 있고 시뮬레이션과 실기 양쪽에서 개선. 'modality fusion을 태스크 phase에 반응적으로 재조정한다'는 새 축.",
+          "tags": [
+            "Test-Time Adaptation",
+            "Modality Fusion",
+            "Causal Intervention",
+            "VLA Plug-in",
+            "Training-Free"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.25516",
+          "extra_url": "",
+          "date": "2026-07-28",
+          "reason": "컬렉션의 Test-Time 라인 전체 — 2607.15275(RoboTTT, context scaling), 좋아요한 WA-TTT(2607.06988, human video로 TTT), 2606.15631(Retrieval TTA), pool의 2607.14943(Steering, mech-interp 기반 제어), pool의 KineBench(2607.19876, IDM-Free 평가) — 에 'modality 축'을 새로 놓는다. 기존 논문들이 '무엇을 test time에 조정할까(context·retrieval·activation)'였다면 IDR은 '시각 modality의 phase-adaptive 중요도를 어떻게 조정할까'라는 새 축. 좋아요한 FM-VLA(2607.18231, 힘 memory)와 정확한 짝 — FM-VLA가 힘 modality를 훈련으로 추가했다면 IDR은 시각 modality의 phase importance를 훈련 없이 재조정한다. 모델 무관 플러그인이라 좋아요한 Xiaomi-U0(2607.11643, 38B AR)·Xiaomi-Robotics-1(2607.15330)·Harness-VLA(2607.08448)의 얼어붙은 정책에 재학습 없이 얹을 수 있어 pool의 Pigey(2607.21725)·LENS(2607.19633) 같은 '얼어붙은 정책 활용' 흐름과 즉시 결합. counterfactual intervention 프로토콜은 컬렉션의 BadWAM(2607.15207) adversarial 공격과 대칭적 방어 도구로도 유용.",
+          "rec_date": "2026-07-30"
+        },
+        {
+          "id": "2607.23784",
+          "title": "A Few Words Go a Long Way: Language Guided Robot Policy Synthesis (ARCHITECT)",
+          "authors": "Daphne Chen, Archit Ritesh Jain, Eric Goossen · arXiv:2607.23784",
+          "summary_ko": "정책 획득을 interactive program synthesis로 재정의한 ARCHITECT 프레임워크. LLM 코딩 에이전트가 perception·control tool을 조합한 modular 프로그램을 합성하고, 사람이 실행 트레이스와 함께 자연어로 코드 위에 교정을 남기면 이것이 persistent skill library로 축적돼 장기 in-context learning과 behavior 재사용을 가능하게 한다. End-to-end VLA가 distribution shift에 cascading하게 무너지는 것과 대비되게 modular 설계는 실패를 적절한 추상화 수준에서 격리. Franka Panda의 articulated 오브젝트·cloth folding 등에서 VLA와 program synthesis 베이스라인 모두 상회.",
+          "tags": [
+            "Program Synthesis",
+            "LLM Coding Agent",
+            "Persistent Skill Library",
+            "Interactive Correction",
+            "Modular Policy"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.23784",
+          "extra_url": "https://robo-architect.github.io/",
+          "date": "2026-07-26",
+          "reason": "컬렉션의 좋아요 삼각 — Aspire(agentic robotics + self-improvement + coding agent), Harness-VLA(2607.08448, primitive library + agentic planner), GaP(2607.05369, graph-as-policy + agentic coding) — 의 완벽한 다음 좌표. 이 셋이 각각 자기 개선 루프·planner·그래프 조합으로 접근했다면 ARCHITECT는 그들 공통 요소인 'LLM이 정책을 코드로 작성하고 사람의 자연어 교정으로 개선한다'를 정면으로 정식화한다. 컬렉션의 Code as Policies(2209.07753) → SayCan(2204.01691) → pool의 VoxPoser(2307.05973) 계보의 최신 결절점 — 초기 계보가 '언어→코드' 또는 '언어→값장'이었다면 ARCHITECT는 '언어→모듈러 프로그램 + 실패 트레이스 위 교정'으로 확장. pool의 Pigey(2607.21725) orchestration gap과 짝 — Pigey가 '얼어붙은 VLA를 밖에서 지휘'라면 ARCHITECT는 '정책 자체를 코드로 만들어 검증·교정 가능하게 함'. persistent skill library 축적은 좋아요한 Aspire(2606.19980)의 self-improvement와 정확한 대응이고, 좋아요한 Hi-VLA(2606.10267)의 옵션 프레임워크와도 계보상 연결.",
+          "rec_date": "2026-07-30"
+        },
         {
           "id": "2607.24744",
           "title": "Data Pyramid for Embodied Manipulation",
@@ -209,6 +263,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2402.10329",
+          "title": "Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots (UMI)",
+          "authors": "Cheng Chi, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, Shuran Song · Stanford / Columbia / TRI · arXiv:2402.10329",
+          "summary_ko": "실제 로봇 없이 사람이 손잡이형 그리퍼로 야외에서 시연을 모아 정책 학습으로 이어붙이는 파이프라인. inference-time latency matching과 relative-trajectory action 표현이라는 두 설계로 하드웨어 무관한 정책을 만들어 여러 로봇에 zero-shot 배포. 동적·양손·정밀·장기 조작을 in-the-wild 데이터만으로 실증. '로봇을 데이터 수집 병목에서 빼내는' 실질적 표준이 됐고, 오픈소스 하드웨어·소프트웨어 스택으로 공개돼 이후 커뮤니티 스케일링의 촉매.",
+          "tags": [
+            "In-The-Wild Data",
+            "Handheld Gripper",
+            "Latency Matching",
+            "Relative Trajectory",
+            "Open-Source Hardware"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2402.10329",
+          "extra_url": "https://umi-gripper.github.io/",
+          "date": "2024-02-15",
+          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330)의 정면 사상적 기반 — 그 논문의 태그가 명시적으로 'UMI, Scaling Law'이며 UMI 데이터 파이프라인을 산업 규모로 확장한 후속이다. 좋아요한 Xiaomi-U0(2607.11643)의 대규모 embodied data augmentation, 오늘 index에 진입한 Masked Visual Actions(2607.19343)·Robot-Factored WM(2607.22535), pool의 Data Pyramid(2607.24744) 논문 모두 UMI 계열 데이터를 하나의 계층으로 상정한다. 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RT-X(2310.08864)·MimicGen(2310.17596)의 데이터 인프라 축의 실질적 원류. 오늘 함께 rec하는 DROID(2403.12945)와 짝: UMI가 '어떻게 값싸게 시연을 모을까'라면 DROID는 '어떻게 규모 있게 조직화할까'. 좋아요한 GaP(2607.05369)·Aspire(2606.19980)의 self-learning도 결국 UMI-급 데이터 수집이 있어야 스케일이 되는 구조라 필수 좌표. 컬렉션에 UMI 자체의 좌표가 비어 있었다.",
+          "rec_date": "2026-07-30"
+        },
+        {
+          "id": "2403.12945",
+          "title": "DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset",
+          "authors": "Alexander Khazatsky, Karl Pertsch, Suraj Nair, Ashwin Balakrishna · Stanford / UC Berkeley · arXiv:2403.12945",
+          "summary_ko": "76k 궤적·350시간·564 씬·84 태스크를 50명의 수집자가 12개월간 전 세계에서 모은 in-the-wild 조작 데이터셋. 학습된 정책이 더 높은 성능과 일반화를 보인다는 것을 실증하고 전체를 오픈. 지리·환경 다양성 축에서 이전 데이터셋을 크게 뛰어넘어 이후 논문 대부분이 사전학습·평가·real-world validation의 표준 참조로 사용. '데이터의 다양성 자체가 성능을 낳는다'는 명제의 실증적 근거.",
+          "tags": [
+            "Manipulation Dataset",
+            "In-The-Wild",
+            "Franka Panda",
+            "Cross-Institutional",
+            "Open-Sourced"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.12945",
+          "extra_url": "https://droid-dataset.github.io/",
+          "date": "2024-03-19",
+          "reason": "컬렉션에 오늘 index로 진입한 Masked Visual Actions(2607.19343)의 태그가 명시적으로 'DROID'이며, Robot-Factored WM(2607.22535)·Agentic Real2Sim(2607.19190)도 DROID를 실기 평가/데이터 소스로 사용한다. 좋아요한 WALA(2607.11397)의 사전학습, 좋아요한 Xiaomi-Robotics-1(2607.15330)·Xiaomi-U0(2607.11643)의 실기 튜닝, pool의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 계층'의 실질적 표준 자원. 오늘 함께 rec하는 UMI(2402.10329)와 짝 — UMI가 '값싼 시연 수집 프로토콜'이라면 DROID는 '그 프로토콜을 대규모로 조직화한 결과'. 컬렉션의 RT-X(2310.08864)와도 짝: RT-X가 '기존 연구용 데이터 통합'이면 DROID는 'in-the-wild 신규 수집'. Cross-Embodiment 라인(2606.15631·2606.17846·2607.03570)의 실기 검증 표준. 최근 논문 대부분이 암묵적으로 참조하는 인프라라 좌표에 놓아 두는 것이 자연스럽다.",
+          "rec_date": "2026-07-30"
+        },
+        {
+          "id": "2310.10639",
+          "title": "Zero-Shot Robotic Manipulation with Pretrained Image-Editing Diffusion Models (SuSIE)",
+          "authors": "Kevin Black, Mitsuhiko Nakamoto, Pranav Atreya, Homer Walke, Chelsea Finn, Aviral Kumar, Sergey Levine · UC Berkeley / Stanford · arXiv:2310.10639",
+          "summary_ko": "InstructPix2Pix를 비디오로 파인튜닝해 사전학습된 image-editing diffusion을 상위 planner로 쓰는 접근. 현재 관측과 언어 명령을 받아 '가상의 subgoal 관측 이미지'를 생성하고, 저수준 goal-conditioned 정책이 그 subgoal에 도달한다. Language-conditioned 정책 대비 새 오브젝트·환경에서 훨씬 높은 일반화와 정밀도. 인터넷 규모로 사전학습된 시각 생성 모델을 로봇 planner로 재활용한 대표적 첫 성공 사례 — 'video generation = planner'라는 관점의 초기 결정판.",
+          "tags": [
+            "Subgoal Image Editing",
+            "InstructPix2Pix",
+            "Goal-Conditioned Policy",
+            "Zero-Shot Manipulation",
+            "Video Diffusion"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2310.10639",
+          "extra_url": "https://rail-berkeley.github.io/susie/",
+          "date": "2023-10-16",
+          "reason": "컬렉션의 Latent Foresight(2607.04988)·오늘 index에 진입한 Masked Visual Actions(2607.19343, 픽셀=액션)·Visual CoT(2503.22020, subgoal image)의 실질적 원류. 이 셋이 '시각 미래를 정책에 어떻게 얹을까'였다면 SuSIE는 그 계보의 첫 성공적 실증. 오늘 함께 rec하는 UMI/DROID가 데이터 축이라면 SuSIE는 '사전학습된 image generation model을 planner로 재활용한다'는 새 인터페이스 축의 개척작. pool의 UniPi(2302.00111, text→video→action)와 짝 — UniPi가 '텍스트→비디오'로 인터페이스를 통일했다면 SuSIE는 그 비디오 생성을 image editing으로 재정식화해 실기 배포 가능하게 만들었다. 좋아요한 WALA(2607.11397)의 latent action + world model, pool의 GR-1(2312.13139)의 비디오 사전학습과도 계보상 연결. RAIL/Berkeley의 Kevin Black·Sergey Levine 조합이라 이후 π0(2410.24164)·SmolVLA(2506.01844) 계보의 사상적 기반. 컬렉션의 '시각 미래→정책' 계보 원류 좌표.",
+          "rec_date": "2026-07-30"
+        },
         {
           "id": "2312.13139",
           "title": "Unleashing Large-Scale Video Generative Pre-training for Visual Robot Manipulation (GR-1)",
