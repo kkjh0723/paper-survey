@@ -28,6 +28,12 @@
       "title": "Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots (UMI)",
       "arxiv_url": "https://arxiv.org/abs/2402.10329",
       "added": "2026-07-30"
+    },
+    {
+      "id": "2607.19876",
+      "title": "KineBench: Benchmarking Embodied World Models via IDM-Free Kinematic Grounding",
+      "arxiv_url": "https://arxiv.org/abs/2607.19876",
+      "added": "2026-07-30"
     }
   ],
   "dismissed": [
