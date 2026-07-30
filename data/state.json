@@ -40,6 +40,12 @@
       "title": "Pigey: Addressing the Orchestration Gap in Generalist Robots via Physical Agency",
       "arxiv_url": "https://arxiv.org/abs/2607.21725",
       "added": "2026-07-30"
+    },
+    {
+      "id": "2607.22530",
+      "title": "ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2607.22530",
+      "added": "2026-07-30"
     }
   ],
   "dismissed": [
