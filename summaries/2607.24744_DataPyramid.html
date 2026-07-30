@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Data Pyramid — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">Survey · Data Recipe · Embodied</span>
+    <h1>Data Pyramid for Embodied Manipulation</h1>
+    <p class="authors">Yifan Ye, Yankai Fu 외 29인 · PKU · NTU · HKUST · NUS · CUHK · HKU 다기관 협력</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.24744" target="_blank">PDF</a>
+      <a href="https://jasper-aaa.github.io/embodied-data-pyramid/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/worldbench/awesome-embodied-data-pyramid" target="_blank">GitHub (awesome list)</a>
+      <span>arXiv:2607.24744</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Data Taxonomy</span>
+      <span class="t">Real / UMI / Ego / Sim / VL</span>
+      <span class="t">VLA · WAM</span>
+      <span class="t">Data Recipes</span>
+      <span class="t">Open Challenges</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 27일 · Survey · 5개 데이터 layer · 6대 open challenge</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Embodied manipulation의 데이터 생태계를 <b>피라미드 5층</b>으로 정리한 서베이. 위에서 아래로 <b>Real-Robot → UMI-style → Ego/Exo → Simulation → General VL</b>. 각 층을 <b>quality · diversity · reusability · physical fidelity</b> 4축으로 특성화하고, VLA(RT-1·OpenVLA·π0·RDT·GR00T)와 world-action model이 이 층들을 어떻게 조합해 학습하는지 <b>data recipe 관점</b>으로 분석. 마지막에 6개의 open challenge(tactile · failure · scalable collection · cross-embodiment · ego for dexterity · data recipes)를 제시. 최근 대부분의 대형 embodied 모델이 이 프레임으로 정리 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Multimodal foundation model은 인터넷 규모 데이터로 성장했지만, embodied agent는 "관측–물리 상태–행동"이 함께 커플링된 데이터가 필요하다. 그런 데이터를 만드는 방법이 <b>여러 갈래</b>로 갈라져 있고(실로봇 텔레옵, UMI 그리퍼, 사람 손 촬영, 시뮬 렌더링, 인터넷 영상 등) 각 갈래는 <b>스케일 ↔ 로봇 정합성(alignment)</b>의 트레이드오프가 다르다. 이 서베이는 각 데이터 소스가 무엇을 잘하고 무엇을 못하는지, 그리고 최근 대형 embodied 모델들이 어떻게 조합해 쓰는지를 통일된 프레임으로 정리한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Data Pyramid 분류</b> — 5개 층(위에서 아래): <b>Real-Robot / UMI-Style / Ego·Exo / Simulation / General VL</b>. 위로 갈수록 로봇 정합성↑, 아래로 갈수록 scale↑.</li>
+      <li><b>4-축 특성화</b> — 각 층을 <b>Quality</b>(유효성·일관성) · <b>Diversity</b>(태스크·물체·씬·시점·embodiment) · <b>Reusability</b>(태스크·환경·플랫폼 전이) · <b>Physical Fidelity</b>(접촉·마찰·센서 잡음·역학)로 채점.</li>
+      <li><b>3 모델 계열의 data recipe 분석</b> — VLA · Embodied Brain · World-Action Model이 각각 어떤 층 조합을 쓰는지 시계열로 정리(Figure 3).</li>
+      <li><b>6대 Open Challenge</b> — Tactile · Failure data · Scalable collection · Cross-embodiment alignment · Egocentric dexterity · Data recipe 자체.</li>
+      <li><b>GitHub awesome list</b> — 데이터셋·논문을 지속 큐레이션. downstream 연구자용 living 리소스.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method — Data Pyramid 구성</h2>
+
+    <h3>피라미드 5층 (apex → base)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Layer</th><th>대표 데이터</th><th>스케일</th><th>로봇 정합성</th></tr></thead>
+      <tbody>
+        <tr><td>1. Real-Robot</td><td>Open X-Embodiment 2.4M(22 embodiments) · AgiBot World Beta 1M+ / 3000시간</td><td>중</td><td class="win">최고</td></tr>
+        <tr><td>2. UMI-Style</td><td>FastUMI-100K · RealOmni 789.8K bimanual</td><td>중~고</td><td>높음</td></tr>
+        <tr><td>3. Ego / Exo</td><td>Ego4D 3670시간 · Xperience-10M (10,000시간)</td><td>고</td><td>중</td></tr>
+        <tr><td>4. Simulation</td><td>ManiSkill / RoboCasa / Isaac 등의 벤치·합성 파이프라인</td><td>매우 고</td><td>중~하 (sim-to-real gap)</td></tr>
+        <tr><td>5. General VL</td><td>웹 규모 vision-language 코퍼스</td><td class="win">최고</td><td>낮음 (action 무학습)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">위에서 아래로 <b>물리적 grounding·직접 실행 가능성 감소</b>, <b>접근성·스케일 증가</b>.</p>
+
+    <h3>4-축 특성 (예시)</h3>
+    <div class="kv">
+      <div>Quality</div><div>유효성(action이 실제 성공했는가) · 일관성(annotation 정확도) · 정보성 · 태스크 relevance</div>
+      <div>Diversity</div><div>태스크·물체·씬·시점·embodiment 범위</div>
+      <div>Reusability</div><div>다른 태스크·환경·플랫폼으로의 전이 용이성</div>
+      <div>Physical Fidelity</div><div>접촉·마찰·센서 noise·역학 재현 정도</div>
+    </div>
+
+    <h3>3 모델 계열의 recipe (Figure 3)</h3>
+    <ul>
+      <li><b>VLA</b> (RT-1, OpenVLA, π0, RDT, GR00T) — 초기에는 real-robot 중심, 최근 ego + sim + UMI + general VL을 co-training.</li>
+      <li><b>Embodied Brain</b> — 인지·추론·affordance. general VL 비중이 상대적으로 큼.</li>
+      <li><b>World / Action Models</b> — 미래 관측·action 결과 예측. sim + ego + real 혼합.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>대표 데이터 통계 & 관찰</h2>
+
+    <h3>레이어별 규모</h3>
+    <ul>
+      <li><b>Real-Robot</b>: Open X-Embodiment 2.4M 궤적(22 embodiments); AgiBot World Beta 1M+ / 3000시간.</li>
+      <li><b>UMI-style</b>: FastUMI-100K 100K 데모, RealOmni 789.8K 양팔.</li>
+      <li><b>Ego/Exo</b>: Ego4D 3,670시간, Xperience-10M 10,000시간(의미·상호작용 라벨).</li>
+      <li><b>Simulation</b>: 벤치·합성 파이프라인 통해 사실상 무한 확장.</li>
+      <li><b>General VL</b>: 웹 규모 코퍼스, action grounding 없음.</li>
+    </ul>
+
+    <h3>시간 흐름 (Figure 2, 3)</h3>
+    <ul>
+      <li>모든 층에서 강한 성장 추세, 특히 <b>sim·general VL</b>이 가장 가파른 스케일 상승.</li>
+      <li>초기 시스템은 real-robot only → 최근은 co-training이 표준.</li>
+    </ul>
+
+    <h3>다중모달·contact 감각 트렌드</h3>
+    <ul>
+      <li>tactile · force/torque · audio · IMU 등이 vision-proprioception에 추가되는 추세.</li>
+      <li>특히 <b>contact-rich·dexterous</b> 태스크에서 결정적. 최근 ViTacWorld(2607.22530)와 FM-VLA(2607.18231) 같은 방향과 정렬.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>6대 Open Challenge</h2>
+    <ol>
+      <li><b>Tactile 데이터</b> — contact-rich 조작 데이터 수집.</li>
+      <li><b>Failure 데이터</b> — 회복 중심의 궤적 수집·라벨링.</li>
+      <li><b>Scalable Collection</b> — 텔레옵 의존을 줄이는 인터페이스.</li>
+      <li><b>Cross-Embodiment Alignment</b> — state-action 표현 표준화.</li>
+      <li><b>Egocentric for Dexterity</b> — 사람 손 데이터의 로봇 활용.</li>
+      <li><b>Data Recipes</b> — 어느 층을 얼마씩 섞을지 자체가 연구 문제.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.24744/x1.png" alt="Data Pyramid 전체 구조 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Data Pyramid 3부 구성.</b> (좌) 5-층 taxonomy, (중) foundation model data recipe, (우) 향후 방향. 스케일 vs 로봇 정합성 축을 축으로 각 층의 위치를 시각화. (출처: arXiv:2607.24744)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.24744/x2.png" alt="레이어별 데이터셋 스케일 시계열 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 시간별 데이터셋 스케일.</b> 5개 층에서 모두 강한 성장. sim·general VL이 가장 가파르게 성장하고 real-robot·UMI는 완만하지만 정합성 우위. (출처: arXiv:2607.24744)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>왜 유용한가</b> — 최근 대형 embodied 모델의 실험 세팅과 데이터 mix를 하나의 프레임으로 비교·정리하는 데 매우 유용. downstream 연구자에게 "우리 상황에는 어떤 층을 얼마씩 섞어야 하는가"라는 결정을 구조화하는 참고서.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.24744" target="_blank">PDF</a></li>
+      <li><a href="https://jasper-aaa.github.io/embodied-data-pyramid/" target="_blank">프로젝트 페이지</a> · <a href="https://github.com/worldbench/awesome-embodied-data-pyramid" target="_blank">GitHub (awesome list)</a></li>
+      <li>레이어 대표 논문: <a href="https://arxiv.org/abs/2402.10329" target="_blank">UMI</a>, <a href="https://arxiv.org/abs/2403.12945" target="_blank">DROID</a>, <a href="https://arxiv.org/abs/2310.08864" target="_blank">Open X-Embodiment</a>, <a href="https://arxiv.org/abs/2410.18647" target="_blank">Data Scaling Laws</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.24744 · Data Pyramid for Embodied Manipulation · 요약 생성 2026-07-30
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

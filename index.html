@@ -184,6 +184,152 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2607.24744" data-added="2026-07-30" data-tags="Survey,Data Pyramid,VLA,UMI,Cross-Embodiment">
+        <td class="no">69</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.24744_DataPyramid.html">Data Pyramid for Embodied Manipulation</a></div>
+          <div class="sub">Yifan Ye, Yankai Fu 외 29인 · PKU · NTU · HKUST · NUS · CUHK · HKU · arXiv:2607.24744</div>
+          <div class="sub">embodied 데이터 생태계를 5-층 피라미드(Real-Robot / UMI / Ego·Exo / Sim / General VL)로 정리한 서베이. 각 층을 quality·diversity·reusability·physical fidelity 4축으로 채점하고 VLA·WAM data recipe를 시계열 분석. 6대 open challenge(tactile·failure·scalable collection·cross-embodiment·ego dexterity·recipes) 제시.</div>
+          <div class="tags">
+            <span class="tag">Survey</span>
+            <span class="tag">Data Taxonomy</span>
+            <span class="tag">VLA · WAM</span>
+            <span class="tag">Data Recipes</span>
+            <span class="tag">Open Challenges</span>
+          </div>
+        </td>
+        <td class="date">2026-07-27</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv</a>
+          <a href="https://jasper-aaa.github.io/embodied-data-pyramid/" target="_blank">프로젝트</a>
+          <a href="https://github.com/worldbench/awesome-embodied-data-pyramid" target="_blank">GitHub</a>
+        </td>
+      </tr>
+      <tr data-id="2607.22530" data-added="2026-07-30" data-tags="World Model,Visuo-Tactile,Xense,Cosmos-Predict,Contact-Rich">
+        <td class="no">68</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.22530_ViTacWorld.html">ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation</a></div>
+          <div class="sub">Yunao Huang 외 7인 · arXiv:2607.22530</div>
+          <div class="sub">최초의 visuo-tactile world model. Cosmos-Predict2.5 2B 위에 stream-aware self-attention + cross-view attention. 실 tactile 21K+ (Xense) + Isaac Sim 5K+로 스케일. 4 contact-rich task 평균 42.5→67.5%, PSNR 24.26·SSIM 0.829, 정책 평가 오차 ±10%p.</div>
+          <div class="tags">
+            <span class="tag">World Model</span>
+            <span class="tag">Visuo-Tactile</span>
+            <span class="tag">Xense</span>
+            <span class="tag">Cosmos-Predict</span>
+            <span class="tag">Contact-Rich</span>
+          </div>
+        </td>
+        <td class="date">2026-07-24</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.22530" target="_blank">arXiv</a>
+          <a href="https://vitacworld.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2607.21725" data-added="2026-07-30" data-tags="Agentic Orchestrator,Frozen VLA,TAMP,LIBERO-PRO,Reasoning">
+        <td class="no">67</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.21725_Pigey.html">Addressing the Orchestration Gap in Generalist Robots via Physical Agency</a></div>
+          <div class="sub">Liane Galanti, Dhruv Shah, Tri Dao · arXiv:2607.21725</div>
+          <div class="sub">frontier VLM(주로 Claude Opus 4.7)을 closed-loop 오케스트레이터로, frozen π0.5-DROID VLA와 TiPToP TAMP를 5 tool로 호출. 학습·데이터 추가 없이 LIBERO-PRO 12.8→53.3%(4×), 실로봇 30 태스크 평균 16.7→97.3%. 150 trial 중 총 4 실패.</div>
+          <div class="tags">
+            <span class="tag">Agentic Orchestrator</span>
+            <span class="tag">Frozen VLA</span>
+            <span class="tag">TAMP</span>
+            <span class="tag">LIBERO-PRO</span>
+            <span class="tag">Reasoning</span>
+          </div>
+        </td>
+        <td class="date">2026-07-23</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.21725" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2607.19876" data-added="2026-07-30" data-tags="World Model,IDM-Free,Benchmark,ManiSkill3,FoundationPose">
+        <td class="no">66</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.19876_KineBench.html">KineBench: Benchmarking Embodied World Models via IDM-Free Kinematic Grounding</a></div>
+          <div class="sub">Zeyu Liu 외 5인 · arXiv:2607.19876</div>
+          <div class="sub">IDM 없이 YOLOv11→MoGeV2→FoundationPose로 6D pose 직접 추출 후 ManiSkill3 실행. Wan 2.2 5B basic 56.32%, task transfer는 full FT 11.90%가 LoRA 57.78%에 역전. 태스크 복잡도-bounded nonlinear scaling(단순 태스크 diminishing return, 복잡 태스크 13.34→69.52%).</div>
+          <div class="tags">
+            <span class="tag">World Model Eval</span>
+            <span class="tag">IDM-Free</span>
+            <span class="tag">ManiSkill3</span>
+            <span class="tag">FoundationPose</span>
+            <span class="tag">Scaling Study</span>
+          </div>
+        </td>
+        <td class="date">2026-07-22</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.19876" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2501.03575" data-added="2026-07-30" data-tags="World Foundation Model,Video Diffusion,Autoregressive,Tokenizer,NVIDIA">
+        <td class="no">65</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2501.03575_Cosmos.html">Cosmos World Foundation Model Platform for Physical AI</a></div>
+          <div class="sub">Niket Agarwal 외 77인 · NVIDIA · arXiv:2501.03575</div>
+          <div class="sub">Physical AI용 오픈소스 WFM 스택. 2,000만 시간 원본→1억 클립 curation, 통합 Cosmos Tokenizer(연속 8×8×8·이산 8×16×16, DAVIS PSNR +4dB·12×), Diffusion 7B/14B + AR 4B/12B pre-trained WFM, 카메라/로봇/주행 post-training 예제. 10,000×H100·3개월 학습.</div>
+          <div class="tags">
+            <span class="tag">World Foundation Model</span>
+            <span class="tag">Video Diffusion</span>
+            <span class="tag">Autoregressive</span>
+            <span class="tag">Video Tokenizer</span>
+            <span class="tag">Physical AI</span>
+          </div>
+        </td>
+        <td class="date">2025-01-07</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2501.03575" target="_blank">arXiv</a>
+          <a href="https://github.com/nvidia-cosmos/cosmos-predict1" target="_blank">GitHub</a>
+        </td>
+      </tr>
+      <tr data-id="2403.12945" data-added="2026-07-30" data-tags="Dataset,Manipulation,Franka Panda,ZED Stereo,Cross-Institution">
+        <td class="no">64</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2403.12945_DROID.html">DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset</a></div>
+          <div class="sub">Alexander Khazatsky, Karl Pertsch 외 · Stanford · Berkeley · TRI · 13개국 18개 기관 · arXiv:2403.12945 · RSS 2024</div>
+          <div class="sub">13개국·18개 기관·52개 건물·564개 씬에서 12개월 수집한 76,000 데모(350시간). Franka Panda + ZED 2 stereo × 2(외부) + ZED Mini(손목) + Meta Quest 2 원격조작. Diffusion Policy co-training으로 in-dist +22%, OOD +17%. UMI·OpenVLA·π-series·GR00T의 표준 데이터.</div>
+          <div class="tags">
+            <span class="tag">Dataset</span>
+            <span class="tag">Franka Panda</span>
+            <span class="tag">ZED Stereo</span>
+            <span class="tag">Diffusion Policy</span>
+            <span class="tag">In-The-Wild</span>
+          </div>
+        </td>
+        <td class="date">2024-03-19</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2403.12945" target="_blank">arXiv</a>
+          <a href="https://droid-dataset.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2402.10329" data-added="2026-07-30" data-tags="Data Collection,Hand-held Gripper,GoPro Fisheye,Latency Matching,Diffusion Policy">
+        <td class="no">63</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2402.10329_UMI.html">Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots</a></div>
+          <div class="sub">Cheng Chi, Zhenjia Xu 외 · Stanford · Columbia · TRI · arXiv:2402.10329 · RSS 2024</div>
+          <div class="sub">3D 프린트 휴대형 그리퍼(BoM $73) + GoPro 155° 어안 + 사이드 미러 + IMU로 로봇 없이 로봇을 가르치는 파이프라인. inference-time latency matching + 상대 궤적 action으로 UR5·Franka zero-shot 전이. 컵정렬 100%·동적 던지기 87.5%·바이매뉴얼 접기 70%·설거지 70%, 1400 데모 in-the-wild 71.7%.</div>
+          <div class="tags">
+            <span class="tag">UMI</span>
+            <span class="tag">Hand-held Gripper</span>
+            <span class="tag">GoPro Fisheye</span>
+            <span class="tag">Latency Matching</span>
+            <span class="tag">Diffusion Policy</span>
+          </div>
+        </td>
+        <td class="date">2024-02-15</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2402.10329" target="_blank">arXiv</a>
+          <a href="https://umi-gripper.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
       <tr data-id="2607.22535" data-added="2026-07-28" data-tags="World Model,Video Diffusion,URDF Rendering,Cross-Embodiment,Wan 2.1">
         <td class="no">62</td>
         <td class="read-cell"></td>

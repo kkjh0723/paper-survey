@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ViTacWorld — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">Visuo-Tactile World Model · Contact-Rich</span>
+    <h1>ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation</h1>
+    <p class="authors">Yunao Huang, Shiyu Sang, Haotao Lu, Suting Ni, Shijie Wu, Ziyang Guo, Ye Shi, Jingya Wang</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.22530" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.22530" target="_blank">PDF</a>
+      <a href="https://vitacworld.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.22530</span>
+    </div>
+    <div class="taglist">
+      <span class="t">World Model</span>
+      <span class="t">Xense Tactile</span>
+      <span class="t">Cosmos-Predict2.5 2B</span>
+      <span class="t">Isaac Sim</span>
+      <span class="t">Contact-Rich</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 24일 · OmniViTac 21K+ 실 tactile + 5K+ 시뮬 · 4 contact-rich task</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Contact-rich 조작에는 카메라로 안 보이는 물리 신호가 필요한데, visuo-tactile 데이터는 <b>비싸고 하드웨어 종속적</b>이다. ViTacWorld는 <b>실 tactile(Xense) 21K+ 궤적 + Isaac Sim에서 렌더한 5K+ 궤적</b>을 섞어 스케일하고, <b>Cosmos-Predict2.5 2B</b> 위에 stream-aware self-attention + cross-view attention의 DiT로 action-conditioned 미래 visual + tactile을 함께 예측. rollout으로 정책을 <b>42.5% → 67.5%</b>(평균) 개선, prediction 품질 PSNR <b>24.26</b>·SSIM <b>0.829</b>·LPIPS <b>0.051</b>, 정책 평가는 실제와 <b>±10%p</b>. 최초의 visuo-tactile world model 프레임.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>정밀 삽입·박피·플러그 꽂기 같은 contact-rich 태스크는 카메라만으로는 접촉/마찰/미끄러짐 같은 결정적 신호가 관측되지 않는다. tactile 센서(Xense·GelSight 등)로 이를 보완할 수 있지만, (i) 실제 tactile 데이터는 수집 비용이 높고, (ii) 센서가 하드웨어 종속적이며, (iii) 시뮬 데이터는 시각 sim-to-real gap이 크다. 저자들은 <b>tactile은 접촉에 grounded되어 있어 시각보다 sim-to-real gap이 오히려 작다</b>는 관찰에서 출발해, 실 tactile + 시뮬 tactile을 함께 사용해 visuo-tactile world model을 스케일한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>최초의 visuo-tactile world model</b> — action-conditioned로 미래 visual observation + tactile feedback을 <b>시간 정렬</b>해 함께 예측. rollout 생성과 정책 평가 두 역할.</li>
+      <li><b>스케일링 레시피</b> — 실 tactile(<b>OmniViTac 21K+</b>: Xense·GelSight·Tac3D·Daimon 다센서) + 시뮬(<b>5K+</b>, Isaac Sim + Xense rendering) 통합. tactile의 작은 sim-to-real gap을 활용.</li>
+      <li><b>View-aware DiT 아키텍처</b> — Cosmos-Predict2.5 <b>2B</b> 백본 + VAE로 시각·tactile 각각 latent 토큰화, stream 내부 self-attention + 명시적 cross-view attention.</li>
+      <li><b>4 contact-rich task 실증</b> — Charger Plugging · Cucumber Peeling · U-Block Insertion · Cuboid Insertion. augmentation으로 <b>42.5% → 67.5%</b>, 정책 평가 예측이 실측과 ±10%p.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>데이터 스케일</h3>
+    <div class="kv">
+      <div>실 tactile</div><div>OmniViTac 21K+ 궤적(Xense · GelSight Mini · Tac3D · Daimon)</div>
+      <div>시뮬 tactile</div><div>Isaac Sim + Xense 렌더 5K+ task-aligned 궤적, 3D Gaussian scan으로 실 씬 재구성</div>
+      <div>동기화</div><div>시각 관측과 tactile 프레임을 시간 정렬</div>
+    </div>
+
+    <h3>백본 · 토큰화</h3>
+    <p><b>Cosmos-Predict2.5 2B</b> 체크포인트를 확장. VAE 인코더가 시각 스트림과 tactile 스트림을 <b>각각</b> latent 토큰으로 변환. tactile 스트림은 gripper 양쪽 finger 각각(2뷰) 인코딩.</p>
+
+    <h3>Stream-aware / Cross-view Attention</h3>
+    <p>각 스트림 내부에서 stream-aware self-attention을 먼저 적용해 정렬을 보존한 뒤, 명시적 <b>cross-view attention</b> 모듈로 카메라와 tactile 스트림 간 정보 교환. 이 순서 덕분에 tactile의 국소 패턴이 시각 프레임 전체와 뭉개지지 않는다.</p>
+
+    <h3>Diffusion (Latent Denoising)</h3>
+    <p>미래 visual·tactile latent에 latent denoising 목적. timestep과 action을 <b>AdaLN modulation</b>으로 주입. 사전학습(real+sim) 후 real-world policy rollout로 downstream 파인튜닝.</p>
+
+    <h3>두 가지 사용 모드</h3>
+    <ol>
+      <li><b>Rollout 데이터 augmentation</b> — 학습된 정책의 rollout을 ViTacWorld로 확장해 policy 재훈련에 사용.</li>
+      <li><b>정책 평가</b> — 통제된 action sequence를 조건으로 미래 visuo-tactile을 예측해 실행 없이 정책 품질을 sneak-preview.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Rollout 증강으로 정책 성공률 향상 (Xense sensor 4 task)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>Demo 수</th><th>Expert-only</th><th><b>Expert + ViTacWorld</b></th></tr></thead>
+      <tbody>
+        <tr><td>Charger Plugging</td><td>120</td><td>40%</td><td>40%</td></tr>
+        <tr><td>Cucumber Peeling</td><td>50</td><td>40%</td><td class="win">80%</td></tr>
+        <tr><td>U-Block Insertion</td><td>62</td><td>70%</td><td class="win">80%</td></tr>
+        <tr><td>Cuboid Insertion</td><td>68</td><td>40%</td><td class="win">70%</td></tr>
+        <tr><td><b>Mean</b></td><td>—</td><td><b>42.5%</b></td><td class="win"><b>67.5%</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Prediction Quality (Validation)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>메트릭</th><th>메인 카메라</th></tr></thead>
+      <tbody>
+        <tr><td>PSNR ↑</td><td class="win">24.26</td></tr>
+        <tr><td>SSIM ↑</td><td class="win">0.829</td></tr>
+        <tr><td>LPIPS ↓</td><td class="win">0.051</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>정책 평가 (Sim-Preview)</h3>
+    <p>ViTacWorld가 예측한 rollout 성공률은 실제 실행 성공률과 <b>±10%p 이내</b>에서 일치. 즉, 실행 없이도 정책 품질을 근사할 수 있음.</p>
+
+    <h3>비교 baseline</h3>
+    <ul>
+      <li>Vision-only π₀.₅</li>
+      <li>π₀.₅ + tactile policy</li>
+      <li>ACT + tactile</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / 관찰</h2>
+    <ul>
+      <li><b>Tactile의 sim-to-real gap이 시각보다 작다</b> — tactile은 물리 접촉에 grounded되어 시뮬 렌더가 실측과 통계적으로 유사. 이 관찰이 sim data 활용을 정당화.</li>
+      <li><b>Stream-aware → cross-view 순서</b> — 반대 순서면 tactile 국소 신호가 시각 전체에 뭉개지는 경향. 순서가 결정적.</li>
+      <li><b>Cucumber Peeling에서 이득이 가장 큼</b> — 40 → 80%. 시각으로 안 보이는 마찰·미끄러짐이 지배적인 태스크에서 tactile 세계 모델의 가치가 극대화.</li>
+      <li><b>Charger Plugging은 이득이 0</b> — 정밀 정렬은 이미 expert가 잘하는 경우가 있고, world model의 도움이 미미. 태스크 특성별 이득 차 있음.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.22530/x1.png" alt="ViTacWorld 전체 파이프라인 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — ViTacWorld 개요.</b> 실 tactile 21K+ + 시뮬 5K+로 사전학습된 view-aware DiT가 action-conditioned 미래 visual+tactile을 함께 예측 → rollout augmentation과 policy evaluation 두 용도로 사용. (출처: arXiv:2607.22530)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.22530/x2.png" alt="정책 rollout 정성 비교 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Expert vs Augmented 정성 비교.</b> Expert-only 정책은 pickup·정렬 단계에서 실패, ViTacWorld augmented 정책은 grasp localization과 tactile-guided correction이 더 정확. (출처: arXiv:2607.22530)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>왜 중요한가</b> — 최근 world model 연구는 대부분 시각 위주(Rofacto·MVA 등)였는데, ViTacWorld는 <b>tactile까지 결합한 최초의 프레임</b>. 정책 evaluation을 실행 없이 근사할 수 있다는 점은 실로봇 반복 실험 비용을 크게 낮춘다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.22530" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.22530" target="_blank">PDF</a></li>
+      <li><a href="https://vitacworld.github.io/" target="_blank">프로젝트 페이지 (vitacworld)</a></li>
+      <li>관련: <a href="https://arxiv.org/abs/2501.03575" target="_blank">Cosmos-Predict (2501.03575)</a> — 백본, <a href="https://arxiv.org/abs/2607.18231" target="_blank">FM-VLA (2607.18231)</a> — 힘 감각 기반 policy</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.22530 · ViTacWorld · 요약 생성 2026-07-30
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

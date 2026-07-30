@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pigey — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">Agentic Orchestration · Frozen VLA · Reasoning</span>
+    <h1>Addressing the Orchestration Gap in Generalist Robots via Physical Agency</h1>
+    <p class="authors">Liane Galanti, Dhruv Shah, Tri Dao</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.21725" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.21725" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2607.21725v1" target="_blank">HTML</a>
+      <span>arXiv:2607.21725</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Agentic Orchestrator</span>
+      <span class="t">Frozen VLA (π0.5)</span>
+      <span class="t">TAMP (TiPToP)</span>
+      <span class="t">LIBERO-PRO</span>
+      <span class="t">Closed-loop Reasoning</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 23일 · Franka Research 3 + Robotiq · dual Zed-2i + wrist Zed-Mini · Claude Opus 4.7 주 reasoner</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>일반화 로봇에는 "동작"과 "판단" 사이 <b>orchestration gap</b>이 있다. 파인튜닝 대신 <b>frontier VLM을 closed-loop 오케스트레이터</b>로 두고, 두 개의 frozen motor 백엔드(π0.5-DROID 정책 · TAMP TiPToP)를 <b>tool처럼 호출</b>한다. 훈련·데이터 추가 없이 LIBERO-PRO 6-suite 평균 <span class="win">12.8% → 53.3%</span>(π0.5 대비 4×), 실로봇 30 태스크 평균 <span class="win">16.7% → 97.3%</span>. 최근접 오류 탐지 + retry/escalate로 <b>150 trial 중 총 4 실패</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>frozen 모터 정책(VLA, TAMP)은 각각 잘하는 태스크가 있지만, "왜 여기부터 시작해야 하는지"·"실패 시 무엇을 다시 볼지"·"장애물이 있으면 무엇을 먼저 치울지" 같은 <b>고수준 의사결정</b>에는 약하다. 이 격차가 <b>orchestration gap</b>: 같은 motor skill이 agentic loop 안에 놓이면 얼마나 더 잘하는가. 저자들은 이를 <b>정책 자체를 학습</b>하는 대신 <b>frontier VLM 오케스트레이터</b>로 메우자고 주장한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Pigey: closed-loop 물리적 에이전시 오케스트레이터</b> — VLM ϕ가 관측→도구 호출→결과 반영→재계획 루프를 돌리며, 두 frozen 모터 백엔드를 tool로 사용. 어느 백엔드도 fine-tune·재학습하지 않음.</li>
+      <li><b>5 개 tool의 최소 도구 집합</b> — Perceive, Pick(label), DropAbove(label), VLARollout(subgoal), Done. TAMP·VLA를 각각 상황에 맞게 호출.</li>
+      <li><b>Verify · Retry · Escalate</b> — 실패 시 재-perceive → 같은 도구 1회 retry → 다른 백엔드로 escalate. TAMP↔VLA bidirectional fallback.</li>
+      <li><b>LIBERO-PRO 6-suite에서 4× 향상</b> — π0.5-LIBERO 12.8% → Pigey <b>53.3%</b>. Object/Spatial/Goal × swap/task 6 조합에서 모두 향상.</li>
+      <li><b>실로봇 30 태스크에서 near-100%</b> — 8 카테고리(pick-place·world knowledge·conditional·multi-step·spatial·obstacle·error recovery·long-horizon)에서 평균 <b>97.3%</b>, obstacle/recovery/memory에서도 90~100%.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Frozen 모터 백엔드</h3>
+    <div class="kv">
+      <div>π0.5-DROID</div><div>실로봇용 frozen VLA policy (fine-tune 없음)</div>
+      <div>π0.5-LIBERO</div><div>LIBERO-PRO 시뮬 용 frozen 정책</div>
+      <div>TiPToP (TAMP)</div><div>rigid pick-and-place 용 클래식 task-and-motion 플래너</div>
+    </div>
+
+    <h3>Pigey 오케스트레이터 루프</h3>
+    <p>frontier VLM ϕ가 <b>Algorithm 1</b>의 loop를 수행한다:</p>
+    <ol>
+      <li><b>Observe</b> — 현재 씬 관측(Zed 스테레오 + wrist).</li>
+      <li><b>Select tool</b> — Perceive / Pick / DropAbove / VLARollout / Done 중 하나.</li>
+      <li><b>Execute</b> — 해당 백엔드로 실행.</li>
+      <li><b>Verify</b> — 결과 관측·조건 확인.</li>
+      <li><b>Replan or Done</b> — 실패면 재도전·escalate, 성공이고 태스크 완결이면 종료.</li>
+    </ol>
+
+    <h3>Verify · Retry · Escalate</h3>
+    <ul>
+      <li>매 Pick 이전에 <b>re-perceive</b>로 물체 이동 반영.</li>
+      <li>실패한 Pick은 1회 retry → 2회째 실패면 VLA로 escalate.</li>
+      <li>목표 위치가 다른 물체로 점유되면 <b>먼저 clear</b>.</li>
+      <li>TAMP ↔ VLA 양방향 fallback.</li>
+    </ul>
+
+    <h3>VLM 오케스트레이터 스윕 (Table 15)</h3>
+    <ul>
+      <li>Claude Opus 4.7 (실로봇 주 reasoner) · Sonnet 4.6 · Haiku 4.5</li>
+      <li>Gemini 3.1 Pro · 3.5 Flash · Gemini Robotics-ER 1.6</li>
+      <li>GPT-5.5 (여러 tier)</li>
+      <li>평균 성공률은 reasoner 능력에 따라 <b>44.3% → 53.3%</b>로 점진 상승 (LIBERO-PRO).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO-PRO 6-suite (평균 500 trial)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Suite</th><th>π0.5-LIBERO</th><th><b>Pigey</b></th></tr></thead>
+      <tbody>
+        <tr><td>Object swap</td><td>17%</td><td class="win">54%</td></tr>
+        <tr><td>Object task</td><td>1%</td><td class="win">54%</td></tr>
+        <tr><td>Spatial swap</td><td>20%</td><td class="win">66%</td></tr>
+        <tr><td>Spatial task</td><td>1%</td><td class="win">80%</td></tr>
+        <tr><td>Goal swap</td><td>38%</td><td class="win">44%</td></tr>
+        <tr><td>Goal task</td><td>0%</td><td class="win">22%</td></tr>
+        <tr><td><b>Mean</b></td><td><b>12.8%</b></td><td class="win"><b>53.3%</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">태스크 특화 파인튜닝 없이 <b>4× 이상</b> 개선.</p>
+
+    <h3>실로봇 (Franka Research 3, 30 태스크 × 5 trial)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>카테고리</th><th>π0.5-DROID</th><th>TiPToP</th><th><b>Pigey</b></th></tr></thead>
+      <tbody>
+        <tr><td>Pick-place control</td><td>95%</td><td>80%</td><td class="win">100%</td></tr>
+        <tr><td>World knowledge</td><td>0%</td><td>90%</td><td class="win">100%</td></tr>
+        <tr><td>Conditional logic</td><td>0%</td><td>95%</td><td class="win">100%</td></tr>
+        <tr><td>Multi-step reasoning</td><td>0%</td><td>25%</td><td class="win">100%</td></tr>
+        <tr><td>Spatial reasoning</td><td>20%</td><td>75%</td><td class="win">100%</td></tr>
+        <tr><td>Obstacle reasoning</td><td>0%</td><td>0%</td><td class="win">90%</td></tr>
+        <tr><td>Error recovery</td><td>10%</td><td>0%</td><td class="win">90%</td></tr>
+        <tr><td>Long-horizon memory</td><td>0%</td><td>0%</td><td class="win">100%</td></tr>
+        <tr><td><b>Overall</b></td><td><b>16.7%</b></td><td><b>48.7%</b></td><td class="win"><b>97.3%</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>실패 분석 (Table 14)</h3>
+    <p>150 trial 중 <b>π0.5: 86 실패(주로 grounding)</b>, <b>TiPToP: 65 실패(주로 planning)</b>, <b>Pigey: 총 4 실패</b>(grasp 실행 · verifier false-success에 균등 분포).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / 관찰</h2>
+    <ul>
+      <li><b>Frozen 모터로도 파인튜닝-수준을 넘음</b> — 정책 자체를 개선하는 대신 오케스트레이션을 개선하는 것만으로 4×~5× 이득. 데이터·훈련 비용 없음.</li>
+      <li><b>Reasoner 스케일 vs 성공률</b> — Haiku 4.5부터 Opus 4.7까지 44.3→53.3%로 완만 상승. reasoning 품질이 중요하지만 폭발적 이득은 tool 설계에서 온다.</li>
+      <li><b>Bidirectional TAMP↔VLA fallback</b> — 어느 백엔드도 단독으로는 부족(TiPToP obstacle 0%, π0.5 world knowledge 0%). Pigey가 상황별로 골라 부르는 것이 강력.</li>
+      <li><b>Verify가 곧 안정성</b> — verifier false-success가 Pigey의 유일한 신규 실패 원인. verify 품질이 다음 병목.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.21725/x1.png" alt="Pigey가 가능케 하는 추론 행동 예시 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Pigey가 열어주는 추론 행동.</b> obstacle reasoning(가려진 타깃을 인식·치우기), safety reasoning(위험 물체 제거), 점유된 목표 clear, long-horizon memory(재구성 복원), 안정을 위한 spatial stacking. 모두 frozen VLA·TAMP + VLM orchestrator만으로 달성. (출처: arXiv:2607.21725)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.21725/x2.png" alt="Pigey 시스템 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Pigey 시스템 개요.</b> Frontier VLM 오케스트레이터가 5 개 tool(Perceive/Pick/DropAbove/VLARollout/Done)을 호출하며, π0.5-DROID(VLA)와 TiPToP(TAMP) 두 frozen 백엔드를 상황에 맞게 스위칭. verify → retry → escalate 순환. (출처: arXiv:2607.21725)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>왜 중요한가</b> — 최근 하드코딩 파이프라인(PhyAgentOS 등)이나 계층형 VLA(τ0-VLA 등)와 대비되는 <b>"파인튜닝 없이 VLM으로 오케스트레이션만"</b> 접근이 실전 태스크에서 near-100% 성능을 낸다는 실증. 오케스트레이션 자체가 대규모 사전학습이 아직 못 채운 gap이라는 강한 신호.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.21725" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.21725" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.21725v1" target="_blank">HTML</a></li>
+      <li>관련: <a href="https://arxiv.org/abs/2607.16636" target="_blank">PhyAgentOS (2607.16636)</a>, <a href="../summaries/tau0-VLA.html">τ0-VLA</a> — 각각 하드코딩 OS·계층형 VLA 접근</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.21725 · Pigey · 요약 생성 2026-07-30
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

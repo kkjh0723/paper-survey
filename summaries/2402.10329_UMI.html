@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>UMI — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">Data Collection · Diffusion Policy · Portable Gripper</span>
+    <h1>Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots</h1>
+    <p class="authors">Cheng Chi, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, Shuran Song · Stanford · Columbia · TRI · Toyota</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2402.10329" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2402.10329" target="_blank">PDF</a>
+      <a href="https://umi-gripper.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2402.10329 · RSS 2024</span>
+    </div>
+    <div class="taglist">
+      <span class="t">UMI</span>
+      <span class="t">Hand-held Gripper</span>
+      <span class="t">GoPro Fisheye</span>
+      <span class="t">Latency Matching</span>
+      <span class="t">Diffusion Policy</span>
+    </div>
+    <p class="meta">제출: 2024년 2월 15일 (v1) → 2024년 3월 6일 (v3) · 최종 BoM $73 + GoPro $298</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>로봇 없이도 로봇 정책을 가르치는</b> 데이터 수집·학습 프레임워크. 3D 프린트 <b>휴대형 그리퍼</b>(780g, BoM $73)에 <b>GoPro + 155° 어안</b> + <b>사이드 미러(암묵적 스테레오)</b> + <b>IMU</b>를 장착해 사람의 손조작을 그대로 기록. 정책은 diffusion policy이며 <b>inference-time latency matching</b>과 <b>relative-trajectory action</b>으로 실물 로봇(UR5·Franka)에 zero-shot 전이. 컵 정렬 <span class="win">100%</span>·동적 던지기 87.5%·양팔 세탁물 접기 70%·설거지 70%. 1,400 데모로 30 미지 환경 in-the-wild 컵 정렬 <b>71.7%</b>. 이후 π0·pi07·Data Scaling Laws의 표준 데이터 인터페이스가 됨.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>실로봇에서 수집한 데모는 씬·물체·환경 다양성이 극히 제한된다. 사람의 손 조작은 풍부한 in-the-wild 데이터를 준다는 매력이 있지만, (i) 카메라 시점, (ii) 손의 자유도, (iii) 관측·행동의 지연 정합, (iv) 물리적으로 그리퍼와 다른 손의 접촉 특성이 로봇으로의 전이를 방해한다. UMI는 이 4가지를 하드웨어(그리퍼·미러·GoPro·IMU)와 소프트웨어(latency matching·상대 trajectory)로 정면 해결한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>휴대형 UMI 그리퍼 하드웨어</b> — 3D 프린트, 780g, 310×175×210mm, BoM <b>$73 + GoPro $298</b>. 사이드 미러로 <b>암묵적 스테레오</b> 획득, soft finger에 fiducial 마커로 gripper width 자동 추적. 로봇 팔(UR5·Franka)에도 <b>동일 그리퍼</b>를 그대로 부착.</li>
+      <li><b>Inference-Time Latency Matching (PD1)</b> — 카메라·proprio·gripper 각각의 지연을 개별 측정 → 가장 늦은 관측(≈10~20Hz 카메라)에 맞춰 정렬. bimanual은 ±1/60초 이웃 프레임 매칭. 액션은 지연 보상해 미리 송신, 오래된 예측은 폐기.</li>
+      <li><b>Relative Trajectory Action</b> — 절대 pose가 아닌 <b>현재 pose 기준 SE(3) 상대 궤적</b>을 출력. 캘리브레이션 오차·embodiment 차이에 강인.</li>
+      <li><b>Diffusion Policy로 4가지 어려운 태스크</b> — <b>Dynamic</b>(던지기), <b>Bimanual</b>(빨래 개기), <b>Precise</b>(컵 정렬 20mm 오차), <b>Long-horizon</b>(설거지)까지 하나의 프레임으로 처리. 태스크만 데이터 바꾸면 됨.</li>
+      <li><b>In-the-wild zero-shot 일반화</b> — 30개 미지 환경 컵 정렬 <b>71.7%</b>, 1,400 데모로 학습.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>UMI 그리퍼 (하드웨어)</h3>
+    <div class="kv">
+      <div>바디</div><div>3D 프린트 parallel-jaw gripper, 780g, 310×175×210mm</div>
+      <div>카메라</div><div>GoPro Hero 9/10 + 155° 어안 렌즈 (내장 IMU 60Hz)</div>
+      <div>암묵적 스테레오</div><div>양옆 사이드 미러로 카메라 주변에 좌우 시점 획득 (별도 추가 카메라 불필요)</div>
+      <div>Gripper Width</div><div>soft finger + fiducial 마커로 카메라만으로 연속 폭 추적</div>
+      <div>비용</div><div>BoM $73 (그리퍼 부품) + GoPro $298 = <b>≈$371</b></div>
+      <div>로봇 통합</div><div>UR5 / Franka Emika FR2 손목에 동일 그리퍼 장착 (관측 시점 동일)</div>
+    </div>
+
+    <h3>Inference-time Latency Matching (PD1)</h3>
+    <p>관측 스트림별 지연을 사전에 계측하고, 가장 늦은 관측(카메라 10~20Hz)의 캡처 타임스탬프에 맞춰 <b>gripper·robot state를 linear interpolation</b>. bimanual은 두 팔 프레임을 ±1/60초 근접이웃으로 soft-sync. 액션은 예측 지연을 감안해 앞서 송신하고, 누적 지연으로 낡은 예측은 폐기. 팔·그리퍼 실행 지연도 각각 별도 보정.</p>
+
+    <h3>정책 · 관측/행동 공간</h3>
+    <div class="kv">
+      <div>정책</div><div>Diffusion Policy (sequence-to-sequence)</div>
+      <div>비전</div><div>ResNet-34 (간단 태스크) / CLIP ViT-B/16 · L/14 (복잡 태스크: 설거지)</div>
+      <div>관측</div><div>어안 raw 이미지 + 상대 EEF 궤적 이력 + gripper width (+ bimanual 시 inter-gripper pose)</div>
+      <div>행동</div><div>현재 pose 기준 relative SE(3) 궤적 + gripper width</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>태스크별 성공률 & 데모 수</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>데모</th><th>성공률</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>컵 정렬 (좁은 목표)</td><td>305</td><td class="win">20/20 (100%)</td><td>cross-robot 18/20 (90%)</td></tr>
+        <tr><td>Dynamic Tossing (동적 던지기)</td><td>280</td><td class="win">105/120 (87.5%)</td><td>latency matching 없으면 57.5%</td></tr>
+        <tr><td>Bimanual Cloth Folding</td><td>250</td><td>14/20 (70%)</td><td>inter-gripper proprio 없으면 30%</td></tr>
+        <tr><td>Dish Washing (long-horizon)</td><td>258</td><td>14/20 (70%)</td><td>CLIP 비전 인코더 필요</td></tr>
+        <tr><td>In-the-Wild 컵 정렬</td><td>1,400</td><td class="win">71.7%</td><td>30 미지 환경 zero-shot</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>주요 Ablation</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>변형</th><th>성공률</th></tr></thead>
+      <tbody>
+        <tr><td>Full UMI (Fisheye + relative + mirrors)</td><td class="win">100%</td></tr>
+        <tr><td>어안 미사용 (일반 렌즈)</td><td>55%</td></tr>
+        <tr><td>delta action (상대 궤적 대신 delta pose)</td><td>80%</td></tr>
+        <tr><td>절대 action (calibration 민감)</td><td>25%</td></tr>
+        <tr><td>사이드 미러 미사용</td><td>85%</td></tr>
+        <tr><td>디지털 미러 반사 (동일 카메라 하나로 좌우 반사)</td><td class="win">100%</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>데이터 수집 효율</h3>
+    <ul>
+      <li>UMI 그리퍼 vs SpaceMouse 원격조작: <b>≈3× 빠름</b>.</li>
+      <li>UMI 그리퍼 vs 맨손: 태스크에 따라 <b>48~64%</b> 수준 속도(그래도 원격조작보다 빠름).</li>
+      <li>SLAM 정확도(위치/회전): 6.1mm / 3.5°. bimanual 상대 pose 오차 10.1mm.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / 관찰 (핵심 함정)</h2>
+    <ul>
+      <li><b>지연은 진짜로 성능을 좌우한다</b> — Dynamic Tossing에서 latency matching 없이 성공률 87.5 → 57.5%로 급락. 정적 pick-place는 상대적으로 덜 민감하지만 동적 태스크에서는 결정적.</li>
+      <li><b>상대 궤적 표현의 위력</b> — 절대 pose → 25%, delta pose → 80%, relative trajectory → 100%. UMI가 여러 embodiment(UR5·Franka)에 전이될 수 있는 핵심.</li>
+      <li><b>암묵적 스테레오(사이드 미러) & 디지털 미러</b> — 미러 제거 시 15%p 하락. 심지어 이미지에 반사 자체를 넣는 것만으로도 성능이 크게 회복 → depth cue가 정책 안정화에 실질 기여.</li>
+      <li><b>비전 인코더 스케일</b> — 설거지 같이 시각적으로 복잡한 태스크는 CLIP-L 필요; 단순 태스크는 ResNet-34로 충분.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2402.10329/x1.png" alt="UMI 그리퍼 하드웨어 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — UMI 하드웨어 & 데이터 흐름.</b> 3D 프린트 gripper + GoPro 어안 + 사이드 미러 + IMU. 사람의 손 조작을 그대로 기록해 UR5·Franka에 동일 그리퍼로 전이. (출처: arXiv:2402.10329)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2402.10329/x2.png" alt="UMI 태스크 갤러리 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — UMI 4대 태스크.</b> Precise(컵 정렬 20mm), Dynamic(던지기), Bimanual(빨래 개기), Long-Horizon(설거지). 하나의 프레임으로 모두 학습·평가. (출처: arXiv:2402.10329)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>왜 표준이 되었나</b> — UMI는 이후 (i) Data Scaling Laws(2410.18647)의 수집 인터페이스, (ii) π-series·pi07 등 대규모 VLA 학습 mix, (iii) Data Pyramid(2607.24744)의 "UMI-style layer"로 명시적으로 지목되며 <b>real-robot 데이터의 접근성·다양성 병목</b>을 완화한 대표 파이프라인이 됨.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2402.10329" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2402.10329" target="_blank">PDF</a></li>
+      <li><a href="https://umi-gripper.github.io/" target="_blank">프로젝트 페이지 (umi-gripper)</a></li>
+      <li>후속: <a href="https://arxiv.org/abs/2410.18647" target="_blank">Data Scaling Laws (2410.18647)</a> — UMI로 수집한 데이터로 4태스크 90% 달성. <a href="https://arxiv.org/abs/2607.24744" target="_blank">Data Pyramid (2607.24744)</a>는 UMI를 별도 layer로 분류.</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2402.10329 · UMI · 요약 생성 2026-07-30
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

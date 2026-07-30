@@ -10,50 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2501.03575",
-      "title": "Cosmos World Foundation Model Platform for Physical AI",
-      "arxiv_url": "https://arxiv.org/abs/2501.03575",
-      "added": "2026-07-30"
-    },
-    {
-      "id": "2403.12945",
-      "title": "DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset",
-      "arxiv_url": "https://arxiv.org/abs/2403.12945",
-      "added": "2026-07-30"
-    },
-    {
-      "id": "2402.10329",
-      "title": "Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots (UMI)",
-      "arxiv_url": "https://arxiv.org/abs/2402.10329",
-      "added": "2026-07-30"
-    },
-    {
-      "id": "2607.19876",
-      "title": "KineBench: Benchmarking Embodied World Models via IDM-Free Kinematic Grounding",
-      "arxiv_url": "https://arxiv.org/abs/2607.19876",
-      "added": "2026-07-30"
-    },
-    {
-      "id": "2607.21725",
-      "title": "Pigey: Addressing the Orchestration Gap in Generalist Robots via Physical Agency",
-      "arxiv_url": "https://arxiv.org/abs/2607.21725",
-      "added": "2026-07-30"
-    },
-    {
-      "id": "2607.22530",
-      "title": "ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2607.22530",
-      "added": "2026-07-30"
-    },
-    {
-      "id": "2607.24744",
-      "title": "Data Pyramid for Embodied Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2607.24744",
-      "added": "2026-07-30"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

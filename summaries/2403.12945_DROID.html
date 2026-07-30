@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>DROID — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">Dataset · Manipulation · In-the-Wild</span>
+    <h1>DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset</h1>
+    <p class="authors">Alexander Khazatsky, Karl Pertsch, Suraj Nair, Ashwin Balakrishna 외 · Sergey Levine, Chelsea Finn, Dorsa Sadigh, Shuran Song 등 지도 · 13개국 18개 기관 협력</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2403.12945" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2403.12945" target="_blank">PDF</a>
+      <a href="https://droid-dataset.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2403.12945 · RSS 2024</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Manipulation Dataset</span>
+      <span class="t">Franka Panda</span>
+      <span class="t">ZED Stereo</span>
+      <span class="t">Diffusion Policy</span>
+      <span class="t">Cross-Institution</span>
+    </div>
+    <p class="meta">제출: 2024년 3월 19일 (v2 2025-04-22) · 12개월 수집 · 50명 데이터 콜렉터</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>13개국 <b>18개 기관·52개 건물·564개 씬</b>에서 12개월간 수집한 <b>76,000 데모(350시간)</b> 규모의 in-the-wild 로봇 조작 데이터셋. 하드웨어 스택은 <b>Franka Panda + Robotiq</b> + <b>ZED 2 스테레오 × 2 (외부) + ZED Mini (손목) × 1</b> + Meta Quest 2 원격조작. DROID co-training은 in-distribution <span class="win">+22%</span>, OOD <span class="win">+17%</span> 절대 향상. 이후 UMI·OpenVLA·π0·GR00T 등 다수 정책의 표준 학습·평가 baseline이 되었으며, 최근 KineBench·Rofacto·MVA·pi07 등도 DROID를 핵심 스플릿으로 사용한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>ImageNet·LAION 같은 대규모 다양성 데이터가 vision·language 모델의 스케일을 열었듯, 로봇 조작 정책도 <b>실세계 다양성</b>이 확보된 데이터에서 학습되어야 강건해진다. 그러나 기존 조작 데이터셋은 (a) 특정 lab·room 안의 좁은 씬, (b) 하나의 embodiment, (c) 소수 태스크로 편향되어 있어 학습된 정책은 이 좁은 분포 밖에서 급격히 무너진다. DROID는 이 문제를 <b>18개 기관 협력 표준 하드웨어 + 다양한 씬·태스크</b>로 정면 돌파한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>표준화된 mobile 데이터 수집 스택</b> — 이동형 스탠딩 데스크 + Franka Panda 7DoF + Robotiq gripper. 3× 동기화 스테레오(외부 ZED 2 × 2, 손목 ZED Mini). Meta Quest 2로 15Hz 6D 원격조작. 자동 캘리브레이션 파이프라인 동봉.</li>
+      <li><b>가장 다양한 in-the-wild 수집</b> — 12개월간 50명이 <b>13개국·18기관·52개 건물·564개 씬</b>에서 수집한 <b>76,000 성공 데모(≈350시간)</b>. 86개의 고유 동사 태스크.</li>
+      <li><b>Diffusion Policy 학습 코드·베이스라인</b> — ResNet-50(비전) + frozen DistilBERT(언어) 조건의 diffusion policy를 공개. 16-step end-effector trajectory + gripper.</li>
+      <li><b>Co-training으로 강한 일반화 이득</b> — DROID 공동학습이 in-dist <b>+22%</b>, out-of-dist <b>+17%</b> 절대 향상. 씬 다양성 vs 데모 수의 이득을 정량화(Figure 8).</li>
+      <li><b>완전 오픈 & CC BY 4.0</b> — 데이터·코드·하드웨어 재현 가이드 모두 공개, 이후 표준 데이터가 됨.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method — 하드웨어 & 수집</h2>
+
+    <h3>Mobile DROID 플랫폼</h3>
+    <div class="kv">
+      <div>암</div><div>Franka Emika Panda 7DoF + Robotiq gripper</div>
+      <div>베이스</div><div>이동형 스탠딩 데스크(어떤 건물이든 30분 이내 셋업)</div>
+      <div>외부 카메라</div><div>ZED 2 스테레오 × 2 (좌·우 시점)</div>
+      <div>손목 카메라</div><div>ZED Mini 스테레오 × 1</div>
+      <div>원격조작</div><div>Meta Quest 2 컨트롤러 · 6D pose · 15Hz</div>
+      <div>영상</div><div>1280×720 RGB + depth, extrinsic·post-hoc calibration 포함</div>
+    </div>
+
+    <h3>수집 프로토콜</h3>
+    <p>13개국·18기관에서 50명의 collector가 12개월 동안 수집. 태스크는 "물체 옮기기·정리·닦기·붓기" 등 일상 조작 86가지 동사. 각 건물·방·시점 조합이 곧 하나의 씬(총 <b>564 scene, 52 building</b>). 언어 라벨은 사후 어노테이션 + LLM 보강.</p>
+
+    <h3>정책 학습 레시피 (기본 baseline)</h3>
+    <p>Diffusion Policy(16-step action chunk) + ResNet-50 ImageNet pretrained + 언어 조건 frozen DistilBERT. 출력은 end-effector translation·rotation·gripper. 이 레시피가 이후 UMI·OpenVLA·π0 등의 참조 baseline이 됨.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>DROID Co-Training vs Baseline (표 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>세팅</th><th>DROID 없이</th><th>DROID Co-train</th><th>절대 향상</th></tr></thead>
+      <tbody>
+        <tr><td>In-Distribution</td><td>기준</td><td class="win">+22%p</td><td class="win">+22%</td></tr>
+        <tr><td>Out-of-Distribution</td><td>기준</td><td class="win">+17%p</td><td class="win">+17%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">OOD 조건에는 distractor 물체, 새 인스턴스, 조명 변화 등이 포함. co-training이 특히 OOD 강건성을 크게 끌어올림.</p>
+
+    <h3>씬 다양성 vs 데모 수 (Figure 8)</h3>
+    <p>동일 데모 수에서 <b>많은 씬에 얇게 분포</b>시킨 sampling이, 20개 씬에 <b>깊게 몰아 분포</b>시킨 sampling보다 OOD 성능이 유의미하게 높음. 즉, <b>씬 다양성</b>이 데모 수만큼 결정적.</p>
+
+    <h3>후속 활용 (요약자 주)</h3>
+    <ul>
+      <li><b>OpenVLA / π0 / RDT / GR00T-N1</b>: DROID를 대규모 사전학습 mix의 핵심 소스로 포함.</li>
+      <li><b>UMI / Data Scaling Laws (2410.18647)</b>: UMI로 수집한 데이터의 baseline·비교 대상.</li>
+      <li><b>KineBench / Rofacto / MVA (2607.*)</b>: DROID를 world model·평가 스플릿으로 사용.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation & 관찰</h2>
+    <ul>
+      <li><b>씬 다양성이 곧 강건성</b> — 동일 총 데모 수 하에서 광범위한 씬 분포가 OOD 성공률을 크게 향상. 좁은 lab-only 데이터의 한계를 정량 입증.</li>
+      <li><b>Co-training vs 단독 학습</b> — 태스크별 200~500 데모만으로도 DROID 76K와 함께 학습하면 in-dist/OOD 모두 큰 향상. downstream 팀에겐 값싼 fine-tune 레시피 확보.</li>
+      <li><b>표준 하드웨어의 중요성</b> — 18기관 협업이 가능했던 이유는 mobile Franka + ZED 스택을 표준화하고 캘리브레이션까지 자동화했기 때문. 이후 GR00T-N1·pi07 등의 데이터셋 협업 모델의 원형.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2403.12945/x1.png" alt="DROID 데이터 다양성 시각화 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — DROID 데이터 다양성.</b> 13개국 18개 기관·52개 건물·564개 씬에서 수집된 조작 데모의 시각화. 다양한 조명·배경·물체·태스크가 한 데이터셋에 담김. (출처: arXiv:2403.12945)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2403.12945/x2.png" alt="DROID 하드웨어 셋업 및 카메라 배치 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — DROID 표준 하드웨어.</b> Franka Panda 7DoF + Robotiq + 이동형 데스크 + 외부 ZED 2 × 2 + 손목 ZED Mini + Meta Quest 2 원격조작. 30분 안에 재현 가능한 표준 스택. (출처: arXiv:2403.12945)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>왜 표준 데이터가 되었나</b> — (i) 표준화된 hardware, (ii) 씬·기관 다양성, (iii) 공개 데모+코드+가이드의 세 요소가 결합해 downstream 팀이 최소 marginal cost로 large-scale 데이터를 재사용할 수 있게 됨. UMI·OpenVLA·π-시리즈·GR00T·최근 world model들이 모두 DROID를 참조.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2403.12945" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2403.12945" target="_blank">PDF</a></li>
+      <li><a href="https://droid-dataset.github.io/" target="_blank">프로젝트 페이지 (droid-dataset)</a></li>
+      <li>후속: <a href="https://arxiv.org/abs/2402.10329" target="_blank">UMI</a>, <a href="https://arxiv.org/abs/2410.18647" target="_blank">Data Scaling Laws</a>, KineBench(2607.19876), Rofacto(2607.22535), MVA(2607.19343) 모두 DROID 활용</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2403.12945 · DROID · 요약 생성 2026-07-30
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
