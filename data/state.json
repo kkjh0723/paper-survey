@@ -46,6 +46,12 @@
       "title": "ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2607.22530",
       "added": "2026-07-30"
+    },
+    {
+      "id": "2607.24744",
+      "title": "Data Pyramid for Embodied Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2607.24744",
+      "added": "2026-07-30"
     }
   ],
   "dismissed": [
