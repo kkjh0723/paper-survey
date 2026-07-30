@@ -16,6 +16,12 @@
       "title": "Cosmos World Foundation Model Platform for Physical AI",
       "arxiv_url": "https://arxiv.org/abs/2501.03575",
       "added": "2026-07-30"
+    },
+    {
+      "id": "2403.12945",
+      "title": "DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset",
+      "arxiv_url": "https://arxiv.org/abs/2403.12945",
+      "added": "2026-07-30"
     }
   ],
   "dismissed": [
