@@ -1,10 +1,64 @@
 {
-  "generated": "2026-07-31",
+  "generated": "2026-08-01",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.28391",
+          "title": "TacWAM: Anchor-Guided World Action Model with Mechanics-Aware Tactile Prediction",
+          "authors": "Lei Jin, Yiding Ma, Xin Zhang, Chen Gao, Wei Wu, Yong Li · arXiv:2607.28391",
+          "summary_ko": "WAM에 촉각을 정면으로 통합한 논문. Spatially Aligned Fusion 인코더가 시각과 촉각을 정렬해 처리하고, temporal tactile history 인코더가 접촉 히스토리를 축적하며, attention masking으로 미래 촉각 예측이 액션 생성에 편향을 주지 못하게 한다. Anchor-guided 설계로 시각 anchor와 촉각 prediction을 분리해 학습 안정성을 확보. 접촉이 많은 실기 태스크에서 평균 성공률 75.0%로 가장 강한 베이스라인을 37.5%p 상회.",
+          "tags": [
+            "World Action Model",
+            "Mechanics-Aware Tactile",
+            "Anchor-Guided",
+            "Contact-Rich",
+            "Spatially Aligned Fusion"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.28391",
+          "extra_url": "",
+          "date": "2026-07-30",
+          "reason": "좋아요한 WALA(2607.11397, DINOv3+depth latent world model)와 FM-VLA(2607.18231, 힘 memory VAE)를 정확히 하나로 잇는 다음 세대 — WALA가 '시각 latent + depth로 WAM'을 열었다면 TacWAM은 '시각 latent + 촉각 mechanics'로 WAM을 확장한다. pool의 τ(2607.24485, JEPA future-visual로 촉각 학습)·index의 ViTacWorld(2607.22530, visuo-tactile world model)와 완벽한 3부작: τ가 표현 층, ViTacWorld가 world model 층, TacWAM이 anchor-guided WAM 층. 좋아요한 Xiaomi-U0(2607.11643)의 WAM 계보와 컬렉션의 WAM 라인(FlowWAM 2607.13017·LingBot-VA 2607.08639·ACWM 2607.09185·BadWAM 2607.15207)의 촉각 축 확장. attention masking으로 예측이 액션에 편향 안 되게 한 설계는 pool의 ASAR(2607.23602)이 지적한 'WM 예측을 액션 선택에 잘못 쓰면 안 된다'는 문제의식과 대칭적. index의 Data Pyramid(2607.24744) 관점에서 tactile 계층을 실기 태스크로 정확히 채우는 논문.",
+          "rec_date": "2026-08-01"
+        },
+        {
+          "id": "2607.27881",
+          "title": "RoboBRIDGE: A Modular Framework for Bridging Policies to Robust Real-World Robotic Agents",
+          "authors": "Sihyung Yoon, Minjong Yoo, Sanghyun Ahn, Seojeong Choi, Honguk Woo · IROS 2026 · arXiv:2607.27881",
+          "summary_ko": "사전학습된 VLA를 5개 협조 모듈(Monitor·Perceptor·Planner·Controller·Robot Interface) 위 오케스트레이션 층으로 감싸 배포 견고성을 확보하는 모듈러 프레임워크. failure detection·recovery, 비동기 씬 이해, LoRA 어댑터로 도메인 적응 스킬 refinement까지 하나로 결합한다. LIBERO·RoboCasa·실기에서 단일 정책과 이전 augmented VLA 대비 일관된 개선. IROS 2026 accepted.",
+          "tags": [
+            "Frozen VLA",
+            "Modular Orchestration",
+            "LoRA Adapter",
+            "Failure Recovery",
+            "IROS 2026"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.27881",
+          "extra_url": "",
+          "date": "2026-07-30",
+          "reason": "좋아요한 Harness-VLA(2607.08448, frozen VLA + agentic planner + primitive library)의 정확한 후속 — Harness-VLA가 얼어붙은 VLA를 primitive library로 감쌌다면 RoboBRIDGE는 5개 모듈 오케스트레이션으로 감싼다. index의 Pigey(2607.21725, agentic orchestrator + frozen VLA)·pool의 LENS(2607.19633, LLM 씬 축약 플러그인)와 완벽한 3부작: Pigey가 정책 밖 지휘, LENS가 씬 축약, RoboBRIDGE가 실패 감지·복구까지 포함한 5-모듈 표준. 좋아요한 Aspire(2606.19980)·GaP(2607.05369)의 self-improvement/agentic coding과 정합적 — LoRA 어댑터로 도메인 적응이 붙어 있어 fleet 확장에 곧바로 얹을 수 있다. 컬렉션의 RoboHarness(2607.18060, memory-driven orchestration)·PhyAgentOS(2607.16636, embodied OS)의 산업계 실용 좌표. IROS 2026 accepted라 코드·데이터 공개 가능성이 높고 pool의 새 논문 ARCHITECT(2607.23784, interactive program synthesis)와도 짝을 이룬다.",
+          "rec_date": "2026-08-01"
+        },
+        {
+          "id": "2607.27138",
+          "title": "DLAM: Distributional Latent Actions with Temporal Constraints",
+          "authors": "Zuojin Tang, Feifan Luo, Haoyun Liu, Botai Yuan, Dekang Qi, Ronghan Chen, Yandan Yang, Tong Lin, Xinyuan Chang, Mu Xu, Bin Liu, De Ma, Zhiheng Ma · arXiv:2607.27138",
+          "summary_ko": "액션 라벨 없는 비디오에서 latent action을 학습할 때 transition을 결정적 점이 아니라 diagonal Gaussian 분포로 표현하자는 관점 전환. reference frame 조건부 재구성과 variance·mean composition에 대한 temporal 제약을 결합해 latent action이 태스크 phase에 반응적으로 확률적 폭을 갖게 한다. 정책 학습 단계에서는 frozen 인코더 + flow-matching 정책이 mean transition sequences와 실제 로봇 액션을 함께 생성. MetaWorld MT50·LIBERO·실기 조작에서 기존 latent action 베이스라인 상회.",
+          "tags": [
+            "Distributional Latent Action",
+            "Action-Free Video",
+            "Flow Matching",
+            "Temporal Constraint",
+            "Diagonal Gaussian"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.27138",
+          "extra_url": "",
+          "date": "2026-07-29",
+          "reason": "좋아요한 WALA(2607.11397, latent action + DINOv3 + depth)와 컬렉션의 latent action 원류 LAPA(2410.11758)·Genie(2607.04988)의 정면 다음 세대. 기존 라인이 '결정적 latent action'이었다면 DLAM은 그것이 태스크 phase마다 확률적 폭이 달라야 한다는 관점 전환. pool의 LeapBot-WA(2607.23969, JEPA anchor + Diffusion-friendly manifold)·TD-JEPA(2607.25337, plan-aware JEPA)와 정확한 3부작: LeapBot-WA가 '잠재 기하 조형', TD-JEPA가 'plan-aware 표현', DLAM이 '확률적 latent action 자체'. flow-matching 정책은 좋아요한 Xiaomi-Robotics-1(2607.15330, VLA + Flow Matching)·컬렉션의 π0(2410.24164)와 정합. 좋아요한 FM-VLA(2607.18231)의 VAE 힘 memory와 짝 — FM-VLA가 결정적 힘 latent이라면 DLAM은 확률적 action latent. index의 Masked Visual Actions(2607.19343)·pool의 ATM(2401.00025)의 'action-free 비디오' 축의 다음 좌표.",
+          "rec_date": "2026-08-01"
+        },
         {
           "id": "2607.23969",
           "title": "LeapBot-WA: World-Anchor Action Models via Predictive Latent Alignments",
@@ -56,7 +110,7 @@
           "arxiv_url": "https://arxiv.org/abs/2607.25895",
           "extra_url": "https://cloud.simpleai.tech/simple-world-lab/hifi-umi/",
           "date": "2026-07-28",
-          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330, 태그가 'UMI·Scaling Law·Flow Matching')의 정확한 정면 후속·경쟁작 — Xiaomi-Robotics-1이 UMI를 산업 규모로 확장했다면 HiFi-UMI는 UMI의 '데이터 fidelity' 축을 정면으로 개선해 실기 post-training을 완전히 제거한다. pool의 UMI(2402.10329)의 정통 계승자 — UMI가 '값싼 시연 수집'을 열었다면 HiFi-UMI는 그 fidelity를 '실기와 매칭되는 수준'까지 끌어올려 조건부 명제를 무조건부 명제로 바꾼다. pool의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 데이터 계층 부족'의 강력한 답. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 파운데이션의 실기 파인튜닝 파이프라인을 근본에서 단순화 가능. 2,000시간 오픈 데이터셋과 프로젝트 페이지 공개라 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RDT-1B(2410.07864) 계보 모든 논문의 실기 벤치마크에 즉시 얹을 수 있다. 좋아요한 Aspire·GaP의 self-learning 파이프라인도 HiFi-UMI-급 데이터가 있어야 진짜 스케일이 되는 구조.",
+          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330, 태그가 'UMI·Scaling Law·Flow Matching')의 정확한 정면 후속·경쟁작 — Xiaomi-Robotics-1이 UMI를 산업 규모로 확장했다면 HiFi-UMI는 UMI의 '데이터 fidelity' 축을 정면으로 개선해 실기 post-training을 완전히 제거한다. index의 UMI(2402.10329)의 정통 계승자 — UMI가 '값싼 시연 수집'을 열었다면 HiFi-UMI는 그 fidelity를 '실기와 매칭되는 수준'까지 끌어올려 조건부 명제를 무조건부 명제로 바꾼다. index의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 데이터 계층 부족'의 강력한 답. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 파운데이션의 실기 파인튜닝 파이프라인을 근본에서 단순화 가능. 2,000시간 오픈 데이터셋과 프로젝트 페이지 공개라 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RDT-1B(2410.07864) 계보 모든 논문의 실기 벤치마크에 즉시 얹을 수 있다. 좋아요한 Aspire·GaP의 self-learning 파이프라인도 HiFi-UMI-급 데이터가 있어야 진짜 스케일이 되는 구조.",
           "rec_date": "2026-07-31"
         },
         {
@@ -228,6 +282,60 @@
       "label": "관련 논문",
       "items": [
         {
+          "id": "2403.01823",
+          "title": "RT-H: Action Hierarchies Using Language",
+          "authors": "Suneel Belkhale, Tianli Ding, Ted Xiao, Pierre Sermanet, Quan Vuong, Jonathan Tompson, Yevgen Chebotar, Debidatta Dwibedi, Dorsa Sadigh · Google DeepMind · arXiv:2403.01823",
+          "summary_ko": "태스크 명령과 로우레벨 액션 사이에 '언어 모션'(예: '팔을 앞으로 이동')이라는 중간 층을 명시적으로 두는 것이 이질 태스크 사이의 공유 구조를 학습 강제한다는 관점의 대표작. 이 언어 모션은 인간 라벨 없이 VLM에서 저비용으로 뽑아 감독으로 쓸 수 있고, 실행 중 사람이 자연어로 교정을 주면 그것으로부터 다시 학습 가능하다. RT 시리즈의 hierarchical 확장이자 이후 hierarchical VLA·primitive library 계보의 표준 참조.",
+          "tags": [
+            "RT Series",
+            "Language Motion",
+            "Hierarchical VLA",
+            "Human Correction",
+            "Google DeepMind"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.01823",
+          "extra_url": "https://rt-hierarchy.github.io",
+          "date": "2024-03-04",
+          "reason": "좋아요한 Hi-VLA(2606.10267, hierarchical VLA + options framework)의 정면 뿌리 — RT-H가 '언어 모션이 태스크와 액션의 공유 구조를 학습시킨다'는 명제를 처음 대규모로 실증했고, Hi-VLA·pool의 ARCHITECT(2607.23784)·좋아요한 Harness-VLA(2607.08448, primitive library)·GaP(2607.05369, graph-as-policy) 모두 이 관점 위에 서 있다. 컬렉션의 RT 시리즈 — RT-1(2212.06817)·RT-2(2307.15818)·RT-X(2310.08864) — 의 hierarchical 축 확장으로 계보의 결정적 결절점. 실행 중 자연어 교정 학습은 좋아요한 Aspire(2606.19980)·index의 2607.08877(HITL Flow Matching, DAgger)의 사상적 원류이자 pool의 ARCHITECT(2607.23784, interactive program synthesis with human corrections)의 정확한 짝. Sadigh 그룹 조합이라 pool의 다른 새 논문 라인(behavior-aligned representations 등)과도 계보상 연결. 컬렉션의 hierarchical/agentic 라인 좌표계를 완성한다.",
+          "rec_date": "2026-08-01"
+        },
+        {
+          "id": "2308.10901",
+          "title": "Structured World Models from Human Videos",
+          "authors": "Russell Mendonca, Shikhar Bahl, Deepak Pathak · CMU · arXiv:2308.10901",
+          "summary_ko": "인간 비디오에서 시각적 affordance를 학습해 이를 '인간 중심 액션 공간'으로 구조화하고, 그 위에 world model을 사전학습해 실기 파인튜닝을 30분 이내로 줄이는 프레임워크. '인간 데이터를 로봇으로 어떻게 옮길까'라는 문제를 affordance-grounded 구조로 답한 대표작. Pathak 그룹의 human-video → robot skill 계보의 대표 좌표.",
+          "tags": [
+            "Human Video Prior",
+            "Structured World Model",
+            "Visual Affordance",
+            "Fine-tuning Efficient",
+            "CoRL 2023"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2308.10901",
+          "extra_url": "https://human-world-model.github.io",
+          "date": "2023-08-21",
+          "reason": "좋아요한 WA-TTT(2607.06988, human video로 world-action model TTT)의 정면 뿌리 — 이 논문이 처음 정식화한 '인간 비디오를 affordance-grounded로 구조화해 world model 사전학습'이라는 문법이 이후 WA-TTT의 test-time 확장으로 이어졌다. pool의 HumanPlus(2406.10454, humanoid learning from humans)와 짝: 둘 다 인간 데이터를 로봇으로 옮기지만, HumanPlus가 motion shadowing으로, 이 논문은 affordance-grounded world model로. index의 Data Pyramid(2607.24744)의 '인간 비디오 계층'의 정통 실증 사례. 컬렉션의 RynnBrain 1.1(2607.17977, contact prediction + 3D grounding)·pool의 POT-VLA(2607.18016, persistent 3D tokens)·index의 Masked Visual Actions(2607.19343)의 affordance 축 원류. Pathak 그룹이라 이후 self-improvement/agentic robotics(좋아요한 Aspire·GaP) 계보로 이어지는 초기 좌표.",
+          "rec_date": "2026-08-01"
+        },
+        {
+          "id": "2410.24185",
+          "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
+          "authors": "Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar, Linxi Fan, Yuke Zhu · NVIDIA / UT Austin · ICRA 2025 · arXiv:2410.24185",
+          "summary_ko": "MimicGen의 계승자로, 소량의 인간 텔레옵 데모로부터 휴머노이드·바이매뉴얼·덱스터러스 손 조작 궤적을 자동 합성하는 파이프라인. 원본 데모의 sub-trajectory를 새 씬 구성에 맞게 재배치·조합해 순수 시뮬레이션에서 수천 궤적 규모로 확장. bimanual 협조·양손 덱스터리티 요구가 큰 태스크에도 대응 가능해 sim2real 파이프라인의 새 표준으로 자리 잡음.",
+          "tags": [
+            "Data Generation",
+            "Bimanual Dexterous",
+            "Humanoid",
+            "MimicGen Successor",
+            "ICRA 2025"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.24185",
+          "extra_url": "https://dexmimicgen.github.io/",
+          "date": "2024-10-31",
+          "reason": "컬렉션의 MimicGen(2310.17596)의 정통 후속 — 두 논문 저자 라인이 Ajay Mandlekar 중심으로 겹치며, MimicGen이 단일 팔을 다뤘다면 DexMimicGen은 바이매뉴얼·휴머노이드·덱스터러스 손으로 확장한다. 컬렉션의 RDT-1B(2410.07864, bimanual diffusion)·ACT(2304.13705, ALOHA bimanual)·pool의 Mobile ALOHA(2401.02117)·HumanPlus(2406.10454, humanoid)의 데이터 인프라 층을 완성. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·pool의 HiFi-UMI(2607.25895)와 짝 — UMI 라인이 '값싼 시연 수집'이라면 DexMimicGen은 '소수 시연 → 자동 대규모 합성'. index의 Data Pyramid(2607.24744)가 지적한 '시뮬레이션 합성 데이터 계층'의 정통 실증 사례. 컬렉션의 GR00T(2503.14734)·RynnBrain(2607.17977)·pool의 POT-VLA(2607.18016) 같은 휴머노이드 라인의 실기 파인튜닝 데이터 파이프라인이 될 잠재력. NVIDIA/UT Austin Yuke Zhu 그룹 조합이라 이후 Isaac Sim 스택의 산업 표준으로 자리 잡을 가능성이 크다.",
+          "rec_date": "2026-08-01"
+        },
+        {
           "id": "2311.01378",
           "title": "Vision-Language Foundation Models as Effective Robot Imitators (RoboFlamingo)",
           "authors": "Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, Hongtao Wu, Chilam Cheang, Ya Jing, Weinan Zhang, Huaping Liu, Hang Li, Tao Kong · ByteDance / SJTU / THU · arXiv:2311.01378",
@@ -260,7 +368,7 @@
           "arxiv_url": "https://arxiv.org/abs/2401.02117",
           "extra_url": "https://mobile-aloha.github.io/",
           "date": "2024-01-04",
-          "reason": "컬렉션 ACT(2304.13705, ALOHA 원조·Tony Zhao)의 정통 후속이면서 pool의 HumanPlus(2406.10454, Fu·Finn) 직전 세대. Fu·Zhao·Finn 조합의 Stanford 라인 전체 계보를 완성한다. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·pool의 HiFi-UMI(2607.25895, robot-free UMI)·UMI(2402.10329)의 정면 사상적 짝 — Mobile ALOHA가 '전신 로봇으로 어떻게 값싸게 시연을 모을까'라면 UMI 라인은 '로봇 없이 어떻게 시연을 모을까'. 컬렉션 RDT-1B(2410.07864, bimanual diffusion)·2607.14695(streaming VLA)의 실기 검증 표준. 컬렉션에는 아직 mobile/whole-body 데이터 수집 시스템의 원형 좌표가 비어 있어 이 논문이 그 자리를 채운다.",
+          "reason": "컬렉션 ACT(2304.13705, ALOHA 원조·Tony Zhao)의 정통 후속이면서 pool의 HumanPlus(2406.10454, Fu·Finn) 직전 세대. Fu·Zhao·Finn 조합의 Stanford 라인 전체 계보를 완성한다. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·pool의 HiFi-UMI(2607.25895, robot-free UMI)·index의 UMI(2402.10329)의 정면 사상적 짝 — Mobile ALOHA가 '전신 로봇으로 어떻게 값싸게 시연을 모을까'라면 UMI 라인은 '로봇 없이 어떻게 시연을 모을까'. 컬렉션 RDT-1B(2410.07864, bimanual diffusion)·2607.14695(streaming VLA)의 실기 검증 표준. 컬렉션에는 아직 mobile/whole-body 데이터 수집 시스템의 원형 좌표가 비어 있어 이 논문이 그 자리를 채운다.",
           "rec_date": "2026-07-31"
         },
         {
@@ -278,44 +386,8 @@
           "arxiv_url": "https://arxiv.org/abs/2401.00025",
           "extra_url": "https://xingyu-lin.github.io/atm",
           "date": "2023-12-28",
-          "reason": "index의 Masked Visual Actions(2607.19343, '픽셀=액션')·Robot-Factored WM(2607.22535)의 정확한 이론적 원류. ATM이 처음 정식화한 'point-track이 embodiment-agnostic 액션 인터페이스가 된다'는 명제는 이후 컬렉션의 FlowWAM(2607.13017, optical flow dual-stream)·좋아요한 WALA(2607.11397, latent action)로 이어지는 계보의 뿌리다. Cross-embodiment 라인(2310.08864 RT-X, 2606.15631, 2606.17846, 2607.03570)이 '어떻게 이질 로봇 데이터를 흡수할까'를 다뤘다면 ATM은 '어떤 인터페이스로 그것들을 잇는가'라는 답의 초기 실증. pool의 새 ContactFlow류(2607.26579), τ(2607.24485)와도 짝 — 이들이 각각 '3D contact point 트랙', '촉각 트랙'이라면 ATM은 '2D point-track'이라는 원조 방식. 컬렉션의 SuSIE(2310.10639, dismissed)·UniPi(pool, 2302.00111)와 함께 '언어→비디오→액션' 삼각의 세 번째 축을 채운다.",
+          "reason": "index의 Masked Visual Actions(2607.19343, '픽셀=액션')·Robot-Factored WM(2607.22535)의 정확한 이론적 원류. ATM이 처음 정식화한 'point-track이 embodiment-agnostic 액션 인터페이스가 된다'는 명제는 이후 컬렉션의 FlowWAM(2607.13017, optical flow dual-stream)·좋아요한 WALA(2607.11397, latent action)로 이어지는 계보의 뿌리다. Cross-embodiment 라인(2310.08864 RT-X, 2606.15631, 2606.17846, 2607.03570)이 '어떻게 이질 로봇 데이터를 흡수할까'를 다뤘다면 ATM은 '어떤 인터페이스로 그것들을 잇는가'라는 답의 초기 실증. pool의 τ(2607.24485)와도 짝 — τ가 '촉각 트랙'이라면 ATM은 '2D point-track'이라는 원조 방식. 컬렉션의 UniPi(pool, 2302.00111)와 함께 '언어→비디오→액션' 삼각의 세 번째 축을 채운다.",
           "rec_date": "2026-07-31"
-        },
-        {
-          "id": "2402.10329",
-          "title": "Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots (UMI)",
-          "authors": "Cheng Chi, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, Shuran Song · Stanford / Columbia / TRI · arXiv:2402.10329",
-          "summary_ko": "실제 로봇 없이 사람이 손잡이형 그리퍼로 야외에서 시연을 모아 정책 학습으로 이어붙이는 파이프라인. inference-time latency matching과 relative-trajectory action 표현이라는 두 설계로 하드웨어 무관한 정책을 만들어 여러 로봇에 zero-shot 배포. 동적·양손·정밀·장기 조작을 in-the-wild 데이터만으로 실증. '로봇을 데이터 수집 병목에서 빼내는' 실질적 표준이 됐고, 오픈소스 하드웨어·소프트웨어 스택으로 공개돼 이후 커뮤니티 스케일링의 촉매.",
-          "tags": [
-            "In-The-Wild Data",
-            "Handheld Gripper",
-            "Latency Matching",
-            "Relative Trajectory",
-            "Open-Source Hardware"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2402.10329",
-          "extra_url": "https://umi-gripper.github.io/",
-          "date": "2024-02-15",
-          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330)의 정면 사상적 기반 — 그 논문의 태그가 명시적으로 'UMI, Scaling Law'이며 UMI 데이터 파이프라인을 산업 규모로 확장한 후속이다. 좋아요한 Xiaomi-U0(2607.11643)의 대규모 embodied data augmentation, index의 Masked Visual Actions(2607.19343)·Robot-Factored WM(2607.22535)·Data Pyramid(2607.24744), pool의 HiFi-UMI(2607.25895) 모두 UMI 계열 데이터를 하나의 계층으로 상정한다. 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RT-X(2310.08864)·MimicGen(2310.17596)의 데이터 인프라 축의 실질적 원류. pool의 DROID(2403.12945)와 짝 — UMI가 '어떻게 값싸게 시연을 모을까'라면 DROID는 '어떻게 규모 있게 조직화할까', HiFi-UMI는 'UMI fidelity를 어떻게 실기 매칭 수준까지 올릴까'. 좋아요한 GaP(2607.05369)·Aspire(2606.19980)의 self-learning도 결국 UMI-급 데이터 수집이 있어야 스케일이 되는 구조라 필수 좌표. 컬렉션에 UMI 자체의 좌표가 비어 있었다.",
-          "rec_date": "2026-07-30"
-        },
-        {
-          "id": "2403.12945",
-          "title": "DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset",
-          "authors": "Alexander Khazatsky, Karl Pertsch, Suraj Nair, Ashwin Balakrishna · Stanford / UC Berkeley · arXiv:2403.12945",
-          "summary_ko": "76k 궤적·350시간·564 씬·84 태스크를 50명의 수집자가 12개월간 전 세계에서 모은 in-the-wild 조작 데이터셋. 학습된 정책이 더 높은 성능과 일반화를 보인다는 것을 실증하고 전체를 오픈. 지리·환경 다양성 축에서 이전 데이터셋을 크게 뛰어넘어 이후 논문 대부분이 사전학습·평가·real-world validation의 표준 참조로 사용. '데이터의 다양성 자체가 성능을 낳는다'는 명제의 실증적 근거.",
-          "tags": [
-            "Manipulation Dataset",
-            "In-The-Wild",
-            "Franka Panda",
-            "Cross-Institutional",
-            "Open-Sourced"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2403.12945",
-          "extra_url": "https://droid-dataset.github.io/",
-          "date": "2024-03-19",
-          "reason": "컬렉션에 index로 진입한 Masked Visual Actions(2607.19343)의 태그가 명시적으로 'DROID'이며, Robot-Factored WM(2607.22535)·Agentic Real2Sim(2607.19190)도 DROID를 실기 평가/데이터 소스로 사용한다. 좋아요한 WALA(2607.11397)의 사전학습, 좋아요한 Xiaomi-Robotics-1(2607.15330)·Xiaomi-U0(2607.11643)의 실기 튜닝, index의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 계층'의 실질적 표준 자원. pool의 UMI(2402.10329)와 짝 — UMI가 '값싼 시연 수집 프로토콜'이라면 DROID는 '그 프로토콜을 대규모로 조직화한 결과'. 컬렉션의 RT-X(2310.08864)와도 짝: RT-X가 '기존 연구용 데이터 통합'이면 DROID는 'in-the-wild 신규 수집'. Cross-Embodiment 라인(2606.15631·2606.17846·2607.03570)의 실기 검증 표준. 최근 논문 대부분이 암묵적으로 참조하는 인프라라 좌표에 놓아 두는 것이 자연스럽다.",
-          "rec_date": "2026-07-30"
         },
         {
           "id": "2406.10454",
@@ -336,24 +408,6 @@
           "rec_date": "2026-07-29"
         },
         {
-          "id": "2501.03575",
-          "title": "Cosmos World Foundation Model Platform for Physical AI",
-          "authors": "NVIDIA, Niket Agarwal, Arslan Ali, Maciej Bala, Yogesh Balaji · NVIDIA · arXiv:2501.03575",
-          "summary_ko": "Physical AI를 위한 오픈소스 world foundation model 플랫폼. 대규모 비디오 큐레이션 파이프라인, 사전학습된 world foundation model, 비디오 토크나이저를 통합 제공하며 모두 관용적 라이선스로 공개. 사후 파인튜닝을 통해 다양한 도메인의 커스텀 world model로 발전시킬 수 있는 기반. 산업 규모 world model 학습의 인프라 문법을 통일한 대표작.",
-          "tags": [
-            "World Foundation Model",
-            "Video Tokenizer",
-            "Data Curation",
-            "Physical AI",
-            "NVIDIA Cosmos"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2501.03575",
-          "extra_url": "https://www.nvidia.com/en-us/ai/cosmos/",
-          "date": "2025-01-07",
-          "reason": "컬렉션의 WAM 라인 — FlowWAM(2607.13017)·LingBot-VA(2607.08639)·ACWM(2607.09185)·BadWAM(2607.15207)·좋아요한 WALA(2607.11397)·좋아요한 Xiaomi-U0(2607.11643)·index의 Robot-Factored WM·Masked Visual Actions — 전체의 산업 인프라적 기반. pool의 2607.14943(Steering Robustness)이 명시적으로 'Cosmos-Policy'를 백본으로 언급하며, 최근 WAM 논문 대부분이 Cosmos 계열 백본을 파인튜닝 대상으로 삼는다. 좋아요한 Xiaomi-U0(2607.11643, 38B AR)와 정확한 대응 — 둘 다 world foundation을 대규모 오픈 자원으로 만들려는 시도. pool의 LeapBot-WA(2607.23969)의 anchor foundation 축과도 계보상 연결. 컬렉션의 여러 논문이 암묵적으로 참조하는 인프라라 좌표에 놓아 두는 것이 자연스럽다.",
-          "rec_date": "2026-07-29"
-        },
-        {
           "id": "2302.00111",
           "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
           "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai, Ofir Nachum, Joshua B. Tenenbaum, Dale Schuurmans, Pieter Abbeel · MIT / Google Brain / UC Berkeley · arXiv:2302.00111",
@@ -368,7 +422,7 @@
           "arxiv_url": "https://arxiv.org/abs/2302.00111",
           "extra_url": "https://universal-policy.github.io/unipi/",
           "date": "2023-01-31",
-          "reason": "index의 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 ATM(2401.00025)의 point-track 인터페이스와 짝 — UniPi가 '텍스트→비디오'라면 ATM은 '비디오→point-track'으로 인터페이스 계보를 잇는다. pool의 Cosmos(2501.03575)가 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
+          "reason": "index의 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 ATM(2401.00025)의 point-track 인터페이스와 짝 — UniPi가 '텍스트→비디오'라면 ATM은 '비디오→point-track'으로 인터페이스 계보를 잇는다. index의 Cosmos(2501.03575)가 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
           "rec_date": "2026-07-28"
         },
         {
