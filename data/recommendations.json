@@ -1,10 +1,64 @@
 {
-  "generated": "2026-08-01",
+  "generated": "2026-08-02",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.27782",
+          "title": "RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy",
+          "authors": "Zhengyang Yan, Junhao Li, Fangqi Zhu",
+          "summary_ko": "실패 궤적을 액션 레벨의 보정 감독 신호로 변환하는 오프라인 RL 프레임워크로, 플로우 매칭 VLA 정책의 실세계 성공률을 56.7%→74.7%로 끌어올린다.",
+          "tags": [
+            "VLA",
+            "Flow Matching",
+            "Offline RL",
+            "Failure Recovery",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.27782",
+          "extra_url": "",
+          "date": "2026-07-30",
+          "reason": "좋아요한 WALA(2607.11397)와 Aspire처럼 플로우 매칭·잠재 액션 기반 VLA를 확장하는 흐름에서, 실패 데이터를 그대로 실행 궤적 교정으로 되먹이는 접근을 제시한다. RedFlow는 컬렉션의 π₀·CogACT 계열 플로우 매칭 정책에 붙일 수 있는 오프라인 RL 후처리 레시피여서 곧바로 실용적 가치가 크다.",
+          "rec_date": "2026-08-02"
+        },
+        {
+          "id": "2607.28596",
+          "title": "FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation",
+          "authors": "Lifeng Zhuo, Wendi Chen, Han Xue",
+          "summary_ko": "접촉 전에는 저주파로 다양한 행동을, 접촉 후에는 고주파로 힘 피드백에 반응하도록 샘플링 주파수를 학습된 다중모드 지표로 전환하는 반응형 디퓨전 정책.",
+          "tags": [
+            "Diffusion Policy",
+            "Contact-Rich",
+            "Force Feedback",
+            "Reactive Control",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.28596",
+          "extra_url": "https://fa-rdp.github.io",
+          "date": "2026-07-30",
+          "reason": "컬렉션의 τ(2607.24485)·TacWAM(2607.28391)·FeelWorld처럼 촉각·접촉 문제를 다루지만, 여기서는 월드모델이 아니라 디퓨전 정책 자체의 샘플링 주파수를 접촉 상태에 맞춰 조절하는 상보적 접근이다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 대규모 UMI 정책에도 얹기 좋은 저수준 실행 레시피다.",
+          "rec_date": "2026-08-02"
+        },
+        {
+          "id": "2607.27549",
+          "title": "Cross-Embodiment Transfer via Behavior-Aligned Representations",
+          "authors": "Ajay Sridhar, Jensen Gao, Jonathan Yang",
+          "summary_ko": "엔드이펙터 궤적·바운딩 박스처럼 행동에 정렬된 중간 표현을 VLA에 통합해, 시뮬레이션→실기 크로스임보디먼트 전이 성공률을 28% 향상시킨다.",
+          "tags": [
+            "VLA",
+            "Cross-Embodiment",
+            "Sim2Real",
+            "Behavior Representation",
+            "Benchmark"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.27549",
+          "extra_url": "https://ajaysridhar.com/barx/",
+          "date": "2026-07-30",
+          "reason": "컬렉션의 ContactFlow(2607.26579)·ATM(2401.00025)이 궤적 기반 크로스임보디먼트를 다루듯, 이 논문은 어떤 표현이 실제로 전이에 도움이 되는지 벤치마크로 정량 비교한다. Data Pyramid(2607.24744)가 데이터 계층을 논한다면 여기서는 표현 계층의 결정을 뒷받침해 서로 보완된다.",
+          "rec_date": "2026-08-02"
+        },
         {
           "id": "2607.28391",
           "title": "TacWAM: Anchor-Guided World Action Model with Mechanics-Aware Tactile Prediction",
@@ -60,6 +114,24 @@
           "rec_date": "2026-08-01"
         },
         {
+          "id": "2607.25895",
+          "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
+          "authors": "Yuteng Wei, Jinming Ma, Jiawei Wang, Weitao Zhou, Yushen Zuo · Simple AI · arXiv:2607.25895",
+          "summary_ko": "'실기 post-training 없이도 배포 가능한 정책을 만들 수 있는가'를 정면으로 묻는 논문. head-mounted stereo-inertial 트래킹과 초광각 카메라로 마이크로초 동기화된 3mm 정확도의 robot-free 조작 데이터를 대규모(HiFi-UMI-2K, 2,000시간)로 확보. 이 데이터만으로 학습한 정책이 여러 아키텍처(π0·ACT 등)에서 실기 텔레오퍼레이션 성능과 3.1%p 이내로 매칭. 'UMI를 진짜 배포 가능한 수준까지 스케일업'한 첫 대규모 실증.",
+          "tags": [
+            "High-Fidelity UMI",
+            "Zero-Robot Post-Training",
+            "Stereo-Inertial Tracking",
+            "HiFi-UMI-2K Dataset",
+            "Deployable Policy"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.25895",
+          "extra_url": "https://cloud.simpleai.tech/simple-world-lab/hifi-umi/",
+          "date": "2026-07-28",
+          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330, 태그가 'UMI·Scaling Law·Flow Matching')의 정확한 정면 후속·경쟁작 — Xiaomi-Robotics-1이 UMI를 산업 규모로 확장했다면 HiFi-UMI는 UMI의 '데이터 fidelity' 축을 정면으로 개선해 실기 post-training을 완전히 제거한다. index의 UMI(2402.10329)의 정통 계승자 — UMI가 '값싼 시연 수집'을 열었다면 HiFi-UMI는 그 fidelity를 '실기와 매칭되는 수준'까지 끌어올려 조건부 명제를 무조건부 명제로 바꾼다. index의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 데이터 계층 부족'의 강력한 답. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 파운데이션의 실기 파인튜닝 파이프라인을 근본에서 단순화 가능. 2,000시간 오픈 데이터셋과 프로젝트 페이지 공개라 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RDT-1B(2410.07864) 계보 모든 논문의 실기 벤치마크에 즉시 얹을 수 있다. 좋아요한 Aspire·GaP의 self-learning 파이프라인도 HiFi-UMI-급 데이터가 있어야 진짜 스케일이 되는 구조.",
+          "rec_date": "2026-07-31"
+        },
+        {
           "id": "2607.23969",
           "title": "LeapBot-WA: World-Anchor Action Models via Predictive Latent Alignments",
           "authors": "Pei Liu, Nan Zheng, Lang Zhang, Daojie Peng, Yanan Zhang, Feilong Kong, Mingyue Feng, Jiachao Liu, Yaonong Wang, Qifeng Chen, Jun Ma · arXiv:2607.23969",
@@ -93,24 +165,6 @@
           "extra_url": "",
           "date": "2026-07-27",
           "reason": "좋아요한 FM-VLA(2607.18231, 힘 히스토리 VAE + Flow Matching)의 정확한 다음 세대 — FM-VLA가 '힘 modality를 VAE로 토큰화해 VLA에 얹었다'면 τ는 '촉각 modality를 JEPA 스타일 future-visual 감독으로 학습해 얹는다'. pool의 ViTacWorld(2607.22530, visuo-tactile world model)와 정확한 3부작 완성: FM-VLA(정책 층 힘)·ViTacWorld(world model 층 촉각)·τ(표현 학습 층 촉각). 좋아요한 WALA(2607.11397, JEPA 스타일 latent+depth)의 촉각 축 대응 — WALA가 depth를 JEPA-like로 예측했다면 τ는 촉각을 JEPA-like로 예측한다. 컬렉션의 JEPA 계보(2602.10098 JEPA-VLA·2404.08471 V-JEPA·pool의 TD-JEPA 2607.25337)의 촉각 축 확장. TacAura 데이터셋 공개도 pool의 Data Pyramid(2607.24744, tactile 데이터 부족 지적)에 정확히 맞물린다. 컬렉션의 SmolVLA(2506.01844)·π0(2410.24164) 같은 얼어붙은 VLA에 촉각을 얹을 표준 프로토콜이 될 잠재력.",
-          "rec_date": "2026-07-31"
-        },
-        {
-          "id": "2607.25895",
-          "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
-          "authors": "Yuteng Wei, Jinming Ma, Jiawei Wang, Weitao Zhou, Yushen Zuo · Simple AI · arXiv:2607.25895",
-          "summary_ko": "'실기 post-training 없이도 배포 가능한 정책을 만들 수 있는가'를 정면으로 묻는 논문. head-mounted stereo-inertial 트래킹과 초광각 카메라로 마이크로초 동기화된 3mm 정확도의 robot-free 조작 데이터를 대규모(HiFi-UMI-2K, 2,000시간)로 확보. 이 데이터만으로 학습한 정책이 여러 아키텍처(π0·ACT 등)에서 실기 텔레오퍼레이션 성능과 3.1%p 이내로 매칭. 'UMI를 진짜 배포 가능한 수준까지 스케일업'한 첫 대규모 실증.",
-          "tags": [
-            "High-Fidelity UMI",
-            "Zero-Robot Post-Training",
-            "Stereo-Inertial Tracking",
-            "HiFi-UMI-2K Dataset",
-            "Deployable Policy"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.25895",
-          "extra_url": "https://cloud.simpleai.tech/simple-world-lab/hifi-umi/",
-          "date": "2026-07-28",
-          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330, 태그가 'UMI·Scaling Law·Flow Matching')의 정확한 정면 후속·경쟁작 — Xiaomi-Robotics-1이 UMI를 산업 규모로 확장했다면 HiFi-UMI는 UMI의 '데이터 fidelity' 축을 정면으로 개선해 실기 post-training을 완전히 제거한다. index의 UMI(2402.10329)의 정통 계승자 — UMI가 '값싼 시연 수집'을 열었다면 HiFi-UMI는 그 fidelity를 '실기와 매칭되는 수준'까지 끌어올려 조건부 명제를 무조건부 명제로 바꾼다. index의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 데이터 계층 부족'의 강력한 답. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 파운데이션의 실기 파인튜닝 파이프라인을 근본에서 단순화 가능. 2,000시간 오픈 데이터셋과 프로젝트 페이지 공개라 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RDT-1B(2410.07864) 계보 모든 논문의 실기 벤치마크에 즉시 얹을 수 있다. 좋아요한 Aspire·GaP의 self-learning 파이프라인도 HiFi-UMI-급 데이터가 있어야 진짜 스케일이 되는 구조.",
           "rec_date": "2026-07-31"
         },
         {
@@ -282,6 +336,78 @@
       "label": "관련 논문",
       "items": [
         {
+          "id": "2606.21139",
+          "title": "PoLAR: Factorizing Extent and Mode in Latent Actions for Robot Policy Learning",
+          "authors": "Youngjoon Jeong, Jihwan Yu, Minsoo Jo",
+          "summary_ko": "잠재 액션을 하이퍼볼릭 공간의 반경(전이 크기)과 방향(전이 양태)으로 분해해 표현하는 구조로, 잠재 액션 기반 정책과 사전학습 VLA 대비 성능을 개선.",
+          "tags": [
+            "Latent Action",
+            "Representation",
+            "Hyperbolic",
+            "VLA",
+            "Pretraining"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2606.21139",
+          "extra_url": "https://joon-stack.github.io/PoLAR",
+          "date": "2026-06-19",
+          "reason": "좋아요한 WALA(2607.11397)와 pool의 DLAM(2607.27138)·LeapBot-WA·Causally Debiased Latent Action 흐름의 상위 개념을 정리하는 표현 학습 논문. 잠재 액션의 '크기'와 '방향'을 명시적으로 분리한다는 관점이 컬렉션의 여러 액션-프리 비디오 학습 논문과 직접 연결된다.",
+          "rec_date": "2026-08-02"
+        },
+        {
+          "id": "2502.05485",
+          "title": "HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation",
+          "authors": "Yi Li, Yuquan Deng, Jesse Zhang",
+          "summary_ko": "VLM이 2D 궤적으로 상위 계획을 만들고 저수준 3D 정책이 정밀 실행을 담당하는 계층형 VLA로, 오프도메인 데이터를 활용해 OpenVLA 대비 평균 20% 성공률 향상.",
+          "tags": [
+            "VLA",
+            "Hierarchical",
+            "Cross-Embodiment",
+            "Off-Domain Data",
+            "Trajectory"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2502.05485",
+          "extra_url": "https://hamster-robot.github.io/",
+          "date": "2025-02-08",
+          "reason": "좋아요한 Aspire·Agentic Robotics 흐름, 그리고 컬렉션의 오케스트레이터형 논문(RoboBRIDGE 2607.27881, Physical Agency 2607.21725)과 같은 계층 분리 철학을 대표하는 기준 논문. Data Pyramid(2607.24744)가 언급하는 '값싼 오프도메인 데이터'를 어떻게 학습에 실제로 흡수하는지 구체적으로 보여준다.",
+          "rec_date": "2026-08-02"
+        },
+        {
+          "id": "2411.19650",
+          "title": "CogACT: A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation",
+          "authors": "Qixiu Li, Yaobo Liang, Zeyu Wang",
+          "summary_ko": "VLM 인지 백본과 디퓨전 트랜스포머 액션 모듈을 명시적으로 분리한 컴포넌트형 VLA로, 시뮬레이션 성공률 35%p·실기 55%p 향상을 보여준 기초 논문.",
+          "tags": [
+            "VLA",
+            "Foundation Model",
+            "Diffusion Policy",
+            "Action Head",
+            "Baseline"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2411.19650",
+          "extra_url": "https://cogact.github.io/",
+          "date": "2024-11-29",
+          "reason": "컬렉션의 최근 VLA·디퓨전 폴리시 논문(RedFlow, FA-RDP, RL²-VLA 등)이 반복적으로 비교 대상으로 삼는 대표 기준선인데 아직 목록에 없다. RynnBrain·Xiaomi-Robotics처럼 대규모 실기 VLA를 볼 때, 인지-액션 분리라는 CogACT의 설계 원칙이 비교 프레임을 잡아준다.",
+          "rec_date": "2026-08-02"
+        },
+        {
+          "id": "2410.24185",
+          "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
+          "authors": "Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar, Linxi Fan, Yuke Zhu · NVIDIA / UT Austin · ICRA 2025 · arXiv:2410.24185",
+          "summary_ko": "MimicGen의 계승자로, 소량의 인간 텔레옵 데모로부터 휴머노이드·바이매뉴얼·덱스터러스 손 조작 궤적을 자동 합성하는 파이프라인. 원본 데모의 sub-trajectory를 새 씬 구성에 맞게 재배치·조합해 순수 시뮬레이션에서 수천 궤적 규모로 확장. bimanual 협조·양손 덱스터리티 요구가 큰 태스크에도 대응 가능해 sim2real 파이프라인의 새 표준으로 자리 잡음.",
+          "tags": [
+            "Data Generation",
+            "Bimanual Dexterous",
+            "Humanoid",
+            "MimicGen Successor",
+            "ICRA 2025"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.24185",
+          "extra_url": "https://dexmimicgen.github.io/",
+          "date": "2024-10-31",
+          "reason": "컬렉션의 MimicGen(2310.17596)의 정통 후속 — 두 논문 저자 라인이 Ajay Mandlekar 중심으로 겹치며, MimicGen이 단일 팔을 다뤘다면 DexMimicGen은 바이매뉴얼·휴머노이드·덱스터러스 손으로 확장한다. 컬렉션의 RDT-1B(2410.07864, bimanual diffusion)·ACT(2304.13705, ALOHA bimanual)·pool의 Mobile ALOHA(2401.02117)·HumanPlus(2406.10454, humanoid)의 데이터 인프라 층을 완성. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·pool의 HiFi-UMI(2607.25895)와 짝 — UMI 라인이 '값싼 시연 수집'이라면 DexMimicGen은 '소수 시연 → 자동 대규모 합성'. index의 Data Pyramid(2607.24744)가 지적한 '시뮬레이션 합성 데이터 계층'의 정통 실증 사례. 컬렉션의 GR00T(2503.14734)·RynnBrain(2607.17977)·pool의 POT-VLA(2607.18016) 같은 휴머노이드 라인의 실기 파인튜닝 데이터 파이프라인이 될 잠재력. NVIDIA/UT Austin Yuke Zhu 그룹 조합이라 이후 Isaac Sim 스택의 산업 표준으로 자리 잡을 가능성이 크다.",
+          "rec_date": "2026-08-01"
+        },
+        {
           "id": "2403.01823",
           "title": "RT-H: Action Hierarchies Using Language",
           "authors": "Suneel Belkhale, Tianli Ding, Ted Xiao, Pierre Sermanet, Quan Vuong, Jonathan Tompson, Yevgen Chebotar, Debidatta Dwibedi, Dorsa Sadigh · Google DeepMind · arXiv:2403.01823",
@@ -316,42 +442,6 @@
           "date": "2023-08-21",
           "reason": "좋아요한 WA-TTT(2607.06988, human video로 world-action model TTT)의 정면 뿌리 — 이 논문이 처음 정식화한 '인간 비디오를 affordance-grounded로 구조화해 world model 사전학습'이라는 문법이 이후 WA-TTT의 test-time 확장으로 이어졌다. pool의 HumanPlus(2406.10454, humanoid learning from humans)와 짝: 둘 다 인간 데이터를 로봇으로 옮기지만, HumanPlus가 motion shadowing으로, 이 논문은 affordance-grounded world model로. index의 Data Pyramid(2607.24744)의 '인간 비디오 계층'의 정통 실증 사례. 컬렉션의 RynnBrain 1.1(2607.17977, contact prediction + 3D grounding)·pool의 POT-VLA(2607.18016, persistent 3D tokens)·index의 Masked Visual Actions(2607.19343)의 affordance 축 원류. Pathak 그룹이라 이후 self-improvement/agentic robotics(좋아요한 Aspire·GaP) 계보로 이어지는 초기 좌표.",
           "rec_date": "2026-08-01"
-        },
-        {
-          "id": "2410.24185",
-          "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
-          "authors": "Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar, Linxi Fan, Yuke Zhu · NVIDIA / UT Austin · ICRA 2025 · arXiv:2410.24185",
-          "summary_ko": "MimicGen의 계승자로, 소량의 인간 텔레옵 데모로부터 휴머노이드·바이매뉴얼·덱스터러스 손 조작 궤적을 자동 합성하는 파이프라인. 원본 데모의 sub-trajectory를 새 씬 구성에 맞게 재배치·조합해 순수 시뮬레이션에서 수천 궤적 규모로 확장. bimanual 협조·양손 덱스터리티 요구가 큰 태스크에도 대응 가능해 sim2real 파이프라인의 새 표준으로 자리 잡음.",
-          "tags": [
-            "Data Generation",
-            "Bimanual Dexterous",
-            "Humanoid",
-            "MimicGen Successor",
-            "ICRA 2025"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.24185",
-          "extra_url": "https://dexmimicgen.github.io/",
-          "date": "2024-10-31",
-          "reason": "컬렉션의 MimicGen(2310.17596)의 정통 후속 — 두 논문 저자 라인이 Ajay Mandlekar 중심으로 겹치며, MimicGen이 단일 팔을 다뤘다면 DexMimicGen은 바이매뉴얼·휴머노이드·덱스터러스 손으로 확장한다. 컬렉션의 RDT-1B(2410.07864, bimanual diffusion)·ACT(2304.13705, ALOHA bimanual)·pool의 Mobile ALOHA(2401.02117)·HumanPlus(2406.10454, humanoid)의 데이터 인프라 층을 완성. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·pool의 HiFi-UMI(2607.25895)와 짝 — UMI 라인이 '값싼 시연 수집'이라면 DexMimicGen은 '소수 시연 → 자동 대규모 합성'. index의 Data Pyramid(2607.24744)가 지적한 '시뮬레이션 합성 데이터 계층'의 정통 실증 사례. 컬렉션의 GR00T(2503.14734)·RynnBrain(2607.17977)·pool의 POT-VLA(2607.18016) 같은 휴머노이드 라인의 실기 파인튜닝 데이터 파이프라인이 될 잠재력. NVIDIA/UT Austin Yuke Zhu 그룹 조합이라 이후 Isaac Sim 스택의 산업 표준으로 자리 잡을 가능성이 크다.",
-          "rec_date": "2026-08-01"
-        },
-        {
-          "id": "2311.01378",
-          "title": "Vision-Language Foundation Models as Effective Robot Imitators (RoboFlamingo)",
-          "authors": "Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, Hongtao Wu, Chilam Cheang, Ya Jing, Weinan Zhang, Huaping Liu, Hang Li, Tao Kong · ByteDance / SJTU / THU · arXiv:2311.01378",
-          "summary_ko": "OpenFlamingo(VLM)를 로봇 조작 데이터로 가볍게 파인튜닝해 만드는 VLA 프레임워크. 시각 이해와 순차 의사결정을 명시적 정책 헤드로 분리해 데이터·컴퓨트 효율을 확보하고, CALVIN 등 조작 벤치마크에서 competitive한 성능을 보이면서도 자원 제약 환경에 배포 가능하다. 'VLM을 어떻게 로봇 액션 인터페이스로 낮은 비용에 어댑트할까'라는 문제의 초기 표준 답으로 이후 VLA 계열의 어댑테이션 문법 원형이 됐다.",
-          "tags": [
-            "VLM to VLA",
-            "OpenFlamingo",
-            "Policy Head Adaptation",
-            "CALVIN",
-            "ICLR 2024"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2311.01378",
-          "extra_url": "https://roboflamingo.github.io/",
-          "date": "2023-11-02",
-          "reason": "컬렉션 OpenVLA(2406.09246)·π0(2410.24164)·RT-2(2307.15818)·좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643)의 실질적 사상적 원류. RoboFlamingo가 처음 정식화한 '거대 VLM을 정책 헤드 어댑테이션으로 로봇에 착지시키기' 프로토콜이 이후 VLA의 표준 문법이 됐고, 특히 좋아요한 Xiaomi-U0의 38B AR 파인튜닝이 이 계보 위에서 산업 규모로 확장된 것. ByteDance/Tao Kong 그룹이라 컬렉션의 RynnBrain 1.1(2607.17977)과 pool에 있었던 GR-1의 사상적 뿌리와 정확히 같은 저자 계열. 컬렉션 SmolVLA(2506.01844)의 '효율적 VLM→VLA' 원류이기도 하다. 좋아요한 Hi-VLA(2606.10267)의 정책-계획 분리 사상과도 계보상 연결. 컬렉션에는 아직 이 원류 좌표가 비어 있어 계보를 완성한다.",
-          "rec_date": "2026-07-31"
         },
         {
           "id": "2401.02117",
@@ -390,6 +480,24 @@
           "rec_date": "2026-07-31"
         },
         {
+          "id": "2311.01378",
+          "title": "Vision-Language Foundation Models as Effective Robot Imitators (RoboFlamingo)",
+          "authors": "Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, Hongtao Wu, Chilam Cheang, Ya Jing, Weinan Zhang, Huaping Liu, Hang Li, Tao Kong · ByteDance / SJTU / THU · arXiv:2311.01378",
+          "summary_ko": "OpenFlamingo(VLM)를 로봇 조작 데이터로 가볍게 파인튜닝해 만드는 VLA 프레임워크. 시각 이해와 순차 의사결정을 명시적 정책 헤드로 분리해 데이터·컴퓨트 효율을 확보하고, CALVIN 등 조작 벤치마크에서 competitive한 성능을 보이면서도 자원 제약 환경에 배포 가능하다. 'VLM을 어떻게 로봇 액션 인터페이스로 낮은 비용에 어댑트할까'라는 문제의 초기 표준 답으로 이후 VLA 계열의 어댑테이션 문법 원형이 됐다.",
+          "tags": [
+            "VLM to VLA",
+            "OpenFlamingo",
+            "Policy Head Adaptation",
+            "CALVIN",
+            "ICLR 2024"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2311.01378",
+          "extra_url": "https://roboflamingo.github.io/",
+          "date": "2023-11-02",
+          "reason": "컬렉션 OpenVLA(2406.09246)·π0(2410.24164)·RT-2(2307.15818)·좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643)의 실질적 사상적 원류. RoboFlamingo가 처음 정식화한 '거대 VLM을 정책 헤드 어댑테이션으로 로봇에 착지시키기' 프로토콜이 이후 VLA의 표준 문법이 됐고, 특히 좋아요한 Xiaomi-U0의 38B AR 파인튜닝이 이 계보 위에서 산업 규모로 확장된 것. ByteDance/Tao Kong 그룹이라 컬렉션의 RynnBrain 1.1(2607.17977)과 pool에 있었던 GR-1의 사상적 뿌리와 정확히 같은 저자 계열. 컬렉션 SmolVLA(2506.01844)의 '효율적 VLM→VLA' 원류이기도 하다. 좋아요한 Hi-VLA(2606.10267)의 정책-계획 분리 사상과도 계보상 연결. 컬렉션에는 아직 이 원류 좌표가 비어 있어 계보를 완성한다.",
+          "rec_date": "2026-07-31"
+        },
+        {
           "id": "2406.10454",
           "title": "HumanPlus: Humanoid Shadowing and Imitation from Humans",
           "authors": "Zipeng Fu, Qingqing Zhao, Qi Wu, Gordon Wetzstein, Chelsea Finn · Stanford · arXiv:2406.10454",
@@ -408,21 +516,21 @@
           "rec_date": "2026-07-29"
         },
         {
-          "id": "2302.00111",
-          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
-          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai, Ofir Nachum, Joshua B. Tenenbaum, Dale Schuurmans, Pieter Abbeel · MIT / Google Brain / UC Berkeley · arXiv:2302.00111",
-          "summary_ko": "순차적 의사결정을 '텍스트 조건부 비디오 생성' 문제로 재정식화한 대표작. 언어로 목표를 지시하면 planner가 미래 프레임을 합성하고, 그 비디오에서 액션을 추출한다. '정책 = 비디오'라는 관점으로 상태·액션 공간이 서로 다른 여러 환경을 이미지라는 공통 공간에서 통합해 학습·일반화가 가능하다는 것을 실증. 사전학습된 언어 임베딩과 인터넷 비디오를 지렛대 삼아 실기 로봇에도 사실적 비디오 계획을 만들어낸다.",
+          "id": "2309.01918",
+          "title": "RoboAgent: Generalization and Efficiency in Robot Manipulation via Semantic Augmentations and Action Chunking",
+          "authors": "Homanga Bharadhwaj, Jay Vakil, Mohit Sharma, Abhinav Gupta, Shubham Tulsiani, Vikash Kumar · CMU / Meta · arXiv:2309.01918",
+          "summary_ko": "단 7,500개 데모로 12개 스킬과 38개 태스크를 하나의 에이전트가 수행하는 범용 조작 시스템. 핵심 아이디어는 두 가지 — semantic augmentation(SAM/segmentation·inpainting 기반 씬 다양화)으로 데이터를 대폭 확장하고, action chunking으로 다중 시간 단계의 액션을 하나의 예측 단위로 묶어 학습 안정성과 실시간 실행을 함께 확보. RoboSet 데이터셋과 함께 공개돼 이후의 다중 태스크 학습 표준이 됐고, unseen 상황에서 기존 방법 대비 40% 이상 성능 우위.",
           "tags": [
-            "Text-to-Video Policy",
-            "Universal Policy",
-            "Cross-Environment",
-            "Video Planning",
-            "NeurIPS 2023"
+            "Multi-Task Manipulation",
+            "Semantic Augmentation",
+            "Action Chunking",
+            "Data Efficiency",
+            "RoboSet"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2302.00111",
-          "extra_url": "https://universal-policy.github.io/unipi/",
-          "date": "2023-01-31",
-          "reason": "index의 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 ATM(2401.00025)의 point-track 인터페이스와 짝 — UniPi가 '텍스트→비디오'라면 ATM은 '비디오→point-track'으로 인터페이스 계보를 잇는다. index의 Cosmos(2501.03575)가 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
+          "arxiv_url": "https://arxiv.org/abs/2309.01918",
+          "extra_url": "https://robopen.github.io/",
+          "date": "2023-09-05",
+          "reason": "컬렉션의 데이터 인프라 축(2310.17596 MimicGen, 2310.08864 RT-X)과 hierarchical / multi-skill 축(좋아요한 Hi-VLA 2606.10267, 좋아요한 Harness-VLA 2607.08448, 좋아요한 GaP 2607.05369)이 만나는 지점의 원형. RoboAgent가 처음 정식화한 두 아이디어 — semantic augmentation과 action chunking — 은 이후 ACT(2304.13705, 컬렉션)·π0(2410.24164, 컬렉션)·SmolVLA(2506.01844, 컬렉션) 계열의 action head 설계에 그대로 흡수됐다. index의 Robot-Factored WM(2607.22535)이 로봇 rendering으로 임보디먼트를 factoring하는 것과 짝 — RoboAgent는 semantic augmentation으로 씬을 factoring한다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 대규모 스케일링에도 data augmentation 원류로 참조되는 논문. 컬렉션의 '적은 데이터로 많은 태스크' 축의 좌표계 완성.",
           "rec_date": "2026-07-28"
         },
         {
@@ -444,21 +552,21 @@
           "rec_date": "2026-07-28"
         },
         {
-          "id": "2309.01918",
-          "title": "RoboAgent: Generalization and Efficiency in Robot Manipulation via Semantic Augmentations and Action Chunking",
-          "authors": "Homanga Bharadhwaj, Jay Vakil, Mohit Sharma, Abhinav Gupta, Shubham Tulsiani, Vikash Kumar · CMU / Meta · arXiv:2309.01918",
-          "summary_ko": "단 7,500개 데모로 12개 스킬과 38개 태스크를 하나의 에이전트가 수행하는 범용 조작 시스템. 핵심 아이디어는 두 가지 — semantic augmentation(SAM/segmentation·inpainting 기반 씬 다양화)으로 데이터를 대폭 확장하고, action chunking으로 다중 시간 단계의 액션을 하나의 예측 단위로 묶어 학습 안정성과 실시간 실행을 함께 확보. RoboSet 데이터셋과 함께 공개돼 이후의 다중 태스크 학습 표준이 됐고, unseen 상황에서 기존 방법 대비 40% 이상 성능 우위.",
+          "id": "2302.00111",
+          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
+          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai, Ofir Nachum, Joshua B. Tenenbaum, Dale Schuurmans, Pieter Abbeel · MIT / Google Brain / UC Berkeley · arXiv:2302.00111",
+          "summary_ko": "순차적 의사결정을 '텍스트 조건부 비디오 생성' 문제로 재정식화한 대표작. 언어로 목표를 지시하면 planner가 미래 프레임을 합성하고, 그 비디오에서 액션을 추출한다. '정책 = 비디오'라는 관점으로 상태·액션 공간이 서로 다른 여러 환경을 이미지라는 공통 공간에서 통합해 학습·일반화가 가능하다는 것을 실증. 사전학습된 언어 임베딩과 인터넷 비디오를 지렛대 삼아 실기 로봇에도 사실적 비디오 계획을 만들어낸다.",
           "tags": [
-            "Multi-Task Manipulation",
-            "Semantic Augmentation",
-            "Action Chunking",
-            "Data Efficiency",
-            "RoboSet"
+            "Text-to-Video Policy",
+            "Universal Policy",
+            "Cross-Environment",
+            "Video Planning",
+            "NeurIPS 2023"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2309.01918",
-          "extra_url": "https://robopen.github.io/",
-          "date": "2023-09-05",
-          "reason": "컬렉션의 데이터 인프라 축(2310.17596 MimicGen, 2310.08864 RT-X)과 hierarchical / multi-skill 축(좋아요한 Hi-VLA 2606.10267, 좋아요한 Harness-VLA 2607.08448, 좋아요한 GaP 2607.05369)이 만나는 지점의 원형. RoboAgent가 처음 정식화한 두 아이디어 — semantic augmentation과 action chunking — 은 이후 ACT(2304.13705, 컬렉션)·π0(2410.24164, 컬렉션)·SmolVLA(2506.01844, 컬렉션) 계열의 action head 설계에 그대로 흡수됐다. index의 Robot-Factored WM(2607.22535)이 로봇 rendering으로 임보디먼트를 factoring하는 것과 짝 — RoboAgent는 semantic augmentation으로 씬을 factoring한다. 좋아요한 Xiaomi-Robotics-1(2607.15330)의 대규모 스케일링에도 data augmentation 원류로 참조되는 논문. 컬렉션의 '적은 데이터로 많은 태스크' 축의 좌표계 완성.",
+          "arxiv_url": "https://arxiv.org/abs/2302.00111",
+          "extra_url": "https://universal-policy.github.io/unipi/",
+          "date": "2023-01-31",
+          "reason": "index의 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 ATM(2401.00025)의 point-track 인터페이스와 짝 — UniPi가 '텍스트→비디오'라면 ATM은 '비디오→point-track'으로 인터페이스 계보를 잇는다. index의 Cosmos(2501.03575)가 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
           "rec_date": "2026-07-28"
         },
         {
