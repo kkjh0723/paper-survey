@@ -1,10 +1,64 @@
 {
-  "generated": "2026-08-02",
+  "generated": "2026-08-03",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2607.23783",
+          "title": "N₀-TWAM: Scaling Tactile-Native World-Action Model for Contact-Rich Manipulation",
+          "authors": "NeoteAI Team, Fudan TEAI Team · arXiv:2607.23783",
+          "summary_ko": "시각·촉각 미래를 동시에 예측하는 tactile-native world-action model을 6개 로봇 플랫폼·450개 태스크로 대규모 사전학습. NeoForce라는 힘 기반 통일 촉각 표현으로 물리적으로 grounded된 접촉 신호를 다루고, tactile contact event로 다단계 조작을 구조화한다. 비대칭 Mixture-of-Transformers 설계로 무거운 비디오 예측 전문가와 가벼운 액션·촉각 전문가를 결합. 접촉 많은 실기 태스크에서 스케일링 곡선을 실증, 코드·가중치 공개 예정.",
+          "tags": [
+            "Tactile-Native WAM",
+            "NeoForce Representation",
+            "Cross-Embodiment Scale",
+            "Asymmetric MoT",
+            "Contact Event Structure"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.23783",
+          "extra_url": "",
+          "date": "2026-07-26",
+          "reason": "컬렉션의 촉각·힘 축을 정면으로 스케일업하는 첫 대규모 사례 — 좋아요한 FM-VLA(2607.18231, 힘 memory VAE)·index의 ViTacWorld(2607.22530)와 pool의 TacWAM(2607.28391, anchor-guided)·τ(2607.24485, JEPA future-visual)까지 이어지는 tactile-WAM 라인의 스케일링 좌표를 놓는다. TacWAM이 anchor-guided 설계라면 N₀-TWAM은 그 다음 질문 — '촉각-네이티브 WM을 얼마나 데이터·태스크·임보디먼트 스케일에서 실증할 수 있는가'에 6 embodiments × 450 tasks로 답한다. Asymmetric MoT는 pool의 LeapBot-WA(2607.23969, Asymmetric MoT + JEPA anchor)와 정확한 짝 — LeapBot이 잠재 기하 조형이라면 N₀-TWAM은 촉각 modality에 같은 사상 적용. 좋아요한 WALA(2607.11397, latent action + depth)·Xiaomi-U0(2607.11643, world foundation)의 촉각 축 확장. NeoForce라는 통일 표현은 컬렉션의 π0(2410.24164)/RDT-1B(2410.07864)/SmolVLA(2506.01844) 계보 실기 파인튜닝의 촉각 데이터 표준이 될 잠재력. index의 Data Pyramid(2607.24744)가 지적한 tactile 계층 부족의 정면 실증.",
+          "rec_date": "2026-08-03"
+        },
+        {
+          "id": "2607.26789",
+          "title": "CheckVLA: Execution-Time Verification with Action-Conditioned World Model for Long-Horizon Mobile Manipulation",
+          "authors": "Yushan Liu, Peibo Sun, Xintao Chao, Zhenyang Yang, Yifan Xie, Lingfeng Zhang, Shoujie Li, Chenyu Tang, Fang Chen, Xiao-Ping Zhang, Wenbo Ding · arXiv:2607.26789",
+          "summary_ko": "VLA가 실시간 시각 피드백 없이 액션 시퀀스를 발행하는 상황의 오차 누적을 정면 지적. CheckVLA는 독립적으로 학습된 action-conditioned world model이 실행 fidelity를 감시해, conformally calibrated 개입 임계값·latency-aware action 대체·keyframe 트래킹으로 필요할 때만 개입한다. RoboCasa365 장기 mobile 조작에서 주기적 replanning 대비 일관된 성능 개선.",
+          "tags": [
+            "Execution Verification",
+            "Action-Conditioned WM",
+            "Long-Horizon Mobile",
+            "Conformal Threshold",
+            "RoboCasa365"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.26789",
+          "extra_url": "",
+          "date": "2026-07-29",
+          "reason": "좋아요한 Harness-VLA(2607.08448, frozen VLA + primitive library)·GaP(2607.05369, graph-as-policy)·Aspire·2606.19980(agentic robotics)와 pool의 RoboBRIDGE(2607.27881, 5-모듈 orchestration)·LENS(2607.19633, 씬 축약)·ARCHITECT(2607.23784, program synthesis + human correction) 그리고 index의 Pigey(2607.21725, agentic orchestrator)·RoboHarness(2607.18060) 라인의 '정책 밖에서 실행을 어떻게 감독할까'라는 공통 질문의 정확한 짝. 기존 orchestration이 planner·scene abstraction·primitive library였다면 CheckVLA는 world model을 실행-시간 검증기로 세운다. pool의 ASAR(2607.23602, WM 예측을 planning에 잘못 쓰는 문제 지적)과도 짝 — ASAR이 '롤아웃을 어떻게 쓸까'라면 CheckVLA는 '롤아웃으로 무엇을 검증할까'. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643)의 대형 WAM에 재학습 없이 얹을 수 있는 안전 계층. conformal 개입 임계값은 컬렉션의 BadWAM(2607.15207, 공격)·pool의 WA-LQR(2607.14943, mechanistic steering)과 함께 WAM 견고성 축의 새 좌표.",
+          "rec_date": "2026-08-03"
+        },
+        {
+          "id": "2607.26579",
+          "title": "ContactFlow: A video action conditioning that transfers across embodiments",
+          "authors": "Sami Azirar, Enrico Pallotta, Jan Nogga, Jürgen Gall, Sven Behnke, Hermann Blum · arXiv:2607.26579",
+          "summary_ko": "'3D contact point trajectory'를 embodiment-agnostic 액션 표현으로 삼아, 인간·로봇 데모 비디오 하나로 학습된 생성 world model이 서로 다른 로봇 임보디먼트로 전이 가능함을 실증. actor-specific 특징을 추상화해 접촉 궤적만 남기는 것이 핵심 아이디어. propose-imagine-verify-act 파이프라인에서 VLM이 예측 outcome을 실행 전에 검증. DROID + 실기.",
+          "tags": [
+            "Embodiment-Agnostic Action",
+            "3D Contact Trajectory",
+            "Human-Robot Video",
+            "Propose-Imagine-Verify",
+            "DROID"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2607.26579",
+          "extra_url": "",
+          "date": "2026-07-29",
+          "reason": "pool의 Cross-Embodiment Transfer(2607.27549, behavior-aligned representations)와 정확한 짝 — 그쪽이 '어떤 표현이 전이에 도움이 되는가'를 벤치마킹한다면 ContactFlow는 '3D contact point trajectory'라는 구체적 답을 낸다. pool의 ATM(2401.00025, any-point trajectory)의 정통 계승 — ATM이 2D point-track이라면 ContactFlow는 접촉에 국한된 3D contact-point-track으로 정제. 컬렉션의 Cross-Embodiment 계보(RT-X 2310.08864·좋아요한 WALA 2607.11397·2606.17846·2606.15631·2607.03570)의 새 좌표이자 pool의 HPT(2409.20537, heterogeneous policy trunk)와 짝 — HPT가 아키텍처 축이면 ContactFlow는 표현 축. 좋아요한 FM-VLA(2607.18231, 힘 memory)·이번 새로 넣는 N₀-TWAM(tactile-native WAM)과 촉각·접촉 3부작 완성 — τ가 촉각 표현 학습, N₀-TWAM이 촉각 WAM 스케일, ContactFlow가 접촉을 embodiment-agnostic 인터페이스로. propose-imagine-verify는 좋아요한 Harness-VLA(2607.08448)·GaP·이번 새로 넣는 CheckVLA와 동일한 orchestration 사상.",
+          "rec_date": "2026-08-03"
+        },
         {
           "id": "2607.27782",
           "title": "RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy",
@@ -335,6 +389,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2408.11812",
+          "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation (CrossFormer)",
+          "authors": "Ria Doshi, Homer Walke, Oier Mees, Sudeep Dasari, Sergey Levine · UC Berkeley · arXiv:2408.11812",
+          "summary_ko": "900K 궤적·20개 임보디먼트(단·양팔 조작, 휠 로봇, 쿼드콥터, 4족)로 학습한 단일 트랜스포머 정책. 관측·액션 공간 정렬 없이 이질 데이터를 흡수하는 아키텍처로, 각 임보디먼트의 전문 정책과 동등한 성능을 내면서 이전 cross-embodiment 방법들을 능가. 조작을 넘어 navigation·locomotion·aviation까지 한 정책에 통합하는 첫 대규모 실증.",
+          "tags": [
+            "Cross-Embodiment Scale",
+            "Manipulation+Navigation+Locomotion+Aviation",
+            "Sergey Levine",
+            "20 Embodiments",
+            "Unified Policy"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2408.11812",
+          "extra_url": "https://crossformer-model.github.io/",
+          "date": "2024-08-21",
+          "reason": "컬렉션의 Cross-Embodiment 축(2310.08864 RT-X·2606.17846·2606.15631·2607.03570) 전체의 스케일 축 완성. RT-X가 22개 로봇 데이터를 모았다면 CrossFormer는 그것을 넘어 manipulation·navigation·locomotion·aviation까지 한 정책에 통합한다. 좋아요한 Xiaomi-U0(2607.11643, 38B AR 파운데이션)·Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)의 임보디먼트 확장 축의 뿌리. pool의 HPT(2409.20537, heterogeneous policy trunk, Kaiming He)와 정확한 짝 — HPT가 stem tokenizer + 공유 trunk 아키텍처를 제안했다면 CrossFormer는 그것을 20 임보디먼트 규모로 실증. Sergey Levine 그룹이라 컬렉션의 좋아요한 RT-2(2307.15818)·OpenVLA(2406.09246)·pool의 RT-H(2403.01823) Google/DeepMind 계보와 함께 cross-embodiment 라인의 좌표계를 완성. pool의 ContactFlow(방금 새로 넣음, 3D contact-point representation)·ATM(2401.00025)의 표현 축과 짝 — CrossFormer는 정책 아키텍처 축.",
+          "rec_date": "2026-08-03"
+        },
+        {
+          "id": "2310.06114",
+          "title": "Learning Interactive Real-World Simulators (UniSim)",
+          "authors": "Sherry Yang, Yilun Du, Kamyar Ghasemipour, Jonathan Tompson, Leslie Kaelbling, Dale Schuurmans, Pieter Abbeel · Google DeepMind / MIT / UC Berkeley · arXiv:2310.06114",
+          "summary_ko": "인간·에이전트 액션에 반응해 현실적 상호작용을 시뮬레이션하는 universal simulator를 생성 모델로 학습. 여러 이질 데이터셋(오브젝트 다양성·액션 밀도·모션 다양성)을 조합해 '서랍을 열어라' 같은 상위 지시부터 저수준 컨트롤까지 시뮬레이션. 이 시뮬레이터로 학습한 VLM 정책과 RL 에이전트가 추가 파인튜닝 없이 실기에 전이. ICLR 2024 Outstanding Paper.",
+          "tags": [
+            "Universal Simulator",
+            "Generative World Model",
+            "Video-as-Simulator",
+            "Sim2Real Transfer",
+            "ICLR 2024 Outstanding"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2310.06114",
+          "extra_url": "https://universal-simulator.github.io/",
+          "date": "2023-10-09",
+          "reason": "좋아요한 Xiaomi-U0(2607.11643, world foundation)·WALA(2607.11397, world model + latent action)·index의 Cosmos(2501.03575, world foundation model) 라인의 사상적 뿌리 중 하나. UniSim이 처음 정식화한 '생성 모델을 실제 세계 시뮬레이터로 삼고 그 안에서 정책을 훈련한다'는 관점이 이후 Cosmos·Xiaomi-U0로 이어지는 world foundation 계보의 원류. pool의 UniPi(2302.00111, text-guided video generation)와 정확한 자매 논문 — 같은 저자(Yang·Du·Abbeel), UniPi가 '텍스트→비디오→액션'이라면 UniSim은 '액션→비디오→학습'으로 인터페이스 방향이 뒤집힘. 컬렉션의 WAM 라인 전체(FlowWAM·LingBot-VA·ACWM·BadWAM·index의 Robot-Factored WM 2607.22535·Masked Visual Actions 2607.19343)의 상위 이론 좌표계. pool의 LeapBot-WA(2607.23969)·TD-JEPA(2607.25337)의 latent 축과 대칭 — UniSim은 픽셀 축의 원류. index의 Data Pyramid(2607.24744)가 지적한 '시뮬레이션 데이터 계층'의 개념적 뿌리.",
+          "rec_date": "2026-08-03"
+        },
+        {
+          "id": "2403.03174",
+          "title": "MOKA: Open-World Robotic Manipulation through Mark-Based Visual Prompting",
+          "authors": "Fangchen Liu, Kuan Fang, Pieter Abbeel, Sergey Levine · UC Berkeley · arXiv:2403.03174",
+          "summary_ko": "VLM이 이미지 위에 표시된 mark들을 보고 affordance를 point 기반 표현으로 예측하도록 하는 visual prompting 프레임워크. VLM의 이미지 예측과 로봇 액션 사이를 point-based affordance로 잇는다. 도구 사용·변형체 조작·오브젝트 재배치 등 표 위 태스크 다수에서 in-context learning·정책 증류로 개선. VLM을 조작 정책의 상위 계층으로 활용하는 대표 계보의 원류.",
+          "tags": [
+            "VLM Visual Prompting",
+            "Point-Based Affordance",
+            "Open-World Manipulation",
+            "In-Context Policy",
+            "Mark-Based Reasoning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.03174",
+          "extra_url": "https://moka-manipulation.github.io/",
+          "date": "2024-03-05",
+          "reason": "좋아요한 Aspire·2606.19980(agentic robotics + coding agent), Harness-VLA(2607.08448, frozen VLA + agentic planner + primitive library), GaP(2607.05369, graph-as-policy + agentic coding) 라인의 정면 뿌리. MOKA가 처음 정식화한 'VLM을 mark-based visual prompting으로 조작 정책의 상위층에 얹는다'는 사상이 이후 pool의 ARCHITECT(2607.23784, LLM 코딩 에이전트 program synthesis)·LENS(2607.19633, LLM 씬 축약)·index의 Pigey(2607.21725, agentic orchestrator)·pool의 RoboBRIDGE(2607.27881, 5-모듈 orchestration)로 이어졌다. 컬렉션의 SayCan(2204.01691)·Code as Policies(2209.07753)·PaLM-E(2303.03378)의 다음 결절점 — 이들이 언어→값장/코드였다면 MOKA는 언어+시각 mark→affordance point로 인터페이스를 시각화. pool의 RT-H(2403.01823, language motion hierarchy)와 정확한 자매 — 둘 다 2024년 3월 논문이며 각각 언어·시각 hierarchy를 다룸. pool의 ContactFlow(방금 새로 넣음)·ATM(2401.00025)의 point-track 인터페이스 계보와도 연결. Levine 그룹이라 이번에 함께 넣는 CrossFormer(2408.11812)와 짝 — CrossFormer가 아키텍처 축, MOKA는 VLM interface 축.",
+          "rec_date": "2026-08-03"
+        },
         {
           "id": "2606.21139",
           "title": "PoLAR: Factorizing Extent and Mode in Latent Actions for Robot Policy Learning",
