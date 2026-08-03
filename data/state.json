@@ -40,6 +40,12 @@
       "title": "FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2607.28596",
       "added": "2026-08-03"
+    },
+    {
+      "id": "2607.27549",
+      "title": "Cross-Embodiment Transfer via Behavior-Aligned Representations",
+      "arxiv_url": "https://arxiv.org/abs/2607.27549",
+      "added": "2026-08-03"
     }
   ],
   "dismissed": [
