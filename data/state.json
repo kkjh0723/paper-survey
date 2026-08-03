@@ -28,6 +28,12 @@
       "title": "CheckVLA: Execution-Time Verification with Action-Conditioned World Model for Long-Horizon Mobile Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2607.26789",
       "added": "2026-08-03"
+    },
+    {
+      "id": "2607.27782",
+      "title": "RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy",
+      "arxiv_url": "https://arxiv.org/abs/2607.27782",
+      "added": "2026-08-03"
     }
   ],
   "dismissed": [
