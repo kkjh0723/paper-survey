@@ -22,6 +22,12 @@
       "title": "Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation",
       "arxiv_url": "https://arxiv.org/abs/2401.02117",
       "added": "2026-08-03"
+    },
+    {
+      "id": "2607.26789",
+      "title": "CheckVLA: Execution-Time Verification with Action-Conditioned World Model for Long-Horizon Mobile Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2607.26789",
+      "added": "2026-08-03"
     }
   ],
   "dismissed": [
