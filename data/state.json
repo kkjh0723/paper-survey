@@ -16,6 +16,12 @@
       "title": "CogACT: A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2411.19650",
       "added": "2026-08-03"
+    },
+    {
+      "id": "2401.02117",
+      "title": "Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation",
+      "arxiv_url": "https://arxiv.org/abs/2401.02117",
+      "added": "2026-08-03"
     }
   ],
   "dismissed": [
