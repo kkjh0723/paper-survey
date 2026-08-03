@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CheckVLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · World Model · Verification</span>
+    <h1>CheckVLA: Execution-Time Verification with Action-Conditioned World Model for Long-Horizon Mobile Manipulation</h1>
+    <p class="authors">Yushan Liu, Peibo Sun, Xintao Chao 외 8인 · arXiv:2607.26789</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.26789" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.26789" target="_blank">PDF</a>
+      <span>arXiv:2607.26789</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA Verification</span>
+      <span class="t">Action-Conditioned WM</span>
+      <span class="t">Conformal Risk</span>
+      <span class="t">Long-Horizon</span>
+      <span class="t">RoboCasa365</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 29일 · 벤치 RoboCasa365(365 태스크·2,500 kitchens) · Human300 학습</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>VLA가 <b>open-loop action chunk</b>를 통째로 뱉으면 중간에 편차가 생겨도 남은 액션이 오류를 계속 전파한다. CheckVLA는 별도로 학습한 <b>동결 action-conditioned world model</b>이 "이 액션이면 관찰이 이렇게 흘러야 한다"는 예측을 만들고, 실제 관찰과의 편차를 <b>conformal calibration</b>으로 임계화해 <b>중간 개입 여부</b>를 결정한다. RoboCasa365에서 평균 성공률 <span class="win">36.1</span>%(주기 replanning 27.6% 대비 +8.5%p), 5% false-alarm 타깃에서 timely recall <span class="win">77.9</span>%(observation-only 48.6%). "action-conditioned"가 핵심 — action 신호 제거 시 recall이 40%p 급락.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>현대 VLA는 <b>action chunk H</b>(수십 step)를 한 번에 커밋하고 열린 루프로 실행한다. 이는 지연·jitter를 흡수하지만 <b>중간 편차</b>(미끄러짐·물체 이동)를 감지하지 못하고 <b>남은 액션이 오류를 증폭</b>한다. 대안인 (a) <b>정책 confidence</b>는 chunk 발행 시점만 재고, (b) <b>관찰만 보는 anomaly detection</b>은 액션 컨텍스트가 없어 "예상된 변화"와 "실제 문제"를 구분 못 한다. 저자들은 <b>액션-조건부 예측 vs 실제 관찰</b>의 편차 자체가 신호이며, 이 통계를 conformal로 조정하면 <b>episode 수준 false-alarm 보장</b>을 갖는 실행-시 검증기가 된다고 제안.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Action-Conditioned World Model 기반 검증</b> — 정책과 <b>분리·동결</b>된 예측기 Ψ가 커밋된 액션·현재 관찰·proprio를 받아 다음 k step feature를 예측. 실제 관찰과의 편차가 검증 신호.</li>
+      <li><b>Conformal risk head + calibration</b> — 편차를 span-wise 정규화 → causal risk head R → 함수형 conformal 임계 δ<sub>t</sub>=μ<sub>r,t</sub>+q̂<sub>α</sub>σ̃<sub>r,t</sub>. episode-level FWER ≤ α 보장.</li>
+      <li><b>Latency-aware hard prefixing + event-driven keyframe banking</b> — 지연 d<sub>lat</sub> 이내 후보는 실행 중 액션에 clamp, 그 이후만 교체. 진행 단서를 gated cross-attention으로 재사용해 재계획의 <b>과거 진행 소실</b> 방지.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Action-Conditioned World Model Ψ</h3>
+    <p>Ψ는 최신 관찰 feature z<sub>t'</sub>, 이전 예측, 커밋된 액션 ā<sub>t':t'+i</sub>, proprio rollout을 입력으로 다음 <b>k ≪ H</b> step의 feature를 예측한다. Ψ는 정책과 <b>독립적으로 사전학습</b>되고 실행 시엔 <b>동결</b>. 실제 관찰 feature와의 residual r<sub>t</sub>가 원시 편차 신호.</p>
+
+    <h3>Conformal Risk Calibration</h3>
+    <div class="callout">
+      residual을 span별 통계로 표준화 → causal risk head R로 aggregate → 함수형 conformal 예측: <b>δ<sub>t</sub> = μ<sub>r,t</sub> + q̂<sub>α</sub>·σ̃<sub>r,t</sub></b>. 캘리브레이션 세트로 q̂<sub>α</sub>를 골라 <b>episode 수준 false-alarm ≤ α</b>가 이론적으로 보장됨. r<sub>t</sub> > δ<sub>t</sub>이면 개입 트리거.
+    </div>
+
+    <h3>Hard Prefixing & Adaptive Guidance</h3>
+    <p>개입이 결정되면 정책이 새 chunk를 생성하지만, 추론 지연 d<sub>lat</sub> step 안의 후보 h &lt; d<sub>lat</sub>는 이미 실행 중이라 <b>고정(clamp)</b>. h ≥ d<sub>lat</sub>부터 새 액션 배치. 편차 초과량이 클수록 <b>가이던스 강도</b>를 키워 suffix rewriting을 강하게(adaptive guidance).</p>
+
+    <h3>Event-Driven Keyframe Banking</h3>
+    <p>진행 단서(파지 성공 순간 등)를 감지해 <b>keyframe bank ℬ<sub>t</sub></b>에 정책 feature를 저장. 정책은 <b>gated cross-attention</b>으로 이를 조회하고, risk head는 요약 m(ρ<sub>t</sub>)만 받아 재계획 시 <b>과거 진행 소실</b>을 방지.</p>
+
+    <h3>벤치마크 & 세팅</h3>
+    <div class="kv">
+      <div>벤치</div><div>RoboCasa365 — 365 태스크 · 2,500 kitchens</div>
+      <div>스플릿</div><div>18 Atomic-Seen · 16 Composite-Seen · 16 Composite-Unseen</div>
+      <div>학습 데이터</div><div>Human300 (300 태스크 × 100 데모, target 65 태스크와 disjoint)</div>
+      <div>비교군</div><div>주기 replanning · policy-entropy 감지 · 관찰-only detector · action-shuffled control</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboCasa365 (평균 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>성공률 (%)</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>Base VLA (open-loop)</td><td>—</td><td>기준</td></tr>
+        <tr><td>Periodic Replanning</td><td>27.6</td><td>고정 주기 재계획</td></tr>
+        <tr><td>Policy-Entropy Trigger</td><td>38.9</td><td>perturbed 세팅</td></tr>
+        <tr><td><b>CheckVLA (Full)</b></td><td class="win">36.1</td><td><b>+8.5</b> vs. periodic</td></tr>
+        <tr><td>CheckVLA (perturbed)</td><td class="win">47.6</td><td>+8.7 vs. entropy</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Timely Recall @ 5% FWER (감지 품질)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Detector</th><th>Timely Recall (%)</th><th>Δ vs. Full</th></tr></thead>
+      <tbody>
+        <tr><td><b>CheckVLA (action-conditioned)</b></td><td class="win">77.9</td><td>—</td></tr>
+        <tr><td>Policy-feature probe</td><td>68.6</td><td>−9.3</td></tr>
+        <tr><td>Observation-only</td><td>48.6</td><td>−29.3</td></tr>
+        <tr><td>Action-shuffled control</td><td>37.9</td><td>−40.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">동일 false-alarm 예산에서 action-conditioned가 압도적. 액션 신호를 무작위로 섞으면 recall이 40%p 급락 → "action이 실제 예측에 기여"함을 인과적으로 보여주는 통제 실험.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Table 3 (구성 요소 순차 누적):</b> Base → +Verified trigger <b>+3.9</b>%p → +Adaptive guidance <b>+2.6</b>%p → +Memory(bank) <b>+2.0</b>%p. 세 요소가 모두 유효.</li>
+      <li><b>Table 5 (confidently-wrong quadrant):</b> "정책이 자신있게 틀린" 상황이 에피소드의 <b>25%</b>이지만 실패의 <b>48.4%</b>를 차지. entropy만으론 놓치는 이유.</li>
+      <li><b>Table 6 (repair rule):</b> adaptive guidance는 <b>16.9% rescue</b>를 얻으면서 <b>2.8% harm</b>만 유발 — trade-off 유리.</li>
+      <li><b>Ψ 예측 horizon k:</b> k ≪ H일 때 최적. 너무 길게 예측하면 시각 표류로 신호 무뎌짐.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.26789/x1.png" alt="CheckVLA 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — CheckVLA 개요.</b> Frozen action-conditioned world model이 커밋된 액션을 조건으로 다음 관찰을 예측하고, 실제 관찰과의 편차를 conformal 임계로 판정해 중간 개입을 트리거. (출처: arXiv:2607.26789)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.26789/x2.png" alt="CheckVLA 프레임워크 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 검증·수리 파이프라인.</b> risk head → conformal 임계 δ<sub>t</sub> → hard prefix로 latency 반영 → keyframe bank로 과거 진행 재사용. (출처: arXiv:2607.26789)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table (Detector 비교)</b> — CheckVLA 77.9% vs Observation-only 48.6% vs Action-shuffled 37.9%. "action-conditioned"가 없으면 checker는 무너진다는 핵심 실험. Conformal 보장은 α=5% 유지.
+    </div>
+    <p class="cap">Figure 3: suffix rewriting 도식 · Figure 4: 분리된 action experts 시각화.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.26789" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.26789" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.26789 · CheckVLA · 요약 생성 2026-08-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

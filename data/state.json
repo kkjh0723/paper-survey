@@ -10,44 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2411.19650",
-      "title": "CogACT: A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2411.19650",
-      "added": "2026-08-03"
-    },
-    {
-      "id": "2401.02117",
-      "title": "Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation",
-      "arxiv_url": "https://arxiv.org/abs/2401.02117",
-      "added": "2026-08-03"
-    },
-    {
-      "id": "2607.26789",
-      "title": "CheckVLA: Execution-Time Verification with Action-Conditioned World Model for Long-Horizon Mobile Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2607.26789",
-      "added": "2026-08-03"
-    },
-    {
-      "id": "2607.27782",
-      "title": "RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy",
-      "arxiv_url": "https://arxiv.org/abs/2607.27782",
-      "added": "2026-08-03"
-    },
-    {
-      "id": "2607.28596",
-      "title": "FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2607.28596",
-      "added": "2026-08-03"
-    },
-    {
-      "id": "2607.27549",
-      "title": "Cross-Embodiment Transfer via Behavior-Aligned Representations",
-      "arxiv_url": "https://arxiv.org/abs/2607.27549",
-      "added": "2026-08-03"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

@@ -184,6 +184,132 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2607.28596" data-added="2026-08-03" data-tags="Diffusion Policy,Visual-Force,Frequency Adaptive,MCD,Contact-Rich">
+        <td class="no">75</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.28596_FA-RDP.html">FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation</a></div>
+          <div class="sub">Lifeng Zhuo, Wendi Chen 외 5인 · SJTU · arXiv:2607.28596</div>
+          <div class="sub">접촉 전엔 multi-step low-freq(모드 보존), 접촉 후엔 1-step high-freq(빠른 반응)로 학습된 indicator가 자동 전환하는 diffusion policy. 공유 Visual-Force Transformer + Manifold Consistency Distillation(MCD). 3 dual-arm contact-rich 태스크 평균 81.7%(DP 10.0 · RDP 35.0 · ImplicitRDP 51.7). Consistency/MeanFlow 1.7% 붕괴를 MCD가 61.7%로 회복.</div>
+          <div class="tags">
+            <span class="tag">Diffusion Policy</span>
+            <span class="tag">Visual-Force</span>
+            <span class="tag">Frequency Adaptive</span>
+            <span class="tag">MCD Distillation</span>
+            <span class="tag">Contact-Rich</span>
+          </div>
+        </td>
+        <td class="date">2026-07-30</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.28596" target="_blank">arXiv</a>
+          <a href="https://fa-rdp.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2607.27782" data-added="2026-08-03" data-tags="Flow Matching,Offline RL,Failure Redirection,VLA,Sample-Efficient">
+        <td class="no">74</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.27782_RedFlow.html">RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy</a></div>
+          <div class="sub">Zhengyang Yan, Junhao Li 외 7인 · arXiv:2607.27782</div>
+          <div class="sub">Flow-matching VLA를 실패 rollout까지 활용한 offline RL. Context-Aware Corrective Matching(HDBSCAN)으로 유사 컨텍스트의 성공 chunk를 corrective target으로 만들고 attraction+suppression+redirection 3항 loss로 flow field 재교정. LIBERO 평균 68.2%(base 56.2 · AWR 62.3 · DPO 59.7). 실로봇 clothes-folding 36.0→67.0%. PPO/GRPO/DDPO를 ~10× 적은 샘플로 매칭.</div>
+          <div class="tags">
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Offline RL</span>
+            <span class="tag">Failure Redirection</span>
+            <span class="tag">Wasserstein GF</span>
+            <span class="tag">Sample-Efficient</span>
+          </div>
+        </td>
+        <td class="date">2026-07-30</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.27782" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2607.27549" data-added="2026-08-03" data-tags="Cross-Embodiment,Behavior-Aligned,EE Traces,MiniVLA,Action-Free">
+        <td class="no">73</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.27549_BARx.html">Cross-Embodiment Transfer via Behavior-Aligned Representations</a></div>
+          <div class="sub">Ajay Sridhar, Jensen Gao 외 4인 · Stanford · arXiv:2607.27549</div>
+          <div class="sub">embodiment 불변이면서 액션 예측적인 3종 표현(bounding boxes · language motions · end-effector traces)을 MiniVLA에 autoregressive auxiliary target으로 통합. RoboCasa-X 벤치에서 EE trace가 가장 강력. XP-900 +15%p, XP-3K +19%p. Action-free 데이터 +14%p 활용. 실 FR3/ViperX sim-to-real 태스크 진행률 +28%p.</div>
+          <div class="tags">
+            <span class="tag">Cross-Embodiment</span>
+            <span class="tag">Behavior-Aligned</span>
+            <span class="tag">EE Traces</span>
+            <span class="tag">MiniVLA</span>
+            <span class="tag">Action-Free Data</span>
+          </div>
+        </td>
+        <td class="date">2026-07-30</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.27549" target="_blank">arXiv</a>
+          <a href="https://ajaysridhar.com/barx/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2607.26789" data-added="2026-08-03" data-tags="VLA Verification,Action-Conditioned WM,Conformal,Long-Horizon,RoboCasa365">
+        <td class="no">72</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.26789_CheckVLA.html">CheckVLA: Execution-Time Verification with Action-Conditioned World Model for Long-Horizon Mobile Manipulation</a></div>
+          <div class="sub">Yushan Liu, Peibo Sun 외 9인 · arXiv:2607.26789</div>
+          <div class="sub">VLA의 open-loop action chunk 중간 편차를 감지·수리. 별도로 학습한 동결 action-conditioned world model이 예측한 관찰과 실제의 편차를 conformal calibration(FWER≤α)으로 판정 → adaptive guidance로 suffix rewriting. RoboCasa365 평균 36.1%(주기 replanning 27.6% · +8.5%p). timely recall 77.9%@5%FA(observation-only 48.6, action-shuffled 37.9).</div>
+          <div class="tags">
+            <span class="tag">VLA Verification</span>
+            <span class="tag">Action-Conditioned WM</span>
+            <span class="tag">Conformal Risk</span>
+            <span class="tag">Long-Horizon</span>
+            <span class="tag">RoboCasa365</span>
+          </div>
+        </td>
+        <td class="date">2026-07-29</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.26789" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2411.19650" data-added="2026-08-03" data-tags="VLA,Diffusion Action,DiT,Adaptive Ensemble,Foundation Model">
+        <td class="no">71</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2411.19650_CogACT.html">CogACT: A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation</a></div>
+          <div class="sub">Qixiu Li, Yaobo Liang 외 16인 · Microsoft Research · Tsinghua · arXiv:2411.19650</div>
+          <div class="sub">VLA의 discretized action head를 버리고 cognition(VLM: DINOv2+SigLIP+LLaMA-2 7B)과 action(전용 DiT 300M) 을 분리. Adaptive Action Ensemble(AAE)로 시계열 예측을 cosine 가중 앙상블. SIMPLER Google Robot 74.8%(OpenVLA 34.3 · RT-2-X 55B 46.3), Realman 실로봇 71.2% vs OpenVLA 12.1%. DiT 13M→308M near-linear 스케일링.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Diffusion Action</span>
+            <span class="tag">DiT</span>
+            <span class="tag">Adaptive Ensemble</span>
+            <span class="tag">Foundation Model</span>
+          </div>
+        </td>
+        <td class="date">2024-11-29</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2411.19650" target="_blank">arXiv</a>
+          <a href="https://cogact.github.io/" target="_blank">프로젝트</a>
+          <a href="https://github.com/microsoft/CogACT" target="_blank">GitHub</a>
+        </td>
+      </tr>
+      <tr data-id="2401.02117" data-added="2026-08-03" data-tags="Bimanual,Mobile Manipulation,Whole-Body Teleop,Co-training,Low-Cost">
+        <td class="no">70</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2401.02117_MobileALOHA.html">Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation</a></div>
+          <div class="sub">Zipeng Fu, Tony Z. Zhao, Chelsea Finn · Stanford · arXiv:2401.02117</div>
+          <div class="sub">$32K 저가 이동형 양팔 텔레옵 플랫폼(AgileX Tracer + ViperX 300 × 2). 오퍼레이터가 로봇 허리에 테더돼 저마찰 바퀴를 몸으로 백드라이브하며 양팔·베이스 동시 조작. 정적 ALOHA 825 에피소드 co-training으로 요리·엘리베이터 호출·양문 캐비닛 등 7 장기 태스크. Call Elevator 0→95%, 평균 +34%p.</div>
+          <div class="tags">
+            <span class="tag">Bimanual</span>
+            <span class="tag">Mobile Base</span>
+            <span class="tag">Whole-Body Teleop</span>
+            <span class="tag">Co-training</span>
+            <span class="tag">Low-Cost Hardware</span>
+          </div>
+        </td>
+        <td class="date">2024-01-04</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2401.02117" target="_blank">arXiv</a>
+          <a href="https://mobile-aloha.github.io/" target="_blank">프로젝트</a>
+          <a href="https://github.com/MarkFzp/mobile-aloha" target="_blank">GitHub</a>
+        </td>
+      </tr>
       <tr data-id="2607.24744" data-added="2026-07-30" data-tags="Survey,Data Pyramid,VLA,UMI,Cross-Embodiment">
         <td class="no">69</td>
         <td class="read-cell"></td>

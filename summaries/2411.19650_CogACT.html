@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CogACT — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Diffusion Action</span>
+    <h1>CogACT: A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation</h1>
+    <p class="authors">Qixiu Li, Yaobo Liang, Zeyu Wang 외 15인 · Microsoft Research · Tsinghua University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2411.19650" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2411.19650" target="_blank">PDF</a>
+      <a href="https://cogact.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/microsoft/CogACT" target="_blank">GitHub</a>
+      <span>arXiv:2411.19650</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Diffusion Action</span>
+      <span class="t">DiT</span>
+      <span class="t">Adaptive Ensemble</span>
+      <span class="t">Foundation Model</span>
+    </div>
+    <p class="meta">제출: 2024년 11월 29일 · 백본 DINOv2+SigLIP + LLaMA-2 7B + DiT-L(300M) · Open X-Embodiment 25 데이터셋</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 VLA가 <b>action 토큰을 quantize해 VLM 헤드로 붙이는</b> 방식을 취하다 성공률이 낮아지는 문제를, <b>cognition(VLM)</b>과 <b>action(전용 DiT 헤드)</b>을 <b>구조적으로 분리·시너지</b>시켜 해결. LLaMA-2 7B + DINOv2/SigLIP 위에 <b>Diffusion Transformer 300M</b> action head를 얹고 <b>Adaptive Action Ensemble(AAE)</b>로 시계열 예측을 앙상블. SIMPLER Google Robot에서 <span class="win">74.8</span>%(OpenVLA 34.3%, RT-2-X 55B 46.3%), 실 Realman에서 <span class="win">71.2</span>%(OpenVLA 12.1%)로 SOTA. DiT 사이즈 13M→308M로 <b>near-linear 스케일링</b> 관찰.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>OpenVLA·RT-2 계열은 VLM을 그대로 재활용하되 <b>action을 discrete 토큰으로 양자화</b>해 언어 토큰과 같은 자기회귀 헤드로 뱉는다. 이는 언어와 행동을 억지로 같은 표현 공간에 밀어넣어 <b>표현 mismatch</b>와 <b>성공률 저하</b>를 낳는다. 저자들은 인간의 <b>인지(cognition)와 운동(action) 분리</b>에서 힌트를 얻어 <b>modular 구조</b>—VLM은 상황 이해에, 별도의 diffusion transformer는 연속 궤적 생성에 전념—로 재설계할 것을 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Componentized VLA 아키텍처</b> — 비전(DINOv2+SigLIP), 언어(LLaMA-2 7B), 행동(전용 DiT) 3-모듈. VLM 출력은 조건으로만 쓰고 action은 별도 diffusion head가 담당.</li>
+      <li><b>Diffusion Action Transformer</b> — DiT-S/B/L(13M/89M/308M)의 favorable scaling을 검증하고 log-linear 성능 향상 확인. 예측 horizon 15 step이 최적.</li>
+      <li><b>Adaptive Action Ensemble (AAE)</b> — 과거 예측과 현재 예측의 <b>cosine 유사도</b>로 가중해 부드러운 실행 궤적을 생성. temporal ensemble(58.9%)·action chunking(50.7%)을 <span class="win">62.5</span>%로 상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>구조: Cognition · Action 분리</h3>
+    <p>VLM(<b>Prismatic-7B</b> 구조: DINOv2+SigLIP 비전 이중 인코더 + LLaMA-2 7B)이 이미지·언어를 처리해 마지막 hidden state의 특별 토큰을 <b>cognition feature</b>로 뽑는다. 이 feature가 <b>DiT-L</b>(300M) action head에 <b>AdaLN-Zero</b> 방식으로 주입되어 다음 <b>15-step 연속 action chunk</b>를 생성한다. 학습 시 표준 DDPM(1000-step 스케줄), 추론 시 DDIM 30-step.</p>
+
+    <h3>Adaptive Action Ensemble (AAE)</h3>
+    <div class="callout">
+      매 시점 t에서 최근 여러 chunk 예측을 유지하고, 현 예측 â<sub>t</sub>와 과거 예측 â<sub>t−k</sub>의 <b>cosine 유사도 s<sub>k</sub></b>를 softmax 가중치로 사용: <b>w<sub>k</sub> ∝ exp(s<sub>k</sub>/τ)</b>. 유사할수록 가중이 커져 <b>일관된 궤적</b>을 자기강화하고 outlier를 배제. temporal ensemble의 고정 지수 감쇠보다 상황 적응적.
+    </div>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>사전학습</div><div>Open X-Embodiment 25 데이터셋 · 0.4M 궤적 · 22.5M 프레임</div>
+      <div>파인튜닝</div><div>Realman 391 데모(4 task) · Franka 400 데모(4 task, 100/task)</div>
+      <div>백본</div><div>Prismatic-7B (DINOv2+SigLIP) + LLaMA-2 7B, DiT-L 300M</div>
+      <div>노이즈 스케줄</div><div>DDPM 1000 / DDIM 30 (추론)</div>
+      <div>액션 형식</div><div>연속(7-DoF ee-delta), 15-step chunk 예측</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>SIMPLER 벤치마크 (성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Google Robot (VM)</th><th>Google Robot (Var. Agg.)</th><th>WidowX</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA (7B)</td><td>34.3</td><td>39.3</td><td>4.2</td></tr>
+        <tr><td>RT-2-X (55B)</td><td>46.3</td><td>54.4</td><td>—</td></tr>
+        <tr><td><b>CogACT (7B+300M)</b></td><td class="win">74.8</td><td class="win">61.3</td><td class="win">51.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Visual Matching(VM)·Variant Aggregation 두 시나리오 모두 SOTA. OpenVLA 대비 Google에서 +40.5%p, WidowX에서 +47.1%p.</p>
+
+    <h3>실로봇 결과</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>플랫폼</th><th>모델</th><th>Avg 성공률</th><th>vs. OpenVLA</th></tr></thead>
+      <tbody>
+        <tr><td>Realman</td><td>OpenVLA</td><td>12.1</td><td>—</td></tr>
+        <tr><td>Realman</td><td><b>CogACT</b></td><td class="win">71.2</td><td>+59.1</td></tr>
+        <tr><td>Franka</td><td>OpenVLA</td><td>6.8</td><td>—</td></tr>
+        <tr><td>Franka</td><td><b>CogACT</b></td><td class="win">61.4</td><td>+54.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">2대 embodiment · 각 4 태스크 · 100 데모/태스크 파인튜닝. cross-embodiment 안정성 시연.</p>
+
+    <h3>주요 수치 헤드라인</h3>
+    <ul>
+      <li>OpenVLA(7B) 대비 <b>시뮬 +35%p</b>, 실로봇 <b>+55%p</b>.</li>
+      <li>RT-2-X(55B) 대비 시뮬 <b>+18%p</b> (7B+300M로 55B 초과).</li>
+      <li>5 embodiment 전반에서 fine-tuning 소량 데모(100)로 빠른 적응.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Action head 종류:</b> MLP·discrete token head 대비 DiT가 큰 폭 우위. 동일 파라미터에서 DiT가 최고.</li>
+      <li><b>DiT 사이즈 스케일링:</b> 13M(S) → 89M(B) → 308M(L)로 <b>log 스케일 근사 선형 향상</b>. 300M이 성능/비용 최적 sweet spot.</li>
+      <li><b>예측 horizon:</b> 0 · 3 · 15 · 31 step 중 <b>15 step 최적</b>. 너무 짧으면 부드럽지 못하고, 너무 길면 오차 누적.</li>
+      <li><b>Ensemble 방식:</b> Adaptive(AAE) <b>62.5</b> > Temporal 58.9 > Action Chunking 50.7. cosine 가중이 상황별 우세 예측을 자동 선택.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2411.19650/x2.png" alt="CogACT 3-module 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — CogACT 아키텍처.</b> DINOv2+SigLIP 비전 + LLaMA-2 7B 언어(=cognition) → 특별 토큰의 hidden state가 <b>DiT-L 300M action head</b>에 AdaLN-Zero 조건으로 주입되어 15-step 연속 궤적 생성. (출처: arXiv:2411.19650)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2411.19650/x3.png" alt="Adaptive Action Ensemble 도식 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Adaptive Action Ensemble (AAE).</b> 매 시점 최근 여러 chunk 예측의 <b>cosine 유사도</b>를 softmax 가중치로 써서 부드럽고 일관된 실행 궤적을 만드는 앙상블. (출처: arXiv:2411.19650)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table (SIMPLER Google VM)</b> — CogACT 74.8 vs OpenVLA 34.3 vs RT-2-X(55B) 46.3. 파라미터 20× 작은 모델(7B+300M)이 55B를 넘어선다는 강력한 스케일링 주장.
+    </div>
+    <p class="cap">Figure 1: 성공률 vs. 파라미터 스케일링 시각화 · Figure 4: Realman·Franka 실로봇 셋업.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2411.19650" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2411.19650" target="_blank">PDF</a></li>
+      <li><a href="https://cogact.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/microsoft/CogACT" target="_blank">GitHub 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2411.19650 · CogACT · 요약 생성 2026-08-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

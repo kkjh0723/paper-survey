@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RedFlow — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Offline RL · Flow-Matching</span>
+    <h1>RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy</h1>
+    <p class="authors">Zhengyang Yan, Junhao Li, Fangqi Zhu 외 6인 · arXiv:2607.27782</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.27782" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.27782" target="_blank">PDF</a>
+      <span>arXiv:2607.27782</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Flow Matching</span>
+      <span class="t">Offline RL</span>
+      <span class="t">Failure Redirection</span>
+      <span class="t">Wasserstein Gradient Flow</span>
+      <span class="t">Sample-Efficient RLHF</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 30일 · 벤치 LIBERO 4-suite · 실로봇 3태스크 · on-policy 대비 ~10× 샘플 절약</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Flow-matching VLA를 <b>실패 rollout까지 활용</b>해 offline로 개선하는 프레임워크. 기존 offline RL은 실패 데이터로부터 <b>action-level 교정 신호</b>를 못 뽑아 학습 효율이 낮다. RedFlow는 <b>Context-Aware Corrective Matching</b>으로 유사 컨텍스트의 성공 chunk에서 교정 타깃을 만들고, <b>Adaptive Redirection Objective</b>(attraction+suppression+redirection 3항)로 flow field를 갱신. LIBERO 평균 <span class="win">68.2</span>%(baseline 56.2 · AWR 62.3 · DPO 59.7). 실로봇 clothes-folding 36.0→<span class="win">67.0</span>%. On-policy PPO/GRPO/DDPO를 <b>~10× 적은 샘플</b>로 매칭.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>Flow-matching VLA(π0 등)는 강력하지만 배포 시 <b>분포 이동으로 인한 누적 오차</b>가 발생한다. On-policy RL(PPO·GRPO·DDPO)은 rollout이 매우 비싸고, 기존 offline RL(AWR·DPO)은 <b>chunk 전체를 좋음/나쁨으로만</b> 판별해 "이 chunk의 이 부분이 왜 실패인지"라는 <b>action-level 정보</b>를 못 뽑는다. 결과적으로 실패 데이터가 사실상 낭비된다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Context-Aware Corrective Matching</b> — 실패 chunk의 컨텍스트(정규화 proprio + GRM 진행도)를 HDBSCAN으로 클러스터링, 같은 클러스터의 <b>성공 chunk를 quality-weighted centroid</b>로 묶어 <b>대체 타깃</b>으로 사용.</li>
+      <li><b>Adaptive Redirection Objective</b> — (a) 성공 chunk를 잡아당기는 quality-weighted attraction, (b) 실패 chunk를 밀어내는 hinge suppression, (c) 복구 가능한 실패는 corrective target으로 <b>redirection</b>. Wasserstein gradient flow 이론으로 "low-quality endpoint에서의 bounded exclusion" 보장.</li>
+      <li><b>극단적 샘플 효율</b> — 1,536 offline 궤적으로 PPO(~13K)·GRPO(~16K)·DDPO(~24K)에 도달. Offline data만으로 on-policy 성능 매칭.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Flow-matching 백본</h3>
+    <p>조건부 flow-matching 모델이 noise → action chunk 매핑을 학습(정규화된 flow 시간 t를 따라 velocity field v<sub>θ</sub>). 사전학습은 전문가 데모의 표준 flow-matching regression: <b>L<sub>FM</sub> = 𝔼‖v<sub>θ</sub> − (a − ε)‖²</b>.</p>
+
+    <h3>Context-Aware Corrective Matching</h3>
+    <div class="callout">
+      각 chunk의 <b>advantage</b>는 smoothed progress estimate + trajectory outcome으로 산출. 컨텍스트 벡터 = (정규화 proprio, GRM-predicted progress). <b>HDBSCAN</b>으로 execution-context cluster를 형성, 클러스터 내 <b>positive chunk의 quality-weighted centroid</b>가 corrective target ã. "복구 가능한 실패"만 이 타깃으로 redirect.
+    </div>
+
+    <h3>Adaptive Redirection Objective</h3>
+    <p>3항 결합 손실:</p>
+    <ul>
+      <li><b>Attraction (L<sub>att</sub>)</b> — 성공 chunk에 대해 velocity field를 quality-weighted로 강화.</li>
+      <li><b>Suppression (L<sub>sup</sub>)</b> — 실패 chunk에 대해 hinge loss로 재생성 확률 억제.</li>
+      <li><b>Correction (L<sub>cor</sub>)</b> — 복구 가능한 실패를 corrective target ã로 pull.</li>
+    </ul>
+    <p>이론적으론 Wasserstein gradient flow 관점에서 low-quality endpoint로부터의 <b>bounded exclusion</b>이 보장됨.</p>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>사전학습</div><div>expert 데모 (표준 flow-matching)</div>
+      <div>rollout 수집</div><div>1,536 offline 궤적(LIBERO), 실로봇은 태스크당 100–200 rollout</div>
+      <div>비교군</div><div>Base · AWR · DPO · PPO · GRPO · DDPO</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO (Table 1, 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Spatial</th><th>Object</th><th>Goal</th><th>Long</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>Base</td><td>63.6</td><td>61.6</td><td>48.6</td><td>50.8</td><td>56.2</td></tr>
+        <tr><td>AWR</td><td>71.2</td><td>66.8</td><td>57.8</td><td>53.4</td><td>62.3</td></tr>
+        <tr><td>DPO</td><td>65.8</td><td>69.8</td><td>51.8</td><td>51.2</td><td>59.7</td></tr>
+        <tr><td><b>RedFlow</b></td><td class="win">75.8</td><td class="win">70.4</td><td class="win">71.2</td><td class="win">55.2</td><td class="win">68.2</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>실로봇 (3태스크)</h3>
+    <ul>
+      <li><b>Clothes folding</b> (600 expert · 200 rollout): 36.0 → <b>67.0</b>% (+31%p).</li>
+      <li><b>Object sweeping</b> (200 expert · 100 rollout): 성공률 대폭 향상 (평균 74.7%에 기여).</li>
+      <li><b>Table cleaning</b> (100 expert · 100 rollout): 3태스크 평균 <b>56.7 → 74.7</b>%.</li>
+    </ul>
+
+    <h3>On-policy 대비 샘플 효율 (Figure 5)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>LIBERO-Spatial 75.8% 도달 rollout 수</th></tr></thead>
+      <tbody>
+        <tr><td><b>RedFlow (offline)</b></td><td class="win">1,536</td></tr>
+        <tr><td>PPO</td><td>~13,000</td></tr>
+        <tr><td>GRPO</td><td>~16,000</td></tr>
+        <tr><td>DDPO</td><td>~24,000</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>~10× 이상</b> 샘플 절약. 실환경 RL에서 rollout 비용이 지배적인 상황에 결정적.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (Table 2)</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구성</th><th>Spatial</th><th>Object</th><th>Goal</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>w/o failure rollouts</td><td>71.4</td><td>67.4</td><td>65.2</td><td>68.0</td></tr>
+        <tr><td>w/o success rollouts</td><td>64.4</td><td>65.8</td><td>57.0</td><td>62.4</td></tr>
+        <tr><td>w/o uncorrectable separation</td><td>66.4</td><td>65.8</td><td>50.8</td><td>61.0</td></tr>
+        <tr><td>w/o L<sub>cor</sub></td><td>70.4</td><td>68.4</td><td>68.6</td><td>69.1</td></tr>
+        <tr><td>w/o L<sub>sup</sub></td><td>70.8</td><td>66.8</td><td>68.8</td><td>68.8</td></tr>
+        <tr><td>w/o L<sub>sup</sub> & L<sub>cor</sub> 둘 다</td><td>63.8</td><td>62.8</td><td>70.4</td><td>65.7</td></tr>
+        <tr><td><b>Full RedFlow</b></td><td class="win">75.8</td><td class="win">70.4</td><td class="win">71.2</td><td class="win">72.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>실패 rollout 제거</b> 시 68.0 → 실패도 유용한 신호원임.</li>
+      <li><b>성공 rollout 제거</b> 시 62.4 (가장 큰 손해) — 성공 chunk가 corrective target 형성에 필수.</li>
+      <li><b>Uncorrectable separation 제거</b> 시 61.0 → 복구 불가능한 실패까지 redirect하면 학습 붕괴.</li>
+      <li>L<sub>cor</sub> · L<sub>sup</sub> 각각 제거해도 소폭 감소, 둘 다 제거하면 65.7로 하락.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.27782/x2.png" alt="RedFlow 파이프라인 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — RedFlow 파이프라인.</b> 실패/성공 rollout을 context clustering → corrective target 생성 → attraction/suppression/redirection 3항 loss로 flow field 재교정. (출처: arXiv:2607.27782)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.27782/x3.png" alt="Context-Aware Matching 시각화 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Context-Aware Corrective Matching.</b> HDBSCAN으로 유사 컨텍스트 chunk를 묶고, 같은 클러스터의 성공 chunk centroid를 실패 chunk의 corrective target으로 사용. (출처: arXiv:2607.27782)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Figure 5 (샘플 효율)</b> — RedFlow가 1,536 offline 궤적으로 PPO·GRPO·DDPO의 13K~24K rollout 성능에 도달. Rollout 비용이 큰 실로봇 세팅에서 offline RL의 새 최전선.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.27782" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.27782" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.27782 · RedFlow · 요약 생성 2026-08-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mobile ALOHA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Bimanual · Mobile Manipulation</span>
+    <h1>Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation</h1>
+    <p class="authors">Zipeng Fu, Tony Z. Zhao, Chelsea Finn · Stanford University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2401.02117" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2401.02117" target="_blank">PDF</a>
+      <a href="https://mobile-aloha.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/MarkFzp/mobile-aloha" target="_blank">GitHub</a>
+      <span>arXiv:2401.02117</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Bimanual</span>
+      <span class="t">Mobile Base</span>
+      <span class="t">Whole-Body Teleop</span>
+      <span class="t">Co-training</span>
+      <span class="t">Low-Cost Hardware</span>
+    </div>
+    <p class="meta">제출: 2024년 1월 4일 · 총 예산 $32K · ViperX 300 × 2 + AgileX Tracer 베이스 · 50 데모/태스크</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>ALOHA를 <b>이동형 베이스 + 전신 텔레옵</b>으로 확장한 저가($32K) 오픈 하드웨어. 오퍼레이터가 로봇 허리에 물리적으로 <b>테더</b>돼 저마찰 바퀴를 몸으로 <b>백드라이브</b>하며 양팔·베이스를 동시 조작. 태스크당 <b>50 데모</b>와 <b>정적 ALOHA 825 에피소드와의 co-training</b>만으로 요리·엘리베이터 호출·15m 이동 후 조작·양문 캐비닛 열기 등 7개 <b>장기 모바일 매니퓰레이션</b>을 성공. Call Elevator는 co-training으로 <b>0% → 95%</b>, 평균 절대 성공률 <b>+34%p</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇 모방학습의 대부분은 <b>테이블탑 고정 팔</b>에 국한된다. 요리·청소·배송 등 실사용 태스크는 이동성과 양손 조작을 동시에 요구하지만, (1) 그런 태스크의 데이터를 <b>저렴하게 수집</b>할 하드웨어가 없고 (2) 소량 데모로 장기 태스크를 학습하기 어렵다는 두 가지 병목이 존재. Mobile ALOHA는 (1)에 대해 $32K짜리 <b>전신 텔레옵 워크스테이션</b>을, (2)에 대해 <b>정적 ALOHA 대규모 데이터셋과의 co-training</b>이라는 단순 레시피를 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>저가 전신 텔레옵 플랫폼</b> — AgileX Tracer 이동 베이스 위에 ViperX 300 × 2. 오퍼레이터가 로봇 허리에 테더돼 저마찰 바퀴(약 13N 저항)를 몸으로 밀며 양팔 리더-아암을 동시 조작. 총 예산 <b>$32K</b>.</li>
+      <li><b>Static + Mobile Co-training 레시피</b> — 기존 정적 ALOHA <b>825 에피소드</b>(RT-1·ACT 계열 태스크)와 새 모바일 태스크 데이터를 <b>동일 확률</b>로 샘플링. 정적 데이터에는 base action에 0을 zero-pad.</li>
+      <li><b>장기 모바일 조작 7태스크 시연</b> — 요리(새우 굽기), 캐비닛 정리, 엘리베이터 호출, 15m 이동 후 조작, 의자 밀기, 하이파이브 등을 <b>50 데모만으로</b> 자율 실행.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>하드웨어 스펙</h3>
+    <div class="kv">
+      <div>이동 베이스</div><div>AgileX Tracer AGV ($7K), 저마찰 바퀴(백드라이브 가능)</div>
+      <div>양팔</div><div>ViperX 300 6-DoF × 2, 도달 65–200cm 높이, 팔당 페이로드 750g (양팔 1.5kg)</div>
+      <div>텔레옵</div><div>오퍼레이터 허리 테더링, 리더-팔 × 2 조작 + 몸으로 베이스 push (약 13N 저항)</div>
+      <div>온보드</div><div>1.26 kWh 배터리(14 kg), 소비자용 랩탑 (RTX 3070 Ti + i7-12800H)</div>
+      <div>카메라</div><div>Logitech C922x × 3 (480×640, 50 Hz)</div>
+      <div>총 예산</div><div>$32,000 (조립 재료비 기준)</div>
+    </div>
+
+    <h3>Co-training 학습 목적</h3>
+    <div class="callout">
+      정적 ALOHA 데이터셋 <b>D<sub>static</sub></b>와 모바일 태스크별 데이터셋 <b>D<sub>mobile</sub></b>를 <b>50:50 확률</b>로 배치 샘플. 정적 데이터는 이동 베이스가 없으므로 base action = 0으로 <b>zero-pad</b>. 목적함수: <b>L = 𝔼<sub>D<sub>static</sub></sub>[BC(a<sup>arm</sup>, 0<sup>base</sup>)] + 𝔼<sub>D<sub>mobile</sub></sub>[BC(a<sup>arm</sup>, a<sup>base</sup>)]</b>. ACT / Diffusion Policy / VINN 모두에 동일하게 적용 가능.
+    </div>
+
+    <h3>7개 모바일 태스크</h3>
+    <ul>
+      <li><b>Wipe Wine (50)</b> — 양팔 조율로 쏟은 와인을 닦기.</li>
+      <li><b>Cook Shrimp (20)</b> — 새우 뒤집기·볶기·서빙 (긴 시퀀스).</li>
+      <li><b>Rinse Pan (50)</b> — 팬을 들어 수도를 켜고 헹궈 건조대에 배치.</li>
+      <li><b>Use Cabinet (50)</b> — 이동 → 양문 캐비닛 열기 → 무거운 냄비 수납.</li>
+      <li><b>Call Elevator (50)</b> — 15m 이동 → 버튼 누름 → 엘리베이터 진입.</li>
+      <li><b>Push Chairs (50)</b> — 의자 5개 밀기 (unseen 의자로 일반화 시험).</li>
+      <li><b>High Five (20)</b> — 사람 접근 감지 → 하이파이브.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>태스크별 성공률 (with vs. without co-training)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>Co-train (%)</th><th>No Co-train (%)</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>Wipe Wine</td><td class="win">100</td><td>95</td><td>+5</td></tr>
+        <tr><td>Cook Shrimp</td><td class="win">40</td><td>20</td><td>+20</td></tr>
+        <tr><td>Rinse Pan</td><td>80</td><td class="win">95</td><td>−15</td></tr>
+        <tr><td>Use Cabinet</td><td>85</td><td>85</td><td>0</td></tr>
+        <tr><td>Call Elevator</td><td class="win">95</td><td>0</td><td>+95</td></tr>
+        <tr><td>Push Chairs</td><td>80</td><td class="win">90</td><td>−10</td></tr>
+        <tr><td>High Five</td><td>85</td><td>85</td><td>0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">평균 <b>+34%p</b>. 이동거리·자유도가 큰 태스크(Call Elevator, Cook Shrimp)에서 co-training 이득이 극대화.</p>
+
+    <h3>주요 헤드라인</h3>
+    <ul>
+      <li>Call Elevator: 소량 모바일 데이터만으론 <b>0%</b>, co-training 시 <b>95%</b>.</li>
+      <li>Cook Shrimp(장기 시퀀스): 20% → 40%로 <b>2배</b> 향상.</li>
+      <li>정적 ALOHA 데이터가 팔 조작의 강한 prior로 기능 — 모바일 학습 부담을 <b>베이스에 집중</b>시킴.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Static:Mobile 비율:</b> 50:50이 최적. 정적 비중을 늘리면 팔 동작이 좋아지지만 base 학습이 약화됨.</li>
+      <li><b>알고리즘 무관성:</b> ACT · Diffusion Policy · VINN 세 backbone 모두 co-training 이득 관찰 — 데이터 레시피 자체의 효과임을 시사.</li>
+      <li><b>데모 수:</b> 20 데모로도 co-training 시 유의미한 성공(Cook Shrimp 40%). 데이터 효율성 강조.</li>
+      <li><b>일반화:</b> Push Chairs에서 훈련에 보지 못한 의자(색·모양)에도 밀기 성공.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2401.02117/x1.png" alt="Mobile ALOHA 하드웨어 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Mobile ALOHA 하드웨어.</b> AgileX Tracer 이동 베이스 + ViperX 300 양팔. 오퍼레이터가 로봇 허리에 테더돼 저마찰 바퀴를 몸으로 밀며 양팔 리더-아암을 동시 조작하는 전신 텔레옵. (출처: arXiv:2401.02117)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2401.02117/x2.png" alt="7개 모바일 매니퓰레이션 태스크 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 7개 태스크.</b> Wipe Wine · Cook Shrimp · Rinse Pan · Use Cabinet · Call Elevator · Push Chairs · High Five. 이동거리·양팔 협응·장기 시퀀스가 결합된 실사용 태스크. (출처: arXiv:2401.02117)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table (Co-training 효과)</b> — 평균 +34%p. Call Elevator 95%p 향상이 상징적. "정적 팔 데이터"라는 값싼 대량 데이터가 "모바일 태스크"의 학습 부담을 base에 집중시켜 소량 데모로 장기 태스크가 가능해지는 <b>단순하지만 강력한 레시피</b>임을 실증.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2401.02117" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2401.02117" target="_blank">PDF</a></li>
+      <li><a href="https://mobile-aloha.github.io/" target="_blank">프로젝트 페이지</a> (동영상·BOM)</li>
+      <li><a href="https://github.com/MarkFzp/mobile-aloha" target="_blank">GitHub 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2401.02117 · Mobile ALOHA · 요약 생성 2026-08-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
