@@ -34,6 +34,12 @@
       "title": "RedFlow: Redirect Failure into Action-Level Corrections for Flow-matching VLA Policy",
       "arxiv_url": "https://arxiv.org/abs/2607.27782",
       "added": "2026-08-03"
+    },
+    {
+      "id": "2607.28596",
+      "title": "FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2607.28596",
+      "added": "2026-08-03"
     }
   ],
   "dismissed": [
