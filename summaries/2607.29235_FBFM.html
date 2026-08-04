@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FBFM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · WAM · Flow Matching</span>
+    <h1>FBFM: A Training-Free Asynchronous Feedback Mechanism for Flow-Matching in World-Action Models Execution</h1>
+    <p class="authors">Peize Li, Ruimeng Zhang 외 · Zhongguancun Academy · Peking University · Tsinghua · 교신 Kai Chen, Shanghang Zhang</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.29235" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.29235" target="_blank">PDF</a>
+      <span>arXiv:2607.29235</span>
+    </div>
+    <div class="taglist">
+      <span class="t">WAM</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Training-Free</span>
+      <span class="t">Asynchronous Feedback</span>
+      <span class="t">Long-Horizon</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 31일 · 학습 불필요 (inference-only)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 World-Action Model(WAM)은 <b>chunk 경계에서만</b> 관찰을 재접지(re-ground)해 청크 내부의 편차가 누적된다. FBFM은 <b>학습 없이</b> flow-matching 추론 도중 마스크된 pseudoinverse 보정을 통해 <b>이미 실행된 앞 청크</b>가 <b>현재 생성 중인 청크</b>를 실시간 제약하도록 만드는 비동기 피드백. 단일 인터페이스로 stage-wise(LingBot-VA)와 joint-generation(DreamZero) WAM 모두를 감쌀 수 있으며, RoboTwin2.0 성공률 80.1→<span class="win">83.1</span>, LIBERO 총합 70.1→<span class="win">70.8</span>, 실로봇 ball-stopping에서 관찰-예측 정합이 눈에 띄게 개선.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>WAM은 미래 상태(state)와 행동(action)을 함께 예측하며, 실행 효율을 위해 여러 스텝의 action을 한 번에 뽑아내는 <b>action chunk</b> 방식이 표준이다. 문제는 청크 내부에서는 <b>실제 관찰</b>이 재입력되지 않고, 청크가 끝난 뒤에야 다음 청크를 위한 관찰이 반영된다는 점이다. 이로 인해 (1) 청크 내부의 예측 오차가 누적되고, (2) 청크 경계에서 갑작스러운 재접지가 발생해 트래킹이 불안정해진다.</p>
+    <p>기존 WAM에서 이런 청크 내부 편차를 잡으려면 재학습, guided-generation loss 삽입, 또는 청크 길이를 줄이는 편법이 필요했다. 저자들은 <b>학습을 전혀 건드리지 않고</b>, 추론 도중의 velocity field에 개입해 상태-행동을 동적으로 재정렬할 수 있는 방법을 찾는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Training-Free 청크 내부 재접지</b> — flow-matching 추론 단계에서 관찰·행동을 조건화하는 <b>masked pseudoinverse guidance</b>를 도입해, 이미 실행된 앞 청크와 실측 관찰이 현재 생성 중인 청크의 상태 및 행동을 실시간 제약.</li>
+      <li><b>Unified stage-wise / joint-generation 인터페이스</b> — LingBot-VA(state를 먼저 굴리고 action을 붙이는 stage-wise WAM)와 DreamZero(state·action을 한 flow에서 함께 생성하는 joint WAM) 두 계열을 동일한 형식으로 지원.</li>
+      <li><b>추가 학습·데이터 없이 성능·안정성 개선</b> — RoboTwin2.0 dual-arm 태스크에서 +3%p, LIBERO에서 총합 소폭 상승, 실로봇 ball-stopping 시퀀스에서 예측·관찰 프레임의 정합도가 뚜렷하게 향상.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>WAM 두 계열의 청크 실행 구조</h3>
+    <p><b>Stage-wise WAM (LingBot-VA)</b>: 시간축을 따라 미래 상태를 먼저 flow로 풀고, 그 상태를 조건으로 action을 뽑는다. 문제는 상태 flow가 청크 내부에서 새 관찰을 절대 참조하지 않아, 청크가 길어질수록 실측 대비 표류(drift)한다.<br>
+    <b>Joint-generation WAM (DreamZero)</b>: 하나의 flow 안에서 state·action을 함께 생성한다. 청크 내부의 재접지가 근본적으로 없다는 점은 stage-wise와 동일.</p>
+
+    <h3>Masked Pseudoinverse Guidance (핵심 식)</h3>
+    <div class="callout">
+      Guided velocity field:<br>
+      <b>v<sub>FBFM</sub> = v̄ + λ · J<sup>T</sup> · P · W · (Y − Q̂<sup>1</sup>)</b><br>
+      · v̄: 모델이 원래 뱉는 native velocity field<br>
+      · Y: target (실측된 관찰 or 이미 실행 완료된 앞 청크의 action)<br>
+      · Q̂<sup>1</sup>: 현재 flow가 t=1에서 예측하는 endpoint state/action<br>
+      · W: 마스크 (어떤 시점·모달리티만 재접지할지)<br>
+      · J<sup>T</sup>: endpoint의 자코비안 전치 → pseudoinverse 방향 보정<br>
+      · P, λ: 스텝별 스케일링/투영
+    </div>
+    <p>즉, <b>flow가 목표하는 종점 상태(Q̂¹)</b>가 <b>실측 관찰(Y)</b>과 어긋난 정도를 자코비안을 타고 velocity에 되먹여, 남은 ODE 스텝을 재접지된 궤적으로 이끈다. 학습된 파라미터는 손대지 않고 추론 스텝의 v만 바꾼다.</p>
+
+    <h3>Stage-wise vs Joint 두 그림</h3>
+    <p>stage-wise에서는 관찰 인코딩이 state flow의 앞부분 스텝을 점진적으로 constrain하고(그림 1), joint에서는 관찰 피드백 + 확정된 action이 state-action flow를 동시에 constrain한다(그림 2). 어느 쪽이든 <b>이미 확정된(=실행된) 값은 hard-fix</b>, 아직 생성 중인 값은 guidance로 soft-shape.</p>
+
+    <h3>Asynchronous 실행</h3>
+    <p>중요한 점은 앞 청크의 action이 <b>실제 로봇에서 실행되며 새 관찰을 뱉는 도중</b>에 다음 청크를 미리 flow로 굴린다는 것. 그렇게 확보된 시간 안에서 실측 관찰이 도착할 때마다 velocity에 즉시 반영하기 때문에 latency 손해 없이 재접지가 가능하다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LingBot-VA on RoboTwin2.0 (stage-wise, 표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Clean</th><th>Randomized</th><th>Overall</th></tr></thead>
+      <tbody>
+        <tr><td>Base</td><td>80.5</td><td>79.8</td><td>80.1</td></tr>
+        <tr><td><b>+ FBFM</b></td><td class="win">83.3</td><td class="win">82.9</td><td class="win">83.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">청소 조건과 randomized (외란) 조건 모두에서 +3%p 안팎. 학습 없이 얻은 이득이라는 점이 핵심.</p>
+
+    <h3>DreamZero on LIBERO (joint-generation, 표 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Spatial</th><th>Object</th><th>Goal</th><th>L-10</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Base</td><td class="win">78.5</td><td class="win">73.0</td><td>68.5</td><td>60.5</td><td>70.1</td></tr>
+        <tr><td><b>+ FBFM</b></td><td>77.0</td><td>72.0</td><td class="win">71.0</td><td class="win">63.0</td><td class="win">70.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Goal·L-10처럼 <b>장기 태스크</b>에서 +2.5~3%p, Spatial·Object처럼 짧은 태스크에선 소폭 손해. 저자의 주장(장기 청크에서 이득)과 부합.</p>
+
+    <h3>실로봇 ball-stopping (그림 4)</h3>
+    <p>RealSense D435i로 촬영된 실 로봇팔이 공을 정지시키는 시퀀스에서 FBFM 예측 프레임이 실측 프레임과 훨씬 잘 정합. Base는 청크 중반부터 예측이 실제 진행보다 앞서 나가거나 뒤처지는 반면 FBFM은 실측과 함께 움직인다(정성적).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / Mechanism 진단</h2>
+    <ul>
+      <li><b>Wave-0 latent MSE</b>가 청크 실행 도중 급감. 즉 마스크된 pseudoinverse 항이 flow 초반부터 target에 맞춰 궤적을 정렬함이 정량적으로 확인.</li>
+      <li><b>Cache switching effect</b>: 실측 관찰이 도착해 캐시가 갱신되는 순간 velocity RMS가 즉각 반응 → 피드백 loop가 실제로 flow에 반영됨.</li>
+      <li>λ·마스크 스케줄이 크면 그림 3처럼 endpoint Jacobian 방향의 강한 보정이 걸리고, 작으면 native flow에 가깝게 유지 — <b>튜닝 가능한 soft-constraint</b>임을 강조.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.29235/serial.png" alt="FBFM for stage-wise WAM (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — FBFM for a stage-wise WAM.</b> 앞 청크가 실행되는 동안 새로 인코딩된 관찰이 다음 청크의 state flow를 점진적으로 constrain한다. (출처: arXiv:2607.29235)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.29235/parallel.png" alt="FBFM for joint-generation WAM (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — FBFM for joint-generation WAM.</b> state·action이 하나의 flow에서 함께 생성되는 계열에서 state feedback과 이미 확정된 action이 동일 flow를 동시에 constrain. (출처: arXiv:2607.29235)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.29235/robot_arm.jpg" alt="실로봇 ball-stopping 관찰 대비 예측 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 실로봇 ball-stopping.</b> RealSense D435i 프레임 시퀀스 위에서 Base 예측(위)과 FBFM 예측(아래)의 정합도를 비교. FBFM 쪽이 실측 진행과 훨씬 잘 맞는다. (출처: arXiv:2607.29235)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1</b>이 핵심 주장의 정량 근거: LingBot-VA 기반 RoboTwin2.0에서 학습 없이 <b>+3.0%p</b>. joint-generation 계열(DreamZero)에서는 장기 태스크(Goal·L-10)에서만 이득이라는 점이 method의 "긴 청크에서 재접지가 유효"라는 주장과 정확히 일치.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.29235" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.29235" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.29235 · FBFM · 요약 생성 2026-08-04
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

@@ -184,6 +184,69 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2607.29613" data-added="2026-08-04" data-tags="VLA RL,Critic,World Model,LeJEPA,POMDP">
+        <td class="no">80</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.29613_WCM.html">WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning</a></div>
+          <div class="sub">Senyu Fei, Xiaopeng Yu 외 · Tongji · Shanghai Innovation Institute · Fudan · arXiv:2607.29613</div>
+          <div class="sub">단일-프레임 scalar 회귀 critic이 POMDP 로봇 제어에서 부정확하다는 진단. LeJEPA + value/world dynamics 이중 헤드 + SIGReg로 critic 표현이 dynamics를 인코딩하게 함. π₀ ManiSkill OOD 39.3→51.5, π₀.₅ OOD 49.3→64.4. LIBERO-Plus π₀ 총합 39.1→72.8(+33.7). WidowX 실 7 태스크 π₀.₅+RECAP 대비 일관 우위.</div>
+          <div class="tags">
+            <span class="tag">VLA RL</span>
+            <span class="tag">Critic</span>
+            <span class="tag">World Model</span>
+            <span class="tag">LeJEPA</span>
+            <span class="tag">POMDP</span>
+          </div>
+        </td>
+        <td class="date">2026-07-31</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.29613" target="_blank">arXiv</a>
+          <a href="https://sylvestf.github.io/wcm-homepage/" target="_blank">프로젝트</a>
+          <a href="https://github.com/sylvestf/WCM" target="_blank">GitHub</a>
+        </td>
+      </tr>
+      <tr data-id="2607.29235" data-added="2026-08-04" data-tags="WAM,Flow Matching,Training-Free,Asynchronous Feedback,Long-Horizon">
+        <td class="no">79</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.29235_FBFM.html">FBFM: A Training-Free Asynchronous Feedback Mechanism for Flow-Matching in World-Action Models Execution</a></div>
+          <div class="sub">Peize Li, Ruimeng Zhang 외 · Zhongguancun Academy · Peking · Tsinghua · arXiv:2607.29235</div>
+          <div class="sub">WAM이 chunk 경계에서만 재접지되는 문제를 해결. 학습 없이 flow-matching 추론 도중 masked pseudoinverse guidance(v_FBFM=v̄+λJᵀPW(Y−Q̂¹))로 앞 청크·실측 관찰이 현재 chunk를 constrain. stage-wise(LingBot-VA)와 joint(DreamZero) 모두 지원. RoboTwin2.0 80.1→83.1, LIBERO 총합 70.1→70.8(장기 태스크 Goal·L-10에서 +2.5~3%p).</div>
+          <div class="tags">
+            <span class="tag">WAM</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Training-Free</span>
+            <span class="tag">Asynchronous Feedback</span>
+            <span class="tag">Long-Horizon</span>
+          </div>
+        </td>
+        <td class="date">2026-07-31</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.29235" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2607.27599" data-added="2026-08-04" data-tags="World Model,VLM Planner,Pose-Image,Search over Imagination,Zero-Shot">
+        <td class="no">78</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.27599_WorldActionPlanner.html">World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models</a></div>
+          <div class="sub">Xiangcheng Zhang, Yilun Du · Harvard · arXiv:2607.27599</div>
+          <div class="sub">forward kinematics로 렌더한 pose skeleton 이미지를 비디오 VAE로 인코딩·비디오 토큰과 concat한 pose-image conditioned world model. VLM이 action을 propose → world model이 imagined rollout → agent가 rank·refine하는 3-stage pipeline. LIBERO-90 PSNR +11.4%(IND)/+16.8%(gen). Compositional PnP에서 π₀.₅ 4→72%, new-layout 88%대, zero-shot PickPlaceCan 80%·StackCube 76%.</div>
+          <div class="tags">
+            <span class="tag">World Model</span>
+            <span class="tag">VLM Planner</span>
+            <span class="tag">Pose-Image</span>
+            <span class="tag">Search over Imagination</span>
+            <span class="tag">Zero-Shot</span>
+          </div>
+        </td>
+        <td class="date">2026-07-30</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.27599" target="_blank">arXiv</a>
+          <a href="http://worldactionplanner.github.io" target="_blank">프로젝트</a>
+        </td>
+      </tr>
       <tr data-id="2607.23782" data-added="2026-08-04" data-tags="VTLA,Tactile,Latent Tactile Tokens,Offline RL,Flow Matching">
         <td class="no">77</td>
         <td class="read-cell"></td>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>WCM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA RL · World Critic</span>
+    <h1>WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning</h1>
+    <p class="authors">Senyu Fei, Xiaopeng Yu, Siyin Wang 외 · Tongji · Shanghai Innovation Institute · Fudan · 교신 Jingjing Gong, Xipeng Qiu</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.29613" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.29613" target="_blank">PDF</a>
+      <a href="https://sylvestf.github.io/wcm-homepage/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/sylvestf/WCM" target="_blank">GitHub</a>
+      <a href="https://huggingface.co/collections/Sylvest/wcm" target="_blank">HuggingFace</a>
+      <span>arXiv:2607.29613</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA RL</span>
+      <span class="t">Critic</span>
+      <span class="t">World Model</span>
+      <span class="t">LeJEPA</span>
+      <span class="t">POMDP</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 31일 · π₀·π₀.₅·OpenVLA-OFT와 호환</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 VLA-RL의 critic은 <b>단일 프레임에서 scalar return을 회귀</b>하기 때문에 실제로는 POMDP인 로봇 제어의 partial observability를 놓친다. WCM은 lightweight <b>LeJEPA</b> 위에 <b>value + 미래 latent 예측</b> 이중 목표를 실어, critic 표현이 return이 아니라 <b>환경 dynamics를 인코딩</b>하도록 만든다. 149 태스크 4 벤치에서 SOTA — π₀ ManiSkill IND <span class="win">84.4</span>(+46.0), OOD <span class="win">51.5</span>(+33.4); π₀.₅ OOD <span class="win">64.4</span>. LIBERO-Plus π₀ 총합 39.1→<span class="win">72.8</span>(+33.7). 실 WidowX-250S 7 태스크에서 π₀.₅+RECAP 대비 <b>일관 우위</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA-RL은 최근 급성장 중이지만, critic 쪽은 여전히 <b>단일 프레임에서 return을 회귀</b>하는 순진한 구조가 많다. 실 로봇 제어는 partial observability를 가진 <b>POMDP</b>이므로 (occlusion·측정 잡음·과거 컨텍스트) 단일 프레임 critic은 (a) 유사 관찰인데 실제 상태가 다른 경우를 구분 못하고, (b) 미래를 예측하지 못해 학습 신호가 sparse해진다.</p>
+    <p>저자들의 관점: critic이 단순 회귀기가 아니라 <b>미래를 상상하며 value를 매기는 world model</b>이어야 partial observability 하에서도 discriminative해진다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Partial observability 원인 진단</b> — VLA-RL critic이 단일 프레임 scalar 회귀에 머무는 한 POMDP에서 값-추정 편향이 구조적으로 발생함을 그래프 POMDP 모델(그림 3)로 정리.</li>
+      <li><b>WCM: World Critic Model (LeJEPA + 이중 헤드)</b> — 관찰 인코더 → causal transformer trunk → <b>value decoder + world dynamics decoder</b> 두 헤드. <b>Sketched-Isotropic Gaussian Regularization(SIGReg)</b>으로 feature collapse 방지. <b>ℒ = ℒ<sub>value</sub> + λ·ℒ<sub>pred</sub> + η·ℒ<sub>SIGReg</sub></b>.</li>
+      <li><b>온·오프 정책 · 다양한 백본과 통합</b> — PPO(autoregressive), Flow-SDE(flow-matching), AWR, RECAP까지 모두 지원. π₀·π₀.₅·OpenVLA-OFT 백본 위에서 IND·OOD·real-world 모두 SOTA.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Architecture</h3>
+    <p>네 모듈로 구성: (1) <b>관찰 인코더</b>(각 프레임 독립), (2) <b>Language Adapter</b>(CLIP 임베딩을 latent로 매핑), (3) <b>Causal transformer history trunk</b>(t−K+1..t 프레임 시퀀스를 언어와 함께 처리), (4) <b>두 개의 디코더</b> — value head와 world dynamics head.</p>
+
+    <h3>Dual Objective (식 10)</h3>
+    <div class="callout">
+      <b>ℒ = ℒ<sub>value</sub> + λ · ℒ<sub>pred</sub> + η · ℒ<sub>SIGReg</sub></b><br>
+      · ℒ<sub>value</sub>: L2 return 회귀 (기존 critic과 동일)<br>
+      · ℒ<sub>pred</sub>: 미래 latent 상태 예측 MSE (LeJEPA 스타일)<br>
+      · ℒ<sub>SIGReg</sub>: Sketched-Isotropic Gaussian Regularization — critic 표현이 붕괴해 상수 embedding으로 흘러가는 걸 막음
+    </div>
+    <p>핵심 논리: <b>미래를 예측하도록 강제된 표현</b>은 관찰 시퀀스에서 dynamics를 뽑아내야 하므로 자연스럽게 <b>state-discriminative</b>해지고, 그 위에서 value 회귀가 안정된다.</p>
+
+    <h3>Integration with RL Trainers</h3>
+    <ul>
+      <li><b>On-policy</b>: PPO(autoregressive VLA), Flow-SDE(flow-matching VLA) 모두에서 WCM을 critic으로 그대로 삽입.</li>
+      <li><b>Off-policy</b>: AWR·RECAP과 결합 시 offline data에서도 partial observability에 강건한 advantage 추정.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>ManiSkill IND / OOD (표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Backbone</th><th>방법</th><th>IND avg</th><th>Δ</th><th>OOD avg</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>π₀</td><td>SFT</td><td>38.4</td><td>—</td><td>18.1</td><td>—</td></tr>
+        <tr><td>π₀</td><td>+ Flow-SDE</td><td>78.8</td><td>+40.4</td><td>39.3</td><td>+21.2</td></tr>
+        <tr><td>π₀</td><td><b>+ WCM</b></td><td class="win">84.4</td><td class="win">+46.0</td><td class="win">51.5</td><td class="win">+33.4</td></tr>
+        <tr><td>π₀.₅</td><td>SFT</td><td>47.0</td><td>—</td><td>26.4</td><td>—</td></tr>
+        <tr><td>π₀.₅</td><td>+ Flow-SDE</td><td>90.9</td><td>+43.9</td><td>49.3</td><td>+22.9</td></tr>
+        <tr><td>π₀.₅</td><td><b>+ WCM</b></td><td class="win">91.9</td><td>+44.9</td><td class="win">64.4</td><td class="win">+38.0</td></tr>
+        <tr><td>OpenVLA-OFT</td><td>SFT</td><td>28.1</td><td>—</td><td>18.3</td><td>—</td></tr>
+        <tr><td>OpenVLA-OFT</td><td>+ PPO</td><td>97.7</td><td>+69.6</td><td>77.1</td><td>+58.8</td></tr>
+        <tr><td>OpenVLA-OFT</td><td><b>+ WCM</b></td><td class="win">99.0</td><td class="win">+70.9</td><td class="win">77.9</td><td class="win">+59.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">3 백본 × IND/OOD 모두에서 WCM이 최고. 특히 <b>OOD에서의 우위</b>(π₀ +12.2%p, π₀.₅ +15.1%p vs 기존 critic)가 partial-observability 주장의 정량 근거.</p>
+
+    <h3>LIBERO-Plus 강건성 (표 2, π₀ 발췌)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Camera</th><th>Env</th><th>Init</th><th>Lang</th><th>Noise</th><th>Layout</th><th>Light</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>π₀ SFT</td><td>32.3</td><td>59.4</td><td>1.5</td><td>42.3</td><td>48.7</td><td>50.2</td><td>48.0</td><td>39.1</td></tr>
+        <tr><td><b>π₀ + WCM</b></td><td class="win">88.3</td><td class="win">91.0</td><td class="win">19.3</td><td class="win">65.9</td><td class="win">87.5</td><td class="win">76.0</td><td class="win">90.9</td><td class="win">72.8</td></tr>
+        <tr><td>Δ</td><td>+56.0</td><td>+31.6</td><td>+17.8</td><td>+23.6</td><td>+38.8</td><td>+25.8</td><td>+42.9</td><td><b>+33.7</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">7 교란 차원 전부에서 이득. 특히 <b>Camera(+56.0)</b>과 <b>Light(+42.9)</b>처럼 관찰 자체가 변형되는 축에서 폭이 큼 — WCM의 dynamics-aware 표현이 유효.</p>
+
+    <h3>실로봇 (WidowX-250S, 7 태스크, 표 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Backbone</th><th>방법</th><th>Carrot</th><th>Banana</th><th>Pepper</th><th>Cloth</th><th>Towel</th><th>Stovetop</th><th>Sushi</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA-OFT</td><td>SFT</td><td>24</td><td>11</td><td>19</td><td>15</td><td>16</td><td>1</td><td>9</td></tr>
+        <tr><td>OpenVLA-OFT</td><td>+AWR</td><td>29</td><td>23</td><td>24</td><td>29</td><td>35</td><td>10</td><td>17</td></tr>
+        <tr><td>OpenVLA-OFT</td><td><b>+WCM</b></td><td class="win">32</td><td class="win">26</td><td class="win">26</td><td class="win">38</td><td class="win">40</td><td class="win">15</td><td class="win">22</td></tr>
+        <tr><td>π₀.₅</td><td>SFT</td><td>25</td><td>31</td><td>34</td><td>21</td><td>24</td><td>4</td><td>13</td></tr>
+        <tr><td>π₀.₅</td><td>+RECAP</td><td>33</td><td>37</td><td>40</td><td>32</td><td>33</td><td>27</td><td>18</td></tr>
+        <tr><td>π₀.₅</td><td><b>+WCM</b></td><td class="win">44</td><td class="win">38</td><td class="win">43</td><td class="win">38</td><td class="win">35</td><td class="win">33</td><td class="win">24</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">/ 50 성공 (횟수). 실로봇 7 태스크 모두에서 기존 critic 대비 우위. Stovetop처럼 어려운 태스크에서도 15/50 → π₀.₅ 33/50.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation / 관찰</h2>
+    <ul>
+      <li><b>History length K</b> 1→5 실험: K=1에서 기존 critic과 유사, K↑일수록 IND·OOD 모두 개선. 특히 OOD 이득이 큼 — 시간 컨텍스트가 partial observability 완화에 직접 기여.</li>
+      <li><b>λ 하이퍼(예측 loss 가중)</b>: [0.3, 0.5] 구간이 최적. 너무 크면 value 회귀가 밀림, 너무 작으면 dynamics 학습이 약해짐.</li>
+      <li><b>SIGReg 제거</b>: critic 표현이 collapse해 value 헤드가 상수를 뱉기 시작 — dual-head의 흔한 실패 모드를 억제하는 핵심 항.</li>
+      <li>Value 곡선 시각화(그림 12·13)에서 <b>성공/실패 궤적</b>이 명확히 분리 — critic이 dynamics-aware하게 판별함을 정성 증거로 제시.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.29613/x1.png" alt="WCM 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — WCM overview.</b> 기존 critic이 partial observability에서 부정확한 반면 WCM은 dynamics를 함께 학습해 sim·real 양쪽에서 SOTA. (출처: arXiv:2607.29613)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.29613/x2.png" alt="WCM 아키텍처 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — WCM architecture.</b> 관찰 인코더 → causal transformer → value head + world dynamics head. on-policy(PPO·Flow-SDE)와 off-policy(AWR·RECAP) 파이프라인 모두에 삽입 가능. (출처: arXiv:2607.29613)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (ManiSkill OOD)</b>이 핵심 근거: π₀에서 Flow-SDE 39.3 → WCM <b>51.5</b>, π₀.₅에서 49.3 → <b>64.4</b>. 이 <b>OOD 우위</b>가 "critic이 dynamics를 학습해야 partial observability에서 discriminative해진다"는 주장의 정량 증거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.29613" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.29613" target="_blank">PDF</a></li>
+      <li><a href="https://sylvestf.github.io/wcm-homepage/" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/sylvestf/WCM" target="_blank">GitHub 코드</a></li>
+      <li><a href="https://huggingface.co/collections/Sylvest/wcm" target="_blank">HuggingFace 모델</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.29613 · WCM · 요약 생성 2026-08-04
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
