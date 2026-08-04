@@ -16,6 +16,12 @@
       "title": "FBFM: A Training-Free Asynchronous Feedback Mechanism for Flow-Matching in World-Action Models Execution",
       "arxiv_url": "https://arxiv.org/abs/2607.29235",
       "added": "2026-08-04"
+    },
+    {
+      "id": "2607.27599",
+      "title": "World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models",
+      "arxiv_url": "https://arxiv.org/abs/2607.27599",
+      "added": "2026-08-04"
     }
   ],
   "dismissed": [
