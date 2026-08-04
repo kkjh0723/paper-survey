@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>N0-VTLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VTLA · Tactile</span>
+    <h1>N₀-VTLA: Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens</h1>
+    <p class="authors">NeoteAI Team · Fudan TEAI Team</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.23782" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.23782" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2607.23782" target="_blank">HTML</a>
+      <span>arXiv:2607.23782</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VTLA</span>
+      <span class="t">Tactile</span>
+      <span class="t">Latent Tactile Tokens</span>
+      <span class="t">Offline RL (ALTER)</span>
+      <span class="t">Flow Matching</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 26일 · 백본 PaliGemma + flow-matching action expert · 데이터 NeoData(비전-촉각)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>촉각(tactile)을 카메라처럼 VL 맥락에 이어붙이거나 <b>현재 접촉</b>을 액션 디코딩에 주입하는 기존 방식의 한계(촉각은 희소하고 <b>접촉이 생긴 뒤에야</b> 도착)를 넘어, <b>미래 촉각 변화를 예측</b>하는 <b>잠재 촉각 토큰 z</b>를 도입한 Vision-Tactile-Language-Action 파운데이션. "현재에 반응"이 아니라 "<b>접촉을 예견</b>"하게 만들어, 삽입을 단발 시각 판단에서 <b>접촉 인지 재시도 루프</b>로 바꾼다. 3단계 학습 + 오프라인 정책 개선 <b>ALTER</b>(이진 어드밴티지 라벨). NeoReal 9개 태스크 성공률 <span class="win">47.2%</span>(π0.5 29.4%)로 전 태스크 우위, NeoSim 20태스크 평균 <span class="win">63.8%</span>(최강 베이스라인 44.0%), UniVTAC 8태스크 <span class="win">83.1%</span>(67.1%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>현재 VLA 정책은 조작엔 강하지만 <b>촉각 통합</b>이 서투르다. 기존 접근은 둘 중 하나다: (1) 촉각을 <b>카메라처럼</b> vision-language 맥락에 concat, (2) <b>현재 촉각</b> 신호를 액션 디코딩에 주입. 둘 다 문제인데, 촉각은 <b>희소</b>하고 <b>행동이 접촉을 만든 뒤에야</b> 값이 생기기 때문. N₀-VTLA는 "현재 접촉에 반응"하는 대신 <b>다가올 촉각을 예측</b>하는 "제3의 경로(third path)"로, <b>단발 시각(one-shot visual)</b>이 아닌 <b>접촉 인지(contact-aware)</b> 전략을 가능케 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>잠재 촉각 토큰(latent tactile tokens)</b> — 동결 DINOv2가 그리퍼 <b>접촉-차분 이미지</b>(현재−에피소드 시작 기준)를 인코딩하고, 경량 예측기가 이를 VL 맥락과 합쳐 <b>다가올 행동 구간의 미래 촉각 변화</b>를 목표로 하는 압축 잠재 z로 만든다. z는 VL 프리픽스에 들어가지 않고 <b>액션 전문가를 직접 조건화</b>.</li>
+      <li><b>단계적 촉각 경로 통합(3단계 학습)</b> — 예측기 grounding(대조학습) → 액션 전문가 학습 → 전 구간 공동 미세조정으로, 촉각 표현을 안정적으로 정책에 주입.</li>
+      <li><b>ALTER: 어드밴티지 조건 오프라인 정책 개선</b> — 배포 경험을 <b>단계 상대 어드밴티지(이진 라벨)</b>로 바꿔 프롬프트에 덧붙여 학습. 추가 온라인 상호작용 없이 정책을 개선.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 & 잠재 촉각 토큰</h3>
+    <p>백본은 <b>PaliGemma</b> + <b>flow-matching action expert</b>로, 정규화된 <b>32차원 교차 임바디먼트 공간</b>에서 <b>50-스텝 액션 청크</b>를 생성. 촉각 경로는: 동결 <b>DINOv2</b>가 그리퍼 접촉-차분 이미지를 인코딩 → 경량 예측기가 촉각 토큰 + VL 맥락을 <b>압축 잠재 z</b>로 응축 → z는 <b>현재 값이 아니라 다가올 행동 구간의 미래 촉각 변화</b>를 목표. z는 VL 프리픽스로 들어가지 않고 액션 전문가만 조건화.</p>
+
+    <h3>3단계 학습 레시피</h3>
+    <div class="kv">
+      <div>Stage 1 (grounding)</div><div>예측기를 미래-촉각 타깃에 정렬 — 대칭 InfoNCE 대조손실 + L₁ 복원. <b>검색 정확도 92.3%</b>(무작위 3.2%)</div>
+      <div>Stage 2 (액션)</div><div>vision-language 경로를 마스킹, 지각 스택 동결 상태로 액션 전문가가 잠재 토큰을 소비하도록 학습</div>
+      <div>Stage 3 (공동)</div><div>동결 인코더를 제외한 전 구성요소를 풀고 end-to-end 공동 학습</div>
+    </div>
+
+    <h3>ALTER (오프라인 정책 개선)</h3>
+    <p>배포 경험을 <b>단계 상대 어드밴티지 라벨</b>로 변환: (1) 깨끗한 데모·촉각 감지 낙하(drop)·인간 교정으로 학습한 <b>쌍별 진행도 모델</b>, (2) <b>지속시간 보정 단계 가중</b>(단계별 평균 소요시간으로 가중), (3) 각 단계 상위 30%를 양(+)으로 하는 <b>이진 어드밴티지 라벨</b>을 태스크 프롬프트에 덧붙여 학습.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>실로봇 & 시뮬레이션 벤치마크</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치마크</th><th>N₀-VTLA</th><th>최강 베이스라인</th><th>지표</th></tr></thead>
+      <tbody>
+        <tr><td>NeoReal (실로봇 9태스크)</td><td class="win">47.2%</td><td>29.4% (π0.5)</td><td>성공률 · 9/9 우위</td></tr>
+        <tr><td>NeoReal</td><td class="win">56.8</td><td>42.3</td><td>진행도 점수(100점)</td></tr>
+        <tr><td>UniVTAC (8태스크)</td><td class="win">83.1%</td><td>67.1% (InternVLA-A1)</td><td>성공률</td></tr>
+        <tr><td>NeoSim (20태스크)</td><td class="win">63.8%</td><td>44.0%</td><td>평균 성공률</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">NeoReal 9개 접촉 리치 태스크(소켓 꽂기, 병 세우기, 상자 접기 등)에서 전 태스크 최고. 데이터는 자체 개발 비전 기반 촉각 센서로 수집한 다중 플랫폼 코퍼스 <b>NeoData</b>.</p>
+
+    <h3>표현 검증 (촉각의 예측적 가치)</h3>
+    <ul>
+      <li><b>미래-촉각 검색:</b> 잠재 토큰이 맞는 미래-촉각 타깃을 <b>92.3%</b> 정확도로 검색(무작위 3.2%). <b>현재 촉각만</b> 인코딩하면 57%에 그침 → 격차가 <b>예측</b>의 가치를 보임.</li>
+      <li><b>섭동 프로브:</b> 촉각 입력을 바꾸면 잠재가 코사인 거리 ~0.9 이동, 비전/프롬프트를 바꾸면 ~0.2 → <b>촉각 민감도 4.3배</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation · 행동 분석</h2>
+    <ul>
+      <li><b>접촉이 결과를 가를 때만 갈라짐:</b> 촉각 유무의 반사실(counterfactual)에서, 비전-only 정책과 <b>접촉 순간</b>에 궤적이 크게 발산(그림 10) — 자유 공간에선 거의 동일.</li>
+      <li><b>접촉 인지 재시도:</b> 촉각이 삽입을 단발 시각 판단에서 <b>재시도 루프</b>로 전환하고, 개구부(aperture) 조절로 <b>미세 그리퍼 힘 제어</b>를 가능케 함.</li>
+      <li><b>ALTER와의 상보성:</b> 강한 VTLA 사전학습 이점이 오프라인 RL(ALTER) 하에서도 유지.</li>
+      <li><b>free-latent 변형:</b> Stage 1 타깃 없이 3단계를 공동학습으로 합치면 <b>잠재가 촉각 grounding 없이 퇴화</b>할 수 있음 → 명시적 촉각 목표가 중요.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.23782/x1.png" alt="N0-VTLA 전체 개요 + 성능 요약 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 시스템 개요.</b> (상) 아키텍처: 촉각·비전·지시가 각각 인코딩돼 <b>잠재 촉각 예측기 z</b>(미래 촉각 예측)와 VLM을 거쳐 <b>액션 전문가</b>를 조건화. (하좌) <b>ALTER</b> 정책 학습: 진행도 쌍 → 단계 상대 어드밴티지(이진) 라벨. (하우) UniVTAC/NeoSim/NeoReal에서 π0.5·베이스라인 대비 우위. (출처: arXiv:2607.23782)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.23782/x9.png" alt="촉각 유무 반사실 궤적 발산 (Figure 10)" loading="lazy">
+      <figcaption><b>Figure 10 — 촉각 유무 반사실(counterfactual).</b> (a) 단단한 접촉(Firm contact): 촉각 제거 시 실패, 유지 시 성공 — 궤적이 접촉 지점에서 크게 발산. (b) 파지(Grasp)·(c) 자유 공간(Free space): 촉각 유무 궤적이 거의 일치. (d) 액션-청크 스텝별 경로 발산 — <b>접촉이 결과를 결정하는 순간에만</b> 촉각이 개입. (출처: arXiv:2607.23782)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.23782" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.23782" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.23782" target="_blank">HTML</a></li>
+      <li>관련(이 사이트): <a href="2607.15330_Xiaomi-Robotics-1.html">Xiaomi-Robotics-1 — 대규모 VLA 파운데이션</a></li>
+      <li>관련(이 사이트): <a href="tau0-VLA.html">τ0-VLA — 계층형 로봇 파운데이션</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.23782 · N₀-VTLA · 요약 생성 2026-08-04
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
