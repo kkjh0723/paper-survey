@@ -1,63 +1,63 @@
 {
-  "generated": "2026-08-04",
+  "generated": "2026-08-05",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2607.29613",
-          "title": "WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning",
-          "authors": "Senyu Fei, Xiaopeng Yu, Siyin Wang, Xianzhong Zhao, Jingjing Gong, Xipeng Qiu · arXiv:2607.29613",
-          "summary_ko": "VLA RL을 위한 world critic model 제안. 단순 값 함수 대신 미래 잠재 상태를 함께 예측해 시간적 dynamics를 포착, 접촉·이동이 얽힌 조작 태스크에서 정책 개선 신호로 활용한다. 오프라인 RL·PPO 계열 위에 얹어 미래 latent-consistency와 value estimation을 동시에 최적화. 기존 critic 대비 장기 credit assignment와 sample efficiency에서 이점.",
+          "id": "2608.01824",
+          "title": "ReTouch: Empowering Contact-Rich Dexterous Manipulation with Online-Refined Tactile Prediction",
+          "authors": "Shiqi Zhang, Xin Zhang, Yedong Shen, et al.",
+          "summary_ko": "손끝 촉각(tactile) 신호를 짧게 앞을 내다보며 온라인으로 다듬어 접촉이 많은 손재간 조작을 잘하는 VLA. 촉각 관측을 손가락별로 구분되는 '촉각 패치 토큰'으로 인코딩해 근미래 촉각을 예측하고, 그 예측을 액션 생성에 조건으로 넣는다. 접촉 밀도가 높은 과제에서 최강 기준선을 평균 18.4%p 초과.",
           "tags": [
-            "World Critic Model",
-            "VLA Reinforcement Learning",
-            "Future Latent Prediction",
-            "Value Estimation",
-            "Offline RL"
+            "VLA",
+            "Tactile",
+            "Contact-Rich",
+            "Dexterous",
+            "Online Prediction"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2607.29613",
+          "arxiv_url": "https://arxiv.org/abs/2608.01824",
           "extra_url": "",
-          "date": "2026-07-31",
-          "reason": "컬렉션의 WAM 라인 전체(FlowWAM 2607.13017·LingBot-VA 2607.08639·ACWM 2607.09185·좋아요한 WALA 2607.11397·Xiaomi-U0 2607.11643)에 지금까지 비어 있던 'critic 축'을 정면으로 채우는 첫 논문. pool의 RL²-VLA(2607.26991, latent 조합 steering + TTS)와 정확한 짝 — RL²-VLA가 'latent 조합 조작'이라면 WCM은 'latent에 대한 value를 학습하는 critic'. pool의 ASAR(2607.23602, 후보 선택 재구성)·TD-JEPA(2607.25337, plan-aware 표현)와 3부작: ASAR이 '무엇을 실행할까', TD-JEPA가 '어떤 표현을 학습할까', WCM이 '무엇이 좋은가를 배우기'. 좋아요한 Aspire(2606.19980)·GaP(2607.05369)의 self-improvement 루프와 정확한 대응 — 실기 성공/실패 데이터를 critic 학습 신호로 되먹일 수 있다. 좋아요한 Harness-VLA(2607.08448)의 planner에 얹으면 primitive 선택에 value 근거를 붙일 수 있다. pool의 RedFlow(방금 index로 이동, offline RL로 실패→교정)·CheckVLA(2607.26789, 실행 검증)와 함께 '정책 밖에서 무엇을 학습해 얹을까' 축의 세 번째 좌표.",
-          "rec_date": "2026-08-04"
+          "date": "2026-08-03",
+          "reason": "보유 논문 중 2607.18231(VLA + Force Memory)와 2607.23782(VTLA, 잠재 촉각 토큰)가 촉각 기반 조작을 다루는데, ReTouch는 여기에 '촉각 자체를 짧게 예보'해서 액션 조건으로 쓴다는 새로운 축을 얹어 좋아요 눌러주신 촉각 계열을 잇는 자연스러운 후속작.",
+          "rec_date": "2026-08-05"
         },
         {
-          "id": "2607.27599",
-          "title": "World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models",
-          "authors": "Xiangcheng Zhang, Yilun Du · arXiv:2607.27599",
-          "summary_ko": "사전학습 VLM과 action-conditioned world model을 결합해, 이미네이션 롤아웃 위에서 계획을 반복 정제하는 프레임워크. VLM은 상위 subgoal을 제안하고, WM이 롤아웃을 이미네이션한 뒤 결과를 다시 VLM에 되먹여 subgoal을 수정하는 iterative refinement 루프로 일반화·장기 결정 능력을 확보. Yilun Du가 정식화한 '비디오/WM을 planner로 쓰기' 계보의 최신 결절점.",
+          "id": "2608.02580",
+          "title": "Ego2Robot: Scalable Robot Data Synthesis from Egocentric Human Data",
+          "authors": "Ye Wang, Pei Lin, Xiong-Hui Chen, et al.",
+          "summary_ko": "사람의 1인칭(에고센트릭) 영상을 로봇 학습 데이터로 자동 변환해주는 파이프라인. 큐레이션 데이터셋뿐 아니라 야생 영상까지 처리해 15개 로봇 몸체(embodiment)에 걸쳐 총 18,561시간 분량의 합성 로봇 데이터를 만들었다. 이 합성 데이터로 함께 사전학습하면 미학습 상황(OOD) 일반화 성능이 오른다.",
           "tags": [
-            "World Model Planner",
-            "Iterative Refinement",
-            "VLM Subgoal",
-            "Generalizable Decision-Making",
-            "Yilun Du"
+            "Cross-Embodiment",
+            "Egocentric",
+            "Data Synthesis",
+            "Pretraining",
+            "OOD"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2607.27599",
+          "arxiv_url": "https://arxiv.org/abs/2608.02580",
           "extra_url": "",
-          "date": "2026-07-30",
-          "reason": "pool의 UniPi(2302.00111, Yilun Du의 text-to-video policy)·UniSim(2310.06114, universal simulator) 계보의 정통 다음 세대 — 같은 저자 라인이 '비디오 생성기를 planner로 쓴다'는 사상을 이어가며, VLM subgoal + WM 이미네이션의 iterative refinement로 정식화한다. pool의 ASAR(2607.23602, adjacent set으로 롤아웃을 쓰기)·TD-JEPA(2607.25337, plan-aware 표현) 그리고 이번 새 논문 WCM(2607.29613, critic)과 정확한 4부작: 각각 '무엇을 실행할까/어떤 표현이 좋은가/무엇이 좋은가/어떻게 계획을 정제할까'. 좋아요한 Harness-VLA(2607.08448)·GaP(2607.05369)의 hierarchical planner의 이론적 짝 — VLM/WM 축으로 재구현한 하이라이트. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643)의 대형 WAM에 얹을 수 있는 planning 프로토콜이 될 잠재력. pool의 ARCHITECT(2607.23784, program synthesis + human correction)·RoboBRIDGE(2607.27881, 5-모듈 orchestration)·LENS(2607.19633, 씬 축약)와 오케스트레이션 라인의 새 좌표.",
-          "rec_date": "2026-08-04"
+          "date": "2026-08-03",
+          "reason": "보유 논문 2607.24744(Data Pyramid Survey)와 2402.10329(GoPro 손잡이형 UMI)가 로봇 데이터 수집·형식 통일을 다루는데, Ego2Robot은 그 위에서 '사람 1인칭 영상 → 15개 로봇 몸체 라벨'을 자동으로 뽑아내 규모 확장을 시도한다. 최근 좋아요 누르신 2606.19980(Robo Fleet 자기개선)이 실기 데이터 수집을 강조했다면, 이 논문은 그 앞단계 '데이터가 어디서 오는가'에 답한다.",
+          "rec_date": "2026-08-05"
         },
         {
-          "id": "2607.29235",
-          "title": "FBFM: A Training-Free Asynchronous Feedback Mechanism for Flow-Matching in World-Action Models Execution",
-          "authors": "Peize Li, Ruimeng Zhang, Ru Zhang, Cong Huang, Kai Chen, Shanghang Zhang · arXiv:2607.29235",
-          "summary_ko": "Flow-matching 기반 WAM/VLA 정책은 관측을 chunk 시작에서 한 번만 반영해 chunk 안에서 오차가 누적되는 문제가 있다. FBFM은 훈련 없이 flow-matching 추론 도중 관측을 비동기적으로 재주입해 미세한 실행 오차를 실시간 교정한다. 대형 정책 재학습 없이 얹을 수 있는 플러그인이라 배포 실용성이 크다.",
+          "id": "2608.02365",
+          "title": "Faster-WAM: Do World Action Models Need Deep Action Modules?",
+          "authors": "Liheng Ma, Rui Heng Yang, Zhanguang Zhang, et al.",
+          "summary_ko": "World Action Model(로봇 행동 + 비디오 세계 모델을 한 몸에 붙인 방식)이 사실은 두꺼운 액션 모듈 없이도 잘 굴러간다는 관찰. 사전학습된 비디오 트랜스포머를 '표현 허브(Dock of Transformer)'로 취급하고 얇은 액션 헤드만 붙여 학습·추론 속도를 크게 줄였다. 기존 Fast-WAM 대비 3.2배 빠르면서도 성능은 유지.",
           "tags": [
-            "Training-Free Feedback",
-            "Flow Matching",
-            "Asynchronous Correction",
-            "World Action Model Execution",
-            "Deployment Plug-in"
+            "WAM",
+            "Efficiency",
+            "Video Transformer",
+            "Speedup",
+            "Representation"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2607.29235",
+          "arxiv_url": "https://arxiv.org/abs/2608.02365",
           "extra_url": "",
-          "date": "2026-07-31",
-          "reason": "좋아요한 FM-VLA(2607.18231, Flow Matching + 힘 memory)와 Xiaomi-Robotics-1(2607.15330, VLA + Flow Matching)의 정확한 짝인 실행-시간 개선 논문. 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RDT-1B(2410.07864)·2607.14695(streaming VLA) 등 Flow Matching 라인 전반의 chunk 오차 누적 문제에 재학습 없이 얹을 수 있는 표준 플러그인이 될 잠재력. index에 방금 추가된 RedFlow(2607.27782, offline RL로 실패→교정)와 대칭적 — RedFlow가 훈련 축이라면 FBFM은 훈련 없는 추론 축. pool의 CheckVLA(2607.26789, WM으로 실행 검증)·ActFovea(2607.29169, spatiotemporal consistency)와 3부작으로 'chunk 실행을 감독·교정'하는 축을 완성. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 정책에 즉시 얹을 수 있고, index의 FA-RDP(2607.28596, frequency-adaptive diffusion)와 함께 flow/diffusion 실행 개선 라인의 새 좌표.",
-          "rec_date": "2026-08-04"
+          "date": "2026-08-03",
+          "reason": "좋아요 눌러주신 2607.11397(Latent Action + Depth World Model), 2607.13017(Dual-Stream Wan2.2 WAM), 2607.08639(Video-Action Model + Sparse MoE)가 '어떻게 강한 WAM을 만드나'를 다뤘다면, Faster-WAM은 반대로 '얼마나 얇게 만들어도 되나'를 묻는 계보상 반대편 논문. 최근 큐에 승인하신 2607.29613(WCM)·2607.27599(World Action Planner)와 짝지어 읽기 좋다.",
+          "rec_date": "2026-08-05"
         },
         {
           "id": "2607.23783",
@@ -346,24 +346,6 @@
           "date": "2026-07-21",
           "reason": "컬렉션 WAM 라인의 정확한 다음 세대. FlowWAM(2607.13017)·LingBot-VA(2607.08639)·ACWM(2607.09185)·BadWAM(2607.15207)이 '어떤 잠재 표현이 좋은가'를 다뤘다면, WorldScape 2.0은 그 위에 '이벤트 단위 메모리 + reasoning'을 얹어 planner처럼 동작하게 만든다. 좋아요한 WALA(2607.11397)와 Xiaomi-U0(2607.11643)의 world foundation 축에 memory·reasoning 축이 붙는 흐름. index의 Masked Visual Actions(2607.19343)가 '픽셀=액션'으로 인터페이스를 통일했다면, 이 논문은 '이벤트=조직화 단위'로 시간 축을 통일한다. 컬렉션의 RoboHarness(2607.18060, memory-driven orchestration)·Aspire·ENPIRE(2606.19980)의 self-improvement 루프와도 직결 — 이벤트 메모리가 있으면 재학습 없이 상호작용 결과를 축적할 수 있다.",
           "rec_date": "2026-07-25"
-        },
-        {
-          "id": "2607.18016",
-          "title": "Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation",
-          "authors": "Peng Ren, Haoyang Ge, Jiang Zhao, Cong Huang, Yukun Shi, Pei Chi, Kai Chen · arXiv:2607.18016",
-          "summary_ko": "휴머노이드의 장시간 loco-manipulation을 위해 태스크 오브젝트를 '이동·접촉·가려짐·복구를 가로지르는 지속적 물리 엔티티'로 다뤄야 한다는 문제 인식에서 출발. RGB-D 관측에서 역할별로 인덱싱된 3D 오브젝트 레코드를 유지하는 Persistent Object Tokenization(POT)로 오브젝트 상태 divergence를 해결하고, POT-VLA는 오브젝트 상태를 action 생성뿐 아니라 기하학적 검증에도 함께 사용하는 closed-loop 실행을 가능하게 한다. Unitree G1에서 8개 태스크 패밀리에 걸쳐 성공률 39/80 → 71/80으로 개선.",
-          "tags": [
-            "Humanoid VLA",
-            "Persistent 3D Tokens",
-            "Loco-Manipulation",
-            "Closed-Loop Verification",
-            "Unitree G1"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.18016",
-          "extra_url": "",
-          "date": "2026-07-20",
-          "reason": "컬렉션의 휴머노이드 축(2607.15163 Behavior Foundation Model, 2503.14734 Humanoid VLA, 2607.17977 RynnBrain 1.1)과 3D grounding 축(2607.11498 pointmap, 2607.17977의 3D alignment)의 교집합 지점을 정면으로 채운다. 좋아요한 WALA(2607.11397)가 latent action + depth로 관측 표현을 강화했다면, POT-VLA는 오브젝트를 시간 축에 걸쳐 identity-persistent하게 유지하는 표현 층을 추가한다. 좋아요한 Harness-VLA(2607.08448)의 primitive-library, GaP(2607.05369)의 graph-as-policy와도 상보적 — 이 둘이 '스킬 조합'이라면 POT는 '스킬의 대상이 되는 오브젝트 상태 지속성'을 보장한다. 컬렉션 어제 rec으로 언급됐던 개념을 정식 pool에 편입하는 것이라 계보상으로도 자연스럽다.",
-          "rec_date": "2026-07-25"
         }
       ]
     },
@@ -371,6 +353,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2303.18240",
+          "title": "Where are we in the search for an Artificial Visual Cortex for Embodied Intelligence? (VC-1 / CortexBench)",
+          "authors": "Arjun Majumdar, Karmesh Yadav, Sergio Arnaud, et al.",
+          "summary_ko": "임베디드 AI를 위한 사전학습 시각 표현(PVR, pre-trained visual representation)을 최초로 대규모 벤치마킹한 논문. 이동·내비게이션·조작 17개 과제(CortexBench)에서 400만 장 넘는 1인칭 이미지로 학습한 대형 ViT(VC-1)가 이전 PVR을 평균적으로 능가함을 실증한다. 각 과제별로 소량 어댑테이션만 해도 상위권 성능, 실기 로봇에서도 성능이 재현된다.",
+          "tags": [
+            "Visual Pretraining",
+            "Embodied AI",
+            "CortexBench",
+            "Representation",
+            "Meta"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2303.18240",
+          "extra_url": "",
+          "date": "2023-03-31",
+          "reason": "보유 논문 2203.12601(R3M), 2302.12766(Voltron), 2404.08471(V-JEPA), 2607.18236(DINOv2 기반 정책)이 모두 '시각 사전학습을 로봇에 어떻게 이식할까'를 다루는데, VC-1은 그 계보의 표준 벤치마크(CortexBench)와 원조 답안(대규모 에고센트릭 ViT)을 정립한 뿌리 논문. 이후 나오는 '더 나은 시각 백본' 논문들이 대부분 이 벤치마크 위에서 이야기된다.",
+          "rec_date": "2026-08-05"
+        },
+        {
+          "id": "2406.07539",
+          "title": "BAKU: An Efficient Transformer for Multi-Task Policy Learning",
+          "authors": "Siddhant Haldar, Zhuoran Peng, Lerrel Pinto",
+          "summary_ko": "관측 트렁크·액션 청킹(Action Chunking)·다중 감각 입력·액션 헤드를 조합해 데이터가 적어도 다중 태스크 로봇 정책을 효율적으로 학습하는 트랜스포머 아키텍처. 129개 시뮬레이션 태스크에서 RT-1·MT-ACT 대비 평균 18%p 개선, LIBERO에서는 36%p 개선. 실기에서도 태스크당 평균 17개 시연만으로 91% 성공률.",
+          "tags": [
+            "Multi-Task",
+            "Action Chunking",
+            "Transformer",
+            "Data-Efficient",
+            "LIBERO"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2406.07539",
+          "extra_url": "",
+          "date": "2024-06-11",
+          "reason": "보유 논문 2304.13705(ACT), 2405.12213(Octo), 2410.24164(π0), 2607.14695(스트리밍 π0.5) 등 요즘 VLA·정책 논문들이 대부분 '액션 청킹 + 다중 태스크 트랜스포머' 구조를 쓰는데, BAKU는 이 조합을 가장 깔끔하게 실증한 대표 논문. 데이터 효율·다중 태스크 정책을 이해하기 위한 기본기.",
+          "rec_date": "2026-08-05"
+        },
+        {
+          "id": "2407.01392",
+          "title": "Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion",
+          "authors": "Boyuan Chen, Diego Marti Monso, Yilun Du, et al.",
+          "summary_ko": "다음-토큰 예측(next-token prediction, 자기회귀)과 전체-시퀀스 확산(full-sequence diffusion)을 한 학습 목표로 통합한 방식. 각 토큰마다 서로 다른 노이즈 레벨로 디노이즈하도록 훈련해 '가변 길이 자기회귀 생성'과 '경로 기반 가이던스' 능력을 동시에 얻는다. 결정·계획 과제에서 훈련 길이를 넘는 연속 시퀀스 생성과 새로운 샘플링·가이던스 기법을 보인다.",
+          "tags": [
+            "Diffusion",
+            "Autoregressive",
+            "World Model",
+            "Planning",
+            "Sequence Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2407.01392",
+          "extra_url": "https://boyuan.space/diffusion-forcing/",
+          "date": "2024-07-01",
+          "reason": "좋아요/큐에 있는 2607.15330(Flow Matching UMI), 2607.14695(스트리밍 Flow Matching), 2607.27782(RedFlow) 등은 모두 '확산/플로우 기반 액션 생성 + 자기회귀 추론'의 접점을 다룬다. Diffusion Forcing은 이 둘을 통합하는 원리적 프레임워크로, 최근 나오는 World Action Model·플로우 매칭 VLA의 기법 뿌리에 해당한다.",
+          "rec_date": "2026-08-05"
+        },
         {
           "id": "2203.12601",
           "title": "R3M: A Universal Visual Representation for Robot Manipulation",
