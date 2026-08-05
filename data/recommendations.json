@@ -1,10 +1,64 @@
 {
-  "generated": "2026-08-05",
+  "generated": "2026-08-06",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2608.03052",
+          "title": "How Should Vision-Language-Action Models Use Proprioceptive State?",
+          "authors": "Yiren Zhao, Ziyang Chen 외",
+          "summary_ko": "VLA(비전-언어-행동 모델)가 로봇의 관절 각도·속도 같은 자기수용 상태(proprioceptive state)를 어떻게 넣어야 하는지 5가지 인터페이스(입력 토큰화·크로스어텐션·게이팅 등)와 상태 히스토리 길이를 65개 태스크에서 통제 실험으로 비교. Flow Matching 기반 VLA에서 상태를 어디에 어떻게 주입하는지가 태스크 성공률을 크게 좌우한다는 설계 지침을 제시.",
+          "tags": [
+            "VLA",
+            "Proprioception",
+            "Flow Matching",
+            "Architecture Study",
+            "Design Principles"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.03052",
+          "extra_url": "",
+          "date": "2026-08-04",
+          "reason": "보유한 2607.15330(π0/UMI 계열 Flow Matching VLA)과 2607.18231(Force Memory VLA)이 모두 상태 입력 방식을 각자 다르게 설계했는데, 이 논문은 그 설계 공간 자체를 5가지로 나눠 벤치마킹한다. 앞으로 VLA를 튜닝·재설계할 때 참조할 실증 지침이 필요한 상황과 정확히 맞는다.",
+          "rec_date": "2026-08-06"
+        },
+        {
+          "id": "2608.01402",
+          "title": "Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them",
+          "authors": "Carlota Parés-Morlans, Nils Kuhn 외",
+          "summary_ko": "접촉이 많은 조작 태스크에서 VLA가 왜 실패하는지 두 가지 원인(정밀도 실패=정책 학습 불일치, 힘 실패=힘 신호 구조 문제)으로 분리해 진단하고, 두 실패 모드를 각각 겨냥한 수정을 결합한 FACT를 제안. 실기 로봇에서 접촉이 많은 태스크 성공률이 크게 오른다.",
+          "tags": [
+            "VLA",
+            "Contact-Rich",
+            "Failure Analysis",
+            "Force Signal",
+            "FACT"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.01402",
+          "extra_url": "",
+          "date": "2026-08-02",
+          "reason": "좋아요를 준 2607.18231(Force Memory VLA)이 힘 신호를 VLA에 어떻게 주입할지에 초점을 맞췄다면, 이 논문은 힘 신호와 학습 불일치가 실패로 이어지는 메커니즘을 진단·수정하는 관점이다. 접촉 태스크에서 VLA를 실제로 굴리려면 반드시 봐야 할 짝 논문.",
+          "rec_date": "2026-08-06"
+        },
+        {
+          "id": "2608.03924",
+          "title": "ETA: A New Agentic Paradigm for Embodied Tasks",
+          "authors": "Yitong Chen, Zezheng Huai 외",
+          "summary_ko": "로봇을 '엔드-투-엔드 정책'이 아니라 '도구 호출·실행·관찰 루프를 반복하는 에이전트'로 다루는 프레임워크 ETA를 제안. 오픈소스 구현 OpenETA는 재사용 가능한 도구 라이브러리, 감사 가능한 메모리, 시뮬레이션·실기 공용 인터페이스를 제공해 낯선 태스크에서의 일반화·제어성을 높인다.",
+          "tags": [
+            "Agentic Robotics",
+            "Tool Use",
+            "Skill Library",
+            "Auditable Memory",
+            "Long-Horizon"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.03924",
+          "extra_url": "",
+          "date": "2026-08-04",
+          "reason": "좋아요를 준 Aspire·2606.19980(Self-Improving Coding Agent)·2607.08448(Frozen VLA + Agentic Planner)와 같은 '에이전트로서의 로봇' 궤도를 표준화하려는 시도다. 도구·메모리·인터페이스를 오픈소스로 묶어놨다는 점에서 다른 에이전틱 로봇 논문들을 실제로 붙여 비교하는 기준선 역할을 할 수 있다.",
+          "rec_date": "2026-08-06"
+        },
         {
           "id": "2608.01824",
           "title": "ReTouch: Empowering Contact-Rich Dexterous Manipulation with Online-Refined Tactile Prediction",
@@ -21,24 +75,6 @@
           "extra_url": "",
           "date": "2026-08-03",
           "reason": "보유 논문 중 2607.18231(VLA + Force Memory)와 2607.23782(VTLA, 잠재 촉각 토큰)가 촉각 기반 조작을 다루는데, ReTouch는 여기에 '촉각 자체를 짧게 예보'해서 액션 조건으로 쓴다는 새로운 축을 얹어 좋아요 눌러주신 촉각 계열을 잇는 자연스러운 후속작.",
-          "rec_date": "2026-08-05"
-        },
-        {
-          "id": "2608.02580",
-          "title": "Ego2Robot: Scalable Robot Data Synthesis from Egocentric Human Data",
-          "authors": "Ye Wang, Pei Lin, Xiong-Hui Chen, et al.",
-          "summary_ko": "사람의 1인칭(에고센트릭) 영상을 로봇 학습 데이터로 자동 변환해주는 파이프라인. 큐레이션 데이터셋뿐 아니라 야생 영상까지 처리해 15개 로봇 몸체(embodiment)에 걸쳐 총 18,561시간 분량의 합성 로봇 데이터를 만들었다. 이 합성 데이터로 함께 사전학습하면 미학습 상황(OOD) 일반화 성능이 오른다.",
-          "tags": [
-            "Cross-Embodiment",
-            "Egocentric",
-            "Data Synthesis",
-            "Pretraining",
-            "OOD"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.02580",
-          "extra_url": "",
-          "date": "2026-08-03",
-          "reason": "보유 논문 2607.24744(Data Pyramid Survey)와 2402.10329(GoPro 손잡이형 UMI)가 로봇 데이터 수집·형식 통일을 다루는데, Ego2Robot은 그 위에서 '사람 1인칭 영상 → 15개 로봇 몸체 라벨'을 자동으로 뽑아내 규모 확장을 시도한다. 최근 좋아요 누르신 2606.19980(Robo Fleet 자기개선)이 실기 데이터 수집을 강조했다면, 이 논문은 그 앞단계 '데이터가 어디서 오는가'에 답한다.",
           "rec_date": "2026-08-05"
         },
         {
@@ -292,60 +328,6 @@
           "date": "2026-07-26",
           "reason": "컬렉션 2607.17454(WAM Test-Time Scaling, Best-of-N + Geometry FM gating)의 정확한 대칭·비판적 짝 — 그쪽이 'best 하나를 잘 고르기'였다면 ASAR은 'best 하나를 고르는 것 자체가 잘못'이라고 지적한다. index의 KineBench(2607.19876, IDM-free 평가)와 짝을 이룬다: KineBench가 '올바른 척도로 평가하자', ASAR이 '롤아웃 사용 방식을 바꾸자'. 컬렉션의 WAM 라인 전체(FlowWAM 2607.13017·LingBot-VA 2607.08639·ACWM 2607.09185·BadWAM 2607.15207·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643·index의 Robot-Factored WM·Masked Visual Actions·pool의 LeapBot-WA 2607.23969)가 자기도 모르게 안고 있는 planning 실패 모드를 드러낸다. 좋아요한 Harness-VLA(2607.08448)·GaP(2607.05369)의 primitive/graph 조합에도 '어느 후보를 실행할까'라는 같은 질문이 걸리므로 즉시 적용 가능. 저자 3인의 소논문이지만 진단이 매우 날카롭다.",
           "rec_date": "2026-07-29"
-        },
-        {
-          "id": "2607.19633",
-          "title": "LENS: LLM-guided Environment Simplification for Planning and Control in Clutter",
-          "authors": "Aileen Liao, Rachel Holladay, Dinesh Jayaraman, Michael Posa · arXiv:2607.19633",
-          "summary_ko": "LLM이 태스크 진행 상태에 반응해 씬의 오브젝트를 병합·제거·단순화하는 방식으로 태스크별 씬 추상화를 자동 생성하는 플러그인 모듈. 클래식 planner, model-based control, VLA 정책 세 종류 모두에 얹을 수 있어 정책 백본을 바꾸지 않고 clutter 상황의 성능을 함께 개선한다. '무엇을 계산할지'를 정책에게 맡기지 않고 '무엇을 무시할지'를 LLM에게 위임한다는 관점 전환이 핵심 — 정책 층은 그대로 두고 표현 층을 LLM으로 얇게 감싼다.",
-          "tags": [
-            "LLM Scene Abstraction",
-            "Clutter Manipulation",
-            "Plug-in Module",
-            "Cross-Policy",
-            "Planner + VLA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.19633",
-          "extra_url": "",
-          "date": "2026-07-22",
-          "reason": "좋아요한 Harness-VLA(2607.08448)의 primitive-library + planner, 좋아요한 GaP(2607.05369)의 graph-as-policy, 컬렉션의 RoboHarness(2607.18060)와 index의 PhyAgentOS(2607.16636)가 '스킬을 어떻게 조합할까'였다면 LENS는 그 이전 단계에서 '무엇을 무시할까'를 다룬다 — 정확한 짝. 컬렉션의 SayCan(2204.01691) 계보 위에 있으면서, 값장 생성/스킬 선택이 아니라 씬 자체를 축약하는 새 축을 연다. 플러그인 방식이라 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 VLA에 재학습 없이 얹을 수 있어 컬렉션의 여러 정책 백본과 즉시 조합 가능하고, Penn의 Jayaraman·Posa 조합이라 이후 model-based control 라인의 확장 촉매가 될 가능성이 크다. index의 Pigey(2607.21725)와 짝: Pigey가 '얼어붙은 VLA를 오케스트레이션'이라면 LENS는 '얼어붙은 VLA에 씬 축약을 얹기'.",
-          "rec_date": "2026-07-27"
-        },
-        {
-          "id": "2607.14943",
-          "title": "Steering Robustness into World Action Models via Mechanistic Interpretability and Optimal Control",
-          "authors": "Jihoon Hong, Julian Skifstad, Qiyue Dai, Alice Chan, Glen Chou · arXiv:2607.14943",
-          "summary_ko": "World Action Model의 활성화 공간에서 '어떤 방향이 견고성을 담당하는가'를 mechanistic interpretability로 찾고, 그 방향을 활성화 dynamics의 local linearity에 기대 optimal control로 유도(steer)하는 첫 시도. World-Action LQR(WA-LQR)이라는 최소 개입 제어기가 재학습 없이 카메라·그리퍼·시각 노이즈 perturbation에 대한 강건성을 개선한다. Cosmos-Policy·DiT4DiT은 steerability가 강하고 LingBot-VA는 약해 아키텍처마다 steerability가 다르다는 실증도 함께 제공. 'WAM의 내부 표현을 이해하고 밖에서 조작한다'는 새 축을 연 논문.",
-          "tags": [
-            "Mechanistic Interpretability",
-            "World Action Model",
-            "Optimal Control",
-            "Robustness Steering",
-            "WA-LQR"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.14943",
-          "extra_url": "",
-          "date": "2026-07-16",
-          "reason": "컬렉션의 BadWAM(2607.15207, adversarial 공격)과 정확한 짝인 방어측 논문 — BadWAM이 '어떻게 WAM을 부술 수 있는가'였다면 이 논문은 '어떻게 훈련 없이 WAM을 견고하게 만들 수 있는가'다. 특히 두 논문 모두 Cosmos-Policy·LingBot-VA 같은 동일 백본을 다루므로 컬렉션 안에서 직접 비교 가능. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 WAM에 사후에 얹을 수 있는 도구라 실용 가치가 크고, 컬렉션 2607.17454(WAM Test-Time Scaling)와 함께 'WAM에 재학습 없이 무언가를 붙이는' 3부작을 이룬다. 컬렉션에는 아직 mechanistic interpretability 축이 완전히 비어 있어 이 논문이 그 첫 좌표가 된다. 좋아요한 GaP(2607.05369)의 graph-as-policy처럼 정책의 내부 구조를 이해하려는 흐름과도 계보상 연결.",
-          "rec_date": "2026-07-26"
-        },
-        {
-          "id": "2607.18840",
-          "title": "WorldScape Policy 2.0: Empowering Steerable World Action Modeling with Reasoning-Augmented Memory",
-          "authors": "Haisheng Su, Zongdai Liu, Xin Jin, Haoxuan Dou, Chengming Hu, Baorun Li, Zhanwang Liu, Ruiyan Xu, Jianjie Fang, Xin Zhang, Zhenjie Yang, Xue Yang, Chen Gao, Junchi Yan, Yong Li, Wei Wu · arXiv:2607.18840",
-          "summary_ko": "제어 가능한 World Action Model에 reasoning-augmented long/short-term memory를 결합한 조작 정책. 단기 시각 메모리는 상호작용 dynamics를 보존하고, 이벤트 메모리는 진행 상태를 인지한 검색을 위해 히스토리를 조직화한다. ManipEvent-5M(약 500만 이벤트 세그먼트와 정렬된 액션 궤적)을 새로 구축해 자율 planning과 세밀한 controllable 실행 양쪽을 지원한다. WAM 라인에서 '단순 latent 예측'을 넘어 '이벤트 단위로 조직된 메모리 위에서 reasoning'을 하는 방향의 두 번째 세대(2.0)라는 자기 위치.",
-          "tags": [
-            "World Action Model",
-            "Reasoning Memory",
-            "Event Memory",
-            "Long-Horizon",
-            "ManipEvent-5M"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.18840",
-          "extra_url": "",
-          "date": "2026-07-21",
-          "reason": "컬렉션 WAM 라인의 정확한 다음 세대. FlowWAM(2607.13017)·LingBot-VA(2607.08639)·ACWM(2607.09185)·BadWAM(2607.15207)이 '어떤 잠재 표현이 좋은가'를 다뤘다면, WorldScape 2.0은 그 위에 '이벤트 단위 메모리 + reasoning'을 얹어 planner처럼 동작하게 만든다. 좋아요한 WALA(2607.11397)와 Xiaomi-U0(2607.11643)의 world foundation 축에 memory·reasoning 축이 붙는 흐름. index의 Masked Visual Actions(2607.19343)가 '픽셀=액션'으로 인터페이스를 통일했다면, 이 논문은 '이벤트=조직화 단위'로 시간 축을 통일한다. 컬렉션의 RoboHarness(2607.18060, memory-driven orchestration)·Aspire·ENPIRE(2606.19980)의 self-improvement 루프와도 직결 — 이벤트 메모리가 있으면 재학습 없이 상호작용 결과를 축적할 수 있다.",
-          "rec_date": "2026-07-25"
         }
       ]
     },
@@ -353,6 +335,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2403.03954",
+          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
+          "authors": "Yanjie Ze, Gu Zhang 외",
+          "summary_ko": "Diffusion Policy를 2D 이미지 대신 3D 포인트클라우드 위에서 학습시켜, 시연 수가 적어도 강한 일반화를 낸 시각-운동 정책 학습 프레임워크. 시뮬레이션에서 기존 대비 24.2% 상대 성능 향상과 실기에서의 안전한 실행을 보였다.",
+          "tags": [
+            "Diffusion Policy",
+            "3D Point Cloud",
+            "Imitation Learning",
+            "Sample-Efficient",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.03954",
+          "extra_url": "https://3d-diffusion-policy.github.io/",
+          "date": "2024-03-06",
+          "reason": "보유한 2303.03378(Diffusion Policy 원조)와 2410.07864(RDT-1B)가 모두 2D 이미지 기반인데, 여기에 3D 포인트클라우드 변형체는 빠져 있다. DP 계열의 3D 확장을 이해해야 SG-WAM·N₀-TWAM 같은 최신 기하 인식 WAM들을 제대로 비교할 수 있다.",
+          "rec_date": "2026-08-06"
+        },
+        {
+          "id": "2412.14803",
+          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations",
+          "authors": "Yucheng Hu, Yanjiang Guo 외",
+          "summary_ko": "사전 학습된 비디오 확산 파운데이션 모델을 로봇 데이터로 파인튜닝해 미래 시각 상태를 예측하게 만들고, 그 예측 표현을 그대로 정책 학습의 조건으로 활용하는 VPP(Video Prediction Policy). 여러 조작 벤치마크에서 큰 폭의 성능 향상을 보였다.",
+          "tags": [
+            "Video Diffusion",
+            "World Model",
+            "Foundation Model",
+            "Generalist Policy",
+            "Predictive Representation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.14803",
+          "extra_url": "https://video-prediction-policy.github.io/",
+          "date": "2024-12-19",
+          "reason": "보유한 2501.03575(Cosmos, 비디오 파운데이션)과 2607.13017/2607.19343(Wan 계열 Video World Model) 축이 '비디오를 예측하는 세계 모델'을 다룬다면, VPP는 그 예측 표현을 정책 학습의 조건으로 직접 붙이는 대표작이다. World Model→정책 파이프라인을 이해하려면 채워둘 필수 조각.",
+          "rec_date": "2026-08-06"
+        },
+        {
+          "id": "2410.21845",
+          "title": "Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning",
+          "authors": "Jianlan Luo, Charles Xu 외",
+          "summary_ko": "시연과 사람 개입 교정을 온라인 RL 알고리즘과 결합해, 동적 움직임·정밀 조립·양팔 협업까지 1~2.5시간의 실기 학습만으로 달성한 HIL-SERL 시스템. 순수 모방 학습 대비 훨씬 높은 성공률과 견고성을 보였다.",
+          "tags": [
+            "Human-in-the-Loop",
+            "Online RL",
+            "Real-World",
+            "Dexterous Manipulation",
+            "Sample-Efficient"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.21845",
+          "extra_url": "https://hil-serl.github.io/",
+          "date": "2024-10-29",
+          "reason": "좋아요를 준 2606.19980(Self-Improving Coding Agent, 실기 RL)과 보유한 2607.08877(HITL Flow Matching)이 모두 '실기에서 사람이 개입하는 학습 루프'를 다루지만, 이 둘의 기반이 되는 HIL-SERL이 컬렉션에 아직 없다. 최근 논문들을 이해하려면 이 원류부터 봐야 한다.",
+          "rec_date": "2026-08-06"
+        },
         {
           "id": "2303.18240",
           "title": "Where are we in the search for an Artificial Visual Cortex for Embodied Intelligence? (VC-1 / CortexBench)",
@@ -694,42 +730,6 @@
           "date": "2023-06-26",
           "reason": "컬렉션의 '3D 조작' 계보의 실질적 중간 좌표. voxel 방식이 스케일링에서 한계에 부딪히자 RVT가 multi-view attention으로 재정식화했고, 이 흐름이 pool의 POT-VLA(2607.18016)·컬렉션 2607.11498(pointmap)으로 이어진다. 좋아요한 WALA(2607.11397, DINOv3+depth 잠재)와 짝 — RVT는 명시적 multi-view rendering으로 3D를 만들고, WALA는 latent depth로 3D를 학습. NVIDIA Dieter Fox 그룹의 대표작이라 이후 산업계 3D 조작 표준이 됐다. index의 Robot-Factored WM(2607.22535)이 URDF로 로봇 geometry를 렌더링하는 아이디어의 사상적 뿌리 — RVT가 '입력을 재렌더링해 뷰 문제를 푼다'는 아이디어를 처음 정식화. 컬렉션의 3D 계보의 두 번째 세대 좌표를 놓는다.",
           "rec_date": "2026-07-28"
-        },
-        {
-          "id": "2302.00111",
-          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
-          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai, Ofir Nachum, Joshua B. Tenenbaum, Dale Schuurmans, Pieter Abbeel · MIT / Google Brain / UC Berkeley · arXiv:2302.00111",
-          "summary_ko": "순차적 의사결정을 '텍스트 조건부 비디오 생성' 문제로 재정식화한 대표작. 언어로 목표를 지시하면 planner가 미래 프레임을 합성하고, 그 비디오에서 액션을 추출한다. '정책 = 비디오'라는 관점으로 상태·액션 공간이 서로 다른 여러 환경을 이미지라는 공통 공간에서 통합해 학습·일반화가 가능하다는 것을 실증. 사전학습된 언어 임베딩과 인터넷 비디오를 지렛대 삼아 실기 로봇에도 사실적 비디오 계획을 만들어낸다.",
-          "tags": [
-            "Text-to-Video Policy",
-            "Universal Policy",
-            "Cross-Environment",
-            "Video Planning",
-            "NeurIPS 2023"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2302.00111",
-          "extra_url": "https://universal-policy.github.io/unipi/",
-          "date": "2023-01-31",
-          "reason": "index의 Masked Visual Actions(2607.19343, 픽셀=액션)와 컬렉션의 WAM 라인(FlowWAM·LingBot-VA·ACWM·BadWAM·좋아요한 WALA 2607.11397·좋아요한 Xiaomi-U0 2607.11643) 전체의 원류 중 하나. UniPi가 '텍스트→비디오→액션'이라는 새 인터페이스를 처음 대규모로 실증했고, 이후 Masked Visual Actions·좋아요한 WALA의 latent action 인터페이스가 이 흐름을 계승한다. pool의 ATM(2401.00025)의 point-track 인터페이스와 짝 — UniPi가 '텍스트→비디오'라면 ATM은 '비디오→point-track'으로 인터페이스 계보를 잇는다. index의 Cosmos(2501.03575)가 world model에 새 modality/구조를 붙이는 흐름의 최상위 이론 좌표계. Fei-Fei·Wu 그룹의 최신 논문들(Masked Visual Actions)이 서 있는 사상적 기반이라 컬렉션의 '비디오→정책' 축을 완성하는 핵심 조각.",
-          "rec_date": "2026-07-28"
-        },
-        {
-          "id": "2409.20537",
-          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
-          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He · MIT / Meta · arXiv:2409.20537",
-          "summary_ko": "서로 다른 임보디먼트(팔·손·다리·차량)와 태스크의 이질적(heterogeneous) 데이터에서 공유 policy trunk를 사전학습하는 프레임워크. 프로프리오셉션과 시각 입력을 임보디먼트별 stem tokenizer로 짧은 토큰 시퀀스로 표준화한 뒤 공유 트랜스포머 trunk로 통과시키고, 임보디먼트별 head가 액션을 뱉는다. 이질 데이터를 하나의 정책으로 '흡수'하는 아키텍처 원형을 제시해 이후 RT-X·OpenVLA 계열의 이론적 좌표계를 놓은 NeurIPS 2024 논문.",
-          "tags": [
-            "Heterogeneous Pretraining",
-            "Cross-Embodiment",
-            "Policy Trunk",
-            "NeurIPS 2024",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2409.20537",
-          "extra_url": "https://liruiw.github.io/hpt/",
-          "date": "2024-09-30",
-          "reason": "컬렉션의 Cross-Embodiment 축(2310.08864 RT-X, 2606.15631, 2606.17846, 2607.03570) 전체가 '어떻게 이질 데이터를 하나의 정책으로 흡수할 것인가'를 다루는데, HPT는 그 문제를 policy trunk 사전학습으로 정면 답한 대표작이면서도 컬렉션에는 좌표가 비어 있다. 좋아요한 Xiaomi-Robotics-1(2607.15330)·Xiaomi-U0(2607.11643)의 파운데이션 스케일링과 정확한 짝 — HPT가 '이질 데이터의 공유 사전학습'을 처음 정식화했고, Xiaomi 라인은 그 아이디어를 대규모로 확장한 후속. Kaiming He 그룹의 조합이라 이후 파운데이션 규모 확장의 촉매가 된 논문. pool의 ATM(2401.00025, point-track cross-embodiment)과 짝: ATM이 인터페이스 축이면 HPT는 아키텍처 축. 컬렉션의 '이질 데이터 흡수 파운데이션' 계보를 완성한다.",
-          "rec_date": "2026-07-27"
         }
       ]
     }
