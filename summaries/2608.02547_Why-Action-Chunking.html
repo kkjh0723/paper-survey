@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Why Action Chunking — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Behavioral Cloning · Analysis</span>
+    <h1>Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?</h1>
+    <p class="authors">Filippo Lazzati, Alberto Maria Metelli (Politecnico di Milano) · Kyle Stachowicz, William Chen, Andrew Wagenmaker, Sergey Levine (UC Berkeley)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.02547" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.02547" target="_blank">PDF</a>
+      <a href="https://action-chunking.github.io" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.02547</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Action Chunking</span>
+      <span class="t">Behavioral Cloning</span>
+      <span class="t">Implicit Ensemble</span>
+      <span class="t">Delayed Policy</span>
+      <span class="t">Compounding Error</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 3일 · 정책은 전부 diffusion policy · Libero 130태스크 · Robomimic · 실기 Franka 3태스크 · 시드 3개 이상 평균</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>요즘 로봇 정책은 거의 전부 <b>action chunking</b>(한 번에 한 스텝이 아니라 <b>앞으로의 여러 스텝을 한꺼번에</b> 예측해 그대로 실행하는 방식)을 쓴다. 잘 되는 건 알지만 <b>왜</b> 잘 되는지는 불분명했다. 이 논문은 기존에 통용되던 세 가지 설명 — <b>동작이 매끄러워져서</b>, <b>결정 횟수가 줄어서</b>, <b>표현 학습에 좋아서</b> — 이 <b>전부 진짜 이유가 아님</b>을 실험으로 보인다. 진짜 이유는 둘이다. ① <b>과거 관찰을 보고 행동을 정하는 효과</b>(사람 시연의 "잠깐 멈춤" 같은 습관을 담을 수 있고, 오차 누적도 줄어든다), ② <b>암묵적 앙상블</b> — 청크를 학습하면 "지금 관찰로 지금 행동", "1스텝 전 관찰로 지금 행동", … 이라는 <b>여러 개의 예측기를 동시에</b> 배우게 되고, 이게 앙상블처럼 작동한다. 결정적 증거: 청크를 <b>전혀 실행하지 않고</b> 매 스텝 <b>지연 시간을 무작위로 골라</b> 한 행동씩만 내놓아도 성능이 그대로 재현된다(Tool Hang 75.2% vs <span class="win">71.8%</span>, 단일 지연은 51.6%). 나아가 <b>진짜 앙상블</b>을 명시적으로 쓰면 action chunking을 넘어선다(Transport 12.6% → <span class="win">41.5%</span>, Tool Hang 75.2% → <span class="win">87.6%</span>).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>행동 복제</b>(behavioral cloning, 사람 시연을 그대로 따라 하도록 지도학습시키는 방법)로 로봇을 학습시킬 때, <b>action chunking</b>은 사실상 표준이 됐다. 하나의 관찰 o<sub>t</sub>로부터 <b>k개의 연속 행동</b> (a<sub>t</sub>, a<sub>t+1</sub>, …, a<sub>t+k−1</sub>)을 통째로 예측하고, 실행할 때는 그중 전부 또는 일부를 <b>중간에 다시 보지 않고</b>(open-loop) 실행한다. ACT 이후 대규모 로봇 정책 연구는 <b>거의 예외 없이</b> 이 방식을 쓴다.</p>
+    <p>그런데 <b>왜</b> 도움이 되는지에 대한 이해는 빈약했다. 통용되던 설명은 세 가지다.</p>
+    <ul>
+      <li><b>시간적 일관성(temporal consistency)</b> — 사람 시연은 부드럽게 이어지는 동작인데, 매 스텝 독립으로 예측하면 덜컹거린다. 묶어서 예측하면 매끄러워진다.</li>
+      <li><b>지평 축소(horizon reduction)</b> — k스텝마다 한 번만 결정하므로 <b>결정 횟수가 1/k로 준다</b>. 결정이 적으면 오차가 쌓일 기회도 준다.</li>
+      <li><b>표현 학습(representation learning)</b> — 미래 여러 스텝을 맞히도록 학습하면 더 좋은 내부 표현이 생긴다.</li>
+    </ul>
+    <div class="callout">
+      <b>이 논문이 하는 일:</b> 세 설명을 하나씩 <b>실험으로 검증하고 전부 기각</b>한 뒤, 실제 원인 두 가지를 찾아낸다. 그리고 그 원인만 재현하면 <b>action chunking 없이도 같은 성능</b>이 나옴을 보인다. 즉 "청크로 묶어 실행하는 것" 자체는 <b>본질이 아니었다</b>.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>기존 세 가설을 모두 기각</b> — 시간적 일관성·지평 축소·표현 학습이 action chunking의 성공을 설명하지 못함을 시뮬레이션과 실기 양쪽에서 보였다. 특히 <b>지연 정책</b>이라는 단순한 대조군 하나로 앞의 두 가설을 동시에 무너뜨린다.</li>
+      <li><b>"암묵적 앙상블"이라는 새 설명 제시</b> — 청크를 학습하면 <b>서로 다른 시간 관계를 학습한 여러 예측기</b>가 한 모델 안에 생기고, 이것이 앙상블처럼 작동해 강건성과 일반화를 높인다. 이 논문의 가장 독창적인 발견.</li>
+      <li><b>청크 없이 청크 성능 재현 + 그 이상</b> — 매 스텝 지연을 무작위로 뽑아 한 행동만 내놓는 방식(RDE)이 청크 실행 성능에 필적하고, <b>진짜 앙상블</b>을 쓰면 action chunking을 크게 앞선다(Robomimic Transport에서 12.6% → 41.5%로 3배 이상).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method — 검증에 쓰인 도구들</h2>
+
+    <h3>핵심 대조군: 지연 정책 (delayed policy)</h3>
+    <p>이 논문의 논증은 거의 전부 <b>지연 정책</b>이라는 하나의 대조군에 기댄다. 정의는 단순하다.</p>
+    <div class="callout">
+      <b>지연 정책 Delay(d):</b> 매 스텝 <b>한 개의 행동만</b> 내놓되, 지금 관찰이 아니라 <b>d스텝 전의 관찰</b>을 보고 정한다 — 즉 a<sub>t</sub> | o<sub>t−d</sub>를 예측한다.<br><br>
+      <b>왜 이게 결정적 대조군인가:</b> 지연 정책은 <b>매 스텝 새로 계산</b>하므로 결정 횟수가 전혀 줄지 않는다(→ 지평 축소 효과 없음). 또 한 스텝씩만 내놓으므로 <b>동작을 묶어 매끄럽게 만드는 효과도 없다</b>(→ 시간적 일관성 없음). 그런데도 성능이 나온다면, 그 두 가설은 원인이 아니라는 뜻이다.
+    </div>
+    <p>편리한 점은 <b>이미 학습된 청크 정책에서 공짜로 뽑아낼 수 있다</b>는 것이다. 청크 정책은 o<sub>t</sub>로부터 (a<sub>t</sub>, …, a<sub>t+k−1</sub>)를 예측하므로, 그중 <b>d번째 항목만 꺼내 쓰면</b> "o<sub>t</sub>를 보고 a<sub>t+d</sub>를 예측"하는 지연 정책이 된다.</p>
+
+    <h3>제안 방법 ①: 무작위 지연 앙상블 (RDE)</h3>
+    <p>암묵적 앙상블 가설이 맞다면, 지연 정책의 약점은 명확하다 — 청크 정책이 배운 <b>여러 시간 관계 중 딱 하나만</b>(a<sub>t</sub> | o<sub>t−d</sub>) 쓴다는 점이다. 그래서 <b>전부 돌아가며 쓰게</b> 한다.</p>
+    <div class="callout">
+      <b>AC(n)-RDE 절차:</b> 매 스텝 t마다 ① 지연값 i를 <b>0부터 n−1 중 무작위로</b> 뽑고, ② 그 지연에 해당하는 지연 정책으로 <b>행동 하나만</b> 뽑아 실행한다.<br><br>
+      <b>직관:</b> 청크 실행이 "여러 예측기를 순서대로 한 번씩 쓰는 것"이라면, RDE는 "<b>매번 주사위를 굴려 하나를 골라 쓰는 것</b>"이다. 둘 다 여러 예측기를 활용하지만, RDE는 <b>청크를 통째로 실행하지 않는다</b> — 매 스텝 새 관찰을 보고 새로 계산한다.
+    </div>
+
+    <h3>제안 방법 ②: 명시적 앙상블 (AC(n)-Ens)</h3>
+    <p>암묵적 앙상블이 이득의 원천이라면, <b>진짜 앙상블</b>을 쓰면 더 좋아야 한다. 그래서 같은 데이터로 <b>독립적으로 학습한 정책 m개</b>를 만들어 함께 쓴다. 한 모델 안에 우연히 생긴 앙상블 대신, 서로 다른 초기값·학습 경로를 가진 <b>진짜로 다른 모델들</b>을 모은 것.</p>
+
+    <h3>실험 설정</h3>
+    <div class="kv">
+      <div>정책</div><div>전부 <b>diffusion policy</b>(노이즈를 점진적으로 걷어내며 행동을 생성하는 모델)로 통일. 결론이 특정 구조에 의존하지 않도록</div>
+      <div>시뮬레이션</div><div><b>Libero</b>(130태스크, 태스크당 사람 시연 50개. 주로 Libero-90 사용) · <b>Robomimic</b>(어려운 4종: Can, Square, Transport, Tool Hang)</div>
+      <div>실기</div><div><b>Franka Emika</b> 팔, 3태스크(당근을 그릇에 · 토스터에서 빵 꺼내기 · 초밥을 컵에). 태스크당 시연 50개, 제어 15Hz, 정책당 50회 시행</div>
+      <div>평가 지표</div><div>성공률 J와 <b>검증 오차 L<sub>val</sub></b>(정책이 예측한 행동과 실제 시연 행동의 차이 제곱). 시드 3개 이상 평균</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과 — 세 가설의 기각</h2>
+
+    <h3>가설 1 기각: 시간적 일관성이 아니다</h3>
+    <p>먼저 <b>사람이 실제로 비마르코프적</b>(non-Markovian — 지금 상태만 보고 행동이 정해지지 않고, 과거 이력에 따라 달라지는 성질)임은 사실로 확인된다. 논문이 든 예가 명확하다.</p>
+    <div class="callout">
+      <b>"서랍 열기" 과제의 결정 지점:</b> 로봇이 아래로 내려가 손잡이를 잡고 당겨야 한다. 손잡이에 도달하는 순간, <b>방향을 바꿔야 하는 지점</b>이 온다. 그런데 사람 시연자는 여기서 <b>몇 스텝 동안 멈춘다</b> — 손잡이를 확실히 잡았는지 확인하려는 듯. 상태는 그대로인데 사람은 일관되게 기다린다.<br><br>
+      마르코프 정책(지금 관찰만 봄)은 이걸 못 배운다. "멈춤"과 "이동"을 <b>확률적으로 섞어</b> 내놓을 뿐이다. 실제로 검증 오차를 시간축으로 그려보면, 정확히 이 지점(약 80스텝)에서만 마르코프 정책의 오차가 치솟는다. 그리고 이 어긋남이 학습에서 못 본 상태로 로봇을 끌고 가 실패로 이어진다.
+    </div>
+    <p><b>그러나</b> — 이 비마르코프성은 <b>지연 정책만으로 충분히 담긴다</b>. Libero-90에서 지연 정책이 청크 정책의 성능을 <b>맞추거나 넘어선다</b>(94.0% vs 89.2%). 지연 정책은 동작을 묶지 않으므로 시간적 일관성이 없다. 따라서 <b>시간적 일관성은 필요조건이 아니다</b>. 논문은 π0.5 같은 대형 VLA를 Libero에 맞춘 경우에도 지연 정책으로 돌렸을 때 성능이 유지됨을 확인했다.</p>
+
+    <h3>가설 2 기각: 지평 축소가 아니다</h3>
+    <p>지연 정책은 <b>매 스텝 다시 계산</b>하므로 결정 횟수가 전혀 줄지 않는데도 청크 정책과 맞먹는다. 이것만으로 지평 축소는 원인이 아니다.</p>
+    <p>다만 <b>오차 누적이 준다는 것 자체는 사실</b>이다. 논문은 이론적으로도 보인다 — 매끄러운 동역학 가정 하에서, 청크 정책과 지연 정책이 <b>정확히 같은 오차 누적 상한</b>을 갖는다. 즉 오차 감소의 실제 메커니즘은 "결정 횟수가 줄어서"가 아니라 <b>"과거 관찰을 조건으로 삼아서"</b>다.</p>
+    <div class="callout">
+      <b>왜 과거 관찰이 유리한가:</b> 로봇이 굴러갈수록 오차가 쌓여 <b>학습 때 본 적 없는 상태</b>로 흘러간다. 그런데 <b>더 이른 시점의 관찰</b>은 아직 오차가 덜 쌓인, <b>학습 분포에 더 가까운</b> 상태다. 그 익숙한 관찰을 보고 미래 행동을 예측하는 편이, 이미 어긋나 버린 현재 상태를 보고 예측하는 것보다 정확하다.
+    </div>
+
+    <h3>가설 3 기각: 표현 학습이 아니다</h3>
+    <p>"청크로 학습만 하고 첫 행동 하나만 실행해도 마르코프 정책보다 낫다"는 관찰이 표현 학습 가설의 근거였다. 하지만 이 역시 지연 정책으로 설명된다 — 청크 학습으로 얻은 이득은 <b>지연 관찰 조건화</b>에서 오는 것이지 표현이 좋아져서가 아니다.</p>
+
+    <h3>그런데 Libero에서 통한 논리가 Robomimic에선 깨진다</h3>
+    <p>Robomimic의 어려운 과제들에서는 <b>지연 정책이 청크 정책을 못 따라간다</b>. Tool Hang에서 청크 75.2% vs 지연 51.6%로 격차가 크다. 여기서 <b>남은 무언가</b>가 있다는 단서가 나오고, 그것이 다음 절의 암묵적 앙상블이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>핵심 발견 — 암묵적 앙상블</h2>
+    <p>청크 정책을 학습시킬 때 무슨 일이 벌어지는지 다시 보자. 학습 데이터의 어떤 행동 a<sub>t</sub> 하나에 대해, 모델은 <b>여러 개의 관계를 동시에</b> 배운다.</p>
+    <div class="callout">
+      a<sub>t</sub> | o<sub>t</sub> (지금 관찰로 지금 행동) &nbsp;·&nbsp; a<sub>t</sub> | o<sub>t−1</sub> (1스텝 전 관찰로) &nbsp;·&nbsp; a<sub>t</sub> | o<sub>t−2</sub> &nbsp;·&nbsp; … &nbsp;·&nbsp; a<sub>t</sub> | o<sub>t−k+1</sub><br><br>
+      즉 하나의 관계만 맞추는 게 아니라 <b>k개의 서로 다른 예측기</b>를 한 모델 안에서 학습하는 셈이다. 각각은 전체 이력 중 <b>서로 다른 일부</b>만 보고 같은 행동을 맞히려 한다. <b>랜덤 포레스트</b>가 각 나무에게 특징의 서로 다른 부분집합을 주고 학습시킨 뒤 모으는 것과 같은 구조다.
+    </div>
+    <p><b>증거:</b> 청크 정책이 유도하는 앙상블의 검증 오차가 <b>단일 지연 정책보다 확연히 낮고</b>, <b>진짜 앙상블</b>(독립 학습한 여러 모델)의 오차에 근접한다. 게다가 적절한 지연값을 고르면 지연 정책이 청크 정책보다 <b>검증 오차는 더 낮다</b> — 그러니 Robomimic에서 지연 정책이 뒤지는 이유는 표현력 부족이 아니라 <b>앙상블 효과의 부재</b>다.</p>
+
+    <h3>결정적 실험: 청크를 실행하지 않고 청크 성능 재현하기</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치마크</th><th>마르코프(1스텝)</th><th>Action Chunking</th><th>단일 지연</th><th><b>무작위 지연 앙상블(RDE)</b></th></tr></thead>
+      <tbody>
+        <tr><td>Libero-90</td><td>68.9</td><td>89.2</td><td class="win">94.0</td><td>93.6</td></tr>
+        <tr><td>Libero-10</td><td>19.8</td><td>88.7</td><td>86.8</td><td class="win">88.5</td></tr>
+        <tr><td>Libero-Spatial</td><td>58.1</td><td>91.6</td><td>92.0</td><td class="win">92.7</td></tr>
+        <tr><td>Robomimic Can</td><td>83.7</td><td class="win">97.2</td><td>93.5</td><td>96.7</td></tr>
+        <tr><td>Robomimic Square</td><td>69.0</td><td class="win">85.4</td><td>80.8</td><td>82.4</td></tr>
+        <tr><td>Robomimic Transport</td><td>3.3</td><td class="win">12.6</td><td>7.9</td><td>12.1</td></tr>
+        <tr><td>Robomimic Tool Hang</td><td>28.0</td><td class="win">75.2</td><td>51.6</td><td>71.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">가장 중요한 줄은 <b>Tool Hang</b>이다 — 단일 지연은 51.6%로 크게 뒤지지만, <b>같은 지연 정책들을 무작위로 번갈아 쓰기만 해도</b> 71.8%로 뛰어 청크(75.2%)에 근접한다. 차이는 오직 "하나만 쓰느냐, 여럿을 돌려 쓰느냐"뿐이다. 참고로 여러 예측을 <b>평균 내는</b> 방식(AC(n)-TE)은 Tool Hang에서 42.2%에 그쳐, <b>평균이 아니라 무작위 선택</b>이 핵심임을 보여준다.</p>
+
+    <h3>실기 검증 (Franka, 3태스크 × 50회)</h3>
+    <p>시뮬레이션 결론이 실제 로봇에서도 유지된다. 평균 성공률 기준 <b>마르코프 약 16% → 단일 지연 약 28% → 청크 약 41% → RDE 약 45%</b>로, RDE가 청크를 <b>완전히 대체</b>한다. 실기에서는 추론 시간 때문에 모든 방식에 1스텝 지연이 추가로 들어간다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>제안 — 명시적 앙상블로 action chunking 넘어서기</h2>
+    <p>암묵적 앙상블이 이득의 원천이라면, <b>진짜 앙상블</b>은 더 나아야 한다. 실제로 그렇다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치마크</th><th>Action Chunking</th><th><b>명시적 앙상블 AC(n)-Ens</b></th><th>향상</th></tr></thead>
+      <tbody>
+        <tr><td>Robomimic Transport</td><td>12.6</td><td class="win">41.5</td><td>3.3배</td></tr>
+        <tr><td>Robomimic Tool Hang</td><td>75.2</td><td class="win">87.6</td><td>+12.4%p</td></tr>
+        <tr><td>Robomimic Square</td><td>85.4</td><td class="win">88.3</td><td>+2.9%p</td></tr>
+        <tr><td>Robomimic Can</td><td>97.2</td><td class="win">98.5</td><td>+1.3%p</td></tr>
+        <tr><td>Libero-Spatial</td><td>91.6</td><td class="win">95.4</td><td>+3.8%p</td></tr>
+        <tr><td>Libero-10</td><td>88.7</td><td class="win">90.6</td><td>+1.9%p</td></tr>
+        <tr><td>Libero-90</td><td>89.2</td><td class="win">94.1</td><td>+4.9%p</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>어려운 과제일수록 격차가 크다.</b> Transport는 12.6%→41.5%로 3배 이상. 청크 정책 안에 우연히 생긴 앙상블보다 <b>독립적으로 학습한 진짜 앙상블</b>이 훨씬 강하다는 뜻이며, 이 논문의 설명이 옳다는 가장 강한 증거이기도 하다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>한계 · 남은 질문 (저자들이 짚은 것)</h2>
+    <ul>
+      <li><b>지연값을 고르는 법:</b> 검증 오차가 가장 낮은 지연은 대략 <b>5~15</b> 구간이었다. 지금은 모든 지연을 균등하게 무작위로 뽑는데, <b>성능이 좋은 지연에 가중치를 주면</b> 더 나아질 수 있다.</li>
+      <li><b>이력 조건화(history conditioning)와의 관계:</b> 비마르코프성을 온전히 담으려면 과거 관찰 전체를 보는 정책이 필요할 수 있다. 다만 이력 조건화는 비마르코프성은 잡아도 <b>오차 누적 감소와 앙상블 효과는 못 얻는다</b> — 셋을 다 갖는 방법은 열린 문제.</li>
+      <li><b>제어 주파수 의존:</b> 실험은 전부 15~20Hz에서 수행됐다. 주파수가 크게 다르면 결론이 달라질 수 있다.</li>
+      <li><b>비용:</b> 명시적 앙상블은 여러 모델을 <b>따로 학습하고 함께 돌려야</b> 하므로 학습·추론 비용이 배로 든다. 반면 RDE는 <b>모델 하나만</b>으로 청크 성능을 낸다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">8</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.02547/fig1_overview.png" alt="논문 전체 요지 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 논문의 전체 요지.</b> (좌) 네 가지 정책 방식 비교 — 단일 스텝 정책, action chunking 정책, <b>지연 정책으로 본 action chunking</b>, <b>암묵적 앙상블로 본 action chunking</b>(같은 행동 a<sub>t</sub>를 서로 다른 시점의 관찰로부터 예측하는 여러 관계가 겹겹이 학습됨). (중) 기각된 가설 3개(시간적 일관성·지평 축소·표현 학습, ❌)와 실제 원인 3개(비마르코프 표현력·오차 누적 감소·앙상블 일반화, ✅). (우) 실기 결과 — 무작위 지연 앙상블(분홍)이 action chunking(청록)에 필적. (출처: arXiv:2608.02547)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.02547/fig10_real.png" alt="실기 3태스크 성공률 비교 (Figure 10)" loading="lazy">
+      <figcaption><b>Figure 10 — 실제 Franka 로봇 3태스크 성공률.</b> 왼쪽부터 평균 / 당근을 그릇에 / 토스터에서 빵 꺼내기 / 초밥을 컵에. 회색 마르코프(1스텝)는 크게 뒤지고, 자주색 단일 지연은 그보다 낫지만 청록색 action chunking에는 못 미친다. <b>분홍색 무작위 지연 앙상블(RDE)이 action chunking을 따라잡거나 앞선다</b> — 청크를 통째로 실행하지 않고도 같은 성능이 난다는 이 논문의 핵심 주장을 실기로 확인한 그림. 각 막대는 50회 시행 평균. (출처: arXiv:2608.02547)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">9</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.02547" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.02547" target="_blank">PDF</a></li>
+      <li><a href="https://action-chunking.github.io" target="_blank">프로젝트 페이지</a></li>
+      <li>관련(이 사이트): <a href="2607.15275_RoboTTT.html">RoboTTT — 과거 맥락을 정책에 넣는 또 다른 접근</a></li>
+      <li>관련(이 사이트): <a href="2607.18236_Patch-Policy.html">Patch Policy — 시점 간 인과 구조를 다루는 정책 설계</a></li>
+      <li>관련(이 사이트): <a href="2607.29687_Diag-CompGen.html">Diagnosing Compositional Generalization — 같은 결의 "왜 되는가" 진단 연구</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.02547 · Why Does Action Chunking Improve BC Performance? · 요약 생성 2026-08-05
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
