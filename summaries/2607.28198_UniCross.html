@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>UniCross — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Dexterous Manipulation · Motion Synthesis</span>
+    <h1>UniCross: Unified Cross-Skill Dexterous Manipulation Synthesis</h1>
+    <p class="authors">Hui Zhang, Julian Ferchow, Jie Song, Mirko Meboldt · ETH Zürich</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.28198" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.28198" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2607.28198" target="_blank">HTML</a>
+      <a href="https://zdchan.github.io/UniCross/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2607.28198</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Dexterous Hand</span>
+      <span class="t">Cross-Skill Policy</span>
+      <span class="t">In-Hand Manipulation</span>
+      <span class="t">PPO + DAgger</span>
+      <span class="t">Skill Chaining</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 30일 · 손 3종(사람 손 MANO 26자유도 · Allegro · Sharpa Wave 28자유도) · 학습/시험 물체 각 400개</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>손으로 물건을 다루는 일은 보통 <b>네 가지 기술</b>로 나뉘어 각각 따로 연구돼 왔다 — <b>집기</b>, <b>들고 옮기기</b>, <b>손 안에서 돌리기</b>, <b>손 안에서 밀어 옮기기</b>. 문제는 기술마다 제약 조건도, 목표 함수도, 심지어 쓰는 손 모양까지 달라서 <b>이어 붙일 수가 없다</b>는 것. "집어서 → 옮기고 → 손 안에서 돌린다" 같은 자연스러운 연속 동작이 안 된다. 이 논문은 네 기술을 <b>"손과 물체의 상대적 움직임"이라는 하나의 관점</b>으로 다시 쓴다. 무엇이 고정되고 무엇이 움직이는지만 바꾸면 넷이 <b>같은 틀의 변형</b>이 된다. 그래서 관찰·행동·보상을 통일하고, 기술별 전문가 정책 10개를 학습한 뒤 <b>하나의 정책으로 압축</b>했다. 네 기술 모두 <span class="win">98.7~99.1%</span> 성공률을 유지하면서, <b>학습 때 못 본 모양</b>(구 95.8%, 육각기둥 98.3%)에도 통하고, <b>재학습 없이 기술을 이어 붙여</b> 장기 작업을 수행한다(집기+옮기기+밀기 <span class="win">96.3%</span>).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>손재주가 필요한 조작(dexterous manipulation)에서, 물체를 <b>놓치지 않고 계속 쥔 채</b> 다뤄야 하는 작업들이 있다. 저자들은 이런 작업이 <b>네 가지 기본 기술</b>로 이루어진다고 본다.</p>
+    <ul>
+      <li><b>집기(grasping)</b> — 놓여 있는 물체를 손으로 잡는다.</li>
+      <li><b>옮기기(relocation)</b> — 쥔 채로 손목을 움직여 물체를 다른 위치·자세로 가져간다.</li>
+      <li><b>손 안에서 돌리기(in-hand rotation)</b> — 손목은 그대로 두고, 손가락만 써서 쥔 물체의 <b>방향</b>을 바꾼다.</li>
+      <li><b>손 안에서 밀어 옮기기(in-hand translation)</b> — 마찬가지로 손가락만 써서 물체를 손 안에서 <b>미끄러뜨려</b> 위치를 바꾼다.</li>
+    </ul>
+    <p>기존 연구는 이 넷을 <b>따로따로</b> 다뤘다. 각각 전용 제약 조건, 전용 목표 함수, 심지어 전용 손 모양까지 썼다. 그 결과 <b>서로 호환되지 않아</b> 이어 붙일 수 없다. 드라이버를 집어서(집기) → 손 안에서 돌려 자루를 바로잡고(돌리기) → 나사 쪽으로 가져가는(옮기기) 흐름이 사람에겐 당연하지만, 기술별 정책을 그냥 이어 붙이면 <b>연결 지점에서 물체를 놓친다</b>.</p>
+    <div class="callout">
+      <b>이 논문의 관점 전환:</b> 넷을 별개 기술로 보지 말고, <b>"손과 물체의 상대적 움직임"</b> 하나로 보자. 그러면 차이는 <b>무엇을 고정하고 무엇을 움직이느냐</b>뿐이다 — 집기는 물체를 세상에 고정한 채 손이 다가가는 것, 옮기기는 물체를 손에 고정한 채 손목이 움직이는 것, 돌리기·밀기는 손목을 고정한 채 물체가 손 안에서 움직이는 것. <b>같은 틀의 네 가지 설정값</b>인 셈이다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>네 기술을 하나의 틀로 통합</b> — 관찰 공간, 행동 공간, 보상 구조를 <b>전부 공유</b>하도록 다시 설계했다. 기술 간 차이는 "무엇이 고정이고 무엇이 목표인가"라는 <b>설정값</b>으로만 표현된다.</li>
+      <li><b>기술 하나만 아는 정책 10개 → 다 아는 정책 1개</b> — 각 기술을 강화학습으로 따로 익힌 전문가들을 <b>단일 정책으로 압축</b>했는데, 성능 손실이 거의 없다(집기 기준 전문가 99.0% vs 통합 98.7%). "기술들이 서로 충돌하지 않고 <b>공존 가능</b>하다"는 증거.</li>
+      <li><b>이어 붙이기가 그냥 된다</b> — 통일된 틀 덕분에 기술 전환 시 별도 처리나 재학습이 필요 없다. 집기+옮기기+밀기 연속 수행 <b>96.3%</b>, 집기+옮기기+돌리기 <b>87.4%</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>통일된 관찰 — 정책이 무엇을 보는가</h3>
+    <p>세 덩어리로 구성한다.</p>
+    <ul>
+      <li><b>손 상태</b> — 손목 위치·자세와 각 손가락 관절 각도.</li>
+      <li><b>상호작용을 담은 물체 표현</b> — 단순히 물체 위치만 주는 게 아니라, <b>어느 손가락이 닿아 있는지</b>(접촉 상태), <b>얼마나 세게 누르는지</b>(접촉력), <b>각 손가락에서 물체까지의 방향과 거리</b>(거리 벡터)를 함께 준다.</li>
+      <li><b>목표 특징</b> — 지금 어떤 기술을 수행 중이며 목표가 무엇인지를 나타내는 값.</li>
+    </ul>
+    <div class="callout">
+      <b>왜 접촉 정보를 넣나:</b> 손 안에서 물체를 돌리거나 미는 동작은 <b>손가락 하나하나가 언제 누르고 언제 떼는지</b>에 전적으로 달려 있다. 물체가 어디 있는지만 알아서는 조절할 수 없다. 실제로 아래 ablation에서 <b>접촉 상태를 빼면 돌리기 성공률이 98.8%→82.7%로 무너진다</b> — 이 논문에서 가장 큰 폭의 하락이다.
+    </div>
+
+    <h3>통일된 행동 — 정책이 무엇을 출력하는가</h3>
+    <p>손목과 손가락 관절을 모두 포함한 <b>손 전체의 움직임</b>을, 절대 위치가 아니라 <b>"현재에서 얼마나 더"</b>라는 증분(incremental) 형태로 출력한다. 네 기술이 같은 출력 형식을 쓰므로, 중간에 기술이 바뀌어도 <b>출력 규격이 달라지지 않는다</b> — 이어 붙이기가 매끄러운 이유다.</p>
+
+    <h3>통일된 보상 — 무엇을 잘했다고 보는가</h3>
+    <div class="kv">
+      <div>상호작용 목표</div><div>물체와 제대로 접촉하고 있는가 + 의도한 상대 운동이 일어나고 있는가</div>
+      <div>목표 추종</div><div>여러 기준 좌표계에서 목표 자세에 얼마나 가까워졌는가</div>
+      <div>정규화 항</div><div>불필요하게 과격하거나 부자연스러운 움직임에 벌점</div>
+    </div>
+
+    <h3>네 기술을 같은 틀에 앉히기</h3>
+    <p>차이는 <b>"어느 좌표계에서 무엇을 고정하느냐"</b>뿐이다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>기술</th><th>고정되는 것</th><th>움직이는 것</th></tr></thead>
+      <tbody>
+        <tr><td>집기</td><td>물체가 <b>세상 좌표계</b>에 고정</td><td>손이 물체로 접근</td></tr>
+        <tr><td>옮기기</td><td>물체가 <b>손 좌표계</b>에 고정(쥔 상태 유지)</td><td>손목이 목표 자세로 이동</td></tr>
+        <tr><td>손 안에서 돌리기</td><td>손목 고정</td><td>지정한 축을 중심으로 물체 <b>방향</b>이 회전</td></tr>
+        <tr><td>손 안에서 밀기</td><td>손목 고정</td><td>지정한 축을 따라 물체 <b>위치</b>가 이동</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>학습 방법 — 전문가 10명을 한 명으로</h3>
+    <p>먼저 기술별 정책 <b>10개</b>를 각각 <b>PPO</b>(시행착오로 보상을 최대화하는 대표적 강화학습 알고리즘)로 따로 학습한다. 그다음 이들을 <b>DAgger</b>로 <b>하나의 정책에 압축</b>한다.</p>
+    <div class="callout">
+      <b>DAgger가 무엇인가:</b> 전문가를 흉내 내 배우되, <b>학생이 실제로 가본 상황</b>에서 "전문가라면 여기서 뭘 했을까"를 물어 데이터를 계속 <b>추가</b>하는 방식이다. 그냥 전문가 기록만 따라 배우면 학생이 조금 어긋났을 때 <b>본 적 없는 상황</b>에 빠져 무너지는데, DAgger는 그 상황들까지 학습에 포함시켜 이를 막는다.<br><br>
+      모든 정책은 <b>같은 신경망 구조</b>를 쓴다 — 관계 특징을 처리하는 MLP 인코더 + 행동을 내놓는 주 MLP.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>네 기술 각각의 성능 (통합 정책 하나로)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>기술</th><th>성공률</th><th>정밀도 / 도달량</th></tr></thead>
+      <tbody>
+        <tr><td>집기</td><td class="win">98.7%</td><td>—</td></tr>
+        <tr><td>옮기기</td><td class="win">99.0%</td><td>위치 오차 0.54cm</td></tr>
+        <tr><td>손 안에서 돌리기</td><td class="win">98.8%</td><td>회전량 13.6 rad</td></tr>
+        <tr><td>손 안에서 밀기</td><td class="win">99.1%</td><td>이동 거리 20.3cm</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">학습·시험 물체는 각각 400개(상자·원기둥). 크기는 손에 감싸 쥐는 것(0.045~0.075m)부터 긴 막대(0.6~0.8m)까지.</p>
+
+    <h3>학습 때 못 본 모양에도 통하는가</h3>
+    <p>상자와 원기둥<b>만</b>으로 학습했는데, 처음 보는 모양에서도 집기가 잘된다 — <b>구 95.8%</b>, <b>육각기둥 98.3%</b>. 모양에 맞춰 잡는 방식을 스스로 조정한다는 뜻이다.</p>
+
+    <h3>손이 바뀌어도 되는가</h3>
+    <p>사람 손 모델(MANO, 26자유도), 로봇 손 Allegro, Sharpa Wave(28자유도) 각각에 대해 따로 정책을 학습했더니 <b>세 손 모두 비슷한 성능</b>이 나왔다. 손 모양에 따라 정책을 새로 설계할 필요 없이 <b>같은 틀을 그대로</b> 쓸 수 있다는 의미.</p>
+
+    <h3>기술을 이어 붙인 장기 작업</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>연속 동작</th><th>전체 성공률</th></tr></thead>
+      <tbody>
+        <tr><td>집기 → 옮기기 → 손 안에서 밀기</td><td class="win">96.3%</td></tr>
+        <tr><td>집기 → 옮기기 → 손 안에서 돌리기</td><td>87.4%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>재학습 없이</b> 전환된다. 돌리기가 포함된 쪽이 낮은 것은 손 안 회전이 가장 까다로운 동작이기 때문.</p>
+
+    <h3>외부에서 방해해도 버티는가</h3>
+    <p>물체 무게의 <b>0~10배에 해당하는 힘</b>으로 지속적으로 밀어도 성능이 잘 유지됐다. 조작 내내 물체를 <b>안정적으로 붙들고 있음</b>을 보여준다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation — 어느 부품이 실제로 중요한가</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>뺀 것</th><th>영향</th></tr></thead>
+      <tbody>
+        <tr><td>접촉 상태 정보</td><td class="win">돌리기 98.8% → 82.7% (붕괴)</td></tr>
+        <tr><td>목표 추종 보상</td><td class="win">옮기기 62.9% → 37.4% (급락)</td></tr>
+        <tr><td>거리 벡터</td><td>돌리기 98.8% → 96.5%</td></tr>
+        <tr><td>손목 잔차 행동</td><td>밀기 이동 거리 20.3cm → 19.7cm</td></tr>
+        <tr><td>목표 관찰</td><td>거의 영향 없음</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>접촉 정보가 생명줄:</b> 손 안에서 돌리는 동작은 접촉 상태 없이는 불가능에 가깝다(-16.1%p). 손가락이 <b>언제 누르고 떼는지</b>를 모르면 물체를 굴릴 수 없다는 직관과 일치.</li>
+      <li><b>목표 추종 보상이 옮기기의 핵심:</b> 이를 빼면 옮기기가 반토막 난다. 목표 지점으로 가야 할 이유 자체가 사라지므로 당연한 결과지만, 그 크기가 다른 기술보다 훨씬 크다.</li>
+      <li><b>압축해도 거의 안 잃는다:</b> 전문가 10개를 하나로 합친 통합 정책이 집기 <b>98.7%</b>로, 전문가 각각(99.0%)과 사실상 동일. 네 기술이 <b>서로 방해하지 않고</b> 한 신경망에 공존한다는 이 논문의 핵심 주장을 뒷받침한다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.28198/x1.png" alt="UniCross 통합 프레임워크와 정책 압축 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 통합 틀과 학습 과정.</b> (좌) 통일된 관찰 공간: 손 상태 + 상호작용을 담은 물체 표현 + 목표 특징이 하나의 신경망으로 들어가고, 통일된 행동 공간·보상으로 시뮬레이션에서 학습된다. (우) 기술별 전문가 정책(집기·옮기기·돌리기·밀기)을 각각 학습한 뒤 <b>DAgger로 단일 통합 정책에 압축</b>. 압축된 정책은 집기→옮기기→밀기→옮기기→돌리기처럼 <b>기술을 자유롭게 이어</b> 수행한다. (출처: arXiv:2607.28198)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.28198/x3.png" alt="장기 연속 동작 시퀀스 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 기술을 이어 붙인 장기 동작.</b> (상) 집기 → 옮기기 → 손 안에서 돌리기: 작은 상자를 집어 들어 올린 뒤 손가락만으로 방향을 바꾼다. (하) 집기 → 옮기기 → 손 안에서 밀기: 긴 막대를 집은 뒤 손 안에서 미끄러뜨려 <b>쥐는 지점을 옮긴다</b>. 전환 지점에서 물체를 놓치지 않는 것이 핵심. (출처: arXiv:2607.28198)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.28198" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.28198" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2607.28198" target="_blank">HTML</a></li>
+      <li><a href="https://zdchan.github.io/UniCross/" target="_blank">프로젝트 페이지</a></li>
+      <li>관련(이 사이트): <a href="2607.23782_N0-VTLA.html">N₀-VTLA — 접촉 정보를 정책에 넣는 또 다른 방식</a></li>
+      <li>관련(이 사이트): <a href="2607.29687_Diag-CompGen.html">Diagnosing Compositional Generalization — 기술 조합·연결 일반화</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.28198 · UniCross · 요약 생성 2026-08-05
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
