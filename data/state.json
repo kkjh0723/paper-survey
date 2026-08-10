@@ -34,6 +34,12 @@
       "title": "DLAM: Distributional Latent Actions with Temporal Constraints",
       "arxiv_url": "https://arxiv.org/abs/2607.27138",
       "added": "2026-08-10"
+    },
+    {
+      "id": "2607.25895",
+      "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
+      "arxiv_url": "https://arxiv.org/abs/2607.25895",
+      "added": "2026-08-10"
     }
   ],
   "dismissed": [
