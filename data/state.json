@@ -16,6 +16,12 @@
       "title": "How Should Vision-Language-Action Models Use Proprioceptive State?",
       "arxiv_url": "https://arxiv.org/abs/2608.03052",
       "added": "2026-08-10"
+    },
+    {
+      "id": "2608.01402",
+      "title": "Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them",
+      "arxiv_url": "https://arxiv.org/abs/2608.01402",
+      "added": "2026-08-10"
     }
   ],
   "dismissed": [
