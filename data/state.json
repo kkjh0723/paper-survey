@@ -40,6 +40,12 @@
       "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
       "arxiv_url": "https://arxiv.org/abs/2607.25895",
       "added": "2026-08-10"
+    },
+    {
+      "id": "2410.24185",
+      "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
+      "arxiv_url": "https://arxiv.org/abs/2410.24185",
+      "added": "2026-08-10"
     }
   ],
   "dismissed": [
