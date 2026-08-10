@@ -28,6 +28,12 @@
       "title": "ETA: A New Agentic Paradigm for Embodied Tasks",
       "arxiv_url": "https://arxiv.org/abs/2608.03924",
       "added": "2026-08-10"
+    },
+    {
+      "id": "2607.27138",
+      "title": "DLAM: Distributional Latent Actions with Temporal Constraints",
+      "arxiv_url": "https://arxiv.org/abs/2607.27138",
+      "added": "2026-08-10"
     }
   ],
   "dismissed": [
