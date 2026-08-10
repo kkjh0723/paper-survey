@@ -46,6 +46,12 @@
       "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
       "arxiv_url": "https://arxiv.org/abs/2410.24185",
       "added": "2026-08-10"
+    },
+    {
+      "id": "2502.05485",
+      "title": "HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2502.05485",
+      "added": "2026-08-10"
     }
   ],
   "dismissed": [
