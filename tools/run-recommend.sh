@@ -14,6 +14,24 @@ export PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 cd "$REPO" || exit 1
 
+# ── 동시 실행 방지 (process-queue.sh 와 공용 잠금) ───────────────────────
+# mkdir 은 원자적이라 경쟁 없이 잠금을 잡을 수 있다. 이미 잠겨 있으면 조용히 종료.
+# 두 작업이 겹치면 같은 논문을 서로 다른 이름으로 만들거나 index.html·git 이 충돌한다.
+LOCK="$REPO/tools/.automation.lock"
+if ! mkdir "$LOCK" 2>/dev/null; then
+  OLDPID=$(cat "$LOCK/pid" 2>/dev/null || echo "")
+  if [ -n "$OLDPID" ] && kill -0 "$OLDPID" 2>/dev/null; then
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] skip · 다른 작업(PID $OLDPID) 실행 중" >> "$LOG"
+    exit 0
+  fi
+  # 비정상 종료로 남은 잠금은 회수 (예: 프로세스가 강제 종료된 경우)
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] 죽은 잠금 회수 (PID ${OLDPID:-?})" >> "$LOG"
+  rm -rf "$LOCK"
+  mkdir "$LOCK" 2>/dev/null || exit 0
+fi
+echo $$ > "$LOCK/pid"
+trap 'rm -rf "$LOCK"' EXIT INT TERM
+
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') 작업 시작 =====" >> "$LOG"
 
 # 최신 상태 반영 (다른 기기/동기화 커밋 가져오기)
