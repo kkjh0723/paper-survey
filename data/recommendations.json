@@ -1,63 +1,63 @@
 {
-  "generated": "2026-08-06",
+  "generated": "2026-08-12",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
         {
-          "id": "2608.03052",
-          "title": "How Should Vision-Language-Action Models Use Proprioceptive State?",
-          "authors": "Yiren Zhao, Ziyang Chen 외",
-          "summary_ko": "VLA(비전-언어-행동 모델)가 로봇의 관절 각도·속도 같은 자기수용 상태(proprioceptive state)를 어떻게 넣어야 하는지 5가지 인터페이스(입력 토큰화·크로스어텐션·게이팅 등)와 상태 히스토리 길이를 65개 태스크에서 통제 실험으로 비교. Flow Matching 기반 VLA에서 상태를 어디에 어떻게 주입하는지가 태스크 성공률을 크게 좌우한다는 설계 지침을 제시.",
+          "id": "2608.06374",
+          "title": "DyPES-VLA: Learning Shared Dynamics Priors and Embodiment-Specific Control for Cross-Embodiment Manipulation",
+          "authors": "Junfeng Li, Junjie He 외",
+          "summary_ko": "여러 로봇 몸체(Cross-Embodiment)를 하나의 VLA(비전-언어-행동 모델)로 묶기 위해, 몸체와 무관한 공유 dynamics prior(장면·물체가 어떻게 움직일지에 대한 사전지식)를 미래 프레임 예측으로 학습한다. 그 위에 몸체별 Mixture-of-Experts(MoE, 각 로봇마다 다른 전문가 헤드)를 얹어 각 로봇 고유의 제어 형식으로 출력해 수작업 액션 정렬을 없앤다. LIBERO(단일 팔 시뮬 벤치마크) 98.0%, RoboCasa-GR1(휴머노이드) 59.25%, RoboTwin 2.0(양팔 시뮬) 89.02%.",
           "tags": [
             "VLA",
-            "Proprioception",
-            "Flow Matching",
-            "Architecture Study",
-            "Design Principles"
+            "Cross-Embodiment",
+            "MoE",
+            "Dynamics Prior",
+            "LIBERO"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2608.03052",
+          "arxiv_url": "https://arxiv.org/abs/2608.06374",
           "extra_url": "",
-          "date": "2026-08-04",
-          "reason": "보유한 2607.15330(π0/UMI 계열 Flow Matching VLA)과 2607.18231(Force Memory VLA)이 모두 상태 입력 방식을 각자 다르게 설계했는데, 이 논문은 그 설계 공간 자체를 5가지로 나눠 벤치마킹한다. 앞으로 VLA를 튜닝·재설계할 때 참조할 실증 지침이 필요한 상황과 정확히 맞는다.",
-          "rec_date": "2026-08-06"
+          "date": "2026-08-06",
+          "reason": "좋아요를 준 2607.20771(VLA + LoRA MoE로 태스크 컴포지션)이 태스크 축으로 전문가를 라우팅했다면, 이 논문은 그 아이디어를 몸체 축으로 옮겨 '공유 dynamics + 몸체별 MoE 액션 헤드'로 재구성한다. 보유한 2607.03570(UHAS 통합 손 액션 공간)·2607.27549(behavior-aligned cross-embodiment)와 같은 벤치마크(RoboCasa-GR1, RoboTwin 2.0)에서 직접 비교되는 최신 수치라 필독.",
+          "rec_date": "2026-08-12"
         },
         {
-          "id": "2608.01402",
-          "title": "Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them",
-          "authors": "Carlota Parés-Morlans, Nils Kuhn 외",
-          "summary_ko": "접촉이 많은 조작 태스크에서 VLA가 왜 실패하는지 두 가지 원인(정밀도 실패=정책 학습 불일치, 힘 실패=힘 신호 구조 문제)으로 분리해 진단하고, 두 실패 모드를 각각 겨냥한 수정을 결합한 FACT를 제안. 실기 로봇에서 접촉이 많은 태스크 성공률이 크게 오른다.",
+          "id": "2608.09410",
+          "title": "Skills in Weights, Memory in Code: Hybrid Learning for Memory-Dependent Robot Manipulation",
+          "authors": "Yunhao Zhao, Zhenyang Ni 외",
+          "summary_ko": "기존 VLA(비전-언어-행동 모델)는 현재 관측이나 짧은 히스토리에서 액션 청크(action chunk, 여러 스텝을 한 번에 묶은 출력)를 뽑기 때문에 과거 상호작용을 기억해야 하는 태스크에 취약하다. HyMeS는 저수준 모터 스킬은 그래디언트 기반 이미테이션 학습으로 VLA 가중치에 각인시키고, 고수준 메모리 관리 전략은 Coding Agent(파이썬 코드를 생성·수정하는 LLM 에이전트)가 시행착오로 학습해 코드 형태로 저장한다. 멀티모달 피드백으로 그 코드를 반복 검증해 메모리 확장 계열 기존 방법 대비 성공률·데이터 효율이 모두 개선된다.",
           "tags": [
             "VLA",
-            "Contact-Rich",
-            "Failure Analysis",
-            "Force Signal",
-            "FACT"
+            "Coding Agent",
+            "Memory",
+            "Hybrid Learning",
+            "Imitation Learning"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2608.01402",
+          "arxiv_url": "https://arxiv.org/abs/2608.09410",
           "extra_url": "",
-          "date": "2026-08-02",
-          "reason": "좋아요를 준 2607.18231(Force Memory VLA)이 힘 신호를 VLA에 어떻게 주입할지에 초점을 맞췄다면, 이 논문은 힘 신호와 학습 불일치가 실패로 이어지는 메커니즘을 진단·수정하는 관점이다. 접촉 태스크에서 VLA를 실제로 굴리려면 반드시 봐야 할 짝 논문.",
-          "rec_date": "2026-08-06"
+          "date": "2026-08-10",
+          "reason": "좋아요를 준 Aspire·2606.19980·2607.05369(Graph-as-Policy 멀티에이전트 코딩)이 '코딩 에이전트가 로봇 행동/구조를 진화시킨다'는 축이었고, 보유한 2607.10350(Agent OS Lifelong Memory)이 메모리 축이었다. HyMeS는 두 축을 한 프레임에 붙여 '스킬은 가중치, 메모리는 코드'로 명확히 분리한 첫 시도라 컬렉션의 다음 조각으로 정확히 들어맞는다.",
+          "rec_date": "2026-08-12"
         },
         {
-          "id": "2608.03924",
-          "title": "ETA: A New Agentic Paradigm for Embodied Tasks",
-          "authors": "Yitong Chen, Zezheng Huai 외",
-          "summary_ko": "로봇을 '엔드-투-엔드 정책'이 아니라 '도구 호출·실행·관찰 루프를 반복하는 에이전트'로 다루는 프레임워크 ETA를 제안. 오픈소스 구현 OpenETA는 재사용 가능한 도구 라이브러리, 감사 가능한 메모리, 시뮬레이션·실기 공용 인터페이스를 제공해 낯선 태스크에서의 일반화·제어성을 높인다.",
+          "id": "2608.06332",
+          "title": "GeniWorld: A Generalizable Interactive World Model for Robotic Manipulation via Visual Actions",
+          "authors": "Chenghao Gu, Hanyang Yu 외",
+          "summary_ko": "액션-조건부 World Model(월드 모델, 환경 다음 프레임을 예측하는 시뮬레이터)이 액션 조작성·OOD(out-of-distribution, 학습 밖 시나리오) 일반화가 떨어지는 문제를 다룬다. 수치 액션을 URDF(로봇 링크 구조 파일) 기반 렌더링으로 '시각 액션(visual action)'으로 바꿔 조건에 넣고, 몸체 kinematics(관절·링크 동역학)와 환경 dynamics(장면 반응)를 분리해 학습한다. 자기회귀(autoregressive) 비디오 예측과 결합해 자율 정책·사람 조작 모두에서 closed-loop 제어가 가능하며, 무작위 시나리오 zero-shot 전이가 좋고 다운스트림 정책 평가기·궤적 생성기로도 활용된다.",
           "tags": [
-            "Agentic Robotics",
-            "Tool Use",
-            "Skill Library",
-            "Auditable Memory",
-            "Long-Horizon"
+            "World Model",
+            "Visual Actions",
+            "URDF Rendering",
+            "Cross-Embodiment",
+            "Autoregressive Video"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2608.03924",
+          "arxiv_url": "https://arxiv.org/abs/2608.06332",
           "extra_url": "",
-          "date": "2026-08-04",
-          "reason": "좋아요를 준 Aspire·2606.19980(Self-Improving Coding Agent)·2607.08448(Frozen VLA + Agentic Planner)와 같은 '에이전트로서의 로봇' 궤도를 표준화하려는 시도다. 도구·메모리·인터페이스를 오픈소스로 묶어놨다는 점에서 다른 에이전틱 로봇 논문들을 실제로 붙여 비교하는 기준선 역할을 할 수 있다.",
-          "rec_date": "2026-08-06"
+          "date": "2026-08-06",
+          "reason": "좋아요 상단의 2607.11397(Latent Action + DINOv3 + WM)이 액션 표현을 World Model에 정합한 방향이었다면, GeniWorld는 액션 자체를 URDF 렌더링 이미지로 바꿔 '시각 액션 조건부 세계 모델'을 만든다. 보유한 2607.22535(URDF 렌더링 크로스 임바디먼트 WM)·2607.19343(masked-actions video WM)·2607.19876(WM IDM-free 벤치마크) 라인의 최신 실증이자 상보적 축.",
+          "rec_date": "2026-08-12"
         },
         {
           "id": "2608.01824",
@@ -166,42 +166,6 @@
           "date": "2026-07-30",
           "reason": "좋아요한 Harness-VLA(2607.08448, frozen VLA + agentic planner + primitive library)의 정확한 후속 — Harness-VLA가 얼어붙은 VLA를 primitive library로 감쌌다면 RoboBRIDGE는 5개 모듈 오케스트레이션으로 감싼다. index의 Pigey(2607.21725, agentic orchestrator + frozen VLA)·pool의 LENS(2607.19633, LLM 씬 축약 플러그인)와 완벽한 3부작: Pigey가 정책 밖 지휘, LENS가 씬 축약, RoboBRIDGE가 실패 감지·복구까지 포함한 5-모듈 표준. 좋아요한 Aspire(2606.19980)·GaP(2607.05369)의 self-improvement/agentic coding과 정합적 — LoRA 어댑터로 도메인 적응이 붙어 있어 fleet 확장에 곧바로 얹을 수 있다. 컬렉션의 RoboHarness(2607.18060, memory-driven orchestration)·PhyAgentOS(2607.16636, embodied OS)의 산업계 실용 좌표. IROS 2026 accepted라 코드·데이터 공개 가능성이 높고 pool의 새 논문 ARCHITECT(2607.23784, interactive program synthesis)와도 짝을 이룬다.",
           "rec_date": "2026-08-01"
-        },
-        {
-          "id": "2607.27138",
-          "title": "DLAM: Distributional Latent Actions with Temporal Constraints",
-          "authors": "Zuojin Tang, Feifan Luo, Haoyun Liu, Botai Yuan, Dekang Qi, Ronghan Chen, Yandan Yang, Tong Lin, Xinyuan Chang, Mu Xu, Bin Liu, De Ma, Zhiheng Ma · arXiv:2607.27138",
-          "summary_ko": "액션 라벨 없는 비디오에서 latent action을 학습할 때 transition을 결정적 점이 아니라 diagonal Gaussian 분포로 표현하자는 관점 전환. reference frame 조건부 재구성과 variance·mean composition에 대한 temporal 제약을 결합해 latent action이 태스크 phase에 반응적으로 확률적 폭을 갖게 한다. 정책 학습 단계에서는 frozen 인코더 + flow-matching 정책이 mean transition sequences와 실제 로봇 액션을 함께 생성. MetaWorld MT50·LIBERO·실기 조작에서 기존 latent action 베이스라인 상회.",
-          "tags": [
-            "Distributional Latent Action",
-            "Action-Free Video",
-            "Flow Matching",
-            "Temporal Constraint",
-            "Diagonal Gaussian"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.27138",
-          "extra_url": "",
-          "date": "2026-07-29",
-          "reason": "좋아요한 WALA(2607.11397, latent action + DINOv3 + depth)와 컬렉션의 latent action 원류 LAPA(2410.11758)·Genie(2607.04988)의 정면 다음 세대. 기존 라인이 '결정적 latent action'이었다면 DLAM은 그것이 태스크 phase마다 확률적 폭이 달라야 한다는 관점 전환. pool의 LeapBot-WA(2607.23969, JEPA anchor + Diffusion-friendly manifold)·TD-JEPA(2607.25337, plan-aware JEPA)와 정확한 3부작: LeapBot-WA가 '잠재 기하 조형', TD-JEPA가 'plan-aware 표현', DLAM이 '확률적 latent action 자체'. flow-matching 정책은 좋아요한 Xiaomi-Robotics-1(2607.15330, VLA + Flow Matching)·컬렉션의 π0(2410.24164)와 정합. 좋아요한 FM-VLA(2607.18231)의 VAE 힘 memory와 짝 — FM-VLA가 결정적 힘 latent이라면 DLAM은 확률적 action latent. index의 Masked Visual Actions(2607.19343)·pool의 ATM(2401.00025)의 'action-free 비디오' 축의 다음 좌표.",
-          "rec_date": "2026-08-01"
-        },
-        {
-          "id": "2607.25895",
-          "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
-          "authors": "Yuteng Wei, Jinming Ma, Jiawei Wang, Weitao Zhou, Yushen Zuo · Simple AI · arXiv:2607.25895",
-          "summary_ko": "'실기 post-training 없이도 배포 가능한 정책을 만들 수 있는가'를 정면으로 묻는 논문. head-mounted stereo-inertial 트래킹과 초광각 카메라로 마이크로초 동기화된 3mm 정확도의 robot-free 조작 데이터를 대규모(HiFi-UMI-2K, 2,000시간)로 확보. 이 데이터만으로 학습한 정책이 여러 아키텍처(π0·ACT 등)에서 실기 텔레오퍼레이션 성능과 3.1%p 이내로 매칭. 'UMI를 진짜 배포 가능한 수준까지 스케일업'한 첫 대규모 실증.",
-          "tags": [
-            "High-Fidelity UMI",
-            "Zero-Robot Post-Training",
-            "Stereo-Inertial Tracking",
-            "HiFi-UMI-2K Dataset",
-            "Deployable Policy"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.25895",
-          "extra_url": "https://cloud.simpleai.tech/simple-world-lab/hifi-umi/",
-          "date": "2026-07-28",
-          "reason": "좋아요한 Xiaomi-Robotics-1(2607.15330, 태그가 'UMI·Scaling Law·Flow Matching')의 정확한 정면 후속·경쟁작 — Xiaomi-Robotics-1이 UMI를 산업 규모로 확장했다면 HiFi-UMI는 UMI의 '데이터 fidelity' 축을 정면으로 개선해 실기 post-training을 완전히 제거한다. index의 UMI(2402.10329)의 정통 계승자 — UMI가 '값싼 시연 수집'을 열었다면 HiFi-UMI는 그 fidelity를 '실기와 매칭되는 수준'까지 끌어올려 조건부 명제를 무조건부 명제로 바꾼다. index의 Data Pyramid(2607.24744)가 지적한 '실물 로봇 데이터 계층 부족'의 강력한 답. 좋아요한 WALA(2607.11397)·Xiaomi-U0(2607.11643) 같은 대형 파운데이션의 실기 파인튜닝 파이프라인을 근본에서 단순화 가능. 2,000시간 오픈 데이터셋과 프로젝트 페이지 공개라 컬렉션의 π0(2410.24164)·SmolVLA(2506.01844)·RDT-1B(2410.07864) 계보 모든 논문의 실기 벤치마크에 즉시 얹을 수 있다. 좋아요한 Aspire·GaP의 self-learning 파이프라인도 HiFi-UMI-급 데이터가 있어야 진짜 스케일이 되는 구조.",
-          "rec_date": "2026-07-31"
         },
         {
           "id": "2607.23969",
@@ -336,6 +300,60 @@
       "label": "관련 논문",
       "items": [
         {
+          "id": "2505.22159",
+          "title": "ForceVLA: Enhancing VLA Models with a Force-aware MoE for Contact-rich Manipulation",
+          "authors": "Jiawen Yu, Hairuo Liu 외",
+          "summary_ko": "VLA(비전-언어-행동 모델)에 6축 힘/토크(F/T, force-torque) 신호를 1급 모달리티로 편입하는 프레임워크. FVLMoE라는 힘 인식 MoE(Mixture-of-Experts, 전문가 라우팅) 모듈이 사전학습된 비전-언어 임베딩과 실시간 F/T 신호를 액션 디코딩 단계에서 동적으로 융합한다. 비전·프로프리오·힘 신호를 함께 담은 ForceVLA-Data(5개 접촉 태스크)를 함께 공개했고, 태스크 성공률 평균 +23.2%p, 플러그 삽입 최대 80%.",
+          "tags": [
+            "VLA",
+            "Force/Torque",
+            "MoE",
+            "Contact-Rich",
+            "Dataset"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2505.22159",
+          "extra_url": "",
+          "date": "2025-05-28",
+          "reason": "좋아요 최상단의 2607.18231(Force Memory VLA, VAE+Flow Matching)이 힘 히스토리를 별도 잠재로 압축하는 후속작인데, ForceVLA는 그 이전에 '힘을 MoE 게이팅으로 즉시 융합'한 원류이자 데이터·벤치마크의 기준점. 2608.01402(FACT, 힘 실패 분석)와 함께 봐야 힘-VLA 설계 공간 전체가 잡힌다.",
+          "rec_date": "2026-08-12"
+        },
+        {
+          "id": "2604.14125",
+          "title": "HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System",
+          "authors": "Tianshuo Yang, Guanyu Chen 외",
+          "summary_ko": "조작 태스크의 고수준 의미 계획(어떤 물체를 어떤 순서로 조작할지)과 저수준 모터 제어(어떻게 움직일지)를 명시적으로 분리한 계층 프레임. VLM(비전-언어 모델) 플래너가 태스크 분해와 시각 그라운딩(어느 좌표의 어떤 물체인지)을 담당해 서브태스크 지시 + 타겟 바운딩 박스를 생성하고, 그 위에서 Flow Matching 기반 Diffusion Transformer 액션 전문가가 실행한다. 파운데이션 모델의 zero-shot 추론 능력을 유지한 채 롱호라이즌·작은 물체 정밀 조작 성능을 끌어올린다.",
+          "tags": [
+            "Hierarchical VLA",
+            "VLM Planner",
+            "Visual Grounding",
+            "Flow Matching",
+            "DiT"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2604.14125",
+          "extra_url": "",
+          "date": "2026-04-15",
+          "reason": "좋아요를 준 2606.10267(Hierarchical VLA Options 벤치마크 스터디)이 계층 VLA의 옵션 프레임을 실증했고, 보유한 2504.16054(Hierarchical Inference)·2502.05485(HAMSTER 2D Path)와 함께 'VLM 플래너 + 저수준 정책' 라인을 이룬다. HiVLA는 그 사이의 '시각 그라운딩을 서브태스크 형태로 명시'라는 축을 채워 컬렉션의 빈 조각을 메운다.",
+          "rec_date": "2026-08-12"
+        },
+        {
+          "id": "2606.23420",
+          "title": "Flowing With Purpose: Latent Action Guided Flow Matching Policies For Robotic Manipulation",
+          "authors": "Bruno Machado, Alexandre Chapin 외",
+          "summary_ko": "Flow Matching(가우시안 노이즈에서 시작해 액션 궤적으로 흘려보내는 생성 모델) 정책이 단일 가우시안 사전(prior)에서 시작하는 탓에 실행이 불안정한 문제를 다룬다. 관측을 이산 모션 프리미티브(motion primitive, 재사용 가능한 단위 동작)로 매핑하는 latent action 모델을 학습하고, 그 인덱스에 맞춰 특화된 학습된 사전 분포(learned prior)에서 denoising을 시작한다. 실기 로봇 성공률 +23.4%p, LIBERO-90(90 태스크 벤치마크) +10.4%p, 더 작은 모델로 큰 VLM 급 성능.",
+          "tags": [
+            "Flow Matching",
+            "Latent Action",
+            "Motion Primitive",
+            "LIBERO-90",
+            "Prior Distribution"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2606.23420",
+          "extra_url": "",
+          "date": "2026-06-22",
+          "reason": "좋아요를 준 2607.15330(π0/UMI Flow Matching VLA)·2607.11397(Latent Action + DINOv3)·보유한 2607.14695(Streaming Flow Matching) 라인이 'Latent Action + Flow Matching'의 최전선인데, LAFM은 그 결합의 명시적 정당화(왜 굳이 latent action prior가 필요한가)를 실증한 기반 논문. Flow Matching을 튜닝할 때 참조 점이 된다.",
+          "rec_date": "2026-08-12"
+        },
+        {
           "id": "2403.03954",
           "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
           "authors": "Yanjie Ze, Gu Zhang 외",
@@ -423,24 +441,6 @@
           "extra_url": "",
           "date": "2024-06-11",
           "reason": "보유 논문 2304.13705(ACT), 2405.12213(Octo), 2410.24164(π0), 2607.14695(스트리밍 π0.5) 등 요즘 VLA·정책 논문들이 대부분 '액션 청킹 + 다중 태스크 트랜스포머' 구조를 쓰는데, BAKU는 이 조합을 가장 깔끔하게 실증한 대표 논문. 데이터 효율·다중 태스크 정책을 이해하기 위한 기본기.",
-          "rec_date": "2026-08-05"
-        },
-        {
-          "id": "2407.01392",
-          "title": "Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion",
-          "authors": "Boyuan Chen, Diego Marti Monso, Yilun Du, et al.",
-          "summary_ko": "다음-토큰 예측(next-token prediction, 자기회귀)과 전체-시퀀스 확산(full-sequence diffusion)을 한 학습 목표로 통합한 방식. 각 토큰마다 서로 다른 노이즈 레벨로 디노이즈하도록 훈련해 '가변 길이 자기회귀 생성'과 '경로 기반 가이던스' 능력을 동시에 얻는다. 결정·계획 과제에서 훈련 길이를 넘는 연속 시퀀스 생성과 새로운 샘플링·가이던스 기법을 보인다.",
-          "tags": [
-            "Diffusion",
-            "Autoregressive",
-            "World Model",
-            "Planning",
-            "Sequence Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2407.01392",
-          "extra_url": "https://boyuan.space/diffusion-forcing/",
-          "date": "2024-07-01",
-          "reason": "좋아요/큐에 있는 2607.15330(Flow Matching UMI), 2607.14695(스트리밍 Flow Matching), 2607.27782(RedFlow) 등은 모두 '확산/플로우 기반 액션 생성 + 자기회귀 추론'의 접점을 다룬다. Diffusion Forcing은 이 둘을 통합하는 원리적 프레임워크로, 최근 나오는 World Action Model·플로우 매칭 VLA의 기법 뿌리에 해당한다.",
           "rec_date": "2026-08-05"
         },
         {
@@ -568,42 +568,6 @@
           "date": "2026-06-19",
           "reason": "좋아요한 WALA(2607.11397)와 pool의 DLAM(2607.27138)·LeapBot-WA·Causally Debiased Latent Action 흐름의 상위 개념을 정리하는 표현 학습 논문. 잠재 액션의 '크기'와 '방향'을 명시적으로 분리한다는 관점이 컬렉션의 여러 액션-프리 비디오 학습 논문과 직접 연결된다.",
           "rec_date": "2026-08-02"
-        },
-        {
-          "id": "2502.05485",
-          "title": "HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation",
-          "authors": "Yi Li, Yuquan Deng, Jesse Zhang",
-          "summary_ko": "VLM이 2D 궤적으로 상위 계획을 만들고 저수준 3D 정책이 정밀 실행을 담당하는 계층형 VLA로, 오프도메인 데이터를 활용해 OpenVLA 대비 평균 20% 성공률 향상.",
-          "tags": [
-            "VLA",
-            "Hierarchical",
-            "Cross-Embodiment",
-            "Off-Domain Data",
-            "Trajectory"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2502.05485",
-          "extra_url": "https://hamster-robot.github.io/",
-          "date": "2025-02-08",
-          "reason": "좋아요한 Aspire·Agentic Robotics 흐름, 그리고 컬렉션의 오케스트레이터형 논문(RoboBRIDGE 2607.27881, Physical Agency 2607.21725)과 같은 계층 분리 철학을 대표하는 기준 논문. Data Pyramid(2607.24744)가 언급하는 '값싼 오프도메인 데이터'를 어떻게 학습에 실제로 흡수하는지 구체적으로 보여준다.",
-          "rec_date": "2026-08-02"
-        },
-        {
-          "id": "2410.24185",
-          "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
-          "authors": "Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar, Linxi Fan, Yuke Zhu · NVIDIA / UT Austin · ICRA 2025 · arXiv:2410.24185",
-          "summary_ko": "MimicGen의 계승자로, 소량의 인간 텔레옵 데모로부터 휴머노이드·바이매뉴얼·덱스터러스 손 조작 궤적을 자동 합성하는 파이프라인. 원본 데모의 sub-trajectory를 새 씬 구성에 맞게 재배치·조합해 순수 시뮬레이션에서 수천 궤적 규모로 확장. bimanual 협조·양손 덱스터리티 요구가 큰 태스크에도 대응 가능해 sim2real 파이프라인의 새 표준으로 자리 잡음.",
-          "tags": [
-            "Data Generation",
-            "Bimanual Dexterous",
-            "Humanoid",
-            "MimicGen Successor",
-            "ICRA 2025"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.24185",
-          "extra_url": "https://dexmimicgen.github.io/",
-          "date": "2024-10-31",
-          "reason": "컬렉션의 MimicGen(2310.17596)의 정통 후속 — 두 논문 저자 라인이 Ajay Mandlekar 중심으로 겹치며, MimicGen이 단일 팔을 다뤘다면 DexMimicGen은 바이매뉴얼·휴머노이드·덱스터러스 손으로 확장한다. 컬렉션의 RDT-1B(2410.07864, bimanual diffusion)·ACT(2304.13705, ALOHA bimanual)·pool의 Mobile ALOHA(2401.02117)·HumanPlus(2406.10454, humanoid)의 데이터 인프라 층을 완성. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·pool의 HiFi-UMI(2607.25895)와 짝 — UMI 라인이 '값싼 시연 수집'이라면 DexMimicGen은 '소수 시연 → 자동 대규모 합성'. index의 Data Pyramid(2607.24744)가 지적한 '시뮬레이션 합성 데이터 계층'의 정통 실증 사례. 컬렉션의 GR00T(2503.14734)·RynnBrain(2607.17977)·pool의 POT-VLA(2607.18016) 같은 휴머노이드 라인의 실기 파인튜닝 데이터 파이프라인이 될 잠재력. NVIDIA/UT Austin Yuke Zhu 그룹 조합이라 이후 Isaac Sim 스택의 산업 표준으로 자리 잡을 가능성이 크다.",
-          "rec_date": "2026-08-01"
         },
         {
           "id": "2403.01823",
