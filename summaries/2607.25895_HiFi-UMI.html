@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>HiFi-UMI — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Data Collection · VLA · Manipulation</span>
+    <h1>HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone</h1>
+    <p class="authors">Yuteng Wei, Jinming Ma, Jiawei Wang, Weitao Zhou, Yushen Zuo, Ke Rui, Minglei Li, Jinhao Zhang, Zhikang Pan, Xiang Wang, Haoran Jia, Huan Du, Zicheng Zeng, Jun Ma, Guiyu Qin, Di Zhang, Xiaofei Li · Simple AI · Simple World Lab</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.25895" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.25895" target="_blank">PDF</a>
+      <a href="https://cloud.simpleai.tech/simple-world-lab/hifi-umi/" target="_blank">프로젝트 페이지</a>
+      <a href="https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K" target="_blank">HuggingFace 데이터셋</a>
+      <span>arXiv:2607.25895</span>
+    </div>
+    <div class="taglist">
+      <span class="t">UMI</span>
+      <span class="t">Robot-Free Data</span>
+      <span class="t">Manipulation</span>
+      <span class="t">VLA</span>
+      <span class="t">Dataset</span>
+      <span class="t">Zero Robot Post-Training</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 28일 · Simple AI / Simple World Lab · HiFi-UMI-2K(2,000시간) 공개</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>UMI(Universal Manipulation Interface)</b>는 원래 스탠퍼드/도시바가 제안한 "로봇 없이도 시연 데이터를 수집할 수 있는 손잡이형 그리퍼" 방식으로, 사람이 UMI 도구를 손에 쥐고 물체를 조작하면 그 궤적과 영상이 마치 로봇이 수행한 것처럼 기록된다. 그러나 기존 UMI는 정확도·동기화·시야가 부족해 실로봇 배포에서 성능이 크게 떨어졌다. 저자들은 <b>HiFi-UMI</b>라는 개선 하드웨어와 6단계 데이터 파이프라인으로 <b>말단 위치 정확도 33mm</b>, <b>센서 간 타이밍 오차 40μs 미만</b>을 달성하고, <b>실로봇 데이터 없이 UMI 데이터만으로</b> 후처리 학습한 정책이 원격 조작(teleoperation) 데이터로 학습한 정책과 성공률 격차 <span class="win">3.1%p 이내</span>임을 3개 정책 백본에서 보였다. 20,000시간 이상을 수집해 그중 <span class="win">2,000시간·48만 에피소드</span>를 <b>HiFi-UMI-2K</b>로 공개.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>UMI(Universal Manipulation Interface)</b>란 사람이 손에 쥐고 사용하는 그리퍼 형태의 도구로, 도구에 붙은 카메라와 위치 추적 장치가 손 궤적을 로봇 팔의 궤적과 같은 형식으로 기록한다. 로봇 없이 사람이 자연스럽게 물체를 잡고 옮기는 것만으로 <b>정책 학습용 시연 데이터</b>가 만들어진다는 것이 핵심 매력이다. 기존 방식으로는 실로봇을 <b>원격 조작(teleoperation, 조이스틱·리더 팔 등으로 실로봇을 사람이 직접 움직이는 것)</b>하며 데이터를 모아야 했는데, 이 방식은 정확하지만 로봇 1대·1명이 붙어야 하므로 시간당 수집량이 매우 낮다.</p>
+    <p>그러나 기존 UMI 계열 시스템에는 세 가지 큰 결함이 있어 로봇으로 옮겼을 때 정책 성능이 급락했다: (1) <b>위치 추적 정확도가 떨어진다</b>(수 cm급 오차), (2) <b>여러 센서 사이 시간 동기화가 불충분</b>(카메라·IMU·엔코더가 서로 어긋남), (3) <b>시야가 좁아</b> 손과 물체의 접촉 근방이 자주 프레임 밖으로 나간다. 그 결과 <b>UMI 데이터만으로 학습한 정책은 실로봇에서 성공률이 크게 떨어져</b>, 결국 실로봇 원격 조작 데이터를 대량으로 추가해야 했다. 저자들은 "UMI만으로 정말 로봇에 직접 배포 가능한 정책을 만들 수 있는가?"라는 질문에 답한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>HiFi-UMI 캡처 장치 — 정확도·동기화·시야를 동시에 개선</b>. 머리 착용 스테레오 카메라 + IMU(관성 측정 장치)로 <b>오프라인 스테레오-관성 SLAM</b>(카메라 스테레오와 관성 측정을 동시에 사용해 궤적을 복원)을 수행해 위치 정확도 향상, 손마다 <b>ArUco 마커 큐브</b>를 부착해 머리-손 상대 위치를 정밀 추정, 손마다 <b>비평행 어안(fisheye) 카메라 2대(≈200° 시야)</b>로 손-물체 접촉을 항상 포착, 모든 센서를 <b>공유 GPIO 트리거</b>로 마이크로초급 시간 동기화.</li>
+      <li><b>6단계 데이터 파이프라인(플라이휠, flywheel)</b>. 수집→궤적 복원(자동 클리닝)→시뮬레이션 리타게팅(사람 손 궤적을 로봇 팔 궤적으로 변환)→AI 보조 어노테이션→사람 검증→분석/내보내기의 반복 순환 구조. 처리 후 <b>말단 위치 정확도 33mm, 센서 간 시간 오차 &lt;40μs, 프레임 드롭 &lt;2/h, 궤적 복원 성공률 98%, 최종 가용 데이터 비율 ≈96%</b> 달성.</li>
+      <li><b>"제로 실로봇 후처리 학습(zero real-robot post-training)"의 실증</b>. StarVLA-QwenPI, OpenPI-π0.5, LingBot-VA 등 3개 서로 다른 정책 백본에서 <b>UMI만으로 후처리 학습</b>한 결과가 원격 조작 데이터로 학습한 정책과 성공률 차이 <b>-2.5, +3.1, -0.6 %p</b>에 그쳐 사실상 동등함을 입증. 또한 <b>4,000시간 UMI 사전학습</b>이 미보유 태스크 10개에서 행동 오차를 <b>41% 감소</b>시키고 실로봇 성공률을 <b>18.1%p 향상</b>.</li>
+      <li><b>HiFi-UMI-2K 공개</b>. 총 20,000시간 이상·480+ 씬 수집분 중 <b>2,000시간·482,100+ 에피소드·110+ 씬</b>을 CC BY 4.0로 배포. 사람 얼굴은 프라이버시 보호를 위해 마스킹.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3.1 하드웨어 구성 (왜 이렇게 만들었나)</h3>
+    <p><b>왜 머리에 스테레오 카메라 + IMU를 다는가</b> — 손이 움직이면 도구 자체가 흔들려 도구에 붙은 카메라만으로는 절대 위치 추정이 어렵다. 머리에 <b>스테레오 카메라 페어(두 눈처럼 나란히 배치된 두 대의 카메라, 깊이 추정 가능)</b>와 <b>IMU(가속도·각속도 측정으로 짧은 시간 자세 변화 추정)</b>를 두면 SLAM(Simultaneous Localization and Mapping, 자기 위치와 지도를 동시에 추정)이 안정된다. 오프라인에서 계산하므로 실시간 제약 없이 정확도를 짜낼 수 있다.</p>
+    <p><b>왜 손에 마커 큐브를 다는가</b> — 머리 좌표계에서 손 좌표계로의 <b>상대 자세(6-DoF pose)</b>를 mm 단위로 얻기 위함. ArUco 같은 사전 정의된 무늬 큐브는 카메라로 여러 면을 동시에 볼 수 있어 각도에 강건하다.</p>
+    <p><b>왜 손마다 어안 카메라 2대를 비평행하게 두는가</b> — 어안 렌즈는 <b>극단적으로 넓은 시야(≈200°)</b>를 커버하지만 한 대만 있으면 손이 물체를 가리는 사각이 생긴다. 2대를 서로 다른 방향으로 두면 어떤 파지 자세에서도 접촉면이 최소 한 카메라에는 잡힌다.</p>
+    <p><b>왜 GPIO 트리거를 공유하는가</b> — 카메라·IMU·엔코더가 각자 클럭으로 돌면 수십 ms씩 어긋나 학습 시 원인-결과가 뒤엉킨다. 하드웨어 트리거 선(GPIO, general-purpose input/output)을 물리적으로 공유하면 마이크로초급으로 동시에 캡처된다.</p>
+
+    <h3>3.2 6단계 데이터 파이프라인</h3>
+    <ol>
+      <li><b>수집·업로드</b>: 착용자가 태스크 수행 → 원본 저장.</li>
+      <li><b>궤적 복원 + 자동 클리닝</b>: 오프라인 스테레오-관성 SLAM으로 궤적 복원, 저품질 세그먼트 자동 필터.</li>
+      <li><b>시뮬레이션 리타게팅(retargeting)</b>: 사람 손의 6-DoF 궤적을 실제 로봇 팔의 관절 궤적으로 변환. 리플레이 검증 성공률 98%.</li>
+      <li><b>AI 보조 어노테이션</b>: 태스크 설명·서브골 자동 생성.</li>
+      <li><b>사람 검증</b>: 최종 라벨 검토.</li>
+      <li><b>분석·내보내기</b>: 표준 포맷으로 export, 최종 가용률 ≈96%.</li>
+    </ol>
+
+    <h3>3.3 정책 학습 프로토콜 (왜 3개 백본에서 다 실험?)</h3>
+    <p>UMI 데이터 자체의 우수성을 특정 모델에 의존하지 않고 보이기 위해 성격이 다른 <b>3가지 대표 정책 백본</b>에서 동일 실험을 수행한다.</p>
+    <div class="kv">
+      <div>StarVLA-QwenPI</div><div>Qwen 계열 VLM 기반 <b>VLA(Vision-Language-Action, 시각·언어 입력을 행동으로 매핑)</b>, 액션 헤드는 <b>Diffusion Transformer(DiT)</b>.</div>
+      <div>OpenPI-π0.5</div><div>대표적 오픈 소스 VLA, <b>flow matching</b>(노이즈에서 목표 분포로의 연속 벡터장 학습) 액션 헤드.</div>
+      <div>LingBot-VA</div><div><b>WAM(World-Action-Model)</b> 계열. 미래 영상·행동을 함께 예측해 세계 모델과 정책을 결합.</div>
+    </div>
+    <p>사전학습 스텝: StarVLA는 배치 2,048, DiT 학습률 1e-4, 백본 2.5e-5, 3,000 스텝 워밍업, 4,000시간 데이터 = 약 180K 스텝. 후처리 학습: 배치 512, DiT 5e-5, Qwen 1e-5, 50K 스텝, 액션 지평 H=20(그중 실행 10 스텝). LingBot-VA는 배치 32, 학습률 1e-5, 3,500 스텝. <b>왜 이렇게 다른가</b> — WAM류는 영상 생성 손실까지 있어 표본당 계산량이 커서 소배치·저스텝 레시피가 유리하다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>4.1 태스크 스위트 (4개)</h3>
+    <ul>
+      <li><b>Stain Wiping</b> — 얼룩 닦기. <b>지속 접촉(sustained contact)</b>과 힘 조절 요구.</li>
+      <li><b>Shirt Folding</b> — 셔츠 접기. <b>양팔 협업 + 변형 물체(deformable object)</b>.</li>
+      <li><b>Remote Insertion</b> — 리모컨 정확한 꽂기. <b>정밀 제약 배치(constrained placement)</b>.</li>
+      <li><b>Produce Sorting</b> — 농산물 분류. <b>언어 조건 의미 조작(semantic category-conditioned)</b>.</li>
+    </ul>
+    <p class="cap">평가 씬에서는 UMI 데이터를 전혀 수집하지 않아 UMI 학습이 특정 씬에 오버피팅되지 않았음을 검증. 태스크·정책 쌍마다 40회 롤아웃, 정책 조작자와 씬 조작자를 분리, 태스크 정의·물체·체크포인트를 사전 고정.</p>
+
+    <h3>4.2 UMI vs 원격 조작 (핵심 결과)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>정책 백본</th><th>Teleop 데이터 학습</th><th>UMI 데이터 학습</th><th>차이 (UMI − Teleop, %p)</th></tr></thead>
+      <tbody>
+        <tr><td>StarVLA-QwenPI</td><td>기준</td><td>—</td><td>−2.5</td></tr>
+        <tr><td>OpenPI-π0.5</td><td>기준</td><td>—</td><td class="win">+3.1</td></tr>
+        <tr><td>LingBot-VA</td><td>기준</td><td>—</td><td>−0.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">UMI 데이터: 태스크당 약 3,200 궤적(10-20시간). 원격 조작 데이터: 태스크당 약 300 궤적(3-7시간). <b>UMI 궤적 수가 10배 많지만 수집 시간은 비슷</b>하다는 점이 핵심 — 로봇 없이 병렬 수집이 가능하기 때문. 3개 백본 모두 성공률 격차 3.1%p 이내로 실질적 동등.</p>
+
+    <h3>4.3 사전학습 효과</h3>
+    <ul>
+      <li><b>4,000시간 UMI 사전학습</b>이 미학습(unseen) 태스크 10개에서 <b>행동 예측 오차를 41% 감소</b>.</li>
+      <li>StarVLA-QwenPI 실로봇 성공률이 사전학습 유무에 따라 <b>18.1%p 상승</b>.</li>
+    </ul>
+
+    <h3>4.4 파이프라인 품질 지표 (Table 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>말단 위치 정확도 (end-effector positional accuracy)</td><td class="win">≈33 mm</td></tr>
+        <tr><td>센서 간 타이밍 오차</td><td class="win">&lt;40 μs</td></tr>
+        <tr><td>프레임 드롭</td><td>&lt;2 / hour</td></tr>
+        <tr><td>궤적 복원 성공률</td><td>98%</td></tr>
+        <tr><td>리플레이 검증 성공률</td><td>98%</td></tr>
+        <tr><td>최종 가용 데이터 비율</td><td class="win">≈96%</td></tr>
+        <tr><td>그리퍼 상태 오차</td><td>&lt;0.1°</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>기존 로봇-프리 시스템과의 비교(Table 1)</b> — 자세 획득 방식, 정확도, 동기화, 시야, 상대 자세 측정, 그리퍼 종류, 휴대성 등 7개 축에서 정리. HiFi-UMI가 위 6가지 요소를 동시에 만족하는 최초 시스템임을 강조.</li>
+      <li><b>백본·초기화·후처리 데이터 소스 조합(Table 4)</b> — 7가지 조합 실험. <b>사전학습된 백본 + UMI 후처리</b> 조합이 사전학습 없는 백본 대비 큰 이득. 즉 UMI 데이터는 데이터-스카시티 상황보다 <b>대규모 사전학습의 기폭제</b>로 특히 강력.</li>
+      <li><b>데이터 스케일링</b> — 20,000시간 전체 대비 2,000시간(HiFi-UMI-2K)만으로도 다수 태스크에서 준수한 정책 학습이 가능. 단, 사전학습 규모가 커질수록 unseen 태스크 일반화가 지속 개선.</li>
+    </ul>
+    <div class="callout">
+      <b>핵심 통찰</b>: "UMI가 로봇 원격 조작을 완전히 대체"라기보다, <b>수집 처리량이 10배 이상 높으면서 성능 격차는 무시 가능한 3%p 이내</b>라는 점 — 즉 데이터 확보 비용 대비 편익에서 압도적 우위. 하드웨어 정확도(33mm)·동기화(&lt;40μs)·시야 확보가 이 격차 해소의 필수 조건임.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.25895/x1.png" alt="HiFi-UMI 시스템 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — HiFi-UMI 시스템 개요.</b> 착용자가 UMI 도구로 태스크를 수행하면, 머리 스테레오+IMU와 손 마커·어안 카메라가 동기화되어 자세·영상·그리퍼 상태를 기록한다. 이후 6단계 파이프라인을 거쳐 로봇 학습용 데이터로 정제된다. (출처: arXiv:2607.25895)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.25895/x2.png" alt="궤적 복원 정성 예시 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 3D 궤적 복원 정성 예시.</b> 손글씨 태스크를 통해 <b>mm 스케일 정밀도</b>를 시각적으로 검증. 스테레오-관성 SLAM 기반 오프라인 궤적 복원의 품질을 보인다. (출처: arXiv:2607.25895)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.25895/x3.png" alt="HiFi-UMI 하드웨어 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — 하드웨어 개요.</b> 머리 착용 스테레오 카메라·IMU, 손목 마커 큐브, 손마다 비평행 어안 카메라 2대(≈200° 시야), 자연스러운 힘 분포를 위한 <b>전체 손바닥 글러브 그리퍼</b>. (출처: arXiv:2607.25895)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.25895/x4.png" alt="데이터 처리 플라이휠 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 6단계 데이터 처리 플라이휠.</b> 수집→궤적 복원(자동 클리닝)→시뮬레이션 리타게팅→AI 보조 어노테이션→사람 검증→분석/내보내기의 반복 순환 구조. (출처: arXiv:2607.25895)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.25895/x5.png" alt="대표 HiFi-UMI 태스크 (Figure 5)" loading="lazy">
+      <figcaption><b>Figure 5 — 대표 HiFi-UMI 태스크.</b> 머리 카메라 뷰와 3D 궤적을 함께 시각화. 얼룩 닦기·셔츠 접기·리모컨 꽂기·농산물 분류 등 대표 태스크 예시. (출처: arXiv:2607.25895)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1</b> — 기존 로봇-프리 데이터 수집 시스템들과의 비교 축(자세 획득/정확도/동기화/FOV/상대 자세/그리퍼/휴대성). HiFi-UMI가 여러 축을 동시에 만족하는 첫 시스템임을 요약.<br>
+      <b>Table 2</b> — 처리 파이프라인 품질 지표: 33 mm·&lt;40 μs·98% 복원·96% 최종 가용.<br>
+      <b>Table 3</b> — 전체 코퍼스(20,000+시간) 및 공개판 HiFi-UMI-2K(2,000시간·48만 에피소드·110+씬) 통계.<br>
+      <b>Table 4</b> — 백본·초기화·후처리 데이터 소스를 바꾼 7가지 학습 조건과 결과.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.25895" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.25895" target="_blank">PDF</a></li>
+      <li><a href="https://cloud.simpleai.tech/simple-world-lab/hifi-umi/" target="_blank">프로젝트 페이지 (Simple World Lab)</a></li>
+      <li><a href="https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K" target="_blank">HiFi-UMI-2K 데이터셋 (HuggingFace, CC BY 4.0)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.25895 · HiFi-UMI · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

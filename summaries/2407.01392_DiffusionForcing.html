@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Diffusion Forcing — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.LG · Diffusion · Sequence · Planning</span>
+    <h1>Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion</h1>
+    <p class="authors">Boyuan Chen, Diego Martí Monsó, Yilun Du, Max Simchowitz, Russ Tedrake, Vincent Sitzmann · MIT CSAIL (Diego는 TU Munich 방문학생) · NeurIPS 2024</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2407.01392" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2407.01392" target="_blank">PDF</a>
+      <a href="https://boyuan.space/diffusion-forcing/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/buoyancy99/diffusion-forcing" target="_blank">GitHub</a>
+      <span>arXiv:2407.01392</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Diffusion</span>
+      <span class="t">Autoregressive</span>
+      <span class="t">Video Generation</span>
+      <span class="t">Planning</span>
+      <span class="t">Imitation Learning</span>
+    </div>
+    <p class="meta">제출: 2024년 7월 1일 (v1) · v2 2024-07-02 · v4 2024-12-10 · RNN 기반 최소 구현</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>시퀀스의 <b>토큰마다 독립된 노이즈 레벨</b>을 부여해 학습·샘플링하는 새 확산(diffusion) 훈련 패러다임. <b>다음-토큰 예측(next-token prediction)</b>의 유연한 가변 길이와 <b>전체-시퀀스 확산(full-sequence diffusion)</b>의 안내(guidance) 능력을 동시에 얻는다. 핵심 관찰은 "노이즈=부분 마스킹"이라는 통일된 시각. 저자들이 <b>Causal Diffusion Forcing (CDF)</b>라 이름 붙인 RNN 인스턴스는 (1) 훈련 지평(training horizon) 36–72 프레임 → 2000+ 프레임 안정 롤아웃, (2) D4RL 미로 6개 환경에서 Diffuser 대비 <span class="win">모두 승</span>(단일 태스크 평균 <span class="win">159.0</span> vs Diffuser 149.4, 다중 태스크 <span class="win">167.1</span> vs 152.3), (3) 로봇 과일-교환 모방학습에서 diffusion policy 대비 <b>메모리가 필요한 태스크 80% 성공</b>(diffusion policy 실패), (4) 관측이 심하게 오염돼도 성공률이 80→<b>76%</b>로 4%p만 하락(다음-프레임 확산 기준선은 48%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>다음-토큰 예측(next-token prediction)</b>이란 지금까지의 토큰 x<sub>1:t</sub>를 보고 바로 다음 토큰 x<sub>t+1</sub>만 예측하도록 학습하는 방식(예: 언어모델, RNN, GPT). 표준 학습법은 <b>teacher forcing</b> — 훈련 시 정답 과거 시퀀스를 그대로 입력으로 넣어 한 스텝 앞만 예측한다. 이 방식은 시퀀스 길이를 자유롭게 늘릴 수 있고(자기회귀 롤아웃), 과거 길이도 유연하며, 트리 탐색이나 온라인 피드백 제어에 잘 맞는다. 그러나 두 가지 결정적 약점이 있다: (i) 이미 뽑힌 토큰이 다음 토큰의 조건이 되므로 <b>미래 목표를 향해 시퀀스를 유도</b>(guidance)할 수단이 없다. (ii) 연속값(픽셀 같은) 데이터에서는 프레임 예측 오차가 누적돼 훈련 지평을 넘기면 <b>발산</b>한다.</p>
+    <p>대안인 <b>전체-시퀀스 확산(full-sequence diffusion)</b>은 고정 길이 T 토큰을 하나의 큰 벡터로 이어 붙여 그 결합분포(joint distribution)를 확산 모델로 배우는 방식(예: video diffusion, Diffuser). 확산 모델은 데이터에 점점 노이즈를 얹었다가(forward) 다시 벗겨내며(reverse) 샘플하는 생성 모델이다. 이 접근은 목표 지향적 <b>guidance</b>가 자연스럽고(계획, 고보상 궤적 유도) 연속 신호에도 강하다. 대신 (i) <b>고정 길이·비인과(non-causal) 어텐션</b>을 쓰기 때문에 가변 길이 롤아웃이나 부분 시퀀스 조건화가 어렵고, (ii) 모든 토큰이 <b>같은 노이즈 레벨</b>이라 "이른 시점 불확실성은 낮고, 먼 미래는 불확실성이 커야 한다"는 인과 구조를 표현하지 못한다. 저자들은 두 세계의 장점을 한 모델에 담기 위해 새 패러다임을 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Diffusion Forcing (DF) — 토큰별 독립 노이즈 레벨 확산 훈련.</b> 한 시퀀스 안에서 토큰 t마다 노이즈 레벨 k<sub>t</sub>를 균일 분포로 독립 샘플링해 동시 학습. 인과 구조를 얹은 인스턴스가 <b>Causal Diffusion Forcing(CDF)</b>.</li>
+      <li><b>계층적 결정론(SDM) 프레임워크.</b> 같은 모델을 (a) 정책(policy: 즉시 다음 액션 산출), (b) 플래너(planner: 긴 시야로 미래 보상 유도)로 동시에 사용. <b>Monte Carlo Tree Guidance (MCTG)</b>라는 새 유도 방식으로 여러 미래 표본의 보상 기울기를 평균해 유도.</li>
+      <li><b>이론적 보장.</b> DF의 학습 목표가 서로 다른 노이즈 레벨 조합 (k<sub>1:T</sub>)에서 뽑힌 부분 시퀀스들의 로그 우도(log-likelihood)에 대한 <b>ELBO(evidence lower bound, 증거 하한)</b>의 재가중치 최소화임을 증명 (Theorem 3.1).</li>
+      <li><b>광범위 실증.</b> 영상 예측(Minecraft, DMLab에서 훈련 지평 넘어 안정 롤아웃), 오프라인 강화학습 계획(D4RL 미로 6종 SOTA), 실로봇 모방(과일-교환, 관측 오염 강건성), 시계열 예측까지 한 모델·한 목적함수로 커버.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>핵심 통찰: "노이즈는 부분 마스킹이다"</h3>
+    <p>마스킹(masking)이란 데이터 일부를 가리고 모델에게 복원시키는 관행(BERT의 [MASK], MAE의 패치 가림 등). 저자들은 <b>노이즈를 더하는 것도 부분 마스킹</b>이라고 본다. 노이즈 레벨 k=0은 마스크 없음, k=K는 순수 백색잡음(완전 마스크)에 대응. 그러면 <b>teacher-forcing 방식의 다음-토큰 학습</b>은 시간 축 마스킹의 특수 경우고, <b>전체-시퀀스 확산</b>은 모든 토큰에 같은 노이즈 축 마스크를 적용한 특수 경우다. Diffusion Forcing은 이 <b>두 축(시간·노이즈)을 자유롭게 섞은 통합 프레임워크</b>.</p>
+    <div class="callout">
+      <b>왜 이 관점이 힘이 있는가?</b> 훈련 중 토큰별 노이즈 레벨을 독립 샘플하면, 하나의 모델이 (i) 모든 과거가 깨끗한 상태에서 즉시 다음 토큰 예측(k<sub>t</sub>=0인 과거 + k<sub>t+1</sub>이 임의), (ii) 부분적으로만 노이즈가 있는 과거로부터 예측, (iii) 완전 잡음 상태에서 새 시퀀스 생성 등 모든 부분 시퀀스 문제를 한꺼번에 배우게 된다.
+    </div>
+
+    <h3>Causal Diffusion Forcing 아키텍처 (RNN 인스턴스)</h3>
+    <p>가중치 θ를 갖는 RNN이 은닉 상태 z<sub>t</sub>를 유지. 노이즈 관측 x<sub>t</sub><sup>k<sub>t</sub></sup>가 들어오면 <b>z<sub>t</sub> ~ p<sub>θ</sub>(z<sub>t</sub> | z<sub>t−1</sub>, x<sub>t</sub><sup>k<sub>t</sub></sup>, k<sub>t</sub>)</b>로 갱신. 이는 Bayes 필터의 사후 갱신에 대응하며, k<sub>t</sub>=0이면 표준 posterior update, k<sub>t</sub>=K(정보 0)이면 prior transition p<sub>θ</sub>(z<sub>t</sub>|z<sub>t−1</sub>)에 해당한다. 관측 모델 p<sub>θ</sub>(x<sub>t</sub><sup>0</sup>|z<sub>t</sub>)는 노이즈 예측 <b>ε<sub>θ</sub>(z<sub>t−1</sub>, x<sub>t</sub><sup>k<sub>t</sub></sup>, k<sub>t</sub>)</b>로 표현되어 표준 확산 목적함수와 그대로 호환.</p>
+
+    <h3>학습 알고리즘 (Algorithm 1)</h3>
+    <p>매 스텝: 궤적 (x<sub>1</sub>,…,x<sub>T</sub>) 샘플 → 각 t마다 <b>k<sub>t</sub> ~ Uniform{0,…,K}</b> 독립 샘플 → forward diffuse로 x<sub>t</sub><sup>k<sub>t</sub></sup> 만들고 잔차 노이즈 ε<sub>t</sub> 정의 → RNN이 은닉상태 z<sub>t</sub>와 노이즈 예측 ε̂<sub>t</sub> 산출 → <b>L = MSE([ε̂<sub>1</sub>,…,ε̂<sub>T</sub>], [ε<sub>1</sub>,…,ε<sub>T</sub>])</b>로 역전파. 특별한 스케줄이나 커리큘럼 없이 <b>표준 확산 MSE 손실</b>만으로 훈련 완료.</p>
+
+    <h3>샘플링 (Algorithm 2): M×T 스케줄링 행렬 𝒦</h3>
+    <p>샘플링은 <b>2D 격자 𝒦 ∈ [K]<sup>M×T</sup></b>로 지시된다. 열 t는 시간 축, 행 m은 노이즈 축(반복 스텝). 𝒦<sub>m,t</sub>는 반복 m에서 시간 t 토큰이 가져야 할 목표 노이즈 레벨. 모든 토큰을 백색잡음으로 초기화한 뒤 위쪽 행(m=M−1)에서 아래(m=0)로 내려가며 왼→오로 denoise. 마지막 행에 이르면 모든 토큰이 clean(k=0)이 된다. 이 격자 하나만 바꾸면 <b>다음-토큰 예측, 전체-시퀀스 확산, 지그재그(zig-zag), 피라미드(pyramid)</b> 등 어떤 샘플링 방식도 표현 가능.</p>
+    <div class="callout">
+      <b>왜 그리드로 정의하는가?</b> 각 반복에서 서로 다른 시점 토큰이 서로 다른 노이즈 레벨을 가질 수 있음을 명시적으로 표현하기 위해. "가까운 미래는 확신, 먼 미래는 불확실"이라는 인과 구조를 노이즈 레벨의 계단식(zig-zag) 패턴으로 인코딩할 수 있다.
+    </div>
+
+    <h3>DF만 가능한 새 능력</h3>
+    <ul>
+      <li><b>안정적 자기회귀 롤아웃.</b> 새 토큰을 sampling할 때, 과거 은닉상태 갱신 시 <b>약간의 노이즈(0&lt;k≪K)</b>를 얹은 토큰을 쓰면 발산이 억제된다. 이는 다음-토큰 예측의 오차 누적 문제를 확산의 "노이징으로 스무싱" 능력으로 완화한 것.</li>
+      <li><b>불확실한 미래 유지 (zig-zag 스케줄).</b> 첫 토큰을 완전 denoise한 뒤 두 번째만 부분 denoise, 세 번째는 아직 잡음 유지. 앞은 확신·뒤는 불확실이라는 자연스러운 인과 구조를 sampling에 인코딩.</li>
+      <li><b>Long-horizon guidance.</b> Algorithm 2의 line 10에서 유도 그래디언트를 부분 확산 궤적에 더한다. DF는 <b>미래를 부분 확산 상태로 두고도</b> 유도 신호가 과거로 역전파되어 인과성을 지키는 장거리 안내가 가능. 다음-토큰 예측은 이 기능이 원천적으로 불가능.</li>
+    </ul>
+
+    <h3>유연한 결정론(Sequential Decision Making)</h3>
+    <p>토큰을 <b>x<sub>t</sub> = [a<sub>t</sub>(액션), r<sub>t</sub>(보상), o<sub>t+1</sub>(관측)]</b>으로 잡고 그대로 Algorithm 1로 훈련. 실행 시 잠재 z<sub>t−1</sub>로부터 lookahead H 스텝 계획 x̂<sub>t:t+H</sub>를 샘플, 첫 액션 â<sub>t</sub> 실행 후 실제 (r<sub>t</sub>, o<sub>t+1</sub>) 관측으로 posterior 갱신.</p>
+    <ul>
+      <li><b>유연한 계획 지평.</b> lookahead H를 짧게 두면 저지연 정책(policy), 길게 두면 장거리 플래너. 재훈련·아키텍처 변경 없이 전환. Diffuser는 전체 궤적 고정, diffusion policy는 짧은 H 고정이라 둘 다 이런 유연성이 없음.</li>
+      <li><b>Monte Carlo Tree Guidance (MCTG).</b> 하나의 미래 궤적만 뽑아 유도 그래디언트를 계산하는 대신 <b>여러 미래 표본을 뽑아 그래디언트를 평균</b>. MPPI 같은 shooting method의 정신을 확산 유도에 접목. zig-zag 스케줄과 결합하면 "먼 미래의 큰 불확실성" 위에서 <b>기대 보상</b>을 유도하는 유일한 방법이 된다. 저자들의 이론(Appendix B.3)에 따르면 전체-시퀀스 확산은 기대 보상 최대화 샘플링이 불가능하다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>4.1 영상 예측 — 안정적 무한 롤아웃 (Minecraft, DMLab)</h3>
+    <p>모두 <b>동일한 convolutional RNN</b> 백본 위에 학습 방식만 바꿔 공정 비교: (a) teacher-forcing 다음-프레임 확산, (b) 인과 전체-시퀀스 확산, (c) Diffusion Forcing. 훈련 지평은 각각 Minecraft 72프레임, DMLab 36프레임. 정성 결과(Figure 3): DF만 훈련 지평을 훨씬 넘어 <b>1000+ 프레임까지 안정 롤아웃</b>. teacher-forcing과 full-sequence 확산 기준선은 빠르게 발산. 훈련 지평 내에서도 full-sequence 확산은 프레임-프레임 불연속(급격한 점프)을 보이는 반면 DF는 <b>일관된 3D 자기이동(ego-motion)</b>을 유지. 프로젝트 페이지에는 학습 지평의 20–30배인 <b>2000+ 프레임</b> 롤아웃 데모.</p>
+
+    <h3>4.2 D4RL 미로 6종 계획 (Table 1)</h3>
+    <p>2D 미로에서 sparse-reward로 목표 도달. 훈련 데이터는 랜덤 워크(stochastic). 미로별 모델 하나 학습.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>MPPI</th><th>CQL</th><th>IQL</th><th>Diffuser* (PD 컨트롤러)</th><th>Diffuser (생성 액션 실행)</th><th>DF w/o MCTG</th><th><b>DF (Ours)</b></th></tr></thead>
+      <tbody>
+        <tr><td>단일 태스크 평균 보상</td><td>—</td><td>—</td><td>—</td><td>141.7</td><td>—</td><td>116.7 ± 2.0</td><td class="win">159.0 ± 2.7</td></tr>
+        <tr><td>다중 태스크 평균 보상</td><td>—</td><td>—</td><td>—</td><td>146.17</td><td>119.1 ± 4.0</td><td>152.3 ± 9.9</td><td class="win">167.1 ± 2.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">* Diffuser는 생성한 액션이 궤적과 자기일관성이 없어 <b>수작업 PD 컨트롤러로 액션을 뒤바꿔</b>야 정상 동작. 표의 별표(*) 열은 그 보정본이며, 별표 없는 Diffuser 열은 생성 액션을 그대로 실행한 결과(급락). DF는 원시 액션을 그대로 실행해도 Diffuser+PD보다 높은 보상. 6개 환경 모두에서 DF 승.</p>
+    <p><b>핵심 발견 3가지.</b> (1) <b>MCTG의 이득</b>: 제거하면 116.7→(원본 159.0 대비) 하락, 그래도 competitive. (2) <b>인과성의 이득</b>: Diffuser의 생성 액션을 그대로 실행하면 성능 급락(119.1) — 액션과 상태가 인과적으로 어긋나기 때문. DF는 원시 액션이 자기일관적. (3) <b>유연 지평의 이득</b>: 에이전트가 목표에 다가갈수록 지평을 줄여야 하는데, 전체-시퀀스 모델은 이 조정이 어려움.</p>
+
+    <h3>4.3 구성적(compositional) 생성</h3>
+    <p>모서리→반대편 모서리 X자 궤적 데이터셋. 메모리를 유지하면 X자를 재현, MPC로 짧은 계획+메모리 없이 조합하면 부분 궤적들이 이어져 <b>V자 궤적</b>이 자연스럽게 나온다. 샘플링 스킴만 바꿔 훈련 궤적의 하위 시퀀스를 유연하게 조합 가능.</p>
+
+    <h3>4.4 실로봇 장거리 모방학습 (Franka + 과일 교환, Figure 4)</h3>
+    <p>사과·오렌지를 세 번째 슬롯을 이용해 교환. 초기 배치가 랜덤이라 <b>메모리 없이는 다음 스텝을 결정 불가</b>한 태스크.</p>
+    <ul>
+      <li><b>메모리를 갖는 모방학습:</b> DF <b>80%</b> 성공. 메모리 없는 SOTA인 <b>diffusion policy는 실패</b>.</li>
+      <li><b>관측 오염에 대한 강건성:</b> 시각 방해물 추가 및 카메라 완전 가림 상황에서 관측을 "k&gt;0인 잡음"으로 표시하면 DF는 prior 모델에 의존해 계속 작동. 성공률 80%→<b>76%</b>(단 4%p 하락). 반면 다음-프레임 확산 기준선은 <b>48%</b>로 급락.</li>
+      <li><b>영상 사전학습 가능성:</b> 같은 모델이 초기 프레임만으로 로봇 수행 <b>영상까지 생성</b>. 모방정책과 영상생성이 하나의 모델·목적으로 통일되어 액션 없는 영상으로 사전학습할 여지.</li>
+    </ul>
+
+    <h3>4.5 시계열 예측</h3>
+    <p>Appendix E: 다변량 확률적 시계열 예측에서 사전 확산 기반 모델[48]과 트랜스포머 기반 모델[49]에 competitive. DF가 <b>도메인 무관 범용 시퀀스 모델</b>임을 시사.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>MCTG 제거:</b> D4RL 미로 단일 태스크 평균 116.7 ± 2.0로 하락(원본 159.0 ± 2.7). 그래도 Diffuser의 보정본(141.7)과 유사 수준 유지.</li>
+      <li><b>안정화 노이즈 유무:</b> 자기회귀 롤아웃 시 과거 토큰에 약간의 노이즈(작은 k)를 주면 훈련 지평 초과에서 발산이 억제. 없으면 다음-프레임 확산과 유사하게 몇 프레임 안에 붕괴.</li>
+      <li><b>다음-토큰을 full-sequence 확산으로 나이브 결합:</b> 저자들이 명시적으로 실패 케이스로 언급 — <b>초기 토큰의 작은 불확실성이 후행 토큰의 큰 불확실성을 요구</b>한다는 인과 구조를 모델링하지 못해 생성 품질 나쁨. DF의 토큰별 독립 노이즈 레벨이 이 문제를 해결.</li>
+      <li><b>관측 오염:</b> 방해물·카메라 가림 상황에서 노이즈 레벨을 크게 잡아 알림 → DF 80→76%, 다음-프레임 확산 48%.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2407.01392/Capabilities.png" alt="Diffusion Forcing capabilities overview (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Diffusion Forcing capabilities.</b> 언어모델(auto-regressive)·계획(full-sequence diffusion)·영상(full-sequence diffusion) 등 서로 다른 응용이 각각 다음-토큰 예측 또는 전체-시퀀스 확산 중 하나에 의존하는 현 상황을, DF는 <b>두 접근의 핵심 강점을 동시에 제공</b>하는 새 시퀀스 생성 모델임을 도식적으로 보여준다.</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2407.01392/Overview_best_guess.png" alt="Diffusion Forcing method overview (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Method Overview.</b> DF는 <b>시간 축과 노이즈 축을 교차</b>해 인과 시퀀스 신경망(RNN 또는 마스크드 트랜스포머)이 각 프레임이 서로 다른 노이즈 레벨을 갖는 가변 길이 시퀀스를 denoise하도록 훈련한다. 대조적으로 next-token prediction(teacher forcing)은 정답 시퀀스에서 다음 토큰 하나만 예측하고, full-sequence diffusion(영상 생성 표준)은 모든 프레임을 같은 노이즈 레벨로 non-causal 하게 한꺼번에 denoise한다.</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2407.01392/Sampling_Schemes.png" alt="Sampling schemes as noise scheduling matrices (Table 1 top)" loading="lazy">
+      <figcaption><b>Sampling Schemes.</b> M×T 노이즈 스케줄링 행렬 𝒦로 표현되는 DF의 샘플링 격자. 각 열=시간, 각 행=denoising step. 한 격자만 바꾸면 next-token, full-sequence, 지그재그(먼 미래 더 노이즈 큼) 등 어떤 방식도 표현 가능. 지그재그는 인과적 불확실성을 명시적으로 인코딩해 planning과 MCTG를 가능케 한다.</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2407.01392/Video_prediction.png" alt="Video prediction rollouts on Minecraft and DMLab (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Video Generation.</b> DMLab·Minecraft에서 훈련 지평을 훨씬 넘긴 롤아웃. DF만 <b>시간적 일관성(consistency)</b>이 유지되며 발산하지 않음. teacher-forcing과 full-sequence 확산 기준선은 훈련 지평 근처에서 붕괴하거나 프레임-프레임 점프를 보인다.</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2407.01392/Imitation.png" alt="Real robot fruit-swap task (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 실로봇 과일 교환 태스크.</b> (a)(b) 상단 관측은 동일하지만 초기 배치에 따라 목표가 달라지므로 <b>초기 구성 기억</b>이 필수. (c) 같은 모델이 <b>단일 초기 프레임에서 로봇 수행 영상까지 합성</b>. DF는 액션 생성과 영상 생성을 한 프레임워크로 통일한다.</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2407.01392/ability_in_sequence.png" alt="DF capability comparison in sequence (Figure 5, appendix)" loading="lazy">
+      <figcaption><b>Figure 5 (부록) — 시퀀스 관점에서의 능력 비교.</b> teacher-forcing autoregressive, full-sequence diffusion, DF 각각의 훈련·샘플링 도식과 인과 구조·유도(guidance) 지원 여부 비교.</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (Planning)</b> — 원문 요지: "DF는 각 시점을 서로 다른 노이즈 스케줄로 denoise할 수 있어 유도(guidance) 계획 중 <b>인과적 불확실성</b>을 반영할 수 있다. DF는 먼 미래를 가까운 미래보다 더 불확실하게 유지하는 반면 Diffuser는 동일 노이즈 레벨. 정량적으로 DF는 실행 평균 보상 최고." (단일 태스크 159.0, 다중 태스크 167.1)
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2407.01392" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2407.01392" target="_blank">PDF</a></li>
+      <li><a href="https://boyuan.space/diffusion-forcing/" target="_blank">프로젝트 페이지 (영상 데모)</a></li>
+      <li><a href="https://github.com/buoyancy99/diffusion-forcing" target="_blank">GitHub 코드 (buoyancy99/diffusion-forcing)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2407.01392 · Diffusion Forcing · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

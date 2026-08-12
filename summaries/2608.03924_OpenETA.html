@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>OpenETA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Embodied Agent · Tool Use</span>
+    <h1>ETA: A New Agentic Paradigm for Embodied Tasks</h1>
+    <p class="authors">Yitong Chen, Zezheng Huai, Sixian Li, Yubang Wang, Haozhe Zhang, Yifei Zhang, Hechang Chen, Jingjing Gong, Yu-Gang Jiang, Xipeng Qiu · Shanghai Innovation Institute · Fudan University · Jilin University · Nanjing University · Zhejiang University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.03924" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.03924" target="_blank">PDF</a>
+      <a href="https://github.com/OpenMOSS/OpenETA" target="_blank">GitHub</a>
+      <span>arXiv:2608.03924</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Embodied Agent</span>
+      <span class="t">Tool Use</span>
+      <span class="t">LIBERO</span>
+      <span class="t">LLM Agent</span>
+      <span class="t">Self-Evolution</span>
+      <span class="t">Sim2Real</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 4일 · 벤치마크 LIBERO(40 tasks × 10 seeds) · 실로봇 UR5e + Robotiq</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>End-to-end VLA(Vision-Language-Action, 관찰-언어-행동을 하나의 신경망이 통째로 매핑) 방식이 <b>낯선 태스크로의 일반화·긴 상호작용에서의 통제성</b>이 부족하다는 문제의식에서 출발. 저자들은 <b>Planner–Interface–World</b> 3분할 <b>ETA(Embodied Task Agent)</b> 패러다임과 오픈소스 구현체 <b>OpenETA</b>(툴 44개, LIBERO/UR5e 어댑터)를 제안. 핵심은 <b>"한 번에 하나의 세계 변경 액션 → 새 관찰 후 다음 결정"</b>이라는 <b>런타임 불변식(runtime invariant)</b>이며, Interface가 안전·근거·권한을 게이트한다. LIBERO 40태스크·400에피소드에서 풀 OpenETA는 <b>14.0%</b>(56/400), Codex용 3툴 축소본은 GPT-5.6 Sol에서 <b>Pass@5 90.0%</b>(117/130) 달성. 자체 진화(self-evolution) 후보는 <b>승격 게이트를 통과한 사례 0건</b>으로, "성능이 아닌 통제 가능한 상한"을 실증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇을 위한 "ChatGPT급 도약"을 만들려면, 훈련 분포 밖의 낯선 태스크에서도 작동하고(<b>일반화</b>), 긴 상호작용 내내 <b>통제(controllability)</b>가 유지되며, 경험으로부터 <b>학습·개선</b>이 가능해야 한다. 그러나 현재 지배적 방법인 <b>end-to-end VLA</b>(관찰·언어를 입력받아 연속 액션을 통째로 회귀하는 단일 신경망)는 다음 문제를 안는다.</p>
+    <ul>
+      <li><b>분포 밖(out-of-distribution) 태스크</b>에서 급격히 실패 — 원인 규명이 어렵다(블랙박스).</li>
+      <li>연속 액션 스트림이라 <b>각 단계 근거(evidence)</b>가 남지 않아, 안전 승인·재현·롤백이 힘들다.</li>
+      <li>파인튜닝만이 개선 수단이므로 <b>실 사용 중 학습·수정</b>이 사실상 불가.</li>
+    </ul>
+    <p>저자들은 대안으로 <b>"에이전트가 툴(tool)을 이산적으로 호출하고 매 호출마다 결과를 검증"</b>하는 방식을 취한다. 이는 대형 언어 모델(LLM) 계열에서 이미 검증된 <b>tool-use 에이전트</b> 사고를 로봇 도메인에 이식한 것이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>ETA 패러다임(Planner–Interface–World)</b> — 임무 이해·기억·다음 명령 제안은 <b>Planner</b>, 명령 구조·안전·전제조건 검증과 실행 게이트는 <b>Interface</b>, 실제 실행과 새 관찰 반환은 <b>World</b>가 담당하도록 역할을 엄격히 분리. 매 스텝 <b>새 관찰(fresh observation)</b>을 요구해 상태-의존적 결정의 근거를 강제한다.</li>
+      <li><b>OpenETA 오픈소스 구현</b> — 교체 가능한 Planner, 조합 가능한 <b>Tool·Skill</b> 44종 레지스트리, 감사(audit) 가능한 메모리, 재현 가능한 <b>trajectory</b>(궤적)를 갖춘 시스템. 시뮬레이터(LIBERO)와 실 로봇(UR5e + Robotiq)에 <b>동일 인터페이스</b>로 붙는다.</li>
+      <li><b>OpenETA for Codex(경량 플러그인)</b> — <b>observe / mark_point / move_to</b> 3개 툴만 노출하는 축소 버전. 코드-생성 LLM(예: Codex 계열)에 <b>최소 변경</b>으로 부착 가능한 형태로 검증.</li>
+      <li><b>제약 있는 자체 진화(Constrained Self-Evolution)</b> — 실행 기록(trajectory)으로부터 Skill/플레이북 후보를 자동 제안하되, <b>D·Q·R·H</b> 4단 게이트 통과 시에만 실행 권한을 승격. 실험 상 통과 사례 <b>0건</b>으로, 개선이 아닌 <b>통제된 상한</b>을 보여준다.</li>
+      <li><b>LIBERO 40태스크 표준 벤치와 실 UR5e 데모 공개</b> — 시뮬·실기 양쪽에서 재현 가능한 프로토콜과 실패 라벨 체계 제공.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3.1 3분할 아키텍처와 런타임 불변식</h3>
+    <p>ETA는 태스크 수준(task-level) 에이전트를 세 역할로 분해한다.</p>
+    <div class="kv">
+      <div>Agent(Planner)</div><div>자연어 목표를 해석하고 <b>working memory</b>(현재 관찰·과거 결과·미완 의무를 담는 작업 기억)를 유지하며, 매 스텝 <b>단 하나의 툴</b>을 고른 구조화된 명령 <span class="pill">c<sub>t</sub></span>를 낸다.</div>
+      <div>Interface</div><div>명령의 스키마·안전 조건·전제(evidence)를 검사하고, <b>실행 권한(gate)</b>을 승인/거부한다. 툴 디스패치와 실행 게이팅을 소유.</div>
+      <div>World</div><div>시뮬레이터/실 로봇 백엔드에서 실제 실행하고, <b>툴 결과·환경 영수증(receipt)·새 관찰</b>을 돌려준다.</div>
+    </div>
+    <div class="callout">
+      <b>런타임 불변식(핵심):</b> "<i>한 번에 하나의 세계 변경(world-mutating) 액션만 실행하고, 반드시 <b>새 관찰</b>을 받은 뒤에야 다음 상태-의존적 결정을 한다.</i>" 이 규칙이 무너지면 "몰라도 밀어붙이는" 실패가 폭증한다.<br>
+      <b>왜:</b> 로봇은 시뮬 배치 실행과 달리 <b>물리적 되돌리기 비용</b>이 크다. 관찰→행동을 매 스텝 잇는 것이 검증·안전 승인·롤백의 최소 단위다.
+    </div>
+    <p>수식으로는 다음 두 줄로 요약된다.</p>
+    <ul>
+      <li><b>계획:</b> <span class="pill">c<sub>t</sub> = π<sub>agent</sub>(g, o<sub>t</sub>, m<sub>t</sub>)</span> — 목표 g, 현재 관찰 o<sub>t</sub>, 메모리 m<sub>t</sub>로부터 다음 명령을 낸다.</li>
+      <li><b>실행 게이팅:</b> <span class="pill">a<sub>t</sub> = dispatch(c<sub>t</sub>) if gate(c<sub>t</sub>, o<sub>t</sub>, m<sub>t</sub>)=pass; else ∅</span> — Interface 게이트가 통과할 때만 액션이 나간다. 통과 못하면 아무 일도 일어나지 않는다(안전 기본값).</li>
+    </ul>
+
+    <h3>3.2 Tool·Skill·AtomAction의 개념 위계</h3>
+    <p>ETA는 다음 세 층의 개념을 엄격히 구분한다.</p>
+    <ul>
+      <li><b>Tool</b> — 호스트가 등록한 원자 기능. 파라미터·리턴 계약(schema)이 안정적이며 <b>사이드 이펙트 클래스</b>가 선언된다: <b>read_only</b>, <b>planning</b>(계획만·세계 미변경), <b>bookkeeping</b>(메모리 갱신), <b>world_mutating</b>(세계 변경).</li>
+      <li><b>Skill</b> — "어떻게 추론·확인·복구할지"를 서술한 <b>수정 가능한 텍스트 지침</b>. 절대 숨겨진 액션 시퀀스를 실행하지 않는다(항상 툴 호출로 귀결).</li>
+      <li><b>AtomAction</b> — 물리적 세계를 실제로 바꾸는 실행 원자(world_mutating 툴의 부분집합). <b>Skill 텍스트는 AtomAction을 우회할 수 없다</b>.</li>
+    </ul>
+    <div class="callout">
+      <b>왜 이렇게 나누나:</b> "LLM이 자기 지시문을 바꿔 새 능력을 학습"하는 자유도를 열되, <b>실제 세계에 영향을 주는 층(AtomAction)은 늘 검증된 툴 계약</b>을 통해서만 지나가도록 벽을 세우기 위해서다. 자기 진화가 "잘못된 방향으로 세지지" 않게 하는 안전 장치.
+    </div>
+
+    <h3>3.3 툴 레지스트리(44종 개요)</h3>
+    <p>OpenETA가 기본 제공하는 툴은 다섯 범주.</p>
+    <ul>
+      <li><b>지각(Perception)</b> — <span class="pill">observe</span>(요청 뷰의 실시간 이미지), <span class="pill">molmopoint</span>·<span class="pill">sam3</span>(픽셀 지시·분할), <span class="pill">enhance_depth</span>, <span class="pill">retrieve_asset_reference</span>.</li>
+      <li><b>파지·배치 계획</b> — <span class="pill">grasp_pose_estimate</span>, <span class="pill">anygrasp</span>, <span class="pill">contact_graspnet</span>, <span class="pill">anyplace</span>.</li>
+      <li><b>안전·실행</b> — <span class="pill">ik_preview_check</span>(역기구학 미리보기), <span class="pill">obstacle_avoidance</span>, <span class="pill">move_to</span>, <span class="pill">follow_eef_trajectory</span>, <span class="pill">gripper_control</span>.</li>
+      <li><b>환경·근거</b> — <span class="pill">create_simulator_env</span>, <span class="pill">materialize_mcp_images</span>(MCP=Model Context Protocol, LLM↔툴 규약).</li>
+      <li><b>에이전트 지원</b> — <span class="pill">save_memory</span>/<span class="pill">get_memory</span>/<span class="pill">compact_memory</span>, <span class="pill">python_exec</span>, <span class="pill">register_skill</span>.</li>
+    </ul>
+
+    <h3>3.4 경량 버전: OpenETA for Codex (3툴)</h3>
+    <p>기존 코드-생성 LLM(예: Codex 스타일)에 <b>최소 인터페이스로 붙이기 위한 축소본</b>. 노출 툴은 단 셋.</p>
+    <ul>
+      <li><span class="pill">observe</span> — 요청한 카메라 뷰의 라이브 이미지 반환.</li>
+      <li><span class="pill">mark_point</span> — 2D 픽셀 클릭을 <b>3D 월드 좌표</b>로 변환(멀티뷰 또는 단일뷰 모드).</li>
+      <li><span class="pill">move_to</span> — 그리퍼를 지정 위치·자세로 이동, <b>미리보기(preview) 옵션</b> 지원.</li>
+    </ul>
+    <div class="callout">
+      <b>왜 3개로 줄이나:</b> 툴 수가 많을수록 LLM의 라우팅·스키마 준수 오류가 급증한다. Codex 같은 코드 특화 모델은 이미 파이썬 실행 능력이 있어, <b>세계와의 접점</b>만 표준화해도 충분하다는 가설.
+    </div>
+
+    <h3>3.5 Evidence Chain(근거 사슬)과 신뢰 영수증</h3>
+    <p>Interface는 실행 결과를 받아 <b>host-attested provenance</b>(호스트가 서명한 출처), <b>execution ID</b>, <b>session ID</b>가 현재 턴과 일치할 때만 리워드·종결 신호를 유효로 인정한다. 저수준 관절 벡터, 컨트롤러 확장, 내부 환경 객체는 <b>Planner에 숨겨진다</b> — LLM이 "지어낼" 여지를 없앤다.</p>
+
+    <h3>3.6 제약 있는 자체 진화(Constrained Self-Evolution)</h3>
+    <p>실행 궤적(trajectory)에서 <b>Skill 편집</b>·<b>정확 태스크 플레이북</b>·<b>스테이지 델타</b> 세 유형의 업데이트를 후보로 자동 제안한다. 승격 규칙은 4단계 AND 조건.</p>
+    <ul>
+      <li><b>D — Deterministic check:</b> 후보가 스키마·안전 불변식을 어기지 않아야 함.</li>
+      <li><b>Q — Isolated review:</b> 후보를 만든 문맥과 <b>격리된 컨텍스트</b>에서 재검토.</li>
+      <li><b>R — Same-task replay:</b> 원 태스크에서 동일 성공 재현.</li>
+      <li><b>H — Held-out evaluation:</b> 페어링된 홀드아웃 태스크에서 <b>이득이 회귀 없이</b> 관측될 것.</li>
+    </ul>
+    <p>승격 규칙: <span class="pill">Promote(u) = D(u) ∧ Q(u) ∧ R(u) ∧ H(u)</span>. 어떤 업데이트도 <b>월드 좌표 저장·역사적 포즈 재사용·원자 툴 재정의·안전 검사 우회</b>를 할 수 없다.</p>
+
+    <h3>3.7 평가 지표 Pass@k</h3>
+    <p><span class="pill">S<sub>i</sub>@k = max<sub>1≤j≤k</sub> r<sub>i,j</sub></span>, <span class="pill">Pass@k = (1/N) Σ S<sub>i</sub>@k</span> — 태스크 i의 k개 시드 중 하나라도 성공하면 1, 전 태스크 평균. r<sub>i,j</sub>는 시드 j의 공식 verdict(0/1).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>4.1 풀 OpenETA — LIBERO 고정 매트릭스 (40 태스크 × 10 시드 = 400 에피소드)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>결과</th></tr></thead>
+      <tbody>
+        <tr><td>에피소드 성공</td><td class="win">56/400 (14.0%)</td></tr>
+        <tr><td>1회 이상 성공한 태스크 수</td><td>18/40</td></tr>
+        <tr><td>지배적 실패 라벨: episode_timeout</td><td>215/344 (62.5%)</td></tr>
+        <tr><td>unattended_ask_human</td><td>66/344 (19.2%)</td></tr>
+        <tr><td>max_turns</td><td>35/344 (10.2%)</td></tr>
+        <tr><td>status_report_without_reward</td><td>24/344 (7.0%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Suite별 세분: Spatial 8/100(8.0%), Object 26/100(26.0%), Goal 21/100(21.0%), Long/LIBERO-10 1/100(1.0%). 긴 지평(long-horizon) 태스크가 특히 어려움.</p>
+
+    <h3>4.2 OpenETA for Codex — 3툴 축소본, 130 LIBERO 태스크 (medium reasoning)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Planner 모델</th><th>Pass@1</th><th>Pass@5</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-5.6 Luna</td><td>21/130 (16.2%)</td><td>62/130 (47.7%)</td></tr>
+        <tr><td>GPT-5.6 Terra</td><td>58/130 (44.6%)</td><td>83/130 (63.8%)</td></tr>
+        <tr><td>GPT-5.6 Sol</td><td class="win">92/130 (70.8%)</td><td class="win">117/130 (90.0%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">가장 강한 Planner(Sol)는 <b>첫 시드만으로 92개</b>를 풀며, 5시드 내에 <b>117/130 = 90.0%</b>를 통과. 툴을 3개로 좁혔음에도 Planner 자체 성능이 압도적으로 결과를 좌우.</p>
+
+    <h3>4.3 실 로봇 데모 (UR5e + Robotiq 2F 그리퍼)</h3>
+    <p>정량 성공률은 없고 정성적 데모. 스펀지-트레이 이동을 다수 <b>웨이포인트(waypoint)</b>로 완주하는 시퀀스가 촬영됨. 개발 중 파악된 실 로봇 병목:</p>
+    <ul>
+      <li><b>RealSense 깊이 완성</b>이 시뮬 깊이보다 훨씬 성기다 — <span class="pill">enhance_depth</span> 필요.</li>
+      <li><b>측방 파지(lateral grasp)</b> 궤적에서 보호 정지(protective stop) 유발 사례.</li>
+      <li>캘리브레이션·제어 주기·비상 정지·페이로드 한계는 기기별 검증 필요.</li>
+    </ul>
+    <div class="note">저자 강조: 실기 데모는 <b>인터페이스 통합 검증</b>이지 태스크 성공률 벤치가 아니다. 시뮬 성공이 실기 안전을 담보하지 못함을 명시.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation — 제약 있는 자체 진화 결과</h2>
+    <ul>
+      <li><b>승격 게이트 통과 후보: 0건.</b> 어떤 자동 제안 업데이트도 D·Q·R·H 4단을 모두 통과하지 못했다.</li>
+      <li>저자 해석: "<i>현재의 범용 모델들은 <b>물리적 액션 뒤에 반드시 관찰·수정한다</b>는 습관을 신뢰할 만큼 채택하지 않는다.</i>" → 자체 진화 실패의 근본 원인은 계획자의 습관 결핍.</li>
+      <li>본 결과는 <b>성능 개선 데모가 아니라 통제된 상한 데모</b>. "잘못된 학습이 실행 권한을 얻는 것"을 시스템이 자동으로 막았음을 보이는 것이 목적.</li>
+    </ul>
+    <div class="callout">
+      <b>왜 통제가 우선인가:</b> 로봇 자체 진화는 실패 시 <b>물리 파손·안전 사고</b>로 이어질 수 있다. "성능이 나쁠 때는 학습 자체를 거부"하도록 게이트를 세우는 편이 장기적으로 안전한 확장성을 준다는 설계 철학.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.03924/OpenETA-paradigm.png" alt="OpenETA 3분할 패러다임 (Planner–Interface–World)" loading="lazy">
+      <figcaption><b>Figure — OpenETA paradigm.</b> Planner(계획·기억), Interface(검증·게이트), World(실행·관찰)의 3분할과 매 스텝의 명령→게이트→실행→새 관찰 루프. "한 번에 하나의 세계 변경, 그 다음 반드시 새 관찰"이 시각적 축. (출처: arXiv:2608.03924)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.03924/evidence-chain.png" alt="Evidence Chain — 신뢰 영수증과 근거 사슬" loading="lazy">
+      <figcaption><b>Figure — Evidence Chain.</b> Interface가 실행 결과에 붙이는 <b>host-attested provenance</b>·execution ID·session ID의 흐름. Planner는 저수준 관절 벡터나 컨트롤러 내부를 못 보고, 오직 서명된 요약만 받는다. (출처: arXiv:2608.03924)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.03924/OpenETA-roadmap.png" alt="OpenETA 로드맵" loading="lazy">
+      <figcaption><b>Figure — OpenETA roadmap.</b> 현재 단일 팔 시뮬 조작 → 인프라 정비 → 양팔·접촉 풍부 태스크 → 이동 조작·다중 에이전트 → 학습 루프 통합의 스테이지. 각 스테이지는 <b>반복 성공·안전·재현·복구</b>가 만족될 때만 다음으로 넘어간다. (출처: arXiv:2608.03924)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.03924/sim-demo1-EN.jpeg" alt="LIBERO 시뮬 태스크 데모" loading="lazy">
+      <figcaption><b>Figure — LIBERO 시뮬 데모 프레임.</b> observe로 얻은 뷰, mark_point로 지시한 대상, move_to의 프리뷰 궤적이 함께 로깅되는 근거 사슬 예시. (출처: arXiv:2608.03924)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.03924/ur5e_sponge_success_keyframes.jpg" alt="UR5e 스펀지-트레이 성공 키프레임" loading="lazy">
+      <figcaption><b>Figure — UR5e + Robotiq 실 로봇 데모.</b> 스펀지를 잡아 트레이로 옮기는 성공 키프레임. 정량 벤치가 아닌 인터페이스 통합·안전 게이트 동작 확인이 목적. (출처: arXiv:2608.03924)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>승격 규칙(원문 요지)</b> — <i>Promote(u) = D(u) ∧ Q(u) ∧ R(u) ∧ H(u)</i>. 후보 업데이트는 (D) 스키마·안전 불변식 위반이 없고, (Q) 격리 문맥에서의 재검토를 통과하고, (R) 원 태스크에서 성공을 재현하며, (H) 홀드아웃에서 회귀 없는 이득을 보여야 실행 권한을 얻는다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.03924" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.03924" target="_blank">PDF</a></li>
+      <li><a href="https://github.com/OpenMOSS/OpenETA" target="_blank">GitHub — OpenMOSS/OpenETA</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.03924 · OpenETA · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

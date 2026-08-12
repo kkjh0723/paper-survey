@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proprio-VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Proprioception</span>
+    <h1>How Should Vision-Language-Action Models Use Proprioceptive State?</h1>
+    <p class="authors">Yiren Zhao, Ziyang Chen, Ziyang Rao, Pengteng Li, He Zhang, Weiyu Guo (교신), Yandong Guo, Rushi Dai (교신) · arXiv:2608.03052</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.03052" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.03052" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2608.03052v1" target="_blank">HTML</a>
+      <span>arXiv:2608.03052</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Proprioception</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Design Study</span>
+      <span class="t">RoboCasa</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 4일 · 백본 π0.5 (파이-영-점-오, flow-matching VLA) 고정</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>같은 flow-matching(무작위 노이즈에서 정답 액션 궤적 쪽으로 흐르는 방향을 학습해 몇 스텝 만에 액션을 만들어내는 생성 방식) 백본 <b>π0.5</b>·데이터·평가 프로토콜을 고정한 뒤, 로봇 자기 상태(proprioceptive state, 관절각·엔드이펙터 자세·그리퍼 개폐 같이 로봇 자신이 스스로 알 수 있는 상태)를 <b>어떤 형태로, 어디에 넣고, 얼마나 긴 과거를 함께 줄지</b>를 통제 실험으로 비교. 단일 프레임(1개 시점) 조건에서는 <b>discrete state prompt(sp)</b>가 원자 태스크 평균 <span class="win">57.7%</span>(무-state 베이스라인 54.6% 대비 +3.1)로 최고이며, 8프레임 히스토리를 넣으면 액션 쪽 삽입인 <b>Action Prefix(ap)</b>가 복합 태스크에서 <span class="win">39.0%</span>(1프레임 28.2% 대비 +10.8)로 급등. 결론적 설계 지침: <b>"단일 프레임 상태는 VLM(비전-언어 모델)에 넣고, 다프레임 히스토리는 액션 헤드로 보내라."</b></p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA(Vision-Language-Action, 사진·언어 지시를 받아 로봇 액션을 내는 모델)들은 로봇 자기 상태(proprioceptive state)를 <b>서로 매우 다른 방식으로</b> 집어넣고 있다. 어떤 모델은 상태를 텍스트 토큰처럼 프롬프트에 이어 붙이고, 어떤 모델은 별도 분기(branch)에서 처리하며, 어떤 모델은 아예 사용하지 않는다. 이 배선 방식들은 상호 호환되지 않고, "상태를 <b>어떤 표현으로</b>, <b>어디에</b>, <b>얼마나 과거까지</b> 주입해야 하는가"에 대한 합의가 없다.</p>
+    <p>본 논문은 이 세 축(형태·위치·시간 깊이)에 대해 <b>백본·학습 데이터·액션 표현·평가 프로토콜을 전부 고정한</b> 통제 실험을 수행해, 향후 상태-인식(state-aware) VLA 설계에 재사용 가능한 지침을 도출한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>3축 설계 공간 정리</b> — 상태 <b>표현(이산 프롬프트 vs 연속 토큰)</b> × <b>주입 위치(VLM 프리픽스 · 액션 프리픽스 · 별도 스트림 · 조건화 메모리)</b> × <b>시간 깊이(1 ~ 96 프레임)</b>의 3축을 정의하고, 각 축을 하나씩만 바꾸는 통제 실험 설계.</li>
+      <li><b>5개 대표 인터페이스 벤치마킹</b> — <b>State Prompt(sp)</b>, <b>VLM Prefix(vp)</b>, <b>Action Prefix(ap)</b>, <b>State Expert(se)</b>, <b>Feature Modulation(fm)</b>를 동일 백본(π0.5)·동일 데이터로 비교. 원자 태스크 45개 + 복합 태스크 20개(총 65 태스크) 상에서 성공률 측정.</li>
+      <li><b>Slot-matched control 실험</b> — 8프레임 히스토리 성능 향상이 "정보의 양(용량, capacity)" 때문인지 "시간 순서(temporal ordering)" 때문인지 구분하려고, 현재 상태를 8번 반복해 자리(slot)만 채운 대조군을 도입. 실제 순서 있는 히스토리가 반복 대조군보다 <b>+8.2점</b> 우세함을 확인.</li>
+      <li><b>설계 지침 도출</b> — "단일 프레임 상태는 VLM에 넣고, 다프레임 히스토리는 액션 헤드로 라우팅하라"라는 검증 가능한 지침을 제시. 조인트각 vs 엔드이펙터 좌표 선택은 <b>부차적(secondary)</b> 요인임을 실험으로 확인.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>공통 스캐폴드 (모든 인터페이스가 공유하는 기반)</h3>
+    <p>백본은 <b>π0.5</b>(Physical Intelligence 사의 flow-matching VLA). 멀티뷰 이미지 + 언어 지시가 VLM(비전-언어 모델)에 들어가 문맥 특징을 만들고, 이 특징이 <b>action expert</b>(액션 전용 서브네트워크, 노이즈로부터 액션 궤적으로 흐르는 벡터장을 학습하는 트랜스포머)를 조건화(condition)해 액션 청크를 출력한다. 상태를 어떻게 넣든 이 뼈대와 학습 데이터·목적함수는 그대로 유지된다.</p>
+
+    <h3>상태 표현 (Representation)</h3>
+    <p>원 상태 벡터는 <b>16차원</b>: 엔드이펙터 위치(3) + 회전 쿼터니언(4) + 모바일 베이스 자세 + 그리퍼 개폐값. 두 가지 표현을 비교한다.</p>
+    <ul>
+      <li><b>이산 프롬프트(discrete):</b> 각 차원을 256개 구간(bin)으로 양자화(quantize, 실수를 정수 코드로 변환)해 기존 텍스트 토크나이저로 직렬화 → 프레임당 약 <b>66개 프롬프트 토큰</b>.</li>
+      <li><b>연속 토큰(continuous):</b> 16차원 상태를 <b>2층 프로젝터(MLP)</b>로 인코딩해 <b>프레임당 1개의 연속 상태 토큰</b>(주입 위치에 따라 d=2048 또는 d=1024)을 만든다.</li>
+    </ul>
+
+    <h3>5개 상태 인터페이스 (Where to inject)</h3>
+    <div class="callout"><b>왜 5개인가:</b> 기존 대표 VLA들(π0·OpenVLA·GR-2·Diffusion Policy 등)의 실제 상태 배선을 <b>중복 없이</b> 대표하도록 5가지로 압축.</div>
+    <ul>
+      <li><b>SP — State Prompt:</b> 이산화된 상태 토큰(≈66개)을 <b>텍스트 프롬프트에 이어 붙임</b>. 기존 토크나이저 그대로 재사용.</li>
+      <li><b>VP — VLM Prefix:</b> 프레임당 1개의 연속 상태 토큰(d=2048)을 <b>VLM의 양방향(bidirectional) 프리픽스에 이미지·언어 토큰 뒤</b>로 삽입. 상태가 VLM 문맥과 자유롭게 교차 주의(cross-attend).</li>
+      <li><b>AP — Action Prefix:</b> 연속 상태 토큰(d=1024)을 <b>액션 expert의 인과(causal) 접미부에서 노이즈 액션 토큰 앞</b>에 배치. 상태가 액션 디노이징 전용으로만 참조됨.</li>
+      <li><b>SE — State Expert:</b> VLM·액션 expert와 <b>병렬로 도는 별도의 상태 처리 스트림</b>을 추가. 상태 전용 트랜스포머 분기.</li>
+      <li><b>FM — Feature Modulation:</b> 상태를 <b>일반 시퀀스 토큰이 아니라 별도의 조건화 메모리(conditioning memory)</b>로 유지해, 필요 시점에 특징을 변조.</li>
+    </ul>
+
+    <h3>시간 깊이 (Temporal depth) — 히스토리 인코딩</h3>
+    <p>과거 K개 프레임을 함께 준다. K=1, 4, 8, 16, 32, 96 스윕(sweep, 값을 넓게 훑음). 히스토리는 <b>비압축(uncompressed)</b> 상태로 유지되며, K=8이 실용적 최적점.</p>
+    <div class="callout"><b>Slot-matched repeat-current 대조군:</b> K=8일 때 <b>현재 상태만 8번 반복</b>해 슬롯 수를 맞춘 대조군을 학습·평가. 이렇게 하면 성능 향상이 "슬롯 8개라는 용량 증가" 때문인지 "실제 시간 변화" 때문인지 구분할 수 있다. 결과: 진짜 히스토리가 반복 대조군 대비 <b>+8.2점</b> 우세 → 시간 변화 자체가 유효 신호.</div>
+
+    <h3>학습 & 평가 프로토콜</h3>
+    <div class="kv">
+      <div>백본</div><div>π0.5 (flow-matching VLA), 전 실험 동일</div>
+      <div>데이터</div><div>전 실험 동일 (인터페이스만 스왑)</div>
+      <div>액션 표현</div><div>고정(flow-matching action expert)</div>
+      <div>벤치마크</div><div>RoboCasa365 시뮬레이터 (Robotics Casa 벤치, 가정용 로봇 태스크 모음). 원자 태스크 45개(Family A/B/C 각 15개) + 복합 태스크 20개</div>
+      <div>평가</div><div>태스크별 성공률(SR, success rate)의 평균</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>표 1 — 단일 프레임 상태(K=1), 원자 태스크 45개 평균 성공률</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>인터페이스</th><th>평균 SR (%)</th><th>ΔSR vs no-state</th><th>강점 태스크 계열</th></tr></thead>
+      <tbody>
+        <tr><td>No state (베이스라인)</td><td>54.6</td><td>—</td><td>—</td></tr>
+        <tr><td><b>SP — State Prompt</b></td><td class="win">57.7</td><td class="win">+3.1</td><td>Family A(재배치): 68.7 (+7.0)</td></tr>
+        <tr><td>VP — VLM Prefix</td><td>56.8</td><td>+2.1</td><td>Family B(관절 조작): 68.8 (+6.1)</td></tr>
+        <tr><td>AP — Action Prefix</td><td>55.7</td><td>+1.1</td><td>—</td></tr>
+        <tr><td>SE — State Expert</td><td>57.6</td><td>+3.0</td><td>Family C(정밀): 42.8 (+3.3)</td></tr>
+        <tr><td>FM — Feature Modulation</td><td>57.6</td><td>+2.9</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Family A = 재배치·픽앤플레이스(광범위 위치 지정), Family B = 관절 물체 조작(지속 접촉·모션 단계), Family C = 노브·스위치·가전 조작(작은 작업 공간에서 국소 정밀도 요구). 상태 주입은 <b>어떤 방식이든 no-state보다 개선</b>하나 편차 존재.</p>
+
+    <h3>표 2 — K=1 vs K=8, 복합(composite) 태스크 20개 (EEF-pose 표현)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>인터페이스</th><th>K=1 SR (%)</th><th>K=8 SR (%)</th><th>ΔSR (K=8 − K=1)</th></tr></thead>
+      <tbody>
+        <tr><td><b>AP — Action Prefix</b></td><td>28.2</td><td class="win">39.0</td><td class="win">+10.8</td></tr>
+        <tr><td>VP — VLM Prefix</td><td>34.4</td><td>33.8</td><td>−0.6</td></tr>
+        <tr><td>SE — State Expert</td><td>25.8</td><td>28.0</td><td>+2.2</td></tr>
+        <tr><td>FM — Feature Modulation</td><td>27.8</td><td>32.2</td><td>+4.4</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>핵심 반전:</b> 단일 프레임에선 VLM 쪽 삽입(VP)이 복합 태스크에서 앞섰으나(34.4), 8프레임 히스토리를 주면 <b>액션 쪽 삽입(AP)</b>가 +10.8이라는 압도적 개선으로 역전. VP는 오히려 소폭 하락(−0.6). → <b>다프레임 시계열은 VLM 문맥이 아닌 액션 헤드에서 소화</b>되어야 한다.</p>
+
+    <h3>표 계열 요약 — 원자 태스크에서도 K=1→K=8 시</h3>
+    <p>원자 태스크에선 K=8이 인터페이스별로 <b>+0.6 ~ +5.0 pt</b> 개선을 보이나, 복합 태스크에서만큼 극적이지는 않음. 즉 히스토리 효과는 <b>다단계 순서(sub-goal chaining)를 요구하는 태스크에서 특히 크다</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>히스토리 길이 스윕(1 → 96 프레임):</b> 짧은 히스토리는 단일 프레임 대비 개선을 주지만, <b>더 깊은 비압축 히스토리는 추가 이득이 없고 결국 성능을 저하</b>시킨다. K=8이 실용적 최적점.</li>
+      <li><b>Family별 히스토리 민감도:</b> <b>Family C(정밀 조작)는 긴 히스토리에서 크게 저하</b>. Family A(재배치)와 B(관절)는 상대적으로 견고. → 태스크 성격에 따라 요구되는 시간 문맥의 폭이 다름.</li>
+      <li><b>Slot-matched 대조:</b> 진짜 순서 있는 8프레임 히스토리가 "현재 상태 8회 반복" 대조군보다 <b>+8.2점</b>. 즉 성능 향상은 슬롯 용량이 아니라 <b>시간 순서 정보</b> 자체에서 온다.</li>
+      <li><b>상태 표현(관절각 vs 엔드이펙터):</b> 결과가 <b>정성적으로 유사</b>하며 차이는 벤치마크 불확실성 내. 조인트/EEF 선택은 <b>부차적(secondary) 설계 요인</b>.</li>
+      <li><b>State-conditioned correction (그림 4 해석):</b> 상태를 넣은 모델은 flow 궤적을 따라 액션을 <b>세밀하게 재교정</b>하는 정성적 증거가 관찰됨.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.03052/x1.png" alt="상태 설계 공간 및 평가 스위트 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 상태 설계 공간과 평가 스위트 개요.</b> (1) 상태 표현: 이산 current-state 프롬프트 vs 연속 시간 토큰, (2) 공유 VLA 스캐폴드: 멀티뷰 관찰·언어 지시가 VLM에 입력되고 그 문맥이 action expert를 조건화, (3) 5개 상태 인터페이스(SP/VP/AP/SE/FM) 비교, 평가는 재배치(A)·관절(B)·정밀(C)·복합(D)의 4개 계열에서 수행. (원문 캡션 번역, 출처: arXiv:2608.03052)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.03052/x2.png" alt="단일 프레임 인터페이스별 계산량 비교 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 단일 프레임 인터페이스별 marginal compute (로그 스케일).</b> (a) 학습 시 샘플당 marginal GFLOPs, (b) 추론 10-step 정책 호출당 marginal GFLOPs. 성능뿐 아니라 <b>계산 비용</b>도 인터페이스 선택의 기준임을 보임. (원문 캡션 번역, 출처: arXiv:2608.03052)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 2 (K=1 vs K=8, 복합 태스크)</b> — 논문의 핵심 지침 "단일 프레임은 VLM, 히스토리는 액션 헤드"의 근거표. VP는 K=1 최고(34.4)이나 K=8에서 하락(−0.6), AP는 K=1 최하위 수준(28.2)이나 K=8에서 <b>+10.8</b>로 역전.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.03052" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.03052" target="_blank">PDF</a></li>
+      <li><a href="https://arxiv.org/html/2608.03052v1" target="_blank">HTML 버전 (v1)</a></li>
+      <li>프로젝트 페이지 · GitHub 코드 링크는 arXiv 페이지에 미제공</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.03052 · Proprio-VLA · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

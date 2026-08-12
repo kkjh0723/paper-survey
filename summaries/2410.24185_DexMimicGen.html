@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>DexMimicGen — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Bimanual · Dexterous · Data Generation</span>
+    <h1>DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning</h1>
+    <p class="authors">Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar, Linxi "Jim" Fan, Yuke Zhu · UT Austin · NVIDIA Research · UC San Diego · ICRA 2025</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2410.24185" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2410.24185" target="_blank">PDF</a>
+      <a href="https://dexmimicgen.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/NVlabs/dexmimicgen/" target="_blank">GitHub</a>
+      <span>arXiv:2410.24185</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Bimanual</span>
+      <span class="t">Dexterous Hand</span>
+      <span class="t">Humanoid</span>
+      <span class="t">Data Generation</span>
+      <span class="t">Imitation Learning</span>
+      <span class="t">MimicGen</span>
+    </div>
+    <p class="meta">제출: 2024년 10월 31일 (v1) · 2025년 3월 6일 (v2) · 60 데모 → 21,000 합성 데모</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>단일 팔(1개 팔) 데이터 생성 시스템인 <b>MimicGen</b>(NVIDIA·UT Austin, 2023 — subtask 단위로 인간 데모의 end-effector 궤적을 새 물체 pose에 맞춰 SE(3) 변환·재실행해 합성 데모를 자동 확장하는 파이프라인)을 <b>양팔 손재주(bimanual dexterous)</b> 조작 및 <b>휴머노이드+다지 손(dexterous hand)</b>으로 확장한 시스템. 두 팔의 동시성을 처리하기 위해 subtask를 <b>Parallel(독립), Coordination(동기), Sequential(순서 제약)</b> 3종으로 분류하고 팔별 <b>action queue</b>·동기화·대기 규칙으로 조립. 9개 시뮬 태스크·3종 로봇(Panda 병렬 그리퍼, Panda 다지 손, GR-1 휴머노이드+Inspire 손)에서 <b>60개 인간 데모 → 21,000개 합성 데모</b>로 확장, Diffusion Policy가 대부분 태스크에서 <span class="win">70~97%</span> 성공률 달성(예: Can Sorting 0.7% → <span class="win">97.3%</span>, Piece Assembly 3.3% → <span class="win">80.7%</span>). 실기(Fourier GR-1 + Inspire 손)에서도 Can Sorting을 real-only 0%에서 sim 데이터로 <span class="win">90%</span>까지 끌어올림.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>휴머노이드·양팔 다지 로봇에서 <b>모방학습(BC, Behavioral Cloning)</b>이 유망하나, 대규모 인간 데모 수집은 매우 비싸다. Apple Vision Pro·특수 exoskeleton 등으로 손 pose까지 원격조종해야 하기 때문. 단일 팔에서는 <b>MimicGen</b>(Mandlekar et al., 2023)이 "적은 인간 데모 → 많은 합성 데모"의 자동 확장을 성공시켰다. MimicGen의 핵심 아이디어는: (1) 각 데모를 <b>객체 중심 subtask</b>(예: "블록 잡기", "구멍에 맞추기")로 분할, (2) 각 subtask의 end-effector 궤적을 새 초기 물체 pose T′에 대해 <b>SE(3) 변환</b>(T′·T<sup>−1</sup>·궤적)해 재현, (3) 시뮬에서 실행 후 성공한 궤적만 보관.</p>
+    <p>그러나 <b>양팔+다지 손+휴머노이드</b>로 옮기면 새 난제가 생긴다: ① 두 팔이 <b>서로 다른 subtask를 병렬 수행</b>하거나(예: 왼손이 컵 잡는 동안 오른손이 커피 캡슐 옮김), ② <b>정확히 동기화된 협업</b>이 필요하거나(예: 큰 쟁반 함께 들기, 물건 손에서 손으로 handover), ③ <b>선후 관계</b>가 있다(왼손이 뚜껑 열어야 오른손이 안에 넣음). 단일 팔 MimicGen엔 이런 두 팔 상호작용을 다룰 개념이 없다. 저자들은 이를 subtask 3종 분류·팔별 큐·동기화 규칙으로 해결한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>DexMimicGen 시스템</b> — MimicGen을 <b>양팔 손재주</b> 조작으로 확장. subtask를 팔별로 분해·변환·재조립하는 첫 자동 데이터 생성 파이프라인. 60개 인간 데모에서 21,000개 합성 데모 생성.</li>
+      <li><b>3종 subtask 분류(핵심 개념)</b> — <b>Parallel(팔이 독립적으로 자기 큐 실행)</b>, <b>Coordination(두 팔의 상대 pose를 맞춰 동기 실행)</b>, <b>Sequential(pre-subtask 완료 대기)</b>로 두 팔의 동시성·타이밍 문제를 명시화.</li>
+      <li><b>9개 태스크·3종 embodiment의 대규모 벤치마크</b> — Panda 병렬 그리퍼(3), Panda + 다지 손(3), GR-1 휴머노이드 + Inspire 손(3). BC-RNN, BC-RNN-GMM, Diffusion Policy로 정책 학습, Demo-Noise baseline 대비 대폭 우위.</li>
+      <li><b>Real2Sim2Real 파이프라인 실증</b> — Fourier GR-1 휴머노이드 + Inspire 다지 손으로 실기 Can Sorting 성공(<b>sim 데이터만으로 90%</b>). digital twin에서 소수 실기 데모를 확장해 실제 로봇에 배포하는 워크플로 검증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>준비: MimicGen 리캡</h3>
+    <p><b>왜:</b> DexMimicGen이 확장하는 원본을 이해해야 한다. MimicGen은 인간 데모를 <b>subtask</b>(하나의 참조 물체 O<sub>S</sub>를 조작하는 연속 구간)로 나누고, 새 초기 씬에서 O<sub>S</sub>의 pose가 <b>T′<sub>OS</sub></b>로 바뀌면 원본 end-effector 궤적 τ에 <b>Δ = T′<sub>OS</sub>·T<sub>OS</sub><sup>−1</sup></b>를 곱해 새 궤적 τ′ = Δ·τ를 만들고, 현재 로봇 pose에서 τ′ 시작점까지 <b>선형 보간</b>으로 연결한 뒤 시뮬에서 실행, 성공한 시도만 데이터셋에 담는다.</p>
+
+    <h3>3.1 팔별 subtask 분해 (per-arm segmentation)</h3>
+    <p><b>왜:</b> 두 팔은 각자 다른 물체·다른 속도로 진행하므로, 하나의 시간축이 아닌 <b>팔별 subtask 시퀀스</b>로 데모를 저장해야 한다. 각 팔 a ∈ {L, R}에 대해 subtask 목록 M<sup>a</sup> = (m<sub>1</sub><sup>a</sup>, m<sub>2</sub><sup>a</sup>, …)을 정의하고, 각 m는 참조 물체 O<sub>S</sub>·시작·종료 시점을 갖는다. 세그멘테이션은 heuristic(그리퍼 열림/닫힘 이벤트) 또는 수동 annotation.</p>
+
+    <h3>3.2 세 가지 subtask 타입 (본 논문의 핵심 개념 장치)</h3>
+    <div class="callout">
+      DexMimicGen이 도입한 3종 분류는 "두 팔의 시간적 관계"를 명시화하는 언어다. 이 3종만 있으면 아무리 복잡한 양팔 태스크도 조립·재생 가능하다는 것이 논문의 주장.
+    </div>
+
+    <h4>Parallel Subtasks (독립 실행)</h4>
+    <p><b>왜:</b> 두 팔이 서로 다른 물체를 조작할 때, 굳이 타이밍을 맞출 필요가 없다. 각 팔은 자기 <b>action queue</b>에 SE(3) 변환된 궤적을 넣고, 시뮬 매 스텝마다 큐에서 하나씩 dequeue해 실행. 팔이 서로 <b>비동기(asynchronous)</b>로 진행 — 왼팔이 자기 subtask를 먼저 끝내면 다음 subtask로 넘어가고, 오른팔은 자기 페이스로 진행.</p>
+
+    <h4>Coordination Subtasks (동기 실행)</h4>
+    <p><b>왜:</b> 큰 물체를 함께 들거나 손↔손 handover처럼 <b>두 팔의 상대 pose가 유지</b>돼야 하는 경우. 두 팔 궤적이 참조 물체 O<sub>S</sub><sup>c</sup>(예: 쟁반)를 공유하고 <b>같은 SE(3) 변환</b>이 두 팔 궤적 모두에 적용된다. 이때 두 큐의 남은 스텝 수가 다르면 동기 붕괴가 생기므로, "각 팔은 상대 팔과 <b>남은 스텝 수가 같아질 때까지 대기</b>" 규칙으로 정렬. Transformation 모드에서는 두 팔 궤적 모두 SE(3) 변환, <b>Replay</b> 모드에서는 handover처럼 상대 팔에 넘겨주는 순간의 원본 궤적을 그대로 재생(변환 없음).</p>
+
+    <h4>Sequential Subtasks (순서 제약)</h4>
+    <p><b>왜:</b> 왼팔의 subtask가 끝나야 오른팔의 다음 subtask가 시작 가능한 인과 관계(예: 왼손이 서랍 열어야 오른손이 안에 물건 넣음). <b>Ordering constraint</b>를 명시하고, post-subtask 팔은 pre-subtask 팔의 완료 신호를 받을 때까지 <b>대기</b>. 병렬 큐 위에 얹은 세마포어라고 보면 된다.</p>
+
+    <h3>3.3 전체 데이터 생성 루프</h3>
+    <ol>
+      <li>새 씬에서 물체 pose를 무작위 샘플링·관측.</li>
+      <li>각 팔 a에 대해 subtask m<sub>i</sub><sup>a</sup>의 참조 물체 O<sub>S</sub> 새 pose를 얻고, 원본 궤적에 SE(3) 변환을 적용해 τ′<sub>i</sub><sup>a</sup> 계산.</li>
+      <li>현재 로봇 상태에서 τ′<sub>i</sub><sup>a</sup> 시작점까지 선형 보간 궤적을 앞에 이어붙임.</li>
+      <li>각 팔 큐에 push, subtask 타입 규칙(Parallel/Coord/Seq)에 따라 매 시뮬 스텝에서 dequeue·대기·동기.</li>
+      <li>에피소드 종료 후 태스크 성공 판정 → 성공한 궤적만 데이터셋에 저장.</li>
+    </ol>
+
+    <h3>3.4 로봇 & 컨트롤러</h3>
+    <div class="kv">
+      <div>병렬 그리퍼</div><div>Panda × 2, <b>OSC(Operational Space Control)</b> — end-effector pose 지령</div>
+      <div>다지 손</div><div>Panda + Inspire 손 (양쪽), 손가락 관절 지령</div>
+      <div>휴머노이드</div><div>Fourier <b>GR-1</b> + Inspire 다지 손, IK 기반(<b>mink</b> 라이브러리)</div>
+      <div>원격조종</div><div>Apple Vision Pro(다지 손), iPhone(그리퍼). 손 pose는 <b>OmniH2O</b> retargeting으로 인간→로봇 매핑</div>
+      <div>시뮬</div><div>RoboSuite (MuJoCo 물리엔진)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>9개 시뮬 태스크 성공률 (표 I, Diffusion Policy 정책, 1000 생성 데모로 학습)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Embodiment</th><th>Task</th><th>Source(60 데모)</th><th>+DexMimicGen(1000)</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">Panda + 병렬 그리퍼</td><td>Threading</td><td>2.7%</td><td class="win">69.3%</td></tr>
+        <tr><td>Piece Assembly</td><td>3.3%</td><td class="win">80.7%</td></tr>
+        <tr><td>Box Cleanup</td><td>2.0%</td><td class="win">92.0%</td></tr>
+        <tr><td rowspan="3">Panda + 다지 손</td><td>Tray Lift</td><td>10.0%</td><td class="win">88.7%</td></tr>
+        <tr><td>Drawer Cleanup</td><td>0.7%</td><td class="win">80.0%</td></tr>
+        <tr><td>Pouring</td><td>4.7%</td><td class="win">79.3%</td></tr>
+        <tr><td rowspan="3">GR-1 휴머노이드 + 다지 손</td><td>Transport</td><td>5.3%</td><td class="win">83.3%</td></tr>
+        <tr><td>Can Sorting</td><td>0.7%</td><td class="win">97.3%</td></tr>
+        <tr><td>Coffee</td><td>4.7%</td><td class="win">77.3%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">모든 9개 태스크에서 원본 60데모 대비 절대치 +70pp 이상의 향상. 정책은 image-based BC (Diffusion Policy). 태스크당 50 에피소드 평가.</p>
+
+    <h3>초기 분포 범위 확대 (표 II, D0/D1/D2)</h3>
+    <p>D0는 학습 데모의 초기 물체 분포와 동일, D1·D2는 점점 더 넓은 물체 배치 분포. DexMimicGen은 더 넓은 분포에서 데이터를 생성할 수 있고, 정책도 넓은 D1·D2에서 학습해 강건성 확보. 예: Threading D2에서도 <b>60%대</b> 성공률 유지(source는 &lt;5%).</p>
+
+    <h3>실기 (Fourier GR-1 + Inspire 다지 손, Can Sorting)</h3>
+    <p>실기에서 40개 인간 데모 수집 → 시뮬 <b>digital twin</b>에서 DexMimicGen으로 확장 → 학습된 정책을 실기에 배포. <b>Real-only source: 0% → DexMimicGen sim 데이터: 90%</b> 성공률. sim-to-real gap이 있음에도 대규모 합성 데이터의 이득이 압도적.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>vs Demo-Noise baseline (표 III):</b> 원본 데모의 action에 Gaussian noise를 더해 인위 증강하는 단순 baseline과 비교. DexMimicGen이 모든 태스크에서 <b>+58pp 이상</b> 우위. 단순 노이즈로는 새 물체 pose를 커버할 수 없음을 입증.</li>
+      <li><b>데이터셋 크기 스케일링:</b> 100·300·1000·3000 생성 데모로 학습. 대부분 태스크는 1000개에서 saturate, 그 이상은 diminishing return. 즉 "굳이 21K 다 안 써도 1K면 충분"인 경우가 많음.</li>
+      <li><b>Coordination의 Transform vs Replay:</b> handover가 있는 Transport에서 <b>Replay 모드 63.3% vs Transform 46.0%</b> — 손↔손 인계 순간엔 원본 궤적을 그대로 재생하는 편이 유리. 반대로 쟁반 함께 들기(Tray Lift)처럼 순수 pose 매칭 태스크는 Transform이 유리.</li>
+      <li><b>Sequential 순서 제약의 효과:</b> 순서 제약을 켜면 sequential 태스크(Drawer Cleanup, Coffee 등)에서 <b>+2~12pp</b> 향상. 제약 없으면 pre-subtask가 완료되기 전 post-subtask가 시도돼 자주 실패.</li>
+      <li><b>정책 아키텍처:</b> <b>Diffusion Policy &gt; BC-RNN-GMM &gt; BC-RNN</b> — 손재주 조작의 다중 모드 action 분포를 커버하는 diffusion이 일관되게 최고.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2410.24185/x1.png" alt="DexMimicGen 개요 파이프라인 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — DexMimicGen 개요.</b> 소수의 인간 원격조종 데모(왼쪽) → 팔별 subtask 분해·SE(3) 변환·synchronized replay를 통한 자동 데이터 확장(중앙) → 21K 합성 데모로 학습된 정책이 시뮬·실기 양팔 다지 태스크를 수행(오른쪽). Panda 병렬 그리퍼/Panda 다지 손/GR-1 휴머노이드 3종 embodiment 커버. (출처: arXiv:2410.24185)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2410.24185/x2.png" alt="세 가지 subtask 타입 다이어그램 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 3종 subtask 타입.</b> <b>Parallel</b>(두 팔이 독립 큐로 비동기 실행), <b>Coordination</b>(같은 SE(3) 변환을 두 팔에 적용, 남은 스텝 수 동기), <b>Sequential</b>(pre-subtask 완료 후 post-subtask 시작). 이 3종 조합으로 임의의 양팔 태스크를 모델링. (출처: arXiv:2410.24185)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2410.24185/x4.png" alt="9개 시뮬 태스크 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 9개 벤치마크 태스크.</b> Panda 병렬 그리퍼: Threading·Piece Assembly·Box Cleanup / Panda 다지 손: Tray Lift·Drawer Cleanup·Pouring / GR-1 휴머노이드: Transport·Can Sorting·Coffee. 3 embodiment × 3 태스크 매트릭스로 방법의 embodiment-independence를 검증. (출처: arXiv:2410.24185)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2410.24185/x6.png" alt="실기 배포: GR-1 + Inspire hand Can Sorting (Figure 6)" loading="lazy">
+      <figcaption><b>Figure 6 — 실기 Real2Sim2Real.</b> Fourier GR-1 휴머노이드 + Inspire 다지 손이 실기에서 캔을 색상별 분류. 실기 40데모 → digital twin에서 DexMimicGen으로 확장 → 학습된 정책 실기 배포로 <b>0% → 90%</b> 성공률 달성. (출처: arXiv:2410.24185)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table I</b> — DexMimicGen 결과의 근거. 9개 태스크 모두에서 60 source 데모(&lt;10% 성공률) 대비 1000 생성 데모(<b>69~97%</b>)로 확장 시 큰 폭 향상. 특히 humanoid+dexterous가 최고 성과(Can Sorting 97.3%).
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2410.24185" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2410.24185" target="_blank">PDF</a></li>
+      <li><a href="https://dexmimicgen.github.io/" target="_blank">프로젝트 페이지</a> (생성 데이터셋·시뮬 환경·비디오)</li>
+      <li><a href="https://github.com/NVlabs/dexmimicgen/" target="_blank">GitHub 코드 (NVlabs/dexmimicgen)</a></li>
+      <li>선행 연구: <a href="../summaries/2310.17596_MimicGen.html">MimicGen (2310.17596)</a> — 단일 팔 원본</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2410.24185 · DexMimicGen · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

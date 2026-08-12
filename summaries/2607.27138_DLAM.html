@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>DLAM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Latent Action · VLA</span>
+    <h1>DLAM: Distributional Latent Actions with Temporal Constraints</h1>
+    <p class="authors">Zuojin Tang, Feifan Luo, Haoyun Liu, Botai Yuan, Dekang Qi, Ronghan Chen, Yandan Yang, Tong Lin, Xinyuan Chang, Mu Xu, Bin Liu, De Ma, Zhiheng Ma</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2607.27138" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2607.27138" target="_blank">PDF</a>
+      <span>arXiv:2607.27138</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Latent Action Model</span>
+      <span class="t">Distributional</span>
+      <span class="t">Temporal Constraint</span>
+      <span class="t">Action-free Video</span>
+      <span class="t">π₀ VLA</span>
+    </div>
+    <p class="meta">제출: 2026년 7월 29일 · 백본 π₀ (PaliGemma-2B + Gemma-300M) · 64× AMD MI308X GPU</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>기존 <b>LAM(Latent Action Model, 라벨 없는 영상에서 시점 간 전이(transition)를 잠재 토큰으로 학습하는 모델)</b>은 전이를 결정론적 <b>점(point)</b> 하나로 표현하여 불확실성과 시간적 관계를 잃는다. DLAM은 이를 <b>대각(diagonal) 가우시안(Gaussian) 분포</b>로 바꾸고, 인접 전이의 <b>합성(composition)</b>·<b>역방향(reversal)</b> 제약을 <b>평균(μ)뿐 아니라 표준편차(σ)까지</b> 강제한다. π₀ VLA(Vision-Language-Action)에 붙였을 때 MetaWorld MT50 평균 성공률 <span class="win">87.6%</span>(π₀ 단독 47.9%, ALAM+π₀ 85.0%), LIBERO 평균 <span class="win">99.0%</span>(ALAM 98.1%), 실물 Piper 6-DoF 팔에서 <span class="win">73.8%</span>(ALAM 63.8%, π₀ 40.0%)를 달성했다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>VLA(Vision-Language-Action, 이미지·언어·행동을 함께 다루는 정책 모델)</b>의 병목은 <b>행동 라벨이 붙은 로봇 데이터</b>가 희소하다는 점이다. 반면 사람 시연·유튜브 등 <b>행동 없는 영상(action-free video)</b>은 풍부하다. 이를 활용하려는 접근이 <b>LAM(Latent Action Model)</b>이며, 인접 프레임 s<sub>t</sub>→s<sub>t+1</sub>의 시각적 변화를 <b>잠재 전이 토큰(latent transition token)</b>으로 압축해 사전학습한다.</p>
+    <p>그러나 저자들은 세 가지 한계를 지적한다: (1) <b>재구성(reconstruction) 손실</b>만 쓰면 잠재가 카메라 흔들림·배경 변화 같은 <b>제어와 무관한 신호</b>까지 인코딩해 정책 학습에 도움이 안 된다. (2) 전이를 <b>결정론적 점</b>으로 두면 시연에 원래 있는 <b>불확실성(예: 접근 각도, 파지 위치 편차)</b>이 사라진다. (3) 앞선 <b>ALAM(Aligned Latent Action Model)</b>은 시간적 제약(A→C ≈ A→B→C, 순방향/역방향 관계)을 도입했으나 점 표현에만 걸어, 분산 축이 정책에 영향을 주지 못한다.</p>
+    <div class="callout">DLAM의 출발점: "전이는 하나의 정답 벡터가 아니라 <b>불확실성이 있는 분포</b>다. 그렇다면 시간적 제약도 분포(평균+분산)에 걸어야 한다."</div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>전이의 분포화(Distributional Transitions)</b> — 각 잠재 전이 토큰을 <b>대각 가우시안 𝒩(μ, diag(σ²))</b>로 표현. 인코더가 평균 μ와 로그 분산 log σ²을 함께 출력. K개의 토큰 슬롯 각각이 독립 가우시안.</li>
+      <li><b>분포 수준의 시간 제약</b> — 등간격 삼중점 A,B,C에 대한 <b>정규화 합성(normalized composition)</b>과 <b>역방향(reversal)</b> 제약을 <b>μ와 σ 양쪽</b>에 부과. 인접 전이의 상관까지 학습형 <b>상관계수 ρ(rho)</b> 하나로 모델링.</li>
+      <li><b>π₀ VLA로의 안정적 전이(transfer)</b> — 사전학습된 인코더는 동결하고 평균 μ만 뽑아 <b>플로우 매칭(flow-matching) 정책</b>이 μ 시퀀스와 로봇 행동을 함께 생성. MetaWorld MT50, LIBERO, 실물 팔 세 벤치에서 ALAM보다 일관 상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3.1 전이를 분포로 표현하기 (Distributional Encoder)</h3>
+    <p>비디오 프레임 쌍 (s<sub>a</sub>, s<sub>b</sub>)이 주어지면 <b>비주얼 토크나이저 + 트랜스포머 인코더</b>가 K개 잠재 슬롯에 대해 <b>[평균 μ, 로그분산 ℓ = log σ²]</b>을 예측한다. σ = exp(ℓ/2)로 변환하며 수치 안정을 위해 ℓ은 클리핑한다. 각 슬롯은 독립 <b>대각 가우시안</b>이라 계산이 경량이고 확률 계산이 닫힌형(closed-form)이다. 디코더는 소스 프레임 s<sub>a</sub>와 <b>μ만</b>(σ는 안 씀) 받아 s<sub>b</sub>를 복원한다.</p>
+    <div class="callout"><b>왜 분산까지?</b> "같은 시작 상태에서 같은 목적을 향한 궤적"이라도 사람 시연은 손 각도·속도가 조금씩 다르다. σ는 이 <b>허용 오차 폭</b>을 담는다. π에게 "이만큼 벗어나도 괜찮다"를 알려주는 신호가 된다.</div>
+
+    <h3>3.2 시간적 제약 (Temporal Constraints)</h3>
+    <p><b>등간격 삼중점(equal-gap triplet)</b> A, B, C(B는 A와 C의 정확한 중간 시점)에 대해 두 가지 관계를 요구한다.</p>
+    <p><b>(a) 정규화 합성(Normalized Composition):</b> A→B와 B→C의 잠재 전이를 이어붙이면 A→C에 근사해야 한다. 정규화된 형태로 평균과 분산에 각각 부과:</p>
+    <ul>
+      <li>합성 평균: <b>μ̄<sub>ac</sub> = (μ<sub>ab</sub> + μ<sub>bc</sub>) / √2</b> &nbsp; ← √2로 나눠 스케일을 A→C와 맞춤</li>
+      <li>합성 분산: <b>(σ̄<sub>ac</sub>)² = [(σ<sub>ab</sub>)² + (σ<sub>bc</sub>)²]/2 + ρ · σ<sub>ab</sub> ⊙ σ<sub>bc</sub></b></li>
+    </ul>
+    <p>여기서 ρ는 <b>학습되는 스칼라 상관계수</b> 하나로, 인접 전이가 완전히 독립(ρ=0)도 아니고 완전히 종속도 아닌 실제 관측을 반영한다. ⊙는 원소별 곱.</p>
+    <p><b>(b) 역방향(Reversal):</b> 정방향과 역방향은 방향만 뒤집힌 것이므로 평균만 부호 반전, 분산은 보존:</p>
+    <ul>
+      <li><b>ℛ[𝒩(μ, diag(σ²))] = 𝒩(−μ, diag(σ²))</b></li>
+    </ul>
+
+    <h3>3.3 전체 손실 (Pretraining Objective)</h3>
+    <div class="kv">
+      <div>재구성 L<sub>rec</sub></div><div>디코더가 s<sub>a</sub> + μ로 s<sub>b</sub> 복원 (λ = 1.0)</div>
+      <div>사전분포 KL</div><div>표준 정규분포에 대한 KL 정규화 (λ = 0.005)</div>
+      <div>합성 제약 L<sub>comp</sub></div><div>μ와 σ 모두 정규화 합성 식과 일치 (λ = 0.05)</div>
+      <div>역방향 제약 L<sub>rev</sub></div><div>정·역 전이의 μ 부호 반전, σ 일치 (λ = 0.05)</div>
+    </div>
+
+    <h3>3.4 π₀ VLA로의 전이 (Downstream Transfer)</h3>
+    <p>사전학습된 인코더를 <b>동결</b>하고 연속 프레임에서 <b>평균 μ만</b> 뽑는다. π₀(PaliGemma-2B 비전-언어 백본 + Gemma-300M 액션 전문가) 위에 <b>플로우 매칭 정책</b>이 얹혀, μ 시퀀스와 로봇 행동 궤적을 <b>공동 생성</b>한다. 즉 정책이 잠재 목표 μ까지 예측하도록 학습돼, 시각 전이 예측이 행동 예측의 보조 신호가 된다.</p>
+    <div class="callout"><b>왜 μ만?</b> 정책은 결정론적 궤적을 뽑아야 하므로 σ는 학습 시 <b>제약 신호</b>로만 역할하고, 추론엔 μ를 대표값으로 쓴다.</div>
+
+    <h3>3.5 데이터 & 학습 설정</h3>
+    <div class="kv">
+      <div>사전학습 데이터</div><div>Open X-Embodiment + CALVIN에서 뽑은 11개 <b>행동 없는 로봇 영상</b> 데이터셋 (샘플링 가중치는 Fig.4 참조)</div>
+      <div>사전학습 하드웨어</div><div>64× AMD MI308X, 57 epoch</div>
+      <div>사전학습 옵티마이저</div><div>AdamW, lr=1e-4, wd=1e-4, batch=64/device</div>
+      <div>정책 파인튜닝</div><div>lr=5e-5, wd=1e-4, batch=32/device</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>MetaWorld MT50 (50개 조작 태스크, 난이도별 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Easy</th><th>Med</th><th>Hard</th><th>V-Hard</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>π₀ (baseline)</td><td>71.8</td><td>48.2</td><td>41.7</td><td>30.0</td><td>47.9</td></tr>
+        <tr><td>π₀ + ALAM</td><td>89.3</td><td>83.6</td><td>85.0</td><td>82.0</td><td>85.0</td></tr>
+        <tr><td><b>π₀ + DLAM</b></td><td class="win">90.3</td><td class="win">84.8</td><td>84.0</td><td class="win">91.3</td><td class="win">87.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">4개 난이도 중 3개에서 최고. V-Hard(Very Hard)에서 ALAM 대비 +9.3%p로 격차가 크며, 어려운 태스크일수록 분포 표현의 이점이 드러남.</p>
+
+    <h3>LIBERO (4개 스위트, 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Spatial</th><th>Object</th><th>Goal</th><th>Long</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>π₀ + ALAM</td><td>99.2</td><td>99.6</td><td>99.0</td><td>94.4</td><td>98.1</td></tr>
+        <tr><td><b>π₀ + DLAM</b></td><td class="win">99.6</td><td class="win">99.8</td><td class="win">99.6</td><td class="win">97.1</td><td class="win">99.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">이미 포화된 벤치에서도 4개 모두 상회, 특히 장기 태스크(Long) +2.7%p.</p>
+
+    <h3>실물 로봇 (Piper 6-DoF 팔, 4개 태스크 평균 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>평균 성공률</th></tr></thead>
+      <tbody>
+        <tr><td>π₀</td><td>40.0</td></tr>
+        <tr><td>π₀.₅</td><td>53.8</td></tr>
+        <tr><td>π₀ + ALAM</td><td>63.8</td></tr>
+        <tr><td><b>π₀ + DLAM</b></td><td class="win">73.8</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">ALAM 대비 <b>+10.0%p</b>. 실물에선 시연 불확실성이 커서 분포 표현의 이점이 뚜렷.</p>
+
+    <h3>재구성 품질 (3k–5k 프레임 held-out 스팬, dB / 비율)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>ALAM</th><th>DLAM</th><th>차이</th></tr></thead>
+      <tbody>
+        <tr><td>직접 재구성 PSNR ↑</td><td>25.69</td><td class="win">29.14</td><td>+3.45 dB</td></tr>
+        <tr><td>누적 재구성 PSNR ↑</td><td>21.23</td><td class="win">22.40</td><td>+1.17 dB</td></tr>
+        <tr><td>LPIPS 감소율 (직접)</td><td>—</td><td class="win">−45.6%</td><td>지각 유사도 향상</td></tr>
+        <tr><td>LPIPS 감소율 (누적)</td><td>—</td><td class="win">−26.1%</td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>직접(direct)</b>: 두 프레임 사이 단일 전이를 뽑아 바로 복원. <b>누적(cumulative)</b>: 여러 k-프레임 전이의 평균을 순차 합성해 복원. 후자가 시간 제약의 안정성을 테스트.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (표 3)</h2>
+    <p>Full DLAM의 각 요소를 하나씩 끄고 재구성 품질(PSNR·SSIM·LPIPS), 시간 제약 잔차(R<sup>μ</sup><sub>comp</sub>: 합성 잔차, R<sup>μ</sup><sub>rev</sub>: 역방향 잔차), 다운스트림 성공률을 측정.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>변형</th><th>PSNR ↑</th><th>SSIM ↑</th><th>LPIPS ↓</th><th>R<sup>μ</sup><sub>comp</sub> ↓</th><th>R<sup>μ</sup><sub>rev</sub> ↓</th><th>Success % ↑</th></tr></thead>
+      <tbody>
+        <tr><td>No temporal relations (재구성만)</td><td>21.236</td><td>0.7894</td><td>0.1755</td><td>1.2071</td><td>1.0314</td><td>76.6</td></tr>
+        <tr><td>Matched mean-only (σ=1, ρ=0)</td><td>22.109</td><td>0.8057</td><td>0.1644</td><td>1.1808</td><td>1.0371</td><td>82.1</td></tr>
+        <tr><td>Learned variance (ρ=0)</td><td>22.084</td><td>0.8067</td><td>0.1637</td><td>1.1777</td><td>1.0341</td><td>85.3</td></tr>
+        <tr><td><b>Full DLAM</b></td><td class="win">22.400</td><td class="win">0.8086</td><td class="win">0.1623</td><td class="win">1.1662</td><td class="win">1.0010</td><td class="win">87.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>시간 제약 자체의 기여가 가장 큼:</b> 76.6% → 82.1% (+5.5%p). 재구성만으론 정책 학습에 부족.</li>
+      <li><b>분산 학습(σ)이 정책 성능을 더 밀어 올림:</b> 82.1% → 85.3% (+3.2%p). 재구성 품질은 거의 같은데 성공률만 상승 — σ가 정책 관점의 유의미 신호를 담음.</li>
+      <li><b>상관계수 ρ가 마지막 이득:</b> 85.3% → 87.6% (+2.3%p). 특히 R<sup>μ</sup><sub>rev</sub>가 1.034 → 1.001로 거의 완전 역가역성 달성.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2607.27138/teaser.png" alt="Point vs Distribution 전이 개념도" loading="lazy">
+      <figcaption><b>Figure 1 — 점(point) 전이 vs 분포(distribution) 전이.</b> 재구성 전용 LAM은 시간 관계를 부여하지 않고, ALAM은 결정론적 점에 합성·역방향 제약을 건다. DLAM은 <b>가우시안 사후분포</b>에 그 관계를 걸어 중심(μ)과 차원별 분산(σ)을 함께 제약한다. (출처: arXiv:2607.27138)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.27138/framework.png" alt="DLAM 다운스트림 전이 구조도" loading="lazy">
+      <figcaption><b>Figure 2 — DLAM의 다운스트림 전이 구조.</b> 동결된 인코더가 연속 시연 프레임에서 분포적 전이의 평균 μ를 추출하고, π₀ 백본 위의 플로우 매칭 정책이 μ 시퀀스와 로봇 행동을 공동 생성. (출처: arXiv:2607.27138)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.27138/point_distrbution_dlam_visual.png" alt="ALAM(점) vs DLAM(가우시안) PCA 시각화" loading="lazy">
+      <figcaption><b>Figure 3 — held-out 전이의 PCA(주성분 분석) 투영.</b> ALAM 체크포인트의 결정론적 전이(점)와 DLAM 체크포인트의 대각 가우시안 전이(중심+타원). DLAM 쪽이 <b>동일 태스크 클러스터 내 자연스러운 분산 폭</b>을 학습했음을 보여준다. (출처: arXiv:2607.27138)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2607.27138/dlam_real_world.png" alt="실물 Piper 팔 4개 태스크 성공률" loading="lazy">
+      <figcaption><b>Figure 6 — 실물 조작(Piper 6-DoF 팔).</b> 4개 태스크별 성공률. π₀=40.0, π₀.₅=53.8, π₀+ALAM=63.8, <b>π₀+DLAM=73.8</b>로 태스크별로 약 10%p씩 상회. (출처: arXiv:2607.27138)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2607.27138" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2607.27138" target="_blank">PDF</a></li>
+      <li>프로젝트 페이지·GitHub: 논문 본문에 명시된 링크 없음 (원문 확인 시점 기준)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2607.27138 · DLAM · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>HAMSTER — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Hierarchical VLA · Open-World</span>
+    <h1>HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation</h1>
+    <p class="authors">Yi Li, Yuquan Deng, Jesse Zhang, Joel Jang, Marius Memmel, Raymond Yu, Caelan Reed Garrett, Fabio Ramos, Dieter Fox, Anqi Li, Abhishek Gupta, Ankit Goyal · NVIDIA · University of Washington · University of Southern California</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2502.05485" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2502.05485" target="_blank">PDF</a>
+      <a href="https://hamster-robot.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/liyi14/HAMSTER_beta" target="_blank">GitHub</a>
+      <span>arXiv:2502.05485</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Hierarchical VLA</span>
+      <span class="t">2D Path</span>
+      <span class="t">Off-domain Data</span>
+      <span class="t">Manipulation</span>
+      <span class="t">Generalization</span>
+    </div>
+    <p class="meta">제출: 2025년 2월 8일 (v1) / 최종 개정 2025년 5월 10일 (v4) · 백본 VILA-1.5-13B · Franka 실로봇</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇용 <b>VLA(Vision-Language-Action, 이미지+지시문 → 관절/그리퍼 액션 모델)</b>가 값싼 "off-domain 데이터"(실 로봇 액션 라벨이 없는 인간 영상, 시뮬레이션, 다른 로봇 데이터)를 잘 흡수하지 못하는 문제를 <b>계층 분리</b>로 푼다. 상위 <b>VLM(vision-language model)</b>은 "다음에 그리퍼가 지나갈 <b>2D 경로</b>(이미지 평면 위 픽셀 궤적)와 open/close 시점"만 예측하고, 하위 3D-aware 정책이 이 경로를 조건으로 실제 관절 액션을 낸다. 이 분리 덕분에 상위 VLM은 실로봇 액션 라벨 없이도 학습 가능. 결과: 7개 일반화 축 평균 <b>+20%p</b> 성공률 향상(<b>OpenVLA 대비 상대 50% 향상</b>), Colosseum 시뮬 벤치 평균 <span class="win">0.46</span> vs 3D-DA <span>0.35</span>, 데이터 50%로 3D-DA 100% 성능의 2배.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>비전·언어에서는 파운데이션 모델이 <b>open-world 일반화</b>(학습 때 못 본 물체·장면·지시에도 통함)를 보이지만, 로봇은 그렇지 못하다. 근본 원인은 <b>on-robot 데이터 부족</b> — 실 로봇을 사람이 원격조종해서 모으므로 매우 비싸다. 자연스런 처방은 <b>off-domain 데이터</b>(액션 없는 인간 영상, 손그림 스케치, 시뮬레이션 등)의 활용이지만, 이런 데이터는 <b>액션 라벨이 없거나</b> 다른 도메인이라 "관측→관절 각도" 매핑으로 직접 학습되는 <b>단일(monolithic) VLA</b>는 이득을 거의 못 받는다. 실제로 저자들이 OpenVLA를 RLBench(시뮬) 데이터로 파인튜닝해 실환경에 배치한 실험에서 성공 점수는 0.54 vs 0.58로 <b>사실상 개선이 없다</b>.</p>
+    <p>HAMSTER의 통찰: 액션 대신 <b>중간 표현(2D 경로)</b>을 예측하는 상위 VLM을 두면, 이 표현은 인간 영상·시뮬·타 로봇에서 모두 저렴하게 얻을 수 있어 off-domain 데이터를 진짜로 활용할 수 있다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Hierarchical VLA 아키텍처</b> — 상위 VLM은 <b>2D 경로(픽셀 궤적 + gripper open/close 이벤트)</b>만 예측하는 "계획자"로, 하위 3D-aware 정책은 그 경로를 시각/기하 신호와 함께 받아 실제 관절 액션을 내는 "실행자"로 분리. 두 레벨을 독립 데이터로 학습.</li>
+      <li><b>Off-domain 데이터 통합 레시피</b> — RoboPoint(픽셀 포인트 QA, 770K) + RLBench(시뮬 81태스크, 320K) + Bridge/DROID(다른 로봇 real, 110K) + 일반 VQA(660K) 공동학습으로, 실로봇 액션 라벨 <b>0장</b>으로도 상위 VLM 학습 가능.</li>
+      <li><b>강건한 일반화 실증</b> — 실로봇 74 태스크·222 평가에서 7개 일반화 축(미본 물체·목표·시각·언어·공간·신규물체·복합) 평균 <b>+20%p</b>(상대 50%↑) 대 OpenVLA, 3D 정책 단독 대비 평균 <b>3배 이상</b>, Colosseum 시뮬 15개 교란 대부분 우위.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3.1 전체 구조 — 상위 "경로 계획자" + 하위 "경로 추종자"</h3>
+    <p><b>왜:</b> 로봇 액션(관절 토크·엔드이펙터 6DoF)은 도메인에 강하게 묶이지만, "이미지 위 어디로 손이 지나가는가"는 인간 영상이나 시뮬 모두에서 쉽게 얻어진다. HAMSTER는 이 <b>도메인 중립적 중간 표현</b>인 2D 경로를 매개로 상하 계층을 잇는다.</p>
+    <p>구체적으로 2D 경로 p는 시간 순 리스트 <b>p = [(x<sub>t</sub>, y<sub>t</sub>, gripper_open<sub>t</sub>)]<sub>t</sub></b>. 여기서 (x<sub>t</sub>, y<sub>t</sub>)는 [0,1]로 정규화된 픽셀 좌표(엔드이펙터가 이미지에 투영된 위치)이고 gripper_open<sub>t</sub>는 그 시점의 그리퍼 개/폐 여부.</p>
+
+    <h3>3.2 상위 VLM 경로 계획자</h3>
+    <p>백본은 <b>VILA-1.5-13B</b>(130억 파라미터 vision-language 모델). 입력은 RGB 이미지 img와 언어 지시 z, 출력은 텍스트 형태로 인코딩된 경로 answer(예: 좌표 시퀀스). 지도학습 목적은 정답 경로의 log-likelihood 최대화:</p>
+    <div class="callout">
+      <b>목적함수:</b> E<sub>(img<sub>i</sub>, z<sub>i</sub>, ans<sub>i</sub>)~D<sub>off</sub></sub>[log VLM(ans<sub>i</sub> | img<sub>i</sub>, z<sub>i</sub>)] <br>
+      D<sub>off</sub>는 <b>실로봇 액션 라벨을 포함하지 않는</b> off-domain 데이터. VLM은 오직 "이 지시에 대해 손이 지날 픽셀 궤적"만 배운다.
+    </div>
+    <p><b>왜 2D인가:</b> 3D 궤적은 카메라 캘리브레이션·깊이가 필요해 도메인 종속적이지만, 2D 픽셀 좌표는 사전학습된 VLM의 시각적 grounding 능력(예: "이 그림에서 컵이 어디?")과 자연스럽게 맞물린다.</p>
+    <p><b>경로 단순화(Ramer-Douglas-Peucker):</b> 100 스텝을 넘는 긴 궤적은 RDP 알고리즘(선분 근사로 중요 꺾임점만 남기는 다각선 단순화)으로 압축. 이로써 VLM은 세부 흔들림 대신 "고수준 경유점" 시퀀스를 예측.</p>
+    <p><b>세계 지식 유지:</b> 로봇 데이터만으로 파인튜닝하면 VLM이 일반 QA 능력을 잃는 <b>catastrophic forgetting</b> 위험이 있어, 일반 VQA 660K 샘플을 함께 학습. Table 4에서 15개 표준 VQA 벤치 성능이 VILA-1.5-13B 원본과 거의 동일(예: MME 1569.6 → 1588.4, MMBench 74.9 → 75.3).</p>
+
+    <h3>3.3 Off-domain 학습 데이터 (D<sub>off</sub>)</h3>
+    <div class="kv">
+      <div>RoboPoint</div><div>770K 픽셀 포인트 QA — "표시된 물체 사이 위치 찾기"류. 시각적 grounding 능력의 기초.</div>
+      <div>RLBench (시뮬)</div><div>320K 샘플, 81 태스크 × 1000 에피소드 × 언어 4종. 시뮬레이터의 자체 플래너로 액션 궤적을 만들고 <b>순기구학(forward kinematics)</b>으로 엔드이펙터 3D 위치 → 카메라 투영해 2D 경로 생성.</div>
+      <div>Bridge (WidowX)</div><div>10K real 궤적. <b>다른 로봇 팔</b>이지만 proprioception + 카메라 파라미터로 2D 경로 추출.</div>
+      <div>DROID</div><div>45K real 궤적. 동일 방식으로 2D 경로 추출.</div>
+      <div>일반 VQA</div><div>660K, 세계 지식/시각 이해 유지용.</div>
+    </div>
+
+    <h3>3.4 하위 3D-aware 정책 (경로 추종자)</h3>
+    <p>선택지: <b>RVT-2</b>(멀티뷰 랜더링 기반 로봇 트랜스포머) 또는 <b>3D Diffuser Actor (3D-DA)</b>(포인트 클라우드 기반 확산 정책). 입력은 (자기수용감각 s, RGB+포인트 클라우드 o, 언어 z, 예측 경로 p), 출력은 액션 a. 목적함수는 표준 <b>모방학습(behavior cloning)</b>:</p>
+    <div class="callout">
+      E<sub>(s<sub>i</sub>, o<sub>i</sub>, z<sub>i</sub>, p<sub>i</sub>, a<sub>i</sub>)~D<sub>path</sub></sub>[log π<sub>θ</sub>(a<sub>i</sub> | s<sub>i</sub>, o<sub>i</sub>, z<sub>i</sub>, p<sub>i</sub>)]
+    </div>
+    <p><b>경로 주입 방식 2가지:</b> (1) <b>Overlay</b> — RGB 위에 시간에 따라 색이 변하는 궤적을 그려 넣음(모든 아키텍처 호환), (2) <b>Concatenation</b> — 별도 채널로 붙임(RVT-2는 6채널 입력).</p>
+    <p><b>학습 데이터 D<sub>path</sub>:</b> Franka 팔로 원격조종 320 에피소드. 학습 시 proprioception 투영으로 <b>오라클 2D 경로</b>를 만들어 (s,o,z,p,a) 튜플을 구성.</p>
+    <p><b>왜 계층 분리가 속도에도 유리한가:</b> VLM(130억 파라미터)은 에피소드당 1~수회만 호출, 하위 정책이 이 경로를 따라 고주파로 액션 산출 → 실시간 제어 가능.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>4.1 실로봇 (Franka + depth camera, 74 태스크·222 평가)</h3>
+    <p>320 에피소드로 하위 정책 학습, 상위 VLM은 <b>in-domain 데이터 0장</b>. 7개 일반화 축: obj/goal(미본 조합), visual(질감/조명/방해 물체), language(예: "candy"→"sweet object"), spatial(공간 관계), novel object(전혀 새 물체), multiple(복합), 기본 in-distribution. 태스크는 pick-and-place, 버튼 누르기, 물체 넘어뜨리기 등 prehensile/non-prehensile 혼합.</p>
+    <ul>
+      <li>OpenVLA(7B monolithic, in-domain 파인튜닝) 대비 평균 <b>+20%p</b> 성공률 향상, 상대 50%↑</li>
+      <li>2D 경로 없는 3D 정책(RVT-2·3D-DA 단독) 대비 평균 <b>3배 이상</b></li>
+      <li>7개 축 모두 일관 개선</li>
+    </ul>
+    <p><b>OpenVLA + RLBench 파인튜닝 대조:</b> RLBench 81태스크 데이터로 OpenVLA를 추가 파인튜닝해도 real pick-and-place 6태스크 성공 점수 <b>0.54 vs 0.58</b>(개선 없음). 저자 결론: "monolithic VLA는 RLBench 데이터에서 거의 이득을 못 얻는다".</p>
+
+    <h3>4.2 카메라 뷰 불변성 (Table 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Original Cam · Success</th><th>Original Cam · Complete</th><th>Novel Cam · Success</th><th>Novel Cam · Complete</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA</td><td>0.60</td><td>0.30</td><td>0.23</td><td>0.00</td></tr>
+        <tr><td>HAMSTER + RVT-2</td><td>0.83</td><td>0.70</td><td>0.73</td><td>0.40</td></tr>
+        <tr><td><b>HAMSTER + RVT-2 (Concat)</b></td><td class="win">1.00</td><td class="win">1.00</td><td class="win">0.98</td><td class="win">0.90</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">10 trial · 학습 시 본 물체 6종 + 컨테이너 3종. OpenVLA는 새 카메라 각도에서 완전 실패(complete=0), HAMSTER-Concat은 거의 무너지지 않음.</p>
+
+    <h3>4.3 Colosseum 시뮬 벤치 (Table 3, 3D-DA 백본)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Variation</th><th>3D-DA</th><th>HAMSTER + 3D-DA</th></tr></thead>
+      <tbody>
+        <tr><td>No variation (avg)</td><td>0.35±0.04</td><td class="win">0.46±0.04</td></tr>
+        <tr><td>Background texture</td><td>0.43±0.06</td><td class="win">0.57±0.03</td></tr>
+        <tr><td>Camera position</td><td>0.34±0.07</td><td class="win">0.48±0.08</td></tr>
+        <tr><td>Manipulated obj texture</td><td>0.27±0.04</td><td class="win">0.48±0.06</td></tr>
+        <tr><td>Manipulated obj size</td><td>0.41±0.04</td><td class="win">0.57±0.08</td></tr>
+        <tr><td>Table texture</td><td>0.23±0.04</td><td class="win">0.35±0.07</td></tr>
+        <tr><td>Receptacle obj texture</td><td>0.36±0.12</td><td class="win">0.56±0.09</td></tr>
+        <tr><td>RLBench/Colosseum color</td><td>0.07±0.03</td><td class="win">0.11±0.10</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">전 15개 교란 축에서 우위. 평균 <b>+31%p</b>. 특히 텍스처·크기 교란에서 큰 폭 개선.</p>
+
+    <h3>4.4 데이터 효율 (Table 1)</h3>
+    <ul>
+      <li>HAMSTER + 3D-DA (데이터 50%): <b>0.36±0.04</b></li>
+      <li>HAMSTER + 3D-DA (데이터 100%): <b>0.43±0.05</b></li>
+      <li>3D-DA 단독 (데이터 100%): 0.18±0.10</li>
+    </ul>
+    <p class="cap">"50% 데이터로 3D-DA 100% 성능의 2배" — 상위 VLM의 경로 유도가 하위 정책의 샘플 효율을 극적으로 높인다.</p>
+
+    <h3>4.5 VQA 유지 (Table 4)</h3>
+    <p>15개 표준 VQA 벤치에서 원본 VILA-1.5-13B와 성능이 사실상 동일 — VQAv2 82.8→82.9, GQA 64.3→64.9, MME 1569.6→1588.4, MMBench 74.9→75.3. 로봇 태스크에 특화되지 않고 <b>범용 VLM</b>으로 남는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Off-domain 데이터의 각 구성요소가 중요:</b> RLBench(시뮬)를 빼거나 Bridge/DROID(타 로봇)를 빼면 실로봇 성능이 하락. 특히 시뮬 데이터 포함이 real-world 성능을 실측 개선.</li>
+      <li><b>제로샷 VLM보다 우위:</b> HAMSTER의 파인튜닝 VLM이 폐쇄형(closed-source) VLM의 zero-shot 경로 생성보다 낫다 — 로봇 도메인의 경로 감각은 파인튜닝이 필요.</li>
+      <li><b>경로 주입 방식:</b> Concat이 Overlay보다 우수(RVT-2 기준). Table 2에서 HAMSTER + RVT-2 = 0.83 vs HAMSTER + RVT-2 (Concat) = 1.00.</li>
+      <li><b>RDP 단순화의 필요성:</b> 100 스텝 넘는 원본 궤적을 그대로 예측시키면 VLM 학습이 취약해짐 — RDP로 꺾임점만 남기면 고수준 추론이 살아난다.</li>
+      <li><b>OpenVLA는 시뮬 데이터를 못 흡수:</b> 앞서 언급, 0.54 vs 0.58. 계층 분리가 없으면 off-domain 데이터가 무용지물임을 반증.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2502.05485/hamster_method_new.png" alt="HAMSTER 학습·추론 구조도" loading="lazy">
+      <figcaption><b>Figure 2 — HAMSTER method.</b> 상위 VILA-1.5-13B는 이미지·지시로 2D 경로(픽셀 궤적 + gripper open/close)를 예측, 하위 3D-aware 정책(RVT-2 또는 3D-DA)이 경로를 조건으로 실제 관절 액션을 낸다. 상위는 off-domain 데이터, 하위는 소량 in-domain 데이터로 각기 학습. (출처: arXiv:2502.05485)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2502.05485/dataset_mix.png" alt="Off-domain 데이터 혼합 (RoboPoint, RLBench, Bridge/DROID)" loading="lazy">
+      <figcaption><b>Figure 3 — Off-domain training data mix.</b> RoboPoint 픽셀 포인트 QA(770K) + RLBench 시뮬(320K) + Bridge/DROID(110K) + 일반 VQA(660K). 상위 VLM은 이 조합으로 학습하며 실로봇 액션 라벨은 전혀 사용하지 않는다. (출처: arXiv:2502.05485)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2502.05485/main_exp_fig_short_v3_small.png" alt="실로봇 정량 결과 (7개 일반화 축)" loading="lazy">
+      <figcaption><b>Figure 4 — Real-world quantitative results.</b> 7개 일반화 축(obj/goal, visual, language, spatial, novel object, multiple, in-dist) 전반에서 HAMSTER는 OpenVLA 대비 평균 +20%p(상대 50%↑), 3D 정책 단독 대비 3배 이상. (출처: arXiv:2502.05485)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2502.05485/real_robot_policy.png" alt="실로봇 롤아웃 예시" loading="lazy">
+      <figcaption><b>Figure 5 — Real robot policy rollouts.</b> pick-and-place, 버튼 누르기, 물체 넘어뜨리기 등 prehensile/non-prehensile 태스크 롤아웃 스냅샷. (출처: arXiv:2502.05485)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2502.05485/new_camera.jpg" alt="새로운 카메라 뷰포인트 실험" loading="lazy">
+      <figcaption><b>Figure 6 — Novel camera viewpoint.</b> 학습 시 본 적 없는 카메라 각도에서도 HAMSTER + RVT-2 (Concat)이 성공률/완료율을 유지(0.98/0.90) vs OpenVLA(0.23/0.00). 2D 경로가 카메라 뷰 변화의 강건성을 부여. (출처: arXiv:2502.05485)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2502.05485/fig5_v2.png" alt="VLM 일반화 정성 예시" loading="lazy">
+      <figcaption><b>Figure 7 — VLM generalization examples.</b> 다양한 지시·물체에 대한 상위 VLM의 2D 경로 예측 정성 사례. (출처: arXiv:2502.05485)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3 (Colosseum)</b> — 15개 시뮬 교란 축 전반에서 3D-DA 대비 우위. 평균 0.35 → 0.46 (+31%). 특히 텍스처·크기 교란에서 큰 개선. HAMSTER의 <b>시각적·기하학적 일반화</b> 주장의 정량 근거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2502.05485" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2502.05485" target="_blank">PDF</a></li>
+      <li><a href="https://hamster-robot.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/liyi14/HAMSTER_beta" target="_blank">GitHub 코드 (beta)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2502.05485 · HAMSTER · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

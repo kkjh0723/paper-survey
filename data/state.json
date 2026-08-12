@@ -10,56 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2608.03052",
-      "title": "How Should Vision-Language-Action Models Use Proprioceptive State?",
-      "arxiv_url": "https://arxiv.org/abs/2608.03052",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2608.01402",
-      "title": "Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them",
-      "arxiv_url": "https://arxiv.org/abs/2608.01402",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2608.03924",
-      "title": "ETA: A New Agentic Paradigm for Embodied Tasks",
-      "arxiv_url": "https://arxiv.org/abs/2608.03924",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2607.27138",
-      "title": "DLAM: Distributional Latent Actions with Temporal Constraints",
-      "arxiv_url": "https://arxiv.org/abs/2607.27138",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2607.25895",
-      "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
-      "arxiv_url": "https://arxiv.org/abs/2607.25895",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2410.24185",
-      "title": "DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning",
-      "arxiv_url": "https://arxiv.org/abs/2410.24185",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2502.05485",
-      "title": "HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2502.05485",
-      "added": "2026-08-10"
-    },
-    {
-      "id": "2407.01392",
-      "title": "Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion",
-      "arxiv_url": "https://arxiv.org/abs/2407.01392",
-      "added": "2026-08-10"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",
@@ -74,5 +25,5 @@
     "2310.10639",
     "2607.19719"
   ],
-  "updated": "2026-08-10"
+  "updated": "2026-08-12"
 }

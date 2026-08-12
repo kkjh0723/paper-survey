@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FACT — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Contact-Rich · Force</span>
+    <h1>Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them</h1>
+    <p class="authors">Carlota Parés-Morlans, Nils Kuhn, Isabel Liu, Alberta Longhini, Jeannette Bohg · Stanford University (IPRL Lab)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.01402" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.01402" target="_blank">PDF</a>
+      <a href="https://stanford-iprl-lab.github.io/fact/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.01402</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Contact-Rich</span>
+      <span class="t">Force/Torque</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Logit-Normal</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 2일 (v1) · 백본 π₀.₅ / π₀ · 5개 접촉-집약 태스크 실로봇 2,500 rollout</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Vision-Language-Action(VLA, 시각-언어-행동 정책) 모델이 <b>접촉-집약(contact-rich) 조작</b>에서 실패하는 원인을 두 가지로 분해한다: (1) <b>정밀도 실패(precision failure)</b> — flow-matching(연속 흐름 정합) 정책이 접촉 순간의 미세 보정을 학습하지 못함, (2) <b>힘 신호 실패(force failure)</b> — 힘/토크(Force/Torque, F/T) 신호의 시계열 구조를 정책이 제대로 활용하지 못함. 해법 <b>FACT</b>(Fixing contact-rich failures by Aligning Contact-signals and Timing)는 노이즈 스케줄을 <b>Logit-Normal(로짓-정규분포)</b>로 바꾸고 <b>시간 인식 힘 주입(time-aware force injection)</b>을 결합해, 5개 실로봇 접촉 태스크에서 <span class="win">평균 66.0%</span> 성공률을 달성(직전 최고 <b>π₀.₅ = 39.0%</b> 대비 +27pp, ForceVLA 40.5% 대비 +25pp). 총 2,500회에 가까운 실로봇 시험으로 검증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA(Vision-Language-Action, 시각·언어를 입력받아 로봇 행동을 출력하는 대규모 정책 모델) — 예: <b>π₀</b>, <b>π₀.₅</b>, OpenVLA — 는 자유 공간 조작에서 인상적인 결과를 보였지만, USB·플러그·열쇠 삽입 같이 <b>정밀한 물리 접촉</b>이 필요한 상황에서는 급격히 성능이 떨어진다. 기존 연구는 이를 해결하려 <b>힘 센서를 아키텍처에 추가하거나(ForceVLA)</b> <b>학습 시 정규화(TA-VLA)</b>를 붙였지만, 왜 실패하는지의 <b>근본 원인</b>은 규명되지 않았다.</p>
+    <p>저자들은 π₀.₅의 실패 궤적을 정밀 분석해 두 유형을 관찰했다.</p>
+    <ul>
+      <li><b>정밀도 실패:</b> 물체와 접촉하기 <b>직전</b>에 위치·자세가 수 밀리미터 어긋나면 정책이 <b>미세 재정렬(fine correction)</b>을 만들지 못한다. 이는 flow-matching(노이즈에서 행동으로 이어지는 연속 흐름을 학습하는 확산 계열 방법)의 <b>노이즈 샘플링 분포</b>가 접촉 보정에 필요한 <b>저노이즈 영역(τ&lt;0.2)</b>에 학습 신호를 거의 배분하지 않기 때문이다.</li>
+      <li><b>힘 실패:</b> 힘 센서를 넣어도 정책이 힘 신호를 <b>순간값</b>으로만 취급하거나, <b>비접촉 구간의 잡음 0-근처 값</b>에 과적합해 접촉 개시 시점의 급격한 힘 변화를 놓친다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>실패 원인 규명</b> — VLA의 접촉 실패를 "정밀도 실패"와 "힘 실패"로 분해하고, 각각이 <b>학습 목적함수의 노이즈 스케줄 편향</b> 및 <b>힘 신호의 시간적 희소성</b>에서 비롯됨을 실험으로 입증.</li>
+      <li><b>FACT 제안</b> — Fixing contact-rich failures by Aligning Contact-signals and Timing의 약자. <b>Logit-Normal 노이즈 스케줄</b>(정밀도용)과 <b>시간 인식 힘 주입 모듈</b>(힘용) 두 메커니즘의 결합. 어느 하나만 써도 개선되지만 결합 시 시너지가 큼.</li>
+      <li><b>실로봇 대규모 검증</b> — 5개 접촉-집약 태스크(플러그·USB·버튼·보드·열쇠) × 총 <b>~2,500회</b> 실기 rollout. π₀.₅ 백본에서 <span class="win">39.0% → 66.0%</span>, π₀ 백본에서 플러그 32.5% → 70.0% 등 백본을 갈아끼워도 이득이 유지됨.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+    <p>FACT는 기존 VLA(π₀.₅ 또는 π₀) 백본을 그대로 두고 두 축을 <b>동시에</b> 손본다: (A) <b>학습 시 노이즈 샘플링</b>을 정밀 보정용으로 재분배, (B) <b>추론·학습 시 힘 신호 통합</b>을 시간축으로 확장.</p>
+
+    <h3>A. Logit-Normal 노이즈 스케줄 (정밀도 실패 해결)</h3>
+    <p>Flow matching(연속 흐름 정합)은 매 학습 스텝마다 시각 <b>τ∈[0,1]</b>을 뽑아 "노이즈 섞인 행동에서 참 행동으로 흐르는 벡터장"을 학습한다. π₀ 계열은 <b>Beta 분포</b>로 τ를 뽑는데, 이 분포는 <b>중·고노이즈(τ가 0.3~1.0)</b>에 학습 신호를 몰아준다. 하지만 접촉 순간의 <b>미세 재정렬</b>은 이미 행동이 거의 완성된 상태(τ가 0에 매우 가까움)에서 이뤄지므로, Beta로는 그 구간이 데이터-희소해진다.</p>
+    <div class="callout">
+      <b>왜:</b> 접촉 정밀 보정은 "행동을 거의 다 만든 뒤 마지막 1 mm 어긋남을 잡는" 문제다. 그런데 학습이 그 구간을 거의 안 본다면, 정책은 접촉 직전에 무엇을 해야 할지 배우지 못한다. τ 샘플링을 저노이즈 영역으로 옮기면 이 사각지대가 사라진다.
+    </div>
+    <p>저자는 τ를 <b>Logit-Normal(LN)</b> 분포로 갈아탄다. 밀도함수는 다음과 같다(기호: <b>m</b>은 위치, <b>s</b>는 폭, <b>logit(τ)=ln(τ/(1−τ))</b>).</p>
+    <p><b>f<sub>T</sub>(τ) = (1/(s·√(2π))) · (1/(τ(1−τ))) · exp(−(logit(τ)+m)²/(2s²))</b></p>
+    <p>재매개변수: <b>τ = σ(s·z − m)</b>, z ~ N(0,1) (σ는 로지스틱 시그모이드). 사후학습(post-training) 단계에서 <b>m=1.5, s=1</b>로 설정하면, τ&lt;0.2 구간에 <b>Beta 대비 약 6배 많은 그래디언트 신호</b>가 배분된다. 사전학습은 원래 Beta 그대로 두어 대규모 표현학습을 해치지 않는다.</p>
+
+    <h3>B. 시간 인식 힘 주입 (힘 실패 해결)</h3>
+    <p>기존 force-VLA들은 <b>현재 시점의 6D 힘/토크 벡터 f̄<sub>t</sub></b> 하나만 정책에 넣거나, 별도 손실을 붙였다. FACT는 세 요소를 결합한다.</p>
+
+    <p><b>(B-1) Contact State Modulation — 현재 힘으로 정규화층을 변조.</b> 현재 힘 f̄<sub>t</sub>를 mean-pool 후 2-layer MLP φ<sub>force</sub>에 통과, 층별 <b>AdaRMS(Adaptive RMSNorm) 스케일</b>에 더한다.</p>
+    <p>수식: <b>Δγ(f̄<sub>t</sub>) = W<sub>γ</sub>·φ<sub>force</sub>(f̄<sub>t</sub>) ∈ ℝ<sup>d</sup></b>,<br>
+    <b>h<sub>l</sub> = (γ<sub>l</sub>(τ) + Δγ(f̄<sub>t</sub>))·RMSNorm(h<sub>l−1</sub>) + β<sub>l</sub>(τ) + h<sub>l−1</sub>·g<sub>l</sub>(τ)</b>.</p>
+    <p>기호: <b>h<sub>l</sub></b>은 l번째 트랜스포머 층 출력, <b>γ<sub>l</sub>, β<sub>l</sub>, g<sub>l</sub></b>은 원래 flow-matching 조건 τ에서 오는 스케일·시프트·게이트, <b>d</b>는 임베딩 차원. 접촉이 감지되면 layer normalization의 "민감도(scale)"가 바뀌어 정책의 반응성이 접촉 상태에 맞게 즉시 조정된다.</p>
+
+    <p><b>(B-2) Contact History — 지난 30스텝 힘 시퀀스를 토큰으로 주입.</b> 최근 <b>H=30 스텝(2초)</b>의 F/T 값 {f<sub>t−H</sub>, …, f<sub>t−1</sub>}을 각각 공유 causal 인코더로 임베딩해 얻은 <b>30개 토큰을 행동 생성 모듈 입력 앞에 prepend</b>. 이렇게 하면 "접촉 개시 → 힘 급상승 → 정착"이라는 시간 프로파일이 정책의 attention에 노출된다.</p>
+
+    <p><b>(B-3) Contact Gating — 비접촉 스텝의 그래디언트 차단.</b> 힘 크기가 임계 <b>δ</b> 미만인 스텝에서는 힘 인코더 파라미터로 흐르는 그래디언트를 잘라내, 힘 인코더가 <b>거의-0 잡음</b>에 과적합하지 않게 한다.</p>
+    <div class="callout">
+      <b>왜:</b> 로봇이 공중에서 이동 중일 때 F/T 센서는 대부분 0 근처의 <b>드리프트·잡음</b>만 담고 있다. 이 구간에서 힘 인코더가 학습되면 "잡음을 힘으로 착각"하는 편향이 생긴다. 접촉이 있을 때만 그래디언트를 흘려보내면 인코더가 <b>정보성 있는 접촉 프로파일</b>에만 반응하도록 강제된다.
+    </div>
+
+    <h3>학습 · 데이터</h3>
+    <div class="kv">
+      <div>백본</div><div>π₀.₅ (주력), π₀ (전이 실험)</div>
+      <div>노이즈 스케줄</div><div>사전학습 Beta 유지 → 사후학습 LN (m=1.5, s=1)</div>
+      <div>힘 히스토리</div><div>H=30 스텝 (2초)</div>
+      <div>태스크</div><div>Plug · USB · Button · Board Erasing · Key Insertion (5종)</div>
+      <div>총 rollout</div><div>~2,500회 실로봇 (태스크당 40회 × 조건들)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Table 1 — 5개 접촉 태스크 성공률 (π₀.₅ 백본)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Plug</th><th>USB</th><th>Button</th><th>Board</th><th>Key</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>π₀.₅ (기준)</td><td>30.0</td><td>37.5</td><td>12.5</td><td class="win">100.0</td><td>15.0</td><td>39.0</td></tr>
+        <tr><td>π₀.₅ + LN</td><td>50.0</td><td>47.5</td><td>57.5</td><td>87.5</td><td>37.5</td><td>56.0</td></tr>
+        <tr><td><b>FACT</b> (LN + 힘 주입)</td><td class="win">57.5</td><td class="win">47.5</td><td class="win">75.0</td><td>90.0</td><td class="win">60.0</td><td class="win">66.0</td></tr>
+        <tr><td>ForceVLA<sub>π₀.₅</sub></td><td>32.5</td><td>37.5</td><td>12.5</td><td>77.5</td><td>42.5</td><td>40.5</td></tr>
+        <tr><td>TA-VLA<sub>π₀.₅</sub></td><td>30.0</td><td>25.0</td><td>20.0</td><td>97.5</td><td>15.0</td><td>37.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">각 태스크 40회 rollout. FACT는 5개 중 4개에서 최고, 평균 <b>66.0%</b>로 차순위 π₀.₅+LN(56.0)·ForceVLA(40.5) 크게 상회. Board는 π₀.₅ 기준선이 이미 100%라 마진이 없음.</p>
+
+    <h3>Table 2 — LN 스케줄은 다른 힘-VLA에도 도움</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Plug</th><th>Key</th><th>Button</th></tr></thead>
+      <tbody>
+        <tr><td>TA-VLA</td><td>30.0</td><td>15.0</td><td>20.0</td></tr>
+        <tr><td>TA-VLA + LN</td><td class="win">47.5</td><td class="win">32.5</td><td class="win">42.5</td></tr>
+        <tr><td>ForceVLA</td><td>32.5</td><td class="win">42.5</td><td>12.5</td></tr>
+        <tr><td>ForceVLA + LN</td><td class="win">57.5</td><td>30.0</td><td class="win">30.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Logit-Normal 스케줄만 적용해도 기존 힘-VLA들의 성능이 대부분 상승 — "정밀도 실패" 진단이 백본에 무관하게 유효함을 시사.</p>
+
+    <h3>Table 4 — π₀ 백본으로 갈아끼워도 이득 유지</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Plug</th><th>Key</th><th>Button</th></tr></thead>
+      <tbody>
+        <tr><td>π₀</td><td>32.5</td><td>45.0</td><td>47.5</td></tr>
+        <tr><td><b>FACT<sub>π₀</sub></b></td><td class="win">70.0</td><td class="win">50.0</td><td class="win">60.0</td></tr>
+        <tr><td>ForceVLA<sub>π₀</sub></td><td>55.0</td><td>42.5</td><td>42.5</td></tr>
+        <tr><td>TA-VLA<sub>π₀</sub></td><td>30.0</td><td>27.5</td><td>27.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">FACT는 백본 비의존적: π₀에서도 Plug 32.5→70.0(+37.5pp) 등 큰 이득. VLA 접촉 실패의 근본 원인이 특정 백본이 아니라 <b>학습 방식·힘 신호 처리</b>에 있음을 확증.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <h3>Table 3 — 힘 주입 세 요소 중 무엇이 중요한가</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Method</th><th>Plug</th><th>Key</th><th>Button</th></tr></thead>
+      <tbody>
+        <tr><td><b>FACT (풀)</b></td><td>57.5</td><td class="win">60.0</td><td class="win">75.0</td></tr>
+        <tr><td>− gradient threshold (게이팅 제거)</td><td>42.5</td><td>27.5</td><td>57.5</td></tr>
+        <tr><td>− current reading (순간 힘 제거)</td><td class="win">60.0</td><td>35.0</td><td>50.0</td></tr>
+        <tr><td>− history (30-스텝 히스토리 제거)</td><td>30.0</td><td>20.0</td><td>12.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>힘 히스토리가 가장 결정적</b>: 제거 시 Button 75→12.5(−62.5pp), Key 60→20(−40pp). 접촉의 <b>시간 프로파일</b>이 순간값보다 훨씬 정보량이 많음을 방증.</li>
+      <li><b>게이팅도 중요</b>: 비접촉 그래디언트를 흘려보내면 Key 60→27.5, Button 75→57.5로 하락. 힘 인코더의 <b>잡음 과적합</b>이 실제 문제였음.</li>
+      <li>현재 힘(순간값)은 Plug에선 오히려 없는 편이 낫지만 Key·Button에서 크게 기여 — 태스크별로 순간 힘의 유용성이 다름.</li>
+      <li>Appendix A.1의 <b>노이즈 치환 실험</b>: 학습된 FACT에 F/T 값을 가우시안 잡음으로 바꿔 넣으면 성공률이 유의(p&lt;.001)하게 급락 → 정책이 힘 신호를 <b>실제로</b> 활용함(shortcut 학습이 아님).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.01402/x4.png" alt="Beta vs Logit-Normal 노이즈 스케줄 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure — Beta vs Logit-Normal(LN) 노이즈 밀도.</b> τ&lt;0.2 저노이즈 영역(회색 세로선 왼쪽)에서 LN(주황, m=1.5·s=1)이 Beta(보라) 대비 약 6배 두꺼운 확률질량을 준다. 이 구간이 바로 "접촉 직전 미세 재정렬"이 필요한 구간. (출처: arXiv:2608.01402)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.01402/x5.png" alt="FACT 아키텍처 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure — Force-augmented π₀.₅ 아키텍처.</b> 왼쪽 pre-trained VLM은 이미지·프롬프트·프로프리오셉션(q)만 받고, 오른쪽 action expert 18개 층은 <b>τ(노이즈 시각), f<sub>t</sub>(현재 힘), f<sub>t−H:t−1</sub>(30-스텝 힘 히스토리), a<sub>t</sub>(현재 행동)</b>를 <b>AdaRMSNorm</b>(힘으로 변조된 RMSNorm)과 cross-attention을 거쳐 예측 행동 a₀를 출력한다. (출처: arXiv:2608.01402)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (5-task 평균)</b>은 핵심 헤드라인. FACT 66.0 vs π₀.₅ 39.0 vs ForceVLA 40.5. 특히 Button은 12.5 → 75.0(+62.5pp), Key는 15.0 → 60.0(+45pp)로 <b>기존 방법이 사실상 실패</b>하던 태스크가 실사용 수준에 근접함.
+    </div>
+    <p class="cap">Figure 1(x1~x3): 성공·정밀도 실패·힘 실패 세 궤적의 힘 크기 |F| 시간 프로파일 대비. Figure 2(x4): 노이즈 스케줄 재분배. Figure 3(x5): 힘 히스토리·현재 힘이 AdaRMSNorm과 cross-attention에 주입되는 경로.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.01402" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.01402" target="_blank">PDF</a></li>
+      <li><a href="https://stanford-iprl-lab.github.io/fact/" target="_blank">프로젝트 페이지 (Stanford IPRL Lab)</a></li>
+      <li>선행 연구: <a href="https://arxiv.org/abs/2410.24164" target="_blank">π₀ (arXiv:2410.24164)</a> · ForceVLA · TA-VLA</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.01402 · FACT · 요약 생성 2026-08-12
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

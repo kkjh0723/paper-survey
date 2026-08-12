@@ -184,6 +184,174 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2608.03924" data-added="2026-08-10" data-tags="Embodied Agent,Tool Use,LIBERO,LLM Agent,Sim2Real">
+        <td class="no">92</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.03924_OpenETA.html">ETA: A New Agentic Paradigm for Embodied Tasks</a></div>
+          <div class="sub">Yitong Chen, Zezheng Huai, Sixian Li 외 · Shanghai Innovation Institute · Fudan · Jilin · Nanjing · Zhejiang · arXiv:2608.03924</div>
+          <div class="sub">end-to-end VLA의 통제성 결핍을 문제 삼아 Planner–Interface–World 3분할 ETA 패러다임과 OpenETA(툴 44개) 제안. 런타임 불변식은 "한 번에 하나의 세계 변경 액션 → 새 관찰 후 다음 결정". LIBERO 400에피소드 풀 OpenETA 14.0%, Codex 3툴 축소본은 GPT-5.6 Sol에서 Pass@5 90.0%. 자체 진화 후보는 승격 게이트 통과 0건.</div>
+          <div class="tags">
+            <span class="tag">Embodied Agent</span>
+            <span class="tag">Tool Use</span>
+            <span class="tag">LIBERO</span>
+            <span class="tag">LLM Agent</span>
+            <span class="tag">Sim2Real</span>
+          </div>
+        </td>
+        <td class="date">2026-08-04</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.03924" target="_blank">arXiv</a>
+          <a href="https://github.com/OpenMOSS/OpenETA" target="_blank">GitHub</a>
+        </td>
+      </tr>
+      <tr data-id="2608.03052" data-added="2026-08-10" data-tags="VLA,Proprioception,Flow Matching,Design Study,RoboCasa">
+        <td class="no">91</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.03052_Proprio-VLA.html">How Should Vision-Language-Action Models Use Proprioceptive State?</a></div>
+          <div class="sub">Yiren Zhao, Ziyang Chen, Ziyang Rao, Pengteng Li 외 · arXiv:2608.03052</div>
+          <div class="sub">π0.5 백본·데이터·평가를 고정하고 로봇 자기 상태의 표현·주입 위치·시간 깊이를 통제 실험. 단일 프레임에선 State Prompt가 57.7%(무-state 54.6% 대비 +3.1)로 최고, 8프레임 이력에선 Action Prefix가 복합 태스크 39.0%(+10.8)로 역전. 지침: "단일 프레임은 VLM에, 다프레임 이력은 액션 헤드에." 상태 표현(joint vs EEF)은 부차적.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Proprioception</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Design Study</span>
+            <span class="tag">RoboCasa</span>
+          </div>
+        </td>
+        <td class="date">2026-08-04</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.03052" target="_blank">arXiv</a>
+          <a href="https://arxiv.org/pdf/2608.03052" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr data-id="2608.01402" data-added="2026-08-10" data-tags="VLA,Contact-Rich,Force/Torque,Flow Matching,Logit-Normal">
+        <td class="no">90</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.01402_FACT.html">Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them</a></div>
+          <div class="sub">Carlota Parés-Morlans, Nils Kuhn, Isabel Liu, Alberta Longhini, Jeannette Bohg · Stanford (IPRL) · arXiv:2608.01402</div>
+          <div class="sub">flow-matching VLA의 접촉 태스크 실패를 정밀 실패(Beta 스케줄이 τ&lt;0.2에 8.9% gradient만 배정)와 힘 실패(F/T 시계열 미활용)로 분해. FACT = Logit-Normal 스케줄(τ&lt;0.2에 6배 배정) + 시간 인식 힘 주입(현재 힘은 AdaRMSNorm, 과거 2초 이력 토큰, 자유공간 gradient 차단). 5 태스크 평균 39%→66% (+27pp), Button 12.5→75, Plug 30→57.5, 실기 ~2,500 rollouts.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Contact-Rich</span>
+            <span class="tag">Force/Torque</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Logit-Normal</span>
+          </div>
+        </td>
+        <td class="date">2026-08-02</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.01402" target="_blank">arXiv</a>
+          <a href="https://stanford-iprl-lab.github.io/fact/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2607.27138" data-added="2026-08-10" data-tags="Latent Action,VLA,Gaussian,Video Pretraining,Distributional">
+        <td class="no">89</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.27138_DLAM.html">DLAM: Distributional Latent Actions with Temporal Constraints</a></div>
+          <div class="sub">Zuojin Tang, Feifan Luo, Haoyun Liu, Botai Yuan 외 · arXiv:2607.27138</div>
+          <div class="sub">Latent Action Model의 결정론적 점 전이를 대각 가우시안 분포로 확장, 합성·역방향 제약을 평균과 표준편차 모두에 강제. π₀에 올려 MetaWorld MT50 87.6%(π₀ 47.9%, ALAM 85.0%), LIBERO 99.0%(ALAM 98.1%), 실기 Piper 6-DoF 4태스크 평균 73.8%(ALAM 63.8%, π₀ 40.0%). 정규화 평균 제약이 재구성 이득 대부분, 학습 분산·상관계수가 하류 제어 이득.</div>
+          <div class="tags">
+            <span class="tag">Latent Action</span>
+            <span class="tag">VLA</span>
+            <span class="tag">Gaussian</span>
+            <span class="tag">Video Pretraining</span>
+            <span class="tag">Distributional</span>
+          </div>
+        </td>
+        <td class="date">2026-07-29</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.27138" target="_blank">arXiv</a>
+          <a href="https://arxiv.org/pdf/2607.27138" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr data-id="2607.25895" data-added="2026-08-10" data-tags="UMI,Data Collection,SLAM,Bimanual,Zero-Robot">
+        <td class="no">88</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2607.25895_HiFi-UMI.html">HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone</a></div>
+          <div class="sub">Yuteng Wei, Jinming Ma, Jiawei Wang 외 · Simple AI · Simple World Lab · arXiv:2607.25895</div>
+          <div class="sub">헤드 스테레오 SLAM + 손 마커큐브 + GPIO μs 동기화 + 200° 시야 6카메라로 말단 정확도 3mm 달성. 실로봇 데이터 0으로 UMI만 후처리 학습해도 원격조작 대비 −2.5~+3.1%p(3개 백본, 4 태스크, 960 rollouts). 20,000시간 이상 수집·2,000시간 48만 에피소드 HiFi-UMI-2K 공개. 4,000시간 사전학습 시 미학습 10태스크 액션 오차 −41%, StarVLA 실기 +18.1%p.</div>
+          <div class="tags">
+            <span class="tag">UMI</span>
+            <span class="tag">Data Collection</span>
+            <span class="tag">SLAM</span>
+            <span class="tag">Bimanual</span>
+            <span class="tag">Zero-Robot</span>
+          </div>
+        </td>
+        <td class="date">2026-07-28</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2607.25895" target="_blank">arXiv</a>
+          <a href="https://cloud.simpleai.tech/simple-world-lab/hifi-umi/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2502.05485" data-added="2026-08-10" data-tags="Hierarchical VLA,2D Path,Open-World,3D Policy,Off-Domain">
+        <td class="no">87</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2502.05485_HAMSTER.html">HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation</a></div>
+          <div class="sub">Yi Li, Yuquan Deng, Jesse Zhang, Joel Jang 외 · NVIDIA · Washington · USC · arXiv:2502.05485</div>
+          <div class="sub">상위 VLM(VILA-1.5-13B)이 "다음 그리퍼 2D 경로 + open/close 시점"만 예측, 하위 3D-aware 정책(RVT-2/3D-DA)이 그 경로를 조건으로 관절 액션 생성. off-domain 데이터(인간 영상·시뮬·타 로봇 ~1.2M)로 상위만 학습 가능. 7개 일반화 축 평균 +20%p(OpenVLA 상대 +50%), Colosseum 시뮬 0.43(3D-DA 0.18), 신 카메라 각도 pick-and-place 1.00 성공.</div>
+          <div class="tags">
+            <span class="tag">Hierarchical VLA</span>
+            <span class="tag">2D Path</span>
+            <span class="tag">Open-World</span>
+            <span class="tag">3D Policy</span>
+            <span class="tag">Off-Domain</span>
+          </div>
+        </td>
+        <td class="date">2025-02-08</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2502.05485" target="_blank">arXiv</a>
+          <a href="https://hamster-robot.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2410.24185" data-added="2026-08-10" data-tags="Bimanual,Dexterous Hand,Humanoid,Data Generation,MimicGen">
+        <td class="no">86</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2410.24185_DexMimicGen.html">DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning</a></div>
+          <div class="sub">Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Ajay Mandlekar, Linxi Fan, Yuke Zhu 외 · UT Austin · NVIDIA · UC San Diego · ICRA 2025</div>
+          <div class="sub">MimicGen을 양팔 다지 손·휴머노이드로 확장. Subtask를 Parallel/Coordination/Sequential 3종 분류, 팔별 action queue·동기화 규칙. 9 시뮬 태스크·3 로봇에서 60 인간 데모 → 21,000 합성 데모, Diffusion Policy 70~97% (Can Sorting 0.7→97.3, Piece Assembly 3.3→80.7). 실기 Fourier GR-1 Can Sorting real-only 0% → sim 40 데모로 90%.</div>
+          <div class="tags">
+            <span class="tag">Bimanual</span>
+            <span class="tag">Dexterous Hand</span>
+            <span class="tag">Humanoid</span>
+            <span class="tag">Data Generation</span>
+            <span class="tag">MimicGen</span>
+          </div>
+        </td>
+        <td class="date">2024-10-31</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2410.24185" target="_blank">arXiv</a>
+          <a href="https://dexmimicgen.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2407.01392" data-added="2026-08-10" data-tags="Diffusion,Autoregressive,Video Generation,Planning,Imitation Learning">
+        <td class="no">85</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2407.01392_DiffusionForcing.html">Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion</a></div>
+          <div class="sub">Boyuan Chen, Diego Martí Monsó, Yilun Du, Max Simchowitz, Russ Tedrake, Vincent Sitzmann · MIT CSAIL · NeurIPS 2024</div>
+          <div class="sub">시퀀스 토큰마다 독립 노이즈 레벨을 부여해 학습·샘플링 — next-token 예측의 가변 길이와 full-sequence diffusion의 guidance를 통합. RNN 구현 CDF로 훈련 지평 36~72 → 2000+ 프레임 안정 롤아웃, D4RL 미로 6개 모두 승(단일 태스크 159.0 vs Diffuser 149.4), 로봇 과일 교환 메모리 태스크 80% (diffusion policy 실패), 관측 오염 강건성 80→76% (baseline 48%).</div>
+          <div class="tags">
+            <span class="tag">Diffusion</span>
+            <span class="tag">Autoregressive</span>
+            <span class="tag">Video Generation</span>
+            <span class="tag">Planning</span>
+            <span class="tag">Imitation Learning</span>
+          </div>
+        </td>
+        <td class="date">2024-07-01</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2407.01392" target="_blank">arXiv</a>
+          <a href="https://github.com/buoyancy99/diffusion-forcing" target="_blank">GitHub</a>
+        </td>
+      </tr>
       <tr data-id="2608.02547" data-added="2026-08-05" data-tags="Action Chunking,Behavioral Cloning,Implicit Ensemble,Delayed Policy,Compounding Error">
         <td class="no">84</td>
         <td class="read-cell"></td>
