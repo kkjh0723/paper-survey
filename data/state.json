@@ -10,32 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2608.16885",
-      "title": "τ₀-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation",
-      "arxiv_url": "https://arxiv.org/abs/2608.16885",
-      "added": "2026-08-19"
-    },
-    {
-      "id": "2608.16837",
-      "title": "HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL",
-      "arxiv_url": "https://arxiv.org/abs/2608.16837",
-      "added": "2026-08-19"
-    },
-    {
-      "id": "2608.14379",
-      "title": "Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2608.14379",
-      "added": "2026-08-19"
-    },
-    {
-      "id": "2608.11739",
-      "title": "G0.5: One Autoregressive Stream for Robot Reasoning and Action",
-      "arxiv_url": "https://arxiv.org/abs/2608.11739",
-      "added": "2026-08-19"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

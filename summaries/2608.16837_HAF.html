@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>HAF — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Humanoid · VLA · RL</span>
+    <h1>HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL</h1>
+    <p class="authors">Langzhe Gu, Chengkai Hou, Meng Li 외 · Shanghang Zhang 등 (TienKung 2.0/3.0 휴머노이드)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.16837" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.16837" target="_blank">PDF</a>
+      <a href="https://grange007.github.io/HAF" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.16837</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Humanoid</span>
+      <span class="t">Loco-Manipulation</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Offline-to-Online RL</span>
+      <span class="t">DCT Latent</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 17일 · 태스크당 120 시연(원격조작) · 실로봇 태스크 7종</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>범용 <b>VLA(Vision-Language-Action)</b>를 휴머노이드 전신 이동+조작(loco-manipulation)에 옮길 때 부딪히는 <b>고차원·상호의존</b> 문제를, (1) <b>HAF-VLA</b>: <b>flow matching(무작위 노이즈에서 정답 궤적 쪽으로 흐르는 방향을 학습해 몇 스텝으로 액션을 뽑는 생성 방식)</b>을 <b>이동/시선 → 허리 → 양팔</b>의 3단으로 쪼개 <b>운동학적 인과 순서</b>를 지키게 하고, (2) <b>HAF-Steer</b>: 백본은 얼리고 <b>DCT(Discrete Cosine Transform, 신호의 주요 저주파 성분만 몇 계수로 압축)</b>로 축소한 <b>노이즈 잠재공간</b>에서 <b>오프라인→온라인 RL</b>을 돌려 배포 적응까지 하는 프레임워크. 7개 실태스크 평균 <span class="win">70.5%</span> (π0.5 53.3%, GR00T N1.7 38.1%).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>π0.5·GR00T 같은 <b>범용 VLA</b>는 팔 조작 데이터로 학습돼, 휴머노이드처럼 <b>다리·허리·팔·머리(시선)</b>를 동시에 협응해야 하는 loco-manipulation에 옮기면 잘 안 된다. 단일 스트림으로 <b>전신 액션을 한 번에 denoise(잡음을 걷어 정답 궤적으로 복원)</b>하면 (a) 다리가 안 잡히기 전에 팔이 먼저 움직이는 등 <b>운동학적 순서가 어긋나고</b>, (b) 실환경에서 무너진 부분을 <b>RL로 고치려 하면 대개 VLA 자체를 재학습</b>해야 해 안정성이 떨어진다.</p>
+    <div class="callout">
+      직관: 사람이 물건을 옮길 때 (1) 몸통 자세를 잡고 → (2) 허리 굽혀 접근 → (3) 손으로 조작하는 자연 순서를 지킨다. HAF는 이 순서를 <b>denoising 자체에 강제</b>하고, 실환경 미세 조정은 <b>VLA 백본은 얼려둔 채</b> "노이즈 공간의 작은 조정"으로만 한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>HAF-VLA: 계층적 3단 액션 플로우</b> — 전신 액션을 3단으로 나눠 각 단계마다 노이즈 샘플 + 학습형 <b>stage embedding</b> + <b>cross-stage KV cache</b>로 조건화. 이전 단계의 clean action을 재인코딩해 다음 단계에 넣어 <b>운동학적 의존성 보존</b>. 실행은 최종 3단 출력만.</li>
+      <li><b>HAF-Steer: 스펙트럴 잠재 공간에서의 오프라인→온라인 RL</b> — 시연 액션을 flow의 <b>역적분(inverse integration)</b>으로 노이즈로 되돌린 뒤 <b>시간축 DCT</b>로 상위 K=8 계수만 유지. 탐색 공간을 H×D(예 100×50)에서 K×D(8×50)로 <b>~10배 이상 축소</b>. VLA 백본은 동결.</li>
+      <li><b>실로봇 7태스크 SOTA</b> — TienKung 2.0/3.0에서 평균 70.5% (π0.5 53.3%, GR00T N1.7 38.1%, Cosmos 27.6%, ACT 25.2%). 이동+조작 결합 태스크에서 특히 큰 격차(Box Transfer 93.3%).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>HAF-VLA: 3단 계층 액션 플로우</h3>
+    <p>전신 액션 공간을 세 부분집합으로 순차 확장한다:</p>
+    <ul>
+      <li><b>Stage 1</b> (𝒜¹): <b>이동(다리) + 시선(머리)</b> — 기본 이동 궤적과 어디를 볼지 결정. 스킬 모드도 여기서 정해짐.</li>
+      <li><b>Stage 2</b> (𝒜²): 여기에 <b>허리(waist) 관절</b>을 추가 → 상체 워크스페이스를 재구성.</li>
+      <li><b>Stage 3</b> (𝒜³): 최종 <b>양팔 조작</b> 포함 전체 관절을 활성화 → 실제 실행 커맨드.</li>
+    </ul>
+    <p>각 단계는 <b>독립적으로 Gaussian noise를 샘플</b>하고 <b>학습형 stage embedding</b>으로 자기 위치를 표식. 앞 단계의 clean action(잡음 제거된 결과)을 <b>cross-stage KV cache</b>로 인코딩해 뒤 단계 트랜스포머에 조건으로 주입. 학습은 stage-wise <b>flow matching</b> 목적, 액션 전문가 가중치는 공유. Teacher forcing(정답을 마스킹해 KV 캐시 계산) 사용해 오차 누적 방지. <b>실행은 오직 Stage 3 출력만 로봇에 전달</b>, 앞 단계는 문맥 제공용.</p>
+
+    <h3>HAF-Steer: 스펙트럴 잠재 RL (배포 적응)</h3>
+    <p>목표: 실환경에서 부족한 부분을 <b>VLA 재학습 없이</b> 미세조정.</p>
+    <ul>
+      <li><b>스펙트럴 잠재공간 구축</b>: 시연 액션 청크를 flow의 수치적 <b>역적분</b>으로 노이즈로 되돌리고, <b>시간축 DCT</b>로 첫 K=8 계수만 유지(고주파 잡음은 버림). 이렇게 하면 탐색 대상이 시간 길이 H(예 100) × 관절 D → K×D로 급감 → RL이 안정.</li>
+      <li><b>오프라인 단계</b>: 스펙트럴 actor를 시연 노이즈에 대해 <b>Behavior Cloning(모방 학습)</b>으로 회귀.</li>
+      <li><b>온라인 단계</b>: <b>Mixed offline-to-online SAC(Soft Actor-Critic, 엔트로피 정규화 actor-critic RL)</b>. 오프라인·온라인 배치 혼합 학습 + 오프라인 데이터에만 BC 정규화(시연 품질 보존) + <b>오프라인 샘플링 비율을 점진적으로 감소</b>시켜 실환경 경험 쪽으로 전환.</li>
+      <li><b>추론</b>: 스펙트럴 actor가 정규화 공간에서 K개 계수 샘플 → <b>역DCT</b>로 시간 축 노이즈 재구성 → 동결 VLA가 실행 액션 생성.</li>
+    </ul>
+    <div class="callout">
+      직관: "VLA 통째로 튜닝하지 말고, 입력 노이즈만 살짝 흔들자." 그런데 100프레임 노이즈를 다 흔들면 자유도가 너무 커서 RL이 폭주 → <b>DCT 상위 8계수</b>(부드러운 큰 형태 위주)만 흔드는 것으로 안전·안정 확보.
+    </div>
+
+    <h3>데이터 & 하드웨어</h3>
+    <div class="kv">
+      <div>플랫폼</div><div>TienKung 2.0 / 3.0 휴머노이드 + 자기중심 RGB 카메라</div>
+      <div>데이터 수집</div><div>등형(isomorphic) 원격조작 (조작: 마스터 팔, 이동/허리: 조이스틱, 시선: IMU)</div>
+      <div>규모</div><div>태스크당 <b>120 시연</b></div>
+      <div>평가</div><div>정규화 점수 = (달성 마일스톤 / 최대 마일스톤) × 100, 10 롤아웃 평균</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>7개 실태스크 (정규화 점수 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>HAF-VLA</th><th>π0.5</th><th>GR00T N1.7</th><th>Cosmos</th><th>ACT</th></tr></thead>
+      <tbody>
+        <tr><td>Laundry Loading</td><td class="win">66.7</td><td>53.3</td><td>40.0</td><td>0.0</td><td>10.0</td></tr>
+        <tr><td>Clothes Retrieval</td><td>53.3</td><td>53.3</td><td>33.3</td><td>26.7</td><td>23.3</td></tr>
+        <tr><td>Table Tidy</td><td class="win">80.0</td><td>70.0</td><td>40.0</td><td>16.7</td><td>23.3</td></tr>
+        <tr><td>Basket Transfer</td><td class="win">63.3</td><td>50.0</td><td>43.3</td><td>33.3</td><td>16.7</td></tr>
+        <tr><td>Toy Storage</td><td class="win">80.0</td><td>53.3</td><td>30.0</td><td>40.0</td><td>23.3</td></tr>
+        <tr><td>Ball Tossing</td><td class="win">56.7</td><td>33.3</td><td>36.7</td><td>3.3</td><td>30.0</td></tr>
+        <tr><td>Box Transfer</td><td class="win">93.3</td><td>60.0</td><td>43.3</td><td>73.3</td><td>50.0</td></tr>
+        <tr><td><b>평균</b></td><td class="win">70.5</td><td>53.3</td><td>38.1</td><td>27.6</td><td>25.2</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">7개 중 6개 SOTA, 1개는 π0.5와 동률. <b>이동이 결합된 태스크</b>(Box Transfer, Ball Tossing)에서 격차가 특히 큼 — 계층 3단이 이동/조작 순서를 지켜준 결과.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <h3>HAF-VLA 계층 설계 효과 (Laundry Loading, denoising 30 스텝 기준)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>변형</th><th>설계</th><th>점수</th></tr></thead>
+      <tbody>
+        <tr><td>HAF-VLA (Full)</td><td>이동/시선 → 허리 → 조작</td><td class="win">66.7</td></tr>
+        <tr><td>All-Joint Denoising</td><td>매 단계 전 관절 함께</td><td>53.3</td></tr>
+        <tr><td>Arm-First</td><td>조작 → 허리 → 이동 (역순)</td><td>50.0</td></tr>
+        <tr><td>π0.5 (30 스텝)</td><td>단일 스트림 전신</td><td>20.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">"팔 먼저" 역순이 유의미하게 낮아짐 → <b>이동·자세부터 확정하고 팔을 마지막</b>에 두는 인과 순서가 핵심. π0.5는 denoising 스텝을 늘리면 오히려 지연으로 실패 증가.</p>
+
+    <h3>분포 변화에 대한 강건성</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>Disturbance</th><th>HAF-VLA</th><th>π0.5</th></tr></thead>
+      <tbody>
+        <tr><td>Laundry Loading</td><td>미학습 의자가 경로에 있음</td><td class="win">40.0</td><td>26.7</td></tr>
+        <tr><td>Clothes Retrieval</td><td>로봇 위치 20cm 뒤로 이동</td><td class="win">43.3</td><td>36.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>HAF-Steer의 오프라인→온라인 적응 (Toy Storage · Basket Transfer)</h3>
+    <p>Base(동결 VLA), <b>DSRL</b>(단일 노이즈 벡터를 호라이즌 전체에 반복), <b>Noise BC</b>(스펙트럴 actor를 BC만), <b>HAF-Steer</b>(스펙트럴 BC + mixed SAC) 4종 비교. HAF-Steer가 <b>π0.5와 HAF-VLA 모두</b>에서 in-distribution·OOD 양쪽 일관 향상. DSRL은 "시간 변동을 없애 위험한 탐색 동작"을 만들어 조기 종료 필요.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.16837/overview.png" alt="HAF 프레임워크 개요" loading="lazy">
+      <figcaption><b>Figure — HAF 개요.</b> 좌: HAF-VLA의 3단 계층 flow matching(이동/시선 → 허리 → 양팔), 우: HAF-Steer의 스펙트럴 잠재 RL(시연 액션을 역적분·DCT로 K개 계수로 축소해 SAC 학습). (출처: arXiv:2608.16837)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.16837/pipeline.png" alt="HAF-VLA 파이프라인" loading="lazy">
+      <figcaption><b>Figure — HAF-VLA 파이프라인.</b> 각 단계는 독립 노이즈에서 시작하지만, 이전 단계의 clean action이 cross-stage KV cache로 조건화되어 인과 순서를 유지. (출처: arXiv:2608.16837)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.16837/steer.png" alt="HAF-Steer 파이프라인" loading="lazy">
+      <figcaption><b>Figure — HAF-Steer 파이프라인.</b> 시연 액션 → flow 역적분 → 시간축 DCT(상위 K개) → 정규화된 스펙트럴 공간에서 offline-to-online SAC. 추론 시 iDCT로 노이즈 복원 후 동결 VLA가 실행. (출처: arXiv:2608.16837)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.16837" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.16837" target="_blank">PDF</a></li>
+      <li><a href="https://grange007.github.io/HAF" target="_blank">프로젝트 페이지</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.16837 · HAF · 요약 생성 2026-08-19
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>G0.5 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Autoregressive · CoT</span>
+    <h1>G0.5: One Autoregressive Stream for Robot Reasoning and Action</h1>
+    <p class="authors">Yicheng Liu, Zibin Dong, Baijun Ye 외 · Galaxea (Hang Zhao 등)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.11739" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.11739" target="_blank">PDF</a>
+      <span>arXiv:2608.11739</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Autoregressive</span>
+      <span class="t">Chain-of-Thought</span>
+      <span class="t">RVQ Action Tokenizer</span>
+      <span class="t">Visual Memory</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 12일 · 14개 임바디먼트 사전학습 · R1-Lite/R1-Pro 실로봇 · BEHAVIOR Challenge 우승</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>π0·π0.5·GR00T처럼 <b>비전-언어 모델(VLM) + 별도 flow-matching action expert</b>로 두 갈래를 가진 최근 VLA 관행을 버리고, <b>단일 트랜스포머 디코더</b>가 <b>추론 토큰과 액션 토큰을 하나의 자기회귀 스트림</b>으로 <b>같은 next-token 손실</b>로 뱉게 한다. <b>학습형 RVQ(잔차 벡터 양자화)</b> 액션 토큰(27차원, 5부분으로 구조화)으로 이종 로봇을 한 어휘에 담고, CoT(subtask/bbox/trace/actionHint) 4종을 <b>추가 손실 없이 그냥 시퀀스에 섞어</b> 함께 학습. R1 실로봇 <span class="win">76.7%</span>(π0.5 53.3%), BEHAVIOR 챌린지 50태스크 <span class="win">31.4%</span>(우승자 26.1% 상회), LIBERO 98.9%, SimplerEnv-Bridge 87.3%, DROID zero-shot 82.5%.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>최근 VLA(<b>Vision-Language-Action, 화면·언어·액션을 한 모델에서 다루는 정책</b>)는 대부분 "<b>VLM은 인코더로 쓰고 그 위에 flow matching 전문가를 얹어 액션만 별도로 생성</b>"하는 두 갈래 구조다. 이 방식은 (a) 두 갈래를 잇는 <b>어댑터/디스틸레이션이 복잡</b>하고, (b) <b>추론(CoT)</b>을 붙이려면 flow head와 별도 목적을 관리해야 한다. G0.5는 "그럴 필요 있나?"에서 출발 — VLM 자체가 액션도 뱉게 만들어 <b>하나의 스트림·하나의 목적</b>으로 통합한다.</p>
+    <div class="callout">
+      직관: 두 개의 뇌(추론용 + 액션용)를 어댑터로 이어 붙이는 대신, <b>같은 뇌가 말도 하고 손도 움직이도록</b> 만든다. 대신 손 움직임을 "말할 수 있는 언어"(= 이산 액션 토큰)로 바꿔야 한다. 이 논문의 대부분 설계는 그 <b>이산화</b>와 <b>여러 로봇 공유</b>를 잘하는 방법에 대한 것.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>학습형 크로스-임바디먼트 액션 토크나이저 (RVQ, 27차원 구조 분해)</b> — 액션을 좌팔 제어(9) + 좌그리퍼(1) + 우팔 제어(9) + 우그리퍼(1) + 하체(7)의 5개 의미 파트로 나누어 <b>이질적 로봇이 하나의 어휘 공유</b>. "active-part prediction"으로 사용 안 하는 파트는 토큰 자체를 생략 → 추론 오버헤드 감소.</li>
+      <li><b>Native CoT stream (자기회귀 스트림 안의 4가지 추론 원시)</b> — Subtask · BBox · Trace · ActionHint의 4종을 액션 토큰 앞에 <b>같은 cross-entropy 손실</b>로 생성. "사전학습에 보조 회귀 목적도 전문가 디스틸도 없다."</li>
+      <li><b>Visual Memory 모듈</b> — π0.7·MEM처럼 비전 트랜스포머 4개 층마다 <b>공간-시간 분리 attention</b>으로 다초 history 주입. 최종 층에서 과거 토큰은 폐기 + 학습 시 <b>과거 프레임 30% 확률 dropout</b>으로 배포 시 단일 프레임도 가능.</li>
+      <li><b>단일 정책이 4-체크포인트 앙상블 우승자 능가</b> — 2025 BEHAVIOR 챌린지 50 태스크에서 G0.5(1 epoch) 0.2904, 4 epoch 0.3136으로 우승자(0.2605)를 상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>액션 토크나이저: 5부분 RVQ</h3>
+    <p><b>RVQ(Residual Vector Quantization, 벡터 양자화를 잔차에 여러 번 반복해 세밀도를 높이는 이산화 기법)</b>를 27차원 전신 액션에 학습형으로 적용. 평평한 flat 인코딩 대신 <b>의미 파트별 분해</b>:</p>
+    <div class="kv">
+      <div>Left control</div><div>9차원 (팔 관절/EEF)</div>
+      <div>Left gripper</div><div>1차원</div>
+      <div>Right control</div><div>9차원</div>
+      <div>Right gripper</div><div>1차원</div>
+      <div>Lower body</div><div>7차원 (하체 이동/자세)</div>
+    </div>
+    <p>고정형 팔은 하체 토큰을 아예 안 뽑고, 이동 로봇은 다 뽑는 식으로 <b>active-part만 예측</b>해 시퀀스 길이를 줄임.</p>
+
+    <h3>Native CoT: 4개 원시</h3>
+    <ul>
+      <li><b>Subtask</b>: 원자 서브태스크로 분해</li>
+      <li><b>BBox</b>: 대상 물체의 <b>bounding box(경계 상자)</b> 위치</li>
+      <li><b>Trace</b>: 2D end-effector(집게 끝) 이동 경로</li>
+      <li><b>ActionHint</b>: 고수준 동작 서술 (예: "왼팔로 들어 올려", "수직으로 눌러")</li>
+    </ul>
+    <p>이 8가지 CoT 조합(어떤 CoT를 켜느냐)이 모두 동일한 next-token cross-entropy로 학습돼 <b>배포 시 사용자가 필요한 CoT만 골라</b> 실행 가능(추가 학습 불필요).</p>
+
+    <h3>Visual Memory</h3>
+    <p>π0.7 / MEM에서 차용한 <b>factorized spatial-temporal attention</b>(공간·시간을 분리해 각각 계산 → 계산량 절감)을 비전 트랜스포머 <b>4개 층마다</b> 삽입. 최종 층에서 과거 토큰은 폐기 → 언어 모델 입력은 <b>현재 프레임 크기 유지</b>. 학습 시 30% 확률로 과거 프레임 dropout → 배포 시 단일 프레임에도 강건.</p>
+
+    <h3>데이터 & 자동 라벨</h3>
+    <div class="kv">
+      <div>사전학습 로봇</div><div>14개 임바디먼트 (실+시뮬), pick-and-place 위주 롱테일. DROID는 사전학습에서 <b>제외</b>.</div>
+      <div>자동 라벨 파이프라인</div><div>키프레임 분할 → Gemini 3·Doubao Seed 2.0 Pro가 action hint/task 설명 생성 → SAM3로 프레임별 bbox 추적 → forward kinematics로 3D EEF 궤적을 이미지 평면에 투영</div>
+      <div>웹 공동학습</div><div>Generic VQA (38~42K) + Embodied VQA (40~42K) + 자체 라벨을 액션 위주 mixture로 혼합, 모두 cross-entropy</div>
+      <div>최적화</div><div>AdamW · warmup → 상수 → cosine decay · 비전 타워도 unfrozen · 과거 프레임 dropout 정규화</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>R1 실로봇 (파인튜닝 후, 태스크·임바디먼트 6설정 × 15 trial)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Success Rate</th><th>Process Score</th></tr></thead>
+      <tbody>
+        <tr><td><b>G0.5</b></td><td class="win">76.7%</td><td class="win">129.2</td></tr>
+        <tr><td>π0.5</td><td>53.3%</td><td>105.2</td></tr>
+        <tr><td>GR00T-N1.7</td><td>24.4%</td><td>68.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">R1-Lite: 수건 접기, 상자 접기, 필통 정리 / R1-Pro: 상자 옮기기·쌓기. 모두 동일 백본 G0.5 하나로 파인튜닝.</p>
+
+    <h3>BEHAVIOR Challenge 2025 (50 가사 태스크, 각 10 instance)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Task Success Score</th></tr></thead>
+      <tbody>
+        <tr><td>G0.5 (1 epoch)</td><td>0.2904 (우승자 상회)</td></tr>
+        <tr><td><b>G0.5 (4 epoch)</b></td><td class="win">0.3136</td></tr>
+        <tr><td>π0.5 (4 epoch)</td><td>0.2626</td></tr>
+        <tr><td>Challenge 우승자 (4-checkpoint 앙상블)</td><td>0.2605</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">단일 정책이 4-체크포인트 앙상블 우승자보다 <b>+20.4%p 상회</b>. 이동+조작 결합 태스크(상자 옮기기 +0.35, 쓰레기 픽업 +0.30, 차량 적재 +0.28)에서 강세.</p>
+
+    <h3>정적 시뮬레이션 벤치마크</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>벤치</th><th>G0.5</th><th>참고 SOTA</th></tr></thead>
+      <tbody>
+        <tr><td>LIBERO (평균)</td><td class="win">98.9%</td><td>Cosmos Policy 98.5, Being-H0.5 98.2, π0.5 96.9</td></tr>
+        <tr><td>RoboTwin 2.0 (50+ 태스크)</td><td class="win">93.3%</td><td>LingBot-VA 92.2, Fast-WAM 91.8</td></tr>
+        <tr><td>SimplerEnv-Bridge (WidowX 4태스크)</td><td class="win">87.3%</td><td>Xiaomi-Robotics-0 79.2, MemoryVLA 71.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>DROID Zero-Shot (사전학습 미포함, 사후학습만)</h3>
+    <p>DROID로 사후학습 후 held-out 환경/물체 10 태스크, 10 trial:</p>
+    <ul>
+      <li><b>G0.5-DROID: 82.5%</b> (π0.5-DROID 57.5%, MolmoAct2-DROID 52.0%)</li>
+      <li>25~30 point 격차. 미학습 환경 zero-shot이 다른 파운데이션 모델보다 훨씬 강함.</li>
+    </ul>
+
+    <h3>Pick-and-Place 언어 추종 (R1-Lite, 64 실환경 trial)</h3>
+    <ul>
+      <li>50H 사후학습: G0.5 <b>84.4%</b> 언어 추종 / <b>75.0%</b> 태스크 성공 (π0.5 68.8% / 65.6%)</li>
+      <li>대상 시각 문맥 제공 시: 98.4% 언어 추종 / 84.4% 태스크 성공</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Zero-shot CoT 효과:</b> 단일 스테이지 PP Bench에서는 CoT 효과 미미(~1.6%p). 그러나 <b>Air Fryer · Cook Bacon 같은 5스테이지 가사 태스크</b>에서 AR+CoT 진행도 3.8 / 3.4 vs AR only 2.4 / 1.5로 <b>1.6~2배</b>. 언어 추종도 비례 향상.</li>
+      <li><b>AR head vs FM head:</b> 옵션으로 flow-matching head를 함께 학습해도, "AR이 FM보다 CoT를 더 잘 따른다." → 통합 목적의 강점.</li>
+      <li><b>지시 표현 감도(정성):</b> 부사 수식어("push hard", "vertically")와 동사 치환("press" vs "close")이 zero-shot 가사 태스크 성공률에 뚜렷한 영향 → 추가 학습 없이 <b>프롬프트로 행동 조향 가능</b>.</li>
+      <li><b>사전학습 분포 정렬:</b> 사전학습에서 pick-and-place 비중이 높아 해당 성능이 강함. 어플라이언스 상호작용은 상대적으로 약하며 추가 파인튜닝 epoch로 개선.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.11739/teaser.png" alt="G0.5 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — G0.5 개요.</b> 단일 트랜스포머 디코더가 CoT 원시(subtask/bbox/trace/actionHint)와 액션 토큰을 하나의 자기회귀 스트림으로 뱉는다. flow-matching 전문가는 없다. (출처: arXiv:2608.11739)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.11739/tokenizer.png" alt="RVQ 액션 토크나이저 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — 학습형 RVQ 액션 토크나이저.</b> 27차원 액션을 5개 의미 파트(좌팔 제어 9, 좌그리퍼 1, 우팔 제어 9, 우그리퍼 1, 하체 7)로 <b>구조 분해</b>. active-part만 예측해 이질적 임바디먼트가 하나의 어휘를 공유. (출처: arXiv:2608.11739)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>BEHAVIOR 챌린지 결과</b>가 논문 가장 강력한 근거. 50 가사 태스크에서 <b>단일 정책 G0.5</b>가 <b>4-체크포인트 앙상블 우승자</b>보다 높다는 것은, "flow-matching 전문가를 붙이지 않고 자기회귀만으로도 실사용 장기 태스크가 된다"는 논문의 주장을 뒷받침한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.11739" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.11739" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.11739 · G0.5 · 요약 생성 2026-08-19
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

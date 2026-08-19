@@ -184,6 +184,89 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2608.16885" data-added="2026-08-19" data-tags="VLA,Hierarchical Policy,World Model,Test-Time Compute,Long-Horizon">
+        <td class="no">96</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.16885_tau0-VLA.html">τ₀-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation</a></div>
+          <div class="sub">Xiaowei Cai, Yunuo Cai, Bingao Chen 외 41인 · 대규모 공동 저작 · arXiv:2608.16885</div>
+          <div class="sub">장기 조작을 고수준 서브태스크 계획(월드 모델 유도 beam search) + 저수준 MoT 액션 전문가로 분리, 어려운 결정에만 TTC 활성. 4개 실로봇 장기 태스크 평균 SR 45%(π0.5 22.5%, GR00T 2.5%). TTC on 시 Book Organization 예측 정확도 50→74%. 40,000시간 이종 실로봇 데이터, 40차원 통합 액션 공간.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Hierarchical Policy</span>
+            <span class="tag">World Model</span>
+            <span class="tag">Test-Time Compute</span>
+            <span class="tag">Long-Horizon</span>
+          </div>
+        </td>
+        <td class="date">2026-08-17</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.16885" target="_blank">arXiv</a>
+          <a href="https://tau0-vla.github.io/" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.16837" data-added="2026-08-19" data-tags="Humanoid,Loco-Manipulation,Flow Matching,Offline-to-Online RL,DCT Latent">
+        <td class="no">95</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.16837_HAF.html">HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL</a></div>
+          <div class="sub">Langzhe Gu, Chengkai Hou, Meng Li 외 · Shanghang Zhang 등 · arXiv:2608.16837</div>
+          <div class="sub">범용 VLA를 휴머노이드 전신 loco-manipulation에 이식. HAF-VLA는 flow matching을 이동/시선→허리→양팔의 3단으로 분해(cross-stage KV cache). HAF-Steer는 시연 액션을 flow 역적분·DCT로 K=8 계수로 압축한 스펙트럴 공간에서 offline-to-online SAC, VLA 백본은 동결. 7개 실태스크 평균 70.5%(π0.5 53.3%, GR00T N1.7 38.1%).</div>
+          <div class="tags">
+            <span class="tag">Humanoid</span>
+            <span class="tag">Loco-Manipulation</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Offline-to-Online RL</span>
+            <span class="tag">DCT Latent</span>
+          </div>
+        </td>
+        <td class="date">2026-08-17</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.16837" target="_blank">arXiv</a>
+          <a href="https://grange007.github.io/HAF" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.14379" data-added="2026-08-19" data-tags="VLA,Dynamic Manipulation,Latency,DINOv3,CUDA Graph">
+        <td class="no">94</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.14379_Reflex.html">Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation</a></div>
+          <div class="sub">Yuxuan Chen, Wanruo Zhang, Xiao Li · arXiv:2608.14379</div>
+          <div class="sub">기존 VLA가 정적 조작만 다루던 편향을 지적, 지연 설정 가능한 ReflexBench(동적 6태스크)와 1B ReflexVLA 제안. 잠재 미래 예측(동결 DINOv3 target) + 다프레임 시간 융합(비전 백본 중간층) + 시스템 최적화(batched 인코딩·CUDA Graph). ReflexBench 평균 50.4%(4B PUMA 50.2, π0.5 4B 36.9), 지연 125.1→65.0 ms(48% 감축), LIBERO 97.2% 유지.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Dynamic Manipulation</span>
+            <span class="tag">Latency</span>
+            <span class="tag">DINOv3</span>
+            <span class="tag">CUDA Graph</span>
+          </div>
+        </td>
+        <td class="date">2026-08-14</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.14379" target="_blank">arXiv</a>
+          <a href="https://reflexvla.github.io" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.11739" data-added="2026-08-19" data-tags="VLA,Autoregressive,Chain-of-Thought,RVQ Action Tokenizer,Visual Memory">
+        <td class="no">93</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.11739_G0.5.html">G0.5: One Autoregressive Stream for Robot Reasoning and Action</a></div>
+          <div class="sub">Yicheng Liu, Zibin Dong, Baijun Ye 외 · Galaxea (Hang Zhao 등) · arXiv:2608.11739</div>
+          <div class="sub">π0·π0.5·GR00T의 VLM+flow-matching 전문가 두 갈래 관행을 버리고, 단일 트랜스포머 디코더가 CoT(subtask/bbox/trace/actionHint)와 액션 토큰을 하나의 자기회귀 스트림으로 동일 next-token 손실로 뱉게 함. 학습형 RVQ 액션 토크나이저(27차원, 5부분 분해)로 14 임바디먼트 공유. R1 실로봇 76.7%(π0.5 53.3%), BEHAVIOR 50태스크 0.3136(우승 앙상블 0.2605), LIBERO 98.9%, DROID zero-shot 82.5%.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Autoregressive</span>
+            <span class="tag">Chain-of-Thought</span>
+            <span class="tag">RVQ Action Tokenizer</span>
+            <span class="tag">Visual Memory</span>
+          </div>
+        </td>
+        <td class="date">2026-08-12</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.11739" target="_blank">arXiv</a>
+        </td>
+      </tr>
       <tr data-id="2608.03924" data-added="2026-08-10" data-tags="Embodied Agent,Tool Use,LIBERO,LLM Agent,Sim2Real">
         <td class="no">92</td>
         <td class="read-cell"></td>
