@@ -28,6 +28,12 @@
       "title": "Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2608.14379",
       "added": "2026-08-19"
+    },
+    {
+      "id": "2608.11739",
+      "title": "G0.5: One Autoregressive Stream for Robot Reasoning and Action",
+      "arxiv_url": "https://arxiv.org/abs/2608.11739",
+      "added": "2026-08-19"
     }
   ],
   "dismissed": [
