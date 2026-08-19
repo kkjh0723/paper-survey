@@ -16,6 +16,12 @@
       "title": "τ₀-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation",
       "arxiv_url": "https://arxiv.org/abs/2608.16885",
       "added": "2026-08-19"
+    },
+    {
+      "id": "2608.16837",
+      "title": "HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL",
+      "arxiv_url": "https://arxiv.org/abs/2608.16837",
+      "added": "2026-08-19"
     }
   ],
   "dismissed": [
