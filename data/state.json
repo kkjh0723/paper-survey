@@ -22,6 +22,12 @@
       "title": "HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL",
       "arxiv_url": "https://arxiv.org/abs/2608.16837",
       "added": "2026-08-19"
+    },
+    {
+      "id": "2608.14379",
+      "title": "Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Critical Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2608.14379",
+      "added": "2026-08-19"
     }
   ],
   "dismissed": [
