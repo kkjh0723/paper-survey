@@ -1,10 +1,64 @@
 {
-  "generated": "2026-08-23",
+  "generated": "2026-08-24",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2608.18227",
+          "title": "Revisiting the \"Push-T\" Robot Manipulation Task with Agentic Robotics",
+          "authors": "Shuangyu Xie, Kaiyuan Chen, Ken Goldberg 외",
+          "summary_ko": "고전 벤치마크 Push-T(평면 위 T자 물체를 목표 위치·자세로 미는 조작 태스크)를 대형 언어 모델(LLM) 코딩 에이전트로 다시 푼다. 사람이 손으로 수집한 시연 데이터가 하나도 없어도 100% 성공률을 기록하고, 200개의 사람 시연으로 학습한 최고의 확산 정책(Diffusion Policy)보다 46% 적은 스텝으로 태스크를 완료한다.",
+          "tags": [
+            "Agentic Robotics",
+            "LLM Coding Agent",
+            "Push-T",
+            "Zero-Demonstration",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.18227",
+          "extra_url": "",
+          "date": "2026-08-18",
+          "reason": "좋아요한 Aspire와 정확히 같은 결의 연구다. Aspire가 다양한 조작 스킬을 LLM 코딩 에이전트로 축적했다면, 이 논문은 UC Berkeley 켄 골드버그 그룹이 로봇 조작의 고전 벤치마크(Push-T)를 무시연 코딩 에이전트만으로 확산 정책을 이길 수 있음을 보여준다. 컬렉션의 Aspire·Voyager(2305.16291)와 나란히 놓고 '에이전트가 조작을 직접 짤 수 있는 태스크는 어디까지인가'를 검토하기에 좋다.",
+          "rec_date": "2026-08-24"
+        },
+        {
+          "id": "2608.19613",
+          "title": "What Matters for Latent Actions in Robot Learning",
+          "authors": "Xizhou Bu, Qingda Hu, Lei Zhou 외",
+          "summary_ko": "라벨(액션 정답)이 없는 대규모 영상에서 로봇 학습에 쓸 잠재 액션(Latent Action Model, LAM)을 뽑는 방식에는 무수히 많은 설계 선택이 있다. 이 논문은 그 설계 축 41가지(예: 인코더 종류, 코드북 크기, 마스킹 방식 등)를 통일된 프로토콜로 대조 실험해 '어떤 요소가 정말 성능에 기여하는가'를 정리한 대규모 어블레이션이다.",
+          "tags": [
+            "Latent Action",
+            "LAM",
+            "Design Study",
+            "Video Pretraining",
+            "Ablation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.19613",
+          "extra_url": "",
+          "date": "2026-08-20",
+          "reason": "컬렉션에 잠재 액션 계열이 두껍다: LAPA(2410.11758)·Gaussian LAM(2607.27138)·DINOv3 기반 LAM(2607.11397)·Causal LAM(2607.09185)·SLIM-0.5B 등이 각각 다른 설계 선택을 밀고 있는데, 이 논문이 그 선택들을 같은 축에서 비교해 준다. 컬렉션의 서로 다른 LAM 논문을 어떤 지표로 서열화해야 할지 판단하는 나침반으로 쓸 만하다.",
+          "rec_date": "2026-08-24"
+        },
+        {
+          "id": "2608.18948",
+          "title": "RoboEdit: Turning Human Manipulation Videos into Scalable Robot Experience",
+          "authors": "Yaowei Guo, Zeng Tao, Yuxin Jiang 외",
+          "summary_ko": "사람이 손으로 물건을 다루는 웹의 방대한 영상을 로봇 임보디먼트(embodiment, 로봇의 신체 형태)에 맞춰 편집·변환해서 그대로 로봇 학습 데이터로 쓸 수 있게 만드는 파이프라인. 로봇 손 데이터 수집이 비싸고 형태별로 다시 찍어야 하는 문제를 사람 영상을 재활용해 완화한다.",
+          "tags": [
+            "Human Video",
+            "Data Generation",
+            "Cross-Embodiment",
+            "Video Editing",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.18948",
+          "extra_url": "",
+          "date": "2026-08-19",
+          "reason": "좋아요한 UMI(2402.10329)와 UMI-3D(2607.25895) 계열의 문제의식(사람이 쓰는 도구로 로봇 데이터를 대신 수집)의 정반대 접근이다. 사람 영상을 로봇 몸으로 옮기는 이 방향은 HumanPlus(2406.10454), Egocentric Video 데이터 합성(2608.02580), Vid2Robot 계열과 짝지어 데이터 확보 전략의 두 축을 함께 볼 수 있게 해준다.",
+          "rec_date": "2026-08-24"
+        },
         {
           "id": "2608.20114",
           "title": "DECOWAM: Decoupled Whole-Body World-Action Model for Legged Mobile Manipulation",
@@ -274,60 +328,6 @@
           "date": "2026-08-13",
           "reason": "좋아요한 2606.10267(Hi-VLA 계층적 옵션)·보유한 2502.05485(HAMSTER)·2504.16054(π₀.₅ Hierarchical Inference)·pool의 HiVLA(2604.14125)·이번 pool의 HarnessWAM(2608.09516, VLM task manager)이 다뤄온 '계층 정책'의 축을 월드 모델로 이식하는 새 좌표. LTL이라는 형식 언어로 장기 사양을 정확히 표현한다는 점이 자연어 CoT 계열과 대비되며, pool의 hint² 자매 격 논문 2608.09073(Latent WM Monotone Planning)·2608.13901(Ontology-Grounded WM) 등 '추론 시 WM으로 제어를 유도'하는 흐름의 최신 실증. CALVIN + 실 UR5e 검증으로 pool의 시뮬 위주 논문들과 상호 보완.",
           "rec_date": "2026-08-18"
-        },
-        {
-          "id": "2608.13489",
-          "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
-          "authors": "Rui Chen, Xiangxiang Chu, Geng Li, Jifan Li 외 (DreamX Team)",
-          "summary_ko": "관찰 프레임 + 언어 지시 + 엔드이펙터 궤적(포즈·그리퍼 상태)을 받아 미래 관측을 예측하는 액션-조건부 비디오 월드 모델. 어텐션에 PRoPE 스타일 기하 인코딩을 주입해 팔의 정체(identity)와 강체 운동을 보존하고, 얕은 깊이 분기로 씬 지오메트리를 함께 예측하며, SAM3 마스크와 프리즌 V-JEPA 티처로 파지 중 물체 일관성을 유지한다. 다단계 생성기를 소수 스텝 학생 모델로 압축(distribution-matching distillation)해 실시간성을 확보. WorldArena 2.0 챌린지에서 Track 1 1위, Track 2 2위.",
-          "tags": [
-            "World Model",
-            "Video Diffusion",
-            "Depth Branch",
-            "SAM3",
-            "V-JEPA Teacher"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.13489",
-          "extra_url": "",
-          "date": "2026-08-13",
-          "reason": "이미 컬렉션·pool에 있는 액션-조건 비디오 월드 모델(Cosmos-Predict 계열, ContactFlow, GeniWorld 등)의 최신 후속작. '팔 정체 보존 + 깊이 분기 + V-JEPA 티처'라는 조합이 새롭고, 챌린지 상위 수상으로 성능이 검증돼 우리 실험의 비교 기준으로 쓰기 좋음.",
-          "rec_date": "2026-08-17"
-        },
-        {
-          "id": "2608.13438",
-          "title": "ContactGuard: Pre-Contact Execution Monitoring with Action-Conditioned Latent World Models",
-          "authors": "Gehan Zheng, Matthew Johnson-Roberson, Weiming Zhi",
-          "summary_ko": "손목 카메라 셋업에서 '접촉이 일어나기 전에' 실패를 감지·중단시키는 실행 모니터. 정책이 낼 액션 청크를 잠재(latent) 시각 공간에서 짧게 굴려 미래 잠재를 얻고, 경량 실패 프로브가 그 잠재가 위험하다고 판정하면 실행을 중단한다. 라벨 없는 로봇 궤적으로 잠재 월드 모델을 사전학습하고, 소량의 접촉-전(pre-contact) 클립 라벨만으로 프로브를 학습. 실제 컨택트 리치 태스크에서 직접/행동 왜곡 대조군 대비 실패 예측 정확도가 높고, 하부 정책 수정 없이 실기 로봇의 사전 중단 신호로 전이됨.",
-          "tags": [
-            "Latent World Model",
-            "Pre-Contact",
-            "Failure Monitor",
-            "Wrist Camera",
-            "Contact-Rich"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.13438",
-          "extra_url": "",
-          "date": "2026-08-13",
-          "reason": "컬렉션의 접촉 리치·촉각 라인(ReTouch, ContactFlow, ForceVLA)과 월드 모델 라인(FACT, JEPA-WAM 등)을 잇는 다리. 픽셀 예측 없이 잠재 예측만으로 실패를 미리 잡고, 기존 정책 무수정 통합이라는 점이 실배포 파이프라인과 잘 맞음.",
-          "rec_date": "2026-08-17"
-        },
-        {
-          "id": "2608.11521",
-          "title": "Keep the Future, Drop the Rollout: RIFT for World Action Models",
-          "authors": "Chushan Zhang, Jinguang Tong, Xuesong Li, Yikai Wang, Hongdong Li",
-          "summary_ko": "월드 액션 모델(WAM)이 배포 시 정말 반복적 비디오 롤아웃(rollout)이 필요한지 검증한 뒤, 필요한 것은 '최종 미래 표현'뿐임을 보인다. 학습형 앤티시페이션 토큰(anticipation tokens)으로 완전한 미래 캐시를 단 한 번의 패스로 만들어 배포하는 RIFT를 제안. LIBERO 40 태스크에서 성공률 98.8%를 유지하면서 액션 청크 지연을 68–89% 단축, 롤아웃 기반 베이스라인과 대등하거나 상회.",
-          "tags": [
-            "World Action Model",
-            "Anticipation Tokens",
-            "Inference Latency",
-            "LIBERO",
-            "Cache"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.11521",
-          "extra_url": "",
-          "date": "2026-08-12",
-          "reason": "pool의 Faster-WAM와 정확히 같은 문제(‘WAM 배포 지연’)를 다른 각도로 해결. Flex-π·JEPA-WAM 등 pool의 최신 WAM 계열과 지연·성공률을 직접 비교할 수 있어 우리 관심의 실배포 최적화 축에 딱 맞음.",
-          "rec_date": "2026-08-17"
         }
       ]
     },
@@ -335,6 +335,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2412.14803",
+          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations",
+          "authors": "Yucheng Hu, Yanjiang Guo, Pengchao Wang 외",
+          "summary_ko": "비디오 확산 모델(video diffusion, 다음 프레임을 확률적으로 예측하는 생성 모델)이 만드는 예측 표현을 그대로 로봇 정책의 시각 백본으로 재활용한다. 정책은 '이미 예측된 미래 프레임'을 조건으로 액션을 낸다. Calvin ABC-D 일반화 벤치마크에서 상대 18.6% 개선.",
+          "tags": [
+            "Video Diffusion",
+            "World Model",
+            "Generalist Policy",
+            "Predictive Representation",
+            "Calvin"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.14803",
+          "extra_url": "",
+          "date": "2024-12-19",
+          "reason": "컬렉션의 World Model + Video Diffusion 라인(DreamX-Phi 1.0, Cosmos 2501.03575, UniPi 2302.00111, DINO-WM 2411.04983, hint² 2608.13678)의 대표적 사전작이다. 최근 하이브리드 VLA·WAM 논문들이 반복적으로 인용·비교하는 baseline이라 이걸 읽지 않으면 최신 WAM 논문의 개선 폭이 얼마나 큰지 감을 잡기 어렵다.",
+          "rec_date": "2026-08-24"
+        },
+        {
+          "id": "2501.15830",
+          "title": "SpatialVLA: Exploring Spatial Representations for Visual-Language-Action Model",
+          "authors": "Delin Qu, Haoming Song, Qizhi Chen 외",
+          "summary_ko": "'공간 이해가 로봇 조작의 핵심'이라는 관점에서, 3차원 위치·방향 정보를 VLA(비전-언어-액션 모델)에 명시적으로 주입하는 표현학습 방식을 제안한다. 실세계 로봇 에피소드 110만 개로 사전학습해 서로 다른 로봇에 잘 일반화된다.",
+          "tags": [
+            "VLA",
+            "3D Spatial",
+            "Cross-Embodiment",
+            "Pretraining",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2501.15830",
+          "extra_url": "",
+          "date": "2025-01-27",
+          "reason": "컬렉션의 VLA·Cross-Embodiment 축의 필수 참고작. 3D를 명시 조건으로 넣는 접근은 3D Diffusion Policy(2403.03954)와 최근 π0.5(2504.16054)·GR00T(2503.14734)·Embodied Spatial Reasoning(2607.17977)과 짝지어, '공간 표현이 있어야 크로스-임보디먼트가 되는가' 논쟁을 정리해줄 참고점이다.",
+          "rec_date": "2026-08-24"
+        },
+        {
+          "id": "2409.14411",
+          "title": "Scaling Diffusion Policy in Transformer to 1 Billion Parameters for Robotic Manipulation",
+          "authors": "Minjie Zhu, Yichen Zhu, Jinming Li 외",
+          "summary_ko": "Diffusion Policy(확산 기반 액션 생성 정책)의 백본을 CNN에서 트랜스포머로 바꾸고 파라미터를 10억까지 키운 스케일링 연구. MetaWorld 벤치마크에서 평균 21.6% 향상, 실세계 양팔 조작에서도 큰 이득을 보고한다.",
+          "tags": [
+            "Diffusion Policy",
+            "Scaling",
+            "Transformer",
+            "Bimanual",
+            "MetaWorld"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.14411",
+          "extra_url": "",
+          "date": "2024-09-22",
+          "reason": "컬렉션의 Diffusion Policy 원조(2303.04137)와 최근 RDT(2410.07864)·π₀(2410.24164)·GR00T 사이의 '확산 정책이 정말 스케일 하는가'라는 빈틈을 채운다. Scaling Laws for Imitation(2410.18647)과 짝지어 데이터·모델 스케일 관점의 정량적 baseline으로 유용하다.",
+          "rec_date": "2026-08-24"
+        },
         {
           "id": "2410.21845",
           "title": "Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning (HIL-SERL)",
@@ -658,42 +712,6 @@
           "rec_date": "2026-08-18"
         },
         {
-          "id": "2506.09985",
-          "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
-          "authors": "Mido Assran, Adrien Bardes, David Fan, Quentin Garrido, Russell Howes 외 (Meta)",
-          "summary_ko": "인터넷 비디오 100만 시간+이미지로 사전학습한 액션 독립 자기지도 비디오 모델. 모션 이해(Something-Something v2 77.3%)와 인간 행동 예측(Epic-Kitchens-100 Recall@5 39.7)에서 강한 결과, 언어 모델과 결합 시 8B급 비디오 QA에서 최상위. 로봇 응용을 위해 잠재 액션 조건 변형 V-JEPA 2-AC를 Droid 데이터의 62시간 미만 미라벨 로봇 영상으로만 추가 학습, 서로 다른 위치의 Franka 팔에서 이미지 목표 기반 조작을 환경별 데이터·태스크별 학습 없이 제로샷 배포.",
-          "tags": [
-            "V-JEPA",
-            "Self-Supervised Video",
-            "Image Goal",
-            "Franka",
-            "Meta"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2506.09985",
-          "extra_url": "",
-          "date": "2025-06-11",
-          "reason": "컬렉션·pool의 JEPA-WAM(2608.09381, 2608.10780) 계열이 그대로 참조하는 Meta의 최신 V-JEPA 2. ‘인터넷 비디오 → 소량 로봇 영상’으로 이미지-목표 조작을 여는 방식의 원형이라, 이후 JEPA 계열 논문 이해도가 크게 올라감.",
-          "rec_date": "2026-08-17"
-        },
-        {
-          "id": "2501.10105",
-          "title": "Universal Actions for Enhanced Embodied Foundation Models (UniAct)",
-          "authors": "Jinliang Zheng, Jianxiong Li, Dongxiu Liu 외",
-          "summary_ko": "다양한 로봇의 이질적 액션 공간을 '보편 액션 공간(Universal Action Space)'으로 통합하는 임바디드 파운데이션 모델 프레임워크. 로봇 간에 공유되는 원자적 행동을 학습해두고, 실행 시 임바디먼트별 세부만 붙여 실제 명령으로 되돌리는 구조라 신규 로봇에도 빠르게 적응. 0.5B 사이즈로 14배 큰 SOTA 파운데이션 모델을 능가하는 크로스 임바디먼트 성능 보고.",
-          "tags": [
-            "Universal Action Space",
-            "Cross-Embodiment",
-            "Foundation Model",
-            "0.5B",
-            "Fast Adaptation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2501.10105",
-          "extra_url": "",
-          "date": "2025-01-17",
-          "reason": "컬렉션이 강조하는 Cross-Embodiment/파운데이션 라인(π0, OpenVLA, HPT)에서 빠져 있던 '보편 액션 공간' 방향. 소형 모델이 대형을 이기는 결과라 향후 파운데이션 논문 비교의 기준선으로 유용.",
-          "rec_date": "2026-08-17"
-        },
-        {
           "id": "2406.08545",
           "title": "RVT-2: Learning Precise Manipulation from Few Demonstrations",
           "authors": "Ankit Goyal, Valts Blukis, Jie Xu, Yijie Guo, Yu-Wei Chao, Dieter Fox (NVIDIA)",
@@ -710,24 +728,6 @@
           "date": "2024-06-12",
           "reason": "컬렉션·pool이 VLA/WAM/디퓨전 정책 위주라 3D 멀티뷰 정밀 조작 대표작이 비어 있다. pool의 3D Diffusion Policy와 함께 3D 표현 기반 정밀 조작을 다루는 대안으로 필독.",
           "rec_date": "2026-08-17"
-        },
-        {
-          "id": "2204.06252",
-          "title": "What Matters in Language Conditioned Robotic Imitation Learning over Unstructured Data (HULC)",
-          "authors": "Oier Mees, Lukas Hermann, Wolfram Burgard (Freiburg)",
-          "summary_ko": "라벨이 없는 무구조(unstructured) 데이터로 언어 조건(language-conditioned) 로봇 정책을 학습할 때 정말 중요한 설계 요소를 체계적으로 분해·측정. 저수준 제어의 계층 분해(hierarchical decomposition, 상위 latent plan + 하위 제어), 멀티모달 트랜스포머 인코더, 이산 잠재 계획(discrete latent plans), 대조 학습 손실(contrastive loss)의 조합이 결정적임을 확인해, CALVIN(장기 언어 조건 조작 벤치마크)에서 기존 방법을 큰 폭으로 능가.",
-          "tags": [
-            "Language-Conditioned",
-            "Hierarchical",
-            "CALVIN",
-            "Latent Plans",
-            "Design Study"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2204.06252",
-          "extra_url": "",
-          "date": "2022-04-13",
-          "reason": "좋아요한 Hi-VLA(2606.10267, 계층적 옵션)·index의 π₀.₅ Hierarchical Inference(2504.16054)·HAMSTER(2502.05485)·pool의 HiVLA(2604.14125) 등 '계층 VLA' 라인의 뿌리 격 논문. Oier Mees는 이후 pool의 CrossFormer(2408.11812)·컬렉션의 여러 Levine 그룹 VLA(2405.12213 Octo 등)의 공저자로 이어지고, CALVIN 벤치마크와 discrete latent plan 아이디어는 이후 latent action(WALA/VQ-BeT/FAST)·hierarchical(HiVLA/HAMSTER) 두 축 모두의 사상적 기초.",
-          "rec_date": "2026-08-16"
         }
       ]
     }
