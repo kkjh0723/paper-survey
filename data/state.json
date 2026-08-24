@@ -16,6 +16,12 @@
       "title": "What Matters for Latent Actions in Robot Learning",
       "arxiv_url": "https://arxiv.org/abs/2608.19613",
       "added": "2026-08-24"
+    },
+    {
+      "id": "2608.18948",
+      "title": "RoboEdit: Turning Human Manipulation Videos into Scalable Robot Experience",
+      "arxiv_url": "https://arxiv.org/abs/2608.18948",
+      "added": "2026-08-24"
     }
   ],
   "dismissed": [
