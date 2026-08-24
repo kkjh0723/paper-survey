@@ -52,6 +52,12 @@
       "title": "FAST: Efficient Action Tokenization for Vision-Language-Action Models",
       "arxiv_url": "https://arxiv.org/abs/2501.09747",
       "added": "2026-08-24"
+    },
+    {
+      "id": "2407.08693",
+      "title": "Robotic Control via Embodied Chain-of-Thought Reasoning (ECoT)",
+      "arxiv_url": "https://arxiv.org/abs/2407.08693",
+      "added": "2026-08-24"
     }
   ],
   "dismissed": [
