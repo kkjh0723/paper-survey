@@ -10,56 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2608.19613",
-      "title": "What Matters for Latent Actions in Robot Learning",
-      "arxiv_url": "https://arxiv.org/abs/2608.19613",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2608.18948",
-      "title": "RoboEdit: Turning Human Manipulation Videos into Scalable Robot Experience",
-      "arxiv_url": "https://arxiv.org/abs/2608.18948",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2608.19589",
-      "title": "OrthoSkillVLA: Continual Skill Learning via Gradient-Informed Skill Subspace Adaptation",
-      "arxiv_url": "https://arxiv.org/abs/2608.19589",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2608.19490",
-      "title": "Fine-Tuning VLAs with Self-Demonstrated Generative Control for Multi-Task Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2608.19490",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2608.17209",
-      "title": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
-      "arxiv_url": "https://arxiv.org/abs/2608.17209",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2608.14047",
-      "title": "Evolve Vision-Language-Action Model into an Agent with On-the-fly Tool-use (ART)",
-      "arxiv_url": "https://arxiv.org/abs/2608.14047",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2501.09747",
-      "title": "FAST: Efficient Action Tokenization for Vision-Language-Action Models",
-      "arxiv_url": "https://arxiv.org/abs/2501.09747",
-      "added": "2026-08-24"
-    },
-    {
-      "id": "2407.08693",
-      "title": "Robotic Control via Embodied Chain-of-Thought Reasoning (ECoT)",
-      "arxiv_url": "https://arxiv.org/abs/2407.08693",
-      "added": "2026-08-24"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

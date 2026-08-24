@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FAST — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Action Tokenization</span>
+    <h1>FAST: Efficient Action Tokenization for Vision-Language-Action Models</h1>
+    <p class="authors">Karl Pertsch, Kyle Stachowicz, Brian Ichter, Danny Driess, Suraj Nair, Quan Vuong, Oier Mees, Chelsea Finn, Sergey Levine · Physical Intelligence · UC Berkeley · Stanford</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2501.09747" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2501.09747" target="_blank">PDF</a>
+      <a href="https://www.pi.website/research/fast" target="_blank">프로젝트 페이지</a>
+      <a href="https://huggingface.co/physical-intelligence/fast" target="_blank">HuggingFace (FAST+ tokenizer)</a>
+      <span>arXiv:2501.09747</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Action Tokenization</span>
+      <span class="t">DCT</span>
+      <span class="t">BPE</span>
+      <span class="t">Autoregressive</span>
+      <span class="t">Physical Intelligence</span>
+    </div>
+    <p class="meta">제출: 2025년 1월 16일 (v1) · 백본 π₀ (PaliGemma 기반 VLA) · FAST+는 1M 로봇 궤적으로 사전학습된 범용 토크나이저</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>연속 로봇 액션(joint velocity/end-effector delta 같은 실수 벡터 시퀀스)을 <b>자기회귀(autoregressive, 이전 토큰을 조건으로 다음 토큰을 예측) VLA</b>에 넣기 위한 새로운 <b>action tokenization</b>(연속 액션을 이산 정수 토큰 열로 바꾸는 절차). 기존 "차원별·시점별 균등 구간 나누기(naive binning)"는 20 Hz 이상 고주파 액션에서 인접 토큰이 거의 동일해 학습이 무너진다. FAST는 <b>DCT(Discrete Cosine Transform, 시간축 신호를 저→고 주파수 성분으로 분해하는 변환)</b>로 액션 청크를 압축하고, 남은 정수 계수를 언어 모델에서 익숙한 <b>BPE(Byte-Pair Encoding, 자주 붙어 나오는 심볼 쌍을 하나의 새 토큰으로 병합해 어휘를 만드는 무손실 압축)</b>로 다시 압축한다. 결과: π₀-diffusion과 같은 성능을 유지하면서 <span class="win">학습 시간 최대 5배 단축</span>, 그리고 <b>DROID</b> 데이터셋에서 처음으로 <b>zero-shot(새 환경·조명·물체에서 미세조정 없이 언어 명령 수행)</b> 성공한 일반화 정책을 만들었다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>VLA(Vision-Language-Action model, 시각·언어 입력으로부터 로봇 액션을 직접 생성하는 대형 모델)</b>는 크게 두 갈래로 발전해 왔다. (a) 자기회귀 방식은 액션을 정수 토큰 시퀀스로 이산화해 언어 모델과 동일한 next-token-prediction 손실로 학습한다(예: OpenVLA, RT-2). (b) 확산(diffusion)·flow-matching 방식은 연속 액션을 별도 헤드에서 생성한다(예: π₀-diffusion).</p>
+    <p>자기회귀 방식은 언어 모델 인프라를 그대로 재활용할 수 있어 매력적이지만, 지금까지의 <b>단순 이산화 방식(per-dimension, per-timestep uniform binning — 각 액션 차원의 값 범위를 N개 구간으로 나누고 구간 번호를 토큰으로 사용)</b>은 <b>고주파·정밀 조작(high-frequency dexterous manipulation, 20 Hz 이상 제어 주기의 미세 조작)</b>에서 학습에 실패한다. 이유: 인접 시점의 액션이 거의 같아서 연속된 토큰이 <b>강한 상관관계</b>를 가지며, 모델은 "이전 토큰을 그대로 복사"하는 지역 최적해에 빠진다.</p>
+    <div class="callout">
+      <b>왜 지금까지의 이산화가 실패하는가:</b> 청크(chunk, 여러 시점의 액션을 한 덩어리로 묶은 것) 길이가 길고 제어 주기가 빠를수록 <b>토큰 간 중복(redundancy)</b>이 커진다. Section IV의 <b>스플라인 회귀 didactic 실험</b>: 25→800 시점으로 샘플링을 높일수록 naive tokenization의 예측 오차가 급증하지만, DCT 기반은 일정하게 낮게 유지된다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>FAST 토크나이저</b> — <b>DCT(주파수 분해)</b> + <b>양자화(quantization, 실수 계수를 정수로 반올림)</b> + <b>BPE(반복되는 정수 패턴을 어휘로 병합)</b>의 3단계로 액션 청크를 이산 토큰 열로 압축. 청크당 30–60 토큰만으로도 충분해 기존 이산화 대비 최대 <b>13×</b> 토큰 수 감소.</li>
+      <li><b>FAST+ 범용 토크나이저</b> — 단일 팔·양팔·모바일 로봇 <b>1M(백만) 궤적</b>(5–50 Hz)으로 학습한 <b>보편 토크나이저</b>. 새 데이터셋마다 다시 학습할 필요 없이 그대로 재사용 가능. HuggingFace <b>AutoProcessor</b> 3줄로 통합.</li>
+      <li><b>π₀-FAST</b> — π₀ VLA 백본에 FAST를 결합한 자기회귀 정책. 세탁물 접기·양팔 티셔츠 접기·테이블 정리·그로서리 등 dexterous 태스크에서 <b>π₀-diffusion과 대등한 성공률</b>을 유지하면서 <b>학습 시간 최대 5배 단축</b>, <b>DROID zero-shot 언어 조건 일반화</b> 첫 성공.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method — FAST 토크나이저</h2>
+
+    <h3>3.1 액션 청크와 정규화</h3>
+    <p><b>Action chunk(액션 청크):</b> 정책이 매 스텝 하나의 액션을 뱉는 대신, 미래 H 스텝 액션을 한꺼번에 예측하는 덩어리. 본 논문은 전 실험 통일 <b>1초 길이 청크</b>(예: 50 Hz면 50개 시점 × 액션 차원 D). 각 차원별로 <b>1–99 퍼센타일 정규화</b>로 [-1, 1] 범위에 맞춤 — 극단 이상치의 영향을 줄이는 quantile normalization.</p>
+
+    <h3>3.2 DCT 압축 (Section V-B, Algorithm 1)</h3>
+    <p><b>DCT(Discrete Cosine Transform):</b> 시간축의 실수 신호를 여러 <b>코사인 기저(basis)</b>의 합으로 분해하는 선형 변환. JPEG 이미지 압축의 핵심으로 쓰이는 그 변환이다. 결과 계수는 <b>저주파(전체적 추세) → 고주파(미세 진동)</b> 순으로 정렬된다. 로봇 액션의 대부분 에너지는 <b>저주파</b>에 몰려 있어 고주파 계수는 대부분 0 근처가 된다.</p>
+    <div class="callout">
+      <b>왜 DCT가 액션에 잘 맞는가:</b> 로봇 궤적은 대부분 부드럽게 이어진다 → 저주파 몇 개가 신호 대부분을 표현 → 나머지는 잘라내도 손실이 적다. 이 성질이 있어야 BPE로 "많은 0"을 짧게 압축할 수 있다.
+    </div>
+    <p><b>정확한 절차 (Algorithm 1):</b></p>
+    <ul>
+      <li>정규화된 청크 <b>a<sub>1:H,d</sub></b> (각 차원 d마다) 에 DCT 적용 → 계수 <b>c<sub>d</sub></b>.</li>
+      <li><b>Scale γ로 반올림 양자화:</b> <b>c̃<sub>d</sub> = round(γ · c<sub>d</sub>)</b> (기본 γ=10). 결과 대부분이 0이 되는 <b>희소 정수 행렬</b>(그림 4의 3번 패널).</li>
+      <li><b>Flatten:</b> 저주파 성분부터 순서대로 1차원 정수 열로 나열(그림 4의 4번 패널).</li>
+      <li><b>BPE(Byte-Pair Encoding):</b> 자주 함께 나타나는 정수 쌍을 새 심볼로 병합하는 무손실 압축을 반복 학습(어휘 크기 <b>|A|=1024</b>). 결과: 원본보다 훨씬 짧은 정수 토큰 열(그림 4의 5번 패널).</li>
+    </ul>
+
+    <h3>3.3 왜 BPE도 반드시 필요한가</h3>
+    <div class="callout">
+      DCT만 하면 <b>대부분 0인 긴 열</b>이 남는다 → 모델은 "0을 계속 뱉기"만 배워 학습 신호가 희석된다. BPE는 이 "0…0 0 3 0…0" 같은 반복 패턴을 하나의 어휘 토큰으로 병합해 <b>학습 신호를 응축</b>하고 <b>추론 속도를 높인다</b>. Ablation에서 BPE 제거 시 롤아웃 성공률이 크게 떨어짐이 확인됨.
+    </div>
+
+    <h3>3.4 압축률 (Section V-B)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>데이터셋 (제어 주파수 · 액션 차원)</th><th>Naive binning 토큰</th><th>FAST 토큰</th><th>압축비</th></tr></thead>
+      <tbody>
+        <tr><td>BridgeV2 (5 Hz · 7D)</td><td>35</td><td>20</td><td>1.75×</td></tr>
+        <tr><td>DROID (15 Hz · 7D)</td><td>105</td><td>29</td><td>3.6×</td></tr>
+        <tr><td>Table Bussing (20 Hz · 7D)</td><td>140</td><td>28</td><td>5.0×</td></tr>
+        <tr><td>T-shirt Folding (50 Hz · 14D, 양팔)</td><td>700</td><td class="win">53</td><td class="win">13.2×</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">FAST는 <b>제어 주파수와 무관하게 팔 1개당 초당 약 30개 토큰</b>으로 일정한 편이다 — 고주파일수록 압축률이 커진다.</p>
+
+    <h3>3.5 FAST+ 범용 토크나이저 (Section V-C)</h3>
+    <p><b>FAST+:</b> BPE 어휘를 태스크마다 새로 학습하는 부담을 없애기 위해, 단일 팔·양팔·모바일 등 다양한 embodiment의 <b>1M 실 로봇 액션 궤적</b>(5–50 Hz 혼합)으로 BPE를 한 번만 학습해 <b>범용 어휘</b>를 만든 것. 새 데이터셋에는 그대로 재활용 가능. <b>HuggingFace AutoProcessor</b> 3줄 통합.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과 (π₀-FAST vs π₀-diffusion & baselines)</h2>
+
+    <h3>4.1 학습 수렴 속도 (Figure 1)</h3>
+    <p>π₀ 전체 데이터 혼합(약 10k 시간)에서, π₀-FAST는 <b>약 160k 스텝</b>에서 80점 근처 평가 점수 도달. π₀-diffusion은 같은 점수까지 <b>700k+ 스텝</b> 필요 — <span class="win">약 5× 학습 시간 단축</span>. Table Bussing(20 Hz) 단독 학습에서도 <b>수렴 스텝 3× 감소</b>.</p>
+
+    <h3>4.2 고주파 dexterous 태스크 (Figure 6/9)</h3>
+    <ul>
+      <li><b>Laundry folding(50 Hz, 양팔, 가장 어려움):</b> π₀-FAST가 π₀-diffusion과 <b>동등한 성공률</b>. 정성적으로 세탁물 재파지·재정렬 등 fine-grained 동작 성공.</li>
+      <li><b>T-shirt folding(50 Hz, ARX 양팔):</b> 소규모 데이터에서도 π₀-diffusion과 comparable.</li>
+      <li><b>Table Bussing(20 Hz):</b> π₀-FAST가 π₀-diffusion보다 <b>더 빨리 수렴</b>하고 최종 성능 대등.</li>
+      <li><b>Grocery Packing / Toast:</b> π₀-FAST 성공.</li>
+    </ul>
+
+    <h3>4.3 DROID zero-shot 일반화 (핵심 결과)</h3>
+    <div class="callout">
+      DROID: 스탠퍼드/버클리/워싱턴대 등에서 수집된 대규모 다중 환경 로봇 데이터셋(15 Hz Franka). 저자 지식으론 <b>DROID로 학습한 정책이 새 환경(unseen kitchen, 처음 보는 물체)에서 언어 명령을 따라 zero-shot으로 작동한 최초 사례</b>. 미세조정 없이 "put the marker in the box" 같은 명령을 새 씬에서 수행 성공.
+    </div>
+
+    <h3>4.4 아키텍처 독립성</h3>
+    <p><b>OpenVLA</b> 백본에도 FAST를 적용해 고주파 태스크 성능이 크게 개선 — FAST가 백본 무관한 순수 토크나이제이션 개선임을 시사.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation · 상세 분석</h2>
+    <ul>
+      <li><b>naive binning vs FAST (Figure 2):</b> 20 Hz 이상 태스크에서 naive binning은 <b>사실상 학습 불가능</b>(성공률 near-0). FAST는 정상 학습.</li>
+      <li><b>DCT만 vs DCT+BPE:</b> DCT만 있어도 binning보다는 낫지만, <b>BPE 제거 시 롤아웃 성능이 떨어진다</b> — 양자화로 생긴 0의 홍수가 학습 신호를 희석시키기 때문.</li>
+      <li><b>FSQ(Finite Scalar Quantization, VQ-VAE 계열 학습형 벡터 양자화) vs FAST:</b> FAST가 dexterous 실 로봇에서 FSQ와 대등하거나 우수. FSQ는 별도 신경망 학습·튜닝이 필요한 반면 FAST는 <b>순수 신호 처리 파이프라인</b>이라 하이퍼파라미터 튜닝이 단순.</li>
+      <li><b>샘플링 주파수 didactic 실험 (Figure 3):</b> 스플라인 궤적을 25→800 시점으로 재샘플링하며 예측 MSE 측정. Naive는 주파수↑에서 오차 급증, DCT는 일정하게 낮음. <b>인접 토큰 상관성이 자기회귀 학습의 근본 걸림돌</b>임을 시각적으로 보여줌.</li>
+      <li><b>Scale γ (양자화 강도):</b> γ↑ 하면 더 세밀하지만 토큰 늘고, γ↓ 하면 압축은 좋지만 재구성 오차↑. γ=10이 대부분 태스크에서 균형.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2501.09747/fast_pipeline.png" alt="FAST 토큰화 파이프라인 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — FAST action tokenization pipeline.</b> ① 정규화된 액션 청크(시간축 실수 신호) → ② <b>DCT</b>로 주파수 성분 분해(저주파 봉만 크게 남음) → ③ 정수 양자화(대부분 0인 sparse frequency matrix) → ④ 저주파부터 flatten한 1차원 정수 열 → ⑤ <b>BPE</b>로 반복 패턴을 어휘 토큰으로 병합한 최종 압축 액션 토큰. (출처: arXiv:2501.09747, Fig. 4)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2501.09747/convergence.jpg" alt="π₀-FAST vs π₀-diffusion 학습 수렴 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 학습 수렴 & 태스크 스코프.</b> (상) π₀-FAST(초록) vs π₀-diffusion(노랑) 평가 점수 vs 학습 스텝. π₀-FAST는 ~160k 스텝에서 80점 근처, π₀-diffusion은 같은 점수를 위해 700k+ 스텝 필요 — <b>5× 학습 시간 단축</b>. (하) 검증 태스크: 좌 dexterous manipulation(세탁물 접기·테이블 정리), 우 generalization(새 사무실·주방 zero-shot). (출처: arXiv:2501.09747, Fig. 1)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Figure 3 (didactic 스플라인 실험):</b> 원문 캡션 요지 — 샘플링 주파수↑에 따라 naive tokenization은 예측 오차 급증, DCT 기반은 일정. <b>"strong correlation between consecutive tokens"</b>이 자기회귀 학습을 무너뜨리는 원인임을 밝힌다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2501.09747" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2501.09747" target="_blank">PDF</a></li>
+      <li><a href="https://www.pi.website/research/fast" target="_blank">Physical Intelligence 프로젝트 페이지</a></li>
+      <li><a href="https://huggingface.co/physical-intelligence/fast" target="_blank">HuggingFace: FAST+ 범용 토크나이저 (AutoProcessor)</a></li>
+      <li>관련 자기회귀 VLA: <a href="https://arxiv.org/abs/2406.09246" target="_blank">OpenVLA (Kim et al. 2024)</a>, <a href="https://robotics-transformer2.github.io/" target="_blank">RT-2</a></li>
+      <li>비교 대상 diffusion VLA: <a href="https://www.physicalintelligence.company/blog/pi0" target="_blank">π₀ (Black et al. 2024)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2501.09747 · FAST · 요약 생성 2026-08-24
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

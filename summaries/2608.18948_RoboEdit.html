@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RoboEdit — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Human Video · Data Augmentation</span>
+    <h1>RoboEdit: Turning Human Manipulation Videos into Scalable Robot Experience</h1>
+    <p class="authors">Yaowei Guo, Zeng Tao, Yuxin Jiang, Yunuo Chen, Zhiyang Dou, Yuxiang Ma, Yin Yang, Demetri Terzopoulos, Ying Jiang, Chenfanfu Jiang</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.18948" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.18948" target="_blank">PDF</a>
+      <span>arXiv:2608.18948</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Human Video</span>
+      <span class="t">Video Editing</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Dataset</span>
+      <span class="t">Manipulation</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 19일 (v1) · RoboEdit-14M (174K 쌍, 14M 프레임, 7개 임바디먼트)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사람이 손으로 물체를 조작하는 인터넷 영상을 <b>같은 장면·같은 궤적의 로봇 영상 쌍</b>으로 자동 변환해 로봇 학습 데이터를 대규모로 만드는 시스템. 두 파트로 구성: (i) <b>RoboEdit-ADC</b>(Automated Data Curation, 자동 데이터 큐레이션)는 손·물체·카메라의 3D 상태를 복원하고 로봇 손으로 리타게팅(retargeting, 사람 관절 궤적을 로봇 관절 궤적으로 변환)한 뒤 사람 픽셀을 지우고 로봇을 합성해 <b>174K 영상 쌍(14M 프레임, 7종 로봇 임바디먼트)</b>의 <b>RoboEdit-14M</b> 데이터셋을 생성; (ii) <b>RoboEdit-Trans</b>는 이 데이터로 학습된 <b>비디오 편집 모델</b>로, 사람 조작 영상을 입력받아 로봇 조작 영상으로 바꾸면서 각 프레임의 <b>3D 손 상태</b>도 함께 예측. 편집 품질에서 <span class="win">SSIM 0.9282 / LPIPS 0.0470</span>로 OmniWeaving·ReCo를 큰 폭 상회, 편집 영상을 궤적 조건으로 사용한 PPO 제어기가 시뮬레이션에서 <span class="win">Panda 71% / XHand 62%</span> 성공률 달성.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>로봇 조작 모델(예: VLA — Vision-Language-Action, 시각·언어·행동을 하나로 잇는 정책)을 학습하려면 <b>로봇 시연 데이터</b>가 절대적으로 부족하다. 반면 유튜브·데이터셋에 있는 <b>사람 손 조작 영상</b>은 사실상 무한하지만, 사람 손 픽셀·형태·운동 특성이 로봇과 달라 정책이 그대로 배우기 어렵다(<b>임바디먼트 갭</b>, embodiment gap — 데모 주체와 실제 로봇의 형태 차이).</p>
+    <p>기존 접근은 크게 두 갈래: (a) 사람 손을 대충 지우고 로봇 손을 그림 수준으로 <b>인페인팅</b>(inpainting, 지워진 영역을 그럴듯한 픽셀로 채우기)해 붙이면 물리적·기하학적으로 어긋나거나 접촉/폐색이 깨지고, (b) 시뮬레이션에서 새로 생성하면 실세계 시각 다양성이 없다. 저자들은 "<b>편집(edit)</b>" 관점으로 문제를 재정의한다 — 원본 사람 영상의 <b>배경·조명·카메라 이동·물체 궤적</b>은 그대로 보존하고, <b>사람 손 픽셀과 그 3D 상태만</b> 로봇으로 정확히 바꾸는 문제로.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>RoboEdit-ADC — 자동 데이터 큐레이션 파이프라인</b>: RGB 사람 조작 영상만 입력으로 받아 손·물체·카메라의 3D 상태를 복원하고, 7종 로봇 손으로 리타게팅한 뒤 사람을 지우고 로봇을 합성해 <b>동일 장면·동일 궤적의 (사람, 로봇) 영상 쌍</b>을 자동 생성.</li>
+      <li><b>RoboEdit-14M 데이터셋</b>: 174,547 쌍 / 14.1M 프레임 / 총 130.9시간. 7개 임바디먼트(Ability, Allegro, SCHUNK SVH, XHand, Inspire, Unitree Dex3, Panda 그리퍼) × 5개 소스 데이터셋(DexYCB, HOT3D, TACO, GigaHands, H2O) 조합.</li>
+      <li><b>RoboEdit-Trans — 임바디먼트 갭 편집 모델</b>: 사전학습된 비디오 diffusion 모델에 <b>LoRA + Adapter</b>를 붙여 시각적으로 사람→로봇을 바꾸면서, 추가된 <b>3D Robot-State Decoder</b>가 프레임별 로봇 손 3D 상태(관절각·손끝 위치)까지 예측 — 편집 영상이 로봇 정책의 감독 신호로 재사용 가능.</li>
+      <li><b>실제 제어에서 유용성 검증</b>: RoboEdit이 만든 궤적을 조건으로 학습한 PPO 제어기가 Genesis 시뮬레이터의 512 랜덤화 환경 × 18 YCB 물체에서 Panda 71% / XHand 62% 성공률을 기록.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <div class="callout">
+      <b>비유:</b> RoboEdit은 사람이 요리하는 유튜브 영상을 받아, 같은 부엌·같은 재료·같은 손동작 순서를 유지한 채 사람 손만 로봇 팔로 "포토샵 편집"하고, 편집한 로봇의 관절이 몇 도로 굽혔는지까지 알려주는 시스템이다.
+    </div>
+
+    <h3>Part A. RoboEdit-ADC — 3D 복원 → 리타게팅 → 합성 (Figure 2)</h3>
+    <p><b>1) 3D 인터랙션 복원.</b> 입력 RGB 영상에서 오프더셸프 모델들을 순차 적용:</p>
+    <ul>
+      <li><b>HaMeR</b>(Hand Mesh Recovery, 이미지에서 사람 손의 3D 관절·메쉬를 추정) — 손 궤적</li>
+      <li><b>SAM 2</b>(Segment Anything Model 2, 시간 축까지 지원하는 세그멘테이션) — 물체 마스크</li>
+      <li><b>TRELLIS</b>(단일 이미지에서 3D 자산을 만드는 모델) — 물체 3D 지오메트리</li>
+      <li><b>FoundationPose</b> — 물체 6DoF 자세 트래킹</li>
+      <li><b>VGGT</b>(Visual Geometry Grounded Transformer, 다중 프레임에서 카메라 자세·깊이를 함께 추정) — 카메라 상태</li>
+    </ul>
+    <p>단안(monocular) HaMeR은 절대 스케일이 부정확하므로 <b>깊이 정규화(depth regularization)</b> 단계로 보정 — 손바닥 관절을 깊이 맵에 투영해 관측된 metric 3D 앵커와 대조하고, 관절 관절각은 유지한 채 스케일만 맞춘다.</p>
+
+    <p><b>2) 사람 → 로봇 리타게팅.</b> <b>SPIDER</b> 기반 역기구학(IK — Inverse Kinematics, 손끝 위치가 주어졌을 때 관절각을 역산)을 <b>MuJoCo</b> 시뮬레이터에서 수행. 손가락 많은 <b>anthropomorphic hand</b>(사람 형태의 다지 손, Allegro·XHand 등)는 손목+손끝 IK, 그리퍼는 손목 자세에서 턱(jaw) 자세를 유도. 이후 물리 기반 정제 손실로 최적화:</p>
+    <div class="callout">
+      <b>L<sub>ret</sub> = λ<sub>track</sub>L<sub>track</sub> + λ<sub>geo</sub>L<sub>geo</sub> + λ<sub>contact</sub>L<sub>contact</sub> + λ<sub>temp</sub>L<sub>temp</sub></b><br>
+      L<sub>track</sub>: 원본 사람 궤적을 따라감 · L<sub>geo</sub>: 물체 관통 페널티(로봇 손가락이 물체를 뚫지 않도록) · L<sub>contact</sub>: 접촉 관계 보존 · L<sub>temp</sub>: 시간축 부드러움. <b>직관:</b> "원본 사람 동작을 최대한 따라가되, 관통 없이·접촉 유지하며·떨림 없이."
+    </div>
+
+    <p><b>3) Robot Interaction Compositing.</b> 사람 픽셀은 <b>MiniMax-Remover</b>(비디오 인페인팅 도구)로 지워 깨끗한 배경을 만들고, 원본 카메라 모션 그대로 로봇 전경을 렌더링해 배경 위에 합성 — 원본 장면·시점을 그대로 유지한 채 손만 로봇으로 교체.</p>
+
+    <h3>Part B. RoboEdit-Trans — 비디오 편집 모델 (Figure 1)</h3>
+    <p>목표: <b>F<sub>θ</sub>(v<sup>1:T</sup><sub>h</sub>, e) → (v̂<sup>1:T</sup><sub>r,e</sub>, q̂<sup>1:T</sup><sub>e</sub>)</b>. 사람 조작 영상 v<sup>1:T</sup><sub>h</sub>와 로봇 임바디먼트 지시자 e를 받아, 편집된 로봇 영상 v̂<sub>r,e</sub>와 프레임별 로봇 상태 q̂<sub>e</sub>를 동시 예측.</p>
+
+    <p><b>Cross-Embodiment Adaptation Modules.</b> 사전학습된 비디오 diffusion 백본을 그대로 두고 두 종류의 어댑터만 추가:</p>
+    <ul>
+      <li><b>LoRA</b>(Low-Rank Adaptation, 큰 가중치 W₀에 낮은 랭크 보정 항 BA만 추가로 학습하는 파라미터 효율적 파인튜닝): <b>f<sub>LoRA</sub>(x) = W₀x + (α/r)BAx</b>. 시공간 표현을 로봇 외형에 맞게 조정.</li>
+      <li><b>Residual Bottleneck Adapter</b>(입력에 작은 MLP 보정을 residual로 더하는 삽입 모듈): <b>f<sub>Ada</sub>(h) = h + W²<sub>Ada</sub> φ(W¹<sub>Ada</sub> LayerNorm(h))</b>. 손 지오메트리와 상호작용 패턴을 정교화.</li>
+    </ul>
+
+    <p><b>3D Robot-State Decoder.</b> 편집만 하면 로봇 관절값을 알 수 없어 정책 학습에 못 쓴다. 그래서 편집된 영상에서 프레임별 <b>2D 손바닥 앵커, 손끝 위치, 손바닥 프레임 좌표, 관절 구성</b>을 함께 예측하는 디코더를 추가:</p>
+    <ul>
+      <li><b>Mask-aware ResNet-34 인코더</b>가 로봇별 예측 헤드로 프레임별 상태를 뽑고,</li>
+      <li>이후 <b>temporal Transformer</b>가 전 시퀀스에 걸쳐 상태를 다듬어 시간 일관성 확보,</li>
+      <li><b>Forward Kinematics</b>(관절각 → 손끝 위치 계산)로 카메라 좌표계 궤적 생성.</li>
+    </ul>
+    <p>세 단계 손실: (a) 앵커 heatmap/좌표/가시성 손실, (b) 공간 손실(2D 손끝·3D 지오메트리·관절 상태·카메라 내부 파라미터), (c) 시간 손실(모션·residual).</p>
+
+    <h3>데이터 & 학습</h3>
+    <div class="kv">
+      <div>학습 데이터</div><div>RoboEdit-14M 자체(174K 쌍, 130.9시간) · 소스: DexYCB(67.2K), HOT3D(35.6K), TACO(52.1K), GigaHands(11.7K), H2O(8.0K)</div>
+      <div>임바디먼트</div><div>7종 · Ability, Allegro, SCHUNK SVH, XHand, Inspire(각 24.2K 쌍), Unitree Dex3, Panda 그리퍼(각 12.2K 쌍)</div>
+      <div>백본</div><div>사전학습 video diffusion + LoRA·Adapter로 파인튜닝</div>
+      <div>합성 데이터</div><div>Real 145.5K + Synthetic 29.1K (합 174.5K 쌍)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>편집 품질 벤치마크 (표 2, 300 케이스)</h3>
+    <p>지표 설명 — <b>SSIM</b>(Structural Similarity, 0~1, 높을수록 구조 유사) · <b>LPIPS</b>(Learned Perceptual Image Patch Similarity, 낮을수록 지각적으로 유사) · <b>Edit LPIPS</b>(편집 영역만의 LPIPS) · <b>BG SSIM</b>(배경만의 SSIM, 배경 보존도) · <b>VBench AQ/DD/MS</b>(AI 비디오 벤치의 미학 품질·동적 다이나믹·모션 매끄러움) · <b>OpenVE Overall</b>(비디오 편집 종합 점수, 높을수록 좋음).</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>SSIM↑</th><th>LPIPS↓</th><th>Edit LPIPS↓</th><th>BG SSIM↑</th><th>VBench AQ↑</th><th>VBench DD↑</th><th>VBench MS↑</th><th>OpenVE↑</th></tr></thead>
+      <tbody>
+        <tr><td><b>RoboEdit-Trans</b></td><td class="win">0.9282</td><td class="win">0.0470</td><td class="win">0.0171</td><td class="win">0.9188</td><td class="win">0.4832</td><td>0.6300</td><td class="win">0.9956</td><td class="win">3.2511</td></tr>
+        <tr><td>OmniWeaving</td><td>0.8107</td><td>0.1590</td><td>0.0625</td><td>0.8855</td><td>0.4478</td><td class="win">0.6900</td><td>0.9955</td><td>3.1634</td></tr>
+        <tr><td>ReCo</td><td>0.8433</td><td>0.1366</td><td>0.0546</td><td>0.8869</td><td>0.4827</td><td>0.4967</td><td>0.9939</td><td>3.1255</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">8개 지표 중 <b>7개 최고</b>. SSIM 0.9282 vs OmniWeaving 0.8107(+0.117), LPIPS 0.0470 vs 0.1590(1/3 수준). 배경 보존(BG SSIM 0.9188)이 특히 우수 — "편집" 관점 설계가 원본 장면을 뭉개지 않음을 시사.</p>
+
+    <h3>실 로봇 제어 성능 (Genesis 시뮬레이션)</h3>
+    <p>RoboEdit이 생성한 궤적을 조건으로 사용한 <b>Trajectory-conditioned PPO</b>(Proximal Policy Optimization, 강화학습의 대표 정책 최적화 방법) 제어기를:</p>
+    <ul>
+      <li><b>512 randomized envs × 18 YCB 물체</b>(Yale-CMU-Berkeley 표준 물체 세트, 조작 벤치마크에서 흔히 사용)에서 평가</li>
+      <li><b>Panda 그리퍼: 71% / XHand(다지 손): 62%</b> 성공률</li>
+    </ul>
+    <p class="cap">해석: 자동 생성 데이터가 실제 제어 정책의 감독 신호로 유효하며, 그리퍼 vs 다지 손에서 예상대로 그리퍼가 더 쉬움(자유도 낮음).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <h3>Adaptation Modules 조합 (표 3)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>LoRA</th><th>Adapter</th><th>SSIM↑</th><th>LPIPS↓</th><th>Edit LPIPS↓</th><th>BG SSIM↑</th></tr></thead>
+      <tbody>
+        <tr><td>✗</td><td>✗</td><td>0.9255</td><td>0.0494</td><td>0.0179</td><td>0.9174</td></tr>
+        <tr><td>✓</td><td>✗</td><td>0.9264</td><td>0.0490</td><td>0.0176</td><td>0.9181</td></tr>
+        <tr><td>✗</td><td>✓</td><td>0.9276</td><td>0.0478</td><td>0.0173</td><td>0.9186</td></tr>
+        <tr><td>✓</td><td>✓</td><td class="win">0.9282</td><td class="win">0.0470</td><td class="win">0.0171</td><td class="win">0.9188</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>Adapter 단독이 LoRA 단독보다 낫고(0.9276 vs 0.9264), 둘을 결합할 때 최고.</b> Adapter가 손 지오메트리·상호작용 정교화에, LoRA가 시공간 스타일 전이에 각각 기여함을 시사. 절대 차이는 작지만(0.9255→0.9282) 편집 LPIPS는 4%(0.0179→0.0171) 개선.</p>
+
+    <h3>기타 관찰</h3>
+    <ul>
+      <li><b>깊이 정규화(depth regularization)</b>: 단안 HaMeR의 스케일 오차 보정 없이는 로봇 손이 물체 위로 뜨거나 뚫는 일이 잦아 리타게팅 품질이 급락(그림 6 정성).</li>
+      <li><b>실+합성 혼합</b>: 실 145.5K + 합성 29.1K 조합이 데이터 다양성을 담보 — 합성 부분은 원본에 없는 배경/조명 augmentation 담당.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.18948/x1.png" alt="RoboEdit-Trans 모델 구조도 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — RoboEdit-Trans architecture.</b> 사전학습 비디오 diffusion 백본에 LoRA와 Adapter를 붙여 사람 조작 영상을 로봇 조작 영상으로 편집하는 동시에, 3D Robot-State Decoder가 프레임별 로봇 손의 3D 상태(관절각·손끝 위치)를 함께 예측하는 구조. (출처: arXiv:2608.18948)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.18948/x2.png" alt="RoboEdit-ADC 자동 데이터 큐레이션 파이프라인 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — RoboEdit-ADC pipeline.</b> RGB 사람 영상 → (HaMeR·SAM 2·TRELLIS·FoundationPose·VGGT로) 3D 인터랙션 복원 → SPIDER 기반 IK로 7종 로봇 손에 리타게팅 → MiniMax-Remover로 사람 제거 후 로봇 합성. 최종적으로 (사람, 로봇) 영상 쌍 174K개(RoboEdit-14M) 생성. (출처: arXiv:2608.18948)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 2 (편집 품질 벤치마크)</b> — 8개 지표 중 7개 최고. 캡션(원문): <i>"Quantitative comparison on 300 held-out cases across image-level (SSIM, LPIPS, Edit LPIPS, BG SSIM) and video-level (VBench, OpenVE) metrics."</i> RoboEdit이 픽셀·지각·비디오·편집 지표 전반에서 OmniWeaving·ReCo를 앞섬.
+    </div>
+    <p class="cap">Figure 5: 디코더 예측 시각화(3×4 grid) · Figure 7: 실 로봇 배포 · Figure 4: 정성 비교(baseline과 나란히).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.18948" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.18948" target="_blank">PDF</a></li>
+      <li><a href="https://arxiv.org/html/2608.18948v1" target="_blank">HTML 버전 (그림 포함)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.18948 · RoboEdit · 요약 생성 2026-08-24
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

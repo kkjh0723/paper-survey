@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LatentActionStudy — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Latent Action · Empirical Study</span>
+    <h1>What Matters for Latent Actions in Robot Learning</h1>
+    <p class="authors">Xizhou Bu, Qingda Hu, Lei Zhou, Lingfeng Zhang 외 · Fudan · Tsinghua(Shenzhen) · Wuhan Univ · Sichuan Univ · Xiaomi EV</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.19613" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.19613" target="_blank">PDF</a>
+      <a href="https://carldegio.github.io/latent_action.github.io/" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning" target="_blank">GitHub</a>
+      <span>arXiv:2608.19613</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Latent Action</span>
+      <span class="t">VLA</span>
+      <span class="t">Empirical Study</span>
+      <span class="t">Design Space</span>
+      <span class="t">LAPO</span>
+      <span class="t">Robustness</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 20일 · 백본 Qwen3-VL-4B · 사전학습 59M 프레임 · 실로봇 Franka Panda</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>"영상만 보고 로봇 액션을 담은 잠재 벡터를 뽑아내는" <b>Latent Action Model(LAM, 액션 라벨 없이 연속 프레임에서 행동을 요약하는 벡터를 학습하는 모델)</b>의 방대한 설계 공간을 정리한 <b>최초의 대규모 실증 연구</b>. 3개 축(모델링 패러다임 / 정규화 / 통합 방식) 총 <b>41가지 설계 선택</b>을 통제 비교하고, 실로봇 4개 태스크 × 100회 롤아웃(총 400회)에서 <b>OpenVLA-OFT 대비 성공률 64.75% → <span class="win">79.25%</span> (+14.5pp)</b>로 "VLM 백본을 latent action으로 파인튜닝하는 것"이 다운스트림 정책의 강한 초기화가 됨을 입증. 핵심 처방: <b>LAPO + VAE 정규화(λ=10<sup>-7</sup>) + latent 차원 32 + JAP 액션 헤드</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>Latent action</b>(잠재 액션 — 로봇의 실제 관절 명령 대신, 두 프레임 사이의 "행동 의미"를 압축한 저차원 벡터)은 라벨 없는 인터넷 영상까지 사전학습에 끌어올 수 있어 <b>VLA(Vision-Language-Action, 시각·언어·행동을 하나로 잇는 로봇 정책 모델)</b> 확장의 핵심 도구로 떠올랐다. 그러나 지난 2년간 LAPO, LAOF, CoMo, GENIE, UniVLA 등 방법들이 쏟아지면서, 각 논문마다 백본·데이터·평가 프로토콜이 달라 <b>"무엇이 진짜 성능을 좌우하는지"</b>가 불투명해졌다.</p>
+    <p>저자들은 이를 정리하기 위해 <b>통일된 학습·평가 파이프라인</b> 위에서 41개 설계 선택을 하나씩 켜고 꺼가며(controlled ablation) 어떤 요소가 다운스트림 로봇 성능에 실제로 기여하는지 정량화한다. 논문은 새 모델 제안이 아니라 <b>"레시피 정리"</b>가 목표다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>최초의 통합 LAM 설계 공간 실증 연구</b> — 기존 방법을 <b>IDM-FDM(암시적)</b>과 <b>CFD-AE(명시적)</b>이라는 두 프레임워크로 재구성하고, 3개 축(패러다임·정규화·통합) 41개 선택을 동일 조건에서 비교.</li>
+      <li><b>확실한 승자 규명</b> — <b>LAPO</b>가 여전히 가장 강한 베이스라인(평균 0.7327), 의미 특징 차분 <b>ΔDINO</b>(DINOv2 특징 공간에서 두 프레임 뺄셈)가 근접 2위(0.7280). <b>optical flow</b> 기반(RAFT/SEA-RAFT)은 오히려 부진.</li>
+      <li><b>실용 처방 + 실로봇 검증</b> — Qwen3-VL-4B를 59M 프레임 영상 데이터로 latent action 파인튜닝(LA-Tuned) 시 실로봇 성공률 <b>+14.5pp</b>, 수렴 4배 가속(10k step 85% ≈ 베이스라인 40k step 76%). 코드·데이터·모델 공개.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>두 개의 LAM 프레임워크</h3>
+    <p>기존 LAM들은 크게 두 가지 방식으로 갈린다.</p>
+    <div class="callout">
+      <b>왜 이 구분이 중요한가:</b> "행동"이라는 추상적 개념을 모델이 어디에서 추출하느냐가 다르다. 하나는 <b>"다음 프레임을 얼마나 잘 예측하느냐"</b>로 간접 학습, 다른 하나는 <b>"두 프레임 차이 자체"</b>를 직접 압축한다. 마치 스포츠 코칭에서 "다음 자세를 맞춰봐" vs "이 두 스냅샷의 차이를 정리해봐"의 차이.
+    </div>
+    <p><b>(A) IDM-FDM (Implicit)</b> — <b>IDM(Inverse Dynamics Model, 두 프레임을 입력받아 그 사이 액션을 추정하는 모델)</b>이 (o<sub>t</sub>, o<sub>t+1</sub>) → z를 만들고, <b>FDM(Forward Dynamics Model, 현재 관찰 + 액션으로 미래 관찰을 예측하는 모델)</b>이 (o<sub>t</sub>, z) → ô<sub>t+1</sub>을 복원하는 방식으로 z가 병목이 되어 "액션 정보"를 담게 강제. 대표 사례: <b>LAPO</b>(가장 단순한 IDM-FDM 베이스라인), <b>LAOF</b>(optical flow를 보조 감독으로 추가), <b>CoMo</b>(shortcut 방지를 위해 IDM 입력을 미래 프레임 대신 특징 차분으로 교체).</p>
+    <p><b>(B) CFD-AE (Explicit)</b> — Continuous Feature Difference AutoEncoder. 미래 프레임 생성 대신 <b>"연속 프레임의 미리 정의된 모션 신호"</b>(픽셀 차이 ΔRGB, DINOv2 의미 특징 차이 ΔDINO, RAFT/SEA-RAFT의 optical flow)를 오토인코더로 압축·복원. 즉 액션 추출과 프레임 합성을 분리.</p>
+
+    <h3>세 개 축, 41개 설계 선택</h3>
+    <div class="kv">
+      <div>축 I — 모델링 패러다임 (7)</div><div>LAPO / LAOF / CoMo / ΔRGB / ΔDINO / RAFT / SEA-RAFT</div>
+      <div>축 II — 정규화 (21)</div><div>AE(정규화 없음) / VAE(표준 정규분포 KL) / VQ-VAE(코드북 이산화) / Sparsity(희소성 강제) / SIGReg(Sketched Isotropic Gaussian) × λ_reg ∈ {10<sup>-2</sup>, 10<sup>-4</sup>, 10<sup>-6</sup>, 10<sup>-8</sup>}</div>
+      <div>축 III — 통합 방식 (15)</div><div>액션 헤드 5종(DAP/LAP/JAP/JAP-DAP/JAP-LAP) × latent 차원 8~1024</div>
+    </div>
+
+    <h3>액션 헤드 3형제</h3>
+    <ul>
+      <li><b>DAP (Direct Action Prediction)</b> — 사전학습 때만 latent를 쓰고 inference엔 버림. VLM 파인튜닝용 "예열" 역할. <b>가장 약함</b>.</li>
+      <li><b>LAP (Latent-to-Action Prediction)</b> — VLM → z(latent) → a(물리 액션)의 2단 계층. z를 <b>중간 표현으로 유지</b>. DAP보다 크게 우수.</li>
+      <li><b>JAP (Joint Action Prediction)</b> — 공유 특징에서 latent와 물리 액션을 <b>동시</b>에 예측(물리 액션 예측이 latent에 조건화되지 않음). 다운스트림 학습 내내 latent 예측을 유지 → <b>최고 성능</b>.</li>
+    </ul>
+
+    <h3>데이터 & 학습 규모</h3>
+    <div class="kv">
+      <div>Stage I 사전학습</div><div>59M 프레임 (DROID 45.6%, Open X-Embodiment 다수, RobotWin 10.6%, LiberoPlus 3.9%)</div>
+      <div>Stage II VLM 파인튜닝</div><div>Qwen3-VL-4B 백본, 동일 59M 프레임에 자동 생성 latent action 라벨</div>
+      <div>Stage III 다운스트림</div><div>LIBERO 4 suite / LIBERO-Plus / RoboTwin2.0 12 태스크 / 실로봇 Franka Panda 4 태스크 × 50 데모</div>
+      <div>인코더 규모</div><div>IDM/FDM 각각 700M spatiotemporal Transformer (24 블록), 입력 224×224</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>7가지 LAM 패러다임 정면 비교 (Table II)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>LIBERO</th><th>LIBERO-Plus</th><th>RoboTwin2.0</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td><b>LAPO</b></td><td class="win">0.910</td><td class="win">0.437</td><td>0.851</td><td class="win">0.733</td></tr>
+        <tr><td>ΔDINO</td><td class="win">0.921</td><td>0.430</td><td>0.833</td><td>0.728</td></tr>
+        <tr><td>CoMo</td><td>0.908</td><td>0.397</td><td>0.845</td><td>0.717</td></tr>
+        <tr><td>ΔRGB</td><td>0.880</td><td>0.387</td><td>0.825</td><td>0.697</td></tr>
+        <tr><td>LAOF</td><td>0.888</td><td>0.354</td><td>0.830</td><td>0.691</td></tr>
+        <tr><td>SEA-RAFT</td><td>0.802</td><td>0.326</td><td>0.802</td><td>0.643</td></tr>
+        <tr><td>RAFT</td><td>0.780</td><td>0.342</td><td>0.806</td><td>0.643</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">가장 단순한 <b>LAPO</b>가 여전히 최강. <b>Optical flow</b>(RAFT/SEA-RAFT)는 노이즈 교란(LIBERO-Plus)에서 특히 취약. <b>ΔDINO</b>는 사전학습된 의미 특징의 강한 유도편향 덕에 근접 2위.</p>
+
+    <h3>실로봇 — LA-Tuned VLM (Franka Panda 4 태스크)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>성공/시도</th><th>성공률</th><th>10k step 시점</th><th>40k step 시점</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA-OFT (baseline)</td><td>259 / 400</td><td>64.75%</td><td>—</td><td>76.25%</td></tr>
+        <tr><td><b>OpenVLA-OFT (LA-Tuned, Qwen3-VL 백본)</b></td><td class="win">317 / 400</td><td class="win">79.25%</td><td class="win">85.0%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">4개 태스크(서랍 여닫기, 그릇 쌓기, 블록 배치) × 100 롤아웃. <b>+14.5pp</b> 개선, 게다가 <b>4배 빠른 수렴</b>. task-무관 방해물에 대한 강건성도 향상.</p>
+
+    <h3>시뮬레이션 벤치 요약</h3>
+    <p>4 suite의 <b>LIBERO</b>(원본, in-distribution), <b>RobotInit</b> 교란이 추가된 <b>LIBERO-Plus</b>(강건성 평가), 양팔 조작 <b>RoboTwin2.0</b>(50태스크 중 12개 선정)에서 일관되게 LAPO 계열이 우세. 특히 강건성 축에서 optical flow 계열이 크게 뒤처짐.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (핵심 처방)</h2>
+    <ul>
+      <li><b>Latent 차원 d<sub>z</sub>:</b> 8/16/32/64/128/256/512/1024 스윕 결과 <b>d<sub>z</sub>=32가 최적</b>. 7-DoF 단일 팔·14-DoF 양팔 모두에서 균형. 너무 작으면 정보 부족, 너무 크면 shortcut(잠재가 프레임을 통째로 인코딩).</li>
+      <li><b>정규화 방법 vs 강도:</b> "어떤 정규화(VAE / Sparsity / SIGReg)"보다 "<b>정규화 강도(λ)의 적절한 튜닝</b>"이 훨씬 중요. 권장: <b>VAE λ=10<sup>-7</sup></b> (단순함). 제로샷 일반화가 결정적이면 <b>VQ-VAE λ=1</b>.</li>
+      <li><b>Latent 정규화(normalization):</b> 사전학습에서 정규화가 적절하면 <b>불필요</b> — 정규화하지 않은 편이 평균 +0.0115 개선. (파이프라인이 단순해짐.)</li>
+      <li><b>액션 통합 방식:</b> <b>JAP &gt; LAP &gt;&gt; DAP</b>. latent action은 <b>사전학습 목표로만 쓰고 버리지 말고, 다운스트림 학습 내내 계속 예측되도록</b> 유지해야 함.</li>
+      <li><b>Proxy 지표 신뢰성:</b> <b>FDM 복원 지표(SSIM Gain, MSE Gain)</b>는 다운스트림 성공률과 Pearson 상관이 강함(모델 스크리닝 유용). 반면 <b>probe 지표</b>(선형 회귀로 액션 예측 가능성 측정)는 상관 약함. 다만 서로 다른 latent 차원 간 fine-grained 랭킹엔 부적합.</li>
+      <li><b>Optical flow의 놀라운 실패:</b> RAFT/SEA-RAFT는 노이즈 교란에서 특히 부진. 명시적 모션 신호가 오히려 무관한 카메라·배경 움직임까지 잡아버림.</li>
+      <li><b>VLM 파인튜닝 스케일링:</b> 59M 프레임 영상 파인튜닝은 데이터·계산 스케일에 대해 성능이 매끄럽게 증가하는 <b>스케일링 법칙</b>을 보임(Fig. 9).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.19613/main.png" alt="LAM 통합 프레임워크와 41개 설계 공간 개요 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — LAM 통합 프레임워크와 설계 공간.</b> IDM-FDM(암시적, 미래 프레임 복원 병목으로 latent를 학습)과 CFD-AE(명시적, ΔRGB·ΔDINO·optical flow 등 미리 정의된 모션 신호를 오토인코딩)의 두 축, 그 위에 정규화(축 II)·액션 헤드 통합(축 III)이 얹히는 3차원 41개 설계 공간. (출처: arXiv:2608.19613)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.19613/actionhead.png" alt="DAP/LAP/JAP 액션 헤드 아키텍처 비교 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — DAP / LAP / JAP 액션 헤드 아키텍처.</b> DAP는 latent를 사전학습 후 버리고, LAP는 VLM→z→a의 순차 계층, JAP는 공유 특징에서 z와 물리 액션 a를 병렬 예측. 실험 결과 JAP가 최고, latent가 다운스트림 학습 내내 살아있는 것이 관건임을 보임. (출처: arXiv:2608.19613)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.19613/realworld.png" alt="Franka Panda 실로봇 4 태스크 결과 (Figure 10)" loading="lazy">
+      <figcaption><b>Figure 10 — 실로봇 LA-Tuned 결과.</b> OpenVLA-OFT를 latent action으로 파인튜닝한 Qwen3-VL 백본으로 교체하면 4 태스크 평균 성공률 64.75% → 79.25% (+14.5pp), 게다가 10k step만에 이미 baseline의 40k step을 넘김. (출처: arXiv:2608.19613)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table II</b> — 논문 중심 표. 7개 LAM 패러다임을 동일 조건에서 통제 비교한 결과로 "무엇이 진짜 좋은가"에 대한 첫 답. LAPO가 여전히 최강, ΔDINO 근접, optical flow 부진.
+    </div>
+    <div class="callout">
+      <b>권장 레시피 (논문 결론):</b> 1) 모델링 = <b>LAPO</b> (또는 의미 특징 활용 가능시 ΔDINO), 2) 정규화 = <b>VAE, λ=10<sup>-7</sup></b>, 3) latent 차원 = <b>32</b>, 4) latent 정규화 = <b>없음</b>, 5) 액션 헤드 = 영상만 있을 때 <b>LAP</b>, 로봇 데이터 있을 때 <b>JAP-LAP</b>, 6) 모델 선별 지표 = <b>SSIM/MSE Gain</b> (probe 지표 X).
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.19613" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.19613" target="_blank">PDF</a></li>
+      <li><a href="https://carldegio.github.io/latent_action.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li><a href="https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning" target="_blank">GitHub 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.19613 · LatentActionStudy · 요약 생성 2026-08-24
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

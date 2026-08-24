@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Teach-and-Grow — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Agentic Robotics · Lifelong Learning</span>
+    <h1>Teach and Grow: An Agent-Centered Architecture for General Robot Learning</h1>
+    <p class="authors">Chang Nie, Zhe Liu, Hesheng Wang · Shanghai Jiao Tong University (School of Automation and Intelligent Sensing)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.17209" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.17209" target="_blank">PDF</a>
+      <span>arXiv:2608.17209</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Agentic Robotics</span>
+      <span class="t">Few-Shot Teaching</span>
+      <span class="t">Skill Library</span>
+      <span class="t">Lifelong Learning</span>
+      <span class="t">Scaling Law</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 17일 (v1) · 벤치마크 LIBERO · 코드/프로젝트 페이지 공개 없음</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>"리트레이닝 세금(retraining tax, 새 물체·센서·태스크가 등장할 때마다 데이터 재수집·정책 재학습·회귀 테스트를 반복해야 하는 비용)"을 없애기 위해, <b>Teach-and-Grow Learning (TGL)</b>은 파운데이션 모델의 가중치 θ를 <b>동결한 채</b> "<b>Skill Block</b>(하나의 의미 있는 서브골에 대한 닫힌-루프 행동 컨테이너)"과 "<b>Experience Memory</b>(성공·실패·복구 기록)"만 갱신한다. 몇 개의 성공 시연 → 멀티모달 Agent가 의미 단위로 분해·정렬 → 재사용 가능한 Skill Block으로 증류 → 새 장면에서 재-그라운딩·재조합해 실행. LIBERO에서 저자 주장 SOTA를 달성하고, 통제 실험(Table I)에서 <b>블록 라이브러리를 6→8개로 확장하는 것만으로 동일 executor의 성공률이 <span class="win">0/6 → 4/6</span></b>으로 상승. 함께 제안한 <b>Teach-and-Grow 스케일링 법칙 가설</b>은 "누적된 유효 재사용 경험 X가 증가할수록 미래 태스크 오류와 필요 시연량이 <b>거듭제곱(power-law)</b>으로 하한선까지 감소한다"고 예측(현 논문에서는 가설 제시 단계, 종단 실험은 미래 과제).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>현재 로봇 학습의 지배적 흐름은 <b>VLA(Vision-Language-Action, 시각·언어를 관찰로 받아 행동을 직접 출력하는 통합 정책)</b>와 <b>WAM(World-Action Model, 세계 모델과 행동을 함께 학습하는 정책)</b>처럼 관찰·언어를 행동에 직결시키는 <b>엔드-투-엔드 파운데이션 모델</b>이다. RT-1/RT-2, OpenVLA, π0, Octo 등이 대표적이며, "모델과 데이터를 키우면 일반 로봇 지능이 창발한다"는 언어 모델식 확장 가설을 공유한다.</p>
+    <p>저자들은 이 가설이 로봇에서는 성립하기 어렵다고 주장한다. 언어 모델은 이미 존재하던 텍스트 코퍼스를 활용했지만, 로봇의 학습 근거인 "관찰-행동-접촉-물리적 결과"의 <b>구현체 정렬(embodiment-aligned)</b> 데이터는 실제로 로봇을 <b>운전해야만</b> 생성된다. 새 물체·센서·그리퍼·본체(body)가 등장할 때마다 (1) 대표 데이터 수집, (2) 정책 재최적화, (3) 기존 태스크에 대한 회귀 테스트가 다시 필요해지는데, 이를 저자들은 <b>"retraining tax(리트레이닝 세금)"</b>이라 부른다.</p>
+    <div class="callout">
+      물리적 커버리지는 인자 결합(joint coverage)으로 지수적으로 늘어난다. F개의 관련 인자(물체 정체, 자세, 조명, 카메라, 그리퍼, 접촉 모드 등) 각각이 n<sub>j</sub>개 구간을 가지면 조밀 격자 크기는 <b>N<sub>dense</sub> = Π n<sub>j</sub></b>. 정밀도 P가 최소 도달 정밀도 c에 접근할수록 필요 시연은 <b>log N<sub>demo</sub> ∝ 1/(P−c)</b>로 급증한다. 이 두 압력이 엔드-투-엔드 스케일링의 실질 비용을 급격히 밀어올린다.
+    </div>
+    <p>대안으로 두 계열이 등장했다: <b>ASPIRE(Agentic Skills discovery)</b> 계열의 <b>제로-샷 에이전트 탐색</b>과 SayCan/Code-as-Policies/VoxPoser/ReKep/Inner Monologue 같은 <b>LLM을 워크플로 내 슬롯</b>으로 쓰는 계열. 전자는 물리 로봇에서 순차적 결정이 많아 안전 문제를, 후자는 에이전트가 워크플로 자체를 소유하지 못하는 한계를 가진다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>TGL(Teach-and-Grow Learning) 정식화</b> — 파운데이션 파라미터를 동결한 채, 소수 성공 시연에서 재사용 가능한 <b>Skill Block</b>을 유도하고 <b>동적 조합·물리 피드백</b>으로 태스크를 해결하며 <b>정책 재학습 없이 성장</b>하는 <b>에이전트-중심(agent-centered) 아키텍처</b>를 제안.</li>
+      <li><b>재사용 가능한 Skill Block 표현</b> — 시연을 궤적 조각이 아닌 <b>"의미 단위 닫힌-루프 행동"</b>으로 추상화. 목표·범위·전략은 공유하되, 물체 프레임·자세·경로·컨트롤러 명령은 <b>런타임에 재계산</b>. 크로스-임바디먼트(cross-embodiment, 서로 다른 로봇 본체 간) 재사용의 씨앗.</li>
+      <li><b>지속형 메모리 인프라</b> — <b>Skill Library ℬ</b>(버전 관리·인간 편집 가능한 실행형 블록 저장소)와 <b>Experience Memory ℳ</b>(성공·실패·복구·진단의 구조화 기록)로 로컬 학습 결과가 후속 태스크에 명시적으로 이식됨.</li>
+      <li><b>Teach-and-Grow 스케일링 법칙 가설</b> — <b>유효 재사용 경험 X</b>가 증가할수록 미래 태스크 오류 ε<sub>future</sub>와 필요 시연량 D<sub>teach</sub>가 <b>거듭제곱으로 각자의 환원 불가능 하한</b>에 수렴한다는 예측 프레임. 배포 자체가 학습 기간임을 규정.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3.1 아키텍처 개관 — 에이전트가 워크플로를 "소유"한다</h3>
+    <p>TGL은 지각·계획·제어·학습된 정책이 <b>Skill Block 내부의 선택 가능한 능력(capability)</b>으로 편성되는 구조다. 최상위는 <b>멀티모달 Agent</b>(멀티모달 LLM 기반 추론자)이며, "지금 어떤 서브골이 중요한가 / 어떤 증거가 부족한가 / 마지막 행동이 의도한 효과를 냈는가"처럼 <b>태스크 경로 자체를 바꿀 수 있는 질문</b>만 담당한다. 연속 고레이트 제어는 로봇 네이티브 executor(학습 정책·기하 계획기·서보·클래식 컨트롤러 등)에 위임된다.</p>
+    <div class="callout">
+      <b>왜:</b> "언어 수준의 계획"이 "모터 권한(motor authority)"을 갖지 않도록 분리하기 위함. 그럼에도 물리적 증거는 계획을 갱신할 수 있어야 하므로, 에이전트가 <b>블록 경계에서 재검토</b>하는 이 비대칭이 핵심 설계 원리.
+    </div>
+
+    <h3>3.2 Skill Block의 구조 (7-tuple)</h3>
+    <p>각 블록 b<sub>i</sub>는 다음 7개 필드로 정의된다:</p>
+    <p><b>b<sub>i</sub> := ⟨g<sub>i</sub>, 𝒮<sub>i</sub>, ρ<sub>i</sub>, γ<sub>i</sub>, Π<sub>i</sub>, v<sub>i</sub>, ℛ<sub>i</sub>⟩</b></p>
+    <div class="kv">
+      <div>g<sub>i</sub> (goal)</div><div>의도한 효과 — "무엇이 변해야 하는가" (예: "요청된 알파벳-수프 캔을 획득·유지")</div>
+      <div>𝒮<sub>i</sub> (scope)</div><div>적용 범위 — 어떤 조건에서 이 블록이 유효한가</div>
+      <div>ρ<sub>i</sub> (strategy)</div><div>재사용 전략 — "현재 물체 프레임을 결합, 가시적 그립 지점 접근, 정렬, 국소 모션으로 닫음, 유지 확인, 유지하며 들기"처럼 <b>절차의 뼈대</b></div>
+      <div>γ<sub>i</sub> (grounding)</div><div>그라운딩 함수 — 현재 관찰 o<sub>t</sub>를 블록 변수(물체 정체·자세·신뢰도·장애물·도달성·그립 후보·모션 파라미터)에 매핑</div>
+      <div>Π<sub>i</sub> (executors)</div><div>호환 executor 집합 — 학습 정책·기하 계획기·서보·전통 컨트롤러 중 선택 가능한 것들</div>
+      <div>v<sub>i</sub> (validator)</div><div>성공/실패 검증기 — fresh 관찰로 유지·이동 등 <b>선언된 효과</b>가 검증되어야 통과</div>
+      <div>ℛ<sub>i</sub> (recovery)</div><div>복구 옵션 — 재관찰·국소 파라미터 조정·재그립·대체 블록·재조합·중단</div>
+    </div>
+    <p>블록에 <b>저장하지 않는 것</b>: 시연의 월드 좌표, 픽셀, 원본 경로, 관절 궤적, 저수준 액션 재생. 즉 시연은 <b>증거(evidence)</b>일 뿐이며, 실행 가능한 스킬은 그 위에서 <b>추상화된 것</b>.</p>
+
+    <h3>3.3 Teach 모드 — 시연에서 블록 유도</h3>
+    <p>여러 성공 시연을 세미틱 세그먼트로 분해: <b>d<sup>(j)</sup> = (s<sub>1</sub><sup>(j)</sup>, s<sub>2</sub><sup>(j)</sup>, …, s<sub>Kj</sub><sup>(j)</sup>)</b>. 각 세그먼트는 의미 서명(semantic signature) <b>σ(s) = ⟨g<sub>s</sub>, u<sub>s</sub>, a<sub>s</sub>, ℓ<sub>s</sub>, p<sub>s</sub>, q<sub>s</sub>⟩</b>(서브골, 조작 대상, 어포던스, 목표 관계, 선행 효과, 순서 컨텍스트)로 태깅.</p>
+    <p><b>같은 효과</b>를 내는 세그먼트들을 정렬하고(모터 좌표가 아니라 <b>의미 효과</b> 기준), 공유 전략을 합성: <b>ρ<sub>k</sub> = Synthesize(𝒜<sub>k</sub>)</b>. 이때 시연 간 <b>불변량(invariant)</b>과 <b>인스턴스 변수</b>가 분리된다:</p>
+    <ul>
+      <li><b>의미 불변량</b>: 서브골, 물체 역할, 관계, 기대 효과</li>
+      <li><b>행동 불변량</b>: 접근 계열, 접촉 영역, 순서, 허용 executor 계열</li>
+      <li><b>인스턴스 변수</b>(런타임 재계산): 자세, 픽셀, 포인트 클라우드, 그립, 경로, 타이밍, 로봇 구성</li>
+    </ul>
+    <div class="callout">
+      <b>왜:</b> 모터 좌표에 묶으면 새 장면에서 재활용 불가. 의미 효과 기준으로 정렬해야 <b>다른 백엔드·다른 임바디먼트</b>에서도 같은 서브골을 실현할 수 있다. Scope 확장은 뒷받침 다양성(여러 자세·물체 성공)이 있을 때만 이뤄진다.
+    </div>
+
+    <h3>3.4 Grow 모드 — 파라미터 동결, 명시 상태만 갱신</h3>
+    <p>태스크 n 종료 후 업데이트 연산자는:</p>
+    <p><b>θ<sub>n+1</sub> = θ<sub>n</sub> = θ</b> (파운데이션 파라미터 불변)</p>
+    <p><b>(ℬ<sub>n+1</sub>, ℳ<sub>n+1</sub>) = 𝒰(ℬ<sub>n</sub>, ℳ<sub>n</sub>, 𝒟<sub>n</sub>, Δℋ<sub>n</sub>)</b> (라이브러리·메모리만 갱신)</p>
+    <p>Experience Memory의 한 항목: <b>μ<sub>j</sub> = ⟨task, context, blocks, outcome, diagnosis, repair, evidence⟩</b>. 성공만이 아니라 "왜 실패했는지, 다음 시도에서 무엇을 바꿔야 하는지"의 <b>구조화된 진단</b>을 기록해 사람이 검사·편집 가능. 저자들은 이를 대비되게 <b>BC(Behavior Cloning, 행동 복제)</b>·<b>RL(Reinforcement Learning, 강화학습)</b>과 비교(Table II 부록): 학습 객체가 각각 "파라메트릭 정책" / "정책·가치·월드 모델" vs. TGL은 "명시적 Skill Library와 태스크 조합".</p>
+
+    <h3>3.5 실행 루프 — 물리 피드백이 계획을 바꾼다</h3>
+    <p>의미 결정 시점 t에서: <b>(o<sub>t+1</sub>, ε<sub>t</sub>) = Run(b<sub>i<sub>t</sub>,1</sub>, π<sub>i<sub>t</sub>,1,t</sub>, o<sub>t</sub>)</b>. 블록 실행 후 에이전트가 관찰 효과와 의도 효과를 비교. 일치하면 계속, 불일치면 <b>재관찰·다른 executor·경로 재구성·집중 시연 요청(targeted teaching)</b>. "재파지/재관찰"이 별도 모델 업데이트 없이 이뤄진다.</p>
+    <p><b>4단계 유지(retention) 정의</b>: (1) 저장 유지 — 블록이 남아있음, (2) 검색 유지 — 올바른 블록이 선택됨, (3) 그라운딩 유지 — 전략이 현재 센싱·임바디먼트에 결합됨, (4) 행동 유지 — 실제 실행 성공. "저장된 파일 = 능력 유지"가 아님을 강조.</p>
+
+    <h3>3.6 Teach-and-Grow 스케일링 법칙 가설</h3>
+    <p>파운데이션 에이전트·툴 버전·테스트-타임 예산·미래 태스크 분포·스코어 규칙을 고정한 상태에서, <b>유효 재사용 경험 X<sub>n</sub></b>이 증가할 때:</p>
+    <div class="callout">
+      <b>ℰ<sub>future</sub>(X) = ℰ<sub>∞</sub> + A·X<sup>−α</sup></b> — 미래 관련 태스크의 오류율<br>
+      <b>D<sub>teach</sub>(X) = D<sub>∞</sub> + B·X<sup>−β</sup></b> — 새 태스크 획득에 필요한 교사 개입 시간<br>
+      두 곡선 모두 α, β &gt; 0로 <b>거듭제곱 감소</b>, 각자의 태스크-의존 하한(ℰ<sub>∞</sub>, D<sub>∞</sub>)으로 수렴 예측.
+    </div>
+    <p>여기서 <b>유효 재사용 경험</b>은 저장한 에피소드 수가 아니라, <b>X<sub>n</sub> = Σ<sub>h∈ℋn</sub> ω(h; ℬ<sub>n</sub>, ℳ<sub>n</sub>)</b> — 각 경험이 (증거 신뢰도, 커버리지 추가분, 검색 가능성, 그라운딩 유효성, 기존 블록과의 호환성) 5개 요인으로 [0,1] 점수화. <b>중복된 궤적 다수 &lt; 잘 정제된 소수 브리지 블록</b>. 저자들은 <b>본 논문에서는 가설만 제시</b>하고, 종단(longitudinal) 실험은 부록 G의 프로토콜로 미래 과제로 남긴다.</p>
+
+    <h3>3.7 비용 구조: End-to-End vs TGL</h3>
+    <p>엔드-투-엔드 비용: <b>C<sub>E2E</sub>(K) = C<sub>collect</sub>(N<sub>cover</sub>(K)) + C<sub>train</sub>(N<sub>cover</sub>(K)) + C<sub>regress</sub>(θ<sub>new</sub>(K), T<sub>old</sub>)</b>. 반면 TGL 비용: <b>C<sub>TGL</sub>(K) = C<sub>0</sub> + Σ κ<sub>k</sub> + C<sup>cum</sup><sub>retrieve</sub>(K)</b>. 블록당 비용 κ<sub>k</sub>(κ<sub>teach</sub>+κ<sub>ground</sub>+κ<sub>validate</sub>+κ<sub>link</sub>)가 국소 유지되고 계층적 검색이 O(K)면 <b>K에 대해 최대 선형</b>. 엔드-투-엔드는 조밀 커버리지 재개방 때문에 볼록(convex)으로 발산.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO 전체 벤치마크</h3>
+    <p><b>LIBERO(Benchmarking Knowledge Transfer for Lifelong Robot Learning)</b>는 평생 로봇 학습용 표준 벤치마크로 Spatial / Object / Goal / Long(=LIBERO-10)의 4개 태스크 스위트를 포함한다. 저자들은 "완성된 표준 LIBERO 평가에서 TGL이 SOTA(state-of-the-art) 성공률을 달성했다"고 <b>본문에 서술</b>하지만, <b>본 논문 본문에는 구체 수치·베이스라인 표가 제시되지 않음</b>(Appendix I 참조 안내). 논문의 실증 기여는 표준 지표보다 <b>구조가 어떻게 작동하는지</b>를 보이는 통제 실험에 집중.</p>
+
+    <h3>Table I — 통제된 Teach-and-Grow 실험 (LIBERO)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Study</th><th>관찰 결과</th><th>메시지</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Task-specific 학습 사이클</b></td>
+          <td>3개의 교사 궤적 → 2개의 블록(획득, 관계에 맞춘 놓기) 유도. <b>2 blocks solve 3/3 states</b>. save-and-reload 후에도 <b>3/3</b> 유지. 학습된 범위 밖에서는 "첫 미충족 의미 효과"에서 정지</td>
+          <td>시연이 <b>지속·범위 인지형 행동</b>이 됨</td>
+        </tr>
+        <tr>
+          <td><b>피드백 기반 실행</b></td>
+          <td>bowl-on-plate: pick 성공 후 post-grasp 증거가 불충분하면 에이전트가 남은 경로 재구성. drawer-opening: 결론 불가 결과에서 재관찰 트리거</td>
+          <td><b>결과가 에이전트의 다음 행동을 바꿈</b></td>
+        </tr>
+        <tr>
+          <td><b>고정 executor 라이브러리 파일럿</b></td>
+          <td>6-블록 라이브러리: <span class="win">0/6</span> 성공. 학습 블록 2개 추가 → 8-블록: <span class="win">4/6</span> 성공. <b>모델 가중치·런타임·평가 예산 불변</b></td>
+          <td><b>로컬 라이브러리 성장이 동일 executor가 할 수 있는 일을 바꿈</b></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">(수치는 소규모 파일럿 통제 실험; 표준 LIBERO 성공률 수치는 논문 본문에 미기재)</p>
+
+    <h3>10개 시각 시연 유도 실험</h3>
+    <p>10개의 시각 시연이 <b>획득(acquisition)·해제(release) 두 단계</b>로 분해되고, 관찰된 <b>20개 효과 전부 확인</b>. 별도 학습 사이클에서 3개 교사 궤적이 두 블록("요청 객체 획득" + "요구 관계로 놓기")으로 유도되어 3개 평가 상태 모두 해결. 저장/재로드/재해결이 동일 성공률로 유지되며, <b>기존 6-block 경로도 병존</b>(대체가 아닌 대안 추가).</p>
+
+    <h3>Table III — 유도된 블록의 실제 내용 (예시)</h3>
+    <p>3개 교사 궤적에서 유도된 "acquire the requested alphabet-soup can" 블록:</p>
+    <ul>
+      <li><b>Subgoal g:</b> "요청된 알파벳-수프 캔을 획득·유지"</li>
+      <li><b>Scope 𝒮:</b> LIBERO-Object 태스크 한정(일반 캔 스킬로 노출되지 않음 — 시연 다양성이 부족하면 scope를 좁게 유지)</li>
+      <li><b>Strategy ρ:</b> 현재 물체 프레임 결합 → 가시적 그립 지점 접근 → 정렬 → 국소 모션으로 닫음 → 유지 확인 → 유지하며 들기</li>
+      <li><b>Grounding γ:</b> 현재 관찰에서 물체 정체, 프레임, 신뢰도, 장애물, 도달성, 그립 후보, 국소 모션 파라미터를 추정</li>
+      <li><b>Executors Π:</b> 현재 장면 기반 그립 선택, 서보 획득, 새로 계획된 충돌 인지 전이(collision-aware transition)</li>
+      <li><b>Recovery ℛ:</b> 재관찰, 국소 파라미터 조정, 허용 그립 복구, 대체 블록, 재조합, 중단</li>
+      <li><b>제외:</b> 시연 세계 좌표, 픽셀, 옛 경로, 관절 궤적, 저수준 액션 재생</li>
+    </ul>
+
+    <h3>Skill Block 분류(taxonomy)</h3>
+    <p>블록은 산출 효과에 따라 6종으로 조직: <b>acquisition</b>(안정된 소유·접촉 확립), <b>transport</b>(상태 유지하며 공간 관계 변경), <b>release/placement</b>(지지·수용·정렬·삽입 확립), <b>articulation/activation</b>(열기·닫기·회전·누르기·토글·구동), <b>observation</b>(이후 결정에 필요한 증거 수집), <b>recovery</b>(진단된 실패 후 사전 조건 복원).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation 및 통제 관찰</h2>
+    <p>본 논문은 표준적인 "구성요소 하나씩 제거하는 ablation"보다 <b>메커니즘의 존재 증명</b>에 초점을 둔다. 주요 발견:</p>
+    <ul>
+      <li><b>블록 유도의 지속성:</b> save-and-reload 이후에도 <b>3/3 성공</b> — 학습된 블록이 파라미터에 흡수되지 않고 <b>파일 수준 아티팩트</b>로 보존됨을 확인.</li>
+      <li><b>범위 인지(scope-aware) 정지:</b> 학습된 scope 밖 상태에 대해서는 실행하지 않고 <b>"첫 미충족 의미 효과"에서 즉시 중단</b> — 잘못된 일반화 대신 안전한 실패.</li>
+      <li><b>로컬 성장의 인과 효과(가장 강한 통제 결과):</b> executor·가중치·런타임·평가 예산을 모두 고정한 상태에서 <b>라이브러리에 블록 2개 추가</b>만으로 <b>0/6 → 4/6</b> 성공률 개선. "가중치 학습 없이도 능력이 늘어난다"는 TGL의 핵심 주장에 대한 직접 증거.</li>
+      <li><b>피드백에 의한 계획 변경:</b> bowl-on-plate에서 post-grasp 관찰 부족 시 <b>남은 경로 재구성</b>, drawer-opening에서 불확실 결과에 대해 <b>재관찰</b> — 물리적 증거가 언어 계획을 갱신함을 정성적으로 시연.</li>
+      <li><b>비교: BC/RL과의 학습 객체 차이(Table II):</b> BC는 시연을 <b>모방 대상</b>, RL은 <b>초기화·유도</b>로 취급하고 둘 다 파라미터에 능력이 분산 저장됨. TGL은 시연을 <b>구조 씨앗</b>으로 취급하고 능력이 <b>인간이 읽고 수정할 수 있는 명시 객체</b>로 저장됨.</li>
+    </ul>
+    <div class="callout">
+      <b>한계(저자 자인):</b> 새 태스크가 여러 라운드의 에이전트 추론·툴 호출·관찰을 요구해 <b>실시간 지연이 크다</b>. 해결책은 (1) 멀티모달 에이전트 자체의 가속, (2) 성숙한 블록을 <b>빠른 학생 정책(fast policy)</b>으로 <b>증류(distillation)</b>. 즉 "느린 교사 / 빠른 학생" 이중 속도 아키텍처가 후속 확장 방향.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.17209/fig1.png" alt="Fig 1 — Two routes to OOD tasks" loading="lazy">
+      <figcaption><b>Figure 1 — OOD 태스크를 만났을 때 두 경로 대비.</b> 엔드-투-엔드 VLA/WAM은 새 데이터 수집→정책 업데이트→회귀 테스트의 <b>리트레이닝 루프</b>로 되돌아가는 반면, TGL은 <b>소수 시연 → Skill Block 재사용 → 피드백 기반 적응</b>으로 파라미터를 건드리지 않고 새 태스크를 소화. (출처: arXiv:2608.17209)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.17209/fig2.png" alt="Fig 2 — Teach-and-Grow workflow for one unfamiliar task" loading="lazy">
+      <figcaption><b>Figure 2 — 미지 태스크 한 건의 Teach-and-Grow 워크플로.</b> 시연이 공유 상태 변화·새 블록을 드러냄 → Agent가 경로 구성 → 블록 1개 실행 → 로봇 행동 후 효과 검사 → 검증된 능력은 <b>Skill Library</b>, 결과·실패·복구는 <b>Experience Memory</b>에 진입 → 다음 태스크의 구성 단계로 회귀. (출처: arXiv:2608.17209)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.17209/fig3.png" alt="Fig 3 — Skill Block realization: reusable contract vs runtime binding" loading="lazy">
+      <figcaption><b>Figure 3 — Skill Block의 실현.</b> 상단은 <b>고정된 계약</b>(goal, scope, strategy, grounding·executor·validator·recovery의 7-tuple), 하단은 <b>런타임 재계산</b>되는 요소(현재 물체·기하·경로·컨트롤러). 시연은 궤적 조각이 아니라 "재현될 의미 효과"의 증거. (출처: arXiv:2608.17209)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table I</b> — 세 통제 실험의 핵심 수치: 학습된 2 블록이 <b>3/3 상태 해결 + save/reload에서 3/3 유지</b>; 라이브러리 <b>6→8 블록 확장만으로 0/6 → 4/6</b>(모델·런타임·예산 불변). "가중치 없이 능력이 자란다"는 주장에 대한 가장 직접적 증거.
+    </div>
+    <div class="callout">
+      <b>Figure 4 (본 요약 미첨부, 개념 스키마)</b> — 유효 재사용 경험 X가 커질수록 미래 태스크 오류·필요 시연량이 각자의 하한선을 향해 감소하는 <b>Teach-and-Grow 스케일링 법칙 가설</b>의 개념도. 본 논문에서는 <b>가설·측정 프로토콜만 제시</b>, 실측 곡선은 부록 G의 종단 실험으로 미래 과제.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.17209" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.17209" target="_blank">PDF</a></li>
+      <li>GitHub / 프로젝트 페이지: 공개되지 않음 (2026-08-24 기준)</li>
+      <li>관련 선행 연구:
+        <ul>
+          <li><a href="https://arxiv.org/abs/2607.00272" target="_blank">ASPIRE: Agentic Skills Discovery for Robotics</a> (에이전트 기반 스킬 발견)</li>
+          <li><a href="https://arxiv.org/abs/2608.05970" target="_blank">SkillMemo: Expert-guided Skill Memory</a> (전문가 지도 스킬 메모리)</li>
+          <li><a href="https://arxiv.org/abs/2406.18746" target="_blank">LRLL: Lifelong Robot Library Learning</a> (평생 로봇 라이브러리 학습)</li>
+          <li><a href="https://arxiv.org/abs/2306.03310" target="_blank">LIBERO 벤치마크</a> (평생 로봇 학습용 표준 스위트)</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.17209 · Teach-and-Grow · 요약 생성 2026-08-24
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

@@ -184,6 +184,177 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2608.19613" data-added="2026-08-24" data-tags="Latent Action,VLA,Empirical Study,Design Space,LAPO,Robustness">
+        <td class="no">104</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.19613_LatentActionStudy.html">What Matters for Latent Actions in Robot Learning</a></div>
+          <div class="sub">Xizhou Bu, Qingda Hu 외 · Fudan · Tsinghua(Shenzhen) · Xiaomi EV · arXiv:2608.19613</div>
+          <div class="sub">Latent Action Model 41개 설계 조합을 최초로 통제 실증. 최적 레시피(LAPO+VAE 정규화+latent dim 32+JAP 액션 헤드)로 얻은 LA-Tuned VLM은 실로봇 성공률 <b>64.75→79.25</b>(+14.5%p), 수렴 4배 가속. 오히려 옵티컬 플로우 기반은 픽셀 차이보다 약함.</div>
+          <div class="tags">
+            <span class="tag">Latent Action</span>
+            <span class="tag">VLA</span>
+            <span class="tag">Empirical Study</span>
+            <span class="tag">Design Space</span>
+            <span class="tag">LAPO</span>
+            <span class="tag">Robustness</span>
+          </div>
+        </td>
+        <td class="date">2026-08-20</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.19613" target="_blank">arXiv</a>
+          <a href="https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning" target="_blank">GitHub</a>
+          <a href="https://carldegio.github.io/latent_action.github.io/" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.18948" data-added="2026-08-24" data-tags="Human Video,Video Editing,Cross-Embodiment,Dataset,Manipulation">
+        <td class="no">103</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.18948_RoboEdit.html">RoboEdit: Turning Human Manipulation Videos into Scalable Robot Experience</a></div>
+          <div class="sub">Yaowei Guo, Zeng Tao 외 · arXiv:2608.18948</div>
+          <div class="sub">사람 손 조작 영상을 3D 복원→로봇 리타게팅→인페인팅으로 편집해 (사람, 로봇) 짝지은 174K 쌍·14M 프레임 데이터셋(RoboEdit-14M)을 구축. 편집 모델의 재구성 SSIM <b>0.9282</b>로 OmniWeaving(0.8107) 대비 큰 폭 우위, 스케일러블한 로봇 학습 데이터 파이프라인 제시.</div>
+          <div class="tags">
+            <span class="tag">Human Video</span>
+            <span class="tag">Video Editing</span>
+            <span class="tag">Cross-Embodiment</span>
+            <span class="tag">Dataset</span>
+            <span class="tag">Manipulation</span>
+          </div>
+        </td>
+        <td class="date">2026-08-19</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.18948" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2608.19589" data-added="2026-08-24" data-tags="VLA,Continual Learning,Orthogonal Subspace,LoRA,MoE Decoder,Catastrophic Forgetting">
+        <td class="no">102</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.19589_OrthoSkillVLA.html">OrthoSkillVLA: Continual Skill Learning via Gradient-Informed Skill Subspace Adaptation</a></div>
+          <div class="sub">Jiaqi Wang, Zhou Fang, Qiongfeng Shi, Yi Zhou · Southeast University · arXiv:2608.19589</div>
+          <div class="sub">사전학습 VLA에 새 스킬을 순차 학습할 때의 파국적 망각(catastrophic forgetting)을 모듈별 직교 부분공간 LoRA + 스킬별 MoE 디코더 + 학습 불필요 라우터로 해결. LIBERO skill-incremental 최종 성공률 <b>83.50%</b> (KeepLoRA 56.61, EWC 25.17 대비 압도).</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Continual Learning</span>
+            <span class="tag">Orthogonal Subspace</span>
+            <span class="tag">LoRA</span>
+            <span class="tag">MoE Decoder</span>
+            <span class="tag">Catastrophic Forgetting</span>
+          </div>
+        </td>
+        <td class="date">2026-08-20</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.19589" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2608.19490" data-added="2026-08-24" data-tags="VLA,Self-Demonstration,Fine-tuning,Catastrophic Forgetting,ALOHA,π0.5">
+        <td class="no">101</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.19490_SelfDemoVLA.html">Fine-Tuning VLAs with Self-Demonstrated Generative Control for Multi-Task Manipulation</a></div>
+          <div class="sub">Prachi Garg, Steve Xing 외 · UIUC · arXiv:2608.19490</div>
+          <div class="sub">동결한 사전학습 VLA를 대상 로봇에서 굴린 zero-shot 롤아웃을 "자기 데모(self-demonstration)"로 재활용해, 원본 프리트레인 데이터 없이도 새 하드웨어에 파인튜닝. ALOHA pick-and-place 지시 추종 <b>0→90%</b>, RoboTwin 망각 태스크 회복 <b>16.6→70.6%</b> (오라클과 −0.2%p 차).</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Self-Demonstration</span>
+            <span class="tag">Fine-tuning</span>
+            <span class="tag">Catastrophic Forgetting</span>
+            <span class="tag">ALOHA</span>
+            <span class="tag">π0.5</span>
+          </div>
+        </td>
+        <td class="date">2026-08-19</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.19490" target="_blank">arXiv</a>
+          <a href="https://self-supervised-control.pages.dev/" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.17209" data-added="2026-08-24" data-tags="Agentic Robotics,Few-Shot Teaching,Skill Library,Lifelong Learning,Scaling Law">
+        <td class="no">100</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.17209_TeachAndGrow.html">Teach and Grow: An Agent-Centered Architecture for General Robot Learning</a></div>
+          <div class="sub">Chang Nie, Zhe Liu, Hesheng Wang · Shanghai Jiao Tong University · arXiv:2608.17209</div>
+          <div class="sub">파운데이션 파라미터를 동결한 채 소수 시연을 재사용 가능한 Skill Block으로 유도·조합하고 물리 피드백으로 재계획하는 에이전트-중심 아키텍처. 라이브러리 6→8 블록 확장만으로 동일 executor 성공률 <b>0/6→4/6</b>, save-and-reload 후에도 3/3 유지. Teach-and-Grow 스케일링 법칙 가설 제시.</div>
+          <div class="tags">
+            <span class="tag">Agentic Robotics</span>
+            <span class="tag">Few-Shot Teaching</span>
+            <span class="tag">Skill Library</span>
+            <span class="tag">Lifelong Learning</span>
+            <span class="tag">Scaling Law</span>
+          </div>
+        </td>
+        <td class="date">2026-08-17</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.17209" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2608.14047" data-added="2026-08-24" data-tags="VLA,Tool-use,Agent,LoRA,Robustness,π0-FAST">
+        <td class="no">99</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.14047_ART.html">Evolve Vision-Language-Action Model into an Agent with On-the-fly Tool-use (ART)</a></div>
+          <div class="sub">Yi Ding, Yanzhao Yu 외 · CVPR Findings 2026 · arXiv:2608.14047</div>
+          <div class="sub">VLA가 저조도·시야 왜곡 등 실제 잡음에 취약한 문제를, 관측을 정제해 주는 외부 도구(vision·affordance·embodiment)를 필요할 때 스스로 호출하도록 LoRA 어댑터로 학습시킨 on-the-fly tool-use 프레임워크. LIBERO·Astribot S1에서 π0-FAST 대비 평균 <b>+20%p</b>.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Tool-use</span>
+            <span class="tag">Agent</span>
+            <span class="tag">LoRA</span>
+            <span class="tag">Robustness</span>
+            <span class="tag">π0-FAST</span>
+          </div>
+        </td>
+        <td class="date">2026-08-14</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.14047" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2501.09747" data-added="2026-08-24" data-tags="VLA,Action Tokenization,DCT,BPE,Autoregressive">
+        <td class="no">98</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2501.09747_FAST.html">FAST: Efficient Action Tokenization for Vision-Language-Action Models</a></div>
+          <div class="sub">Karl Pertsch, Kyle Stachowicz 외 · Physical Intelligence · UC Berkeley · Stanford · arXiv:2501.09747</div>
+          <div class="sub">연속 로봇 액션을 DCT(시간축 신호를 주파수 성분으로 분해) + 양자화 + BPE(자주 붙는 조각을 하나로 병합)로 압축해 자기회귀 VLA에 넣는 새 토크나이저. π₀-diffusion 대비 학습 시간 <b>최대 5배 단축</b>, laundry·T-shirt folding 등 dexterous 태스크 성공률 대등, DROID zero-shot 언어 일반화 최초 성공.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Action Tokenization</span>
+            <span class="tag">DCT</span>
+            <span class="tag">BPE</span>
+            <span class="tag">Autoregressive</span>
+          </div>
+        </td>
+        <td class="date">2025-01-16</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2501.09747" target="_blank">arXiv</a>
+          <a href="https://www.pi.website/research/fast" target="_blank">Project</a>
+          <a href="https://huggingface.co/physical-intelligence/fast" target="_blank">HF</a>
+        </td>
+      </tr>
+      <tr data-id="2407.08693" data-added="2026-08-24" data-tags="VLA,Chain-of-Thought,Reasoning,OpenVLA,Generalization">
+        <td class="no">97</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2407.08693_ECoT.html">Robotic Control via Embodied Chain-of-Thought Reasoning (ECoT)</a></div>
+          <div class="sub">Michał Zawalski, William Chen, Karl Pertsch 외 · UC Berkeley · Stanford · U. Warsaw · arXiv:2407.08693</div>
+          <div class="sub">VLA가 행동 예측 직전에 계획·서브태스크뿐 아니라 물체 bounding box·그리퍼 픽셀 좌표까지 자기회귀로 뱉게 하는 embodied CoT. 새 로봇 데이터 없이 OpenVLA 대비 Bridge V2를 <b>44→66%(ID)·30→64%(OOD)</b>, 공간 추론 +34%p, OOD 물체 +32%p 개선.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Chain-of-Thought</span>
+            <span class="tag">Reasoning</span>
+            <span class="tag">OpenVLA</span>
+            <span class="tag">Generalization</span>
+          </div>
+        </td>
+        <td class="date">2024-07-11</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2407.08693" target="_blank">arXiv</a>
+          <a href="https://github.com/MichalZawalski/embodied-CoT/" target="_blank">GitHub</a>
+          <a href="https://embodied-cot.github.io" target="_blank">Project</a>
+        </td>
+      </tr>
       <tr data-id="2608.16885" data-added="2026-08-19" data-tags="VLA,Hierarchical Policy,World Model,Test-Time Compute,Long-Horizon">
         <td class="no">96</td>
         <td class="read-cell"></td>

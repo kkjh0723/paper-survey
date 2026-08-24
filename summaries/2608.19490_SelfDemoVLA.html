@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Self-Demo VLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Fine-tuning · Self-Distillation</span>
+    <h1>Fine-Tuning VLAs with Self-Demonstrated Generative Control for Multi-Task Manipulation</h1>
+    <p class="authors">Prachi Garg, Steve Xing, Prahit Yaugand, Saurabh Gupta, Derek Hoiem · UIUC</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.19490" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.19490" target="_blank">PDF</a>
+      <a href="https://self-supervised-control.pages.dev/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.19490</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Self-Demonstration</span>
+      <span class="t">Fine-tuning</span>
+      <span class="t">Catastrophic Forgetting</span>
+      <span class="t">ALOHA</span>
+      <span class="t">π0.5</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 19일 (v1) · 백본 π<sub>0.5</sub> · 평가 ALOHA 실로봇 + RoboTwin 시뮬</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사전학습된 <b>VLA(Vision-Language-Action model, 시각·언어를 입력받아 로봇 행동을 출력하는 파운데이션 정책)</b>를 새 로봇에 파인튜닝(fine-tuning, 소량의 데이터로 사전학습 모델 미세 조정)할 때 발생하는 <b>파국적 망각(catastrophic forgetting, 새 태스크 학습 후 기존 능력 상실)</b>과 다태스크 지시 추종 붕괴를 막기 위해, <b>얼린 원본 정책이 실제 대상 로봇 위에서 굴린 zero-shot 롤아웃</b>을 <b>자기 데모(self-demonstration)</b>로 다시 사용해 전문가 데이터와 함께 학습한다. 하드웨어 도메인 갭이 없다는 점이 핵심. ALOHA pick-up 성공률 <span class="win">65→90%</span>, pick-and-place 지시 추종 <span class="win">0→90%</span>, RoboTwin에서 망각된 태스크 성능 16.6→70.6%(오라클 대비 −0.2%p).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>π<sub>0</sub>, π<sub>0.5</sub>, OpenVLA 같은 <b>VLA(Vision-Language-Action model)</b>는 대규모 로봇 데이터로 사전학습돼 강력한 다태스크 조작 능력을 지닌다. 그러나 사용자가 자기 실험실의 새 로봇에 배포하려 <b>파인튜닝</b>하면 (1) 아주 작은 하드웨어 불일치(카메라 위치, 그리퍼 종류, 관절 오프셋 등)만으로도 zero-shot 성공률이 급락하고, (2) 파인튜닝 후에는 사전학습에서 얻은 다른 태스크 능력과 지시 추종 능력이 사라진다.</p>
+    <p>기존 완화책은 대개 <b>사전학습 데이터 재플레이(rehearsal, 옛 데이터를 새 학습에 섞기)</b>인데, 상용 파운데이션 모델을 받은 다운스트림 사용자는 원본 데이터에 접근할 수 없다는 현실적 제약이 있다. 저자들은 "그렇다면 데이터 없이도 옛 능력을 부활시킬 방법은?"이라는 질문에서 출발한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Self-Demonstrated 생성 제어(self-demonstrated generative control)</b> — 얼린 사전학습 정책이 <b>실제 배포 대상 로봇</b> 위에서 zero-shot으로 굴린 궤적(관찰·행동 쌍)을 그대로 자기지도 학습 타깃으로 재사용. 로봇/시점/조명이 배포와 완전히 동일하므로 <b>임베디먼트 갭(embodiment gap, 학습·배포 로봇 차이) 0</b>이라는 게 핵심 원리.</li>
+      <li><b>망각 없는 파인튜닝 손실</b> — 전문가 데모 손실 L<sub>ES</sub>와 자기 데모 손실 L<sub>SS</sub>를 λ로 결합한 이중 목적(joint objective). 원본 pretraining 데이터가 없어도 사전학습 능력을 <b>자체 리허설(self-rehearsal)</b>로 보존.</li>
+      <li><b>다중 분포 벤치마크 프로토콜</b> — RoboTwin 시뮬과 실 ALOHA(양팔 로봇)에서 (a) 전문가 태스크 (b) 자기지도 태스크 (c) 신규 물체 (d) 신규 조합 4개 분포로 <b>일반화·보존·습득</b>을 함께 측정.</li>
+      <li><b>실질적 이득 검증</b> — pick-up 65→90%, pick-and-place 지시 추종 0→90%, 접촉-집약 이중팔 caterpillar 30→90%, 시뮬 망각 태스크 16.6→70.6% 회복(오라클 대비 −0.2%p).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본 아키텍처 (π<sub>0.5</sub> 기반)</h3>
+    <p>사전학습 정책은 <b>π<sub>0.5</sub></b>: <b>SigLIP</b>(대비학습 기반 vision encoder) + <b>PaliGemma</b>(멀티모달 언어모델)로 관찰과 지시문을 인코딩한 뒤, <b>action expert</b>가 <b>flow matching(FM, 노이즈에서 데이터 분포로 이어지는 벡터장을 회귀 학습해 연속 행동을 생성하는 방식)</b>으로 행동 청크(action chunk, 여러 스텝의 연속 행동 묶음)를 출력한다. 학습 목표는 <b>FAST 토큰(discrete action token) 크로스엔트로피</b>와 <b>조건부 flow matching 손실</b>의 결합.</p>
+    <div class="callout">왜 이 백본인가 — π<sub>0.5</sub>는 이산 토큰(FAST) 헤드와 연속 flow-matching 헤드를 함께 갖는 이중 목적 정책이라, 언어 지시 추종과 연속 저수준 제어를 한 모델에서 학습·평가할 수 있다.</div>
+
+    <h3>Self-Demo 수집 절차</h3>
+    <p>배포 대상 로봇 위에서 얼린 정책 π<sub>base</sub>를 <b>zero-shot 실행</b>해 (관찰 o<sub>t</sub>, 정책이 출력한 행동 â<sub>t</sub>) 튜플을 저장한다. 성공/실패 여부와 무관하게 수집하며, 논문은 벤치마크당 <b>15–29개 롤아웃(rollout, 정책이 한 에피소드 동안 만들어낸 궤적)</b>이면 충분함을 보인다. 태스크당 <b>버퍼 크기 10 에피소드</b>가 최소 필요치.</p>
+    <div class="callout">핵심 통찰 — 자기 데모의 관찰·행동은 "정책이 실제 그 로봇에서 만든 것"이라 관측 분포와 동역학이 배포 조건과 동일하다. 즉 <b>도메인 갭 = 0</b>. 심지어 롤아웃이 <b>서브-옵티멀(sub-optimal, 최적이 아닌)</b>이어도 오라클(전문가로 다시 수집)만큼 유용.</div>
+
+    <h3>Joint 학습 목적 (Eq. 5)</h3>
+    <p>전문가 데모 세트 D<sub>ES</sub>에는 사람이 텔레옵으로 수집한 (o, a*), 자기 데모 세트 D<sub>SS</sub>에는 얼린 정책 롤아웃 (o, â)이 담긴다. 이중 손실은 다음과 같다:</p>
+    <p style="text-align:center;font-size:15px"><b>L(θ) = L<sub>ES</sub>(θ) &nbsp;+&nbsp; λ · L<sub>SS</sub>(θ)</b></p>
+    <p>여기서 L<sub>ES</sub>는 전문가 라벨에 대한 FAST+FM 손실, L<sub>SS</sub>는 자기 라벨에 대한 동일 형태 손실, λ는 두 손실 균형을 맞추는 스칼라. 미니배치는 자기:전문가 = <b>1:1</b> 비율로 샘플링(태스크는 균등 샘플링). 이는 <b>self-distillation(자기 증류, 자신의 이전 예측을 스승으로 사용)</b>과 <b>rehearsal</b>의 하이브리드로 해석 가능.</p>
+
+    <h3>파인튜닝 전략</h3>
+    <div class="kv">
+      <div>업데이트 범위</div><div>Full fine-tuning(모든 파라미터 학습) — <b>LoRA</b>(저랭크 어댑터), 부분 freeze보다 우수</div>
+      <div>목적 함수</div><div>FAST(이산 토큰) + FM(연속 flow) 이중 유지 — FM-only는 지시 추종 망각 심화</div>
+      <div>Knowledge insulation</div><div>다운스트림 파인튜닝에는 <b>불리</b>(사전학습에는 유효한 기법이 여기선 오히려 손해)</div>
+      <div>Self-demo 라벨</div><div>정책 예측 행동 â를 소프트 타깃으로 그대로 사용 (성공/실패 필터링 X)</div>
+    </div>
+
+    <h3>데이터 규모</h3>
+    <div class="kv">
+      <div>ALOHA pick-up</div><div>전문가 30 데모 (지시당 15) + 자기 데모 15–29 롤아웃</div>
+      <div>ALOHA pick-and-place</div><div>텔레옵 14분 + 자기 데모(place 지시는 전문가 없음)</div>
+      <div>ALOHA caterpillar</div><div>3색 기어 60 데모 + 자기 데모</div>
+      <div>RoboTwin Stage 1</div><div>10 태스크 × 500 계획 에피소드 (약 130,815 프레임)</div>
+      <div>RoboTwin Stage 2</div><div>2 stacking(전문가) + 10 자기지도 태스크(각 ~10 롤아웃)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>ALOHA 실로봇 (양팔 인형 로봇)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>설정</th><th>Zero-shot π<sub>0.5</sub></th><th>Expert-only</th><th><b>ES + SS (제안)</b></th></tr></thead>
+      <tbody>
+        <tr><td>Pick-up 성공률</td><td>0%</td><td>65%</td><td class="win">90%</td></tr>
+        <tr><td>Pick-and-place (post-grasp 지시 추종)</td><td>0%</td><td>0%</td><td class="win">90%</td></tr>
+        <tr><td>Novel objects (신규 물체 일반화)</td><td>0%</td><td>50%</td><td class="win">55%</td></tr>
+        <tr><td>Caterpillar (접촉-집약 양팔)</td><td>—</td><td>30%</td><td class="win">90%</td></tr>
+        <tr><td>Caterpillar (novel 기어 색)</td><td>—</td><td>0%</td><td class="win">30%</td></tr>
+        <tr><td>Held-out push skill</td><td>—</td><td>5% (oracle)</td><td class="win">60%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Pick-and-place에서 place 지시에 대한 전문가 데모가 <b>전혀 없어도</b>, 자기 데모만으로 사전학습된 place 능력이 되살아난 것이 핵심. Held-out push는 전문가 데이터를 준 <b>오라클보다도</b> 자기 데모가 더 잘 됨(60 vs 5%).</p>
+
+    <h3>RoboTwin 시뮬레이션</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>메트릭</th><th>Expert-only</th><th><b>ES + SS</b></th><th>Oracle (원본 데이터 접근)</th></tr></thead>
+      <tbody>
+        <tr><td>자기지도 태스크 보존 (망각 회복)</td><td>16.6%</td><td class="win">70.6%</td><td>70.8%</td></tr>
+        <tr><td>전문가 태스크 습득</td><td>93%</td><td class="win">98%</td><td>—</td></tr>
+        <tr><td>신규 물체 일반화</td><td>—</td><td class="win">44.5%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">자기지도만으로 오라클 대비 <b>단 0.2%p 차이</b>로 망각을 복원. 오라클은 원본 pretraining 데이터로 다시 학습하는 이상적 상한.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>혼합 비율 (Table 9):</b> 미니배치에서 자기:전문가 = <b>1:1</b>이 최적. 태스크별 균등 샘플링이 태스크 크기 비례 샘플링보다 우수.</li>
+      <li><b>서브-옵티멀 데이터도 충분:</b> "sub-optimal self-demos perform as well as an oracle that re-collects expert demos for those same tasks" — 자기 데모가 실패 궤적을 포함해도 오라클 전문가 재수집과 동등한 성능. <b>정책 자신의 롤아웃 분포에 노출</b>되는 것이 핵심.</li>
+      <li><b>Fine-tuning 방식:</b> Full FT &gt; LoRA(저랭크 어댑터) &gt; 부분 freeze. 파라미터 효율 방식은 다태스크 파인튜닝에 불리.</li>
+      <li><b>목적 함수 조합:</b> FAST(이산) + FM(연속) 병용이 FM-only보다 <b>망각 감소</b>. 언어 지시 헤드를 함께 학습해야 지시 추종이 유지됨.</li>
+      <li><b>Knowledge insulation</b>(사전학습 파라미터 일부를 고정해 보호): 사전학습에서는 유효하지만 이 논문의 다운스트림 파인튜닝에는 오히려 <b>해로움</b>.</li>
+      <li><b>버퍼 크기:</b> 태스크당 <b>10 에피소드</b>가 최소치. 그 미만은 커버리지 부족.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.19490/Method_Diagram.png" alt="Self-Demonstrated 파인튜닝 파이프라인 (Method Figure)" loading="lazy">
+      <figcaption><b>Method Diagram — Self-Demo + Expert 이중 데이터 파이프라인.</b> 위쪽 경로는 사람이 텔레옵으로 수집한 <i>expert demos</i>(L<sub>ES</sub>), 아래쪽 경로는 얼린 사전학습 정책 π<sub>base</sub>가 <b>실제 배포 로봇</b>에서 굴린 zero-shot 롤아웃을 그대로 라벨로 사용한 <i>self-demos</i>(L<sub>SS</sub>). 두 손실을 L = L<sub>ES</sub>+λL<sub>SS</sub>로 합쳐 학습해 도메인 갭 없이 사전학습 능력을 유지하며 신규 스킬을 습득. (출처: arXiv:2608.19490)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.19490/DEMO_Figure1_MT1_updated.png" alt="ALOHA 실로봇 다태스크 결과 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — ALOHA 실로봇 대표 결과.</b> Zero-shot π<sub>0.5</sub>(0%)와 expert-only 파인튜닝(pick-up 65%, pick-and-place 0%) 대비, 제안 ES+SS는 pick-up 90%, pick-and-place 지시 추종 90%를 달성. 특히 place 지시에는 전문가 데모가 하나도 없었음에도 자기 데모만으로 사전학습된 능력이 되살아남. (출처: arXiv:2608.19490)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>왜 이 두 그림인가</b> — Method Diagram은 논문 전체 아이디어(자기 롤아웃을 리허설 데이터로 재사용)를 한눈에 보여주고, Figure 1은 "전문가 데모 없이도 사전학습된 스킬이 살아난다"는 가장 강한 정량적 주장의 근거이자 다태스크 지시 추종 회복을 시각화한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.19490" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.19490" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2608.19490v1" target="_blank">HTML v1</a></li>
+      <li><a href="https://self-supervised-control.pages.dev/" target="_blank">프로젝트 페이지 (self-supervised-control)</a></li>
+      <li>백본: <a href="https://www.physicalintelligence.company/blog/pi05" target="_blank">π<sub>0.5</sub> (Physical Intelligence)</a></li>
+      <li>플랫폼: <a href="https://tonyzhaozh.github.io/aloha/" target="_blank">ALOHA</a> · <a href="https://robotwin-benchmark.github.io/" target="_blank">RoboTwin</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.19490 · Self-Demo VLA · 요약 생성 2026-08-24
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

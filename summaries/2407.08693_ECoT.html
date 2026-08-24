@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ECoT — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Chain-of-Thought</span>
+    <h1>Robotic Control via Embodied Chain-of-Thought Reasoning (ECoT)</h1>
+    <p class="authors">Michał Zawalski, William Chen, Karl Pertsch, Oier Mees, Chelsea Finn, Sergey Levine · UC Berkeley · Stanford · University of Warsaw</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2407.08693" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2407.08693" target="_blank">PDF</a>
+      <a href="https://embodied-cot.github.io" target="_blank">프로젝트 페이지</a>
+      <a href="https://github.com/MichalZawalski/embodied-CoT/" target="_blank">GitHub</a>
+      <span>arXiv:2407.08693</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Chain-of-Thought</span>
+      <span class="t">Reasoning</span>
+      <span class="t">OpenVLA</span>
+      <span class="t">Generalization</span>
+    </div>
+    <p class="meta">제출: 2024년 7월 11일 (v1) · 최신 2025년 3월 6일 (v3, CoRL 2024) · 백본 OpenVLA(Llama 2 7B + SigLIP/DinoV2)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>VLA(Vision-Language-Action model, 관측 이미지·언어 지시를 입력받아 로봇 행동 토큰을 출력하는 대형 정책 모델)</b>가 행동을 뱉기 <b>직전에</b> 사람처럼 <b>단계별로 추론(Chain-of-Thought, CoT)</b>하도록 학습시키되, 계획·서브태스크 같은 텍스트 추론뿐 아니라 <b>물체 바운딩 박스</b>와 <b>그리퍼 픽셀 위치</b> 같은 <b>몸에 근거한(embodied) 시각 추론</b>까지 자기회귀(autoregressive)로 생성하게 만든 것. 로봇 데이터를 추가로 모으지 않고 기존 OpenVLA에 이 추론 체인을 학습시키는 것만으로 일반화 태스크 성공률이 <span class="win">+28%p</span> (44%→66% ID, 30%→64% OOD, 여기서 OOD는 out-of-distribution: 학습에 없던 조건) 향상됐다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>학습된 로봇 정책의 최대 약점은 <b>학습 분포 밖으로의 일반화 실패</b>다. 최근 VLA(vision-language-action model, 예: <b>OpenVLA</b>·RT-2-X)는 인터넷 사전학습된 <b>비전-언어 모델(VLM)</b>에 로봇 행동 토큰 예측을 붙여 큰 상식·시맨틱 지식을 물려받았지만, 실제로는 <b>관측 → 행동</b>을 곧바로 매핑해 이 지식을 잘 활용하지 못한다.</p>
+    <p>대형 언어 모델(LLM)에서는 <b>chain-of-thought(CoT, 답을 내기 전 중간 추론 단계를 텍스트로 풀어쓰기)</b>가 복잡 문제 성능을 크게 끌어올렸다. 저자들은 이 아이디어를 로봇 정책에 <b>그대로</b> 옮기면 부족하다고 본다 — 로봇은 순수 언어가 아니라 <b>현재 장면과 자신의 몸 상태</b>에 근거해 사고해야 하기 때문이다. 그래서 계획·서브태스크 같은 언어 CoT에 더해 <b>물체 바운딩 박스·그리퍼 2D 위치·저수준 이동 명령</b>을 함께 생성하도록 강제하는 <b>Embodied CoT(ECoT)</b>를 제안한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Embodied Chain-of-Thought 정식화</b> — VLA에게 행동 예측 <b>이전에</b> 언어 계획(plan)·서브태스크·저수준 움직임뿐 아니라 <b>그리퍼 픽셀 좌표·물체 바운딩 박스</b>까지 자기회귀로 생성시키는 7단계 추론 체인 (task → plan → subtask → move → gripper → objects → action)을 제안.</li>
+      <li><b>대규모 자동 주석 파이프라인</b> — Prismatic-7B(장면 캡셔닝) + Grounding DINO(물체 박스) + OWLv2+SAM+RANSAC(그리퍼 2D 위치) + 로봇 proprioception(저수준 이동 라벨 729가지) + Gemini 1.0(고수준 계획·서브태스크)을 조합해, <b>Bridge V2 데이터셋(60k 원격조종 데모, 2.5M 전이)</b> 전체에 7일 만에 ECoT 주석을 자동 생성.</li>
+      <li><b>일반화 성능 대폭 향상</b> — 새 로봇 데이터 없이 OpenVLA를 ECoT 데이터로 파인튜닝만 해도 총 일반화 성공률 <b>+28%p</b>. 추가 이득: 자연어 개입(intervention)으로 실패를 실시간 교정 가능하고, 각 추론 단계를 그대로 읽어 실패 원인을 해석 가능.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본: OpenVLA</h3>
+    <p><b>OpenVLA</b>는 <b>Prismatic VLM 아키텍처</b> 기반의 오픈소스 VLA로, 비전 인코더로 <b>SigLIP</b>과 <b>DinoV2</b> 특징을 융합하고 언어 백본으로 <b>Llama 2 7B</b>를 쓴다. 로봇 행동(7-DoF: 3차원 위치 변화 + 3차원 회전 변화 + 그리퍼 개폐 1)을 각 축당 256개 bin으로 이산화(<b>action tokenization</b>: 연속 값을 정수 토큰으로 양자화)해 언어 토큰과 동일한 방식으로 예측한다. ECoT는 OpenVLA를 그대로 사용하고, <b>학습 목표만</b> "이미지+지시 → 행동 7토큰"에서 "이미지+지시 → ECoT 추론 체인 + 행동 7토큰"으로 바꾼다.</p>
+
+    <h3>ECoT 추론 체인 — 7단계 구성</h3>
+    <div class="callout">
+      <b>왜:</b> 로봇 정책이 "왜 이 행동인가"를 <b>텍스트+공간 좌표로</b> 먼저 뱉게 만들면, 모델이 스킵할 수 없는 grounding 병목이 생겨 상식 지식이 실제 장면과 연결된다. 특히 <b>bounding box·그리퍼 좌표</b>는 "look carefully" 강제, plan·subtask는 "think carefully" 강제 역할.
+    </div>
+    <div class="kv">
+      <div>① TASK</div><div>주어진 자연어 지시를 다시 정리 (예: "Put the mushroom in the white cup")</div>
+      <div>② PLAN</div><div>고수준 단계 나열 ("Move to mushroom → pick up → move to cup → place inside")</div>
+      <div>③ SUBTASK</div><div>지금 이 timestep에서 실행할 하위 목표 ("Move to the mushroom")</div>
+      <div>④ MOVE</div><div>저수준 이동 primitive ("move left", "close gripper" 등, 총 729가지 템플릿)</div>
+      <div>⑤ GRIPPER</div><div>로봇 엔드이펙터(그리퍼)의 <b>현재 2D 픽셀 좌표</b> (x, y)</div>
+      <div>⑥ OBJECTS</div><div>장면 내 물체 이름 + <b>바운딩 박스 좌표</b> (x1, y1, x2, y2) 리스트</div>
+      <div>⑦ ACTION</div><div>OpenVLA와 동일한 7-DoF 이산 행동 토큰 7개</div>
+    </div>
+    <p>①~④는 "언어" CoT, ⑤~⑥은 "embodied" CoT (장면·로봇 상태에 grounding하는 단계). 모든 단계는 <b>자기회귀</b>로 순서대로 하나의 시퀀스에 이어붙여 학습되므로, ⑦(행동)을 예측할 때 모델은 자기 자신이 조금 전 생성한 계획·박스·좌표를 조건으로 삼는다.</p>
+
+    <h3>자동 주석 파이프라인 (Bridge V2에 확장)</h3>
+    <div class="callout">
+      <b>왜:</b> 이 추론 체인을 사람에게 라벨링시키는 건 비현실적. 기존 대형 모델들을 조합해 <b>모든</b> 데모 프레임에 자동으로 주석을 붙일 수 있으면 스케일업이 무료다.
+    </div>
+    <ul>
+      <li><b>장면 설명:</b> <b>Prismatic-7B</b> VLM으로 초기 프레임 캡션 생성.</li>
+      <li><b>물체 박스:</b> <b>Grounding DINO</b>로 텍스트 조건부 탐지 (박스 신뢰도 &gt;0.3, 텍스트 &gt;0.2).</li>
+      <li><b>그리퍼 픽셀 좌표:</b> <b>OWLv2</b>로 그리퍼 검출 → <b>SAM</b>으로 마스크 → 로봇 proprioception(관절 상태)의 3D 위치를 RANSAC으로 프로젝션 매트릭스 fit해 2D 매핑.</li>
+      <li><b>이동 primitive:</b> proprioception 델타를 729가지 템플릿(예: "move left and down, rotate wrist counterclockwise")으로 매핑.</li>
+      <li><b>계획·서브태스크:</b> <b>Gemini 1.0</b>에 지시·장면 설명을 넣어 PLAN·SUBTASK 라벨링.</li>
+    </ul>
+    <p>전 파이프라인이 <b>Bridge V2 60k 데모·2.5M 전이</b>를 7일에 처리해 학습셋 완성.</p>
+
+    <h3>학습 & 추론 가속</h3>
+    <p>학습은 표준 자기회귀 교차엔트로피 하나로 통일 — 추론 체인 전체(약 <b>350 토큰</b>)를 다음 토큰 예측 손실로 학습. 순수 OpenVLA는 액션 7토큰만 뱉으면 되지만 ECoT는 <b>350토큰</b>을 생성해야 하므로 실시간성에 부담. 두 가지 가속:</p>
+    <ul>
+      <li><b>5-step freeze:</b> 상위 추론(PLAN까지)은 5 타임스텝마다 한 번만 재예측하고 그 사이엔 재사용. 성공률 72%로 유지하며 속도 <b>+24%</b>.</li>
+      <li><b>Asynchronous execution:</b> 두 정책 인스턴스를 병렬로 돌려 한쪽이 다음 추론을 미리 만드는 동안 다른 쪽이 행동. 성공률 65%, 속도 <b>+40%</b> (연산 2배 필요).</li>
+    </ul>
+    <p class="cap">Transformer는 이미 생성한 토큰을 다시 인코딩하는 비용이 새 토큰 생성보다 훨씬 싸므로, 상위 추론 재사용의 상대 비용이 매우 낮다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>주 결과 — Bridge V2 실기 (표 1)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>ID (분포 내)</th><th>OOD (분포 외)</th><th>Aggregate</th></tr></thead>
+      <tbody>
+        <tr><td>Octo</td><td>21</td><td>16</td><td>—</td></tr>
+        <tr><td>OpenVLA (baseline)</td><td>44</td><td>30</td><td>—</td></tr>
+        <tr><td>RT-2-X</td><td>47</td><td>48</td><td>—</td></tr>
+        <tr><td><b>ECoT (본 논문)</b></td><td class="win">66</td><td class="win">64</td><td class="win">+28%p vs OpenVLA</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">성공률(%). ID = In-Distribution (학습과 유사한 시점·물체), OOD = Out-of-Distribution (새 물체·시점). RT-2-X는 훨씬 큰 모델/데이터임에도 ECoT가 상회. <b>새로 수집한 로봇 데이터는 0.</b></p>
+
+    <h3>일반화 세부 분해</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>카테고리</th><th>OpenVLA</th><th>ECoT</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>Spatial reasoning (새 공간 관계)</td><td>21</td><td class="win">55</td><td>+34</td></tr>
+        <tr><td>OOD 물체 (screwdriver·watermelon·measuring tape 등)</td><td>28</td><td class="win">60</td><td>+32</td></tr>
+        <tr><td>Semantic 지시 (물체명이 아닌 속성 지시)</td><td>—</td><td>—</td><td>큰 이득</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>자연어 개입(intervention) 실험</h3>
+    <p>3개 난이도 높은 태스크(mushroom→cup, OOD 물체 잡기, "노란 게 아닌 것" 고르기)에서 실패 중인 정책에 <b>사람이 한 문장 언어 교정</b>을 주었을 때: ECoT는 <b>+48%p</b> 성공률 상승, OpenVLA·RT-2-X는 거의 효과 없음. 이유: ECoT는 PLAN/SUBTASK를 <b>텍스트</b>로 만들기 때문에 사람이 그 텍스트를 직접 덮어쓸 수 있음.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>Frozen bounding box variant:</b> 매 스텝 박스를 새로 예측하지 말고 첫 스텝 것을 고정 재사용 → 성공률 60%(약간 감소), 대신 <b>추론 속도 30–50% 빨라짐</b>. 해석·성능·속도 트레이드오프의 스위트스팟.</li>
+      <li><b>비전-언어 데이터 co-training:</b> 로봇 학습과 함께 순수 VQA 데이터를 섞어 학습 → <b>제어 성공률 이득 없음</b>. 사전학습 시맨틱 지식은 이미 백본에 충분히 있고, 로봇 데이터의 embodied grounding이 핵심임을 시사.</li>
+      <li><b>OXE(Open X-Embodiment) 멀티로봇 데이터 파인튜닝:</b> Bridge V2 단독보다 <b>수렴이 4배 빠름</b> (20k 스텝이 baseline 80k와 동등). Cross-embodiment 사전학습이 ECoT에도 유효.</li>
+      <li><b>추론 단계 중요도:</b> 계획 텍스트만 있는 pure-CoT보다 embodied 단계(bounding box·gripper) 포함이 일관되게 우수 — "look carefully"가 grounding 병목으로 작동한다는 주장의 증거.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2407.08693/ecot_teaser.png" alt="ECoT 티저 그림: 좌측 기존 VLA vs 우측 ECoT 추론 체인" loading="lazy">
+      <figcaption><b>Figure 1 — ECoT teaser.</b> 좌측은 기존 VLA(관측→행동 직접 매핑), 우측은 ECoT(TASK·PLAN·SUBTASK·MOVE·GRIPPER·OBJECTS를 <b>먼저</b> 생성한 뒤 ACTION 예측). 저수준 시각·embodied 특징(물체 박스·그리퍼 좌표)까지 추론에 포함해 "think carefully"와 "look carefully"를 동시에 강제. (출처: arXiv:2407.08693)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2407.08693/ecot_schematic.png" alt="ECoT 7단계 추론 체인 스키마 (초록=언어 CoT, 보라=embodied CoT)" loading="lazy">
+      <figcaption><b>Figure 3 — Steps of embodied chain-of-thought reasoning.</b> 초록은 "표준" 언어 CoT 단계(지시를 서브태스크로 분해), 보라는 <b>embodied</b> 단계(장면·로봇 상태에 grounding 필요). 모든 단계는 하나의 자기회귀 시퀀스로 생성. (출처: arXiv:2407.08693)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 1 (Bridge V2 성공률)</b> — 논문의 헤드라인 결과. 새 로봇 데이터 없이 OpenVLA baseline 44%(ID)/30%(OOD) → ECoT 66%/64%. RT-2-X를 상회. <b>+28%p</b>가 논문 전체를 대표하는 숫자.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2407.08693" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2407.08693" target="_blank">PDF</a></li>
+      <li><a href="https://embodied-cot.github.io" target="_blank">프로젝트 페이지 (동영상 데모 포함)</a></li>
+      <li><a href="https://github.com/MichalZawalski/embodied-CoT/" target="_blank">GitHub 코드</a></li>
+      <li><a href="https://openvla.github.io/" target="_blank">OpenVLA (백본)</a></li>
+      <li><a href="https://rail-berkeley.github.io/bridgedata/" target="_blank">Bridge V2 데이터셋</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2407.08693 · ECoT · 요약 생성 2026-08-24
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>
