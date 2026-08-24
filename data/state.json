@@ -46,6 +46,12 @@
       "title": "Evolve Vision-Language-Action Model into an Agent with On-the-fly Tool-use (ART)",
       "arxiv_url": "https://arxiv.org/abs/2608.14047",
       "added": "2026-08-24"
+    },
+    {
+      "id": "2501.09747",
+      "title": "FAST: Efficient Action Tokenization for Vision-Language-Action Models",
+      "arxiv_url": "https://arxiv.org/abs/2501.09747",
+      "added": "2026-08-24"
     }
   ],
   "dismissed": [
