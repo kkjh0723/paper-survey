@@ -40,6 +40,12 @@
       "title": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
       "arxiv_url": "https://arxiv.org/abs/2608.17209",
       "added": "2026-08-24"
+    },
+    {
+      "id": "2608.14047",
+      "title": "Evolve Vision-Language-Action Model into an Agent with On-the-fly Tool-use (ART)",
+      "arxiv_url": "https://arxiv.org/abs/2608.14047",
+      "added": "2026-08-24"
     }
   ],
   "dismissed": [
