@@ -34,6 +34,12 @@
       "title": "Fine-Tuning VLAs with Self-Demonstrated Generative Control for Multi-Task Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2608.19490",
       "added": "2026-08-24"
+    },
+    {
+      "id": "2608.17209",
+      "title": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
+      "arxiv_url": "https://arxiv.org/abs/2608.17209",
+      "added": "2026-08-24"
     }
   ],
   "dismissed": [
