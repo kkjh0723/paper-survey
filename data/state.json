@@ -28,6 +28,12 @@
       "title": "OrthoSkillVLA: Continual Skill Learning via Gradient-Informed Skill Subspace Adaptation",
       "arxiv_url": "https://arxiv.org/abs/2608.19589",
       "added": "2026-08-24"
+    },
+    {
+      "id": "2608.19490",
+      "title": "Fine-Tuning VLAs with Self-Demonstrated Generative Control for Multi-Task Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2608.19490",
+      "added": "2026-08-24"
     }
   ],
   "dismissed": [
