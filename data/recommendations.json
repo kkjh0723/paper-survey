@@ -1,10 +1,61 @@
 {
-  "generated": "2026-08-26",
+  "generated": "2026-08-27",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2608.24882",
+          "title": "Latent Action as Intention Enables Efficient Future Imagination for World Action Models",
+          "authors": "Xiang Li, Yupeng Zheng, Songen Gu, et al.",
+          "summary_ko": "월드-액션 모델(WAM, World Action Model — 다음 프레임과 다음 액션을 함께 예측하는 로봇 정책)이 미래 프레임 예측에 픽셀·토큰을 다 채우면 추론 지연(inference latency)이 너무 커진다는 문제를 다룬다. LAWA(Latent Action as intention for World Action model)는 압축된 잠재 액션(latent action, 사람 영상 등에서 자기지도로 뽑은 저차원 미래 요약)을 '의도(intention)' 신호로 재해석해, 무거운 프레임 예측 대신 잠재 표현만으로 '미래를 상상'하도록 학습한다. LIBERO 계열에서 평균 성공률 65.6%·80.8%로 State-of-the-Art를 세우면서, 지연시간은 크게 낮춰 '미래 상상을 버리지 않고도 빠르게 굴릴 수 있다'는 결론.",
+          "tags": [
+            "Latent Action",
+            "World Model",
+            "VLA",
+            "Long-Horizon"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.24882",
+          "extra_url": "",
+          "date": "2026-08-25",
+          "reason": "좋아요한 WALA(2607.11397, DINOv3 + Latent Action World Model)·2607.11643 Xiaomi-U0·2606.19980·index의 Latent Action Study(2608.19613)·pool의 LD4WAM(2608.22403, 사람 영상 잠재 동역학)·Hydra-0(2608.18077, action flow)·GigaBrain-0.7(2608.15875)의 정면 다음 세대. 컬렉션의 Latent Action 태그(가중치 7)와 World Model 태그(가중치 15)의 정확한 교집합에 위치하며, '픽셀 예측을 얼마나 덜어내면서도 미래 정보를 유지할까'라는 최근 관심의 최신 답. pool의 DELE-w0.5(inferring action from future latent state)·WorldSync 진단과 짝지어 읽으면 좋다.",
+          "rec_date": "2026-08-27"
+        },
+        {
+          "id": "2608.24603",
+          "title": "Gripper-aware Vision Language Action Models",
+          "authors": "Hanyi Zhang, Zihong Luo, Tianyu Li, et al.",
+          "summary_ko": "대부분의 시각-언어-액션(VLA, Vision-Language-Action) 모델은 그리퍼(gripper, 로봇 손가락) 종류가 달라도 동일하게 취급하지만, 실제로는 파지(grasping) 전략이 그리퍼 형태에 강하게 의존한다는 문제 제기. 저자들은 (1) 5종 그리퍼·10.3만 시연(demonstration)의 다중-그리퍼 데이터셋 MiGA를 공개하고, (2) 다중-그리퍼 토크나이저(multi-gripper tokenizer)와 어댑터 기반 정책 라우팅(adapter-based policy routing)을 결합한 GVLA(Gripper-aware VLA)를 제안. 학습 때 못 본 그리퍼에도 zero-shot 일반화가 가능해 '어떤 손을 붙여도 되는 VLA' 한 대로 여러 임바디먼트를 커버.",
+          "tags": [
+            "VLA",
+            "Cross-Embodiment",
+            "Manipulation",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.24603",
+          "extra_url": "",
+          "date": "2026-08-25",
+          "reason": "컬렉션 최상위 태그 두 개 VLA(가중치 38)·Cross-Embodiment(가중치 12)의 정면 교집합. index의 OpenVLA(2406.09246)·π0.5(2504.16054)·SmolVLA(2506.01844)·GR00T-N1(2503.14734)·좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)의 후속으로, '이제 손(그리퍼)을 바꿔도 되는가'를 정면으로 다룸. pool의 관련 항목 HPT(2409.20537, 이종 프리트레이닝)·오늘 추천할 CrossFormer(2408.11812, 여러 로봇을 하나로)와 짝을 이루며, index의 자매작 HAF(2608.16837, 휴머노이드 임바디먼트)·Cross-Embodiment Transfer(2607.27549)·좋아요한 2607.18231(cross-embodiment)의 그리퍼 축 보강.",
+          "rec_date": "2026-08-27"
+        },
+        {
+          "id": "2608.24885",
+          "title": "Do Robotic World Models Really Follow Actions? Diagnosing and Aligning Action-Conditioned Generation for Policy Learning",
+          "authors": "Sixiang Chen, Jiaming Liu, Jixian Wu, et al.",
+          "summary_ko": "로봇용 세계 모델(world model)이 '전문가 시연 궤적'은 잘 재생하지만, 정책이 실제로 뽑아낼 수 있는 다양한/비-전문가(off-expert) 행동에는 반응이 흐리다는 진단을 다룬다. 저자들은 (1) 이 문제를 정량적으로 노출하는 진단 프레임워크 WorldEcho를 제안하고, (2) 세 축 — 분포 커버리지(distributional coverage), 표현 접지(representational grounding), 개입 효과 정렬(intervention-effect alignment) — 로 세계 모델의 행동 반응성을 강화하는 WorldSync를 제시. 정책 학습을 위해 '행동을 정말로 따라가는' 액션-조건 생성(action-conditioned generation)을 요구.",
+          "tags": [
+            "World Model",
+            "Diagnostic",
+            "Action-Conditioned",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.24885",
+          "extra_url": "",
+          "date": "2026-08-25",
+          "reason": "컬렉션·pool의 세계 모델 라인 — index의 GR-2(2410.06158)·pool의 GigaBrain-WBC-0.5(2608.18234)·Hydra-0(2608.18077)·FastWAM·HiTac-WAM(2608.19574)·XEWorld(2608.05799, cross-embodiment WM 진단) — 이 폭발적으로 늘어난 상황에서 '정말 행동을 따라가는가'라는 평가·정합 관점을 붙여준다. World Model 태그(가중치 15, 상위 3위)의 방법론 편향을 진단·정합으로 균형 잡아주며, 오늘 함께 뽑은 LAWA(2608.24882)와 대조적으로 '더 무거운 액션 조건 정합'을 요구하는 축.",
+          "rec_date": "2026-08-27"
+        },
         {
           "id": "2608.22657",
           "title": "Physical Agentic AI: An Architecture for Orchestrating a Robot Crew with LLMs",
@@ -274,60 +325,6 @@
           "date": "2026-08-18",
           "reason": "좋아요 최고점 조합의 정확한 다음 세대 — Force Memory VLA(2607.18231, 힘 기반 메모리)·Harness VLA(2607.08448, frozen VLA + 외부 모듈)의 사상을 '얼린 정책 + 힘 제어 잔차'로 정식화. pool의 ViTaR(2608.15816, 시각-촉각 잔차)·Reflex(2608.14379, 반응형 VLA — 이름이 유사하지만 다른 접근: Reflex는 지연·미래 예측, UniReflex는 fast-slow VIC로 실제 힘 조절)·컬렉션의 ForceVLA(2607.28596)·ReTouch·ContactFlow(2607.22530)의 실기 확장 축. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)의 양팔 실전 세팅과 정확한 검증 환경. 재학습 없이 fleet의 대형 VLA에 얹을 수 있다는 점이 좋아요한 Aspire(agentic + skill library) 노선과 정합.",
           "rec_date": "2026-08-20"
-        },
-        {
-          "id": "2608.15816",
-          "title": "ViTaR: Visuo-Tactile Residual Adaptation for Foundation VLA Manipulation",
-          "authors": "Yi Wang, Renjun Wu, Jinyan Liu 외",
-          "summary_ko": "촉각(tactile) 피드백을 새 행동 생성기가 아니라 프로즌 VLA 위에 얹는 경계 제한 잔차(bounded residual) 실행 조절기로 재정의. VLA 정책의 능력을 훼손하지 않으면서도 접촉 풍부(contact-rich) 조작에서 힘 조절이 필요한 순간에만 시각-촉각 잔차를 주입. UniVTAC 벤치마크에서 성공률 61.3%로 기존 대비 30.6%p 향상.",
-          "tags": [
-            "VLA",
-            "Frozen VLA",
-            "Contact-Rich",
-            "Tactile",
-            "Residual Policy"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.15816",
-          "extra_url": "",
-          "date": "2026-08-16",
-          "reason": "보유한 FM-VLA(힘 기반 메모리)와 Contact-Rich 실패 분석(2608.01402)이 지적한 접촉 실패 문제를, 좋아요한 Harness VLA(2607.08448)식의 '얼린 VLA + 외부 잔차 모듈' 구조로 정면 대응. 최근 pool의 DyPES-VLA(2608.06374) 같은 잔차·전문가 갈래와 함께 '프로즌 백본 + 접촉 특화 보정' 축을 완성.",
-          "rec_date": "2026-08-19"
-        },
-        {
-          "id": "2608.14028",
-          "title": "AdvDex: Learning Dexterous Manipulation from Human Demonstrations via Joint-Aligned Actions and Adversarial Learning",
-          "authors": "Zhiyue Zhao, Jingyi Wu, Hairuo Liu 외",
-          "summary_ko": "값비싼 로봇 텔레오퍼레이션(원격 조종) 대신 대규모 사람 손 시연을 활용하는 통합 VLA(비전-언어-행동 모델) 프레임워크. 사람 손·덱스터러스 로봇 손·평행 그리퍼를 SE(3) 손목 포즈 + 15개 손가락 관절로 통일한 정규 액션 표현 JAAS(Joint-Aligned Action Space)를 정의한다. 대규모 다중모달 사람 조작 데이터셋 OmniShare(운동학·촉각 계측 포함)로 사전학습하고, 도메인 적대 학습(domain-adversarial learning, 임바디먼트 특유 시각 편향을 판별기로 억제)으로 시각 표현에서 임바디먼트 정보를 제거한다. 손 동작 예측·실기 덱스터러스 조작에서 개선을 보이며, 사람→로봇 제로샷 전이와 미지 객체·환경 일반화, 소수샷 적응이 가능.",
-          "tags": [
-            "Cross-Embodiment",
-            "Dexterous Hand",
-            "Human Demonstration",
-            "VLA",
-            "Adversarial Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.14028",
-          "extra_url": "",
-          "date": "2026-08-14",
-          "reason": "컬렉션의 Cross-Embodiment(11편)·Dexterous Hand(2편) + 좋아요한 2607.11397(Latent Action)·2606.10267(Hi-VLA)의 실전 확장. pool의 DyPES-VLA(2608.06374, 공유 dynamics + 몸체별 MoE)와 정면 비교되는 다른 접근 — DyPES가 '헤드를 분리'했다면 AdvDex는 '표현을 정렬'한다. 컬렉션의 2607.03570(UHAS 통합 손 액션 공간)의 정면 후속작이자, pool의 2607.27549(behavior-aligned cross-embodiment)·2608.05799(XEWorld 진단)와 함께 크로스 임바디먼트 방법론 3부작(정렬·거동·진단)을 완성. 사람 시연 대규모 데이터 활용은 index의 EgoMimic·Video Pretraining 라인의 실기 응용 좌표.",
-          "rec_date": "2026-08-18"
-        },
-        {
-          "id": "2608.13678",
-          "title": "hint²: Hierarchical World Models for Inference-Time Temporal Logic Guidance",
-          "authors": "Moritz Zoellner, Anastasios Manganaris, Ahmed H. Qureshi",
-          "summary_ko": "짧은 지평(short-horizon) 액션 청크를 폐루프로 재계획하는 현대 VLA(비전-언어-행동 모델)가 시간적 논리(LTL, Linear Temporal Logic — '먼저 A를 만족한 뒤 B를 유지하라' 같은 장기 사양) 제약을 만족시키기 어렵다는 문제를 다룬다. 계층 월드 모델을 이용해 추론 시점에 두 개의 유도 목표를 파생 — 고수준 모델은 태스크 관련 원자 명제(atomic proposition, LTL 오토마톤의 조건)의 미래 전이를 예측해 오토마톤 진행을 안내하고, 저수준 동역학 모델은 즉각적 상태 진화를 예측해 국소 안전을 안내한다. CALVIN에서 기존 LTL 유도 확산 정책·추론 시 조향(inference-time steering) 방법을 상회하고, 복잡 liveness·safety 제약이 있는 지시를 언어 조건 대안보다 우아하게 완수. 실 UR5e 매니퓰레이터에서 복잡 지시 실증.",
-          "tags": [
-            "Hierarchical World Model",
-            "LTL",
-            "Inference-Time Guidance",
-            "CALVIN",
-            "UR5e"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.13678",
-          "extra_url": "",
-          "date": "2026-08-13",
-          "reason": "좋아요한 2606.10267(Hi-VLA 계층적 옵션)·보유한 2502.05485(HAMSTER)·2504.16054(π₀.₅ Hierarchical Inference)·pool의 HiVLA(2604.14125)·이번 pool의 HarnessWAM(2608.09516, VLM task manager)이 다뤄온 '계층 정책'의 축을 월드 모델로 이식하는 새 좌표. LTL이라는 형식 언어로 장기 사양을 정확히 표현한다는 점이 자연어 CoT 계열과 대비되며, pool의 hint² 자매 격 논문 2608.09073(Latent WM Monotone Planning)·2608.13901(Ontology-Grounded WM) 등 '추론 시 WM으로 제어를 유도'하는 흐름의 최신 실증. CALVIN + 실 UR5e 검증으로 pool의 시뮬 위주 논문들과 상호 보완.",
-          "rec_date": "2026-08-18"
         }
       ]
     },
@@ -335,6 +332,57 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2408.11812",
+          "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation",
+          "authors": "Ria Doshi, Homer Walke, Oier Mees, Sudeep Dasari, Sergey Levine",
+          "summary_ko": "서로 관찰 공간(observation space)·행동 공간(action space)이 다른 20종 로봇 — 팔·이동형 매니퓰레이터·다리형(quadruped)·드론(aviation) — 의 90만 궤적을 하나의 트랜스포머 정책(CrossFormer)으로 학습. 관찰/행동을 손으로 정렬(alignment)하지 않고, 시퀀스 모델이 이종성을 그대로 흡수하게 만든 대표 '크로스-임보디먼트 스케일링' 논문. UC Berkeley Sergey Levine 그룹.",
+          "tags": [
+            "Cross-Embodiment",
+            "Foundation Model",
+            "VLA",
+            "Scaling"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2408.11812",
+          "extra_url": "",
+          "date": "2024-08-21",
+          "reason": "컬렉션 상위 4위 태그 Cross-Embodiment(가중치 12)의 원류. index의 OpenVLA(2406.09246)·Octo(2405.12213)·π0(2410.24164)·RDT-1B(2410.07864)·HPT(2409.20537)·좋아요한 2607.18231이 왜 여러 로봇을 한꺼번에 배우려 하는지 이해하려면 반드시 짚고 갈 기초. 오늘 함께 뽑은 GVLA(2608.24603, 그리퍼 임바디먼트)와 짝을 이루며, pool의 최근 XEWorld/DECOWAM 계열이 왜 '임바디먼트 격차'를 진단하려 하는지의 출발점.",
+          "rec_date": "2026-08-27"
+        },
+        {
+          "id": "2311.01378",
+          "title": "Vision-Language Foundation Models as Effective Robot Imitators (RoboFlamingo)",
+          "authors": "Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, et al.",
+          "summary_ko": "오픈소스 대형 비전-언어 모델(OpenFlamingo)을 얼려(freeze)두고 얇은 정책 헤드만 붙여 로봇 조작으로 파인튜닝(imitation)하는 RoboFlamingo. 대형 VLM(Vision-Language Model)을 '단일 스텝 이해 + 정책 헤드가 시퀀스 처리'로 분리한 이 구조가 이후 VLA(Vision-Language-Action) 파인튜닝 라인의 표준이 됨.",
+          "tags": [
+            "VLA",
+            "Imitation Learning",
+            "Foundation Model",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2311.01378",
+          "extra_url": "",
+          "date": "2023-11-02",
+          "reason": "VLA 태그(가중치 38, 최상위)의 초기 대표작. index의 OpenVLA(2406.09246)·SpatialVLA(pool)·GR00T-N1(2503.14734)·π0.5·Nano-VLA·좋아요한 WALA/Aspire 등 대부분의 VLA 논문이 '얼린 VLM에 어떻게 정책을 붙일까'라는 질문을 이 논문 뒤에서 이어받는다. 오늘 뽑은 GVLA(2608.24603)의 어댑터-라우팅 발상을 이해할 때 근거가 되는 문헌.",
+          "rec_date": "2026-08-27"
+        },
+        {
+          "id": "2306.14896",
+          "title": "RVT: Robotic View Transformer for 3D Object Manipulation",
+          "authors": "Ankit Goyal, Jie Xu, Yijie Guo, Valts Blukis, Yu-Wei Chao, Dieter Fox",
+          "summary_ko": "3D 조작을 여러 가상 시점(virtual view)에서 렌더링한 이미지들을 트랜스포머로 통합해 푸는 방법. 3D 포인트 클라우드나 복셀(voxel) 그리드 대신 '여러 각도에서 본 2D'로 3D 상호작용을 다루도록 만들어 학습·추론 효율을 크게 개선. NVIDIA Dieter Fox 그룹.",
+          "tags": [
+            "Manipulation",
+            "3D Representation",
+            "Multi-View",
+            "Imitation Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2306.14896",
+          "extra_url": "",
+          "date": "2023-06-26",
+          "reason": "index의 3D Diffusion Policy(2403.03954, pool에도 등장)·PerAct 계열·좋아요한 2607.15330 UMI(스캔 기반 3D)의 대안 노선. Manipulation 태그(가중치 9)와 3D 표현 축을 잇는 기초 문헌으로, 최근 pool의 GaussianWAM(2608.24714, 3D Gaussian → WAM)·SpatialVLA(2501.15830)의 '시점·기하 표현' 논의를 되짚을 때 유용.",
+          "rec_date": "2026-08-27"
+        },
         {
           "id": "2309.10150",
           "title": "Q-Transformer: Scalable Offline Reinforcement Learning via Autoregressive Q-Functions",
@@ -676,58 +724,6 @@
           "date": "2023-10-09",
           "reason": "pool의 UniPi(2302.00111)와 자매작(공저자 Sherry Yang + Yilun Du) — UniPi가 '텍스트→비디오 정책'이라면 UniSim은 '텍스트 + 저수준 액션 → 시뮬레이션'으로 축이 다르다. pool의 Hydra-0(2608.18077, 픽셀 모션으로서 액션 플로우) 및 DreamX-Phi(2608.13489, action-conditioned video WM)·GR-2(2410.06158)·컬렉션의 Cosmos(2501.03575)·2607.19343(Masked Video WM)·2607.13017(Dual-Stream Video WM)·2607.08639(Video-Action)의 사상적 뿌리. Pieter Abbeel·Leslie Kaelbling·Dale Schuurmans 조합이라 이후 generative agents/RL 계보의 표준 참조.",
           "rec_date": "2026-08-20"
-        },
-        {
-          "id": "2603.19201",
-          "title": "OmniVTA: Visuo-Tactile World Modeling for Contact-Rich Robotic Manipulation",
-          "authors": "Yuhang Zheng, Songen Gu, Yupeng Zheng 외",
-          "summary_ko": "86개 접촉 풍부 조작 태스크·21,000개 궤적을 담은 대규모 시각-촉각 데이터셋 OmniViTac을 공개하고, 자기지도 촉각 인코더·시각-촉각 세계 모델·60Hz 반사 제어를 하나의 스택으로 통합한 프레임워크 제안. 접촉 시점의 촉각 신호와 시각 관측을 함께 예측하는 세계 모델을 미래 상태 예측 목적으로 학습.",
-          "tags": [
-            "World Model",
-            "Tactile",
-            "Contact-Rich",
-            "Manipulation",
-            "Dataset"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2603.19201",
-          "extra_url": "",
-          "date": "2026-03-19",
-          "reason": "이번 신규 추천 ViTaR(2608.15816)의 시각-촉각 잔차와, pool의 ViTacWorld(보유)·JEPA-WAM(2608.09381)를 잇는 대규모 데이터·세계 모델 축의 기반 논문. 컬렉션의 Contact-Rich·World Model 태그 상위 관심과 정확히 맞물림.",
-          "rec_date": "2026-08-19"
-        },
-        {
-          "id": "2607.03751",
-          "title": "Look Before You Leap: Distilling Tree Search into Action Evaluation for Frozen VLA Models",
-          "authors": "Xinyi Xie, Zican Hu, Zhanyu Liu 외",
-          "summary_ko": "몬테카를로 트리 탐색(MCTS)으로 얻은 롤아웃 가치를 소형 Q값 평가자에 증류(distillation)해, 프로즌 VLA에 결과 인식(consequence awareness)을 부여. 배포 시 시뮬레이터 없이도 후보 행동을 Q값으로 랭킹해 test-time 선택. 백본 성능·일반화는 그대로 두고 프로즌 정책 위에 얹는 추가 모듈.",
-          "tags": [
-            "Frozen VLA",
-            "Tree Search",
-            "Test-Time",
-            "Value Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2607.03751",
-          "extra_url": "",
-          "date": "2026-07-04",
-          "reason": "좋아요한 Harness VLA(2607.08448)와 컬렉션 전반의 '얼린 VLA + 외부 평가/메모리' 노선의 대표 선행 연구. 이번 신규 추천 τ₀-VLA(2608.16885)의 세계 모델 기반 test-time compute와 대조 가능한 '탐색 기반' 접근.",
-          "rec_date": "2026-08-19"
-        },
-        {
-          "id": "2502.00622",
-          "title": "Inference-Time Enhancement of Generative Robot Policies via Predictive World Modeling",
-          "authors": "Han Qi, Haocheng Yin, Aris Zhu 외",
-          "summary_ko": "학습이 끝난 확산(diffusion) 정책을 그대로 두고, 세계 모델이 여러 후보 행동을 미래 관측으로 롤아웃해 태스크 진행도로 랭킹·정제하는 배포 시 강화 방법. 정책 파라미터를 갱신하지 않고도 세계 모델 예측을 이용해 test-time에 성공률을 끌어올리는 프레임워크.",
-          "tags": [
-            "World Model",
-            "Test-Time",
-            "Diffusion Policy",
-            "Frozen Policy"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2502.00622",
-          "extra_url": "",
-          "date": "2025-02-02",
-          "reason": "이번 신규 추천 τ₀-VLA(2608.16885)와 pool의 hint²(2608.13678)·DreamX-Phi(2608.13489) 등이 공유하는 'world-model guided test-time compute' 아이디어의 대표적 초기 논문. 확산·플로우 정책이 대부분인 최근 pool에 계보를 맞추는 기반 참고 문헌.",
-          "rec_date": "2026-08-19"
         }
       ]
     }
