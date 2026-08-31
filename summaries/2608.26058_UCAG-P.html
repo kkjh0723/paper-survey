@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>UCAG-P — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Cross-Embodiment</span>
+    <h1>One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training for Heterogeneous Embodied Manipulation</h1>
+    <p class="authors">Shaoqing Xu 외 20명 · Xiaomi Embodied Intelligence Team · University of Macau</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.26058" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.26058" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2608.26058" target="_blank">HTML</a>
+      <a href="https://public-bots.github.io/UCAG-P" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.26058</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Camera-Centric</span>
+      <span class="t">Human Video</span>
+      <span class="t">Pre-training</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 26일 · 학습 데이터 총 6,373시간 · 100만 에피소드 규모</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 팔·휴머노이드·사람 손을 서로 다른 "몸(embodiment)"으로 보지 말고, <b>카메라가 보는 두 개의 앵커 점(손목·그리퍼/파지 중심)의 움직임</b>이라는 공통 좌표로 통일해 사전학습하는 <b>UCAG-P</b>. 사전학습된 카메라 좌표 궤적을 각 로봇 몸에 맞는 실행 명령으로 번역해주는 <b>Geometry-Conditioned Translator</b>를 두어, <b>모델 하나로</b> LIBERO <span class="win">98.3%</span>, RoboTwin Easy/Hard <span class="win">88.7% / 89.2%</span>, RoboCasa 휴머노이드 GR-1 <span class="win">62.0%</span>을 달성. 특히 <b>LIBERO-Plus 제로샷 강건성 평균 82.0%</b>(LIBERO 데이터로 후학습 전혀 안 함)를 기록.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>사전학습된 VLA(Vision-Language-Action, 시각-언어-행동 정책)를 여러 로봇에 통째로 적용하기 어려운 이유는 <b>몸(embodiment)마다 관절 수·좌표계·자유도가 제각각</b>이라는 데 있다. 지금까지의 해결책은 두 부류였다.</p>
+    <ul>
+      <li><b>명시적 리타게팅(retargeting):</b> 사람 손의 동작을 로봇 관절 각도로 옮기려면 관절 매칭·역기구학 등 값비싼 전처리가 필요.</li>
+      <li><b>비디오 편집/인페인팅:</b> 사람 영상을 로봇 영상으로 "그려서" 학습 데이터로 쓰는 방식. 계산비용이 크고 편집 품질에 의존.</li>
+    </ul>
+    <p>저자들은 이 대신 <b>카메라가 관찰 가능한 기하학적 앵커(anchor)</b>만 있으면 사람·로봇·휴머노이드·양팔 모두를 <b>동일한 행동 공간에서 예측</b>할 수 있다는 관점을 취한다. 즉, "무엇을 움직였는가"는 카메라에서 보이는 손목·손끝 위치의 변화로 통일하고, "그것을 어떻게 실행하는가"만 로봇별로 다르게 처리하자는 것.</p>
+    <div class="callout">
+      직관: 사람과 로봇 팔은 관절 구조가 완전히 달라도, <b>카메라 화면 안에서 손끝이 그리는 궤적</b>은 비슷하게 정의할 수 있다. 이 "궤적"만 통일해 사전학습하면, 각 몸의 관절 명령은 얇은 어댑터가 마지막에 붙여주면 된다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Camera-Centric Unified Action Formulation</b> — 로봇 팔·양팔·휴머노이드·사람 손을 공통의 앵커 쌍(손목 p₀, 그리퍼/파지 중심 p₁)의 카메라 좌표 이동으로 통일해 이질적인 데이터셋을 하나의 학습 신호로 묶음. 부족한 라벨은 <b>손실 마스킹(loss masking, 없는 항목은 loss에서 제외)</b>으로 자연스럽게 무시.</li>
+      <li><b>Geometry-Conditioned Translator</b> — 예측된 카메라 좌표 궤적 + 각 로봇의 <b>카메라-베이스 변환행렬·현재 관절 상태·야코비안(Jacobian, 관절 미소변화가 말단 위치를 얼마나 움직이는지)·기하 임베딩</b>을 조건으로 넣어, 몸에 맞는 실행 명령으로 번역. 사전학습을 몸에 상관없이 유지시켜주는 얇은 어댑터.</li>
+      <li><b>Decoupled 아키텍처와 3단계 학습</b> — "무엇을 움직일까(공통 기하)"와 "어떻게 실행할까(몸별 제어)"를 완전 분리. 로봇 인페인팅·리타게팅 없이 사람 영상까지 그대로 사전학습에 활용, 단일 체크포인트로 <b>4개 시뮬 벤치 + 실로봇</b> 모두 상위권.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>공통 카메라 중심 행동 공간</h3>
+    <p>모든 조작을 왼팔/오른팔(L/R) 각각의 앵커 쌍 (p₀, p₁)의 <b>카메라 좌표 변화</b>로 표현한다.</p>
+    <ul>
+      <li><b>p₀</b>: 손목(wrist) 또는 로봇 말단(end-effector) 위치</li>
+      <li><b>p₁</b>: 그리퍼 중심(로봇) 혹은 파지 중심(사람 손)</li>
+    </ul>
+    <p>매 시점 t의 청크 하나(길이 H)에 대해 다음처럼 30차원 벡터를 정의한다.</p>
+    <div class="callout">
+      한 팔당 10차원 <b>m<sup>a</sup></b> = [카메라 좌표에서의 p₀ 상대이동 Δp₀<sup>cam</sup>, p₁ 상대이동 Δp₁<sup>cam</sup>, 카메라 평면상 회전 Δψ<sup>cam</sup>, 그리퍼 개폐 γ<sup>gripper</sup>, 예약 0].
+      전체 <b>g = [m<sup>L</sup>, m<sup>R</sup>, ξ<sup>cam</sup>] ∈ ℝ³⁰</b> (ξ는 카메라 자체의 움직임).<br>
+      <b>왜 상대이동?</b> 절대 위치를 예측하면 카메라마다 좌표축이 달라 학습이 어긋난다. "이번 프레임에서 시작점 대비 얼마나 움직였는지"만 예측하면 모든 데이터가 같은 스케일로 정렬된다.
+    </div>
+    <p>사람 손 데이터엔 그리퍼 값이 없고, 로봇 데이터엔 카메라 좌표 손 위치가 없을 수 있다. 이때 <b>마스크 m<sup>g</sup></b>로 없는 항목은 loss에서 제외해, 하나의 예측 헤드가 이질적인 데이터 모두를 흡수한다.</p>
+
+    <h3>Geometry-Conditioned Translator: "공통 궤적 → 몸별 명령"</h3>
+    <p>사전학습으로 얻은 카메라 좌표 궤적 ĝ를 실제 로봇 명령 û로 바꾸는 얇은 모듈. 입력은 다음과 같다.</p>
+    <div class="kv">
+      <div>ĝ<sub>t:t+H</sub></div><div>공통 헤드가 예측한 카메라 좌표 궤적(30차원 × 예측 길이 H)</div>
+      <div>s<sub>t</sub></div><div>현재 로봇 상태(관절각·그리퍼 개폐 등)</div>
+      <div>T<sub>base←cam</sub></div><div>카메라→로봇 베이스 변환 행렬(외부 캘리브레이션 값)</div>
+      <div>J<sub>t</sub></div><div>야코비안: "이 관절을 조금 돌리면 손끝이 카메라 화면에서 얼마나 움직이나"</div>
+      <div>z<sub>geo</sub></div><div>기하 임베딩: 링크 길이·자유도·팔 배치 등 몸 구조 정보를 벡터로 인코딩</div>
+    </div>
+    <p>이들을 조건으로 트랜스포머 φ<sub>ψ</sub>가 몸에 맞는 실행 명령 û를 뱉는다: <b>û<sup>(k)</sup> = φ<sub>ψ</sub>(ĝ, s<sup>(k)</sup>, T<sup>(k)</sup>, J<sup>(k)</sup>, z<sup>(k)</sup>)</b>. 상단(공통 궤적 예측)은 몸에 무관하고, 하단(번역)은 몸별 명령을 생성한다.</p>
+    <div class="callout">
+      직관: 상단이 "손을 화면에서 오른쪽으로 3cm 옮겨라"라고만 말하면, 하단이 "이 로봇의 팔 길이·관절·카메라 위치를 고려해서 어깨는 2도, 팔꿈치는 5도 돌리라"고 번역해준다. <b>인페인팅·리타게팅 같은 무거운 전처리가 필요 없다</b>는 것이 이 구조의 핵심.
+    </div>
+
+    <h3>3단계 학습 레시피</h3>
+    <ol>
+      <li><b>Stage 1 — Camera-Centric Specialization:</b> VLM 백본 + 공통 motion 헤드를 로봇·사람 모든 데이터로 학습해 카메라 좌표 예측 능력을 습득. 이 단계에서 translator는 안 씀.</li>
+      <li><b>Stage 2 — Geometry-Conditioned Translation:</b> translator만 학습. 이때 상단 예측이 아닌 <b>정답 카메라 궤적(ground truth)</b>을 입력해 번역만 순수하게 배우게 함(상단 오류가 하단에 오염되는 것 방지).</li>
+      <li><b>Stage 3 — Joint Robot-Human Training:</b> 상단과 하단을 함께 fine-tune. 이 때는 실제 <b>예측 궤적</b>을 translator에 넣어 추론 조건과 일치시킴.</li>
+    </ol>
+
+    <h3>손실 함수</h3>
+    <p>모두 마스킹된 L1 형태로, "없는 라벨은 loss에서 자동으로 빠지도록" 만든 것이 요점.</p>
+    <div class="callout">
+      <b>L<sub>geo</sub></b> = Σ<sub>h,d</sub> m<sup>g</sup><sub>h,d</sub> · |ĝ<sub>t+h,d</sub> − g<sub>t+h,d</sub>| / max(1, Σ m<sup>g</sup>)<br>
+      <b>L<sub>cmd</sub></b> = Σ<sub>h,d</sub> m<sup>u</sup><sub>h,d</sub> · |û<sup>(k)</sup><sub>t+h,d</sub> − u<sup>(k)</sup><sub>t+h,d</sub>| / max(1, Σ m<sup>u</sup>)<br>
+      <b>L</b> = L<sub>geo</sub> + λ<sub>cmd</sub>·L<sub>cmd</sub><br>
+      기호: g = 카메라 좌표 정답 궤적, ĝ = 예측 궤적, u = 로봇 명령 정답, û = 예측 명령, m = 라벨이 있는지 표시하는 0/1 마스크, h = 예측 지평 안의 스텝 인덱스, d = 차원 인덱스.
+    </div>
+
+    <h3>데이터 구성 (1M 에피소드, 6,373 시간)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>카테고리</th><th>시간</th><th>비율</th><th>에피소드</th><th>주요 데이터셋</th></tr></thead>
+      <tbody>
+        <tr><td>실로봇</td><td>266.3h</td><td>4.18%</td><td>53,769</td><td>DROID, RoboChallenge, RoboCoin</td></tr>
+        <tr><td>시뮬레이션</td><td>3,767.5h</td><td>59.11%</td><td>625,771</td><td>LIBERO, RoboTwin, RoboCasa, InternData</td></tr>
+        <tr><td>사람 손</td><td>2,339.7h</td><td>36.71%</td><td>341,132</td><td>VITRA, EgoDex, EgoVerse</td></tr>
+        <tr><td><b>합계</b></td><td><b>6,373.6h</b></td><td>100%</td><td><b>1,020,672</b></td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">시뮬이 6할, 사람 영상이 3.7할. 실로봇 데이터가 4%밖에 안 되지만 사전학습으로 상위권을 찍는 게 논점.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Cross-Embodiment 벤치마크 (Table 3, 단일 체크포인트)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>유형</th><th>LIBERO</th><th>RoboTwin Easy</th><th>RoboTwin Hard</th><th>RoboCasa GR-1</th></tr></thead>
+      <tbody>
+        <tr><td><b>UCAG-P</b></td><td>Generalist</td><td class="win">98.3</td><td class="win">88.7</td><td class="win">89.2</td><td class="win">62.0</td></tr>
+        <tr><td>Qwen-VLA-Instruct</td><td>Generalist</td><td>97.9</td><td>86.1</td><td>87.2</td><td>56.7</td></tr>
+        <tr><td>ABot-M0</td><td>Specialist</td><td>98.6</td><td>86.0</td><td>85.0</td><td>58.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">UCAG-P는 <b>벤치별 후학습 없이</b> 하나의 체크포인트로 단일팔·양팔·휴머노이드를 모두 커버. Generalist 모델 중 최고, RoboTwin/RoboCasa에서는 벤치 특화 Specialist인 ABot-M0도 앞선다.</p>
+
+    <h3>Distribution Shift 강건성 (Table 4, LIBERO-Plus, 제로샷)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>카테고리</th><th>Camera shift</th><th>Robot state</th><th>Language</th><th>Lighting</th><th>Background</th><th>Sensor noise</th><th>Layout shift</th><th>Avg</th></tr></thead>
+      <tbody>
+        <tr><td>UCAG-P (zero-shot)</td><td>51.2</td><td class="win">92.8</td><td>83.5</td><td class="win">98.9</td><td class="win">98.0</td><td>75.2</td><td>74.3</td><td class="win">82.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>LIBERO 데이터로 후학습을 전혀 하지 않은 상태(zero-shot)</b>에서의 강건성. 조명·배경·로봇 상태 흔들림에는 특히 강하고(90%대), 카메라가 흔들리는 경우가 상대적으로 약점(51.2%).</p>
+
+    <h3>실로봇 (Piper, Figure 7)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>UCAG-P</th><th>π₀.₅</th></tr></thead>
+      <tbody>
+        <tr><td>Bread grasping (human→robot 전이)</td><td class="win">60</td><td>20</td></tr>
+        <tr><td>Drawer opening</td><td class="win">90</td><td>85</td></tr>
+        <tr><td>Bowl stacking (bimanual)</td><td class="win">75</td><td>65</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">특히 사람 시연을 로봇으로 전이하는 <b>Bread grasping</b>에서 π₀.₅ 대비 3배 이상(60% vs 20%). "사람 손 궤적이 로봇에 그대로 옮겨질 수 있는 중간 표적"임을 시사.</p>
+
+    <h3>몸 교체 전이 (ALOHA → ARX)</h3>
+    <p>ALOHA 로봇에서 학습한 뒤 완전히 다른 팔(ARX)에 직접 이식했을 때 <b>성공률 35.0%</b>. 저자들 표현 그대로 "카메라 중심 궤적이 <b>이식 가능한 중간 표적</b>이 됨을 보이지만, 구조·기구학 격차가 크면 여전히 어려움". 즉, 완벽하진 않지만 실제로 옮겨진다는 증거.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation</h2>
+    <ul>
+      <li><b>사람 데이터의 실질적 가치:</b> Piper의 bread-grasping에서 사람→로봇 전이 60% vs π₀.₅ 20%. 사람 데이터를 카메라 좌표 궤적으로만 통합해도, 로봇 데이터가 부족한 시나리오에서 <b>공통 앵커 궤적이 곧 pretraining 신호</b>가 된다.</li>
+      <li><b>3단계 분리 학습의 필요성:</b> Stage 2에서 translator를 <b>정답 궤적</b>으로만 먼저 학습해 상단 오류가 하단에 흘러들지 않게 한다(그 뒤 Stage 3에서 예측 궤적으로 미세조정). 상·하단을 한 번에 조인트로 학습하면 상단 오류가 하단 학습을 오염시켜 수렴이 어려워짐.</li>
+      <li><b>제로샷 강건성 vs 파인튜닝:</b> LIBERO-Plus에서 UCAG-P는 LIBERO로 후학습을 안 한 채로 평균 82.0%. 즉 강건성이 "테스트셋 유사도" 때문이 아니라 <b>공통 앵커 표현 자체의 일반성</b>에서 오는 것.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.26058/UCAG.png" alt="UCAG-P 전체 파이프라인 구조 (Figure 6 근처)" loading="lazy">
+      <figcaption><b>Figure — UCAG-P 아키텍처.</b> 비전-언어 백본이 카메라 이미지·언어 지시·현재 관절 상태를 받아 <b>공통 motion 헤드</b>가 카메라 좌표에서의 앵커 궤적 ĝ를 예측한다. 하단의 <b>Geometry-Conditioned Translator</b>가 카메라-베이스 변환·야코비안·기하 임베딩을 조건으로 몸별 실행 명령 û를 생성한다. 상단은 몸에 무관, 하단만 몸에 특화. (출처: arXiv:2608.26058)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.26058/real_world_new.png" alt="실로봇(Piper) 태스크별 성공률 비교" loading="lazy">
+      <figcaption><b>Figure 7 — 실로봇 결과(Piper).</b> Bread grasping(사람→로봇 전이 태스크)에서 60% vs π₀.₅ 20%, Drawer opening 90% vs 85%, Bimanual bowl stacking 75% vs 65%. 사람 시연을 <b>중간 표적</b>으로 활용하는 것이 실로봇에서도 실질적 이득임을 시사. (출처: arXiv:2608.26058)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3</b> — 단일 체크포인트 UCAG-P가 LIBERO 98.3 / RoboTwin Easy 88.7 / Hard 89.2 / RoboCasa GR-1 62.0으로 Generalist 최고, 벤치 특화 Specialist인 ABot-M0도 앞섬(RoboTwin/RoboCasa).<br>
+      <b>Table 4</b> — LIBERO-Plus <b>제로샷</b> 평균 82.0% (LIBERO 데이터로 후학습 없이). 조명·배경 90%대, 카메라 흔들림이 상대적 약점(51.2%).
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.26058" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.26058" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2608.26058" target="_blank">HTML</a></li>
+      <li><a href="https://public-bots.github.io/UCAG-P" target="_blank">프로젝트 페이지</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.26058 · UCAG-P · 요약 생성 2026-08-31
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

@@ -10,14 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2608.26058",
-      "title": "One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training (UCAG-P)",
-      "arxiv_url": "https://arxiv.org/abs/2608.26058",
-      "added": "2026-08-31"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",
