@@ -28,6 +28,12 @@
       "title": "Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2609.01596",
       "added": "2026-09-03"
+    },
+    {
+      "id": "2608.27550",
+      "title": "Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Action Models (VLAct)",
+      "arxiv_url": "https://arxiv.org/abs/2608.27550",
+      "added": "2026-09-03"
     }
   ],
   "dismissed": [
