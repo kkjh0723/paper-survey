@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VLAct — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Continued Pre-training</span>
+    <h1>Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Action Models (VLAct)</h1>
+    <p class="authors">Senqiao Yang, Chengyao Wang, Yuxin Chen 외 · CUHK 등 · 교신 Jiaya Jia (StarVLA 팀)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.27550" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.27550" target="_blank">PDF</a>
+      <a href="https://starvla.github.io/VLAct" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.27550</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Continued Pre-training</span>
+      <span class="t">Multi-Head Co-Supervision</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">VLM-Prior Preservation</span>
+      <span class="t">Open-Source</span>
+    </div>
+    <p class="meta">제출: 2026-08-27 · 백본 Qwen3-VL-4B · 16 GPU 학습 · 완전 오픈소스 파이프라인</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>"VLA는 데이터를 더 붓기 전에 <b>표현(representation) 자체</b>를 잘 지어야 한다"는 논지. Qwen3-VL-4B를 <b>얕은 층 freeze + caption 데이터 혼합</b>으로 VLM prior를 보존한 채 로봇 데이터로 continued pre-training하되, <b>3개 action head(OFT/PI/GR00T)를 동시에 co-supervise</b>해 특정 헤드에 표현이 collapse하지 않게 한다. LIBERO-Plus <b>82.6%</b>(π₀=53.6), RoboTwin 2.0 clean <b>92.5%</b>, 실 Franka 단팔 <b>92.5</b> vs baseline 77.5, 미학습 이족 GR-1에 <b>20% 데이터만으로 GR00T-N1.6 full-data 초과</b>. 16 GPU·open-source data로도 산업 시스템(LingBot-VLA, ABot-M0, Xiaomi Robotics)을 앞선다는 것이 요지.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>최근 VLA(Vision-Language-Action) 연구는 "데이터를 더 모아 스케일하면 성능이 오른다"에 집중돼 왔다. 저자들은 반대로 <b>같은 데이터·같은 백본에서도 표현 학습 방식에 따라 downstream 성능이 크게 달라진다</b>고 지적한다. 특히 (a) VLM prior가 로봇 fine-tuning 중 <b>망각·왜곡</b>되고, (b) 특정 action head(예: OFT)만으로 pretrain하면 backbone 표현이 <b>그 헤드에 특화</b>돼 다른 헤드로 옮기면 성능이 급락(<b>표현 collapse</b>)한다는 두 문제를 pilot study로 실증. 해법은 "prior를 지키고, 여러 head로 balance된 표현을 학습"하는 것.</p>
+    <div class="callout">
+      직관: LLM에서 "instruction tuning으로 사전 knowledge가 사라지지 않게 하는" 것과 같다. 로봇 trajectory로 다시 학습할 때 vision-language 이해가 훼손되면 결국 이런저런 태스크에서 낙후된다. VLAct는 <b>얕은 층을 얼려 prior를 보호</b>하고, <b>caption 데이터를 섞어</b> "이 이미지는 컵이다" 같은 원본 지도도 계속 준다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>VLM-Prior 보존 두 축</b>: (a) <b>얕은 층 freeze</b>(vision encoder + LLM 하위 절반 동결) — LIBERO-Plus +3.7%p, AgileX +3.4%p, (b) <b>caption 데이터 인터리브</b> — 로봇 trajectory 학습 중에도 이미지-캡션 supervision을 함께 준다.</li>
+      <li><b>Multi-Head Action Co-Supervision</b> — 같은 backbone 위에 <b>OFT(regression) + PI(flow-matching) + GR00T(diffusion)</b> 세 head를 동시에 감독. ℒ<sub>action</sub> = ℒ<sub>OFT</sub> + ℒ<sub>PI</sub> + ℒ<sub>GR00T</sub>. 특정 head geometry로 붕괴하는 것을 방지.</li>
+      <li><b>Cross-Embodiment Action의 부분 통합</b> — 물리적으로 비교 가능한 축(gripper open/close)만 공유, incompatible arm 축은 embodiment-specific + 마스킹. 주기적 관절엔 <b>wrap-aware angular loss</b>(mod 360°) 적용.</li>
+      <li><b>Open-source 재현성</b> — DROID · InternA1 · RoboCoin · MolmoAct 등 공개 데이터만으로 16 GPU에서 학습, RoboDojo 35개 정책 중 성공률 6위·평균 점수 8위, 산업계 시스템 다수 상회.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>VLM-Prior 보존 — 얕은 층 freeze</h3>
+    <p>Pre-training 중 <b>vision encoder는 완전 동결, LLM 하위 절반도 동결</b>. 상위 LLM 층과 action head만 업데이트. Downstream fine-tuning에서는 전 층을 푼다. 이 두 단계 스케줄이 <b>vision-language 근본 표현을 무너뜨리지 않으면서 상위 층만 로봇 도메인에 적응</b>시키는 핵심.</p>
+
+    <h3>Caption 데이터 인터리브</h3>
+    <p>로봇 trajectory 배치 사이에 <b>이미지-caption 배치를 섞어</b> 학습. 저자 인용: <i>"captions offer dense supervision over objects, attributes, spatial relations, and scene context, helping preserve the backbone's original vision-language representation"</i>. 즉 로봇 데이터가 만들어내는 표현 drift를 캡션 supervision이 계속 원위치로 잡아준다.</p>
+
+    <h3>Multi-Head Co-Supervision — 왜 필요한가</h3>
+    <div class="callout">
+      직관: 단일 head로 pretrain하면 backbone은 그 head의 "출력 기하학"에 맞는 표현만 배운다. 예컨대 OFT(regression)만 쓰면 backbone은 "한 값을 정확히 뱉는 데 유리한 표현"으로 collapse. 그러면 나중에 다른 head(PI-flow matching, GR00T-diffusion)로 downstream을 하면 표현이 안 맞아 성능이 급락. 세 head를 <b>같이</b> 감독하면 backbone은 세 형태 모두에 접근 가능한 <b>더 balanced한 표현</b>을 학습.
+    </div>
+    <ul>
+      <li><b>OFT</b>: 액션 값을 직접 회귀. 강력한 단일-head 성능이지만 head-specific collapse 유발.</li>
+      <li><b>PI</b>: flow matching(노이즈에서 액션으로 흐르는 velocity 학습).</li>
+      <li><b>GR00T</b>: diffusion 스타일 액션 생성.</li>
+    </ul>
+    <p>Pilot study 결과: OFT-only pretrain → OFT downstream은 강하나 PI/GR00T downstream은 약함. Multi-head pretrain은 <b>세 head 모두</b>에서 강할 뿐 아니라 <b>same-head 성능도 더 낫다</b>(implicit regularization).</p>
+
+    <h3>Cross-Embodiment: 부분 통합 action space</h3>
+    <p>Franka(단팔), AgileX(양팔), Molmo(GR-1) 등 서로 다른 로봇의 action 축을 다루는 세 가지 설계:</p>
+    <ul>
+      <li><b>Embodiment-specific heads</b>: 각 로봇마다 별도 head — 표현 공유가 안 되고 학습 데이터가 파편화.</li>
+      <li><b>Fully unified</b>: 모든 축을 한 공간에 강제 정렬 — 물리적으로 안 맞는 축을 인공 정렬해 왜곡.</li>
+      <li><b>VLAct 부분 통합</b>: gripper 등 <b>물리 의미가 같은 축은 공유</b>, arm처럼 로봇마다 다른 축은 <b>embodiment-specific</b>. 학습 시 inactive 축은 loss에서 마스킹.</li>
+    </ul>
+    <p><b>Wrap-aware loss</b>: 관절 각도가 −179°와 179°일 때 실제 차이는 2°지만 단순 뺄셈은 358°로 계산됨. 각도 loss를 mod 360°로 처리해 이 오류 제거.</p>
+
+    <h3>Continued Pre-training pipeline</h3>
+    <div class="kv">
+      <div>초기 가중치</div><div>Qwen3-VL-4B</div>
+      <div>데이터</div><div>DROID + InternA1 + RoboCoin + MolmoAct (모두 공개)</div>
+      <div>학습 자원</div><div>16 GPU</div>
+      <div>Downstream</div><div>Backbone 전이, action head는 재초기화 (표현 자체가 이득인지 검증)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO-Plus (단팔 Franka, 강건성 벤치)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Camera</th><th>Robot</th><th>Noise</th><th>Overall</th></tr></thead>
+      <tbody>
+        <tr><td>π₀</td><td>—</td><td>—</td><td>—</td><td>53.6%</td></tr>
+        <tr><td>ABot-M0 (산업 시스템)</td><td>—</td><td>—</td><td>—</td><td>80.5%</td></tr>
+        <tr><td>Qwen3VL-OFT (동일 백본, pretrain 없음)</td><td>—</td><td>—</td><td>—</td><td>75.0%</td></tr>
+        <tr><td><b>VLAct</b></td><td>73.9</td><td>68.4</td><td>86.0</td><td class="win">82.6%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">동일 백본의 non-pretrain baseline 대비 +7.6%p — 순수 continued pre-training 효과. 산업 시스템 ABot-M0 상회.</p>
+
+    <h3>RoboTwin 2.0 (양팔 AgileX)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>세팅</th><th>Clean</th><th>Random</th></tr></thead>
+      <tbody>
+        <tr><td>Qwen3VL-OFT (baseline)</td><td>61.7%</td><td>10.5%</td></tr>
+        <tr><td><b>VLAct-OFT (base)</b></td><td class="win">80.5%</td><td class="win">41.5%</td></tr>
+        <tr><td>InternVLA-A1 (data scaling)</td><td>89.4%</td><td>89.6%</td></tr>
+        <tr><td>π₀.₅ (data scaling)</td><td>82.7%</td><td>76.8%</td></tr>
+        <tr><td><b>VLAct-OFT (data scaling, 500 randomized 추가)</b></td><td class="win">92.5%</td><td class="win">90.8%</td></tr>
+        <tr><td>VLAct-PI (data scaling)</td><td>93.0%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Base 세팅(50 clean/task)에서 baseline 대비 +18.8%p clean, +31%p random. Data scaling 세팅에서 최상위. Head 변형(OFT/PI) 모두 경쟁력 있어 multi-head 학습의 downstream 유연성 확인.</p>
+
+    <h3>실 Franka 단팔</h3>
+    <ul>
+      <li><b>Short-horizon:</b> 92.5% vs baseline 77.5%</li>
+      <li><b>Long-horizon table cleaning:</b> 86.6% weighted score vs 73.3%</li>
+      <li><b>OOD novel objects:</b> 90.0% vs 65.0–73.3%</li>
+      <li><b>Dual-arm coordination(사전학습에 없음):</b> 72.0% vs 44.0% — <b>단팔로만 pretrain해도 양팔에 전이</b>됨을 시사</li>
+    </ul>
+
+    <h3>RoboCasa-GR1 (미학습 이족 embodiment)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>Success</th></tr></thead>
+      <tbody>
+        <tr><td>π₀.₅ (full-data)</td><td>37.0%</td></tr>
+        <tr><td>GR00T-N1.6 (full-data)</td><td>47.6%</td></tr>
+        <tr><td>Qwen3VL-OFT (full-data)</td><td>48.8%</td></tr>
+        <tr><td><b>VLAct (full-data)</b></td><td class="win">54.0%</td></tr>
+        <tr><td><b>VLAct (downstream 20%만)</b></td><td class="win">49.5%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">GR-1 데이터를 <b>사전학습에 전혀 안 넣었는데도</b> 20% downstream 데이터로 이미 GR00T-N1.6의 full-data 성능을 넘음 — <b>transferable representation</b>의 강력한 증거.</p>
+
+    <h3>RoboDojo 벤치 (ARX X5, 35 정책 랭킹)</h3>
+    <ul>
+      <li>성공률 <b>6위 / 35</b>, 평균 점수 <b>8위 / 35</b> (Avg 10.66 / SR 7.60%)</li>
+      <li>모든 WAM(엔트리) 상회, X-WAM 대비 +2.97 점, +3.77%p</li>
+      <li>산업 시스템 LingBot-VLA · ABot-M0 · Xiaomi-Robotics-0 모두 상회</li>
+      <li>Precision 카테고리 20.62점 / 15.25%, Long-Horizon 20.12 / 13.67%</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (핵심 요약)</h2>
+    <ul>
+      <li><b>얕은 층 freeze(Appendix C)</b>: LIBERO-Plus +3.7%p, AgileX +3.4%p — 초기 표현 보호가 실제 downstream 이득으로 이어짐.</li>
+      <li><b>Caption 데이터가 최적 co-training 소스(Appendix D)</b>: 여러 VLM supervision 후보 중 caption이 downstream 앵커로 가장 강함. 다른 supervision보다 vision-language alignment 보존에 우수.</li>
+      <li><b>Multi-head co-supervision(Appendix E)</b>: OFT-only pretrain은 PI/GR00T 전이 시 표현 collapse. Multi-head는 <b>same-head 성능까지 더 좋음</b> — implicit regularization으로 작용.</li>
+      <li><b>Wrap-aware loss(Appendix F)</b>: 주기 관절 각도 오류 보정. 부분 통합 action space가 fully unified·fully separate 모두 상회.</li>
+      <li><b>Heterogeneous UMI 데이터(Appendix G)</b>: 다양한 embodiment 데이터 추가 시 complementary 효과 관찰.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <div class="callout">
+      <b>Figure 1(개요)</b> — VLAct의 세 축(VLM-prior 보존 · multi-head 감독 · cross-embodiment 통합)을 pre-training에 병렬 적용하고, downstream fine-tuning에는 backbone만 전이하는 파이프라인.
+    </div>
+    <div class="callout">
+      <b>Figure 2(pilot study)</b> — action supervision이 backbone 표현을 재편한다는 통제 실증. <b>discrete FAST</b>는 전이는 되지만 fine-grained 정보 손실; <b>continuous OFT</b>는 same-head 최강이나 PI/GR00T 전이 시 <b>head-specific collapse</b>. VLAct의 multi-head 감독은 이 collapse를 방지.
+    </div>
+    <div class="callout">
+      <b>Figure 4(action space 설계)</b> — 세 접근 비교: embodiment-specific(고립 supervision), fully unified(인공 정렬), <b>VLAct 부분 통합</b>(공유 gripper + 마스킹된 embodiment-specific arm). 마지막이 이론상·실증상 최적.
+    </div>
+    <div class="callout">
+      <b>Figure 5(실기·cross-embodiment 결과)</b> — 단팔 short-horizon(92.5 vs 77.5), long-horizon table cleaning(86.6 vs 73.3), dual-arm coordination(72 vs 44), RoboCasa-GR1 data efficiency curve. 특히 (d)가 <b>VLAct 20% ≥ GR00T-N1.6 100%</b>를 시각적으로 보여주는 핵심 근거.
+    </div>
+    <p class="note">참고: 이 arXiv HTML 렌더에는 그림 이미지가 포함되지 않아 텍스트 설명으로 대체.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.27550" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.27550" target="_blank">PDF</a></li>
+      <li><a href="https://starvla.github.io/VLAct" target="_blank">프로젝트 페이지 (StarVLA · 모델·파이프라인 오픈소스)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.27550 · VLAct · 요약 생성 2026-09-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

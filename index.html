@@ -184,6 +184,133 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2609.01596" data-added="2026-09-03" data-tags="Contact-Rich,Wrench,Flow Matching,Value-Guided RL,Assembly,Foundation Model">
+        <td class="no">111</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2609.01596_Facet-0.html">Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation</a></div>
+          <div class="sub">Haoyuan Deng, Haichao Liu 외 · PINE Lab @ NTU · arXiv:2609.01596</div>
+          <div class="sub">액션과 예상 wrench(6축 힘/토크)를 flow matching으로 함께 예측, Action-Wrench Critic이 시각으론 같아 보이지만 접촉 품질이 다른 궤적을 구분. 0.5mm 정밀도 컴퓨터 조립 5-task 평균 <b>82%</b>(baseline 15%, 5.5×), 새 부품 few-shot 45 vs 5(9×), 파라미터의 6.6%만 학습.</div>
+          <div class="tags">
+            <span class="tag">Contact-Rich</span>
+            <span class="tag">Wrench</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Value-Guided RL</span>
+            <span class="tag">Assembly</span>
+            <span class="tag">Foundation Model</span>
+          </div>
+        </td>
+        <td class="date">2026-09-01</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2609.01596" target="_blank">arXiv</a>
+          <a href="https://pine-lab-ntu.github.io/facet-0/" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.30237" data-added="2026-09-03" data-tags="World Model,MBRL,Best-of-N Planning,Diffusion Policy,Dexterous Manipulation,Tactile">
+        <td class="no">110</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.30237_Motus2.html">Motus2: A Self-Evolving General World Model for Dexterous Manipulation</a></div>
+          <div class="sub">Hongzhe Bi, Zihao Zhou 외 · 교신 Jun Zhu · arXiv:2608.30237</div>
+          <div class="sub">한 세트 파라미터로 정책·시뮬레이터·평가자 세 역할을 동시에 하는 world model이 self-evolving MBRL 폐루프를 형성. 5-task dexterous 평균 <b>0→51→84%</b>(WAN → pretrain → mid-train), Best-of-N + DiffusionNFT MBRL로 65→<b>75%</b> 추가 이득. 스테레오 에고 영상 스케일 법칙 ℒ ≈ 0.101 − 0.005·ln D 실증.</div>
+          <div class="tags">
+            <span class="tag">World Model</span>
+            <span class="tag">MBRL</span>
+            <span class="tag">Best-of-N Planning</span>
+            <span class="tag">Diffusion Policy</span>
+            <span class="tag">Dexterous Manipulation</span>
+            <span class="tag">Tactile</span>
+          </div>
+        </td>
+        <td class="date">2026-08-31</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.30237" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2608.29242" data-added="2026-09-03" data-tags="World Model,Cross-Embodiment,Human Video,Latent Diffusion Video,Data Generation">
+        <td class="no">109</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.29242_AnyWorld.html">AnyWorld: Factorized Egocentric World Models for Cross-Embodiment Generalization</a></div>
+          <div class="sub">Cheng Chen, Jerry Bai 외 · XPeng Robotics · NTU · arXiv:2608.29242</div>
+          <div class="sub">사람 1인칭 영상 하나를 <b>행동·카메라·몸</b> 세 축으로 분해해 재조합하는 latent diffusion video world model. 세 축 controllability 평균 <b>0.778</b>(WAN Fun-Control 0.609), 정책 학습에 합성 데이터 섞으면 실 IRON 휴머노이드 바나나 잡기 <b>20→55%</b>(+35%p).</div>
+          <div class="tags">
+            <span class="tag">World Model</span>
+            <span class="tag">Cross-Embodiment</span>
+            <span class="tag">Human Video</span>
+            <span class="tag">Latent Diffusion Video</span>
+            <span class="tag">Data Generation</span>
+          </div>
+        </td>
+        <td class="date">2026-08-29</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.29242" target="_blank">arXiv</a>
+          <a href="https://xpeng-robotics.github.io/anyworld/" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.27550" data-added="2026-09-03" data-tags="VLA,Continued Pre-training,Multi-Head Co-Supervision,Cross-Embodiment,VLM-Prior Preservation,Open-Source">
+        <td class="no">108</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.27550_VLAct.html">Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Action Models (VLAct)</a></div>
+          <div class="sub">Senqiao Yang 외 · CUHK · 교신 Jiaya Jia · arXiv:2608.27550</div>
+          <div class="sub">Qwen3-VL-4B에 얕은 층 freeze + caption 인터리브 + OFT/PI/GR00T 3-head co-supervision. LIBERO-Plus <b>82.6</b>(π₀=53.6), RoboTwin 2.0 clean <b>92.5</b>, 미학습 이족 RoboCasa-GR1에 <b>20% 데이터만으로 GR00T-N1.6 full-data 초과</b>. 16 GPU · open-source로 산업 시스템 상회.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Continued Pre-training</span>
+            <span class="tag">Multi-Head Co-Supervision</span>
+            <span class="tag">Cross-Embodiment</span>
+            <span class="tag">VLM-Prior Preservation</span>
+            <span class="tag">Open-Source</span>
+          </div>
+        </td>
+        <td class="date">2026-08-27</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.27550" target="_blank">arXiv</a>
+          <a href="https://starvla.github.io/VLAct" target="_blank">Project</a>
+        </td>
+      </tr>
+      <tr data-id="2608.27384" data-added="2026-09-03" data-tags="VLA,Streaming Decoding,Flow Matching,Async Inference,Chunk-wise Causal Attention,30Hz Control">
+        <td class="no">107</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.27384_FlashVLA.html">FlashVLA: Streaming Action Decoding for Fast and Asynchronous VLA Inference</a></div>
+          <div class="sub">Zekai Li, Jiaming Tang, Zhijian Liu 외 · arXiv:2608.27384</div>
+          <div class="sub">N개 chunk를 서로 다른 노이즈 레벨로 버퍼에 두고 chunk-wise causal attention으로 한 forward에 모두 한 스텝씩 정제. LIBERO 96.9→<b>97.8</b>, per-step 53.8→<b>22.1ms</b>(2.43×), RoboTwin 2.0 long-horizon 53.0→<b>89.6%</b>, RTX 4090으로 ≥30Hz.</div>
+          <div class="tags">
+            <span class="tag">VLA</span>
+            <span class="tag">Streaming Decoding</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">Async Inference</span>
+            <span class="tag">Chunk-wise Causal Attention</span>
+            <span class="tag">30Hz Control</span>
+          </div>
+        </td>
+        <td class="date">2026-08-27</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.27384" target="_blank">arXiv</a>
+        </td>
+      </tr>
+      <tr data-id="2608.25798" data-added="2026-09-03" data-tags="Tactile Feedback,Streaming Action Expert,Flow Matching,EATA,Contact-Rich">
+        <td class="no">106</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.25798_TacForcing.html">TacForcing: Streaming Action Generation with Execution-Time Tactile Feedback</a></div>
+          <div class="sub">Jianbo Zhou, Boyuan Zhao 외 · 교신 Zhijie Deng · arXiv:2608.25798</div>
+          <div class="sub">Action chunk를 K개 블록으로 쪼개 position-dependent flow time으로 순차 완성, 실행 도중 얻은 촉각을 <b>다음 실행 블록에만 조건부화(EATA)</b>. 촉각(cos 변화 0.55) vs 시각(0.005) 100× 격차 실증. 시뮬 6-task <b>65%</b>(π₀.₅ 51), 실 3-task <b>69%</b>(π₀.₅ 27, GR00T 42, FTP-1 48 모두 상회).</div>
+          <div class="tags">
+            <span class="tag">Tactile Feedback</span>
+            <span class="tag">Streaming Action Expert</span>
+            <span class="tag">Flow Matching</span>
+            <span class="tag">EATA</span>
+            <span class="tag">Contact-Rich</span>
+          </div>
+        </td>
+        <td class="date">2026-08-26</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.25798" target="_blank">arXiv</a>
+        </td>
+      </tr>
       <tr data-id="2608.26058" data-added="2026-08-31" data-tags="VLA,Cross-Embodiment,Camera-Centric,Human Video,Pre-training">
         <td class="no">105</td>
         <td class="read-cell"></td>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Facet-0 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Contact-Rich · Foundation Model</span>
+    <h1>Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation</h1>
+    <p class="authors">Haoyuan Deng, Haichao Liu 외 · PINE Lab @ NTU (Nanyang Technological University)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.01596" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.01596" target="_blank">PDF</a>
+      <a href="https://pine-lab-ntu.github.io/facet-0/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2609.01596</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Contact-Rich</span>
+      <span class="t">Wrench (Force/Torque)</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Value-Guided RL</span>
+      <span class="t">Bounded Adaptation</span>
+      <span class="t">Assembly</span>
+    </div>
+    <p class="meta">제출: 2026-09-01 · 컴퓨터 조립 5-task (0.5mm 정밀도) · ManuFacet-1K (~1000시간, 6축 F/T 동기화)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>서브밀리미터(0.5mm) 컴퓨터 조립처럼 <b>접촉-풍부(contact-rich)</b> 조작을 위한 로봇 파운데이션 모델. 액션과 <b>미래 손목 wrench(6축 힘/토크)</b>를 함께 예측(joint action-wrench flow matching)하고, <b>Action-Wrench Critic</b>이 겉으로는 비슷하지만 접촉 품질이 다른 두 궤적을 구분해 가치를 매긴다. 컴퓨터 부품 5개 삽입 태스크 평균 <b>82%</b>(최강 baseline 15%, <b>5.5×</b>). value-guided post-training으로 20→65% 성공률, 새 부품 few-shot(10 demo, 3h) 45% vs baseline 5%(<b>9×</b>).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>지금까지 VLA(Vision-Language-Action) 파운데이션 모델들은 "손이 물체 근처에 도달"까지는 잘 하지만, <b>0.5mm 급 정확도의 삽입(RAM·CPU·GPU·Disk·CPU LEVER 등)</b>처럼 접촉이 결정적인 순간에는 무너진다. 시각으로는 "잘 들어가고 있음"과 "걸려서 꽉 낀 것(jam)"이 <b>같은 깊이·같은 자세</b>로 보이기 때문이다. 저자들은 <b>접촉 정보(wrench = 손목의 3축 힘 + 3축 토크)를 예측 대상에 포함</b>시켜 이 두 상태를 구분한다.</p>
+    <div class="callout">
+      직관: 사람이 조립할 때도 "느낌"으로 걸림을 판단한다. Facet-0의 핵심 아이디어는 정책이 "다음 액션을 하면 어떤 힘/토크가 손목에 걸릴지"를 미리 예측하게 만들고, 그 예측된 wrench까지 함께 평가하도록 critic을 훈련시키는 것.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Joint Action-Wrench Flow Matching</b> — 액션 chunk(7-D)와 그로 인한 예상 wrench 프로파일(6-D)을 <b>같이 flow matching</b>으로 생성. 접촉을 관찰 후 반응이 아니라 <b>액션의 부속 예측 대상</b>으로 격상.</li>
+      <li><b>Action-Wrench Critic</b> — 액션·wrench 조합을 함께 스코어링하는 <b>distributional value function</b>. 겉으로 같은 진행도라도 "깨끗한 삽입"과 "걸린 상태"를 구분해 다른 가치를 준다.</li>
+      <li><b>Lightweight Bounded Local Adaptation</b> — 배포 시 <b>파라미터의 6.6%</b>인 작은 actor만 학습. base 표현은 동결, wrench head는 auxiliary(예측만, force 명령 없음). 새 부품 few-shot에 강함.</li>
+      <li><b>ManuFacet-1K 데이터셋</b> — 힘 동기화 1,000시간 (3개 embodiment, 2개 chassis family, 다중 제조 현장, 6축 wrist F/T + 3 RGB 카메라 동일 스펙, 7-phase 조립 taxonomy).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Joint action-wrench 예측 — flow matching 이란</h3>
+    <p><b>Flow matching</b>은 "무작위 노이즈 ε에서 목표 데이터 x로 이어지는 경로 x<sub>t</sub> = (1−t)ε + t·x의 시간 미분(속도 필드)을 신경망으로 학습해, 몇 스텝 만에 노이즈 → 데이터를 만드는 생성 방식"이다. Facet-0은 목표 벡터를 <b>13-D(액션 7-D + wrench 6-D)</b>로 두고 이 결합 벡터의 velocity를 학습. 액션과 wrench가 각각 다른 스케일이므로 <b>loss normalization을 분리</b>해 한쪽이 나머지를 압도하지 않게 한다. 결과: 정책이 액션을 뽑을 때 "이 액션을 실행하면 손목에 이런 힘·토크가 걸린다"는 예측을 <b>동시에</b> 산출.</p>
+
+    <h3>Action-Wrench Critic — 왜 필요한가</h3>
+    <div class="callout">
+      직관: "GPU를 슬롯에 절반 넣은 상태"와 "잘못된 각도로 걸려서 절반만 들어간 상태"는 카메라 이미지에서 거의 같다. 하지만 wrench는 다르다 — 걸린 쪽은 옆으로 큰 저항력이 뜬다. Critic이 <b>액션+wrench</b>를 함께 보면 이 둘의 값이 갈라진다.
+    </div>
+    <p>Distributional value function을 써서 결과 분포까지 학습(단일 스칼라 대신). "동일한 geometric progress를 가진 두 궤적도 wrench가 다르면 다른 value"를 받게 되어, RL 업데이트 시 <b>깨끗한 삽입 궤적에 더 큰 credit</b>을 준다.</p>
+
+    <h3>Bounded Local Adaptation (배포 시 학습)</h3>
+    <ul>
+      <li><b>Semantic-contact 표현은 동결</b> — 사전학습에서 배운 "이 픽셀이 부품이고, 여긴 접촉면"이라는 개념을 그대로 유지.</li>
+      <li><b>얇은 actor(6.6% 파라미터)만 학습</b> — 새 부품·새 chassis에 맞춰 <b>bounded Cartesian target</b>을 뱉는 작은 head만 fine-tune. bounded의 의미는 "액션 범위를 안전 상한/하한으로 클램프해 상하좌우 폭주 방지".</li>
+      <li><b>Auxiliary wrench head</b> — 새 actor도 wrench 예측을 계속 유지(단, 실제로 force를 명령하지는 않고 예측만 함) → 예측-액션 커플링 보존.</li>
+    </ul>
+
+    <h3>Value-Guided Post-Training(배포 데이터로의 RL)</h3>
+    <p>배포 중 수집되는 rollout을 <b>contact-selective로 credit</b> 부여(접촉/자유공간 구간을 분리해 랭킹). 이러면 "실패 직전 회복(recovery)" 같은 <b>희귀하지만 중요한 프레임</b>을 살려 policy 학습에 반영. Advantage-weighted behavior cloning(같은 데이터, 다른 학습 규칙)과의 정면 비교로 우위 확인.</p>
+
+    <h3>데이터 & 코스-투-파인 디코딩 (그림 3)</h3>
+    <div class="kv">
+      <div>데이터셋</div><div>ManuFacet-1K — ~1000h, 3 embodiment · 4 태스크 (CPU 37.3% / RAM 21.9% / Disk 23.4% / GPU 17.3%)</div>
+      <div>정밀도</div><div>0.5mm 액션 해상도, clearance 0.10–0.30mm</div>
+      <div>Contact-critical 순간</div><div><b>20Hz refinement expert</b>가 활성화 (평상시보다 고주파 정밀 제어)</div>
+      <div>파이프라인</div><div>vision + language + kinematic + wrench 융합 → coarse-to-fine 디코딩</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>5-task 조립 성공률 (핵심 표)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>Facet-0</th><th>최강 Baseline</th></tr></thead>
+      <tbody>
+        <tr><td>평균(5 태스크)</td><td class="win">82%</td><td>15% (5.5× 개선)</td></tr>
+        <tr><td>RAM</td><td class="win">95%</td><td>35%</td></tr>
+        <tr><td>CPU</td><td class="win">85%</td><td>20%</td></tr>
+        <tr><td>GPU</td><td class="win">85%</td><td>5%</td></tr>
+        <tr><td>Disk</td><td class="win">95%</td><td>30%</td></tr>
+        <tr><td>LEVER (contact-only)</td><td class="win">50%</td><td>5%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">0.5mm 정밀도 요구 태스크에서 5.5–17× 격차. 특히 <b>GPU 삽입(85% vs 5%)</b>과 <b>LEVER(50% vs 5%)</b>처럼 접촉 순간 힘 제어가 핵심인 태스크에서 격차가 극단.</p>
+
+    <h3>모듈별 기여 (ablation)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구성</th><th>성공률</th></tr></thead>
+      <tbody>
+        <tr><td>Semantic-contact alignment만</td><td>16%</td></tr>
+        <tr><td>+ Value-guided RL</td><td>38%</td></tr>
+        <tr><td><b>+ Local adaptation (전체)</b></td><td class="win">82%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">각 요소가 <b>+22%p, +44%p</b> 이득 — 특히 local adaptation의 기여가 가장 크다. semantic-contact alone은 접촉 인지만으로는 부족하고, value-guided RL과 얇은 로컬 adaptation이 조합돼야 서브밀리미터 정밀도가 나옴.</p>
+
+    <h3>Value-guided post-training vs Advantage-weighted BC</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>Baseline (AWBC)</th><th>Facet-0 (value-guided)</th></tr></thead>
+      <tbody>
+        <tr><td>Success rate</td><td>20%</td><td class="win">65%</td></tr>
+        <tr><td>Recovery rate (실패 회복)</td><td>44%</td><td class="win">81%</td></tr>
+        <tr><td>Human intervention</td><td>47%</td><td>24% (더 낮을수록 좋음)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">동일 데이터·다른 규칙 비교. contact-selective credit이 recovery 프레임을 살려 성공률·자율성 모두 상승.</p>
+
+    <h3>새 부품 few-shot 전이</h3>
+    <p>보지 못한 부품(더 무겁고 latch가 뻑뻑함) 10 데모 + 3시간 on-robot 학습:</p>
+    <ul>
+      <li><b>Facet-0: 45%</b> vs 최강 baseline 5% (<b>9×</b>)</li>
+      <li>업데이트되는 파라미터: 6.6% vs baseline의 100%</li>
+    </ul>
+    <p class="cap">frozen 표현이 "같은 개념(부품·삽입)"과 "달라진 것(무게·latch stiffness)"을 분리해 잔여 학습을 최소화. bounded actor가 안전한 탐색 영역을 유지.</p>
+
+    <h3>Contact 기능 제거 ablation (RAM insertion)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>상태</th><th>성공률</th><th>Peak off-axis force (정규화, 1×=force-free baseline)</th></tr></thead>
+      <tbody>
+        <tr><td>Full Facet-0</td><td class="win">95%</td><td>0.2×</td></tr>
+        <tr><td>Contact 기능 모두 제거</td><td>45%</td><td>1.0×</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">wrench 예측·critic·adaptation의 auxiliary wrench 세 축을 다 빼면 -50%p 성공, off-axis 힘 5× 증가. <b>접촉 정보 활용이 정밀도와 안전성 모두</b>에 기여.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (핵심 요약)</h2>
+    <ul>
+      <li><b>Wrench 예측이 vision-only 정책의 한계선</b>을 뚫는다: GPU insertion 85 vs 5, LEVER 50 vs 5. "카메라만으로는 걸림/삽입을 구분 못 함"이라는 가설의 직접 증거.</li>
+      <li><b>세 모듈이 각각 큰 기여</b>: 16→38(value RL, +22)→82(local adaptation, +44). 하나만 붙이면 부족, 조합 시 서브밀리미터 정밀도 달성.</li>
+      <li><b>Value-guided RL은 recovery를 살린다</b>: contact-selective credit이 실패 직전 회복 프레임 가치를 보존. 결과적으로 human intervention 47→24로 절반.</li>
+      <li><b>Frozen 표현이 few-shot 전이의 핵심</b>: 100% 학습 baseline과 정면비교 시 9× 격차, 학습 파라미터는 15× 적음.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.01596/teaser.png" alt="Facet-0 teaser — 정밀 컴퓨터 조립 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Facet-0 in precision computer assembly.</b> GPU · RAM · Disk · CPU · CPU LEVER 등 서브밀리미터 조립 태스크와 로봇 워크셀. 각 부품이 요구하는 삽입 정확도와 clearance가 다름. (출처: arXiv:2609.01596)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.01596/pipeline.png" alt="Facet-0 architecture (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Facet-0 architecture overview.</b> (a) vision-language-kinematic-wrench 융합 → coarse-to-fine 디코딩; (b) structured attention이 action-wrench 경로와 VQA 경로를 분리; (c) 세그먼트별 rollout이 Action-Wrench Critic 학습; (d) bounded local actor가 frozen representation을 재사용하며 auxiliary wrench 예측을 유지. (출처: arXiv:2609.01596)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.01596/value_vis.png" alt="Action-Wrench Critic value visualization (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — Action-Wrench Critic이 clean insertion과 jam failure를 구분.</b> GPU 삽입 시 시각적으로 동일한 깊이의 두 상태를 wrench 정보 결합 critic이 서로 다른 value로 판정 — vision 단독으로는 불가능. (출처: arXiv:2609.01596)</figcaption>
+    </figure>
+    <div class="callout">
+      논문의 <b>단일 최강 근거</b>는 GPU insertion(85 vs 5)과 LEVER(50 vs 5)의 격차 — 접촉이 결정적인 태스크에서 <b>vision-only 정책은 사실상 실패하고, wrench-aware 정책만 성공</b>한다는 것.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.01596" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.01596" target="_blank">PDF</a></li>
+      <li><a href="https://pine-lab-ntu.github.io/facet-0/" target="_blank">프로젝트 페이지 (PINE Lab @ NTU)</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.01596 · Facet-0 · 요약 생성 2026-09-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

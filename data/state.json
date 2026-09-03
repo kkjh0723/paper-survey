@@ -10,44 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2608.29242",
-      "title": "AnyWorld: Factorized Egocentric World Models for Cross-Embodiment Generalization",
-      "arxiv_url": "https://arxiv.org/abs/2608.29242",
-      "added": "2026-09-03"
-    },
-    {
-      "id": "2608.30237",
-      "title": "Motus2: A Self-Evolving General World Model for Dexterous Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2608.30237",
-      "added": "2026-09-03"
-    },
-    {
-      "id": "2609.01596",
-      "title": "Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2609.01596",
-      "added": "2026-09-03"
-    },
-    {
-      "id": "2608.27550",
-      "title": "Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Action Models (VLAct)",
-      "arxiv_url": "https://arxiv.org/abs/2608.27550",
-      "added": "2026-09-03"
-    },
-    {
-      "id": "2608.27384",
-      "title": "FlashVLA: Streaming Action Decoding for Fast and Asynchronous VLA Inference",
-      "arxiv_url": "https://arxiv.org/abs/2608.27384",
-      "added": "2026-09-03"
-    },
-    {
-      "id": "2608.25798",
-      "title": "TacForcing: Streaming Action Generation with Execution-Time Tactile Feedback",
-      "arxiv_url": "https://arxiv.org/abs/2608.25798",
-      "added": "2026-09-03"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

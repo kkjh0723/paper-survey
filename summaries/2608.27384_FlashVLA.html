@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FlashVLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Inference Speedup</span>
+    <h1>FlashVLA: Streaming Action Decoding for Fast and Asynchronous VLA Inference</h1>
+    <p class="authors">Zekai Li, Jiaming Tang, Zhijian Liu 외</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.27384" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.27384" target="_blank">PDF</a>
+      <span>arXiv:2608.27384</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Streaming Decoding</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Async Inference</span>
+      <span class="t">Chunk-wise Causal Attention</span>
+      <span class="t">30Hz Control</span>
+    </div>
+    <p class="meta">제출: 2026-08-27 · 백본 π₀.₅ · RTX 4090/5090/A4000 · LIBERO · RoboTwin 2.0 · 실 Franka</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>VLA의 <b>action decoding이 추론 시간의 75%를 잡아먹는다</b>는 프로파일에서 출발. FlashVLA는 <b>서로 다른 노이즈 레벨의 N개 action chunk를 버퍼에 두고, chunk-wise causal attention으로 한 forward에 각 chunk를 한 스텝씩 정제</b>한다. 결과: 매 inference마다 <b>실행 가능한 chunk 하나</b>가 뽑히고, 미래 상태 예측기 없이도 <b>asynchronous 실행</b>이 가능해진다. LIBERO 96.9→97.8, per-step latency 53.8→22.1ms(<b>2.43×</b>), RoboTwin 2.0 long-horizon 53.0→<b>89.6%</b>, 실 Franka 84.4% vs sync 80.0%. RTX 4090으로 <b>≥30 Hz</b> 제어 실현.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>기존 VLA는 관찰 → 완전한 action chunk 하나를 <b>동기적으로</b> 생성 → 실행 → 새 관찰. 이 방식엔 두 문제: (a) chunk 생성이 오래 걸려 <b>실시간성 저하</b>(π₀.₅ 프로파일 상 action decoding이 <b>추론 시간의 75%</b>), (b) chunk 실행 도중 새 관찰이 들어와도 반영할 수 없어 <b>비동기 mismatch</b> 발생. 저자들은 "여러 chunk를 다른 노이즈 레벨로 버퍼에 두면 forward 한 번에 <b>모두 한 스텝씩 정제</b>되고, 앞쪽은 곧 실행 가능"이라는 <b>streaming decoding</b>으로 두 문제 동시에 해결.</p>
+    <div class="callout">
+      직관: 요리 3단계를 순서대로 하나씩 완성해 낼 게 아니라, <b>3단계를 동시에 조금씩 진행</b>시켜 앞 단계가 완성될 때 뒤 단계는 이미 절반쯤 준비돼 있게 하는 파이프라인. 게다가 뒤 단계(미완성 chunk)는 앞 단계(먼저 실행되는 chunk)를 참조하도록 attention을 걸어, 자동으로 "앞으로 실행될 궤적에 조건부"가 된다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Streaming action buffer</b> — N개 chunk를 <b>서로 다른 노이즈 레벨 τ₁ &lt; τ₂ &lt; ... &lt; τₙ</b>으로 유지. 한 forward에 모든 chunk를 <b>한 denoising step씩</b> 전진 → 매 스텝 첫 슬롯의 chunk가 실행 준비 완료.</li>
+      <li><b>Chunk-wise causal attention</b> — <b>노이지한(뒤쪽) chunk는 클린한(앞쪽) chunk에만 attend</b>. 이 마스크만으로 "미래 chunk가 곧 실행될 궤적에 자동으로 조건부"라는 <b>implicit asynchronous conditioning</b>이 성립해 별도 future-state predictor 불필요.</li>
+      <li><b>Multi-buffer joint fine-tuning</b> — 하나의 관찰에 대해 N개 버퍼 상태를 <b>한 학습 샘플에 packing</b>하되 attention mask는 분리, 사전학습 VLA를 효율적으로 어댑트.</li>
+      <li><b>실시간 배포 실증</b> — RTX 4090/5090/A4000에서 ≥30 Hz 제어, 실 Franka에서 sync 대비 성공률↑·완료시간 1.3× 단축.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>기존 방식의 한계</h3>
+    <p>표준 VLA(예: π₀·π₀.₅)는 flow matching으로 chunk 하나(예: 10 스텝짜리 action)를 만드는 데 여러 denoising step이 필요하고, 이 chunk가 완전히 만들어질 때까지 로봇이 대기. 그 사이 새 관찰이 들어오면 버려지거나 <b>stale conditioning</b> 상태로 실행.</p>
+
+    <h3>Streaming Buffer — 어떻게 동작하나</h3>
+    <p>버퍼에는 N개 슬롯이 있고 각 슬롯은 한 action chunk를 담는다. 슬롯 1은 <b>거의 클린</b>(τ₁ ≈ 실행 준비 완료), 슬롯 N은 <b>순수 노이즈</b>. 매 inference:</p>
+    <ol>
+      <li>모델이 한 번 forward → 모든 슬롯의 chunk가 <b>한 노이즈 step씩</b> 클린해짐.</li>
+      <li>슬롯 1이 실행 가능 → 로봇에 dispatch.</li>
+      <li>슬롯이 하나 밀림: 슬롯 2 → 슬롯 1, 슬롯 3 → 슬롯 2, ...</li>
+      <li>맨 끝에 <b>새 노이즈 chunk</b>가 슬롯 N에 채워짐.</li>
+    </ol>
+    <p>결과: <b>매 inference마다 실행 가능한 chunk 하나</b>가 나옴. 각 chunk 자체는 여전히 여러 step으로 클린화되지만 그 step들이 <b>파이프라인화</b>돼 latency가 균등하게 분산된다.</p>
+
+    <h3>Chunk-wise Causal Attention — 왜 필요한가</h3>
+    <div class="callout">
+      직관: 뒤쪽 chunk(더 노이지)가 앞쪽 chunk(곧 실행될 궤적)를 참조하도록 두면, "내가 나올 시점의 앞선 액션은 이미 이렇게 정해져 있다"를 자동으로 학습. 이러면 <b>미래 state를 명시적으로 예측하지 않아도</b> 액션 연속성이 확보된다. Ablation에서 이 마스크를 없애면 async 성공률이 <b>≈10%p 급락</b>.
+    </div>
+    <p>마스크 규칙: chunk<sub>i</sub>는 chunk<sub>j</sub>(j ≤ i)에만 attend 가능. self-attention과 KV-cache로 자연스레 결합.</p>
+
+    <h3>Multi-Buffer Joint Fine-tuning</h3>
+    <p>학습 시 하나의 관찰에 대해 N개 버퍼 상태(각 슬롯이 어느 정도 노이지한지 다양한 조합)를 <b>한 배치에 concat</b>하고, 각 상태에 대응하는 causal mask를 적용. shared encoding + isolated attention masks로 효율적으로 학습 → 사전학습 VLA를 어댑트하는 데 필요한 자원이 적다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO (1-step async delay)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>Baseline (π₀.₅ sync)</th><th>FlashVLA (async d=1)</th></tr></thead>
+      <tbody>
+        <tr><td>성공률</td><td>96.9%</td><td class="win">97.8%</td></tr>
+        <tr><td>Per-step latency</td><td>53.8 ms</td><td class="win">22.1 ms (2.43×)</td></tr>
+        <tr><td>d=1–4 (다양한 delay)</td><td>—</td><td>97.5–98.3% 유지</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">delay가 있어도 성공률 유지 — streaming buffer가 실시간 관찰-액션 mismatch를 흡수.</p>
+
+    <h3>RoboTwin 2.0 (50-task multitask)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>Baseline</th><th>FlashVLA</th></tr></thead>
+      <tbody>
+        <tr><td>평균 성공률</td><td>86.0%</td><td class="win">90.6%</td></tr>
+        <tr><td>Per-step time</td><td>47.4 ms</td><td>43.8 ms</td></tr>
+        <tr><td>Long-horizon 태스크</td><td>53.0%</td><td class="win">89.6%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Long-horizon에서 +36.6%p — 여러 chunk를 연속 실행하는 태스크일수록 async 처리 이득이 극대화.</p>
+
+    <h3>Latency 벤치 (표 2)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>GPU</th><th>Baseline</th><th>FlashVLA</th></tr></thead>
+      <tbody>
+        <tr><td>RTX 4090 (2 views)</td><td>45.8 ms</td><td class="win">26.7 ms (≥30Hz)</td></tr>
+        <tr><td>RTX 5090 (2 views)</td><td>—</td><td class="win">20.3 ms (~50Hz)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">단일 GPU로 30Hz 실제 로봇 제어 가능한 수준.</p>
+
+    <h3>실 Franka</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>지표</th><th>Baseline (sync)</th><th>FlashVLA</th></tr></thead>
+      <tbody>
+        <tr><td>Cross-task 평균 score</td><td>80.0%</td><td class="win">84.4%</td></tr>
+        <tr><td>Successful trials 완료 시간</td><td>1.0×</td><td class="win">1.3× 단축</td></tr>
+        <tr><td>GPU 배포</td><td>—</td><td>RTX A4000 @ 30 Hz</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Synchronous 품질 유지 (표 3)</h3>
+    <p>Sync 모드로도 정확도 손실 없음: LIBERO 96.9 → 97.9, RoboTwin 2.0 86.0 → 90.5. 즉 <b>속도 이득이 성공률 저하 대가로 오는 것이 아니다</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (핵심 요약)</h2>
+    <ul>
+      <li><b>Chunk-wise causal attention이 핵심 성분(Figure 6)</b>: 마스크를 없애고 streaming buffer만 쓰면 async 성공률 <b>≈10%p 하락</b>. streaming 구조만 있고 attention 제약이 없으면 궤적 연속성이 무너짐.</li>
+      <li><b>Chunk size(Figure 7)</b>: C=10이 LIBERO 최적. 너무 큰 chunk는 성공률 저하. 총 버퍼 span N×C를 사전학습 모델의 원래 action-chunk 길이와 맞추는 것이 원칙.</li>
+      <li><b>Buffer length(Figure 8)</b>: N ∈ {4,5,6} 사이는 성능 안정, 일관되게 ~1.8× 속도 이득. N=4가 실용적 default.</li>
+      <li><b>Reaction speed(Figure 4)</b>: FASTER 대비 <b>time-to-first-action 1.7× 단축</b> — 초기 반응성이 다른 async 기법보다 우수.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.27384/teaser_a.png" alt="FlashVLA vs sync/async 방식 개념 비교 (Figure 1a)" loading="lazy">
+      <figcaption><b>Figure 1(a) — 개념 비교.</b> 기존 sync는 chunk 완성까지 대기(stall), 기존 async는 stale conditioning으로 mismatch. FlashVLA는 <b>버퍼에서 여러 chunk를 동시에 정제</b>해 stall/mismatch 모두 해소. (출처: arXiv:2608.27384)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.27384/teaser_b.png" alt="π₀.₅ 추론 시간 프로파일 (Figure 1b)" loading="lazy">
+      <figcaption><b>Figure 1(b) — 프로파일링.</b> π₀.₅의 <b>action decoding이 추론 시간의 75%</b>를 차지 — FlashVLA가 바로 이 구간을 타겟함. (출처: arXiv:2608.27384)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.27384/pipeline.png" alt="FlashVLA 학습 파이프라인 (Figure 2 상단)" loading="lazy">
+      <figcaption><b>Figure 2 (Training) — Multi-buffer packing.</b> 하나의 관찰에 대해 N개 버퍼 상태를 한 배치에 packing, shared encoding에 isolated attention mask로 사전학습 VLA 어댑트. (출처: arXiv:2608.27384)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.27384/inference.png" alt="FlashVLA 추론 스트리밍 큐 (Figure 2 하단)" loading="lazy">
+      <figcaption><b>Figure 2 (Inference) — Streaming queue.</b> 매 forward마다 각 슬롯이 한 스텝씩 클린해지고, 첫 슬롯 chunk가 dispatch, 뒤로 밀린 뒤 새 노이즈 chunk가 채워짐. chunk-wise causal attention이 미래 chunk를 앞선 궤적에 자동 조건부화. (출처: arXiv:2608.27384)</figcaption>
+    </figure>
+    <div class="callout">
+      논문의 핵심 근거는 두 축 — <b>속도</b>(53.8→22.1ms, 2.43×)와 <b>정확도 유지</b>(96.9→97.8, 오히려 상승). 두 축이 함께 개선되므로 speed-quality trade-off가 없는 순수 improvement라는 주장을 뒷받침.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.27384" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.27384" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.27384 · FlashVLA · 요약 생성 2026-09-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

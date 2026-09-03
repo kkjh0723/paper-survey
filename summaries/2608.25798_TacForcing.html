@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>TacForcing — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Tactile · Streaming Action</span>
+    <h1>TacForcing: Streaming Action Generation with Execution-Time Tactile Feedback</h1>
+    <p class="authors">Jianbo Zhou, Boyuan Zhao, Yuzheng Zhang 외 · 교신 Zhijie Deng · 이중 7-DoF RealMan + 22-DoF Sharpa Wave 양손 실험</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.25798" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.25798" target="_blank">PDF</a>
+      <span>arXiv:2608.25798</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Tactile Feedback</span>
+      <span class="t">Streaming Action Expert</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">EATA</span>
+      <span class="t">Contact-Rich</span>
+      <span class="t">π₀.₅</span>
+    </div>
+    <p class="meta">제출: 2026-08-26 · UniVTAC 6-task 시뮬 + 실 Stand Bottle / Transfer Liquid / Wipe Board</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>일반 VLA는 <b>실행 시작 전 관찰</b>로 완성된 chunk를 만들어 실행 도중 새 촉각을 반영 못 한다. TacForcing은 chunk를 <b>K개 블록</b>으로 쪼개 <b>블록별 flow time</b>으로 순차 완성하고, 실행 도중 얻은 <b>촉각을 다음 블록에만 조건부화(EATA)</b>한다. 그 결과 촉각(cosine 변화 ~0.55)이 시각(~0.005)보다 훨씬 빠르게 바뀌는 접촉-풍부 태스크에서 시뮬 6-task <b>65%</b>(π₀.₅ 51 대비 +14, RDP 42 대비 +23), 실 3-task <b>69%</b>(π₀.₅ 27 · GR00T 42 · FTP-1 48 모두 큰 폭 상회). EATA 제거 시 시뮬 51 · 실 48로 급락 — 마스크가 핵심.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>접촉-풍부(contact-rich) 조작 — 병 세우기, 액체 옮기기 — 에서는 <b>손끝 촉각이 액션 결정에 필수</b>. 문제는 기존 VLA가 "관찰 → 여러 스텝 chunk를 한 번에 생성 → 실행" 구조라, 실행 도중 촉각이 급변해도 이미 만들어진 chunk엔 반영 안 됨. 저자들 관찰: <b>40-action 지평 안에서 촉각 임베딩의 cosine 변화가 ~0.55, 시각은 ~0.005</b> — 100배 이상 차이. 즉 시각은 거의 정지, 촉각은 폭발적으로 변한다.</p>
+    <div class="callout">
+      직관: 잔에 물을 따를 때 눈은 잔 위치를 계속 보고 있지만(거의 안 바뀜), 손가락에 걸리는 무게·기울기(촉각)는 매 순간 다르다. 이 다른 정보를 chunk 시작 직전 한 번만 참조하면 늦다 — <b>chunk 중간에도 촉각이 새로 반영</b>돼야 한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Streaming Action Expert</b> — 표준 action expert를 대체. action chunk를 <b>K개 블록</b>으로 쪼개고 각 블록에 <b>position-dependent flow time</b>을 부여 → 앞 블록이 먼저 완성·실행되는 동안 뒤 블록은 아직 refine 중.</li>
+      <li><b>EATA (Execution-Aware Tactile Attention)</b> — 촉각 참조를 <b>곧 실행될 다음 블록에만</b> 허용하는 attention mask. 나머지 미완 블록은 stale하지 않은 촉각만 받도록 제한 → 시간 mismatch 최소화.</li>
+      <li><b>학습-추론 정렬</b> — 학습 시에도 sampled 시점의 촉각과 대응 블록만 매칭해 loss 계산, 배포 시와 동일한 정보 흐름을 훈련.</li>
+      <li><b>실증</b> — π₀.₅(vision-only) 대비 시뮬 +14, 실 +42; RDP(tactile-reactive) 대비 시뮬 +23. Fixed tactile은 오히려 무의미. streaming without EATA는 절반 이득만.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>기존 방식 vs TacForcing</h3>
+    <p><b>기존</b>: 시각 관찰 O + 촉각 관찰 T<sub>0</sub> → 완전한 action chunk (a₁...aₙ) 생성 → 순차 실행. 실행 도중 새 촉각 T<sub>1</sub>, T<sub>2</sub>...가 들어와도 이미 완성된 chunk는 못 바꿈.</p>
+    <p><b>TacForcing</b>: 하나의 chunk를 K개 블록 (블록 1이 먼저 실행됨)으로 나눔. 각 블록 k는 <b>다른 노이즈 스케줄</b>로 완성 시점이 어긋남 → 블록 1 완성·실행 → 블록 2 완성 시점에 그때의 촉각 T<sub>1</sub> 반영 → 블록 2 실행 → ...</p>
+
+    <h3>Position-dependent flow time</h3>
+    <p>표준 flow matching은 chunk 전체에 하나의 flow time을 쓰지만, TacForcing은 각 블록 k에 자체 flow time을 부여:</p>
+    <div class="callout">
+      <b>λ<sub>k</sub><sup>(n)</sup> = min(n / n<sub>k</sub>, 1),  n<sub>k</sub> = k · S</b>
+      <br>기호: n은 sampling step 카운트, S는 블록 하나가 완성되는 데 필요한 step 수, n<sub>k</sub>는 블록 k가 완전히 클린해지는 step 지점. 즉 블록 1은 S 스텝에 완성, 블록 2는 2S, ..., 블록 K는 KS 스텝에 완성.
+    </div>
+    <p>이 스케줄 덕에 <b>블록 1이 완성돼 실행되는 시각에 블록 2는 반쯤 클린, 블록 3은 4분의 1 클린</b> 상태 → 앞 블록이 실행되는 동안 뒤 블록들은 <b>추가로 정제될 여지</b>가 남는다.</p>
+
+    <h3>EATA (Execution-Aware Tactile Attention)</h3>
+    <p>배경: k−1개 블록이 실행되고 나면 최신 촉각 표현 Z<sub>t</sub><sup>(k−1)</sup>가 관찰된다. 이 촉각은 <b>다음 실행 블록 A<sub>t</sub><sup>(k)</sup>와 시간적으로 정렬</b>돼 있다(즉시 실행됨). 나머지 미완 블록(k+1, k+2, ...)은 그 후에나 실행되므로, 지금의 촉각을 참조하면 <b>stale</b>이 된다.</p>
+    <div class="callout">
+      <b>EATA mask 규칙</b>: 촉각 Z<sub>t</sub><sup>(k−1)</sup>는 액션 위치 i가 <b>블록 k에 속할 때만</b> attend 가능(mask=0), 그 외엔 −∞. 그러면 뒤 블록들은 자신이 실행될 시점에 얻어질 <b>미래의 새 촉각</b>을 기다리며 진화한다.
+    </div>
+
+    <h3>학습 절차 (streaming과 정렬)</h3>
+    <ol>
+      <li>정규화된 진행도 <b>p ~ U([0,1))</b>을 샘플링(전체 KS 스텝 중 어느 시점인지).</li>
+      <li>블록별 flow time λ<sub>k</sub><sup>(n)</sup>과 그에 대응하는 <b>중간 상태 액션</b>을 계산.</li>
+      <li>EATA mask를 적용해 loss 계산 — <b>아직 완성 안 된 액션 위치만</b> 학습(이미 실행된 부분은 학습 안 함).</li>
+    </ol>
+    <p>이 학습 방식이 추론 시 정보 흐름과 완전히 일치해 <b>학습-추론 mismatch를 제거</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>시뮬 UniVTAC 6-task</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>π₀.₅</th><th>UniVTAC-ACT</th><th>RDP</th><th>FTP-1</th><th><b>TacForcing</b></th></tr></thead>
+      <tbody>
+        <tr><td>Lift Bottle</td><td>88</td><td>59</td><td>84</td><td>89</td><td class="win">90</td></tr>
+        <tr><td>Pull-out Key</td><td>43</td><td>41</td><td>18</td><td>35</td><td class="win">48</td></tr>
+        <tr><td>Lift Can</td><td>46</td><td>24</td><td>12</td><td>66</td><td>63</td></tr>
+        <tr><td>Put Bottle in Shelf</td><td>43</td><td>6</td><td>41</td><td>23</td><td class="win">43</td></tr>
+        <tr><td>Insert Hole</td><td>39</td><td>36</td><td>23</td><td>62</td><td class="win">69</td></tr>
+        <tr><td>Insert Tube</td><td>48</td><td>58</td><td>75</td><td>76</td><td class="win">79</td></tr>
+        <tr><td><b>평균</b></td><td>51</td><td>37</td><td>42</td><td>59</td><td class="win">65</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">π₀.₅(vision-only) 대비 +14%p, RDP(tactile-reactive) 대비 +23%p. FTP-1(streaming action forcing) 대비 +6%p — 촉각을 EATA로 시점에 맞게 주입한 이득이 명확.</p>
+
+    <h3>실 로봇 3-task</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Task</th><th>π₀.₅</th><th>GR00T</th><th>FTP-1</th><th><b>TacForcing</b></th></tr></thead>
+      <tbody>
+        <tr><td>Stand Bottle</td><td>56</td><td>69</td><td>50</td><td class="win">81</td></tr>
+        <tr><td>Transfer Liquid</td><td>19</td><td>13</td><td>19</td><td class="win">50</td></tr>
+        <tr><td>Wipe Board</td><td>—</td><td>—</td><td>75</td><td>75</td></tr>
+        <tr><td><b>평균</b></td><td>27</td><td>42</td><td>48</td><td class="win">69</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Transfer Liquid에서 격차 최대 — <b>액체 무게 변화라는 시각으로 못 보는 접촉 정보</b>가 결정적. Stand Bottle 81 vs FTP-1 50, GR00T 69, π₀.₅ 56 모두 큰 폭 상회.</p>
+
+    <h3>Visual vs Tactile 변화율 (그림 2)</h3>
+    <p>Dropper 짜기 40-action 지평 안에서 <b>촉각 임베딩 cosine 변화 ≈ 0.55</b> vs <b>시각 ≈ 0.005</b>. 100배 차이 — 촉각을 chunk 내 <b>여러 시점에 반영</b>해야 하는 이유의 직접 증거.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (핵심 요약)</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구성</th><th>Sim 평균</th><th>Real 평균</th></tr></thead>
+      <tbody>
+        <tr><td>Base (촉각 없음)</td><td>43%</td><td>42%</td></tr>
+        <tr><td>Fixed Tactile (초기 한 번만)</td><td>42%</td><td>31%</td></tr>
+        <tr><td>Streaming w/o EATA</td><td>51%</td><td>48%</td></tr>
+        <tr><td><b>Full TacForcing</b></td><td class="win">60%</td><td class="win">69%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>Fixed tactile은 오히려 해로울 수 있다(31% vs base 42%)</b> — stale 촉각이 잘못된 신호로 작용. "촉각만 있으면 좋다"가 아님을 실증.</li>
+      <li><b>Streaming without EATA</b>는 이득이 있지만 부족(+9 sim, +6 real). 미완성 블록들이 <b>동일한 촉각</b>을 다 참조하면 뒤 블록엔 stale.</li>
+      <li><b>EATA 추가로 +9 sim, +21 real</b> — 실 로봇에서 이득이 특히 큼(촉각 변화가 실환경에서 더 빠름).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.25798/framework.png" alt="TacForcing framework (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Framework.</b> VLM이 태스크 컨텍스트를 인코딩, streaming action expert가 K개 블록을 position-dependent flow time으로 순차 완성, 블록별로 <b>실행 시점에 갱신되는 촉각</b>이 EATA 마스크로 다음 블록에만 반영. (출처: arXiv:2608.25798)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.25798/obs_exp.png" alt="시각 vs 촉각 변화 비교 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 시각 vs 촉각 dynamics.</b> Dropper 짜기 40-action 지평에서 <b>촉각 임베딩 cosine 변화 0.55 vs 시각 0.005</b> — 110× 차이. 이 그림 하나가 "촉각은 execution-time에 계속 갱신되어야 한다"는 논문의 핵심 논리를 시각화. (출처: arXiv:2608.25798)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Ablation 표</b>가 논문의 skeleton evidence — Fixed tactile 31 &lt; Base 42가 "촉각을 stale하게 쓰면 오히려 해롭다"를 증명하고, Full 69 vs w/o EATA 48이 "<b>실행 시점 정렬 마스크가 없으면 촉각 이득의 절반이 소실</b>"됨을 증명.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.25798" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.25798" target="_blank">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.25798 · TacForcing · 요약 생성 2026-09-03
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
