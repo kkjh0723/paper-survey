@@ -40,6 +40,12 @@
       "title": "FlashVLA: Streaming Action Decoding for Fast and Asynchronous VLA Inference",
       "arxiv_url": "https://arxiv.org/abs/2608.27384",
       "added": "2026-09-03"
+    },
+    {
+      "id": "2608.25798",
+      "title": "TacForcing: Streaming Action Generation with Execution-Time Tactile Feedback",
+      "arxiv_url": "https://arxiv.org/abs/2608.25798",
+      "added": "2026-09-03"
     }
   ],
   "dismissed": [
