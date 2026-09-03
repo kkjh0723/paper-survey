@@ -10,7 +10,14 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [],
+  "queue": [
+    {
+      "id": "2608.29242",
+      "title": "AnyWorld: Factorized Egocentric World Models for Cross-Embodiment Generalization",
+      "arxiv_url": "https://arxiv.org/abs/2608.29242",
+      "added": "2026-09-03"
+    }
+  ],
   "dismissed": [
     "2607.04978",
     "2405.15223",
@@ -25,5 +32,5 @@
     "2310.10639",
     "2607.19719"
   ],
-  "updated": "2026-08-31"
+  "updated": "2026-09-03"
 }
