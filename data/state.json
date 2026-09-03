@@ -22,6 +22,12 @@
       "title": "Motus2: A Self-Evolving General World Model for Dexterous Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2608.30237",
       "added": "2026-09-03"
+    },
+    {
+      "id": "2609.01596",
+      "title": "Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2609.01596",
+      "added": "2026-09-03"
     }
   ],
   "dismissed": [
