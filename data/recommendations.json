@@ -1,10 +1,64 @@
 {
-  "generated": "2026-09-04",
+  "generated": "2026-09-05",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2609.03591",
+          "title": "Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Corrections (XR-2)",
+          "authors": "Jiafeng Xu et al.",
+          "summary_ko": "XR-2 VLA를 1,500시간 규모의 다양한 양손(Bimanual) 조작 데이터로 학습하고, 시연을 확장하며 DAgger(전문가 개입) 수정으로 정책을 개선하면 성능이 안정적으로 스케일업된다는 대규모 실증 연구.",
+          "tags": [
+            "VLA",
+            "Bimanual",
+            "Scaling",
+            "DAgger",
+            "Data"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.03591",
+          "extra_url": "",
+          "date": "2026-09-03",
+          "reason": "보유한 UMI/데이터 수집 계열(2607.25895 UMI, 2402.10329 hand-held gripper), 양손 조작(2410.24185 MimicGen, 2401.02117 ALOHA mobile), 그리고 스케일링 법칙(2410.18647 Scaling Laws for Imitation)과 정면으로 이어지는 대규모 VLA 스케일링 실증. 시연+온폴리시 수정을 함께 스케일업한 대안적 데이터 파이프라인 사례.",
+          "rec_date": "2026-09-05"
+        },
+        {
+          "id": "2609.03681",
+          "title": "WISE: World-model-guided Imagination Scheduling for Efficient Post-training of Vision-Language-Action Models",
+          "authors": "Chenhao Zhang, Hanyu Zhao",
+          "summary_ko": "World Model이 상상한 롤아웃 중 학습에 도움이 되는 구간만 골라서 VLA 후처리(post-training)에 사용하는 선택적 상상 스케줄러. GPU 시간을 80% 줄이면서 실제 분포 변화에도 견고성을 개선.",
+          "tags": [
+            "VLA",
+            "World Model",
+            "Post-training",
+            "Imagination",
+            "Efficiency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.03681",
+          "extra_url": "",
+          "date": "2026-09-03",
+          "reason": "보유한 VLA+WM 결합 계열(2607.29613 VLA RL with WM, 2608.16885 Hierarchical VLA+WM, 2607.19876 IDM-Free WM)과 직결. 상상 롤아웃을 무차별로 쓰지 않고 '언제 어떤 걸' 학습에 쓸지 스케줄링하는 관점이 새로움.",
+          "rec_date": "2026-09-05"
+        },
+        {
+          "id": "2608.30643",
+          "title": "Temporal Forcing: 4D Representation Alignment for Vision-Language-Action Models",
+          "authors": "Xingyu Ding, Yuzhong Zhao",
+          "summary_ko": "VLA의 내부 시각 표현을 시간을 축으로 하는 4D(3D+시간) 기하 표현과 정렬시켜 장기 조작 성능을 끌어올리는 방법. LIBERO 벤치마크에서 98.8% 성공률.",
+          "tags": [
+            "VLA",
+            "4D Representation",
+            "Temporal Alignment",
+            "LIBERO",
+            "DINOv3"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.30643",
+          "extra_url": "",
+          "date": "2026-08-31",
+          "reason": "보유한 dense feature 백본 활용(2607.18236 DINOv2 Dense ViT)과 DINOv3(2608.14379) 트렌드, 그리고 장기 조작(2608.16885, 2607.18060)과 이어지는 표현 정렬 관점의 새 접근. 4D 지오메트리로 시각 표현을 앵커링하는 방식이 특징.",
+          "rec_date": "2026-09-05"
+        },
         {
           "id": "2609.02546",
           "title": "ZETA: A Controlled Study of Zero-Shot Cross-Embodiment VLA Transfer for Tabletop Manipulation",
@@ -221,24 +275,6 @@
           "rec_date": "2026-08-29"
         },
         {
-          "id": "2608.22067",
-          "title": "DELE-w0.5: Inferring Action from Future Latent State for Robotic Manipulation",
-          "authors": "Fenghao Lei, Zhixiong Huang, Long Yang, Jiabao Chen, Peilin Huang, Han Fu, Zhuo Li, Xiaoxue Ren",
-          "summary_ko": "비디오 자체를 생성하지 않고, 로봇 행동이 만들 미래의 잠재 상태(future latent state)를 예측한 뒤 그로부터 행동을 역산한다. 시각 중복을 제거해 계산량을 크게 줄이면서, 실기체 480회 실험 4개 장기 태스크에서 평균 62.5% 성공률.",
-          "tags": [
-            "World Action Model",
-            "Latent State",
-            "Inverse Dynamics",
-            "Long-Horizon",
-            "Efficient Inference"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.22067",
-          "extra_url": "",
-          "date": "2026-08-22",
-          "reason": "좋아요를 누른 WALA(2607.11397)와 pool의 LAWA(2608.24882)가 밀고 있는 '잠재 미래로 행동을 조종한다' 흐름의 최신 실기체 결과. Latent Action·World Model·Efficient Inference 세 축이 동시에 겹친다.",
-          "rec_date": "2026-08-28"
-        },
-        {
           "id": "2608.24101",
           "title": "TrAct: Bridging Robot Control and Visual Prediction with Visual Tracks",
           "authors": "Zhi Cao, Howard Ji, Kevin Zhang, Kuangzhi Ge, Li Fei-Fei, Jiajun Wu, Huang Huang",
@@ -257,6 +293,24 @@
           "rec_date": "2026-08-28"
         },
         {
+          "id": "2608.22067",
+          "title": "DELE-w0.5: Inferring Action from Future Latent State for Robotic Manipulation",
+          "authors": "Fenghao Lei, Zhixiong Huang, Long Yang, Jiabao Chen, Peilin Huang, Han Fu, Zhuo Li, Xiaoxue Ren",
+          "summary_ko": "비디오 자체를 생성하지 않고, 로봇 행동이 만들 미래의 잠재 상태(future latent state)를 예측한 뒤 그로부터 행동을 역산한다. 시각 중복을 제거해 계산량을 크게 줄이면서, 실기체 480회 실험 4개 장기 태스크에서 평균 62.5% 성공률.",
+          "tags": [
+            "World Action Model",
+            "Latent State",
+            "Inverse Dynamics",
+            "Long-Horizon",
+            "Efficient Inference"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2608.22067",
+          "extra_url": "",
+          "date": "2026-08-22",
+          "reason": "좋아요를 누른 WALA(2607.11397)와 pool의 LAWA(2608.24882)가 밀고 있는 '잠재 미래로 행동을 조종한다' 흐름의 최신 실기체 결과. Latent Action·World Model·Efficient Inference 세 축이 동시에 겹친다.",
+          "rec_date": "2026-08-28"
+        },
+        {
           "id": "2608.24882",
           "title": "Latent Action as Intention Enables Efficient Future Imagination for World Action Models",
           "authors": "Xiang Li, Yupeng Zheng, Songen Gu, et al.",
@@ -271,23 +325,6 @@
           "extra_url": "",
           "date": "2026-08-25",
           "reason": "좋아요한 WALA(2607.11397, DINOv3 + Latent Action World Model)·2607.11643 Xiaomi-U0·2606.19980·index의 Latent Action Study(2608.19613)·pool의 LD4WAM(2608.22403, 사람 영상 잠재 동역학)·Hydra-0(2608.18077, action flow)·GigaBrain-0.7(2608.15875)의 정면 다음 세대. 컬렉션의 Latent Action 태그(가중치 7)와 World Model 태그(가중치 15)의 정확한 교집합에 위치하며, '픽셀 예측을 얼마나 덜어내면서도 미래 정보를 유지할까'라는 최근 관심의 최신 답. pool의 DELE-w0.5(inferring action from future latent state)·WorldSync 진단과 짝지어 읽으면 좋다.",
-          "rec_date": "2026-08-27"
-        },
-        {
-          "id": "2608.24603",
-          "title": "Gripper-aware Vision Language Action Models",
-          "authors": "Hanyi Zhang, Zihong Luo, Tianyu Li, et al.",
-          "summary_ko": "대부분의 시각-언어-액션(VLA, Vision-Language-Action) 모델은 그리퍼(gripper, 로봇 손가락) 종류가 달라도 동일하게 취급하지만, 실제로는 파지(grasping) 전략이 그리퍼 형태에 강하게 의존한다는 문제 제기. 저자들은 (1) 5종 그리퍼·10.3만 시연(demonstration)의 다중-그리퍼 데이터셋 MiGA를 공개하고, (2) 다중-그리퍼 토크나이저(multi-gripper tokenizer)와 어댑터 기반 정책 라우팅(adapter-based policy routing)을 결합한 GVLA(Gripper-aware VLA)를 제안. 학습 때 못 본 그리퍼에도 zero-shot 일반화가 가능해 '어떤 손을 붙여도 되는 VLA' 한 대로 여러 임바디먼트를 커버.",
-          "tags": [
-            "VLA",
-            "Cross-Embodiment",
-            "Manipulation",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.24603",
-          "extra_url": "",
-          "date": "2026-08-25",
-          "reason": "컬렉션 최상위 태그 두 개 VLA(가중치 38)·Cross-Embodiment(가중치 12)의 정면 교집합. index의 OpenVLA(2406.09246)·π0.5(2504.16054)·SmolVLA(2506.01844)·GR00T-N1(2503.14734)·좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)의 후속으로, '이제 손(그리퍼)을 바꿔도 되는가'를 정면으로 다룸. pool의 관련 항목 HPT(2409.20537, 이종 프리트레이닝)·오늘 추천할 CrossFormer(2408.11812, 여러 로봇을 하나로)와 짝을 이루며, index의 자매작 HAF(2608.16837, 휴머노이드 임바디먼트)·Cross-Embodiment Transfer(2607.27549)·좋아요한 2607.18231(cross-embodiment)의 그리퍼 축 보강.",
           "rec_date": "2026-08-27"
         },
         {
@@ -314,21 +351,75 @@
       "label": "관련 논문",
       "items": [
         {
-          "id": "2310.12931",
-          "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
-          "authors": "Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani, Dinesh Jayaraman, Yuke Zhu, Linxi Fan, Anima Anandkumar",
-          "summary_ko": "강화학습(RL, reinforcement learning) 로봇 정책 학습의 병목이 태스크마다 사람이 설계·튜닝해야 하는 보상 함수(reward function)라는 관찰에서 출발. Eureka는 GPT-4 같은 대형 언어 모델(LLM)이 시뮬 환경 소스 코드를 컨텍스트로 받아 보상 함수를 파이썬 코드로 생성하고, 성과 피드백을 바탕으로 진화적 최적화(evolutionary optimization over reward code, 유전 알고리즘처럼 코드 버전을 세대별로 개선)로 자동 개선하는 알고리즘. 10종 로봇·29개 환경 중 83%에서 전문가 설계 보상 대비 평균 52% 정규화 성능 향상을 달성. 시뮬 손이 펜 스핀(pen-spinning) 같은 복잡한 스킬을 커리큘럼 학습과 함께 학습.",
+          "id": "2502.19645",
+          "title": "Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success (OpenVLA-OFT)",
+          "authors": "Moo Jin Kim, Chelsea Finn",
+          "summary_ko": "OpenVLA를 다운스트림 조작 태스크에 파인튜닝할 때 병렬 디코딩(parallel decoding)과 액션 청킹(action chunking)을 함께 도입하면 성공률·속도·양손 성능이 모두 좋아진다는 실용 레시피.",
           "tags": [
-            "LLM",
-            "Reward Design",
-            "Coding Agent",
-            "RL",
-            "NVIDIA"
+            "VLA",
+            "Fine-tuning",
+            "Parallel Decoding",
+            "Action Chunking",
+            "OpenVLA"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2310.12931",
-          "extra_url": "https://eureka-research.github.io/",
-          "date": "2023-10-19",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — pool 관련 항목 DrEureka(2406.01967, sim-to-real 후속)의 정확한 원류이자, 좋아요 최고점 조합 Aspire(agentic robotics + skill library)·2606.19980(self-improving coding agent + robot fleet)·2607.05369 GaP(graph-as-policy + agentic coding)·2607.08448 Harness VLA(frozen VLA + agentic planner)의 코딩 에이전트 사상의 사전작 좌표. pool의 이번 새 항목 Physical Agentic AI(2608.22657, 오케스트레이터)·PhysCaP(2608.21031, code-as-policy + physics probing)·SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·이번 새 추천 EmbodiedSkills(2609.01281)·pool 관련 항목 Voyager(2305.16291)·AutoRT(2401.12963)의 계보 뿌리. index의 ART(2608.14047, VLA + tool-use)·SDGC(2608.19490)·Teach and Grow(2608.17209)와 자매작. 진화적 최적화로 보상 코드를 개선한다는 축은 pool의 Q-Planning(2608.21204, 얼린 정책 + 소형 Q 자기개선)·CoRe(2608.14822)·Look Before You Leap(2607.03751, MCTS→Q 증류)의 사상적 대응. Yuke Zhu·Linxi Fan·Anima Anandkumar 조합이라 이후 NVIDIA/Caltech agentic 임바디드 계보(GR00T, Voyager, DrEureka)의 표준 참조.",
+          "arxiv_url": "https://arxiv.org/abs/2502.19645",
+          "extra_url": "https://openvla-oft.github.io/",
+          "date": "2025-02-27",
+          "reason": "보유 VLA 파인튜닝·가속 계열(2608.14379 DINOv3+CUDA Graph, 2607.14695 KV Cache 스트리밍, 2608.19490 Self-Demonstration FT)의 직계 선행. 액션 청킹(2608.02547)과 스트리밍 디코딩(2608.27384)의 레퍼런스 조합을 처음 정착시킨 논문.",
+          "rec_date": "2026-09-05"
+        },
+        {
+          "id": "2410.13126",
+          "title": "ALOHA Unleashed: A Simple Recipe for Robot Dexterity",
+          "authors": "Tony Z. Zhao, Jonathan Tompson",
+          "summary_ko": "대규모 시연 데이터와 표현력 있는 Diffusion Policy를 결합하는 단순한 레시피만으로도 양손·유연물체·정교조작 같은 어려운 dexterous 과제를 학습할 수 있다는 CoRL 계열 대표작.",
+          "tags": [
+            "ALOHA",
+            "Bimanual",
+            "Dexterous Manipulation",
+            "Diffusion Policy",
+            "Scaling"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.13126",
+          "extra_url": "https://aloha-unleashed.github.io/",
+          "date": "2024-10-17",
+          "reason": "보유한 ALOHA 계열(2401.02117 mobile ALOHA, 2410.07864 RDT-1B), 양손 조작(2410.24185 MimicGen), Diffusion Policy(2607.28596)와 직접 이어지는 기반 논문. '데이터+Diffusion만으로 어디까지 되는가'라는 스케일 vs 아키텍처 논쟁의 핵심 근거.",
+          "rec_date": "2026-09-05"
+        },
+        {
+          "id": "2409.14411",
+          "title": "Scaling Diffusion Policy in Transformer to 1 Billion Parameters for Robotic Manipulation (ScaleDP)",
+          "authors": "Minjie Zhu, Yichen Zhu",
+          "summary_ko": "Transformer 기반 Diffusion Policy를 10억(1B) 파라미터까지 안정적으로 스케일업하기 위한 그래디언트 안정화·비인과 어텐션 기법을 제안. MetaWorld·실로봇에서 성능 향상.",
+          "tags": [
+            "Diffusion Policy",
+            "Scaling",
+            "Transformer",
+            "1B Parameters",
+            "MetaWorld"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.14411",
+          "extra_url": "",
+          "date": "2024-09-22",
+          "reason": "보유한 Diffusion Policy·스케일링 계열(2410.07864 RDT-1B, 2410.18647 Scaling Laws, 2411.19650 DiT VLA)의 직접 선행. Diffusion Policy를 어디까지 키울 수 있는가, 어떤 학습 트릭이 필요한가에 대한 핵심 참고.",
+          "rec_date": "2026-09-05"
+        },
+        {
+          "id": "2412.14803",
+          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations (VPP)",
+          "authors": "Yucheng Hu, Yanjiang Guo, Pengchao Wang, Xiaoyu Chen, Yen-Jen Wang, Jianke Zhang, Koushil Sreenath, Chaochao Lu, Jianyu Chen",
+          "summary_ko": "기존 시각-운동 정책이 단일 이미지 인코더에 의존해 정적 정보만 뽑는 반면, VPP(Video Prediction Policy)는 비디오 확산 모델(VDM, Video Diffusion Model, 비디오를 노이즈 제거로 생성하는 사전학습 모델)이 만들어내는 예측적 시각 표현(predictive visual representation, 현재 관측 + 예측된 미래 동역학을 함께 담은 임베딩) 위에서 정책을 학습한다는 관찰에서 출발. 로봇·사람 조작 데이터셋으로 비디오 파운데이션 모델을 파인튜닝하고, 그 위에 얹은 정책이 암묵적 역동역학 모델(implicit inverse dynamics model, 예측된 미래 프레임에서 현재 액션을 역산)을 학습. Calvin 벤치마크 18.6% 상대 향상, 실기 복합 덱스터러스 조작 태스크 성공률 31.6% 향상. ICML 2025 Spotlight.",
+          "tags": [
+            "Video Diffusion",
+            "Predictive Representation",
+            "Generalist Policy",
+            "ICML 2025",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.14803",
+          "extra_url": "https://video-prediction-policy.github.io/",
+          "date": "2024-12-19",
+          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 좋아요한 WALA(2607.11397, DINOv3 world model + latent action)·2607.11643 Xiaomi-U0의 '비디오 파운데이션을 정책 표현으로 재활용'하는 노선의 사상적 원류. 이번 pool 새 항목 TrAct(2608.24101, 비주얼 트랙 + WM)·이번 함께 추천 ATM(2401.00025)의 자매작이자, pool의 이번 새 추천 Spatially Aware WAM(2609.02531, geometric latent diffusion)·pool의 Riemann-1.0(2608.27033, 200K시간)·GigaBrain-0.7(2608.15875)·LD4WAM(2608.22403)·GR-2(2410.06158)의 정확한 사전작. 예측적 표현으로 정책을 얹는다는 아이디어는 pool의 이번 새 항목 PAVE(2608.30378, 다중 지평 예측 정합)·LAWA(2608.24882, 잠재 액션 의도)·DELE-w0.5(2608.22067, 미래 잠재 상태)·hint²(2608.13678, 계층 WM)·pool 관련 항목 DINO-WM(2411.04983)·V-JEPA 2(2506.09985)의 정면 좌표. index의 π0.5(2504.16054)·G0.5(2608.11739)·SmolVLA(2506.01844)의 사전학습 표현 계보의 자매작. Koushil Sreenath 그룹이라 UC Berkeley 로봇 학습 계보의 표준 참조.",
           "rec_date": "2026-09-04"
         },
         {
@@ -350,39 +441,22 @@
           "rec_date": "2026-09-04"
         },
         {
-          "id": "2412.14803",
-          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations (VPP)",
-          "authors": "Yucheng Hu, Yanjiang Guo, Pengchao Wang, Xiaoyu Chen, Yen-Jen Wang, Jianke Zhang, Koushil Sreenath, Chaochao Lu, Jianyu Chen",
-          "summary_ko": "기존 시각-운동 정책이 단일 이미지 인코더에 의존해 정적 정보만 뽑는 반면, VPP(Video Prediction Policy)는 비디오 확산 모델(VDM, Video Diffusion Model, 비디오를 노이즈 제거로 생성하는 사전학습 모델)이 만들어내는 예측적 시각 표현(predictive visual representation, 현재 관측 + 예측된 미래 동역학을 함께 담은 임베딩) 위에서 정책을 학습한다는 관찰에서 출발. 로봇·사람 조작 데이터셋으로 비디오 파운데이션 모델을 파인튜닝하고, 그 위에 얹은 정책이 암묵적 역동역학 모델(implicit inverse dynamics model, 예측된 미래 프레임에서 현재 액션을 역산)을 학습. Calvin 벤치마크 18.6% 상대 향상, 실기 복합 덱스터러스 조작 태스크 성공률 31.6% 향상. ICML 2025 Spotlight.",
+          "id": "2310.12931",
+          "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
+          "authors": "Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani, Dinesh Jayaraman, Yuke Zhu, Linxi Fan, Anima Anandkumar",
+          "summary_ko": "강화학습(RL, reinforcement learning) 로봇 정책 학습의 병목이 태스크마다 사람이 설계·튜닝해야 하는 보상 함수(reward function)라는 관찰에서 출발. Eureka는 GPT-4 같은 대형 언어 모델(LLM)이 시뮬 환경 소스 코드를 컨텍스트로 받아 보상 함수를 파이썬 코드로 생성하고, 성과 피드백을 바탕으로 진화적 최적화(evolutionary optimization over reward code, 유전 알고리즘처럼 코드 버전을 세대별로 개선)로 자동 개선하는 알고리즘. 10종 로봇·29개 환경 중 83%에서 전문가 설계 보상 대비 평균 52% 정규화 성능 향상을 달성. 시뮬 손이 펜 스핀(pen-spinning) 같은 복잡한 스킬을 커리큘럼 학습과 함께 학습.",
           "tags": [
-            "Video Diffusion",
-            "Predictive Representation",
-            "Generalist Policy",
-            "ICML 2025",
-            "Foundation Model"
+            "LLM",
+            "Reward Design",
+            "Coding Agent",
+            "RL",
+            "NVIDIA"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2412.14803",
-          "extra_url": "https://video-prediction-policy.github.io/",
-          "date": "2024-12-19",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 좋아요한 WALA(2607.11397, DINOv3 world model + latent action)·2607.11643 Xiaomi-U0의 '비디오 파운데이션을 정책 표현으로 재활용'하는 노선의 사상적 원류. 이번 pool 새 항목 TrAct(2608.24101, 비주얼 트랙 + WM)·이번 함께 추천 ATM(2401.00025)의 자매작이자, pool의 이번 새 추천 Spatially Aware WAM(2609.02531, geometric latent diffusion)·pool의 Riemann-1.0(2608.27033, 200K시간)·GigaBrain-0.7(2608.15875)·LD4WAM(2608.22403)·GR-2(2410.06158)의 정확한 사전작. 예측적 표현으로 정책을 얹는다는 아이디어는 pool의 이번 새 항목 PAVE(2608.30378, 다중 지평 예측 정합)·LAWA(2608.24882, 잠재 액션 의도)·DELE-w0.5(2608.22067, 미래 잠재 상태)·hint²(2608.13678, 계층 WM)·pool 관련 항목 DINO-WM(2411.04983)·V-JEPA 2(2506.09985)의 정면 좌표. index의 π0.5(2504.16054)·G0.5(2608.11739)·SmolVLA(2506.01844)의 사전학습 표현 계보의 자매작. Koushil Sreenath 그룹이라 UC Berkeley 로봇 학습 계보의 표준 참조.",
+          "arxiv_url": "https://arxiv.org/abs/2310.12931",
+          "extra_url": "https://eureka-research.github.io/",
+          "date": "2023-10-19",
+          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — pool 관련 항목 DrEureka(2406.01967, sim-to-real 후속)의 정확한 원류이자, 좋아요 최고점 조합 Aspire(agentic robotics + skill library)·2606.19980(self-improving coding agent + robot fleet)·2607.05369 GaP(graph-as-policy + agentic coding)·2607.08448 Harness VLA(frozen VLA + agentic planner)의 코딩 에이전트 사상의 사전작 좌표. pool의 이번 새 항목 Physical Agentic AI(2608.22657, 오케스트레이터)·PhysCaP(2608.21031, code-as-policy + physics probing)·SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·이번 새 추천 EmbodiedSkills(2609.01281)·pool 관련 항목 Voyager(2305.16291)·AutoRT(2401.12963)의 계보 뿌리. index의 ART(2608.14047, VLA + tool-use)·SDGC(2608.19490)·Teach and Grow(2608.17209)와 자매작. 진화적 최적화로 보상 코드를 개선한다는 축은 pool의 Q-Planning(2608.21204, 얼린 정책 + 소형 Q 자기개선)·CoRe(2608.14822)·Look Before You Leap(2607.03751, MCTS→Q 증류)의 사상적 대응. Yuke Zhu·Linxi Fan·Anima Anandkumar 조합이라 이후 NVIDIA/Caltech agentic 임바디드 계보(GR00T, Voyager, DrEureka)의 표준 참조.",
           "rec_date": "2026-09-04"
-        },
-        {
-          "id": "2403.01823",
-          "title": "RT-H: Action Hierarchies Using Language",
-          "authors": "Suneel Belkhale, Tianli Ding, Ted Xiao, Pierre Sermanet, Quon Vuong, Jonathan Tompson, Yevgen Chebotar, Debidatta Dwibedi, Dorsa Sadigh",
-          "summary_ko": "고수준 태스크 명령과 저수준 로봇 액션 사이에 '언어로 표현된 세밀한 동작 기술'(예: '팔을 앞으로 20cm 뻗어라')을 중간 계층으로 넣은 계층적 정책. 이 언어 액션(language action)을 매개로 여러 태스크가 공유하는 저수준 모션 구조를 학습하고, 실행 중 사람이 즉시 언어로 교정하면 그 교정에서 다시 학습.",
-          "tags": [
-            "VLA",
-            "Hierarchical VLA",
-            "Language Action",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2403.01823",
-          "extra_url": "https://rt-hierarchy.github.io/",
-          "date": "2024-03-04",
-          "reason": "보유 논문 '무엇이 계층적 VLA 오케스트레이션에 중요한가'(2606.10267, 좋아요)의 핵심 참고문헌. Hierarchical VLA·VLM Planner·Skill Library 태그와 최근 관심축인 Harness VLA·EmbodiedSkills 계열의 원류.",
-          "rec_date": "2026-09-03"
         },
         {
           "id": "2403.12910",
@@ -399,6 +473,23 @@
           "extra_url": "https://yay-robot.github.io/",
           "date": "2024-03-19",
           "reason": "좋아요 논문 Harness VLA(2607.08448)와 FLARE(추천 pool)의 '실행 실패를 언어 피드백으로 회복' 아이디어의 원류에 해당. FM-VLA(좋아요)의 접촉 조작 실패 회복 시나리오와도 직접 연결.",
+          "rec_date": "2026-09-03"
+        },
+        {
+          "id": "2403.01823",
+          "title": "RT-H: Action Hierarchies Using Language",
+          "authors": "Suneel Belkhale, Tianli Ding, Ted Xiao, Pierre Sermanet, Quon Vuong, Jonathan Tompson, Yevgen Chebotar, Debidatta Dwibedi, Dorsa Sadigh",
+          "summary_ko": "고수준 태스크 명령과 저수준 로봇 액션 사이에 '언어로 표현된 세밀한 동작 기술'(예: '팔을 앞으로 20cm 뻗어라')을 중간 계층으로 넣은 계층적 정책. 이 언어 액션(language action)을 매개로 여러 태스크가 공유하는 저수준 모션 구조를 학습하고, 실행 중 사람이 즉시 언어로 교정하면 그 교정에서 다시 학습.",
+          "tags": [
+            "VLA",
+            "Hierarchical VLA",
+            "Language Action",
+            "Imitation Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.01823",
+          "extra_url": "https://rt-hierarchy.github.io/",
+          "date": "2024-03-04",
+          "reason": "보유 논문 '무엇이 계층적 VLA 오케스트레이션에 중요한가'(2606.10267, 좋아요)의 핵심 참고문헌. Hierarchical VLA·VLM Planner·Skill Library 태그와 최근 관심축인 Harness VLA·EmbodiedSkills 계열의 원류.",
           "rec_date": "2026-09-03"
         },
         {
@@ -437,24 +528,6 @@
           "rec_date": "2026-09-02"
         },
         {
-          "id": "2309.01918",
-          "title": "RoboAgent: Generalization and Efficiency in Robot Manipulation via Semantic Augmentations and Action Chunking (MT-ACT)",
-          "authors": "Homanga Bharadhwaj, Jay Vakil, Mohit Sharma, Abhinav Gupta, Vikash Kumar, Shubham Tulsiani",
-          "summary_ko": "다중 태스크 로봇 조작 정책을 소량 시연(demonstration)만으로 스케일 시키는 프레임워크. 데이터 병목을 극복하기 위해 세 축을 결합 — (1) 의미론적 증강(semantic augmentation, 언어·이미지 편집으로 시연 장면의 객체·배경·조명을 다양화), (2) 액션 청킹 트랜스포머(action chunking transformer, ACT, 한 번에 여러 스텝의 액션을 예측하는 정책 구조), (3) 다중 태스크 학습. 총 7,500개 시연만으로 하나의 유니버설 에이전트가 12개 조작 스킬을 배우고, 38개 부엌 태스크에 일반화 — 미학습 시나리오에서 이전 기법 대비 40% 이상 상회. CMU Abhinav Gupta·Vikash Kumar 그룹.",
-          "tags": [
-            "Multi-Task",
-            "Semantic Augmentation",
-            "Action Chunking",
-            "Data-Efficient",
-            "CMU"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2309.01918",
-          "extra_url": "https://robopen.github.io/",
-          "date": "2023-09-05",
-          "reason": "index의 ACT(2304.13705, ALOHA)의 정면 다중-태스크 확장이자, 이번 pool 새 항목 Hierarchical Skill Retrieval(2608.24042)·pool의 관련 항목 MimicPlay(2302.12422)·Voyager(2305.16291)·이번 새 관련 추천 AutoRT(2401.12963)의 사상적 자매작 — 모두 '작은 데이터로 스킬 다양성을 확보'하는 노선. 좋아요한 Aspire(agentic robotics + skill library)·2607.08448 Harness VLA(frozen VLA + skill primitive)·Hi-VLA(2606.10267, 계층 옵션)의 스킬 축 원류. index의 RoboCasa(pool 관련 항목 2406.02523, 부엌 벤치마크)·MimicGen(2410.24185)·τ₀-VLA(2608.16885)의 부엌 씬 다중 태스크 라인의 뿌리이자, pool의 SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516)·index의 Teach and Grow(2608.17209, 재사용 스킬 블록)·Skill Mining(2607.08354)의 스킬 라이브러리 계열 원류. 의미론적 데이터 증강은 이번 새 추천 AnyWorld(2608.29242, factorized 임바디먼트)·좋아요한 Xiaomi-U0(2607.11643, 38B) 데이터 증강 노선의 저비용 대응, 좋아요한 Force Memory VLA(2607.18231, cross-embodiment)의 데이터 다양성 축과 정합. Homanga Bharadhwaj·Vikash Kumar 조합이라 이후 CMU/Meta 임바디드 계보(ATM, HRP)의 표준 참조.",
-          "rec_date": "2026-09-02"
-        },
-        {
           "id": "2311.01977",
           "title": "RT-Trajectory: Robotic Task Generalization via Hindsight Trajectory Sketches",
           "authors": "Jiayuan Gu, Sean Kirmani, Paul Wohlhart, Kanishka Rao, Byron David, Karl Pertsch, Chelsea Finn, Sergey Levine 외 (Google DeepMind)",
@@ -470,6 +543,24 @@
           "extra_url": "",
           "date": "2023-11-03",
           "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — pool 관련 항목 ATM(2401.00025, any-point trajectory)의 정확한 자매작이자, 컬렉션의 HAMSTER(2502.05485, 2D Path 계층)·pool의 Hydra-0(2608.18077, 픽셀 모션으로서 액션 플로우)·Flex-π(2608.10860, 3D pointmap)·index의 Pointmap VLA(2607.11498)·EgoMimic(2608.02580)·2607.19343(Masked Video WM)·pool의 이번 새 항목 TrAct(2608.24101, 비주얼 트랙으로 정책 조건)의 사상적 원류. '픽셀 상 궤적을 태스크 명세로 쓴다'는 축은 좋아요한 Hi-VLA(2606.10267, 계층 옵션)·2607.05369 GaP(graph-as-policy)·이번 새 추천 AGM(2608.29537, 서브골 진행 + 물리 증거)의 계층 스펙 대안. index의 RT-2(2307.15818)·RT-1(2212.06817)·Q-Transformer(pool 관련 2309.10150)의 자매작으로 Google 실기 로봇 라인의 표준 참조. pool의 SmolVLA(2506.01844)·Nano-VLA(2608.14379)·이번 새 추천 CrossFormer(2408.11812, pool 관련)의 확장으로 '조건화 형식을 바꿔 일반화를 얻는' 대안 축, 좋아요한 Force Memory VLA(2607.18231, cross-embodiment)의 후행 조건화 축과 정합. Chelsea Finn·Sergey Levine 조합이라 이후 π0·PA-RL·이번 새 추천 AutoRT(2401.12963)와 함께 Google DeepMind 로봇 조작 3부작을 이룬다.",
+          "rec_date": "2026-09-02"
+        },
+        {
+          "id": "2309.01918",
+          "title": "RoboAgent: Generalization and Efficiency in Robot Manipulation via Semantic Augmentations and Action Chunking (MT-ACT)",
+          "authors": "Homanga Bharadhwaj, Jay Vakil, Mohit Sharma, Abhinav Gupta, Vikash Kumar, Shubham Tulsiani",
+          "summary_ko": "다중 태스크 로봇 조작 정책을 소량 시연(demonstration)만으로 스케일 시키는 프레임워크. 데이터 병목을 극복하기 위해 세 축을 결합 — (1) 의미론적 증강(semantic augmentation, 언어·이미지 편집으로 시연 장면의 객체·배경·조명을 다양화), (2) 액션 청킹 트랜스포머(action chunking transformer, ACT, 한 번에 여러 스텝의 액션을 예측하는 정책 구조), (3) 다중 태스크 학습. 총 7,500개 시연만으로 하나의 유니버설 에이전트가 12개 조작 스킬을 배우고, 38개 부엌 태스크에 일반화 — 미학습 시나리오에서 이전 기법 대비 40% 이상 상회. CMU Abhinav Gupta·Vikash Kumar 그룹.",
+          "tags": [
+            "Multi-Task",
+            "Semantic Augmentation",
+            "Action Chunking",
+            "Data-Efficient",
+            "CMU"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2309.01918",
+          "extra_url": "https://robopen.github.io/",
+          "date": "2023-09-05",
+          "reason": "index의 ACT(2304.13705, ALOHA)의 정면 다중-태스크 확장이자, 이번 pool 새 항목 Hierarchical Skill Retrieval(2608.24042)·pool의 관련 항목 MimicPlay(2302.12422)·Voyager(2305.16291)·이번 새 관련 추천 AutoRT(2401.12963)의 사상적 자매작 — 모두 '작은 데이터로 스킬 다양성을 확보'하는 노선. 좋아요한 Aspire(agentic robotics + skill library)·2607.08448 Harness VLA(frozen VLA + skill primitive)·Hi-VLA(2606.10267, 계층 옵션)의 스킬 축 원류. index의 RoboCasa(pool 관련 항목 2406.02523, 부엌 벤치마크)·MimicGen(2410.24185)·τ₀-VLA(2608.16885)의 부엌 씬 다중 태스크 라인의 뿌리이자, pool의 SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516)·index의 Teach and Grow(2608.17209, 재사용 스킬 블록)·Skill Mining(2607.08354)의 스킬 라이브러리 계열 원류. 의미론적 데이터 증강은 이번 새 추천 AnyWorld(2608.29242, factorized 임바디먼트)·좋아요한 Xiaomi-U0(2607.11643, 38B) 데이터 증강 노선의 저비용 대응, 좋아요한 Force Memory VLA(2607.18231, cross-embodiment)의 데이터 다양성 축과 정합. Homanga Bharadhwaj·Vikash Kumar 조합이라 이후 CMU/Meta 임바디드 계보(ATM, HRP)의 표준 참조.",
           "rec_date": "2026-09-02"
         },
         {
@@ -527,21 +618,21 @@
           "rec_date": "2026-09-01"
         },
         {
-          "id": "2403.03954",
-          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
-          "authors": "Yanjie Ze, Gu Zhang, Kangning Zhang, Chenyuan Hu, Muhan Wang, Huazhe Xu",
-          "summary_ko": "확산 정책(Diffusion Policy, 확산 모델로 액션 시퀀스를 샘플링하는 시각-운동 정책)에 단순한 3D 포인트 클라우드 표현(3D point cloud, 깊이 카메라에서 얻은 점들의 집합)을 결합한 방법. 정교한 3D 인코더 없이도 40개 시연만으로 시뮬 태스크에서 85% 성공률, 공간·시점·외관 변화에 강한 일반화를 실증. 시뮬 72개 태스크와 실기 4개 태스크에서 2D 확산 정책 대비 상대 성공률을 크게 개선. 칭화대 Huazhe Xu·Yanjie Ze 그룹.",
+          "id": "2506.09985",
+          "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
+          "authors": "Mido Assran, Adrien Bardes, David Fan, Quentin Garrido, Russell Howes, Mojtaba Komeili, Matthew Muckley 외 (Meta FAIR)",
+          "summary_ko": "V-JEPA(index의 2404.08471, Video Joint-Embedding Predictive Architecture — 비디오를 잠재 임베딩 공간에서 예측하는 자기지도 세계 모델)를 인터넷 대규모 비디오 + 로봇 상호작용 데이터로 확장한 후속작. 비디오 이해 벤치마크에서 SOTA(state-of-the-art)를 갱신하면서, 시각적 목표(visual goal, 목표 관측 이미지)만으로 계획해 Franka 로봇 팔의 물체 조작에 제로샷(zero-shot, 태스크별 학습 없이)으로 배포 가능함을 실증. Meta FAIR 팀 (Mido Assran·Adrien Bardes 등).",
           "tags": [
-            "3D Representation",
-            "Diffusion Policy",
-            "Point Cloud",
-            "Data-Efficient",
-            "Manipulation"
+            "Video WM",
+            "JEPA",
+            "Self-Supervised",
+            "Zero-Shot Manipulation",
+            "Meta FAIR"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2403.03954",
-          "extra_url": "https://3d-diffusion-policy.github.io/",
-          "date": "2024-03-06",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 컬렉션의 Diffusion Policy 원조(2303.04137)·RDT(2410.07864)·pool의 관련 항목 Diffuser(2205.09991)·이번 새 관련 추천 DP Scaling(2409.14411)의 3D 확장. index의 Pointmap VLA(2607.11498)·Embodied Spatial Reasoning(2607.17977)·pool의 SpatialVLA(2501.15830)·GaussianWAM(2608.24714)·오늘 aRxiv에서 함께 뜬 GaussianDream++(2608.25659)·GaussVLA(2608.24959)의 사상적 뿌리. pool의 관련 항목 RVT(2306.14896, multi-view)와 정확한 대비 노선 — RVT는 다시점 렌더링, DP3는 원시 포인트 클라우드. 좋아요한 UMI(2607.15330)의 3D 스캔 데이터 축과 정합. Huazhe Xu 그룹은 이후 GR00T-N1(2503.14734)·π0.5(2504.16054)의 3D 접근에 영향을 줌.",
+          "arxiv_url": "https://arxiv.org/abs/2506.09985",
+          "extra_url": "",
+          "date": "2025-06-11",
+          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — index의 V-JEPA(2404.08471)·2602.10098(VLA + WM + JEPA)의 정면 후속. pool의 JEPA-WAM(2608.09381)·JEPA Safety(2608.17496, action-conditioned JEPA + safety shield)·이번 새 관련 추천 DINO-WM(2411.04983)·좋아요한 WALA(2607.11397, DINOv3 world model)의 사상적 상위 좌표. 인터넷 비디오 + 로봇 상호작용 이중 사전학습은 이번 새 추천 CLAP(2608.27406)·pool의 LD4WAM(2608.22403, 5K시간)·Riemann-1.0(2608.27033, 200K시간)·GR-2(2410.06158, 38M 클립)·오늘 함께 뽑은 관련 항목 UniSim(2310.06114)·UniPi(2302.00111)의 데이터 스케일링 축과 정합. 시각 목표만으로 제로샷 조작이라는 축은 pool의 CoRe(2608.14822, 상상 궤적 회복)·hint²(2608.13678, 계층 WM)·Inference-Time Enhancement(2502.00622, WM 롤아웃 랭킹)의 실전 좌표. Meta FAIR 계보라 이후 JEPA 라인의 표준 참조.",
           "rec_date": "2026-08-30"
         },
         {
@@ -563,22 +654,40 @@
           "rec_date": "2026-08-30"
         },
         {
-          "id": "2506.09985",
-          "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
-          "authors": "Mido Assran, Adrien Bardes, David Fan, Quentin Garrido, Russell Howes, Mojtaba Komeili, Matthew Muckley 외 (Meta FAIR)",
-          "summary_ko": "V-JEPA(index의 2404.08471, Video Joint-Embedding Predictive Architecture — 비디오를 잠재 임베딩 공간에서 예측하는 자기지도 세계 모델)를 인터넷 대규모 비디오 + 로봇 상호작용 데이터로 확장한 후속작. 비디오 이해 벤치마크에서 SOTA(state-of-the-art)를 갱신하면서, 시각적 목표(visual goal, 목표 관측 이미지)만으로 계획해 Franka 로봇 팔의 물체 조작에 제로샷(zero-shot, 태스크별 학습 없이)으로 배포 가능함을 실증. Meta FAIR 팀 (Mido Assran·Adrien Bardes 등).",
+          "id": "2403.03954",
+          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
+          "authors": "Yanjie Ze, Gu Zhang, Kangning Zhang, Chenyuan Hu, Muhan Wang, Huazhe Xu",
+          "summary_ko": "확산 정책(Diffusion Policy, 확산 모델로 액션 시퀀스를 샘플링하는 시각-운동 정책)에 단순한 3D 포인트 클라우드 표현(3D point cloud, 깊이 카메라에서 얻은 점들의 집합)을 결합한 방법. 정교한 3D 인코더 없이도 40개 시연만으로 시뮬 태스크에서 85% 성공률, 공간·시점·외관 변화에 강한 일반화를 실증. 시뮬 72개 태스크와 실기 4개 태스크에서 2D 확산 정책 대비 상대 성공률을 크게 개선. 칭화대 Huazhe Xu·Yanjie Ze 그룹.",
           "tags": [
-            "Video WM",
-            "JEPA",
-            "Self-Supervised",
-            "Zero-Shot Manipulation",
-            "Meta FAIR"
+            "3D Representation",
+            "Diffusion Policy",
+            "Point Cloud",
+            "Data-Efficient",
+            "Manipulation"
           ],
-          "arxiv_url": "https://arxiv.org/abs/2506.09985",
-          "extra_url": "",
-          "date": "2025-06-11",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — index의 V-JEPA(2404.08471)·2602.10098(VLA + WM + JEPA)의 정면 후속. pool의 JEPA-WAM(2608.09381)·JEPA Safety(2608.17496, action-conditioned JEPA + safety shield)·이번 새 관련 추천 DINO-WM(2411.04983)·좋아요한 WALA(2607.11397, DINOv3 world model)의 사상적 상위 좌표. 인터넷 비디오 + 로봇 상호작용 이중 사전학습은 이번 새 추천 CLAP(2608.27406)·pool의 LD4WAM(2608.22403, 5K시간)·Riemann-1.0(2608.27033, 200K시간)·GR-2(2410.06158, 38M 클립)·오늘 함께 뽑은 관련 항목 UniSim(2310.06114)·UniPi(2302.00111)의 데이터 스케일링 축과 정합. 시각 목표만으로 제로샷 조작이라는 축은 pool의 CoRe(2608.14822, 상상 궤적 회복)·hint²(2608.13678, 계층 WM)·Inference-Time Enhancement(2502.00622, WM 롤아웃 랭킹)의 실전 좌표. Meta FAIR 계보라 이후 JEPA 라인의 표준 참조.",
+          "arxiv_url": "https://arxiv.org/abs/2403.03954",
+          "extra_url": "https://3d-diffusion-policy.github.io/",
+          "date": "2024-03-06",
+          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 컬렉션의 Diffusion Policy 원조(2303.04137)·RDT(2410.07864)·pool의 관련 항목 Diffuser(2205.09991)·이번 새 관련 추천 DP Scaling(2409.14411)의 3D 확장. index의 Pointmap VLA(2607.11498)·Embodied Spatial Reasoning(2607.17977)·pool의 SpatialVLA(2501.15830)·GaussianWAM(2608.24714)·오늘 aRxiv에서 함께 뜬 GaussianDream++(2608.25659)·GaussVLA(2608.24959)의 사상적 뿌리. pool의 관련 항목 RVT(2306.14896, multi-view)와 정확한 대비 노선 — RVT는 다시점 렌더링, DP3는 원시 포인트 클라우드. 좋아요한 UMI(2607.15330)의 3D 스캔 데이터 축과 정합. Huazhe Xu 그룹은 이후 GR00T-N1(2503.14734)·π0.5(2504.16054)의 3D 접근에 영향을 줌.",
           "rec_date": "2026-08-30"
+        },
+        {
+          "id": "2410.06158",
+          "title": "GR-2: A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation",
+          "authors": "Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong, Hang Li, Yifeng Li, Yuxiao Liu, Hongtao Wu, Jiafeng Xu, Yichu Yang, Hanbo Zhang, Minzhao Zhu (ByteDance)",
+          "summary_ko": "3,800만 개(38M) 인터넷 비디오 클립으로 사전학습한 뒤 로봇 제어로 파인튜닝하는 대형 생성 비디오-언어-행동(video-language-action) 모델. 100개 이상 로봇 태스크에서 평균 97.7% 성공률, 새로운 시나리오·객체·환경으로 강한 일반화를 실증. ByteDance의 대표적 파운데이션 VLA.",
+          "tags": [
+            "VLA",
+            "Video Pretraining",
+            "Foundation Model",
+            "ByteDance",
+            "Generative"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.06158",
+          "extra_url": "https://gr2-manipulation.github.io/",
+          "date": "2024-10-08",
+          "reason": "좋아요한 Xiaomi-U0(2607.11643, 38B 파운데이션)·Xiaomi-Robotics-1(2607.15330, UMI 스케일링)과 정확히 같은 축의 대표작. pool의 여러 reason에서 반복 언급되던 미싱 링크로 — pool의 GigaBrain-0.7(2608.15875)·이번 새 추천 Riemann-1.0(2608.27033, 200K시간)·LD4WAM(2608.22403, 5K시간)·컬렉션의 τ₀-VLA(2608.16885, 40K시간)·G0.5(2608.11739)와 정확한 비교 좌표. 38M 비디오 사전학습은 pool 관련 항목 UniPi(2302.00111)·이번 새 추천 UniSim(2310.06114)·index의 LAPA(2410.11758)·Cosmos(2501.03575)의 정면 실전. Tao Kong 그룹이라 이후 ByteDance 임바디드 계보(GR-1, GR-2, RDT 등)의 표준 참조.",
+          "rec_date": "2026-08-29"
         },
         {
           "id": "2406.10454",
@@ -615,111 +724,6 @@
           "date": "2023-10-09",
           "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 좋아요한 WALA(2607.11397, DINOv3 world model)·pool의 UniPi(2302.00111)와 자매작인 Sherry Yang·Yilun Du 조합의 대표작. pool의 World Model 라인(GR-2 2410.06158, GigaBrain-0.7 2608.15875, Hydra-0 2608.18077, LAWA 2608.24882, LD4WAM 2608.22403, 이번 새 추천 Riemann-1.0 2608.27033)·index의 Cosmos(2501.03575)의 원조 격. '학습된 시뮬레이터 위에서 정책 학습'이라는 사상은 pool의 CoRe(2608.14822, 상상 궤적 회복)·Inference-Time Enhancement(2502.00622, WM 롤아웃)·hint²(2608.13678, 계층 WM 유도)·이번 새 추천 PhysCaP(2608.21031, code-as-policy + physics probing)의 사상적 뿌리, 좋아요한 Aspire(agentic + self-improvement)의 시뮬 훈련 축과 정합. Pieter Abbeel·Leslie Kaelbling 조합이라 이후 generative simulator 계보의 표준 참조.",
           "rec_date": "2026-08-29"
-        },
-        {
-          "id": "2410.06158",
-          "title": "GR-2: A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation",
-          "authors": "Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong, Hang Li, Yifeng Li, Yuxiao Liu, Hongtao Wu, Jiafeng Xu, Yichu Yang, Hanbo Zhang, Minzhao Zhu (ByteDance)",
-          "summary_ko": "3,800만 개(38M) 인터넷 비디오 클립으로 사전학습한 뒤 로봇 제어로 파인튜닝하는 대형 생성 비디오-언어-행동(video-language-action) 모델. 100개 이상 로봇 태스크에서 평균 97.7% 성공률, 새로운 시나리오·객체·환경으로 강한 일반화를 실증. ByteDance의 대표적 파운데이션 VLA.",
-          "tags": [
-            "VLA",
-            "Video Pretraining",
-            "Foundation Model",
-            "ByteDance",
-            "Generative"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.06158",
-          "extra_url": "https://gr2-manipulation.github.io/",
-          "date": "2024-10-08",
-          "reason": "좋아요한 Xiaomi-U0(2607.11643, 38B 파운데이션)·Xiaomi-Robotics-1(2607.15330, UMI 스케일링)과 정확히 같은 축의 대표작. pool의 여러 reason에서 반복 언급되던 미싱 링크로 — pool의 GigaBrain-0.7(2608.15875)·이번 새 추천 Riemann-1.0(2608.27033, 200K시간)·LD4WAM(2608.22403, 5K시간)·컬렉션의 τ₀-VLA(2608.16885, 40K시간)·G0.5(2608.11739)와 정확한 비교 좌표. 38M 비디오 사전학습은 pool 관련 항목 UniPi(2302.00111)·이번 새 추천 UniSim(2310.06114)·index의 LAPA(2410.11758)·Cosmos(2501.03575)의 정면 실전. Tao Kong 그룹이라 이후 ByteDance 임바디드 계보(GR-1, GR-2, RDT 등)의 표준 참조.",
-          "rec_date": "2026-08-29"
-        },
-        {
-          "id": "2408.11812",
-          "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation",
-          "authors": "Ria Doshi, Homer Walke, Oier Mees, Sudeep Dasari, Sergey Levine",
-          "summary_ko": "서로 관찰 공간(observation space)·행동 공간(action space)이 다른 20종 로봇 — 팔·이동형 매니퓰레이터·다리형(quadruped)·드론(aviation) — 의 90만 궤적을 하나의 트랜스포머 정책(CrossFormer)으로 학습. 관찰/행동을 손으로 정렬(alignment)하지 않고, 시퀀스 모델이 이종성을 그대로 흡수하게 만든 대표 '크로스-임보디먼트 스케일링' 논문. UC Berkeley Sergey Levine 그룹.",
-          "tags": [
-            "Cross-Embodiment",
-            "Foundation Model",
-            "VLA",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2408.11812",
-          "extra_url": "",
-          "date": "2024-08-21",
-          "reason": "컬렉션 상위 4위 태그 Cross-Embodiment(가중치 12)의 원류. index의 OpenVLA(2406.09246)·Octo(2405.12213)·π0(2410.24164)·RDT-1B(2410.07864)·HPT(2409.20537)·좋아요한 2607.18231이 왜 여러 로봇을 한꺼번에 배우려 하는지 이해하려면 반드시 짚고 갈 기초. 오늘 함께 뽑은 GVLA(2608.24603, 그리퍼 임바디먼트)와 짝을 이루며, pool의 최근 XEWorld/DECOWAM 계열이 왜 '임바디먼트 격차'를 진단하려 하는지의 출발점.",
-          "rec_date": "2026-08-27"
-        },
-        {
-          "id": "2311.01378",
-          "title": "Vision-Language Foundation Models as Effective Robot Imitators (RoboFlamingo)",
-          "authors": "Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, et al.",
-          "summary_ko": "오픈소스 대형 비전-언어 모델(OpenFlamingo)을 얼려(freeze)두고 얇은 정책 헤드만 붙여 로봇 조작으로 파인튜닝(imitation)하는 RoboFlamingo. 대형 VLM(Vision-Language Model)을 '단일 스텝 이해 + 정책 헤드가 시퀀스 처리'로 분리한 이 구조가 이후 VLA(Vision-Language-Action) 파인튜닝 라인의 표준이 됨.",
-          "tags": [
-            "VLA",
-            "Imitation Learning",
-            "Foundation Model",
-            "Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2311.01378",
-          "extra_url": "",
-          "date": "2023-11-02",
-          "reason": "VLA 태그(가중치 38, 최상위)의 초기 대표작. index의 OpenVLA(2406.09246)·SpatialVLA(pool)·GR00T-N1(2503.14734)·π0.5·Nano-VLA·좋아요한 WALA/Aspire 등 대부분의 VLA 논문이 '얼린 VLM에 어떻게 정책을 붙일까'라는 질문을 이 논문 뒤에서 이어받는다. 오늘 뽑은 GVLA(2608.24603)의 어댑터-라우팅 발상을 이해할 때 근거가 되는 문헌.",
-          "rec_date": "2026-08-27"
-        },
-        {
-          "id": "2306.14896",
-          "title": "RVT: Robotic View Transformer for 3D Object Manipulation",
-          "authors": "Ankit Goyal, Jie Xu, Yijie Guo, Valts Blukis, Yu-Wei Chao, Dieter Fox",
-          "summary_ko": "3D 조작을 여러 가상 시점(virtual view)에서 렌더링한 이미지들을 트랜스포머로 통합해 푸는 방법. 3D 포인트 클라우드나 복셀(voxel) 그리드 대신 '여러 각도에서 본 2D'로 3D 상호작용을 다루도록 만들어 학습·추론 효율을 크게 개선. NVIDIA Dieter Fox 그룹.",
-          "tags": [
-            "Manipulation",
-            "3D Representation",
-            "Multi-View",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2306.14896",
-          "extra_url": "",
-          "date": "2023-06-26",
-          "reason": "index의 3D Diffusion Policy(2403.03954, pool에도 등장)·PerAct 계열·좋아요한 2607.15330 UMI(스캔 기반 3D)의 대안 노선. Manipulation 태그(가중치 9)와 3D 표현 축을 잇는 기초 문헌으로, 최근 pool의 GaussianWAM(2608.24714, 3D Gaussian → WAM)·SpatialVLA(2501.15830)의 '시점·기하 표현' 논의를 되짚을 때 유용.",
-          "rec_date": "2026-08-27"
-        },
-        {
-          "id": "2406.01967",
-          "title": "DrEureka: Language Model Guided Sim-To-Real Transfer",
-          "authors": "Yecheng Jason Ma, William Liang, Hung-Ju Wang, Sam Wang, Yuke Zhu, Linxi Fan, Osbert Bastani, Dinesh Jayaraman",
-          "summary_ko": "시뮬레이션에서 학습한 정책을 실세계로 옮기는 sim-to-real 접근이 태스크 보상 함수(reward function)·시뮬 물리 파라미터(physics parameter, 마찰·질량·강성 등)를 사람이 손으로 설계·튜닝해야 해 느리고 노력이 많이 든다는 한계를 다룬다. 대형 언어 모델(LLM)로 sim-to-real 설계를 자동화 — DrEureka는 목표 태스크의 물리 시뮬만 있으면 자동으로 적절한 보상 함수와 도메인 랜덤화 분포(domain randomization distribution, 시뮬 파라미터를 무작위화해 실세계 격차를 견디게 함)를 만들어 실세계 전이를 지원. 사족보행(quadruped) 로코모션·덱스터러스 조작에서 사람 설계와 대등한 sim-to-real 구성을 발견, 사족보행이 요가공(yoga ball) 위에서 균형·보행하는 신규 태스크도 반복 사람 설계 없이 해결.",
-          "tags": [
-            "LLM",
-            "Sim-to-Real",
-            "Reward Design",
-            "Domain Randomization",
-            "NVIDIA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2406.01967",
-          "extra_url": "https://eureka-research.github.io/dr-eureka/",
-          "date": "2024-06-04",
-          "reason": "pool의 Eureka(2310.12931, LLM 보상 설계)의 정확한 sim-to-real 후속작 — 같은 저자 조합(Ma·Liang·Fan·Anandkumar·Yuke Zhu)이 보상 설계에 도메인 랜덤화까지 얹었다. 좋아요한 Aspire(agentic robotics)·2606.19980(self-improving coding agent)·2607.05369 GaP(agentic coding)의 sim-to-real 축 원류이자, 이번 새 추천 Physical Agentic AI(2608.22657)·pool의 PhysCaP(2608.21031, code-as-policy + physics)·관련 항목 Voyager(2305.16291)의 계보 좌표. 컬렉션의 HumanPlus·2607.29172(Closed-Weight Reward Model)의 sim-to-real 라인 대응. Anima Anandkumar·Linxi Fan·Yuke Zhu 조합이라 EurekaVerse·이후 NVIDIA 임바디드 sim-to-real 계보의 표준 참조.",
-          "rec_date": "2026-08-26"
-        },
-        {
-          "id": "2406.02523",
-          "title": "RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots",
-          "authors": "Soroush Nasiriany, Abhiram Maddukuri, Lance Zhang, Adeet Parikh, Aaron Lo, Abhishek Joshi, Ajay Mandlekar, Yuke Zhu",
-          "summary_ko": "인공지능(AI) 발전이 대체로 스케일링에서 나왔지만 로봇공학에선 대규모 로봇 데이터셋 접근이 걸림돌이라는 관찰에서 출발. 현실적 물리 시뮬레이션으로 환경·태스크·데이터셋을 확장하기 위한 대규모 시뮬 프레임워크 RoboCasa 제시. 부엌 환경에 초점을 맞춰 150개 이상 객체 카테고리의 3D 자산 수천 개, 상호작용 가능한 가구·가전 수십 종을 제공하며, 텍스트→3D·텍스트→이미지 생성 AI로 객체 자산과 환경 텍스처의 다양성·현실성을 확장. 100개 태스크(대형 언어 모델(LLM) 유도의 복합 태스크 포함) 평가 세트, 고품질 사람 시연 + 자동 궤적 생성으로 데이터를 최소 사람 부담으로 확장. 합성 로봇 데이터를 활용한 대규모 모방 학습에서 스케일링 경향이 뚜렷하고, 실세계 태스크에도 시뮬 데이터가 기여함을 실증. RSS 2024.",
-          "tags": [
-            "Benchmark",
-            "Simulation",
-            "Kitchen",
-            "Generative Assets",
-            "MimicGen"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2406.02523",
-          "extra_url": "https://robocasa.ai/",
-          "date": "2024-06-04",
-          "reason": "pool의 여러 항목 reason에서 반복 참조되던 미싱 링크 — index의 τ₀-VLA(2608.16885)·SDGC(2608.19490)·컬렉션의 π0.5(2504.16054)·G0.5(2608.11739) 등 부엌 씬 기반 실증 논문 대부분이 활용하는 표준 벤치마크. 이번 pool 새 항목 CoRe(2608.14822)의 회복 실험, JEPA Safety(2608.17496)의 LIBERO-Long 실험, HiTac-WAM(2608.19574)의 실기 이관 실험이 모두 이 라인의 프레임워크와 대비된다. Soroush Nasiriany·Yuke Zhu·Ajay Mandlekar 조합이라 MimicGen(index의 2410.24185)·RoboSuite 계보의 표준 참조. 텍스트-투-3D/이미지 생성 자산은 좋아요한 Xiaomi-U0(2607.11643, 38B 파운데이션)의 데이터 증강 축과 정합.",
-          "rec_date": "2026-08-26"
         }
       ]
     }
