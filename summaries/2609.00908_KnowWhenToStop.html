@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>KnowWhenToStop — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Adaptive Chunking</span>
+    <h1>Knowing When to Stop: Adaptive Action Chunking via Internal Cross-Attention Dynamics in VLAs</h1>
+    <p class="authors">Runze Xu, Xiaolong Shan, Shuang Dai, Yu Wang, Jincheng Yu</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.00908" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.00908" target="_blank">PDF</a>
+      <span>arXiv:2609.00908</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Action Chunking</span>
+      <span class="t">Cross-Attention</span>
+      <span class="t">Entropy</span>
+      <span class="t">Training-Free</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 4일 (v2) · Training-free · NVIDIA A100</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>Vision-Language-Action(VLA, 시각·언어를 입력받아 로봇 액션을 출력) 모델은 한 번 관찰에서 여러 스텝의 액션 묶음(<b>action chunk</b>, 예: 30~50 스텝)을 예측해 실행 속도를 얻는데, 지금은 이 묶음 길이를 태스크별로 고정한다. 저자들은 액션 토큰이 관찰(이미지·언어) 토큰을 얼마나 <b>흐릿하게(=엔트로피 높게)</b> 보고 있는지가 예측 신뢰도의 지표라는 점을 발견하고, 예측 도중 이 엔트로피가 <b>지속적으로 최대치에 붙어 평평해지는 순간</b>을 자동 감지해 그 지점까지만 실행하는 <b>학습 불필요(training-free)</b> 절단 규칙을 제안한다. RoboTwin 2.0에서 π<sub>0.5</sub> 백본 기준 평균 <span class="win">62.9%</span>(고정 최적 61.6%), 실로봇 3태스크 평균 <span class="win">61.7%</span>(고정 최적 51.7%), 오버헤드는 A100에서 <span class="win">&lt;7ms</span>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>최근 VLA는 관찰 한 번에 액션 여러 개를 통째로 예측하는 <b>action chunking</b>을 쓴다. 예를 들어 π<sub>0.5</sub>는 한 번에 50 스텝, X-VLA는 30 스텝을 미리 뽑아낸다. 이렇게 뽑아 놓은 청크 중 <b>몇 스텝까지 실제로 로봇에게 실행시킬지</b>를 정하는 값이 <b>execution horizon</b>인데, 지금까지는 이 값을 태스크마다 사람이 수동 튜닝한 상수로 쓴다.</p>
+    <div class="callout">
+      <b>딜레마:</b> 짧게 실행하면(=자주 재관찰) 반응성은 좋지만 속도가 느리고 예측 낭비가 크다. 길게 실행하면 빠르지만, 예측이 뒤로 갈수록 관찰과 어긋나 부정확해진다. 게다가 <b>최적 길이는 태스크뿐 아니라 상태에 따라 순간순간 달라진다</b> — 예를 들어 컵을 잡는 순간엔 짧게, 옮기는 도중엔 길게.
+    </div>
+    <p>저자들의 핵심 관찰: 액션 토큰이 VLM(vision-language model, 시각·언어 인코더)의 이미지·언어 토큰을 <b>얼마나 뾰족하게 참조하는가</b>는 앞쪽 스텝일수록 뾰족(sharp)하고 뒤로 갈수록 흐릿(dispersed)해진다. 흐릿하다는 것은 <b>이 액션이 특정 관찰 부분에 근거하지 않고 여기저기를 균등하게 보고 있다</b>는 뜻이고, 이는 관찰의 grounding이 약해졌음을 시사한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>Cross-attention 엔트로피를 신뢰도 지표로 확립</b> — 액션 토큰이 관찰 토큰을 참조할 때의 attention 분포의 엔트로피(H = −Σp·ln p, 뾰족할수록 낮고 균등할수록 높음)가 예측 시점이 관찰에서 멀어질수록 상승해 <b>ln N(균등분포 상한)</b>에 붙어 평평해진다는 현상을 발견. 엔트로피 상위 25% 샘플은 나머지 대비 <b>평균 MSE 10.4배, 표준편차 12.1배</b>로 실제 예측 오류와 강하게 결합됨을 실증.</li>
+      <li><b>Training-free 실행 절단 규칙</b> — 학습이 필요 없는 두 조건: (1) 평활 엔트로피가 <b>η·ln N</b>을 초과하고 (2) 최근 k 스텝의 엔트로피 기울기 평균이 τ 이하로 <b>기울기가 죽어 평평한 고원(plateau)</b>이 형성되면 그 지점 이후의 액션은 실행하지 않는다. η=0.95, τ=0.01, k=5는 <b>모든 태스크·모델·환경에서 고정</b>(태스크별 튜닝 없음).</li>
+      <li><b>2개 VLA · 3개 벤치에서 일관된 성능·효율 이득</b> — π<sub>0.5</sub>·X-VLA 두 백본, RoboTwin 2.0·LIBERO·실로봇 3벤치에서 <b>최적 고정 길이보다 항상 같거나 높은 성공률</b>. 오버헤드는 A100에서 <b>&lt;7ms</b>(비교군: multi-sampling 방식 29.5ms).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>Cross-attention 엔트로피 정의</h3>
+    <p>VLA의 디코더 안에서 액션 토큰 j가 VLM이 뽑은 관찰 토큰들(총 N개, 이미지 패치 + 언어 토큰)에 붙이는 attention 가중치를 층별로 평균해 확률분포 <b>p<sub>j,·</sub></b>를 만든다(합=1). 이 분포의 Shannon 엔트로피
+    <b>ℰ<sub>j</sub> = −Σ<sub>i</sub> p<sub>j,i</sub> · ln p<sub>j,i</sub></b> 를 그 액션 토큰의 "관찰 참조 흐릿함 점수"로 쓴다. 값의 범위는 [0, ln N] — 0이면 관찰 토큰 하나만 뾰족하게 보고, ln N이면 모든 관찰 토큰을 완전히 균등하게 본다(=아무 데도 grounding 안 됨).</p>
+    <div class="callout">
+      <b>직관:</b> "이 액션은 이미지의 어디를 보고 만들었나?"의 산포도. 앞쪽 액션은 "저 컵을 보고 만들었어"(뾰족), 뒤쪽 액션은 "그냥 관성으로 계속 이렇게 가"(균등)로 갈수록 흐려진다. 흐려짐이 상한에 닿아 <b>평평해지면</b>, 그 이후엔 관찰이 더 이상 예측을 뒷받침하지 못한다는 신호.
+    </div>
+
+    <h3>왜 "고원(plateau) 검출"인가</h3>
+    <p>단순히 "엔트로피가 임계값 넘으면 자름"이 아니라, <b>상한(ln N)에 도달해서 더 이상 오르지도 내리지도 않는 평평한 구간</b>을 찾는 이유는 짧은 스파이크(예: 물체를 놓치는 순간 잠깐 확률이 흐트러짐)로 잘못 자르는 것을 막기 위해서다. 그래서 두 조건을 모두 요구:</p>
+    <ul>
+      <li><b>조건 1 (수준):</b> k 스텝 평활 엔트로피 <b>ℰ̄<sub>j</sub> &gt; η · ln N</b>. η=0.95는 이론적 상한의 95%를 뜻함.</li>
+      <li><b>조건 2 (기울기):</b> 최근 k 스텝의 엔트로피 <b>1차 차분 절대값 평균 &lt; τ</b>. τ=0.01. 즉 "더 이상 오르지 않고 붙어 있음"을 확인.</li>
+    </ul>
+    <p>두 조건을 동시에 만족하는 <b>가장 이른 시점 j*</b>에서 청크를 잘라 실행 horizon = j*로 삼는다. 조건 만족 지점이 없으면 사전 정의한 최대 실행 길이까지 실행.</p>
+
+    <h3>왜 학습이 필요 없나</h3>
+    <p>임계값 η, τ, k는 offline validation 데이터에서 <b>엔트로피가 이 수준에 도달한 순간 액션 MSE가 급격히 튀는 임계점</b>을 관측해 한 번 고정한다. 이후에는 어떤 태스크/모델/환경이라도 그대로 쓴다 — VLA의 파라미터는 건드리지 않는다.</p>
+
+    <h3>계산 오버헤드</h3>
+    <p>attention 가중치는 어차피 forward 중에 계산되므로 이를 <b>단순 로그·평균 연산으로 재활용</b>. 매 스텝 log·sum·비교 몇 번이라서 오버헤드가 A100에서 &lt;7ms. multi-sampling(같은 관찰로 여러 번 뽑아 분산 재는 접근)의 29.5ms보다 4배 이상 빠름.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>RoboTwin 2.0 (π<sub>0.5</sub>, 10 태스크 성공률)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>실행 규칙</th><th>평균 성공률</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>Fixed chunk = 10</td><td>61.6</td><td>고정 최적</td></tr>
+        <tr><td>Fixed chunk = 20</td><td>~60</td><td></td></tr>
+        <tr><td>Fixed chunk = 30</td><td>~58</td><td></td></tr>
+        <tr><td>Fixed chunk = 50 (기본)</td><td>~55</td><td>π<sub>0.5</sub> 기본값</td></tr>
+        <tr><td>Self-Attention 기반 규칙</td><td>57.6</td><td>비교 baseline</td></tr>
+        <tr><td><b>Proposed (adaptive)</b></td><td class="win">62.9</td><td>평균 선택 horizon 18.11 스텝</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">평균은 짧은/중간/긴 호리즌 태스크 10개의 평균. 고정된 최적값보다 <b>+1.3%p</b>, 태스크별 튜닝 없이 얻은 값.</p>
+
+    <h3>LIBERO (π<sub>0.5</sub>, 4 suite 평균)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>실행 규칙</th><th>Avg</th><th>LIBERO-Long</th></tr></thead>
+      <tbody>
+        <tr><td>Fixed chunk = 6 (고정 최적)</td><td>94.88</td><td>baseline</td></tr>
+        <tr><td><b>Proposed (adaptive)</b></td><td class="win">97.25</td><td class="win">+4.5%p</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">특히 긴 호리즌 태스크(LIBERO-Long)에서 이득이 큼 — 긴 청크에서 후반부의 잘못된 액션을 자동으로 잘라내기 때문.</p>
+
+    <h3>X-VLA (자가 attention 결합형, RoboTwin 2.0)</h3>
+    <p>Fixed chunk = 30(X-VLA 기본): 76.1% → <b>Proposed: <span class="win">79.0%</span></b>(+2.9%p). π<sub>0.5</sub>(디코더가 관찰과 액션 attention을 분리)뿐 아니라 <b>self-attention이 관찰·액션을 섞어 처리하는 X-VLA</b> 구조에서도 동일한 규칙이 작동함을 보임.</p>
+
+    <h3>실로봇 (3 태스크: Hang mug, Stack cups, Tidy pens)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>실행 규칙</th><th>평균 성공률</th></tr></thead>
+      <tbody>
+        <tr><td>Fixed chunk = 30 (고정 최적)</td><td>51.7</td></tr>
+        <tr><td>Self-Attention 기반 규칙</td><td>55.0</td></tr>
+        <tr><td><b>Proposed</b></td><td class="win">61.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">실로봇에서 격차가 더 벌어짐(+10%p) — 실환경 노이즈/미묘한 상태 변화가 많아 <b>적응적 자르기의 이득이 시뮬레이션보다 크다</b>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>엔트로피 사분위 vs MSE (핵심 근거):</b> 상위 25% 엔트로피 샘플의 액션 MSE는 하위 75% 평균의 <b>10.4배</b>, 표준편차는 <b>12.1배</b>. → 엔트로피가 실제 예측 오류를 예측하는 강한 프록시.</li>
+      <li><b>η(수준 임계값) 감도:</b> η=0.90 → 너무 자주 잘라 성공률↓, η=0.99 → 거의 안 잘라 fixed와 유사. η=0.95가 안정 최적.</li>
+      <li><b>k(윈도 크기) 감도:</b> k=1은 스파이크에 취약, k=5~10은 안정. 논문은 k=5 고정.</li>
+      <li><b>선택된 horizon 통계:</b> RoboTwin에서 평균 18.11 스텝(최대 50). 즉 태스크·상태에 따라 크게 달라지고, 이 자동 선택이 고정보다 낫다는 것이 핵심.</li>
+      <li><b>Self-Attention 비교:</b> 액션 토큰끼리의 self-attention 엔트로피는 cross-attention만큼 신뢰 있는 신호가 아님(RoboTwin 62.9 vs 57.6, 실로봇 61.7 vs 55.0). → "관찰과의 grounding"이 곧 신뢰도의 핵심이라는 해석을 지지.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.00908/fig1_4.png" alt="cross-attention entropy 개념도 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 방법 개요.</b> 액션 토큰이 이미지·언어 토큰에 붙이는 cross-attention 분포의 엔트로피가 시간에 따라 어떻게 상승·고원(plateau)에 도달하는지, 그리고 그 고원 시작 지점을 잘라 실행 horizon으로 삼는 개념을 시각화. (출처: arXiv:2609.00908)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.00908/stage.png" alt="엔트로피의 시간적 진행 (stage)" loading="lazy">
+      <figcaption><b>Figure — 엔트로피 진행 단계.</b> 앞쪽 스텝: 뾰족(관찰에 근거), 중간: 상승, 후기: ln N 상한 근처에서 평평한 고원. Plateau 시작 지점 이후는 예측 신뢰도가 낮다는 것이 논문의 실증. (출처: arXiv:2609.00908)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.00908/real_small.png" alt="실로봇 3태스크 결과" loading="lazy">
+      <figcaption><b>Figure — 실로봇 결과.</b> Hang mug / Stack cups / Tidy pens 3태스크에서 고정 최적(51.7%) 및 Self-Attention 규칙(55.0%) 대비 Proposed(61.7%)가 일관된 우위. (출처: arXiv:2609.00908)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 표(RoboTwin 2.0)</b> — 어떤 고정 chunk 값(10/20/30/50)도 태스크·상태에 따라 편차가 있고, adaptive가 그 편차를 자동으로 흡수해 <b>고정 최적을 상회</b>한다는 것이 이 논문의 주장.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.00908" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.00908" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.00908" target="_blank">HTML</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.00908 · KnowWhenToStop · 요약 생성 2026-09-07
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

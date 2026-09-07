@@ -12,18 +12,6 @@
   },
   "queue": [
     {
-      "id": "2609.00908",
-      "title": "Knowing When to Stop: Adaptive Action Chunking via Internal Cross-Attention Dynamics in VLAs",
-      "arxiv_url": "https://arxiv.org/abs/2609.00908",
-      "added": "2026-09-07"
-    },
-    {
-      "id": "2609.03142",
-      "title": "Sensing Which Modality Matters: Evidence-Gated Regularization for Robust VLA Policies",
-      "arxiv_url": "https://arxiv.org/abs/2609.03142",
-      "added": "2026-09-07"
-    },
-    {
       "id": "2609.03591",
       "title": "Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Corrections (XR-2)",
       "arxiv_url": "https://arxiv.org/abs/2609.03591",
