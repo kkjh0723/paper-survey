@@ -10,20 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2609.03591",
-      "title": "Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Corrections (XR-2)",
-      "arxiv_url": "https://arxiv.org/abs/2609.03591",
-      "added": "2026-09-07"
-    },
-    {
-      "id": "2609.02546",
-      "title": "ZETA: A Controlled Study of Zero-Shot Cross-Embodiment VLA Transfer for Tabletop Manipulation",
-      "arxiv_url": "https://arxiv.org/abs/2609.02546",
-      "added": "2026-09-07"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

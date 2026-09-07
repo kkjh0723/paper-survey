@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>XR-2 — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Bimanual · VLA · Data Scaling</span>
+    <h1>Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Corrections</h1>
+    <p class="authors">Jiafeng Xu, Qi Li, Yan Shen 외 10인 · Bimanual Robot Learning Challenge 컨소시엄 · arXiv:2609.03591</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.03591" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.03591" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2609.03591v1" target="_blank">HTML</a>
+      <a href="https://huggingface.co/datasets/challenge-2026/challenge_data" target="_blank">Dataset (HF)</a>
+      <a href="https://bimanual-robot-learning.github.io/challenge/" target="_blank">Challenge</a>
+      <span>arXiv:2609.03591</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Bimanual</span>
+      <span class="t">Data Scaling</span>
+      <span class="t">DAgger</span>
+      <span class="t">Flow Matching</span>
+      <span class="t">Household</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 3일 · 백본 Qwen3-VL-4B + Action Expert (~5B) · 데이터 1,500시간 · 실기기 X2W 25-DoF · 10Hz async 추론</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>가사 양팔 조작(bimanual household manipulation, 두 팔을 협조 제어해 옷 개기·세탁기 여닫기 같은 집안일을 수행)을 위해 <b>실기기 531.7시간 + UMI(사람 손에 든 그리퍼로 수집한 in-the-wild 데이터) 1,000시간 = 1,500시간</b>의 데모를 공개하고, 그 위에 5B급 VLA(vision-language-action) <b>XR-2</b>를 학습. 학습은 두 단계로 나뉜다 — (Stage 1) 전문가 데모로 flow matching(무작위 노이즈에서 정답 액션 궤적으로 향하는 벡터장을 학습해 몇 스텝 만에 액션을 만드는 생성 방식) 학습, (Stage 2) 배치 도중 사람이 실패 시점에 개입해 정정한 <b>DAgger(Dataset Aggregation, "정책이 방문한 상태 위에서 사람이 옳은 행동을 얹어 준" 온-폴리시 데이터) 데이터</b>로 추가 학습. 옷 개기 태스크에서 전문가 데이터만으로 10h→120h에 성공률 <b>34%→84%</b>, DAgger 3라운드로 58%→<span class="win">93%</span>(+35p)까지 계단식 상승. 다른 VLA와의 head-to-head 비교는 없고, "확장 축(축=데이터 종류)마다 얼마나 오르는가"를 격리 실험으로 보여준 스케일링 논문.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>가사 태스크에서 두 팔이 필요한 이유는 (a) 긴 시퀀스(예: 세탁기 열기 → 옷 꺼내기 → 개기), (b) 접촉이 많고 좌우 협조가 필수, (c) 물체·자세·조명 변동이 크기 때문이다. 최근 VLA 흐름(RT-2, π<sub>0</sub>, π<sub>0.5</sub>, RDT 등)이 "데이터를 늘리면 잘 된다"를 보였지만, <b>어떤 종류의 데이터를 얼마나</b> 늘려야 하는지가 여전히 열린 문제다.</p>
+    <ul>
+      <li><b>축 1 — 오프라인 전문가 데모:</b> 사람 텔레옵으로 수집한 "성공하는 행동" 궤적. 스킬 커버리지를 넓히는 데 유리하지만, 롤아웃 시 실패 상태에서 어떻게 복구해야 하는지는 못 가르친다(distribution shift).</li>
+      <li><b>축 2 — 온-폴리시 정정(DAgger 계열):</b> 현재 정책을 실제로 굴리다 실패하면 사람이 잡아 정정. <b>정책이 실제로 방문한 상태</b>에 대한 라벨이므로 "몰라서 무너지는 상황"만 짚어서 배운다.</li>
+    </ul>
+    <div class="callout">
+      <b>왜 두 축을 동시에 봐야 하나:</b> 두 축은 정보 종류가 다르다. 전문가 데이터는 "무엇을 해야 하는지"를, DAgger는 "언제 이미 실수하고 있는지"를 가르친다. 저자들은 이 둘의 <b>독립적 스케일링 곡선</b>을 각각 그려 보이는 것을 논문의 목표로 잡는다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>1,500시간 규모 이중 데이터셋 공개</b> — 실기기 X2W 플랫폼에서 32,518개 궤적·57.4M 프레임(531.7시간, 4개 가사 씬 · 11개 원자 스킬, 프레임 단위 언어 어노테이션)과, 200+ 가정·100+ 수집자에서 모은 <b>UMI(Universal Manipulation Interface, 사람이 손에 든 그리퍼로 카메라·엔코더 없이 궤적을 수집하는 방식)</b> ~1,000시간을 통합.</li>
+      <li><b>XR-2: 5B 파라미터 VLA</b> — Qwen3-VL-4B 백본 + 18-layer 액션 전문가(hidden 1024, 8 attention head, KV head 4개로 그룹화)로 구성된 Mixture-of-Transformers(백본과 액션 전문가가 층마다 cross-attention으로 얽혀 계산되는 구조). 액션은 conditional flow matching(CFM: 무작위 노이즈에서 정답 액션까지의 벡터장을 학습해 몇 스텝 오일러 적분으로 액션을 뽑는 생성 학습법)로 예측, <b>K=50 chunk × 25-DoF</b>를 5-step으로 생성 → 10Hz 비동기 추론(RTX 4090).</li>
+      <li><b>두 축의 스케일링 곡선 실증</b> — 전문가 데이터 10→120시간에 옷 개기 <b>34%→84%</b>(+50p, 120h에서 포화), 정책 롤아웃 중 실패마다 사람이 정정한 DAgger 3라운드로 <b>58%→74%→82%→93%</b>(누적 +35p). 실패 서브태스크에 예산을 몰아주는 <b>failure-weighted 할당</b>(α=1, w<sub>min</sub>=0.05)과 <b>궤적 단위 1:1 혼합</b>이 핵심 레시피.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>X2W 플랫폼과 25-DoF 액션 공간</h3>
+    <p>X2W는 저자들의 실기기 플랫폼: 7-DoF 팔 × 2 + 1-DoF 그리퍼 × 2 + 4-DoF 허리 + 2-DoF 목 = 22 관절 위치 + 3-축 옴니휠 속도 = <b>25차원 액션</b>. 관측은 머리 카메라(RealSense D435i·ZED X Mini·ZED-XONE GS) + 손목 카메라 2대 + <b>89차원 proprioception</b>(joint pos/vel/torque, EE pose, wheel 정보 등, 모두 30Hz 동기화).</p>
+
+    <h3>XR-2 구조 (VLM 백본 + Action Expert)</h3>
+    <div class="kv">
+      <div>VLM 백본</div>
+      <div>Qwen3-VL-4B-Instruct(사전 학습된 비전-언어 모델). 세 카메라 이미지 + 언어 지시를 토큰으로 인코딩.</div>
+      <div>Action Expert</div>
+      <div>18 transformer blocks, hidden 1024, 8 attention heads(grouped KV attention, KV head=4로 그룹화 → KV 캐시 4배 절약). timestep 조건은 adaLN-zero(정규화 후 스케일·시프트를 timestep에서 예측; 초기값 0으로 시작해 안전한 warm-up).</div>
+      <div>Depth-Aligned Cross-Attn</div>
+      <div>액션 전문가 각 층이 백본의 <b>같은 깊이 층</b>에 cross-attention. 마지막 층 하나만 보지 않고 <b>추상도가 점진적으로 올라가는 특징을 층별로</b> 받아 정착시키는 것이 직관.</div>
+      <div>출력</div>
+      <div>50 스텝 × 25차원 액션 청크(chunk: 한 번의 forward에서 여러 미래 스텝을 함께 뱉는 방식으로, 실행 중 재추론 부담을 줄인다).</div>
+    </div>
+
+    <h3>Conditional Flow Matching (CFM) 학습 목적함수</h3>
+    <p>정답 액션 <i>a</i>와 노이즈 <i>ε</i>~N(0,I) 사이를 시간 <i>t</i>∈[0,1]로 선형 보간한 <b><i>a<sub>t</sub></i> = (1−t)ε + t·a</b>를 만든 뒤, 정책 π<sub>θ</sub>가 <b>노이즈에서 정답 쪽으로 향하는 방향 벡터</b>를 예측하도록 학습.</p>
+    <div class="callout">
+      <b>ℒ<sub>CFM</sub>(θ) = 𝔼‖π<sub>θ</sub>(a<sub>t</sub>, o, s, l) − (a − ε)‖²</b><br>
+      여기서 <i>o</i>는 이미지 관측, <i>s</i>는 89-D proprioception, <i>l</i>은 언어 지시. <i>t</i>는 Beta(1.0, 1.5) 분포로 샘플링해 노이즈 근처(t≈0)를 상대적으로 자주 뽑는다.<br>
+      <b>직관:</b> flow matching은 diffusion과 사촌뻘이지만, 노이즈→정답의 <b>직선 경로</b>를 직접 학습하므로 5스텝 Euler 적분으로도 좋은 액션이 나온다(diffusion처럼 수십~수백 스텝 필요 없음 → 10Hz 실시간 가능).
+    </div>
+
+    <h3>비동기 추론과 액션-프리픽스 조건화</h3>
+    <p>정책은 10Hz로 액션 청크를 뽑고, 저수준 컨트롤러가 그것을 30Hz 관절 명령으로 보간, 최종 서보는 1000Hz. 다음 청크 예측이 도착하기 전에 현재 청크의 앞부분이 이미 실행되는 상황을 위해, 다음 청크는 <b>앞으로 실행될 프리픽스 액션</b>을 조건으로 받는다(dynamic delay 계산). 이 방식이 5B 모델을 실기기에 실시간으로 얹는 열쇠.</p>
+
+    <h3>데이터 파이프라인과 UMI</h3>
+    <p>실기기 데이터는 VR 텔레옵으로 표준화된 SOP 하에 수집. UMI는 <b>인코더 없는 기계식 그리퍼</b>를 사람이 손으로 들고, 손목-마운트 스테레오 에고 카메라(960×960 @ 30Hz)만으로 궤적을 수집 — 로봇 없이 200+ 가정에서 5,000+ 벌의 옷을 대상으로 데이터를 확장한다. 자동 후처리 + VLM 어노테이션 + 수동 검토를 거쳐 스킬 라벨과 프레임 단위 언어를 붙인다.</p>
+
+    <h3>DAgger 라운드 프로토콜과 failure-weighted 예산 배분</h3>
+    <p>텔레옵 오퍼레이터가 정책 롤아웃을 지켜보다 실패 시점에 <b>제어를 뺏어(intervention)</b> 성공 궤적으로 되돌려 놓고 다시 정책에게 넘긴다. 개입 구간이 자동 라벨되어 곧바로 DAgger 데이터가 된다.</p>
+    <div class="callout">
+      <b>서브태스크 <i>i</i>에 대한 데이터 가중치</b> (실패한 부분에 예산을 몰되, 잘 되는 부분도 최소치 보장):<br>
+      <b>w<sub>i</sub> = w<sub>min</sub> + (1 − N·w<sub>min</sub>) · (1 − s<sub>i</sub> + ε)<sup>α</sup> / Σ<sub>j</sub> (1 − s<sub>j</sub> + ε)<sup>α</sup></b><br>
+      <i>s<sub>i</sub></i>는 서브태스크 <i>i</i>의 현재 성공률, <i>N</i>은 서브태스크 수. 하이퍼파라미터: α=1(실패에 얼마나 예리하게 반응할지), ε=0.05, w<sub>min</sub>=0.05(가장 잘 되는 서브태스크도 최소 5%는 확보 → catastrophic forgetting 방지).<br>
+      혼합 비율은 <b>궤적 단위 1:1</b>로 DAgger : 전문가를 섞는다(프레임 단위가 아니라 <b>궤적 통째</b>로 뽑아 스킬·씬 분포를 보존).
+    </div>
+    <p>각 라운드는 <b>2.5 에폭</b>씩 학습한 뒤 다시 롤아웃 → 정정 수집 → 재학습을 반복.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>평가 프로토콜</h3>
+    <p>대표 태스크는 <b>옷 개기(clothes folding)</b>. 재질·크기·색깔·초기 로봇 위치가 다른 홀드아웃 세트에서 성공률을 측정. 논문 명시: "일반화 조건에서 85%인 모델은 in-distribution 조건에서 &gt;95%"이므로 아래 수치는 어려운 쪽 값.</p>
+
+    <h3>축 1 — 전문가 데이터 스케일링 (옷 개기)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>전문가 시간</th><th>10 h</th><th>30 h</th><th>120 h</th><th>160 h</th></tr></thead>
+      <tbody>
+        <tr><td>성공률</td><td>34%</td><td>34%</td><td class="win">84%</td><td>82%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">30h → 120h 구간에서 <b>+50%p</b>의 상전이. 160h에선 소폭 감소(오버핏 또는 분산 잡음)로 <b>~120h에서 포화</b>. "일단 어느 문턱을 넘기 전까진 데이터가 늘어도 안 뛰다가, 넘으면 확 뛰는" 패턴.</p>
+
+    <h3>축 2 — DAgger 라운드 스케일링 (옷 개기)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>라운드</th><th>0 (전문가 only)</th><th>1</th><th>2</th><th>3</th></tr></thead>
+      <tbody>
+        <tr><td>성공률</td><td>58%</td><td>74%</td><td>82%</td><td class="win">93%</td></tr>
+        <tr><td>Δ vs 이전</td><td>—</td><td>+16p</td><td>+8p</td><td>+11p</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">누적 <b>+35p</b>. 축 1에서 포화된 이후에도 축 2로 계속 오르는 것이 논문의 핵심 메시지 — <b>"성공하는 궤적을 더 모으는 것"과 "실패 시점에서 정정하는 것"은 서로 다른 신호를 준다.</b></p>
+
+    <div class="callout">
+      <b>주의:</b> 이 논문은 π<sub>0</sub>·π<sub>0.5</sub>·RT-2 등 다른 VLA와의 <b>head-to-head 성능 비교를 하지 않는다</b>. 관련 연구를 배경으로 인용할 뿐, XR-2가 그들보다 낫다고 주장하지 않는다. 논문의 기여는 <b>두 데이터 축의 독립적 스케일링 곡선</b>과 <b>공개 1,500h 데이터셋</b>이다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (실제로 변화시킨 요소)</h2>
+    <ul>
+      <li><b>전문가 데이터 시간(10→160 h) 스윕</b> — 위 축 1.</li>
+      <li><b>DAgger 라운드 수(0→3) 스윕</b> — 위 축 2. "실패한 서브태스크에 예산 몰기"의 효과는 라운드가 진행돼도 성공률이 계속 오른다는 사실로 뒷받침.</li>
+      <li><b>혼합 방식</b> — 궤적 단위 1:1 vs 프레임 단위 혼합은 정성적으로 논의(궤적 단위가 스킬·씬 분포를 보존해 유리)되었지만, 별도 수치 ablation 표는 없다.</li>
+      <li><b>α, w<sub>min</sub>, ε</b> — 명시된 값(α=1, w<sub>min</sub>=0.05, ε=0.05)에 대한 개별 sensitivity 실험은 논문에 실려 있지 않다.</li>
+    </ul>
+    <p class="note">전통적 "컴포넌트 제거" 스타일 ablation은 없다. 대신 두 스케일링 축이 곧 실질 ablation 역할을 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.03591/model.png" alt="XR-2 이중 학습 구조 (Fig. 4)" loading="lazy">
+      <figcaption><b>Figure 4 — XR-2 두 단계 학습 구조.</b> Stage 1은 <b>전문가가 방문한 상태</b>에서 CFM 학습, Stage 2는 <b>정책이 실제로 방문한 상태</b>에서 사람 정정 데이터를 얹어 학습. VLM 백본(Qwen3-VL-4B) + Action Expert(18 layer, 1024 hidden) + depth-aligned cross-attention. (출처: arXiv:2609.03591)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.03591/experiment.png" alt="두 데이터 축의 스케일링 곡선 (Fig. 5)" loading="lazy">
+      <figcaption><b>Figure 5 — 두 스케일링 축의 성공률.</b> (a) 전문가 데이터 시간을 늘리면 옷 개기 성공률 34→84%로 상승 후 120h에서 포화. (b) DAgger 3라운드로 58→74→82→<b>93%</b>. 축 1이 포화된 뒤에도 축 2가 이득을 준다는 것이 논문의 핵심 관찰. (출처: arXiv:2609.03591)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.03591/dataset_overview.png" alt="1,500시간 데이터셋 통계 (Fig. 3)" loading="lazy">
+      <figcaption><b>Figure 3 — 데이터셋 통계.</b> (a) 4개 가사 씬 분포(Folding Station 14.6k, Laundry Washer 8.4k, Living Room 6.1k, Laundry Basket 3.4k trajectories), (b) 궤적 길이 히스토그램(꼬리가 150+초까지 뻗음 → 롱-호라이즌), (c) 11 원자 스킬 빈도. (출처: arXiv:2609.03591)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.03591" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.03591" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.03591v1" target="_blank">HTML</a></li>
+      <li><a href="https://huggingface.co/datasets/challenge-2026/challenge_data" target="_blank">데이터셋(Hugging Face) — 1,500h 공개</a></li>
+      <li><a href="https://bimanual-robot-learning.github.io/challenge/" target="_blank">Bimanual Robot Learning Challenge 웹사이트</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.03591 · XR-2 · 요약 생성 2026-09-07
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

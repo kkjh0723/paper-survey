@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ZETA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Cross-Embodiment · Controlled Study</span>
+    <h1>ZETA: A Controlled Study of Zero-Shot Cross-Embodiment VLA Transfer for Tabletop Manipulation</h1>
+    <p class="authors">Mi Yan, Wenhao Zhang 외 15인 · Galbot · Peking University CFCS · RUC · HKU · Beihang · arXiv:2609.02546</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.02546" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.02546" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2609.02546v1" target="_blank">HTML</a>
+      <span>arXiv:2609.02546</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Zero-Shot</span>
+      <span class="t">Controlled Study</span>
+      <span class="t">Benchmark</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 2일 · 백본 π<sub>0.5</sub> · 14개 target embodiment · sim 6,300 rollout/model + real 140 rollout/model</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>"학습 때 본 적 없는 로봇 몸(embodiment: 팔·그리퍼·외관)에도 VLA(vision-language-action) 정책이 그대로 옮겨질까?"라는 질문을, 지금까지 뒤섞여 있던 <b>태스크·씬·카메라·프로토콜을 전부 통제한 상태에서 embodiment만 바꾸는</b> 벤치마크를 새로 짜서 조사. 저자들은 우선 zero-shot을 두 종류로 명확히 나눈다 — <b>strict zero-shot</b>(target 몸이 학습 어디에도 등장 안 함)과 <b>pretrain-exposed zero-shot</b>(pretraining 데이터에만 있고 post-training엔 없음). 그 위에서 네 가지 요인을 격리 실험 — (1) state-action 표현, (2) 사전학습에 쓴 몸의 다양성, (3) 보조 co-training 목표, (4) target 노출 비율. 실측 발견: <b>모든 상태·액션을 로컬 EEF(End-Effector, 그리퍼 끝) 기준으로 두면 FULL 조합 shift에서 실기기 47.5→<span class="win">87.5%</span></b>, <b>같은 총량이라도 몸을 1→512로 다양화하면 sim 평균 58.7→<span class="win">75.7%</span></b>, <b>task-conditioned bounding box 보조 학습</b>이 co-training 중 최고(+6.6p), <b>pretraining에 target을 5%만 섞어도 +13.4p</b>가 튀어 오르므로 논문들이 strict인지 exposed인지 반드시 밝혀야 한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA 정책은 로봇 팔·그리퍼·외관이 바뀌면 실패한다. 문제는 지금까지의 논문마다 "unseen embodiment 전이"의 정의가 달랐다는 것.</p>
+    <ul>
+      <li><b>Strict zero-shot:</b> target embodiment가 pretraining에도, post-training에도 <b>단 한 프레임도</b> 등장하지 않는 상태에서 배치.</li>
+      <li><b>Pretrain-exposed zero-shot:</b> target이 <b>pretraining엔 소량 있고</b>, 실제 태스크 post-training(fine-tuning)엔 없는 상태.</li>
+    </ul>
+    <div class="callout">
+      <b>왜 이 구분이 중요한가:</b> 저자들이 뒤에서 보이듯, <b>pretraining에 target 몸을 5%만 섞어도 성공률이 평균 +13.4p</b> 뛴다. 두 정의가 뒤섞여 있으면 "우리 방법이 더 낫다"가 사실은 "우리 pretraining이 target을 몰래 봤다"로 설명될 수 있다는 뜻.
+    </div>
+    <p>또한 기존 실험들은 <b>embodiment shift와 태스크/씬/카메라/데이터량 shift를 함께</b> 바꾸는 일이 잦아, "실패 원인이 embodiment 때문인지 다른 요인 때문인지"를 분리할 수 없었다. ZETA는 그 결합을 끊는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>정의 두 갈래로 분리 + 통제 벤치마크</b> — strict / pretrain-exposed 두 zero-shot을 정식으로 분리. sim+real 통합해 <b>14개 held-out target embodiment</b>를 준비: 외관만(Franka+logo, +green), 그리퍼만(Franka+UMI gripper), 팔만(UR5e+Franka hand, GoogleRobot+Franka hand), 팔+그리퍼 전부(UR5e+UMI, GoogleRobot).</li>
+      <li><b>4가지 요인의 격리 실험(RQ1–RQ4)</b> — state-action 표현 4조합, source 몸 다양성 1/8/512, 보조 co-training 4종, target 노출 0/5/30/100%. 모든 실험이 백본·태스크·씬·카메라·최적화 스케줄을 고정하고 <b>한 축씩만</b> 바꾼다.</li>
+      <li><b>모델·데이터·씬을 고정한 대규모 rollout</b> — sim에서 3태스크 × 7 embodiment × 100 rollout × 3 seed = <b>6,300 rollout/model</b>, 실기기에서 2태스크 × 7 embodiment × 10 trial = 140 rollout/model. Task Progress Score([0,100], 서브골 부분점수)로 평균±표준편차 보고.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>백본과 학습 파이프라인</h3>
+    <p>백본은 π<sub>0.5</sub>(Physical Intelligence의 최근 VLA) 아키텍처를 그대로 사용해 <b>모든 비교 실험이 동일한 모델을 공유</b>. 두 단계 학습: (a) pretraining은 각 RQ별로 데이터셋을 갈아 끼워 실험, (b) post-training은 <b>오직 source embodiment</b>(sim: Franka, real: Franka+Robotiq)의 downstream 데이터로만(40K trajectory/task in sim, 50 demo/task in real).</p>
+
+    <h3>Embodiment shift 4가지 범주</h3>
+    <div class="kv">
+      <div>APP (Appearance)</div>
+      <div>팔·그리퍼는 같고 <b>겉모습(로고·색상)만</b> 다른 target.</div>
+      <div>GRP (Gripper)</div>
+      <div>팔은 같고 <b>그리퍼만</b> 다른 target(예: Franka + UMI gripper).</div>
+      <div>ARM</div>
+      <div>그리퍼는 같고 <b>팔만</b> 다른 target(예: UR5e + Franka hand).</div>
+      <div>FULL</div>
+      <div>팔·그리퍼 <b>둘 다</b> 다른 target(예: UR5e + UMI, GoogleRobot).</div>
+    </div>
+
+    <h3>Pretraining pool — 512 procedurally-generated Franka들</h3>
+    <p>Franka-style 스켈레톤을 절차적으로 변형해 <b>512개 다양한 몸</b>을 만든다. 팔 길이·링크 기하·그리퍼 형태·표면 재질/색상·시야를 넓게 흔들어 pretraining pool로 삼는다(Fig. 2). 이 pool 크기가 곧 RQ2의 "다양성" 축.</p>
+
+    <h3>RQ1 — State-Action 표현 (4가지 조합)</h3>
+    <p>몸이 바뀌면 관절 각도 공간이 통째로 재정의되어 무의미하다. 그래서 손끝 좌표계로 다시 쓰는 것이 흔한 처방인데, 방식이 두 가지다.</p>
+    <div class="kv">
+      <div>State: Absolute EEF</div>
+      <div>세계 좌표계에서 그리퍼 끝의 절대 위치(=매 순간의 "여기"를 세계 좌표로).</div>
+      <div>State: EEF-Delta</div>
+      <div>이전 프레임 대비 EEF의 변화량. <b>기준점을 각 프레임 자기 자신으로</b> 잡는 로컬 표현.</div>
+      <div>Action: World-Delta</div>
+      <div>세계 좌표계에서의 다음 EEF 이동 벡터.</div>
+      <div>Action: EEF-Delta</div>
+      <div>현재 EEF 좌표계에서의 이동 벡터. 카메라·베이스 위치와 무관.</div>
+    </div>
+    <p>이 두 축의 2×2 조합을 실험. 저자들의 가설: <b>표현이 로컬(EEF 기준)일수록 팔·그리퍼가 달라져도 정책이 그대로 옮겨간다</b>.</p>
+
+    <h3>RQ2 — Source 다양성 (같은 총량 vs 몸 수)</h3>
+    <p>총 640K 궤적으로 <b>고정된 예산</b>을 유지하되, source 몸의 수만 1개 / 8개 / 512개로 갈아 끼운다. 보완 실험으로 <b>몸 당 예산을 고정</b>하고 몸 수만 32/128/512로 스윕도 함께 진행. 앞의 것은 "다양성이 반드시 유리한가?"를, 뒤의 것은 "더 넣기만 하면 무조건 오르는가?"를 각각 판별.</p>
+
+    <h3>RQ3 — Co-training 보조 목표 4종</h3>
+    <ul>
+      <li><b>Language-Action Prediction (LAP), EEF-frame:</b> 언어에서 EEF 기준 액션 예측을 병렬 손실로.</li>
+      <li><b>Language-Action Prediction, mixed-frame:</b> EEF와 world 두 frame 섞기.</li>
+      <li><b>Subgoal Prediction:</b> 다음 서브골(부분 목표)을 예측.</li>
+      <li><b>Task-conditioned Bounding Box:</b> 태스크 언어로 조건화된 <b>대상 물체의 bbox</b>를 함께 예측 → 정책이 "어디를 봐야 하는지" 명시적 감독.</li>
+    </ul>
+
+    <h3>RQ4 — Target 노출 비율</h3>
+    <p>Pretraining에 target embodiment 데이터를 <b>0% / 5% / 30% / 100%</b> 섞어 학습한 뒤 post-training은 source만으로 진행. 0%는 strict zero-shot, 나머지는 pretrain-exposed. Oracle은 target으로 직접 post-training한 모델(즉 zero-shot이 아님).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>평가 프로토콜</h3>
+    <p>Sim 3태스크: 소시지 서빙 / 그릇 쌓기 / 큐브 쌓기. 실기기 2태스크: 튀김기 열기 / 화분에 물 주기. 도메인 랜덤화(카메라 위치, 조명, 배경, 레이아웃, 질량, 마찰)를 걸어 평가.</p>
+
+    <h3>RQ1 — State-Action 표현 (Sim, Table 3의 Average 열)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>State</th><th>Action</th><th>Average</th><th>FULL</th></tr></thead>
+      <tbody>
+        <tr><td>Absolute EEF</td><td>World-Delta</td><td>60.3 ± 1.1</td><td>38.5</td></tr>
+        <tr><td>Absolute EEF</td><td>EEF-Delta</td><td>64.6 ± 0.4</td><td>—</td></tr>
+        <tr><td>EEF-Delta</td><td>World-Delta</td><td>73.4 ± 0.7</td><td>—</td></tr>
+        <tr><td>EEF-Delta</td><td>EEF-Delta</td><td class="win">75.7 ± 1.3</td><td class="win">74.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">가장 어려운 <b>FULL</b>(팔+그리퍼 전부 다름) 범주에서 38.5 → 74.3(+35.8p). "state·action 둘 다 로컬(EEF 기준)"이 정답.</p>
+
+    <h3>RQ1 — 실기기 (Table 4)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>State</th><th>Action</th><th>Average</th><th>FULL</th></tr></thead>
+      <tbody>
+        <tr><td>Absolute EEF</td><td>World-Delta</td><td>56.0</td><td>47.5</td></tr>
+        <tr><td>Absolute EEF</td><td>EEF-Delta</td><td>61.6</td><td>—</td></tr>
+        <tr><td>EEF-Delta</td><td>World-Delta</td><td>60.8</td><td>—</td></tr>
+        <tr><td>EEF-Delta</td><td>EEF-Delta</td><td class="win">89.9</td><td class="win">87.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">실기기에서 격차가 더 커져 <b>+40p</b>. sim보다 도메인 갭이 크기 때문에 표현이 더 결정적.</p>
+
+    <h3>RQ2 — Source 몸 다양성 (Fig. 5·6, avg)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>실험</th><th>1 source</th><th>8 sources</th><th>512 sources</th></tr></thead>
+      <tbody>
+        <tr><td>고정 총 예산 640K (sim)</td><td>58.7</td><td>68.3</td><td class="win">75.7</td></tr>
+        <tr><td>고정 총 예산 640K (real)</td><td>56.0</td><td>48.0</td><td class="win">64.5</td></tr>
+        <tr><td>고정 per-embodiment 예산 (sim)</td><td>—(32→) 71.2</td><td>(128→) 73.4</td><td class="win">75.7</td></tr>
+        <tr><td>고정 per-embodiment 예산 (real)</td><td>—(32→) 58.3</td><td>(128→) 61.2</td><td class="win">64.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">고정 총 예산 실기기에서 8 sources가 오히려 떨어지는 <b>non-monotonic</b> 현상 관찰. 하지만 per-embodiment 예산을 유지하면(즉 몸이 늘어난 만큼 데이터가 늘면) 항상 단조 증가. 즉 "다양성 자체가 이득"이라기보다 <b>다양성을 얻으려 개별 데이터를 희석하지 말라</b>는 실용적 교훈.</p>
+
+    <h3>RQ3 — Co-training 보조 목표 (Sim, 512 sources)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Co-training</th><th>Sim avg</th><th>Δ</th></tr></thead>
+      <tbody>
+        <tr><td>없음 (baseline)</td><td>75.7 ± 1.3</td><td>—</td></tr>
+        <tr><td>Language-Action, EEF-frame</td><td>81.3 ± 0.5</td><td>+5.6</td></tr>
+        <tr><td>Language-Action, mixed-frame</td><td>77.7 ± 0.3</td><td>+2.0</td></tr>
+        <tr><td>Subgoal Prediction</td><td>81.8 ± 0.8</td><td>+6.1</td></tr>
+        <tr><td>Task-conditioned BBox</td><td class="win">82.3 ± 0.2</td><td class="win">+6.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">"이 언어가 가리키는 물체가 화면 어디에 있는지"를 명시적으로 학습시키는 <b>Task-conditioned BBox</b>가 최고. LAP는 EEF-frame이 mixed-frame보다 낫다 — RQ1의 결론과 일관.</p>
+
+    <h3>RQ4 — Target 노출 비율</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Target</th><th>0% (strict)</th><th>5%</th><th>30%</th><th>100%</th><th>Oracle</th></tr></thead>
+      <tbody>
+        <tr><td>UR5e + UMI</td><td>69.3</td><td>78.6</td><td>82.8</td><td class="win">87.9</td><td>81.2</td></tr>
+        <tr><td>GoogleRobot</td><td>51.4</td><td>68.9</td><td>71.1</td><td class="win">75.4</td><td>70.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap"><b>5%만 섞어도</b> 두 target 평균 +13.4p. 100% pretrain-exposed는 심지어 target으로 직접 post-training한 <b>Oracle을 넘긴다</b>. 즉 "우리는 zero-shot이다"라고 주장하려면 그것이 strict인지 exposed인지 반드시 명시해야 하고, 5%만 노출돼도 이 논문의 baseline보다 이득이 크다.</p>
+
+    <h3>RQ4 확장 — 표현 × 노출 상호작용 (Table 6)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>State</th><th>Action</th><th>0% (strict)</th><th>5% (exposed)</th></tr></thead>
+      <tbody>
+        <tr><td>Absolute EEF</td><td>World-Delta</td><td>33.9</td><td>66.9</td></tr>
+        <tr><td>Absolute EEF</td><td>EEF-Delta</td><td>38.6</td><td>69.2</td></tr>
+        <tr><td>EEF-Delta</td><td>World-Delta</td><td>58.4</td><td>67.5</td></tr>
+        <tr><td>EEF-Delta</td><td>EEF-Delta</td><td class="win">60.4</td><td class="win">71.1</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Strict(0%) 조건에선 표현 선택으로 <b>+26.5p</b>까지 벌 수 있음. 5% 노출 조건에선 표현 격차가 좁아진다 — 표현이 좋을수록 <b>노출이 없는 환경에서</b> 상대 이득이 크다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (실질적으로 격리한 요인들)</h2>
+    <ul>
+      <li><b>Action frame(World vs EEF)</b>: 평균 ~4.3p 차이.</li>
+      <li><b>State 표현(Absolute vs EEF-Delta)</b>: FULL 범주에서 +15p 이상.</li>
+      <li><b>Source 몸 수(1→512, 고정 총 예산)</b>: sim 평균 +17.0p, 실기기는 non-monotonic(다양성이 데이터를 희석할 수 있음).</li>
+      <li><b>Co-training 보조 목표</b>: +6~7p 이득. EEF-frame LAP &gt; mixed-frame LAP → RQ1과 일관.</li>
+      <li><b>Target 노출 5%</b>: +9~17p — 정의 밝히지 않으면 비교 불공정.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.02546/teaser.png" alt="ZETA 통제 벤치마크 개요 (Teaser)" loading="lazy">
+      <figcaption><b>Teaser — 통제된 zero-shot cross-embodiment 벤치마크.</b> Strict zero-shot(왼쪽: pretrain·post-train 어디에도 target 없음) vs Pretrain-exposed(pretrain에만 target). 4개 요인(state-action 표현, source 다양성, co-training, 노출)을 개별 격리 실험. (출처: arXiv:2609.02546)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.02546/taxonomy.png" alt="Embodiment shift 4범주 (Taxonomy)" loading="lazy">
+      <figcaption><b>Taxonomy — Embodiment shift 4범주.</b> APP(외관만) / GRP(그리퍼만) / ARM(팔만) / FULL(전부). 저자들은 14개 target embodiment를 이 네 범주로 배치해 shift 크기별 성능을 분리해 본다. (출처: arXiv:2609.02546)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.02546/embodiments.png" alt="512 사전학습 embodiment pool (Fig. 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Procedurally generated 512 Franka embodiments.</b> Pretraining pool: 팔 링크·그리퍼 기하·외관을 절차적으로 흔들어 만든 512개 몸. 이 pool 크기를 갈아 끼우는 것이 RQ2의 "source 다양성" 축. (출처: arXiv:2609.02546)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.02546/rq2.png" alt="Source 다양성 스케일링 (RQ2)" loading="lazy">
+      <figcaption><b>RQ2 — Source 몸 다양성 성능 곡선.</b> 총 예산 640K를 고정한 채 source를 1→8→512로 늘리면 sim 58.7→68.3→75.7(+17p). 실기기는 8에서 되레 내려가는 non-monotonic → "몸 수가 늘어난 만큼 데이터를 늘려야" 함. (출처: arXiv:2609.02546)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>핵심 표 요약</b> — 실기기 FULL 범주: World-Delta·Absolute EEF에서 <b>47.5%</b>, EEF-Delta·EEF-Delta에서 <b>87.5%</b> (+40p). RQ4: target 5% 노출로 UR5e+UMI 69.3→78.6, GoogleRobot 51.4→68.9. Co-training은 task-conditioned BBox가 최고(82.3, +6.6p).
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.02546" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.02546" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.02546v1" target="_blank">HTML</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.02546 · ZETA · 요약 생성 2026-09-07
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
