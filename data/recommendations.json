@@ -1,10 +1,63 @@
 {
-  "generated": "2026-09-08",
+  "generated": "2026-09-21",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2609.21948",
+          "title": "GALA: Geometry-Aware Latent Action Modeling for Vision-Language-Action Model Pretraining across Embodiments",
+          "authors": "Yichen Liu, Puzhen Yuan, Xiang Zhu, Yanjiang Guo, Jianyu Chen",
+          "summary_ko": "영상 프레임 차이만 보는 기존 잠재 행동 모델(LAM, 라벨 없는 영상에서 '행동'을 압축 코드로 뽑는 모델)에 손가락·그리퍼 같은 말단장치(end-effector)의 3D 기하 움직임을 통합 표현(UEMR)으로 더해, 사람 영상까지 포함한 여러 로봇 데이터로 VLA를 사전학습한다(RoboCasa-GR1 68.3%, 실물 75.5%).",
+          "tags": [
+            "Latent Action",
+            "Cross-Embodiment",
+            "VLA",
+            "Human Video",
+            "Dexterous Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.21948",
+          "extra_url": "https://puzhenyuan.github.io/GALA-website/",
+          "date": "2026-09-18",
+          "reason": "좋아요한 WALA(2607.11397)와 LAPA(2410.11758)·What Matters for Latent Actions(2608.19613)이 다룬 '영상→잠재 행동' 계열의 약점(손가락 수준 미세 동작 손실)을 3D 기하로 보완한다. Cross-Embodiment 태그의 Unified Hand Action Space(2607.03570)·Camera-Centric Action Geometry(2608.26058)와 '공유 기하 행동 공간' 아이디어가 직접 겹친다.",
+          "rec_date": "2026-09-21"
+        },
+        {
+          "id": "2609.21983",
+          "title": "SkelWAM: A Skeleton-Guided World-Action Model for Zero-Shot Cross-Embodiment Manipulation",
+          "authors": "Pengjun Niu, Yujia Xie, Rui Peng, Hang Zhao, Ke Liu",
+          "summary_ko": "팔 중심선·도구 끝점(TCP) 자세·그리퍼 명령으로 된 25차원 '골격' 상태를 로봇 공통 표현으로 삼아, 영상과 행동을 함께 예측하는 월드-액션 모델(WAM)이 골격 행동을 내고 로봇별 디코더가 관절 명령으로 바꿔, 대상 로봇 시연 없이 다른 로봇으로 전이한다(LIBERO-Cross10에서 최강 기준선 대비 +36.2%p).",
+          "tags": [
+            "World Model",
+            "Cross-Embodiment",
+            "Zero-Shot",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.21983",
+          "extra_url": "http://www.liukepku.com/skelwam/index.html",
+          "date": "2026-09-18",
+          "reason": "보유한 ZETA(2609.02546, 제로샷 교차 로봇 VLA 전이 통제 연구)와 AnyWorld(2608.29242)·Robot-Factored World Models(2607.22535)가 던진 '로봇 몸체가 바뀌면 월드 모델을 어떻게 재사용하나' 질문에 명시적 기하 표현으로 답한다. FlowWAM(2607.13017)·LingBot-VA 2.0(2607.08639) 같은 WAM 계열과도 구조가 같다.",
+          "rec_date": "2026-09-21"
+        },
+        {
+          "id": "2609.21908",
+          "title": "CommitFlow: Semantic Commitment Verification and Local Correction for Long-Horizon Robot Manipulation VLA Execution",
+          "authors": "Zixiang Zhao, Yansong Feng, Yang Yang, Chaoyu Wang, Haoran Xiao, Hui Zhang, Chuang Cheng, Jianjun Ma",
+          "summary_ko": "긴 작업에서 VLA가 '컵이 실제로 잡혔는지' 같은 단계 조건(의미적 약속)을 확인하지 않고 다음 단계로 넘어가는 문제를, 기반 정책은 고정한 채 조건 감시기(SCM)가 다음 행동을 보류하고 BoundaryFlow가 최소 강도의 국소 보정을 생성해 해결한다(RoboTwin 2.0 10개 과제에서 π0.5 대비 +22.7%).",
+          "tags": [
+            "VLA",
+            "Long-Horizon",
+            "Robustness",
+            "Training-Free",
+            "Flow Matching"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.21908",
+          "extra_url": "",
+          "date": "2026-09-18",
+          "reason": "좋아요한 Harness VLA(2607.08448)처럼 '고정된 VLA를 바깥 모듈로 조종'하는 설계이며, CheckVLA(2607.26789)의 실행 중 검증·RedFlow(2607.27782)의 행동 수준 보정을 하나로 묶은 형태다. π0.5(2504.16054)를 기반 정책으로 써 보유 컬렉션과 바로 비교할 수 있다.",
+          "rec_date": "2026-09-21"
+        },
         {
           "id": "2608.30880",
           "title": "Zeva: In-Context Causal Learning for Generalizable Embodied Manipulation",
@@ -237,42 +290,6 @@
           "date": "2026-08-31",
           "reason": "좋아요한 WALA(2607.11397, DINOv3 world model + latent action)·Xiaomi-U0(2607.11643, 38B 파운데이션)·Force Memory VLA(2607.18231)의 정면 다음 세대 — pool의 이번 세대 관심축(플로우 매칭 + 미래 예측 + 자기개선) 3가지가 한 논문에 응축. pool의 이번 새 항목 FlashVLA(2608.27384, 스트리밍 플로우 매칭)·WALL-SS(2608.26239, next-scale AR)·Riemann-1.0(2608.27033, causal AR WAM)·ForeTime-VLA(2608.20735, causal future-token 증류)·LAWA(2608.24882, latent action intention)·CoRe(2608.14822)의 정면 자매작이면서, pool의 Q-Planning(2608.21204, 얼린 정책 + 소형 Q함수 자기개선)·Look Before You Leap(2607.03751, MCTS→Q 증류)·pool 관련 항목 Q-Transformer(2309.10150)·DrEureka(2406.01967)의 value-guided 라인의 신형. 25/50/75/100% multi-horizon alignment는 index의 τ₀-VLA(2608.16885, 계층 WM + TTS)·G0.5(2608.11739, 통합 AR 추론+액션)·pool의 hint²(2608.13678, 계층 WM 유도)와 정합. 배포 시 직접 액션 생성을 유지한다는 점은 좋아요한 Harness VLA(2607.08448, frozen VLA + 외부 모듈)의 정면 답이자, pool 관련 항목 CrossFormer(2408.11812)·이번 새 추천 VLAct(2608.27550, continued pretraining) 대비 '학습 목표를 바꿔서' 배포 효율을 얻는 대안 축.",
           "rec_date": "2026-09-02"
-        },
-        {
-          "id": "2608.29537",
-          "title": "AGM: Achievement-Grounded Memory for Closed-Loop Agents with Frozen VLA Policies",
-          "authors": "Hongbo Gao, Zeyu Ni, Xin Wen",
-          "summary_ko": "얼린(frozen, 가중치 고정) 시각-언어-액션(VLA, Vision-Language-Action) 정책에 폐쇄 루프 검증(closed-loop verification, 실행 결과를 확인하고 다음을 결정하는 순환)을 얹는 경량 프레임워크. 태스크를 서브골(subgoal, 하위 목표) 시퀀스와 진행 포인터(progress pointer, 지금 어느 서브골을 실행 중인지 나타내는 커서)로 표현하고, 프로프리오셉션(proprioception, 로봇 자기 감각 신호)과 포인트 트래킹(point tracking, 물체 표면 점의 화면 궤적)이라는 물리적 증거(physical evidence)로 각 서브골이 실제 완료됐는지 검증한 뒤에만 메모리를 다음 서브골로 진전(advance)시킨다. 이로써 지역 실패(local failure, 한 번 삐끗함)가 지속적 오류(persistent error, 계속 잘못된 스텝을 밟게 되는 상태)로 굳는 것을 방지 — 벤치마크와 실기 로봇에서 메모리 증강(memory-augmented) 베이스라인 대비 큰 성능 향상.",
-          "tags": [
-            "Frozen VLA",
-            "Closed-Loop",
-            "Memory",
-            "Subgoal Verification",
-            "Agentic Robotics"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.29537",
-          "extra_url": "",
-          "date": "2026-08-30",
-          "reason": "좋아요 최고점 조합의 정확한 다음 세대 — Aspire(agentic robotics + skill library + continual learning)·2606.19980(self-improving coding agent)·2607.08448 Harness VLA(frozen VLA + agentic planner + memory + manipulation)·Hi-VLA(2606.10267, 계층 옵션 + termination)의 정면 후속. 특히 Harness VLA의 'frozen VLA + memory' 조합의 이후 세대 좌표. pool의 이번 새 항목 FLARE(2608.26645, 실패 회복 스킬 라이브러리)·Physical Agentic AI(2608.22657, 오케스트레이터 검증)·PhysCaP(2608.21031, code-as-policy + physics probing)·Q-Planning(2608.21204, 얼린 정책 + 소형 Q함수)·CoRe(2608.14822, 상상 궤적 회복)의 정면 자매작 — 이들이 모두 '큰 정책은 그대로 두고 외부 모듈로 신뢰성 확보'라는 축을 공유. 서브골 시퀀스 + 진행 포인터는 좋아요한 Hi-VLA(2606.10267, 옵션 프레임워크 + termination)·pool의 SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·index의 Teach and Grow(2608.17209)·ART(2608.14047, VLA + tool-use agent)의 정확한 자매작. 물리 증거로 진전을 판단한다는 점은 pool의 ContactGuard(2608.13438, pre-contact 실패 감지)·JEPA Safety(2608.17496, action-conditioned JEPA + safety shield)·이번 새 관련 추천 Q-Transformer(2309.10150, offline value)의 사상적 대응, index의 SDGC(2608.19490, 자기 롤아웃)의 검증 축과 정합.",
-          "rec_date": "2026-09-02"
-        },
-        {
-          "id": "2608.26645",
-          "title": "FLARE: A Failure-Aware Framework for Autonomous Correction and Recovery in Visual-Language Robotic Manipulation",
-          "authors": "Ganlong Zhao, Zijia Tang, Xingping Chen, Zhanghui Kuang, Ye Tian, Guanbin Li",
-          "summary_ko": "시각-언어-액션(VLA) 모델이 대체로 실패 없는 궤적 단조 시연(trajectory-monotonic, failure-free demonstration, 성공만 담긴 궤적)으로 학습돼 파지 실패·물체 낙하·예상치 못한 충돌 같은 흔한 실행 오류에서 회복하지 못한다는 한계를 다룬다. FLARE는 '재시도(Retry)'와 '초기화(Reset)' 패러다임 — Retry는 로봇 자세와 환경 상태를 분리(decouple)하는 섭동(perturbation, 정책이 처음 겪는 편차)과 브릿지 세그먼트(bridging segment, 편차 상태에서 태스크 궤적으로 복귀하는 연결 구간)를 시연에 주입해 정책이 실행 편차를 자율 처리하도록 학습. Reset은 실행 비디오에서 MLLM(멀티모달 대형 언어 모델)으로 OOD(out-of-distribution, 학습 분포 밖) 실패 상태를 오프라인 분석해 태스크 유효 상태로 되돌리는 객체-중심(object-centric) 소규모 스킬 라이브러리를 자동 수집·학습. 배포 시 온라인 MLLM 모니터가 태스크 실행과 Reset 스킬 사이를 중재. 접촉 풍부 태스크에서 성공률·강건성이 크게 개선.",
-          "tags": [
-            "VLA",
-            "Failure Recovery",
-            "MLLM Monitor",
-            "Reset Skills",
-            "Robustness"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.26645",
-          "extra_url": "",
-          "date": "2026-08-27",
-          "reason": "좋아요 최고점 조합의 정확한 다음 세대 — Aspire(agentic robotics + skill library)·2606.19980(self-improving coding agent)·2607.05369 GaP(graph-as-policy + agentic coding)·2607.08448 Harness VLA(frozen VLA + agentic planner)의 정면 후속. index의 SDGC(2608.19490, 자기 롤아웃 파인튜닝)·pool의 CoRe(2608.14822, 상상 궤적 회복)·Look Before You Leap(2607.03751, MCTS 증류)·이번 pool의 Q-Planning(2608.21204, 얼린 정책 + Q 자기개선)·ARLI(2608.23831, 지연 RL)·Physical Agentic AI(2608.22657, 오케스트레이터 검증)·PhysCaP(2608.21031, physics probing)와 자매작 — 특히 Reset 스킬을 MLLM이 자동 수집한다는 점은 pool의 SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·index의 Teach and Grow(2608.17209, 재사용 스킬 블록)와 정합. Retry 섭동은 이번 pool 관련 항목 HIL-SERL(2410.21845, human-in-loop RL)·pool의 MiDAS(2608.11363)의 실기 자기개선 축의 데이터 사이드 대응, 좋아요한 Force Memory VLA(2607.18231, cross-embodiment force memory)의 실패 대응 관점과 정합.",
-          "rec_date": "2026-09-01"
         }
       ]
     },
@@ -280,6 +297,57 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2505.06111",
+          "title": "UniVLA: Learning to Act Anywhere with Task-centric Latent Actions",
+          "authors": "Qingwen Bu, Yanting Yang, Jisong Cai, Shenyuan Gao, Guanghui Ren, Maoqing Yao, Ping Luo, Hongyang Li",
+          "summary_ko": "언어 지시를 조건으로 DINO 특징 공간(사전학습 이미지 인코더의 표현)에서 잠재 행동을 학습해 과제와 무관한 움직임(카메라 흔들림 등)을 걸러내고, 사람 영상까지 활용해 여러 로봇에 배포 가능한 VLA를 만든다 — OpenVLA 대비 사전학습 연산 1/20로 더 높은 성능.",
+          "tags": [
+            "Latent Action",
+            "Cross-Embodiment",
+            "VLA",
+            "Human Video"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2505.06111",
+          "extra_url": "https://github.com/OpenDriveLab/UniVLA",
+          "date": "2025-05-09",
+          "reason": "보유한 LAPA(2410.11758)의 직계 후속이자, 좋아요한 WALA(2607.11397)·CD-LAM(2607.09185)·DLAM(2607.27138)이 공통으로 비교 기준선으로 삼는 대표 잠재 행동 VLA다. 오늘 새 추천 GALA(2609.21948)가 개선하려는 '이미지 기반 LAM'의 기준점이기도 하다.",
+          "rec_date": "2026-09-21"
+        },
+        {
+          "id": "2502.19417",
+          "title": "Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models",
+          "authors": "Lucy Xiaoyang Shi, Brian Ichter, Michael Equi 외 · Sergey Levine, Chelsea Finn (Physical Intelligence)",
+          "summary_ko": "상위 VLM이 복잡한 지시와 실행 중 사용자 피드백('그건 쓰레기 아니야')을 해석해 다음 단계 언어 명령을 정하고, 하위 π0 VLA가 그 명령을 저수준 행동으로 실행하는 계층형 시스템 — 테이블 정리·샌드위치 만들기·장보기를 3종 로봇에서 시연.",
+          "tags": [
+            "VLA",
+            "Long-Horizon",
+            "Agentic Robotics",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2502.19417",
+          "extra_url": "https://www.pi.website/research/hirobot",
+          "date": "2025-02-26",
+          "reason": "좋아요한 What Matters in Orchestrating Robot Policies(2606.10267)·GaP(2607.05369)·ASPIRE가 다루는 '상위 추론 + 하위 정책' 오케스트레이션의 PI 쪽 원형이다. 보유한 π0(2410.24164)·π0.5(2504.16054)·HAMSTER(2502.05485)·SayCan(2204.01691) 사이를 잇는 계층형 VLA 대표작.",
+          "rec_date": "2026-09-21"
+        },
+        {
+          "id": "2412.15109",
+          "title": "Predictive Inverse Dynamics Models are Scalable Learners for Robotic Manipulation (Seer)",
+          "authors": "Yang Tian, Sizhe Yang, Jia Zeng, Ping Wang, Dahua Lin, Hao Dong, Jiangmiao Pang",
+          "summary_ko": "로봇이 먼저 '다음 순간의 영상'을 예측하고, 그 예측 영상과 현재 상태 사이를 잇는 행동을 역동역학 모델(IDM, 두 상태 사이의 행동을 추정하는 모델)로 뽑는 예측 역동역학 모델(PIDM) Seer를 DROID로 사전학습해 CALVIN ABC-D 평균 4.28(당시 최고)을 달성.",
+          "tags": [
+            "World Model",
+            "VLA",
+            "Imitation Learning",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.15109",
+          "extra_url": "https://github.com/OpenRobotLab/Seer",
+          "date": "2024-12-19",
+          "reason": "보유 컬렉션의 월드-액션 모델 흐름(FlowWAM 2607.13017, LingBot-VA 2.0 2607.08639, WCM 2607.29613)이 전제하는 '미래 시각 예측 → 행동' 구조의 초기 확장형 대표작이다. DROID(2403.12945)로 사전학습해 보유 데이터셋 논문과도 연결되고, KineBench(2607.19876)의 'IDM-free' 논점을 이해하는 기준점이 된다.",
+          "rec_date": "2026-09-21"
+        },
         {
           "id": "2410.10803",
           "title": "Generalizable Humanoid Manipulation with 3D Diffusion Policies",
@@ -654,78 +722,6 @@
           "date": "2023-09-05",
           "reason": "index의 ACT(2304.13705, ALOHA)의 정면 다중-태스크 확장이자, 이번 pool 새 항목 Hierarchical Skill Retrieval(2608.24042)·pool의 관련 항목 MimicPlay(2302.12422)·Voyager(2305.16291)·이번 새 관련 추천 AutoRT(2401.12963)의 사상적 자매작 — 모두 '작은 데이터로 스킬 다양성을 확보'하는 노선. 좋아요한 Aspire(agentic robotics + skill library)·2607.08448 Harness VLA(frozen VLA + skill primitive)·Hi-VLA(2606.10267, 계층 옵션)의 스킬 축 원류. index의 RoboCasa(pool 관련 항목 2406.02523, 부엌 벤치마크)·MimicGen(2410.24185)·τ₀-VLA(2608.16885)의 부엌 씬 다중 태스크 라인의 뿌리이자, pool의 SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516)·index의 Teach and Grow(2608.17209, 재사용 스킬 블록)·Skill Mining(2607.08354)의 스킬 라이브러리 계열 원류. 의미론적 데이터 증강은 이번 새 추천 AnyWorld(2608.29242, factorized 임바디먼트)·좋아요한 Xiaomi-U0(2607.11643, 38B) 데이터 증강 노선의 저비용 대응, 좋아요한 Force Memory VLA(2607.18231, cross-embodiment)의 데이터 다양성 축과 정합. Homanga Bharadhwaj·Vikash Kumar 조합이라 이후 CMU/Meta 임바디드 계보(ATM, HRP)의 표준 참조.",
           "rec_date": "2026-09-02"
-        },
-        {
-          "id": "2409.20537",
-          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
-          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He (MIT)",
-          "summary_ko": "제너럴리스트 로봇 모델 학습의 걸림돌이 이질성(heterogeneity, 로봇 형태·태스크 간 감각·행동 공간의 이질성)이라는 관점. 기존 방법은 특정 임바디먼트 하나의 특정 태스크만 위해 데이터를 모아 학습해 비싸고 과적합에 취약. HPT(Heterogeneous Pre-trained Transformers)는 정책 신경망의 공유 가능한 큰 트렁크(shareable trunk)를 여러 임바디먼트·태스크 로봇 데이터로 사전학습해 태스크·임바디먼트-무관 공유 표현(shared representation)을 학습한다. 서로 다른 임바디먼트의 프로프리오셉션(proprioception, 로봇 자기 감각)과 시각 입력을 짧은 토큰 시퀀스로 정렬한 뒤 로봇 제어로 매핑. 52개 데이터셋 규모로 학습 목적 함수의 스케일링 거동을 조사, 여러 시뮬레이터와 실기 환경에서 미학습 태스크 성능을 20% 이상 개선. Kaiming He 그룹.",
-          "tags": [
-            "Cross-Embodiment",
-            "Foundation Model",
-            "Heterogeneous Pretraining",
-            "Kaiming He",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2409.20537",
-          "extra_url": "https://liruiw.github.io/hpt/",
-          "date": "2024-09-30",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — pool의 관련 항목 CrossFormer(2408.11812, 20종 로봇 하나의 정책)·GR-2(2410.06158, 38M 클립)·UniSim(2310.06114)·이번 새 추천 VLAct(2608.27550, 다중 임바디먼트 continued pretraining)의 사상적 원류. index의 OpenVLA(2406.09246)·Octo(2405.12213)·RDT(2410.07864)·GR00T-N1(2503.14734)·SmolVLA(2506.01844)·좋아요한 Force Memory VLA(2607.18231, cross-embodiment)·Xiaomi-Robotics-1(2607.15330, UMI 스케일링) 라인의 뿌리이자, pool의 새 항목 CLAP(2608.27406, 크로스 임바디먼트 WM)·XEWorld(2608.05799 pool, cross-embodiment WM 진단)의 정면 사전작. 여러 로봇을 하나의 트랜스포머 트렁크로 흡수하는 '이종 액션 공간 정렬' 접근은 컬렉션의 HPT→CrossFormer→π0→VLAct 경로를 완성하는 좌표. Kaiming He·Xinlei Chen 조합이라 이후 GR00T·π0.5의 표준 참조.",
-          "rec_date": "2026-09-01"
-        },
-        {
-          "id": "2305.16291",
-          "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
-          "authors": "Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu, Linxi Fan, Anima Anandkumar",
-          "summary_ko": "대형 언어 모델(LLM) 기반 임바디드 평생 학습 에이전트(embodied lifelong learning agent)의 대표작. Minecraft 환경에서 사람 개입 없이 세계를 계속 탐색·다양한 스킬 획득·새로운 발견을 수행. 세 요소로 구성: (1) 탐색을 최대화하는 자동 커리큘럼(automatic curriculum, 어느 태스크를 다음에 학습할지 자동 결정), (2) 실행 가능한 코드로 복잡 행동을 저장·검색하는 계속 커지는 스킬 라이브러리(skill library), (3) 환경 피드백·실행 오류·자체 검증(self-verification)을 결합해 프로그램을 개선하는 반복 프롬프팅 메커니즘. GPT-4를 블랙박스 쿼리로 활용해 모델 파라미터 파인튜닝 없이 학습 — 습득한 스킬은 시간 확장적·해석 가능·조합적이라 에이전트 능력이 급속 누적되고 파국적 망각(catastrophic forgetting)이 완화. 이전 SOTA 대비 고유 아이템 3.3배·이동 거리 2.3배·기술 트리 마일스톤을 최대 15.3배 빨리 달성.",
-          "tags": [
-            "Agentic",
-            "LLM",
-            "Skill Library",
-            "Lifelong Learning",
-            "Coding Agent"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2305.16291",
-          "extra_url": "https://voyager.minedojo.org/",
-          "date": "2023-05-25",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 좋아요 최고점 조합 Aspire(agentic robotics + skill library)·2606.19980(self-improving coding agent)·2607.05369 GaP(graph-as-policy + agentic coding)·2607.08448 Harness VLA(frozen VLA + agentic planner)의 정면 원류 좌표. pool의 Physical Agentic AI(2608.22657, 오케스트레이터 검증)·PhysCaP(2608.21031, code-as-policy + physics probing)·SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516)·Push-T Agent(2608.18227)·이번 pool 관련 항목 Eureka(2310.12931, LLM 보상 설계)·DrEureka(2406.01967, sim-to-real)·이번 새 추천 FLARE(2608.26645, 실패 회복 스킬 라이브러리)의 계보 뿌리. index의 ART(2608.14047, VLA + tool-use)·Teach and Grow(2608.17209, 재사용 스킬 블록)·Skill Mining(2607.08354)·SLIM 등 스킬 라이브러리 논문 대부분의 뿌리 참조. Anima Anandkumar·Linxi Fan·Yuke Zhu·Ajay Mandlekar 조합이라 이후 NVIDIA/Caltech agentic 임바디드 계보(GR00T-Mimic, RoboCasa)의 표준 참조.",
-          "rec_date": "2026-09-01"
-        },
-        {
-          "id": "2302.12422",
-          "title": "MimicPlay: Long-Horizon Imitation Learning by Watching Human Play",
-          "authors": "Chen Wang, Linxi Fan, Jiankai Sun, Ruohan Zhang, Li Fei-Fei, Danfei Xu, Yuke Zhu, Anima Anandkumar",
-          "summary_ko": "사람 시연에서 로봇 조작 스킬을 배우는 모방 학습(imitation learning)이 장기 지평(long-horizon) 태스크에서 도달 불가능한 양의 시연을 요구한다는 문제를 다룬다. 해법으로 사람 플레이 데이터(human play data, 사람이 손으로 환경과 자유롭게 상호작용하는 비디오)에 의지 — 형태(morphology, 사람 손 vs. 로봇 팔)가 달라도 물리 상호작용의 풍부한 정보를 담고 있어 로봇 정책 학습에 활용 가능하다는 가설. MimicPlay는 계층적 학습 프레임워크(hierarchical learning framework)로, 사람 플레이 데이터에서 잠재 계획(latent plan, 다음에 무엇을 할지의 저차원 계획)을 학습해 소량 텔레옵 시연으로 학습한 저수준 비주얼모터 제어를 유도. 14개 실기 장기 태스크에서 SOTA 모방 학습을 성공률·일반화·외란 강건성에서 능가. Stanford Fei-Fei Li·Yuke Zhu 그룹.",
-          "tags": [
-            "Hierarchical",
-            "Human Play",
-            "Latent Plan",
-            "Long-Horizon",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2302.12422",
-          "extra_url": "https://mimic-play.github.io/",
-          "date": "2023-02-24",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 좋아요한 Hi-VLA(2606.10267, 계층 옵션)·WALA(2607.11397, DINOv3 world model + latent action)·Aspire의 계층·잠재 관점의 사상적 원류. pool의 LD4WAM(2608.22403, 사람 영상 잠재 동역학)·이번 새 추천 HumanPlus(2406.10454, 휴머노이드 섀도잉)·index의 EgoMimic(2608.02580)·pool의 AdvDex(2608.14028, 사람 손 시연)의 사람 영상 재활용 라인의 뿌리이자, pool의 hint²(2608.13678, 계층 WM)·DreamMimic(2608.22278, 티처-학생 증류)·τ₀-VLA(2608.16885, 계층 WM + TTS)·G0.5(2608.11739, 통합 AR)의 계층 접근의 원류. 잠재 계획으로 저수준 제어를 유도한다는 축은 pool의 LAWA(2608.24882, 잠재 액션 의도)·컬렉션의 LAPA(2410.11758)·pool 관련 항목 VQ-BeT(2403.03181)의 사상적 자매작. Chen Wang·Fei-Fei Li·Yuke Zhu·Anima Anandkumar 조합이라 Stanford/Caltech 임바디드 계보의 좌표.",
-          "rec_date": "2026-09-01"
-        },
-        {
-          "id": "2403.03954",
-          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
-          "authors": "Yanjie Ze, Gu Zhang, Kangning Zhang, Chenyuan Hu, Muhan Wang, Huazhe Xu",
-          "summary_ko": "확산 정책(Diffusion Policy, 확산 모델로 액션 시퀀스를 샘플링하는 시각-운동 정책)에 단순한 3D 포인트 클라우드 표현(3D point cloud, 깊이 카메라에서 얻은 점들의 집합)을 결합한 방법. 정교한 3D 인코더 없이도 40개 시연만으로 시뮬 태스크에서 85% 성공률, 공간·시점·외관 변화에 강한 일반화를 실증. 시뮬 72개 태스크와 실기 4개 태스크에서 2D 확산 정책 대비 상대 성공률을 크게 개선. 칭화대 Huazhe Xu·Yanjie Ze 그룹.",
-          "tags": [
-            "3D Representation",
-            "Diffusion Policy",
-            "Point Cloud",
-            "Data-Efficient",
-            "Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2403.03954",
-          "extra_url": "https://3d-diffusion-policy.github.io/",
-          "date": "2024-03-06",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 컬렉션의 Diffusion Policy 원조(2303.04137)·RDT(2410.07864)·pool의 관련 항목 Diffuser(2205.09991)·이번 새 관련 추천 DP Scaling(2409.14411)의 3D 확장. index의 Pointmap VLA(2607.11498)·Embodied Spatial Reasoning(2607.17977)·pool의 SpatialVLA(2501.15830)·GaussianWAM(2608.24714)·오늘 aRxiv에서 함께 뜬 GaussianDream++(2608.25659)·GaussVLA(2608.24959)의 사상적 뿌리. pool의 관련 항목 RVT(2306.14896, multi-view)와 정확한 대비 노선 — RVT는 다시점 렌더링, DP3는 원시 포인트 클라우드. 좋아요한 UMI(2607.15330)의 3D 스캔 데이터 축과 정합. Huazhe Xu 그룹은 이후 GR00T-N1(2503.14734)·π0.5(2504.16054)의 3D 접근에 영향을 줌.",
-          "rec_date": "2026-08-30"
         }
       ]
     }
