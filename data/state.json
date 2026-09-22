@@ -22,6 +22,12 @@
       "title": "GALA: Geometry-Aware Latent Action Modeling for Vision-Language-Action Model Pretraining across Embodiments",
       "arxiv_url": "https://arxiv.org/abs/2609.21948",
       "added": "2026-09-22"
+    },
+    {
+      "id": "2609.19846",
+      "title": "Improving Cross-embodiment Transfer in Latent Action Models with Action-Similarity Supervision",
+      "arxiv_url": "https://arxiv.org/abs/2609.19846",
+      "added": "2026-09-22"
     }
   ],
   "dismissed": [
