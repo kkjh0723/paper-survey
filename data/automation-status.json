@@ -1,6 +1,6 @@
 {
-  "state": "auth_expired",
-  "since": "2026-09-22",
-  "checked": "2026-09-22 11:10:11",
-  "detail": "전환 테스트"
+  "state": "ok",
+  "since": "",
+  "checked": "2026-09-22 11:10:18",
+  "detail": ""
 }
