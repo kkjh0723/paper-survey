@@ -44,19 +44,41 @@ ALLOWED=(Read Write Edit WebFetch WebSearch \
   "Bash(git add:*)" "Bash(git commit:*)" \
   "Bash(git push:*)" "Bash(git pull:*)" "Bash(git status:*)" "Bash(git diff:*)")
 
+# claude 를 실행하고 출력을 로그에 남기되, OAuth 만료를 감지하면 AUTHFAIL=1 로 표시한다.
+AUTHFAIL=0
+run_claude() {
+  local out; out=$(mktemp)
+  "$CLAUDE" -p "$1" --allowedTools "${ALLOWED[@]}" > "$out" 2>&1
+  local rc=$?
+  cat "$out" >> "$LOG"
+  if grep -qiE 'Failed to authenticate|OAuth (access token has expired|session expired)' "$out"; then
+    AUTHFAIL=1
+  fi
+  rm -f "$out"
+  return $rc
+}
+
 # 1) 승인 큐 처리 — 큐에 승인된 논문이 있으면 요약 페이지 생성 + 리스트 추가 + 큐 비움.
 QN=$(python3 -c "import json;print(len(json.load(open('data/state.json')).get('queue',[])))" 2>/dev/null || echo 0)
 if [ "$QN" -gt 0 ]; then
   echo "----- 승인 큐 $QN편 처리 · $(date '+%H:%M:%S') -----" >> "$LOG"
-  "$CLAUDE" -p "/add-paper 승인 큐 처리" --allowedTools "${ALLOWED[@]}" >> "$LOG" 2>&1
+  run_claude "/add-paper 승인 큐 처리"
 else
   echo "----- 승인 큐 비어있음, 건너뜀 -----" >> "$LOG"
 fi
 
 # 2) 추천 갱신 (위에서 추가된 논문은 자동 제외됨)
 echo "----- 추천 갱신 · $(date '+%H:%M:%S') -----" >> "$LOG"
-"$CLAUDE" -p "/recommend-papers" --allowedTools "${ALLOWED[@]}" >> "$LOG" 2>&1
+run_claude "/recommend-papers"
 RC=$?
+
+# 인증 만료면 알림 + 사이트 배너, 정상이면 상태 해제
+if [ "$AUTHFAIL" -eq 1 ]; then
+  echo "----- 인증 만료 감지 → 알림 -----" >> "$LOG"
+  "$REPO/tools/report-status.sh" auth_expired "매일 추천(run-recommend)에서 OAuth 만료 감지"
+elif [ "$RC" -eq 0 ]; then
+  "$REPO/tools/report-status.sh" ok
+fi
 
 echo "----- 종료코드 $RC · $(date '+%H:%M:%S') -----" >> "$LOG"
 exit $RC

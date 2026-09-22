@@ -94,6 +94,14 @@
   .sync-banner button{cursor:pointer;font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;
     border:1px solid var(--accent);background:var(--accent);color:#12210a;white-space:nowrap}
   .sync-banner button:hover{background:var(--accent-d);color:#fff}
+  /* 자동화 중단(로그인 만료) 경고 배너 */
+  .alert-banner{display:none;align-items:flex-start;gap:10px;
+    background:#fdecec;border:1px solid #f3c2c2;border-left:5px solid #c0392b;border-radius:10px;
+    padding:10px 14px;margin:14px 0 0;font-size:13px;color:#7d2b22;line-height:1.6}
+  .alert-banner.show{display:flex}
+  .alert-banner b{color:#a5271b}
+  .alert-banner code{background:#fff;border:1px solid #f0cfcf;border-radius:5px;
+    padding:1px 6px;font-size:12.5px;color:#7d2b22}
   /* 추천 뷰 */
   #view-recos{display:none}
   .reco-meta{font-size:13px;color:var(--muted);margin:16px 0 2px}
@@ -153,6 +161,10 @@
   <div class="sync-banner" id="syncBanner">
     <span id="syncMsg"></span>
     <button onclick="copySyncPrompt()">📋 동기화 명령 복사</button>
+  </div>
+
+  <div class="alert-banner" id="autoBanner">
+    <span>⚠️</span><span id="autoMsg"></span>
   </div>
 
   <div class="tabs">
@@ -3145,6 +3157,24 @@
     try{ localStorage.setItem(LS_STATE, JSON.stringify(state)); }catch(e){}
     boot();
   });
+
+  // 자동화 상태 — claude 로그인이 만료되면 매일 추천이 멈추므로 배너로 알린다
+  fetch('data/automation-status.json', {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(s){
+      if(!s || s.state === 'ok') return;
+      var days = '';
+      if(s.since){
+        var d = Math.floor((Date.now() - new Date(s.since + 'T00:00:00').getTime())/86400000);
+        if(d >= 1) days = ' (' + d + '일째)';
+      }
+      document.getElementById('autoMsg').innerHTML =
+        '<b>자동화가 중단되었습니다' + escapeHtml(days) + '.</b> claude 로그인이 만료되어 ' +
+        (s.since ? escapeHtml(s.since) + '부터 ' : '') +
+        '매일 추천이 갱신되지 않고 있습니다. 터미널에서 <code>claude</code> 실행 후 <code>/login</code> 하면 복구됩니다.';
+      document.getElementById('autoBanner').classList.add('show');
+    });
 
   // 추천 데이터 로드
   fetch('data/recommendations.json', {cache:'no-store'})

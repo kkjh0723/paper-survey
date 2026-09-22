@@ -44,5 +44,18 @@ ALLOWED=(Read Write Edit WebFetch WebSearch \
   "Bash(git add:*)" "Bash(git commit:*)" \
   "Bash(git push:*)" "Bash(git pull:*)" "Bash(git status:*)" "Bash(git diff:*)")
 
-"$CLAUDE" -p "/add-paper 승인 큐 처리" --allowedTools "${ALLOWED[@]}" >> "$LOG" 2>&1
-echo "----- 종료코드 $? · $(date '+%H:%M:%S') -----" >> "$LOG"
+OUT=$(mktemp)
+"$CLAUDE" -p "/add-paper 승인 큐 처리" --allowedTools "${ALLOWED[@]}" > "$OUT" 2>&1
+RC=$?
+cat "$OUT" >> "$LOG"
+
+# OAuth 만료면 알림 + 사이트 배너 (상태가 바뀔 때만 알림이 나간다)
+if grep -qiE 'Failed to authenticate|OAuth (access token has expired|session expired)' "$OUT"; then
+  echo "----- 인증 만료 감지 → 알림 -----" >> "$LOG"
+  "$REPO/tools/report-status.sh" auth_expired "승인 큐 처리(process-queue)에서 OAuth 만료 감지"
+elif [ "$RC" -eq 0 ]; then
+  "$REPO/tools/report-status.sh" ok
+fi
+rm -f "$OUT"
+
+echo "----- 종료코드 $RC · $(date '+%H:%M:%S') -----" >> "$LOG"
