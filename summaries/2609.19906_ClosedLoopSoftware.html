@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ClosedLoopSoftware — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Code as Policy · Coding Agent</span>
+    <h1>Learning and Transferring Closed-Loop Robot Software</h1>
+    <p class="authors">So Kuroki, Yujin Tang · Sakana AI</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.19906" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.19906" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2609.19906" target="_blank">HTML</a>
+      <span>arXiv:2609.19906</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Code as Policy</span>
+      <span class="t">Coding Agent</span>
+      <span class="t">Transfer Learning</span>
+      <span class="t">Program Synthesis</span>
+      <span class="t">RoboCasa</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 17일 (v1) · 시뮬레이터 RoboCasa (PandaOmron 로봇) · 코딩 모델 gpt-6-astra (high reasoning) · 코드/프로젝트 페이지 공개 링크 없음</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>로봇 제어 정책을 신경망 가중치가 아니라 <b>파이썬 코드</b>로 만든다. <b>코딩 에이전트</b>(LLM이 코드를 쓰고 실행 결과를 보고 고치는 자동화 도구)가 시연 10개로 첫 코드를 만들고, 시뮬레이션 실행 피드백으로 5세대까지 고친다. 이렇게 소스 태스크 4개(수도꼭지 끄기·서랍 열기 등)에서 평균 Test 성공률이 28.3%→<span class="win">64.2%</span>로 오른다. 개선된 코드들은 <b>"소프트웨어 아카이브"</b>(태스크별 완성 코드 폴더 모음)에 저장된다. 새 태스크 9개에서 이 아카이브를 참고하게 하면, 3회 반복 평균 성공률이 <span class="win">57.0%</span>였다. 참고 코드가 없을 때는 45.2%, 개선 전 초기 코드를 참고할 때는 41.5%였다. 즉 <b>"실행 경험으로 다듬어진 코드"가 새 정책을 만드는 재료로서 가치가 있다</b>. 다만 9개 중 2개 태스크에서는 초기 코드 참고가 더 나았다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>폐루프(closed-loop) 정책</b>은 매 스텝 새 관찰을 보고 행동을 다시 정하는 제어기다. 이를 코드로 짜려면 세 가지가 필요하다. 물체 인식 같은 <b>관찰 처리</b>, "지금 잡는 중인가/옮기는 중인가" 같은 <b>상태(phase) 관리</b>, 그리고 상황별 <b>조건 분기</b>다. 태스크마다 사람이 이를 설계·튜닝하는 비용이 크다.</p>
+    <p><b>Code as Policies</b>(LLM이 인식·제어 API를 호출하는 프로그램을 생성해 정책으로 쓰는 접근) 이후, 실행 피드백으로 제어 코드를 다시 쓰는 연구가 늘었다. 이런 연구는 코드를 "경험으로 갱신되는 정책 표현"으로 본다. 그렇다면 신경망 가중치가 새 태스크 학습의 출발점이 되듯, <b>개선된 코드도 새 태스크의 재료가 될 수 있는가?</b></p>
+    <p>문제는 이것이 자명하지 않다는 점이다. 최적화 중 추가된 조건 분기와 제어 루틴은 소스 태스크 조건에 <b>과특화(over-specialized)</b>될 수 있다. 그러면 오히려 다른 태스크로의 전이를 방해한다. 기존 연구는 계획(planner) 수준 코드만 저장하거나(MTP, Memory Transfer Planning), 경험을 "스킬 함수"로 따로 추출해 저장했다. 반면 <b>관찰 처리·상태 관리·조건 로직을 모두 포함한 완성 구현 전체</b>를 저장해 참고시키는 것의 가치는 검증되지 않았다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>실행으로 개선된 로봇 소프트웨어의 전이 연구</b> — 소스 태스크에서 실행 피드백으로 최적화한 폐루프 구현 전체가 새 태스크 정책 획득의 참고 자료로 유용한지를 체계적으로 검증.</li>
+      <li><b>실행 기반 코드 최적화</b> — RoboCasa 소스 태스크 4개에서 반복 최적화로 평균 Test 성공률 28.3%→64.2%(+35.8%p). 관찰 입력 ablation으로 <b>GT-Geom</b>(시뮬레이터가 주는 정답 물체 분할 마스크+이름표)이 가장 중요한 입력임을 확인.</li>
+      <li><b>소스 성능 vs 전이 가능성 분리 비교</b> — 새 태스크 9개 × 독립 3회 실행에서 "참고 없음 / 초기 코드 참고(Initial4) / 최적화 코드 참고(Best4)"를 비교. Best4가 3회 모두 9태스크 평균에서 Initial4를 앞섬(평균 +15.6%p). 반면 Initial4는 참고 없음보다도 낮아, <b>"기존 코드에 접근하는 것만으로는 부족하고 코드의 최적화 단계가 중요하다"</b>는 결론.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>3-1. 정책 인터페이스: 코드로 된 폐루프 정책</h3>
+    <div class="callout">직관: 정책은 "관찰 + 내부 기억 → 행동 + 갱신된 기억"을 계산하는 평범한 프로그램이다. 학습 대상은 모델 가중치가 아니라 이 코드와 설정 파일이다.</div>
+    <p>식 (1)은 두 줄이다. 첫 줄은 "시뮬레이터 상태에서 허용된 관찰만 꺼낸다"는 뜻이다. 둘째 줄은 "관찰과 내부 상태를 받아 행동과 다음 내부 상태를 낸다"는 뜻이다.</p>
+    <p style="text-align:center"><b>o<sub>t</sub> = 𝒪<sub>ω</sub>(x<sub>t</sub>), &nbsp; (a<sub>t</sub>, h<sub>t+1</sub>) = P(o<sub>t</sub>, h<sub>t</sub>; q)</b></p>
+    <ul>
+      <li><b>x<sub>t</sub></b>: 시점 t의 시뮬레이터 전체 상태. <b>ω</b>: 관찰 구성(어떤 센서를 허용할지). 최적화 중 고정.</li>
+      <li><b>o<sub>t</sub></b>: 정책이 실제로 보는 관찰. <b>a<sub>t</sub></b>: 제어기 명령(행동).</li>
+      <li><b>h<sub>t</sub></b>: 내부 상태(예: 현재 조작 단계가 "접근/파지/이동" 중 무엇인지). 에피소드 시작마다 초기화.</li>
+      <li><b>q</b>: 조작 태스크. 정책은 태스크별 시간 한도 H<sub>q</sub> 안에 성공 조건을 만족해야 함.</li>
+    </ul>
+    <p>코딩 에이전트 𝒜<sub>B</sub>는 태스크 지시문, 성공 시연 𝒟<sub>q</sub>, 관찰–행동 인터페이스 명세 ℐ<sub>ω</sub>를 받는다(B는 생성 예산). 결과물은 <code>policy.py</code>, <code>perception.py</code>, <code>config.yaml</code> 등으로 이뤄진 <b>실행 가능한 정책 패키지</b>다. 완성된 정책은 실행 중 LLM을 전혀 호출하지 않는다.</p>
+    <p>소스 태스크의 초기 상태 케이스들은 서로 겹치지 않는 세 묶음으로 나뉜다. <b>Train</b>은 코드 수정용 실행 경험을 준다. <b>Validation</b>은 후보 코드 비교·선택에 쓰인다. <b>Test</b>는 선택된 최종 코드의 평가에만 쓰이고, 수정에는 절대 쓰이지 않는다.</p>
+
+    <h3>3-2. 소스 태스크에서 최적화하고 보관하기</h3>
+    <div class="callout">직관: 사람이 디버깅하듯, 실행 → 실패 로그 확인 → 코드 수정을 반복한다. 가장 잘 일반화된 버전(Validation 기준)만 남긴다.</div>
+    <ul>
+      <li><b>초기 코드 P<sub>s</sub><sup>(0)</sup></b>: 성공 시연·지시문·인터페이스로 생성. 목표는 시연 재생(replay)이 아니라, 새 관찰에 반응하는 정책이다.</li>
+      <li><b>피드백 비대칭</b>: Train에서는 관찰·행동·성공 여부·실행 에러를 모두 준다. Validation에서는 <b>성공 횟수 집계만</b> 준다(이미지·궤적 없음). Validation에 맞춰 코드를 억지로 끼워 맞추는 것을 막기 위함이다.</li>
+      <li>에이전트는 관찰 처리, 제어 파라미터, 조건, 상태 전이를 수정한다. 매 수정은 지금까지 평가된 <b>최고 후보</b>에서 출발한다.</li>
+    </ul>
+    <p>식 (2)는 "K세대(초기 생성 포함) 후보 중 Validation 성공률이 가장 높은 코드를 고른다"는 뜻이다.</p>
+    <p style="text-align:center"><b>P<sub>s</sub><sup>★</sup> ∈ argmax<sub>P ∈ {P<sub>s</sub><sup>(0)</sup>,…,P<sub>s</sub><sup>(K−1)</sup>}</sub> Ĵ<sub>𝒞<sub>s</sub><sup>val</sup></sub>(P)</b></p>
+    <p>여기서 Ĵ<sub>𝒞</sub>(P)는 케이스 집합 𝒞에서 정책 P의 성공률이고, 𝒞<sub>s</sub><sup>val</sup>은 소스 태스크 s의 Validation 케이스다. 선택된 코드들의 모음이 <b>아카이브 ℳ = {P<sub>s</sub><sup>★</sup> | s ∈ 𝒮}</b>다. 실행에 필요한 코드와 자산만 저장한다. 소스 실행 로그나 평가기 내부는 저장하지 않는다. 또한 "재사용 스킬"로 따로 정제하지 않고 <b>구현 전체를 그대로</b> 둔다.</p>
+
+    <h3>3-3. 아카이브 참고로 새 태스크에 전이하기</h3>
+    <div class="callout">직관: 숙련 개발자가 비슷한 기존 프로젝트 코드를 열어 보고, 필요한 부분만 가져와 고치는 방식이다. 어떤 코드를 볼지는 에이전트가 스스로 정한다.</div>
+    <p>식 (3)은 "새 태스크 q의 초기 정책을, 기존 입력에 아카이브까지 더해 생성한다"는 뜻이다.</p>
+    <p style="text-align:center"><b>P̃<sub>q</sub><sup>(0)</sup> = 𝒜<sub>B</sub>(q, 𝒟<sub>q</sub>, ℐ<sub>ω</sub>, ℳ)</b></p>
+    <ul>
+      <li>아카이브는 <b>읽기 전용</b>이다. 작업 공간에 자동 복사되지 않는다.</li>
+      <li>"이 소스가 이 타깃에 대응한다" 같은 <b>매핑을 주지 않는다</b>. 무엇을 열어보고 재사용·조합·수정할지는 에이전트가 결정한다.</li>
+      <li>초기 정책을 타깃 Train 케이스에서 실행하고, 궤적과 결과를 돌려받아 개선한다. 최종 정책은 고정(frozen) 후 Test로 평가한다.</li>
+    </ul>
+
+    <h3>관찰 구성 "Full" (주 실험의 입력)</h3>
+    <div class="kv">
+      <div>RGB</div><div>왼쪽·오른쪽·손목 카메라 3개의 컬러 영상</div>
+      <div>Metric 3D</div><div>미터 단위 깊이 + 카메라 보정으로 복원한 월드 좌표 포인트 클라우드(각 점이 이미지 픽셀과 대응)</div>
+      <div>GT-Geom</div><div>시뮬레이터(MuJoCo)가 주는 <b>정답</b> 픽셀별 geometry ID 마스크 + 해당 물체/부품 이름·클래스 메타데이터. 즉 "이 픽셀은 서랍 손잡이"를 완벽히 알려줌</div>
+      <div>Contact</div><div>로봇·그리퍼·손가락이 외부 물체에 닿았는지의 이진 신호(힘·물체 ID 없음)</div>
+      <div>Robot state</div><div>관절 위치·속도, 엔드이펙터(말단) 월드 자세, 그리퍼 관절 위치, 제어기 좌표계 자세</div>
+    </div>
+
+    <h3>실험 설정</h3>
+    <div class="kv">
+      <div>환경</div><div>RoboCasa(가정 주방 시뮬레이션 벤치마크), PandaOmron 로봇(Franka Panda 팔 + Omron 이동 베이스)</div>
+      <div>소스 태스크 4개</div><div>수도꼭지 끄기(Faucet), 서랍 열기(Drawer), 조리대→싱크 물건 옮기기(Pick→Sink), 전자레인지 켜기(Microwave)</div>
+      <div>소스 최적화 데이터</div><div>태스크당 성공 시연 10개, Train 10(시연과 같은 초기 상태), Validation 10, Test 30. 첫 실행 가능 코드를 1세대로 두고 5세대까지 평가</div>
+      <div>시간 한도</div><div>수도꼭지 300, 서랍 750, 싱크 옮기기 600, 전자레인지 450 스텝</div>
+      <div>전이 설정</div><div>타깃당 시연 5개, Train 5개 실행 후 1회 개선(코드 에러 시 수리 후 재실행+1회 추가 개선), Test 10. 세션당 30분·API 호출 80회 제한. 독립 3회 반복</div>
+      <div>코딩 모델</div><div>gpt-6-astra (high reasoning effort)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>소스 태스크 성능 (Table I, 태스크당 동일 Test 30케이스, 성공률 %)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>시연/태스크</th><th>실행 시 입력</th><th>Faucet</th><th>Drawer</th><th>Pick→Sink</th><th>Microwave</th><th>평균</th></tr></thead>
+      <tbody>
+        <tr><td colspan="8"><b>A. 코드 정책 · 온라인 제어 · 같은 시연 수의 모방학습</b></td></tr>
+        <tr><td><b>Iterative software (제안, 5세대 최적화)</b></td><td>10</td><td>Full</td><td>56.7</td><td class="win">70.0</td><td>76.7</td><td class="win">53.3</td><td class="win">64.2</td></tr>
+        <tr><td>First executable software (최적화 전 첫 코드)</td><td>10</td><td>Full</td><td>33.3</td><td>3.3</td><td>26.7</td><td>50.0</td><td>28.3</td></tr>
+        <tr><td>GPT-6 Astra online (LLM이 매 순간 짧은 행동열 직접 생성)</td><td>10</td><td>Full</td><td class="win">70.0</td><td>50.0</td><td>60.0</td><td>26.7</td><td>51.7</td></tr>
+        <tr><td>BC-Transformer-10 (시연 10개로 태스크별 행동복제 학습)</td><td>10</td><td>RGB 3 + proprio</td><td>23.3</td><td>6.7</td><td>3.3</td><td>3.3</td><td>9.2</td></tr>
+        <tr><td colspan="8"><b>B. 공개 멀티태스크 체크포인트 (학습 조건이 달라 참고용)</b></td></tr>
+        <tr><td>GR00T N1.5</td><td>100</td><td>RGB 3 + state</td><td>66.7</td><td>56.7</td><td class="win">90.0</td><td>36.7</td><td>62.5</td></tr>
+        <tr><td>π<sub>0.5</sub> / Human300</td><td>100</td><td>RGB 3 + state</td><td>50.0</td><td class="win">80.0</td><td>83.3</td><td>20.0</td><td>58.3</td></tr>
+        <tr><td>π<sub>0</sub> / Human300</td><td>100</td><td>RGB 2 + state</td><td>46.7</td><td>30.0</td><td>66.7</td><td>6.7</td><td>37.5</td></tr>
+        <tr><td>Diffusion Policy / Human300</td><td>100</td><td>RGB 3 + proprio</td><td>26.7</td><td>13.3</td><td>30.0</td><td>10.0</td><td>20.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">Human300 = RoboCasa365의 사람 시연 300개 기반 공개 체크포인트(여기선 태스크당 100 시연으로 표기). proprio = 로봇 자기수용 상태(관절 등). 각 열의 최고값을 초록색으로 표시.</p>
+    <ul>
+      <li><b>반복 최적화 효과</b>: 같은 시연 10개·같은 Full 관찰에서 28.3%(34/120)→64.2%(77/120), +35.8%p. 4개 태스크 모두 개선. 특히 서랍 열기는 3.3%→70.0%. Train·Validation 곡선도 함께 상승해(Figure 2) Train 과적합만은 아님.</li>
+      <li><b>온라인 LLM 제어 대비</b>: 같은 모델을 실행 중 계속 호출하는 방식(51.7%)보다 12.5%p 높음. 온라인 방식은 에피소드당 평균 52.6회 LLM 호출이 필요하지만, 제안법은 0회.</li>
+      <li><b>VLA 대비(참고)</b>: 평균 64.2%는 GR00T N1.5(62.5%), π<sub>0.5</sub>(58.3%), π<sub>0</sub>(37.5%)보다 수치상 높음. 단, 제안법은 정답 분할 마스크(GT-Geom) 등 더 풍부한 입력을 쓰고 태스크별로 따로 최적화하므로 직접 비교는 아님.</li>
+    </ul>
+
+    <h3>새 태스크 전이 (Table III, 3회 독립 실행 평균 ± 표준편차, %)</h3>
+    <p>세 조건은 이렇다. <b>No reference</b>는 참고 코드 없이 생성. <b>Initial4</b>는 소스 4개 태스크의 "최적화 전 첫 실행 가능 코드" 4개를 읽기 전용으로 제공. <b>Best4</b>는 같은 4개 태스크의 "Validation으로 고른 최적화 코드" 4개를 제공. 시연·관찰·케이스·예산은 모두 같다. 타깃은 과제 구조 유사도로 나뉜다. <b>Near</b>는 비슷한 기구에서 조작이나 방향만 바뀐 것(예: 수도꼭지 끄기→켜기). <b>Intermediate</b>는 같은 가전의 다른 조작이나 배치 맥락 변화. <b>Far</b>는 다른 기기·다른 조작이다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>구분</th><th>타깃 태스크</th><th>No reference</th><th>Initial4</th><th>Best4</th></tr></thead>
+      <tbody>
+        <tr><td>Near</td><td>TurnOnSinkFaucet (수도꼭지 켜기)</td><td class="win">90.0 ± 17.3</td><td>76.7 ± 32.1</td><td class="win">90.0 ± 10.0</td></tr>
+        <tr><td>Near</td><td>PickPlaceSinkToCounter (싱크→조리대 옮기기)</td><td>60.0 ± 52.0</td><td>0.0 ± 0.0</td><td class="win">70.0 ± 20.0</td></tr>
+        <tr><td>Near</td><td>CloseDrawer (서랍 닫기)</td><td>70.0 ± 52.0</td><td>86.7 ± 5.8</td><td class="win">93.3 ± 11.5</td></tr>
+        <tr><td>Near</td><td>TurnOffMicrowave (전자레인지 끄기)</td><td>3.3 ± 5.8</td><td class="win">76.7 ± 15.3</td><td>60.0 ± 10.0</td></tr>
+        <tr><td>Intermediate</td><td>OpenMicrowave (전자레인지 문 열기)</td><td>80.0 ± 17.3</td><td>23.3 ± 40.4</td><td class="win">83.3 ± 20.8</td></tr>
+        <tr><td>Intermediate</td><td>PickPlaceCounterToCabinet (조리대→찬장 옮기기)</td><td class="win">63.3 ± 23.1</td><td>53.3 ± 23.1</td><td>56.7 ± 32.1</td></tr>
+        <tr><td>Far</td><td>OpenCabinet (찬장 문 열기)</td><td>23.3 ± 20.8</td><td class="win">40.0 ± 10.0</td><td class="win">40.0 ± 10.0</td></tr>
+        <tr><td>Far</td><td>TurnOnStove (가스레인지 켜기)</td><td>16.7 ± 15.3</td><td>6.7 ± 11.5</td><td class="win">20.0 ± 20.0</td></tr>
+        <tr><td>Far</td><td>CoffeeSetupMug (커피머신에 머그 놓기)</td><td>0.0 ± 0.0</td><td class="win">10.0 ± 17.3</td><td>0.0 ± 0.0</td></tr>
+        <tr><td colspan="2"><b>평균 (9태스크, 3회)</b></td><td>45.2 ± 10.3 (122/270)</td><td>41.5 ± 10.5 (112/270)</td><td class="win">57.0 ± 7.8 (154/270)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">표준편차는 개별 Test 케이스가 아니라 독립 정책 생성 실행 3회 간의 변동. StartCoffeeMachine은 알려진 평가 문제로 제외.</p>
+    <ul>
+      <li>Best4는 3회 실행 모두에서 9태스크 평균이 Initial4보다 높았다. 평균 향상은 <b>+15.6%p</b>.</li>
+      <li>태스크별 3회 평균으로 보면 Best4가 Initial4 대비 6개 우세, 1개 동률(OpenCabinet), 2개 열세(TurnOffMicrowave, CoffeeSetupMug)다.</li>
+      <li>최대 향상은 PickPlaceSinkToCounter(+70.0%p, 0.0→70.0)와 OpenMicrowave(+60.0%p, 23.3→83.3)다.</li>
+      <li>Initial4(41.5%)는 No reference(45.2%)보다도 낮다. 즉 <b>덜 다듬어진 코드를 참고하면 오히려 방해</b>가 될 수 있다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <h3>관찰 입력 ablation (Table II)</h3>
+    <p><b>Ablation</b>(구성 요소를 하나씩 빼서 기여도를 보는 실험)이다. 조건마다 코드를 처음부터 새로 생성·최적화했다. 규모는 태스크당 Train 5 / Validation 5 / Test 10, 3세대 최적화로 Table I보다 작다. 지시문·카메라 보정·로봇 상태·행동 이력은 모든 조건에 공통으로 제공된다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>관찰 조건</th><th>Faucet</th><th>Drawer</th><th>Pick→Sink</th><th>Microwave</th><th>평균 (%)</th><th>Δ Full (%p)</th></tr></thead>
+      <tbody>
+        <tr><td>RGB only (3D·GT-Geom·Contact 모두 제거)</td><td>2/10</td><td>4/10</td><td>2/10</td><td>1/10</td><td>22.5</td><td>−42.5</td></tr>
+        <tr><td>Without metric 3D (깊이·포인트 제거)</td><td>8/10</td><td class="win">10/10</td><td class="win">7/10</td><td>2/10</td><td>67.5</td><td>+2.5</td></tr>
+        <tr><td>Without GT-Geom (정답 마스크·라벨 제거)</td><td>5/10</td><td>8/10</td><td>1/10</td><td>0/10</td><td>35.0</td><td>−30.0</td></tr>
+        <tr><td>Without contact (접촉 신호 제거)</td><td>8/10</td><td>9/10</td><td>6/10</td><td class="win">5/10</td><td class="win">70.0</td><td>+5.0</td></tr>
+        <tr><td>Full</td><td class="win">10/10</td><td>9/10</td><td>6/10</td><td>1/10</td><td>65.0</td><td>0.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul>
+      <li><b>GT-Geom이 핵심</b>: 이것 하나만 빼도 65.0%→35.0%(−30.0%p)로, 단일 제거 중 최대 하락이다. 3D·GT-Geom·Contact를 모두 빼 RGB만 남기면 22.5%다.</li>
+      <li>3D 제거(67.5%)나 접촉 제거(70.0%)는 오히려 Full보다 약간 높다. 하지만 조건당 최적화 1회뿐이라, 정보를 빼는 게 일반적으로 이롭다는 뜻은 아니라고 저자들이 명시한다.</li>
+      <li>마스크와 라벨 각각의 기여, 그리고 실제 추정 분할(정답이 아닌)로의 일반화는 평가되지 않았다.</li>
+    </ul>
+    <h3>코드 복잡도 분석 (전이 역전의 원인 탐색)</h3>
+    <ul>
+      <li>참고 코드의 <code>if/elif</code> 문 총수(테스트 코드 제외)는 Initial4 622개에서 Best4 741개로 늘었다(+19.1%). 4개 구현 모두 증가했고, 전자레인지 켜기 코드는 138→225개로 가장 많이 늘었다.</li>
+      <li>저자 해석은 이렇다. 상황별 분기는 소스 성공에는 도움이 되지만, 새 태스크에서는 수정이 필요할 수 있다. 그래서 가장 유용한 참고 코드는 "최적화 단계"와 "타깃 개선 반복 횟수" 둘 다에 달려 있을 수 있다. 다만 분기 수 증가만으로 과특화가 입증되지는 않는다고 명시한다.</li>
+    </ul>
+    <h3>한계</h3>
+    <ul>
+      <li>모든 실험이 시뮬레이션이며, 실로봇에서는 검증되지 않았다. 실세계에서는 GT-Geom 대신 Depth Anything V2(깊이 추정)나 SAM 2(분할 모델) 같은 추정기로 대체해야 한다.</li>
+      <li>소스 아카이브는 한 번만 만들어 고정했다. 따라서 소스 코드 획득 자체의 변동성은 평가되지 않았다. 일부 타깃은 실행 간 편차가 크다(예: ±52.0).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.19906/fig1.png" alt="소스 태스크 학습, 소프트웨어 아카이브, 새 태스크 전이의 3단계 개요도 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Learning and transferring closed-loop robot software.</b> ① 소스 태스크에서 코딩 에이전트가 실행 피드백으로 코드를 개선하고, ② Validation으로 고른 구현(policy.py·perception.py·config.yaml)을 아카이브에 추가하며, ③ 새 태스크(예: OpenCabinet)에서 관련 코드를 참고·수정해 새 소프트웨어를 만든다. (출처: arXiv:2609.19906)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.19906/task_transfer.png" alt="소스 태스크 4개와 Near/Intermediate/Far로 묶은 타깃 태스크 9개 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Source and target tasks for software transfer.</b> 왼쪽은 소스 태스크 4개, 오른쪽은 과제 구조 유사도에 따라 Near·Intermediate·Far로 묶은 타깃 태스크 9개. (출처: arXiv:2609.19906)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table III (전이 결과)</b> — 논문의 핵심 주장 근거. Best4 57.0% vs No reference 45.2% vs Initial4 41.5%. "참고 코드에 접근하는 것" 자체보다 "그 코드가 실행 경험으로 얼마나 다듬어졌는가"가 중요하다는 결론을 뒷받침한다.
+    </div>
+    <div class="callout">
+      <b>Table I (소스 최적화)</b> — 첫 코드 28.3% → 5세대 최적화 64.2%. 실행 중 LLM 호출이 0회인데도, 에피소드당 52.6회 호출하는 온라인 LLM 제어(51.7%)보다 높다.
+    </div>
+    <p class="cap">Figure 2: 소스 태스크 4개의 세대별 Train/Validation 성공률 곡선(각 10케이스). 두 곡선이 함께 상승함.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.19906" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.19906" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.19906" target="_blank">HTML</a></li>
+      <li>GitHub / 프로젝트 페이지: — (논문에 공개 링크 없음)</li>
+      <li>관련 연구: <a href="https://arxiv.org/abs/2209.07753" target="_blank">Code as Policies</a> · <a href="https://arxiv.org/abs/2603.04466" target="_blank">Act-Observe-Rewrite</a> · <a href="https://arxiv.org/abs/2606.16458" target="_blank">RHO</a> · <a href="https://arxiv.org/abs/2509.24160" target="_blank">Memory Transfer Planning</a> · <a href="https://arxiv.org/abs/2603.22435" target="_blank">CaP-X</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.19906 · ClosedLoopSoftware · 요약 생성 2026-09-22
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ \u00ab'+t+'\u00bb \ubcf5\uc0ac\ub428 \u2014 Claude\uc5d0 \ubd99\uc5ec\ub123\uace0 \uc9c8\ubb38';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

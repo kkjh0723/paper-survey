@@ -10,26 +10,7 @@
     "2606.10267": 1,
     "2607.18231": 1
   },
-  "queue": [
-    {
-      "id": "2609.19906",
-      "title": "Learning and Transferring Closed-Loop Robot Software",
-      "arxiv_url": "https://arxiv.org/abs/2609.19906",
-      "added": "2026-09-22"
-    },
-    {
-      "id": "2609.21948",
-      "title": "GALA: Geometry-Aware Latent Action Modeling for Vision-Language-Action Model Pretraining across Embodiments",
-      "arxiv_url": "https://arxiv.org/abs/2609.21948",
-      "added": "2026-09-22"
-    },
-    {
-      "id": "2609.19846",
-      "title": "Improving Cross-embodiment Transfer in Latent Action Models with Action-Similarity Supervision",
-      "arxiv_url": "https://arxiv.org/abs/2609.19846",
-      "added": "2026-09-22"
-    }
-  ],
+  "queue": [],
   "dismissed": [
     "2607.04978",
     "2405.15223",

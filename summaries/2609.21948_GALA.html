@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GALA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Latent Action</span>
+    <h1>GALA: Geometry-Aware Latent Action Modeling for Vision-Language-Action Model Pretraining across Embodiments</h1>
+    <p class="authors">Yichen Liu, Puzhen Yuan (공동 1저자), Xiang Zhu, Yanjiang Guo · Tsinghua University IIIS · Shanghai Qi Zhi Institute · 교신저자 Jianyu Chen</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.21948" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.21948" target="_blank">PDF</a>
+      <a href="https://puzhenyuan.github.io/GALA-website/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2609.21948</span>
+    </div>
+    <div class="taglist">
+      <span class="t">VLA</span>
+      <span class="t">Latent Action</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">Point Cloud</span>
+      <span class="t">Dexterous Manipulation</span>
+      <span class="t">Human Video</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 18일 (v1) · cs.RO · 정책 백본 GR00T 구조 기반</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>사람 손·로봇 손·그리퍼 영상에서 <b>latent action</b>(행동 라벨 없이 두 프레임 사이 변화만 보고 추론한 압축된 "행동 코드")을 뽑을 때, 이미지만 보면 <b>손가락 수준의 미세한 움직임</b>을 놓친다. GALA는 손/집게 모양을 <b>3D 점구름(point cloud)</b>으로 바꿔 그 변화까지 코드로 만든다. 여기에 모양 차이에 휘둘리지 않게 하는 3가지 장치(<b>UEMR</b>)를 더했다. 이 코드로 VLA(이미지+언어를 받아 로봇 행동을 내는 모델)를 사전학습하면, 양손 휴머노이드 시뮬레이션 RoboCasa-GR1 24개 태스크 평균 성공률 <span class="win">68.3%</span>(이전 최고 공개 결과 UniT 66.8%), 실제 12자유도 로봇 손 4개 태스크 평균 <span class="win">75.5%</span>(HARP-VLA 71.5%, π0.5 68.0%)를 얻는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA 모델은 여러 로봇의 데이터를 많이 모을수록 좋아진다. 하지만 로봇 시연 데이터는 비싸다. 그래서 사람이 손으로 물건을 다루는 영상이 좋은 보조 데이터가 된다.</p>
+    <p>문제는 <b>행동 공간(action space)</b>이 서로 다르다는 점이다. 사람 손, 5손가락 로봇 손, 2손가락 집게(parallel-jaw gripper)는 관절 수(자유도, DoF)와 제어 방식이 다 다르다. 그래서 행동 값을 그대로 섞어 학습하기 어렵다. 이를 맞추려면 <b>리타게팅(retargeting</b>, 한 몸체의 동작을 다른 몸체 관절로 옮겨 적는 변환)이 필요하다.</p>
+    <p>대안이 <b>latent action model(LAM)</b>이다. 영상의 두 프레임을 보고 "무슨 행동이 일어났는지"를 이산 코드로 압축한다. 행동 라벨이 없는 사람 영상에도 쓸 수 있다. 그러나 기존 LAM은 <b>RGB 이미지 변화</b>만 본다. 그래서 손이 "어디로" 움직였는지는 잡지만, 손가락이 "어떻게" 쥐었는지는 놓친다. 움직임이 작거나, 가려지거나, 시점이 바뀌면 더 심하다.</p>
+    <p>손 모양을 3D 점구름으로 넣으면 미세 동작은 잡힌다. 하지만 새 문제가 생긴다. 점구름은 "사람 손 모양"이나 "좌표계 위치" 같은 <b>몸체 고유 정보</b>를 담는다. 그러면 같은 "쥐기" 동작도 몸체마다 다른 코드가 되어, 몸체 간(<b>cross-embodiment</b>) 공유가 깨진다. 이 논문은 이 두 문제를 함께 푼다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>GALA 프레임워크</b> — 이미지 기반 latent action(장면 수준 움직임)에 3D 말단장치(end-effector: 손이나 집게처럼 물체에 닿는 끝부분) 점구름의 변화에서 얻은 <b>기하 latent action</b>(손가락 관절 수준 움직임)을 더해, 두 종류의 코드로 VLA 사전학습을 지도.</li>
+      <li><b>UEMR (Unified End-effector Motion Representation)</b> — 점구름 코드가 "모양"이 아니라 "움직임"을 담도록 하는 3가지 설계: ① 양손을 하나의 코드로 묶기, ② 시작·목표 점구름에 같은 랜덤 변환 적용, ③ 시간 정방향·역방향 모두 학습. 몸체 간 점·관절 대응 관계가 필요 없다.</li>
+      <li><b>검증</b> — 미세 동작 복원(probing), 몸체 간 동작 검색(retrieval), 시뮬레이션·실로봇 VLA 성능 모두에서 이미지 전용 LAM, 희소 손 표현(METIS), 관절값 직접 인코딩, 기존 점구름 방법(OPFA)보다 좋음.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+    <p>전체는 2단계다. <b>1단계</b>: 영상과 점구름으로 latent action 모델을 학습한다. <b>2단계</b>: 이 모델을 얼리고(freeze), 그 코드를 정답 삼아 VLA를 공동 학습(co-training)한다.</p>
+
+    <h3>3.1 점구름 만들기 (Point Cloud Generation)</h3>
+    <div class="callout">직관: 관절 수·모양이 다른 손들도 "표면 위 점 1024개"로 바꾸면 같은 형식으로 비교할 수 있다.</div>
+    <p>몸체 e, 손 방향 h(왼손 L/오른손 R), 시각 t의 말단장치 모양을 순서 없는 3D 점 N=1024개의 집합 P<sub>t</sub><sup>e,h</sup>로 표현한다. 모든 점구름은 <b>손목(또는 루트 링크) 중심 좌표계</b>에서, 공통 축 규칙으로 표현된다. 몸체 간 점·관절·메시 연결 구조의 대응은 필요 없다.</p>
+    <ul>
+      <li><b>사람 손</b>: RGB 프레임마다 <b>WiLoR</b>(단일 이미지에서 3D 손을 복원하는 모델)로 양손의 <b>MANO</b> 메시(사람 손의 표준 3D 파라메트릭 모델)를 추정한다. 이를 손바닥 기준 좌표계로 옮긴 뒤 표면에서 점을 샘플링한다.</li>
+      <li><b>로봇</b>: 로봇 설명 파일(URDF/MJCF)의 말단 링크 표면에서 점을 뽑는다. 기록된 관절값으로 <b>순기구학(forward kinematics</b>, 관절 각도로 각 링크 위치를 계산)을 적용해 현재 자세로 옮긴다. 로봇 손과 집게 모두 같은 방식이다.</li>
+    </ul>
+
+    <h3>3.2 시각·기하 행동 인코딩</h3>
+    <div class="callout">직관: 이미지 코드는 "장면에서 손이 어디로 갔나", 점구름 코드는 "손가락이 어떻게 접혔나"를 담당해 서로 보완한다.</div>
+    <p>입력은 시작 시점 s와 목표 시점 g의 RGB 이미지 (I<sub>s</sub>, I<sub>g</sub>), 언어 지시 ℓ, 양손 점구름 쌍이다. 시작·목표 점구름은 같은 중심·스케일로 정규화한다. 없는 손은 <b>유효 마스크(validity mask)</b>로 제외한다.</p>
+    <p>이미지는 얼린 <b>DINOv2</b>·<b>SigLIP</b>(사전학습 이미지 인코더)로, 점구름은 얼린 <b>Point Transformer V3(PTv3</b>, 점구름 전용 트랜스포머)로 특징을 뽑는다. 이 특징들을 언어와 함께 공유 시공간 트랜스포머에 넣는다. 출력은 두 종류다: 시각 latent 토큰, 그리고 양손 3D 변화를 담은 기하 latent 토큰 Z<sup>G</sup> = {z<sub>j</sub><sup>G</sup>} (j=1…N<sub>p</sub>, N<sub>p</sub>는 기하 코드 개수).</p>
+    <p>각 기하 토큰은 <b>벡터 양자화(VQ</b>, 연속 벡터를 코드북의 가장 가까운 코드로 바꾸는 것)로 이산화한다. 말로 하면 "코드북 K<sub>G</sub>개 코드 중 z<sub>j</sub><sup>G</sup>와 거리가 가장 가까운 코드 e<sub>k</sub>를 고른다"이다: k<sub>j</sub> = argmin<sub>k</sub> ‖z<sub>j</sub><sup>G</sup> − e<sub>k</sub>‖², q<sub>j</sub><sup>G</sup> = e<sub>k<sub>j</sub></sub>. 코드북은 <b>EMA-VQ</b>(코드를 지수이동평균으로 갱신하는 안정적 VQ 방식)로 학습한다. 인코더·코드북은 사람 손·로봇 손·집게 모두가 공유한다.</p>
+
+    <h3>3.3 UEMR ① 양손 통합 동작 코드 (Unified Bimanual Motion Latent)</h3>
+    <div class="callout">직관: 양손 동작을 한 묶음 코드로 표현하면, 한 팔 로봇과 양팔 로봇을 같은 코드 공간에서 다룰 수 있다.</div>
+    <p>기하 토큰은 왼손·오른손을 따로 받지 않고, 구간 전체의 <b>양손 변화를 함께</b> 표현한다. 한 팔 집게 데이터는 같은 점구름을 양쪽 입력에 복제한다.</p>
+    <p>복원은 "같은 코드 + 각 손의 시작 모양 → 각 손의 목표 모양"으로 한다: P̂<sub>g</sub><sup>R</sup> = D<sub>G</sub>(P<sub>s</sub><sup>R</sup>, Q(Z<sup>G</sup>)), 왼손도 동일. 여기서 D<sub>G</sub>는 공유 기하 디코더, Q는 양자화, P̂<sub>g</sub>는 예측한 목표 점구름이다. 손실은 <b>Chamfer Distance(CD</b>, 두 점구름에서 각 점과 상대편 최근접 점의 거리 평균)이다: L<sub>G-rec</sub> = m<sub>R</sub>·CD(P̂<sub>g</sub><sup>R</sup>, P<sub>g</sub><sup>R</sup>) + m<sub>L</sub>·CD(P̂<sub>g</sub><sup>L</sup>, P<sub>g</sub><sup>L</sup>). m<sub>R</sub>, m<sub>L</sub>은 해당 손이 보이는지 나타내는 마스크다.</p>
+    <p>핵심은 디코더에 <b>시작 모양을 따로 주는 것</b>이다. 몸체 고유 모양은 시작 점구름이 이미 알려주므로, 코드는 "변화"만 담으면 된다.</p>
+
+    <h3>3.4 UEMR ② 쌍 일관 기하 증강 (Pair-Consistent Geometric Augmentation)</h3>
+    <div class="callout">직관: 시작과 목표를 똑같이 돌리고 옮기면 "상대적 움직임"은 그대로이고 "절대 좌표"만 흔들린다. 그러면 코드는 절대 좌표를 외울 수 없다.</div>
+    <p>각 시작·목표 점구름 쌍에 같은 랜덤 3D 변환 A(P) = a·R·P + t를 적용한다. a는 스케일, R은 회전, t는 평행이동이다. 데이터셋마다 다른 좌표 관례에 기대는 지름길(shortcut)을 막는다.</p>
+
+    <h3>3.5 UEMR ③ 양방향 전이 학습 (Bidirectional Transition Learning)</h3>
+    <div class="callout">직관: "쥐기"를 거꾸로 돌리면 "놓기"다. 양방향을 모두 복원하게 하면 코드가 정적인 모양보다 시간적 변화에 집중한다.</div>
+    <p>정방향(s→g)으로 코드 Z<sub>f</sub><sup>G</sup>를 뽑아 목표를 복원하고, 역방향(g→s)으로 Z<sub>b</sub><sup>G</sup>를 뽑아 시작을 복원한다. 두 방향은 인코더·코드북·디코더를 공유한다. 두 코드 사이에 명시적 관계(예: 반대 부호)는 강제하지 않는다.</p>
+    <p>한 방향의 손실은 "이미지 복원 + 이미지 VQ 코드북/커밋 손실 + λ<sub>G</sub>×점구름 복원 + β·λ<sub>G</sub>×점구름 커밋 손실"이다. <b>커밋 손실(commitment loss)</b>은 인코더 출력이 선택된 코드에서 멀어지지 않게 하는 항이다. β, λ<sub>G</sub>는 가중치다. 최종 1단계 손실은 정방향+역방향의 합 L<sub>LAM</sub> = L<sub>forward</sub> + L<sub>backward</sub>이다.</p>
+
+    <h3>3.6 2단계: 기하 인지 VLA 공동 학습</h3>
+    <div class="callout">직관: VLM이 "다음에 일어날 행동 코드"를 맞히도록 훈련하면, 사람 영상처럼 행동 라벨이 없어도 행동 관련 표현을 배울 수 있다.</div>
+    <p>정책은 <b>GR00T</b>(NVIDIA의 휴머노이드용 VLA) 구조를 따른다. 비전-언어 백본(VLM)과 <b>flow matching</b> 행동 전문가(노이즈에서 출발해 실제 행동 궤적으로 가는 속도장을 학습하는 생성 방식)로 이뤄진다. 출력은 H스텝 행동 묶음(action chunk) A<sub>t</sub> = [a<sub>t</sub>, …, a<sub>t+H−1</sub>]이다.</p>
+    <ul>
+      <li><b>latent action 예측</b>: VLM 입력에 학습 가능한 <b>브리지 토큰(bridge token)</b> 두 묶음 q<sup>img</sup>, q<sup>geo</sup>를 붙인다. 이 토큰의 은닉 상태로 1단계가 만든 시각 코드(N<sub>v</sub>개)와 기하 코드(N<sub>p</sub>개)를 자기회귀로 예측한다. 손실은 교차 엔트로피: L<sub>latent</sub> = CE(시각 코드) + λ<sub>geo</sub>·CE(기하 코드).</li>
+      <li><b>실제 행동 표현</b>: 통합 행동 공간을 억지로 만들지 않는다. 사람 손의 "행동"은 카메라 좌표계의 양 손목 3D 위치·회전 + 손목 좌표계의 손가락 키포인트 위치로 정의한다. 로봇은 각 데이터셋 원래 행동 공간을 그대로 쓴다.</li>
+      <li><b>공유 DiT + 몸체별 행동 헤드</b>: 행동 전문가는 공유 <b>DiT</b>(Diffusion Transformer)와 몸체마다 작은 출력 헤드 h<sub>e</sub>로 구성된다. 학습 샘플이 몸체 e에서 오면 그 헤드만 갱신한다.</li>
+    </ul>
+    <p>flow matching 손실을 말로 풀면: "깨끗한 행동 A<sub>t</sub>와 가우시안 노이즈 ε를 비율 τ로 섞은 A<sub>t</sub><sup>τ</sup> = τA<sub>t</sub> + (1−τ)ε를 주고, 모델이 노이즈→행동 방향 (A<sub>t</sub> − ε)을 맞히게 한다"이다. 즉 L<sub>action</sub> = E‖V<sub>θ,e</sub>(A<sub>t</sub><sup>τ</sup> | x<sub>t</sub>, s<sub>t</sub>, τ) − (A<sub>t</sub> − ε)‖². x<sub>t</sub>는 VLM 문맥, s<sub>t</sub>는 현재 로봇 상태, τ는 0~1 균등분포 시간이다. 전체 손실은 L<sub>VLA</sub> = L<sub>action</sub> + λ<sub>latent</sub>·L<sub>latent</sub>.</p>
+
+    <h3>데이터 &amp; 설정</h3>
+    <div class="kv">
+      <div>몸체 (4종)</div><div>사람 손, Fourier 손(RoboCasa GR-1 휴머노이드의 다지 손), ROBOTERA XHand(12자유도 로봇 손), Robotiq 2손가락 집게</div>
+      <div>학습 데이터</div><div>EgoDex·HOI4D(1인칭 사람 손 영상), DROID(집게 로봇), RoboCasa-GR1(시뮬레이션), 자체 수집 XHand·사람 손 데이터</div>
+      <div>얼린 인코더</div><div>DINOv2, SigLIP(이미지), PTv3(점구름)</div>
+      <div>점 개수</div><div>N = 1024 / 손</div>
+      <div>정책 구조</div><div>GR00T 스타일 VLM + 공유 flow-matching DiT + 몸체별 헤드</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+    <p>비교 대상의 정체를 먼저 정리한다.</p>
+    <ul>
+      <li><b>GALA w/o PC</b>: 점구름 분기를 빼고 이미지 쌍만으로 latent action을 학습한 버전 (= 기존 이미지 기반 LAM에 해당).</li>
+      <li><b>GALA w/o UEMR</b>: 점구름은 쓰되 UEMR 3가지 설계를 모두 뺀 버전. 왼손·오른손 코드를 따로 둔다.</li>
+      <li><b>METIS</b>: 손을 6D 손목 자세 + 6D 손끝 특징의 <b>희소(sparse)</b> 표현으로 인코딩하는 기존 방법.</li>
+      <li><b>Native Kinematics</b>: 각 로봇의 관절값·말단 운동학을 그대로 latent action으로 인코딩. 로봇 데이터만 사용.</li>
+      <li><b>OPFA</b>: GALA와 같은 점구름에 OPFA 기하 인코더를 적용하고, 시작·목표 상태 잠재값을 이어 붙여 전이 표현으로 쓴다. 로봇 데이터만 사용.</li>
+      <li><b>UniVLA</b>: 원래 UniVLA의 이미지 기반 LAM을 쓰되, 하위 VLA 구조·지도는 GALA와 동일.</li>
+    </ul>
+
+    <h3>4.1 미세 동작 probing (표 I)</h3>
+    <p><b>Probing</b>이란 표현을 얼리고 작은 MLP만 붙여, 그 표현에 원하는 정보가 남아 있는지 재는 평가다. 여기서 MLP는 (현재 로봇 상태 + 시각 latent + 각 방법의 기하 latent)를 받아 시작→목표 사이 말단 이동량 Δp(cm), 손목 회전 ΔR(도), 손가락/집게 관절 변화 Δq<sub>finger</sub>(도)를 예측한다. XHand 데이터 held-out 테스트셋, 시드 3개 평균. 낮을수록 좋다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>위치 오차(cm) ↓</th><th>회전 오차(°) ↓</th><th>손가락 오차(°) ↓</th></tr></thead>
+      <tbody>
+        <tr><td>METIS</td><td>6.162</td><td>8.520</td><td>14.328</td></tr>
+        <tr><td>Native Kinematics</td><td>5.879</td><td>8.098</td><td>7.768</td></tr>
+        <tr><td>OPFA</td><td>6.102</td><td>8.260</td><td>7.707</td></tr>
+        <tr><td>GALA w/o PC</td><td>6.790</td><td>8.567</td><td>15.113</td></tr>
+        <tr><td><b>GALA</b></td><td class="win">5.359</td><td class="win">7.898</td><td class="win">7.585</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">점구름을 빼면(w/o PC) 손가락 오차가 7.585°→15.113°로 두 배가 된다. 이미지 전용 코드가 손가락 정보를 거의 못 담는다는 핵심 주장의 근거. 관절값을 직접 쓴 Native Kinematics보다도 GALA가 낫다.</p>
+
+    <h3>4.2 몸체 간 동작 검색 (표 II, %)</h3>
+    <p>사람 손, 집게, 로봇 손 2종의 영상에서 <b>잡기(grasp)·유지(hold)·놓기(release)</b> 구간을 라벨링했다. 한 몸체의 구간(query)으로 <b>다른 몸체</b>의 구간들을 코사인 유사도로 검색한다. 같은 동작 라벨이면 정답이다. R@1은 1위 결과가 정답인 비율, P@5는 상위 5개 중 정답 비율, mAP는 전체 순위 품질이다. 동작 3종이므로 무작위 수준은 약 33%다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>R@1 ↑</th><th>P@5 ↑</th><th>mAP ↑</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4"><b>사람+로봇 전체 트랙</b></td></tr>
+        <tr><td>METIS</td><td>33.26</td><td>33.29</td><td>37.21</td></tr>
+        <tr><td>GALA w/o PC</td><td>33.37</td><td>33.37</td><td>36.38</td></tr>
+        <tr><td>GALA w/o UEMR</td><td>38.69</td><td>40.31</td><td>48.15</td></tr>
+        <tr><td><b>GALA</b></td><td class="win">45.67</td><td class="win">44.57</td><td class="win">49.49</td></tr>
+        <tr><td colspan="4"><b>로봇 전용 트랙</b></td></tr>
+        <tr><td>METIS</td><td>33.30</td><td>33.30</td><td>36.10</td></tr>
+        <tr><td>Native Kinematics</td><td>39.31</td><td>35.46</td><td>41.94</td></tr>
+        <tr><td>OPFA</td><td>41.18</td><td>36.83</td><td>43.03</td></tr>
+        <tr><td>GALA w/o PC</td><td>33.38</td><td>33.38</td><td>36.41</td></tr>
+        <tr><td>GALA w/o UEMR</td><td>33.83</td><td>38.54</td><td>43.11</td></tr>
+        <tr><td><b>GALA</b></td><td class="win">46.91</td><td class="win">41.74</td><td class="win">46.95</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">METIS와 이미지 전용(w/o PC)은 R@1이 약 33%로 사실상 무작위 수준. 로봇 전용 트랙에서 UEMR을 빼면 R@1이 46.91→33.83으로 무작위 수준까지 떨어진다. 점구름만 넣어서는 몸체 간 공유 의미가 생기지 않는다는 뜻.</p>
+
+    <h3>4.3 RoboCasa GR-1 시뮬레이션 — 통제 비교 (표 III)</h3>
+    <p><b>RoboCasa GR-1 Tabletop</b>: 양손 다지 손을 가진 GR-1 휴머노이드의 24개 탁상 태스크(물건을 서랍·전자레인지·찬장에 넣고 닫기, 도마·접시·쟁반에서 새 물체를 옮기기 등). 이 실험은 <b>GR-1 데이터만</b> 쓰고, VLA 구조·데이터·배치·스텝을 모두 같게 한 뒤 latent action 모델만 바꾼다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>LAM 방법</th><th>24태스크 평균 성공률(%) ↑</th></tr></thead>
+      <tbody>
+        <tr><td>UniVLA</td><td>48.0</td></tr>
+        <tr><td>METIS</td><td>43.8</td></tr>
+        <tr><td>Native Kinematics</td><td>51.8</td></tr>
+        <tr><td>OPFA</td><td>53.5</td></tr>
+        <tr><td>GALA w/o PC</td><td>50.9</td></tr>
+        <tr><td>GALA w/o UEMR</td><td>54.4</td></tr>
+        <tr><td><b>GALA</b></td><td class="win">55.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>4.4 RoboCasa GR-1 — 다중 몸체 공동 학습 (표 IV)</h3>
+    <p>이번엔 Fourier 손·XHand·사람 손·Robotiq 집게 데이터를 모두 섞어 VLA를 사전학습하고, 같은 GR-1 24개 태스크로 평가한다. "GR-1 단독 대비"는 표 III의 GR-1 전용 학습 결과보다 얼마나 올랐는지다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>평균 성공률(%) ↑</th><th>GR-1 단독 대비 ↑</th></tr></thead>
+      <tbody>
+        <tr><td>FLARE</td><td>55.0</td><td>—</td></tr>
+        <tr><td>DiT4DiT</td><td>56.7</td><td>—</td></tr>
+        <tr><td>JoyAI-RA</td><td>63.2</td><td>—</td></tr>
+        <tr><td>UniT</td><td>66.8</td><td>—</td></tr>
+        <tr><td>UniVLA (동일 다중 몸체 설정)</td><td>53.6</td><td>+5.6</td></tr>
+        <tr><td>GALA w/o UEMR (동일 설정)</td><td>58.6</td><td>+4.2</td></tr>
+        <tr><td><b>GALA</b></td><td class="win">68.3</td><td class="win">+12.6</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">UEMR 없이 몸체를 섞으면 이득이 +4.2에 그친다. UEMR이 있으면 +12.6. 다른 몸체 데이터를 "쓸모 있게" 만드는 것이 UEMR이라는 주장의 근거.</p>
+
+    <h3>4.5 실로봇 (12자유도 XHand, 표 V)</h3>
+    <p>4개 태스크: <b>Pick</b>(물체를 집어 목표 위치에 놓기), <b>Push</b>(상자를 지정 영역으로 밀기), <b>Press</b>(버튼 누르기, 정밀한 손가락 위치·접촉 필요), <b>Flip</b>(컵 뒤집기, 접촉과 방향 전환 필요). 모든 방법은 같은 양의 실로봇 데이터를 쓰고 백본만 다르다. 태스크당 50회 시도.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>Pick</th><th>Push</th><th>Press</th><th>Flip</th><th>평균</th></tr></thead>
+      <tbody>
+        <tr><td>OpenVLA</td><td>0</td><td>24</td><td>18</td><td>10</td><td>13.0</td></tr>
+        <tr><td>UniVLA</td><td>38</td><td>62</td><td>32</td><td>20</td><td>38.0</td></tr>
+        <tr><td>OpenVLA-OFT</td><td>52</td><td>72</td><td>54</td><td>42</td><td>55.0</td></tr>
+        <tr><td>π0</td><td>56</td><td>72</td><td>56</td><td>34</td><td>54.5</td></tr>
+        <tr><td>π0.5</td><td>72</td><td>80</td><td>68</td><td>52</td><td>68.0</td></tr>
+        <tr><td>HARP-VLA</td><td>72</td><td class="win">82</td><td>74</td><td>58</td><td>71.5</td></tr>
+        <tr><td>GALA w/o UEMR</td><td>74</td><td>78</td><td>72</td><td>50</td><td>68.5</td></tr>
+        <tr><td><b>GALA</b></td><td class="win">80</td><td class="win">82</td><td class="win">78</td><td class="win">62</td><td class="win">75.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">평균 75.5%로 HARP-VLA보다 4.0p, π0.5보다 7.5p 높다. 격차는 손가락 정밀도가 필요한 Flip(62 vs π0.5 52)·Press(78 vs 68)에서 크다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <p>별도 ablation(구성 요소를 하나씩 빼며 기여도를 재는 실험) 표 대신, 모든 실험에 "w/o PC", "w/o UEMR" 변형이 함께 들어 있다.</p>
+    <ul>
+      <li><b>점구름 제거(w/o PC)</b>: GR-1 단독 성공률 55.7→50.9%. 손가락 probing 오차 7.585°→15.113°. 몸체 간 검색 R@1은 무작위 수준(약 33%). → 이미지 전용 코드는 손가락 동작을 거의 담지 못한다.</li>
+      <li><b>UEMR 제거(w/o UEMR)</b>: GR-1 단독 55.7→54.4%(작은 차이). 그러나 다중 몸체 학습에서 68.3→58.6%(−9.7p), 실로봇 평균 75.5→68.5%(−7.0p). → UEMR의 가치는 여러 몸체를 섞을 때 크게 드러난다.</li>
+      <li><b>관절값 직접 인코딩(Native Kinematics)보다 우위</b>: GR-1 단독 51.8% vs 55.7%. 몸체 고유 제어값보다 학습된 기하 표현이 더 좋은 지도 신호.</li>
+      <li>UEMR 3개 설계(양손 통합·쌍 일관 증강·양방향 학습)를 <b>각각</b> 뺀 결과는 본문에 없다 — (부록 여부 미확인).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.21948/Stage1_v2.png" alt="GALA 1단계 기하 인지 latent action 학습 구조도 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — Geometry-aware latent-action learning.</b> RGB와 양손 점구름 변화에서 시각·기하 latent action을 함께 학습하고, UEMR로 기하 코드가 몸체 간 공유되는 전이를 담도록 유도하는 1단계 구조. (출처: arXiv:2609.21948)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.21948/Teaser_v2.png" alt="GALA 개요 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — Overview of GALA.</b> 이미지 기반 latent action에 3D 기하를 더해, 서로 다른 손·집게 사이에 공유되는 미세 조작 의미를 늘리고 VLA 사전학습 성능을 높인다는 핵심 아이디어. (출처: arXiv:2609.21948)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table IV (다중 몸체 공동 학습)</b> — "몸체를 섞을수록 좋아진다"는 핵심 주장의 근거. GALA는 GR-1 단독 대비 <b>+12.6p</b>(68.3%), UEMR을 뺀 버전은 +4.2p(58.6%)에 그친다.
+    </div>
+    <div class="callout">
+      <b>Table II (몸체 간 검색)</b> — 점구름만 넣은 w/o UEMR은 로봇 전용 트랙 R@1 33.83%로 무작위 수준. UEMR을 넣으면 46.91%. "공통 표현 ≠ 몸체 불변 표현"이라는 문제 제기의 정량 근거.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.21948" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.21948" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.21948" target="_blank">HTML</a></li>
+      <li><a href="https://puzhenyuan.github.io/GALA-website/" target="_blank">프로젝트 페이지</a> (논문이 코드·부록·데모 공개처로 명시)</li>
+      <li>관련: <a href="https://arxiv.org/abs/2505.06111" target="_blank">UniVLA</a> · <a href="https://arxiv.org/abs/2511.17366" target="_blank">METIS</a> · <a href="https://arxiv.org/abs/2603.14522" target="_blank">OPFA</a> · <a href="https://arxiv.org/abs/2605.31234" target="_blank">HARP-VLA</a> · <a href="https://arxiv.org/abs/2503.14734" target="_blank">GR00T N1</a></li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.21948 · GALA · 요약 생성 2026-09-22
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ \u00ab'+t+'\u00bb \ubcf5\uc0ac\ub428 \u2014 Claude\uc5d0 \ubd99\uc5ec\ub123\uace0 \uc9c8\ubb38';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>

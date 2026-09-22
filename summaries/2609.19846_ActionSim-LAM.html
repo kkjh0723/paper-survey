@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ActionSim-LAM — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Latent Action · Cross-Embodiment</span>
+    <h1>Improving Cross-embodiment Transfer in Latent Action Models with Action-Similarity Supervision</h1>
+    <p class="authors">Maxime Alvarez (교신저자), Renzo Caballero, Tatsuya Matsushima, Yusuke Iwasawa, Yutaka Matsuo · The University of Tokyo (Graduate School of Engineering, Matsuo Lab)</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.19846" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.19846" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2609.19846" target="_blank">HTML</a>
+      <span>arXiv:2609.19846</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Latent Action</span>
+      <span class="t">Cross-Embodiment</span>
+      <span class="t">VLA</span>
+      <span class="t">Representation Learning</span>
+      <span class="t">Bimanual</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 17일 (v1) · 벤치마크 RoboTwin 2.0 (시뮬레이션) · 정책 π0 (~3B) / Multi-Task DiT (49M) · 코드 링크 없음</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p><b>Latent action model(LAM, 영상의 두 프레임 사이 변화를 로봇 종류와 무관한 압축 벡터 "latent action"으로 요약하는 모델)</b>을 학습할 때, 소량의 실제 로봇 행동 라벨을 <b>"직접 맞히는 정답"이 아니라 "두 동작이 서로 얼마나 비슷한가"라는 관계 신호로만</b> 쓰자는 연구. 배치 안 latent action끼리의 유사도 행렬이 실제 행동 시퀀스끼리의 유사도 행렬과 같아지도록 학습한다(<b>action-similarity supervision</b>). 로봇 A로만 시연한 태스크를 로봇 B가 수행하는 통제된 교차 로봇 실험에서, 같은 π0 정책이 실제 관절 행동을 직접 예측하면 전이 성공률 <b>24.0%</b>인데, 최선 설정(LAOM+sim-EE-X)은 <span class="win">61.3%</span>(2.55배)로 자기 로봇 태스크 성능(69.3%)의 <b>88.5%</b>를 옮겨 온다. 같은 라벨로 행동을 직접 예측하게 하는 보조 손실(34.0%)보다도 12점 높다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>VLA(Vision-Language-Action, 이미지와 언어 지시를 받아 로봇 행동을 출력하는 모델)는 웹 규모 사전학습으로 시각·언어 능력은 좋아졌다. 그러나 행동이 기록된 로봇 시연 데이터는 비싸다. 또 시연은 그것을 기록한 특정 로봇에 묶인다.</p>
+    <p>LAM은 이 두 문제를 푸는 대안이다. 행동 라벨 없는 영상에서 "무엇이 움직였나"를 latent action으로 뽑는다. 이 latent action은 원리상 여러 <b>embodiment(로봇의 몸체 형태, 즉 팔 구조·관절 수가 다른 로봇 종류)</b>가 공유할 수 있다.</p>
+    <p>하지만 실제로는 두 가지 약점이 있다.</p>
+    <ul>
+      <li><b>배경 잡음 민감성:</b> 영상만 보고 학습하니 배경 변화 같은 무관한 시각 변화도 latent action에 섞인다.</li>
+      <li><b>로봇마다 다른 코드:</b> 두 로봇이 같은 동작을 해도 겉모습이 달라 서로 다른 latent로 인코딩될 수 있다. 그러면 로봇 간 지식 이전(<b>cross-embodiment transfer</b>)이 안 된다.</li>
+    </ul>
+    <p>기존 해법(LAOM 등)은 latent action에서 실제 로봇 행동을 예측하는 <b>보조 헤드(auxiliary head)</b>를 붙인다. 잡음은 줄지만, latent가 특정 로봇의 관절 좌표계에 끌려가 로봇 고유 정보를 담게 된다. 저자들은 <b>같은 라벨을 다르게 쓰자</b>고 제안한다. 행동값 자체가 아니라 "행동끼리의 유사도"만 맞추면, latent가 로봇 고유 좌표를 인코딩할 필요가 없다는 논리다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>통제된 교차 로봇 실험 설정 (RoboTwin 2.0)</b> — 두 양팔 로봇(Aloha, Franka)이 서로 겹치지 않는 3개씩의 태스크만 시연한다. 평가 때 태스크를 맞바꿔, 각 로봇이 <b>한 번도 시연하지 않은 태스크</b>를 수행하게 한다. 정책 구조·하이퍼파라미터·데이터·평가를 고정하고 LAM만 바꿔 LAM의 효과만 분리한다.</li>
+      <li><b>Action-similarity supervision 레시피</b> — latent action 유사도 행렬을 실제 행동 시퀀스 유사도 행렬에 맞추는 단순한 손실. VILA(시점 불변 latent action 연구)의 전역 유사도 구조 항과 비슷하지만, 목표가 시점 강건성이 아니라 교차 로봇 전이다.</li>
+      <li><b>행동 목표 공간·지도 방식의 통제 비교</b> — 실제 행동 직접 예측(패딩 관절 공간, end-effector 변위) vs 8가지 LAM 변형, 그리고 보조 행동 예측 손실 vs 유사도 손실을 두 LAM 백본(AdaWorld, LAOM)에서 비교. 추가로 ViLA·ConLA·villa-X·CLAM 방식과도 비교.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>전체 4단계 파이프라인</h3>
+    <div class="callout">직관: 로봇마다 다른 "행동 언어"를 공통의 latent 언어로 번역해 두고, 정책은 공통 언어로만 생각하게 한 뒤, 마지막에 로봇별 통역기(decoder)로 실제 명령을 만든다.</div>
+    <ul>
+      <li><b>Stage 1 — LAM 학습:</b> <b>IDM(Inverse Dynamics Model, 역동역학 모델: 현재·미래 관찰 두 장을 보고 그 사이 "행동"을 추정)</b>이 관찰 o<sub>t</sub>와 H스텝 뒤 관찰 o<sub>t+H</sub>로부터 latent action z<sub>t</sub>를 만든다. <b>FDM(Forward Dynamics Model, 순동역학 모델: 현재 관찰과 행동으로 미래를 예측)</b>은 o<sub>t</sub>와 z<sub>t</sub>로 o<sub>t+H</sub>를 복원한다. 복원 손실 L<sub>recon</sub>은 실제 미래 관찰과 복원 결과의 제곱 오차 평균이다.</li>
+      <li><b>Stage 2 — 라벨링:</b> 학습된 IDM을 고정(frozen)하고 전체 데이터에 latent action을 붙인다.</li>
+      <li><b>Stage 3 — latent 정책 학습:</b> π0(Physical Intelligence의 <b>flow matching</b> 기반 VLA; flow matching은 노이즈를 목표 데이터로 옮기는 속도장을 학습하는 생성 방식)가 관찰과 언어 지시를 받아 연속된 16개의 latent action을 생성하도록 학습한다. 두 로봇 데이터를 모두 사용한다.</li>
+      <li><b>Stage 4 — 로봇별 decoder:</b> 로봇 e마다 작은 MLP δ<sub>e</sub>가 latent action을 그 로봇의 실제 행동으로 바꾼다. 자기 로봇의 라벨 데이터로만 학습한다(손실: 실제 행동 a<sub>t</sub>와 δ<sub>e</sub>(z<sub>t</sub>)의 제곱 오차). 3·4단계는 서로 독립이라 병렬로 한다.</li>
+    </ul>
+    <p>배포 시 IDM·FDM은 버리고, δ<sub>e</sub>(π(o<sub>t</sub>, g)) 형태로 닫힌 루프(closed-loop, 매 스텝 새 관찰을 보고 다시 행동하는 방식)로 실행한다.</p>
+
+    <h3>두 가지 LAM 백본</h3>
+    <div class="callout">직관: 제안 손실이 특정 구조에만 통하는지 확인하려고 성격이 다른 두 LAM에 모두 붙여 본다.</div>
+    <ul>
+      <li><b>AdaWorld (VAE 백본):</b> VAE(Variational AutoEncoder, 잠재 분포에 KL 제약을 거는 오토인코더) 방식. 시공간 Transformer 인코더가 64차원 연속 latent action을 만들고, 공간 Transformer 디코더가 다음 프레임을 <b>픽셀 공간</b>에서 복원한다. 시간 간격 H=1.</li>
+      <li><b>LAOM (multi-step 백본):</b> CNN 인코더(IMPALA 구조, 64×64 입력)와 1024차원의 넓은 연속 latent. 간격 H를 1~10 중 무작위로 뽑는다. FDM은 픽셀이 아니라 인코더의 EMA(지수이동평균) 사본이 만든 <b>미래 프레임 임베딩</b>을 예측한다.</li>
+    </ul>
+
+    <h3>Action-similarity supervision (핵심)</h3>
+    <div class="callout">직관: "두 영상 조각의 latent가 비슷한 정도 = 두 조각에서 로봇이 실제로 한 동작이 비슷한 정도"가 되게 만든다. 행동값을 직접 예측하지 않으므로 latent가 특정 로봇의 관절 좌표를 담을 이유가 없다.</div>
+    <p>메커니즘은 <b>relational knowledge distillation(관계 지식 증류: 학생이 선생의 개별 출력이 아니라 샘플 쌍 사이의 관계를 따라 하게 하는 기법)</b>이다. 여기서 학생은 latent action 공간, 선생은 실제 행동 공간이다. 행동 라벨이 있는 배치(크기 B=128)마다 B×B 유사도 행렬 두 개를 만든다.</p>
+    <ul>
+      <li><b>Latent 유사도 S<sup>z</sup>:</b> 각 latent 벡터를 길이 1로 정규화(ℓ2 정규화)한 뒤, 모든 쌍 (i, j)의 코사인 유사도를 계산한다. S<sup>z</sup><sub>ij</sub> = sim(z<sub>i</sub>, z<sub>j</sub>). 그래디언트는 IDM으로 흘러간다.</li>
+      <li><b>실제 행동 유사도 S<sup>a</sup>:</b> latent는 "시각적 변화"를 담으므로, 비교 대상도 절대 자세가 아니라 <b>움직임</b>이어야 한다. 그래서 절대 관절 위치는 스텝별 변화량 Δa<sub>t</sub> = a<sub>t+1</sub> − a<sub>t</sub>로 바꾼다(end-effector 변위처럼 이미 변화량인 공간은 그대로). 차원별로 표준화하고, 16스텝 시퀀스를 펼쳐 정규화한다.</li>
+      <li><b>시간 어긋남 보정:</b> 한 시퀀스를 −2~+2스텝 밀어 보며 가장 높은 코사인 유사도를 쓴다. 식으로는 S<sup>a</sup><sub>ij</sub> = max<sub>d∈{−s..s}</sub> sim(A<sub>i</sub><sup>(0)</sup>, A<sub>j</sub><sup>(d)</sup>)이다. A<sub>j</sub><sup>(d)</sup>는 j번째 행동 시퀀스를 d스텝 이동한 것, s=2는 최대 이동 폭이다. 같은 동작이 한두 프레임 늦게 시작해도 비슷하다고 판정된다. 결과 행렬은 원소별 max로 대칭화한다.</li>
+    </ul>
+    <p><b>손실과 마스크:</b> 두 행렬의 차이를 제곱해 더한다. L<sub>sim</sub> = ‖M ∘ (S<sup>z</sup> − S<sup>a</sup>)‖<sub>F</sub><sup>2</sup>. 여기서 ‖·‖<sub>F</sub>는 행렬 원소 제곱합의 제곱근(Frobenius norm), ∘는 원소별 곱, M은 어떤 쌍을 비교할지 정하는 0/1 마스크다. M의 대각선(자기 자신과의 쌍)은 항상 0이다.</p>
+    <ul>
+      <li>관절 공간 행동은 로봇마다 좌표 의미가 달라, 로봇 간 유사도가 의미가 없다. 이때 M으로 <b>서로 다른 로봇 쌍을 제외</b>한다(기본 설정).</li>
+      <li>end-effector 변위(그리퍼 끝의 위치·자세 변화, 로봇 종류와 무관한 좌표)를 쓰면 마스크를 빼고 <b>로봇 간 쌍도 비교</b>할 수 있다. 이러면 손실이 두 로봇의 latent를 직접 정렬한다.</li>
+    </ul>
+    <p>Stage 1 전체 목적함수: <b>L = L<sub>recon</sub> + λ·L<sub>sim</sub></b>. λ는 유사도 손실의 가중치로 작게 둔다(LAOM은 λ=0.05). 복원 손실의 크기가 백본마다 달라 실제 효과 세기는 백본에 따라 다르다.</p>
+
+    <h3>실험 설정 (결론의 근거가 되는 부분)</h3>
+    <div class="callout">직관: "평가하는 로봇-태스크 조합에 시연이 0개"이므로, 성공했다면 태스크 능력이 오직 공유 latent 공간과 공유 정책을 통해 건너온 것이다.</div>
+    <div class="kv">
+      <div>환경</div><div>RoboTwin 2.0 — SAPIEN 물리 시뮬레이터 기반 양팔 조작 벤치마크. 로봇을 바꿔 끼울 수 있고, 동일한 머리 카메라로 관찰</div>
+      <div>로봇 1: Aloha</div><div>aloha-agilex, 팔당 6자유도(DoF), 역기구학이 잘 풀림. 시연 태스크 A: 벨 누르기, 스테이플러 누르기, 카드 밀어내기</div>
+      <div>로봇 2: Franka</div><div>7자유도 Franka 팔 2개, 자유도가 남는(redundant) 구조. 시연 태스크 B: 알람시계 누르기, 스위치 돌리기, 스테이플러를 패드로 옮기기</div>
+      <div>행동 공간</div><div>절대 관절 위치를 16차원 공통 패딩 공간에 담음(로봇마다 쓰는 좌표가 다름)</div>
+      <div>데이터</div><div>태스크당 스크립트 시연 50개 → 로봇당 150개</div>
+      <div>평가</div><div>Own(자기가 시연한 3태스크) vs Transfer(상대 로봇만 시연한 3태스크). 로봇-태스크 쌍당 50에피소드, 전체 600에피소드. 공식 프로토콜대로 수집과 다른 시드, 스크립트 전문가가 풀 수 있는 장면만 사용</div>
+      <div>Baseline GT-π0</div><div>LAM 없이 π0가 16차원 패딩 관절 행동을 직접 예측(일반 VLA의 표준 방식)</div>
+      <div>Baseline GT-π0-EE</div><div>π0가 end-effector 변위를 직접 예측</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>Q1: 행동 라벨을 어떻게 쓰는가 (Table I, 닫힌 루프 성공률 %)</h3>
+    <p>각 칸은 3개 태스크 평균. In-emb.·Transfer는 두 로봇 평균, Overall은 12개 로봇-태스크 쌍 전체 평균이다. 변형 표기: <b>+pred</b>=latent에서 실제 행동을 예측하는 보조 헤드, <b>+sim</b>=유사도 손실(관절 변화량, 같은 로봇 쌍만), <b>-EE</b>=유사도를 end-effector 변위로 계산, <b>-X</b>=로봇 간 쌍도 비교, <b>-MV</b>=LAM 입력에 손목 카메라 2개 추가.</p>
+    <div class="tblwrap">
+    <table>
+      <thead>
+        <tr><th rowspan="2">설정</th><th colspan="2">Aloha</th><th colspan="2">Franka</th><th colspan="3">평균</th></tr>
+        <tr><th>Own</th><th>Transfer</th><th>Own</th><th>Transfer</th><th>In-emb.</th><th>Transfer</th><th>Overall</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GT-π0 (관절 행동 직접 예측)</td><td>76.7</td><td>33.3</td><td>30.7</td><td>14.7</td><td>53.7</td><td>24.0</td><td>38.9</td></tr>
+        <tr><td>GT-π0-EE (EE 변위 직접 예측)</td><td>49.3</td><td>18.0</td><td>32.7</td><td>34.0</td><td>41.0</td><td>26.0</td><td>33.5</td></tr>
+        <tr><td>AdaWorld (비지도)</td><td>46.7</td><td>10.7</td><td>46.0</td><td>43.3</td><td>46.4</td><td>27.0</td><td>36.7</td></tr>
+        <tr><td>AdaWorld +sim (λ=0.1)</td><td>46.0</td><td>30.7</td><td>37.3</td><td>24.0</td><td>41.7</td><td>27.4</td><td>34.5</td></tr>
+        <tr><td>AdaWorld +sim (λ=0.05)</td><td>46.0</td><td>34.0</td><td>48.0</td><td>30.7</td><td>47.0</td><td>32.4</td><td>39.7</td></tr>
+        <tr><td>AdaWorld +sim (λ=0.02)</td><td>42.0</td><td>36.7</td><td>48.0</td><td>24.0</td><td>45.0</td><td>30.4</td><td>37.7</td></tr>
+        <tr><td>LAOM (비지도)</td><td>74.0</td><td>36.0</td><td>51.3</td><td>36.0</td><td>62.7</td><td>36.0</td><td>49.3</td></tr>
+        <tr><td>LAOM +pred</td><td>70.7</td><td>46.0</td><td>60.7</td><td>22.0</td><td>65.7</td><td>34.0</td><td>49.9</td></tr>
+        <tr><td>LAOM +sim</td><td>72.0</td><td>40.7</td><td>60.0</td><td>51.3</td><td>66.0</td><td>46.0</td><td>56.0</td></tr>
+        <tr><td>LAOM +sim-EE</td><td>75.3</td><td>55.3</td><td>65.3</td><td>50.7</td><td>70.3</td><td>53.0</td><td>61.7</td></tr>
+        <tr><td><b>LAOM +sim-EE-X (최종 레시피)</b></td><td>77.3</td><td class="win">65.3</td><td>61.3</td><td>57.3</td><td>69.3</td><td>61.3</td><td>65.3</td></tr>
+        <tr><td>LAOM +sim-EE-X-MV</td><td class="win">79.3</td><td>58.7</td><td>63.3</td><td>33.3</td><td class="win">71.3</td><td>46.0</td><td>58.7</td></tr>
+        <tr><td>ViLA-style (weighted InfoNCE)</td><td>73.3</td><td>62.7</td><td class="win">66.7</td><td class="win">64.0</td><td>70.0</td><td class="win">63.3</td><td class="win">66.7</td></tr>
+        <tr><td>ConLA-style (동사 클래스 대조)</td><td>38.0</td><td>10.7</td><td>34.0</td><td>20.0</td><td>36.0</td><td>15.3</td><td>25.7</td></tr>
+        <tr><td>ViLA-faithful (두 손실 항 모두)</td><td>71.3</td><td>56.0</td><td>63.3</td><td>48.7</td><td>67.3</td><td>52.3</td><td>59.8</td></tr>
+        <tr><td>villa-X (전체 파이프라인)</td><td>72.7</td><td>19.3</td><td>37.3</td><td>25.3</td><td>55.0</td><td>22.3</td><td>38.6</td></tr>
+        <tr><td>CLAM (공동학습 decoder)</td><td>64.0</td><td>37.3</td><td>55.3</td><td>53.3</td><td>59.6</td><td>45.3</td><td>52.5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">초록색 굵은 값은 열별 최고. ViLA-style·ConLA-style·ViLA-faithful은 같은 EE 라벨·로봇 간 쌍 조건에서 손실 형태만 바꾼 저자 구현 변형이다.</p>
+    <ul>
+      <li><b>latent 목표 자체가 이득:</b> 비지도 LAOM만으로도 전이 36.0% (행동 직접 예측 GT-π0는 24.0%). 좌표만 EE로 바꾼 GT-π0-EE는 26.0%에 그치고, 자기 태스크 성능은 53.7%→41.0%로 떨어진다.</li>
+      <li><b>라벨을 넣는 방식이 중요:</b> LAOM에 예측 헤드(+pred)를 붙이면 자기 태스크는 62.7→65.7%로 오르지만 전이는 36.0→34.0%로 <b>오히려 떨어진다</b>. 같은 라벨로 유사도 손실(+sim)을 쓰면 자기 태스크 66.0%, 전이 46.0%로, +pred 대비 전이가 12.0점 높다.</li>
+      <li><b>EE 좌표 + 로봇 간 쌍:</b> 유사도 기준을 EE 변위로 바꾸면 전이 46.0→53.0%. 로봇 간 쌍까지 비교하면 61.3%(Overall 65.3%). GT-π0 대비 2.55배, 자기 태스크 성능(69.3%)의 88.5% 수준이다.</li>
+      <li><b>백본 의존성:</b> AdaWorld(VAE)에서는 유사도 손실이 전이를 27.0%→최대 32.4%(λ=0.05)로 올리는 데 그친다.</li>
+      <li><b>대안 손실:</b> 같은 조건의 ViLA-style weighted InfoNCE(<b>InfoNCE</b>: 비슷한 쌍은 당기고 나머지는 미는 대조 학습 손실, 여기선 행동 유사도로 가중)가 전이 63.3%로 유사도 매칭(61.3%)보다 약간 높다. 반면 이산 동사 라벨로 묶는 ConLA-style은 15.3%로 크게 낮다. 저자 해석: 핵심은 "연속적인 행동 유사도 정보"다.</li>
+      <li><b>기존 방법 재현:</b> villa-X 전체 파이프라인 전이 22.3%, CLAM(LAOM 학습 중 공유 decoder 공동학습) 45.3%.</li>
+      <li><b>Decoder 적합도:</b> Stage 4 decoder의 MSE(평균제곱오차)는 AdaWorld 0.038, 비지도 LAOM 0.017, +pred 0.015, +sim 0.003. 유사도 손실이 +pred보다 5배 낮아, latent에서 실제 행동을 더 쉽게 복원할 수 있다.</li>
+    </ul>
+
+    <h3>Q2-a: 라벨이 적어도 효과가 남는가 (Table II, 전이 성공률 %)</h3>
+    <p>관찰 영상은 그대로 두고, 유사도 손실에 들어가는 라벨 비율만 1~100%(로봇당 2~150 에피소드)로 바꾼다. "full decoder"는 decoder를 150개 전부로 학습, "restricted decoder"는 decoder도 같은 소수 라벨로만 학습한 경우다.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>LAM 라벨 비율 (로봇당 에피소드)</th><th>Similarity; full decoder</th><th>Similarity; restricted decoder</th><th>InfoNCE; full decoder</th></tr></thead>
+      <tbody>
+        <tr><td>0% (0) — LAM 지도 없음</td><td>36.0</td><td>—</td><td>—</td></tr>
+        <tr><td>1% (2)</td><td>36.3</td><td>9.0</td><td>39.4</td></tr>
+        <tr><td>5% (8)</td><td>58.7</td><td>16.0</td><td>—</td></tr>
+        <tr><td>10% (15)</td><td>65.7</td><td>31.0</td><td>62.0</td></tr>
+        <tr><td>20% (30)</td><td>65.7</td><td>47.0</td><td>—</td></tr>
+        <tr><td>50% (75)</td><td class="win">68.3</td><td>62.3</td><td>61.7</td></tr>
+        <tr><td>100% (150)</td><td>61.3</td><td>61.3</td><td>63.3</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">원 표는 "자기 태스크 / 전이 / 4칸 평균"을 모두 보고하며, 여기서는 전이 값만 옮김.</p>
+    <ul>
+      <li>full decoder면 라벨 10%(로봇당 15개)만으로 전이 65.7% — 전체 라벨(61.3%) 이상. 5%에서도 58.7%. 1%는 36.3%로 지도 없음(36.0%)과 비슷.</li>
+      <li>decoder까지 소수 라벨로 제한하면 10%에서 31.0%로 급락. 즉 "10배 절약"은 LAM 보조 손실의 라벨에만 해당하고, <b>decoder 데이터는 여전히 병목</b>이다.</li>
+      <li>InfoNCE도 10% 라벨에서 62.0%(전체 라벨 63.3%의 약 98%)를 유지. 결과가 단조롭지 않아 "라벨이 적을수록 좋다"는 뜻은 아니라고 저자들이 명시.</li>
+    </ul>
+
+    <h3>Q2-b: 작은 정책으로 바꿔도 효과가 남는가 (Figure 4)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>정책</th><th>관절 행동 직접 예측 (전이)</th><th>latent 레시피 (전이)</th><th>향상</th><th>자기 태스크 대비 유지율</th></tr></thead>
+      <tbody>
+        <tr><td>π0 (~3B 파라미터)</td><td>24.0</td><td class="win">61.3</td><td>+37.3%p</td><td>88.5%</td></tr>
+        <tr><td>Multi-Task DiT (49M, 약 60배 작음)</td><td>1.3</td><td>33.7</td><td>+32.4%p (25배 이상)</td><td>78.9% (33.7/42.7)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">DiT = Diffusion Transformer 기반 다중 태스크 행동 정책. LAM·라벨링·decoder는 고정하고 정책만 교체.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation (주요 발견)</h2>
+    <ul>
+      <li><b>유사도 계산 좌표 (관절 → EE):</b> 전이 46.0→53.0%. 팔 구조가 달라도 EE 공간의 움직임은 비슷하게 유지되기 때문으로 해석. EE는 정책의 직접 목표(GT-π0-EE, 26.0%)보다 <b>유사도 기준</b>으로 쓸 때 훨씬 유용했다.</li>
+      <li><b>로봇 간 쌍 포함 (-X):</b> 전이 53.0→61.3%. 손실이 두 로봇의 latent를 직접 정렬하는 효과.</li>
+      <li><b>손목 카메라 추가 (-MV):</b> 자기 태스크 69.3→71.3%로 약간 오르지만 전이는 61.3→46.0%로 급락. 로봇 외형에 의존하는 시각 특징을 쓰게 되는 것과 부합하지만 원인은 확정하지 않았다.</li>
+      <li><b>λ (AdaWorld):</b> 0.1 / 0.05 / 0.02에서 전이 27.4 / 32.4 / 30.4%. 0.05가 최선.</li>
+      <li><b>(부록) latent에 로봇 정체가 담기는가:</b> 1층 MLP 분류기가 모든 LAM의 latent에서 로봇 종류를 100% 맞힌다(우연 수준 50%). 하지만 태스크와 로봇이 1:1로 묶인 설정이라 태스크 구분만으로도 가능하다. EE 변위조차 77.9%다. 전이 성능이 달라도 분류 정확도는 같으므로, 이 지표로는 전이 차이를 설명할 수 없다.</li>
+      <li><b>(부록) 처음 보는 로봇(UR5 양팔)으로 확장:</b> LAM·정책을 고정하고 decoder만 새로 학습. decoder MSE 0.008(학습 로봇들은 0.003–0.004). 기록된 시연을 IDM→decoder로 재생(open-loop replay)하면 "벨 누르기" 2/3, "알람시계" 1/3 성공(학습 로봇은 3/3, 2/3). 그러나 고정 정책과 붙인 닫힌 루프 성공률은 <b>0.0%</b>(300 에피소드). 정책이 새 로봇의 외형에 일반화하지 못하는 한계.</li>
+      <li><b>한계:</b> 두 로봇 모두 그리퍼 달린 양팔 로봇이며 시뮬레이션뿐이다. 데이터가 많아지면 교차 로봇 능력이 자연히 생긴다는 보고도 있어, 이 레시피의 이점은 <b>저데이터 영역</b>에 한정해 주장한다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.19846/x1.png" alt="action-similarity supervision을 포함한 4단계 LAM 파이프라인 구조도 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — 제안 방법의 4단계 파이프라인.</b> Stage 1에서 IDM의 latent 유사도 행렬을 실제 행동 유사도 행렬에 맞추는 손실을 복원 손실과 함께 학습하고, 이어 IDM 라벨링 → latent 정책 학습 → 로봇별 decoder 학습 순으로 진행한다. (출처: arXiv:2609.19846)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.19846/x2.png" alt="태스크 세트를 맞바꾸는 교차 로봇 평가 설정 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — 교차 로봇 태스크 전이 설정.</b> 학습 때 Aloha는 태스크 A 세트, Franka는 B 세트만 시연하고(태스크당 50개), 평가 때 세트를 맞바꿔 시연이 0개인 로봇-태스크 조합을 수행한다. 아래 썸네일은 최선 시스템의 실제 전이 롤아웃. (출처: arXiv:2609.19846)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table I</b> — 논문의 핵심 근거. 같은 π0·같은 데이터·같은 평가에서 LAM 구성만 바꿔 전이 성공률을 비교한다. 핵심 대조는 "+pred 34.0% vs +sim 46.0%"(같은 라벨, 다른 사용법)와 "GT-π0 24.0% vs +sim-EE-X 61.3%"다.
+    </div>
+    <p class="cap">Figure 3: 라벨 비율에 따른 전이·자기 태스크 성공률 곡선(로그 축) · Figure 4: π0 vs 49M DiT 정책 비교.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.19846" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.19846" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.19846" target="_blank">HTML</a></li>
+      <li>코드/프로젝트 페이지: 논문에 공개 링크 없음 (—)</li>
+      <li>관련 선행 연구: LAOM (<a href="https://arxiv.org/abs/2502.00379" target="_blank">arXiv:2502.00379</a>), RoboTwin 2.0 (<a href="https://arxiv.org/abs/2506.18088" target="_blank">arXiv:2506.18088</a>), π0 (<a href="https://arxiv.org/abs/2410.24164" target="_blank">arXiv:2410.24164</a>)</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.19846 · ActionSim-LAM · 요약 생성 2026-09-22
+  </footer>
+</div>
+<script>
+function askPaper(b){
+  var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];
+  var t='/paper-qa '+id+' ';
+  var orig=b.textContent;
+  function done(){b.textContent='✅ «'+t+'» 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=orig;},2400);}
+  function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb);}else fb();
+}
+</script>
+<script>
+(function(){
+  var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';
+  function close(){ov.classList.remove('show');}
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  function attach(){
+    document.body.appendChild(ov);
+    document.querySelectorAll('figure img').forEach(function(im){
+      im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+})();
+</script>
+</body>
+</html>
