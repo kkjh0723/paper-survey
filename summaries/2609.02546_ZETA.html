@@ -328,7 +328,46 @@
   <section class="qa">
     <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
     <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
-    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+    <details class="qa-item">
+      <summary class="q">Q1. EEF-delta의 기준점은 정확히 어떻게 잡나? state는 매 프레임 카메라 프레임이 원점인가? action의 "현재 EEF 좌표계"는 무슨 뜻인가?</summary>
+      <p><b>먼저 기호부터.</b> <b>T<sub>b,e<sub>t</sub></sub></b>는 <b>로봇 베이스(b)</b>에서 <b>그리퍼 끝(e, end-effector)</b>까지의 좌표 변환을 시점 t에 대해 나타낸 4×4 행렬이다. <b>𝒱(·)</b>는 그 변환을 숫자 벡터로 펴는 함수로, 논문 정의는 T=[R p; 0 1]일 때 <b>𝒱(T)=[p, Euler(R)]</b> — 즉 <b>위치 3개 + 오일러각 3개 = 6차원</b>이다.</p>
+      <div class="callout">
+        <b>표기 함정 하나.</b> 논문 표의 <code>T<sub>b,e<sub>t</sub></sub><sup>−1</sup></code>에서 −1은 <b>시점 t−1이 아니라 역행렬</b>이다. arXiv HTML에서 위첨자가 뭉개져 <code>Tb,et−1</code>처럼 보이지만, 등호 오른쪽의 <b>T<sub>e<sub>t</sub>,e<sub>t−i</sub></sub></b>가 이를 확정해 준다.
+      </div>
+      <p><b>① State — 기준은 카메라가 아니라 "현재 그리퍼"다.</b> 논문의 EEF-Delta state 정의는</p>
+      <p style="text-align:center"><b>𝒱(T<sub>b,e<sub>t</sub></sub><sup>−1</sup> · T<sub>b,e<sub>t−i</sub></sub>) = 𝒱(T<sub>e<sub>t</sub>,e<sub>t−i</sub></sub>)</b>, &nbsp; i = 0 … h</p>
+      <p>이다. 베이스 기준으로 기록된 <b>현재 자세의 역행렬</b>을 <b>과거 자세</b>에 곱하면 베이스가 상쇄되고, 과거 h개 시점의 자세가 전부 <b>지금 그리퍼가 있는 자리를 원점으로</b> 다시 표현된다(i=0이면 자기 자신이라 항등, 즉 0벡터). <b>질문하신 "카메라 프레임"은 아니다</b> — 정의에 카메라는 등장하지 않고 상쇄되는 것은 베이스 프레임이다. 다만 손목 카메라는 그리퍼에 붙어 있어 EEF 프레임과 사실상 같이 움직이므로, 논문은 이 표현이 <i>"better match the local motion semantics observed from a wrist camera"</i>라고 근거를 댄다. <b>"매 프레임마다 원점을 다시 잡는다"는 부분은 맞다</b> — t가 1 늘면 기준도 따라 움직여 전체 히스토리가 새 원점으로 다시 계산된다.</p>
+      <p><b>② Action — "현재 EEF 좌표계"는 청크 시작점이 아니라 "각 스텝 자신"이다.</b> 이 부분이 헷갈리기 쉬운 지점인데, 정의는</p>
+      <p style="text-align:center"><b>𝒱(T<sub>b,e<sub>t′</sub></sub><sup>−1</sup> · T<sub>b,e<sub>t′+1</sub></sub>) = 𝒱(T<sub>e<sub>t′</sub>,e<sub>t′+1</sub></sub>)</b>, &nbsp; t′ = t … t+K−1</p>
+      <p>로, 기준이 <b>t′마다 바뀐다</b>. 즉 길이 K짜리 액션 청크를 <b>전부 시점 t 기준으로</b> 묶는 게 아니라, <b>t′ → t′+1 한 칸씩의 상대 변환을 이어 붙인 사슬</b>이다. 각 항은 "그 순간의 그리퍼 자세에서 다음 순간까지 얼마나 움직이는가"만 담는다. 그래서 "현재 EEF 좌표계"는 <b>각 액션이 자기 직전 시점의 그리퍼 좌표계에서 표현된다</b>는 뜻이다.</p>
+      <p><b>왜 이렇게 하나.</b> 베이스 원점을 어디로 잡을지는 로봇마다 제각각이라, 절대 자세를 쓰면 표현이 그 정의에 묶인다. 상대 변환만 쓰면 그 의존이 사라져 <b>서로 다른 로봇 간 전이</b>에 유리하다(논문 표현: <i>"reduce dependence on embodiment-specific base definitions"</i>). 실제로 EEF-Delta state + EEF-Delta action 조합이 최종 선택이며, 실기 검증에서 <b>89.9%</b>로 가장 약한 조합인 절대 EEF state + 월드 기준 delta action의 <b>56.0%</b>보다 <b>33.9%p</b> 높다(시뮬레이션 평균 진행도 75.7%).</p>
+      <p class="cap">참고: 그리퍼 개폐(open/close)를 이 표현에 어떻게 싣는지는 해당 절에 명시가 없다. 표는 EEF 자세 표현에만 집중한다. 좌표 기준을 다르게 푼 대조군으로는 <a href="2608.26058_UCAG-P.html">UCAG-P</a>(카메라 좌표를 앵커로 삼아 이질 임보디먼트를 통합)가 비교해 볼 만하다.</p>
+    </details>
+
+    <div class="divide"></div>
+
+    <details class="qa-item">
+      <summary class="q">Q2. 그럼 EEF-Delta는 "베이스 기준으로 EEF 변화를 나타낸 것"이라고 볼 수 있나?</summary>
+      <p><b>아니다.</b> 그렇게 보면 논문이 일부러 나눠 둔 두 항목이 섞인다. <b>계산 재료</b>는 베이스 기준이 맞지만, <b>결과가 표현되는 좌표계</b>는 베이스가 아니라 그리퍼다.</p>
+      <p>들어가는 두 자세 T<sub>b,e<sub>t</sub></sub>, T<sub>b,e<sub>t+1</sub></sub>은 분명 베이스(b) 기준으로 측정된 값이다. 그런데 앞의 것에 역행렬을 취해 곱하는 순간 <b>베이스가 대수적으로 소거</b>되고, 남는 숫자는 <b>그리퍼 자신의 축을 따라 잰 성분</b>이 된다. 베이스를 어디에 어떻게 놓았는지는 결과에 전혀 남지 않는다 — 그것이 이 표현을 쓰는 목적이다.</p>
+      <p><b>언제 갈리는지 예로 보면 분명하다.</b> "그리퍼가 자기 앞쪽으로 10cm 전진"이라는 <b>동일한 물리적 동작</b>을 두 자세에서 수행한다고 하자.</p>
+      <div class="tblwrap">
+      <table>
+        <thead><tr><th>그리퍼가 향한 방향</th><th>EEF-Delta</th><th>World-Delta (베이스 기준)</th></tr></thead>
+        <tbody>
+          <tr><td>베이스의 +x 방향</td><td>(0.1, 0, 0)</td><td>(0.1, 0, 0)</td></tr>
+          <tr><td>90° 돌아 +y 방향</td><td class="win">(0.1, 0, 0) — 그대로</td><td>(0, 0.1, 0) — 달라짐</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>같은 동작인데 베이스 기준에서는 로봇이 어떤 자세인지에 따라 숫자가 바뀌고, EEF 기준에서는 항상 같다. 손목 카메라도 그리퍼와 함께 회전하므로 <b>"보이는 화면 ↔ 출력 숫자"의 대응이 EEF 기준에서만 일정하게 유지된다</b>. 정책이 배워야 할 대응 관계가 단순해지는 셈이다.</p>
+      <div class="callout">
+        <b>질문하신 개념은 논문에 실제로 있다 — 그게 World-Delta다.</b><br>
+        <b>World-Delta action = 𝒱(T<sub>b,e<sub>t′+1</sub></sub>) − 𝒱(T<sub>b,e<sub>t′</sub></sub>)</b><br><br>
+        즉 "베이스 기준으로 나타낸 EEF 변화"가 바로 논문의 <b>대조군</b>이고, 성능이 더 낮았던 쪽이다(실기 56.0% vs EEF-Delta 조합 89.9%).
+      </div>
+      <p><b>연산 순서도 다르다.</b> World-Delta는 <b>먼저 6차원 벡터로 편 뒤 빼기</b>라, 회전 부분이 오일러각의 단순 뺄셈이 된다 — 이는 엄밀히 말해 회전의 합성이 아니다. 반면 EEF-Delta는 <b>행렬을 합성한 뒤</b> 벡터화하므로 회전이 제대로 다뤄진다. 두 방식의 성능 차이에는 좌표계 선택뿐 아니라 이 점도 함께 작용했을 것으로 보인다(논문이 두 요인을 분리해 측정하지는 않았다).</p>
+    </details>
   </section>
 
   <footer>
