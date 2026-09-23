@@ -1,10 +1,64 @@
 {
-  "generated": "2026-09-23",
+  "generated": "2026-09-24",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2609.23968",
+          "title": "Opt2VLA: Force-Aware Vision-Language-Action for Contact-Rich Humanoid Whole-Body Manipulation",
+          "authors": "Fukang Liu, Yipu Chen, Jaehwi Jang, Danfei Xu, Zsolt Kira, Ye Zhao",
+          "summary_ko": "휴머노이드가 문을 밀거나 무거운 물체를 옮길 때처럼 온몸으로 접촉하며 힘을 써야 하는 작업을 다룬다. 비전-언어-행동 모델(VLA, 카메라 영상과 언어 지시를 받아 로봇 행동을 직접 출력하는 모델)이 \"어디로 움직일지\"(기하학적 목표 자세)뿐 아니라 \"얼마나 세게 밀지\"(접촉력 기준값, contact-force reference)까지 함께 예측하게 만든 것이 핵심이다. 궤적 최적화(trajectory optimization, 물리 제약을 만족하는 움직임을 수치적으로 푸는 기법)로 물리적으로 타당한 힘-동작 쌍 학습 데이터를 만들고, 강화학습으로 훈련한 저수준 제어기가 이 두 목표를 동시에 추종한다. 그 결과 \"더 세게 밀어\" 같은 언어 지시로 접촉력을 조절할 수 있고, 움직임만 예측하는 기존 방식보다 힘 조절과 안정성이 좋아졌다.",
+          "tags": [
+            "VLA",
+            "Force Control",
+            "Humanoid",
+            "Whole-Body Manipulation",
+            "Contact-Rich"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.23968",
+          "extra_url": "",
+          "date": "2026-09-21",
+          "reason": "보유 논문 2607.18231(힘 기억을 VAE로 저장하는 접촉 작업용 VLA, 좋아요 표시됨)과 2608.01402(힘/토크를 흐름 정합으로 예측하는 VLA)는 단일 로봇 팔의 접촉 제어에 집중했는데, 이 논문은 같은 \"힘을 명시적으로 출력하는 VLA\" 아이디어를 휴머노이드 전신 조작으로 확장한다. 또 보유 논문 2608.16837(휴머노이드 로코-매니퓰레이션, 오프라인→온라인 RL)과 달리 상위 정책이 힘 기준값까지 내려보내는 계층 구조여서, 두 편을 나란히 보면 휴머노이드 접촉 제어의 설계 공간이 정리된다.",
+          "rec_date": "2026-09-24"
+        },
+        {
+          "id": "2609.24682",
+          "title": "Think Like a World Model, Act Like a VLA: Distilling World-Model Representations into Compact Robot Policies",
+          "authors": "Trung Dao, Sankalp Yamsani, Jaden Park, Joohyung Kim, Yong Jae Lee",
+          "summary_ko": "월드 모델(world model, 로봇이 어떤 행동을 하면 다음 관측이 어떻게 변할지 예측하도록 학습된 모델)은 물리 상식을 잘 담지만 무겁고 느려서 실시간 제어에 그대로 쓰기 어렵다. 이 논문은 학습할 때만 가중치를 고정한(frozen) 월드 모델을 한 번 돌려, 학생 VLA가 그 내부 표현을 따라하도록 정렬 손실(alignment term, 두 모델의 중간 특징을 비슷하게 만드는 항) 하나만 추가하는 증류(distillation) 방식을 쓴다. 추론 시점에는 월드 모델을 전혀 쓰지 않아 모델 크기와 속도 부담이 전혀 늘지 않는다. 0.8B(8억 파라미터) 학생 모델이 시뮬레이션 벤치마크 LIBERO에서 97.9%, 휴머노이드 과제 RoboCasa-GR1에서 48.2%→50.5%를 달성했고, 실제 단일팔·양팔 로봇에서도 이득이 유지됐다.",
+          "tags": [
+            "World Model",
+            "Distillation",
+            "VLA",
+            "Representation Alignment",
+            "LIBERO"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.24682",
+          "extra_url": "https://thaw-vla.trung-dt.com/",
+          "date": "2026-09-21",
+          "reason": "보유 논문에는 월드 모델을 추론 시점에 굴려 후보 행동을 고르는 방식이 여러 편 있다(2608.30237 Best-of-N 계획, 2607.17454 World Action Model + Best-of-N, 2607.26789 행동 조건부 월드 모델로 VLA 검증). 모두 추론 비용이 커진다는 공통 약점이 있는데, 이 논문은 정반대로 월드 모델 지식을 학습 시점에만 흡수시켜 추론 비용을 0으로 유지한다. 지연 시간을 중시하는 보유 논문 2608.14379·2608.27384와 월드 모델 계열을 잇는 연결 고리가 된다.",
+          "rec_date": "2026-09-24"
+        },
+        {
+          "id": "2609.22888",
+          "title": "Stable and Efficient Real-World Online VLA Post-Training via Asynchronous Replay-Anchored Policy Improvement",
+          "authors": "Jiarui Yang, Jiajin Zhang, Bin Zhu, Jingjing Chen, Yu-Gang Jiang",
+          "summary_ko": "실제 로봇에서 VLA를 온라인 강화학습으로 더 훈련하려면 로봇이 움직이는 동안 학습도 같이 돌아가야 하는데, 정책이 급변하면 학습이 불안정해진다. RAPolicy는 롤아웃(정책을 실제로 실행해 데이터를 모으는 과정)과 학습을 비동기로 동시에 수행하되, 액터·크리틱 갱신을 리플레이 버퍼(과거 경험 저장소)에 실제로 담긴 행동에 묶어(replay-anchored) 데이터가 커버하지 않는 영역으로 가치 추정이 폭주하는 것을 막는다. 크리틱(행동의 가치를 평가하는 신경망)이 다음 행동을 예측하지 않고 행동 묶음(action chunk) 단위 가치만 학습해 계산량도 줄였다. 시연 10개로 시작한 정책이 1~2시간 온라인 학습만으로 단일 과제 평균 86.3%, 5개 과제 동시 수행은 52%→88%로 올랐다.",
+          "tags": [
+            "Online RL",
+            "Async Inference",
+            "VLA",
+            "Real-World RL",
+            "Action Chunking"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.22888",
+          "extra_url": "https://flyfaerss.github.io/RAPolicy",
+          "date": "2026-09-19",
+          "reason": "보유 논문 2608.23831(DSRL 기반 비동기 추론 + 실환경 RL)과 2609.18207(온라인 RL로 실행 중인 행동을 실시간 편집)이 다루는 \"실제 로봇이 돌아가는 동안 학습하기\" 문제를 정면으로 다룬다. 특히 크리틱을 행동 묶음 단위로 두는 선택은 보유 논문 2608.02547(행동 청킹의 암묵적 앙상블·지연 효과 분석), 2607.29613(VLA 강화학습용 크리틱 + 월드 모델)의 논점과 직접 맞물린다.",
+          "rec_date": "2026-09-24"
+        },
         {
           "id": "2609.22521",
           "title": "Latent Policy Steering: An Efficient and Flexible Framework for Cross-Embodiment Transfer",
@@ -237,78 +291,6 @@
           "date": "2026-09-03",
           "reason": "좋아요한 Xiaomi-U0(2607.11643, 38B)의 정반대 축을 명시적으로 진단하는 '작을수록 좋다' 좌표 — 좋아요한 Xiaomi-Robotics-1(2607.15330)·WALA(2607.11397)의 대규모 파운데이션 라인과 대비되는 실증. pool의 SmolVLA(2506.01844)·Nano-VLA(2608.14379)·FlashVLA(2608.27384)·index의 2607.14695(streaming KV cache)의 정면 다음 세대이자, pool의 이번 새 항목 Fast-WAM(2608.02365)·WALL-SS(2608.26239, next-scale AR)·이번 새 추천 REFACTOR-VLA(2609.01215)의 '학습 목적함수가 크기보다 중요' 결론의 자매작. 태스크 조건화가 실제 지시 이해가 아니라 외운 선택에 의존한다는 진단은 pool의 이번 새 항목 IMPACT(2609.00161, 어텐션 진단)·WorldSync(2608.24885, 액션 조건 진단)·index의 Latent Action Study(2608.19613)·pool의 XEWorld(2608.05799 pool, cross-embodiment WM 진단)의 진단·정합 라인의 좌표. index의 ACT(2304.13705, ALOHA)·pool 관련 항목 3D Diffusion Policy(2403.03954)·이번 새 관련 추천 CrossFormer(2408.11812)·좋아요한 Force Memory VLA(2607.18231)와의 파라미터-대비-성능 표준 참조가 될 잠재력. Yusuke Iwasawa 조합이라 이후 LIBERO 벤치마크의 표준 참조.",
           "rec_date": "2026-09-06"
-        },
-        {
-          "id": "2609.03681",
-          "title": "WISE: World-model-guided Imagination Scheduling for Efficient Post-training of Vision-Language-Action Models",
-          "authors": "Chenhao Zhang, Hanyu Zhao",
-          "summary_ko": "World Model이 상상한 롤아웃 중 학습에 도움이 되는 구간만 골라서 VLA 후처리(post-training)에 사용하는 선택적 상상 스케줄러. GPU 시간을 80% 줄이면서 실제 분포 변화에도 견고성을 개선.",
-          "tags": [
-            "VLA",
-            "World Model",
-            "Post-training",
-            "Imagination",
-            "Efficiency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.03681",
-          "extra_url": "",
-          "date": "2026-09-03",
-          "reason": "보유한 VLA+WM 결합 계열(2607.29613 VLA RL with WM, 2608.16885 Hierarchical VLA+WM, 2607.19876 IDM-Free WM)과 직결. 상상 롤아웃을 무차별로 쓰지 않고 '언제 어떤 걸' 학습에 쓸지 스케줄링하는 관점이 새로움.",
-          "rec_date": "2026-09-05"
-        },
-        {
-          "id": "2608.30643",
-          "title": "Temporal Forcing: 4D Representation Alignment for Vision-Language-Action Models",
-          "authors": "Xingyu Ding, Yuzhong Zhao",
-          "summary_ko": "VLA의 내부 시각 표현을 시간을 축으로 하는 4D(3D+시간) 기하 표현과 정렬시켜 장기 조작 성능을 끌어올리는 방법. LIBERO 벤치마크에서 98.8% 성공률.",
-          "tags": [
-            "VLA",
-            "4D Representation",
-            "Temporal Alignment",
-            "LIBERO",
-            "DINOv3"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2608.30643",
-          "extra_url": "",
-          "date": "2026-08-31",
-          "reason": "보유한 dense feature 백본 활용(2607.18236 DINOv2 Dense ViT)과 DINOv3(2608.14379) 트렌드, 그리고 장기 조작(2608.16885, 2607.18060)과 이어지는 표현 정렬 관점의 새 접근. 4D 지오메트리로 시각 표현을 앵커링하는 방식이 특징.",
-          "rec_date": "2026-09-05"
-        },
-        {
-          "id": "2609.02531",
-          "title": "Spatially Aware World Action Model via Geometric Latent Diffusion",
-          "authors": "Javier Alejandro Lopetegui Gonzalez, Paul Pacaud, Cordelia Schmid",
-          "summary_ko": "대규모 사전학습 비디오 확산 모델(video diffusion model, 텍스트/조건으로 미래 프레임 시퀀스를 노이즈 제거로 생성)을 활용해 미래 관측과 액션을 동시 예측하는 월드-액션 모델(WAM, World Action Model). 기존 WAM이 RGB 픽셀만 재현하는 것과 달리, 얼린 VAE(Variational Autoencoder, 이미지→잠재 압축) 토크나이저를 재활용해 RGB와 깊이(depth)를 하나의 기하 잠재(geometric latent) 공간에서 동시 예측 — 3D 공간 인식(spatial awareness)이 액션 예측 헤드로 자연스럽게 전달된다. RoboCasa와 LIBERO-Plus에서 최첨단 성공률을 달성. Inria Cordelia Schmid 그룹.",
-          "tags": [
-            "World Action Model",
-            "Geometric Latent",
-            "Depth",
-            "Video Diffusion",
-            "3D-aware"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.02531",
-          "extra_url": "",
-          "date": "2026-09-02",
-          "reason": "컬렉션 최상위 태그 World Model(15)의 정면 다음 세대이자, '픽셀 예측 vs. 잠재 예측' 이분법에 '기하(깊이) 잠재'라는 제3의 축을 추가. 좋아요한 WALA(2607.11397, DINOv3 world model)의 후속으로, pool의 이번 새 항목 LAWA(2608.24882, 잠재 액션 의도)·DELE-w0.5(2608.22067, 미래 잠재 상태)·WALL-SS(2608.26239, next-scale AR)·Hydra-0(2608.18077)·GaussianWAM(2608.24714, 3D Gaussian 증류)·Riemann-1.0(2608.27033, 200K시간)의 정확한 자매작이자 자매작 진단(WorldSync 2608.24885)의 정합 관점. index의 SpatialVLA(2501.15830)·Pointmap VLA(2607.11498)·Embodied Spatial Reasoning(2607.17977)의 3D 표현 축과 정합하며, pool 관련 항목 DP3(2403.03954)·RVT(2306.14896)·DINO-WM(2411.04983)·V-JEPA 2(2506.09985)의 잠재-기반 WM 계보의 좌표. Cordelia Schmid 그룹은 이후 유럽권 WAM 벤치마크의 표준 참조.",
-          "rec_date": "2026-09-04"
-        },
-        {
-          "id": "2609.01281",
-          "title": "EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents",
-          "authors": "Wei Wang, Wenqiao Zhang, Yutong Lin, Yuqian Yuan, Tianwei Lin, Jinhao Mao, Zhenxuan Fan, Mingjian Gao, Yang Dai, Wentong Li, Zheqi Lv, Zheng Dong, Yingjie Niu, Jiaqi Zhu, Jun Xiao, Chao Li, Yueting Zhuang",
-          "summary_ko": "시각-언어-액션(VLA, Vision-Language-Action) 모델을 로봇 제어에 활용할 때 단순 행동 예측 이상의 오케스트레이션(orchestration, 여러 스킬을 순서/조건에 맞춰 조합하는 상위 제어)이 필요하다는 관찰에서 출발. EmbodiedSkills는 각 스킬 결정을 '실행 제안(execution proposal, 이 스킬을 지금 실행하자는 후보)'으로 취급하고, 사전 조건 확인(prerequisite checking, 실행 전 상태가 스킬 요구를 만족하는지 검증)과 사후 검증(outcome verification, 실행 후 목표 상태가 실제 도달됐는지 확인)을 하나의 에이전트 루프로 통합. 구조적 궤적 기록(structured trajectory recording)으로 개별 구성 요소 감독(component-level supervision)과 온라인 적응을 지원하며 RoboTwin에서 86.20% 평균 성공률.",
-          "tags": [
-            "Agentic Robotics",
-            "VLA",
-            "Skill Library",
-            "Prerequisite Check",
-            "Outcome Verification"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.01281",
-          "extra_url": "",
-          "date": "2026-09-01",
-          "reason": "좋아요 최고점 조합의 정확한 다음 세대 — Aspire(agentic robotics + skill library + continual learning)·2606.19980(self-improving coding agent)·2607.05369 GaP(graph-as-policy + agentic coding + multi-agent)·2607.08448 Harness VLA(frozen VLA + agentic planner + memory)·Hi-VLA(2606.10267, 계층 옵션 + termination) 다섯의 정면 오케스트레이션 후속. 사전 조건 확인 + 사후 검증은 pool의 이번 새 항목 AGM(2608.29537, 서브골 진행 + 물리 증거)·FLARE(2608.26645, 실패 회복 스킬 라이브러리)·Physical Agentic AI(2608.22657, 오케스트레이터 검증)·PhysCaP(2608.21031, code-as-policy + physics probing)·SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·이번 새 관련 추천 Eureka(2310.12931)·pool 관련 항목 Voyager(2305.16291)·AutoRT(2401.12963)의 통합 좌표. index의 ART(2608.14047, VLA + tool-use)·Teach and Grow(2608.17209, 재사용 스킬 블록)·Skill Mining(2607.08354)의 정확한 자매작. 86.20% RoboTwin은 pool의 표준 벤치마크에서 pool 새 항목 Riemann-1.0(2608.27033, 94.3%)·VLAct(2608.27550, 92.5%, index로 이동)와 정면 비교되며, 오케스트레이션 오버헤드 대비 성능을 보여주는 좌표.",
-          "rec_date": "2026-09-04"
         }
       ]
     },
@@ -316,6 +298,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2506.07339",
+          "title": "Real-Time Execution of Action Chunking Flow Policies",
+          "authors": "Kevin Black, Manuel Y. Galliker, Sergey Levine (Physical Intelligence)",
+          "summary_ko": "흐름 정합(flow matching, 잡음에서 목표 분포로 흐르는 경로를 학습해 샘플을 생성하는 기법)이나 확산(diffusion) 기반 VLA는 한 번에 여러 스텝의 행동 묶음(action chunk)을 생성한다. 그런데 생성에 시간이 걸려 묶음과 묶음 사이에서 로봇이 멈칫하거나 움직임이 끊긴다. RTC(Real-Time Chunking)는 현재 묶음을 실행하는 동안 다음 묶음을 미리 생성하되, 이미 실행이 확정된 앞부분 행동을 인페인팅(inpainting, 일부를 고정하고 나머지만 채워 넣는 생성)처럼 고정 조건으로 넣어 이어붙임을 매끄럽게 만든다. 재학습 없이 기존 모델에 그대로 붙일 수 있고, 성냥 켜기 같은 정밀·동적 과제를 지연이 있는 상황에서도 수행한다.",
+          "tags": [
+            "Async Inference",
+            "Action Chunking",
+            "Flow Matching",
+            "Real-Time Control",
+            "Inference Latency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2506.07339",
+          "extra_url": "https://www.physicalintelligence.company/research/real_time_chunking",
+          "date": "2025-06-09",
+          "reason": "보유 논문의 \"비동기 추론/실시간 제어\" 묶음(2608.27384 스트리밍 디코딩, 2608.23831, 2609.18207, 2608.14379)이 사실상 모두 이 논문을 기준선으로 삼는데 정작 원본이 컬렉션에 빠져 있다. 원본을 보면 각 후속 논문이 \"묶음 경계에서 생기는 동작 불연속\"이라는 같은 문제를 스트리밍 디코딩, 행동 편집, 지연 최적화라는 서로 다른 방식으로 공격한다는 구도가 한눈에 정리된다.",
+          "rec_date": "2026-09-24"
+        },
+        {
+          "id": "2505.23705",
+          "title": "Knowledge Insulating Vision-Language-Action Models: Train Fast, Run Fast, Generalize Better",
+          "authors": "Danny Driess, Jost Tobias Springenberg, Brian Ichter et al. (Physical Intelligence)",
+          "summary_ko": "π0처럼 사전학습된 비전-언어 모델(VLM) 위에 연속적인 행동을 뽑아내는 \"행동 전문가\"(확산 또는 흐름 정합 헤드)를 붙이면, 그 헤드에서 흘러들어오는 기울기(gradient, 학습 시 가중치를 어느 방향으로 바꿀지 알려주는 신호)가 VLM이 원래 갖고 있던 언어·시각 상식을 망가뜨린다. 이 논문은 그 진단을 체계적으로 실험한 뒤, 행동 전문가의 기울기가 백본으로 역전파되지 않도록 차단(insulation)하고 백본은 이산 행동 토큰 예측 같은 보조 과제로만 학습시키는 해법을 제안한다. 사전학습 지식을 지키면서도 추론 속도는 그대로 빨라, 학습 속도·실행 속도·일반화가 동시에 좋아진다.",
+          "tags": [
+            "VLA",
+            "Catastrophic Forgetting",
+            "Action Expert",
+            "Flow Matching",
+            "Pre-training"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2505.23705",
+          "extra_url": "",
+          "date": "2025-05-29",
+          "reason": "파인튜닝 중 사전학습 지식이 날아가는 문제를 다루는 보유 논문들(2608.27550 다중 헤드 공동 감독으로 VLM 사전지식 보존, 2608.19589 직교 부분공간 + LoRA, 2608.19490 자기 시연 기반 파인튜닝)이 모두 이 논문이 정식화한 \"행동 전문가의 기울기가 백본을 오염시킨다\"는 진단 위에 서 있다. 원인 분석을 담은 기준 논문이라, 세 편을 함께 읽으면 각 해법이 이 파이프라인의 어느 지점을 건드리는지 구분된다.",
+          "rec_date": "2026-09-24"
+        },
+        {
+          "id": "2506.09985",
+          "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
+          "authors": "Mido Assran, Adrien Bardes, David Fan et al. (Meta FAIR)",
+          "summary_ko": "100만 시간이 넘는 인터넷 영상으로 자기지도 학습(self-supervised learning, 정답 레이블 없이 데이터 자체에서 학습 신호를 만드는 방식)한 비디오 모델이다. 픽셀을 그대로 복원하는 대신 잠재 공간(latent space, 관측을 압축한 내부 표현 공간)에서 미래를 예측하도록 훈련하는 JEPA(Joint-Embedding Predictive Architecture, 공동 임베딩 예측 구조)를 썼다. 여기에 로봇 상호작용 데이터 62시간만 덧붙여 행동 조건부(action-conditioned) 예측 모델 V-JEPA 2-AC를 만들면, 보상 설계나 과제별 학습 없이 목표 이미지만 주고 모델 예측 제어(MPC, 미래를 예측해 가장 좋은 행동을 고르는 제어)로 처음 보는 실험실의 로봇 팔이 집기·놓기를 수행한다.",
+          "tags": [
+            "World Model",
+            "JEPA",
+            "Video Pretraining",
+            "Zero-Shot",
+            "Model Predictive Control"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2506.09985",
+          "extra_url": "https://github.com/facebookresearch/vjepa2",
+          "date": "2025-06-11",
+          "reason": "보유 논문 2607.29613이 LeJEPA 기반 잠재 표현으로 VLA용 크리틱을 세우고, 2607.19343·2607.22535 등이 비디오 월드 모델로 로봇 행동을 다루는데, 그 계보의 대표 원본이 컬렉션에 없다. 픽셀을 직접 생성하는 월드 모델(2501.03575 Cosmos, 2607.22530 시각-촉각 월드 모델)과 잠재 예측형(JEPA)을 직접 비교할 수 있는 기준점이라, World Model 태그 16편을 정리하는 축이 된다.",
+          "rec_date": "2026-09-24"
+        },
         {
           "id": "2412.04445",
           "title": "Moto: Latent Motion Token as the Bridging Language for Learning Robot Manipulation from Videos",
@@ -690,42 +726,6 @@
           "date": "2024-09-22",
           "reason": "보유한 Diffusion Policy·스케일링 계열(2410.07864 RDT-1B, 2410.18647 Scaling Laws, 2411.19650 DiT VLA)의 직접 선행. Diffusion Policy를 어디까지 키울 수 있는가, 어떤 학습 트릭이 필요한가에 대한 핵심 참고.",
           "rec_date": "2026-09-05"
-        },
-        {
-          "id": "2412.14803",
-          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations (VPP)",
-          "authors": "Yucheng Hu, Yanjiang Guo, Pengchao Wang, Xiaoyu Chen, Yen-Jen Wang, Jianke Zhang, Koushil Sreenath, Chaochao Lu, Jianyu Chen",
-          "summary_ko": "기존 시각-운동 정책이 단일 이미지 인코더에 의존해 정적 정보만 뽑는 반면, VPP(Video Prediction Policy)는 비디오 확산 모델(VDM, Video Diffusion Model, 비디오를 노이즈 제거로 생성하는 사전학습 모델)이 만들어내는 예측적 시각 표현(predictive visual representation, 현재 관측 + 예측된 미래 동역학을 함께 담은 임베딩) 위에서 정책을 학습한다는 관찰에서 출발. 로봇·사람 조작 데이터셋으로 비디오 파운데이션 모델을 파인튜닝하고, 그 위에 얹은 정책이 암묵적 역동역학 모델(implicit inverse dynamics model, 예측된 미래 프레임에서 현재 액션을 역산)을 학습. Calvin 벤치마크 18.6% 상대 향상, 실기 복합 덱스터러스 조작 태스크 성공률 31.6% 향상. ICML 2025 Spotlight.",
-          "tags": [
-            "Video Diffusion",
-            "Predictive Representation",
-            "Generalist Policy",
-            "ICML 2025",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2412.14803",
-          "extra_url": "https://video-prediction-policy.github.io/",
-          "date": "2024-12-19",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — 좋아요한 WALA(2607.11397, DINOv3 world model + latent action)·2607.11643 Xiaomi-U0의 '비디오 파운데이션을 정책 표현으로 재활용'하는 노선의 사상적 원류. 이번 pool 새 항목 TrAct(2608.24101, 비주얼 트랙 + WM)·이번 함께 추천 ATM(2401.00025)의 자매작이자, pool의 이번 새 추천 Spatially Aware WAM(2609.02531, geometric latent diffusion)·pool의 Riemann-1.0(2608.27033, 200K시간)·GigaBrain-0.7(2608.15875)·LD4WAM(2608.22403)·GR-2(2410.06158)의 정확한 사전작. 예측적 표현으로 정책을 얹는다는 아이디어는 pool의 이번 새 항목 PAVE(2608.30378, 다중 지평 예측 정합)·LAWA(2608.24882, 잠재 액션 의도)·DELE-w0.5(2608.22067, 미래 잠재 상태)·hint²(2608.13678, 계층 WM)·pool 관련 항목 DINO-WM(2411.04983)·V-JEPA 2(2506.09985)의 정면 좌표. index의 π0.5(2504.16054)·G0.5(2608.11739)·SmolVLA(2506.01844)의 사전학습 표현 계보의 자매작. Koushil Sreenath 그룹이라 UC Berkeley 로봇 학습 계보의 표준 참조.",
-          "rec_date": "2026-09-04"
-        },
-        {
-          "id": "2401.00025",
-          "title": "Any-point Trajectory Modeling for Policy Learning (ATM)",
-          "authors": "Chuan Wen, Xingyu Lin, John So, Kai Chen, Qi Dou, Yang Gao, Pieter Abbeel",
-          "summary_ko": "로봇 정책을 액션 라벨(action label, 실제 액션 값이 붙은 시연) 없이 비디오 시연만으로 학습하는 프레임워크. ATM(Any-point Trajectory Modeling)은 비디오 프레임의 임의 픽셀 점이 앞으로 어디로 움직일지의 궤적(future trajectory of any point)을 예측하도록 학습한 뒤, 이 궤적 예측을 정책 학습의 조건 신호로 사용 — 즉 '어떤 점이 어디로 갈지'를 태스크 명세로 삼는다. 130개 이상 언어 조건부 로봇 태스크에서 기존 비디오 사전학습 방법 대비 약 80% 상대 성능 향상. 사람 비디오와 다른 로봇 임바디먼트 비디오에서 스킬 전이가 가능함을 실증. Pieter Abbeel·Yang Gao 그룹.",
-          "tags": [
-            "Video Pretraining",
-            "Trajectory",
-            "Cross-Embodiment",
-            "Policy Learning",
-            "Abbeel"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2401.00025",
-          "extra_url": "https://xingyu-lin.github.io/atm/",
-          "date": "2023-12-28",
-          "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — pool 관련 항목 RT-Trajectory(2311.01977, 후행 궤적 스케치)의 정확한 자매작이자, 이번 pool 새 항목 TrAct(2608.24101, 비주얼 트랙으로 정책 조건)의 정면 원류. pool 관련 항목 VPP(2412.14803, 이번 함께 추천)·좋아요한 WALA(2607.11397, DINOv3 world model)·pool의 Hydra-0(2608.18077, 픽셀 모션으로서 액션 플로우)·Flex-π(2608.10860, 3D pointmap)·index의 Pointmap VLA(2607.11498)·EgoMimic(2608.02580)·2607.19343(Masked Video WM)·HAMSTER(2502.05485, 2D Path 계층)의 사상적 뿌리. '픽셀 상 궤적을 태스크 명세로 쓴다'는 축은 좋아요한 Hi-VLA(2606.10267, 계층 옵션)·2607.05369 GaP(graph-as-policy)·이번 새 추천 AGM(2608.29537, 서브골 진행 + 물리 증거)의 계층 스펙 대안. 액션 라벨 없는 비디오만으로 학습한다는 점은 좋아요한 Xiaomi-U0(2607.11643, 38B)·Xiaomi-Robotics-1(2607.15330, UMI 스케일링)의 데이터 스케일링 축의 저비용 대응이자, pool의 관련 항목 UniPi(2302.00111)·UniSim(2310.06114)·GR-2(2410.06158)·HumanPlus(2406.10454)·MimicPlay(2302.12422)의 정합 좌표. Pieter Abbeel 조합이라 이후 π0·PA-RL·CrossFormer의 표준 참조.",
-          "rec_date": "2026-09-04"
         }
       ]
     }
