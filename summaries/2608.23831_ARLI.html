@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ARLI — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Latency-Aware RL</span>
+    <h1>Learning to Act While Waiting: RL Finetuning of Generalist Robot Policies Under Inference Latency</h1>
+    <p class="authors">Brian Zhu, Momen Khalil, E Harrison, Emanuele Poggi 외 (공동 1저자 4인) · Pranav Atreya, Qiyang Li, Oier Mees, Andrew Wagenmaker, Sergey Levine · UC Berkeley · Siemens</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.23831" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.23831" target="_blank">PDF</a>
+      <a href="https://async-rl-intermediate-information.github.io/" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2608.23831</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Inference Latency</span>
+      <span class="t">Async Inference</span>
+      <span class="t">DSRL</span>
+      <span class="t">State Augmentation</span>
+      <span class="t">Real-World RL</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 24일 (v2 8월 26일) · 실기 양팔 UR5e · 기반 정책 π0.5 (60Hz, 청크 50) · RTX 5090</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>큰 VLA를 강화학습으로 계속 개선하고 싶은데, <b>추론이 느려서</b> 로봇이 멈칫하거나 덜컹거린다. 이를 피하려면 <b>이전 동작을 실행하는 동안 미리 다음을 계산하는</b> 비동기 방식을 써야 하는데, 그러면 RL 정책이 <b>낡은 화면</b>을 보고 결정하게 돼 <b>마르코프 성질이 깨지고 학습이 아예 실패</b>한다. 이 논문의 해법은 단순하다 — RL 정책이 보는 상태에 <b>두 가지를 더 넣는다</b>: ① 계산하는 동안 <b>이미 실행하기로 확정된 행동들</b>, ② 추론 막바지에 새로 찍은 <b>중간 관측</b>. 이 둘이 "계산이 끝날 무렵 로봇이 어디에 있을지"를 거의 복원해 준다. 실기 3개 태스크에서 기반 정책 <b>약 40%</b>에서 시작해 <b>100~125 에피소드 만에 거의 100%</b>에 도달했고, 기존 DSRL은 같은 시간에 80%에도 못 미쳤다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>배포 중에 쌓이는 경험으로 로봇을 계속 개선하는 데 <b>강화학습</b>이 유력하다. 그런데 요즘 <b>일반주의 정책</b>(generalist policy — 여러 태스크·로봇을 한 모델로 다루는 대형 VLA)은 덩치가 커서 추론이 느리고, 이것이 근본적인 걸림돌이 된다.</p>
+    <p>해결책으로 쓰이는 것이 <b>비동기 추론</b>이다. 지금 행동 묶음을 실행하는 <b>동안</b> 다음 묶음을 미리 계산해 두면, 계산을 기다리며 멈추는 일이 없다. 문제는 그 계산을 시작하는 시점에는 <b>그 시점의 화면</b>밖에 없다는 것 — 실제로 실행될 때쯤이면 상황이 달라져 있다.</p>
+    <div class="callout">
+      <b>왜 RL이 특히 무너지나:</b> 강화학습은 "<b>지금 상태만 보면 무엇을 할지 정할 수 있다</b>"는 마르코프 가정 위에 서 있다. 그런데 지연이 있으면 행동이 <b>과거 상태</b>를 보고 정해지고, 그 사이 벌어진 일은 정책이 모른다. 저자들의 표현대로 이 가정이 깨지면 <b>표준 RL이 완전히 실패한다</b>(fail completely).
+    </div>
+    <p>기존 완화책인 <b>RTC</b>(Real-Time Chunking, 앞뒤 행동 묶음이 매끄럽게 이어지도록 이전 묶음의 남은 행동을 추론에 끼워 넣는 기법)는 <b>덜컹거림은 줄여 주지만</b>, 여전히 <b>추론 시작 시점의 정보만</b> 쓴다. 즉 낡은 정보 문제 자체는 그대로다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>"확정된 행동"을 상태에 넣기</b> — 추론이 도는 동안 <b>이미 실행하기로 정해진</b> 행동들을 RL 정책의 입력에 추가한다. 출발 상태와 그 행동들을 함께 알면 <b>계산이 끝날 무렵 로봇이 어디에 있을지</b>를 상당 부분 추정할 수 있다.</li>
+      <li><b>"중간 관측"을 상태에 넣기</b> — 추론 <b>막바지</b>에 한 번 더 찍은 관측을 추가한다. 지연의 대부분은 앞단 VLM이 잡아먹으므로, 뒤쪽에서 찍은 이 관측이 실행 시점 상태에 훨씬 가깝다.</li>
+      <li><b>지연 아래 RL이 실패하지 않음을 실증·이론 양면으로</b> — 표준 RL이 아예 학습하지 못하는 조건에서 효과적 미세조정을 해내고, <b>지연이 없는 이상적 설정의 RL과 맞먹거나 능가</b>하기까지 한다. 지연에 따른 최적성 손실의 상한도 함께 제시한다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>기반: DSRL로 VLA를 "조종"하기</h3>
+    <p>큰 VLA를 직접 학습시키는 대신, 이 논문은 <b>DSRL</b> 방식을 쓴다 — VLA가 행동을 생성할 때 출발점으로 쓰는 <b>노이즈를 RL 정책이 골라 주어</b> 결과를 원하는 쪽으로 유도하는 것이다. 무거운 VLA는 건드리지 않고 <b>작은 RL 정책만</b> 학습하면 된다.</p>
+    <div class="callout">
+      <b>비유:</b> 화가(VLA)에게 붓을 쥐여 주는 대신, <b>어떤 밑그림에서 시작할지</b>만 골라 주는 셈이다. 화풍은 그대로 두고 결과만 원하는 방향으로 민다.
+    </div>
+
+    <h3>문제: 순진하게 적용하면 안 된다</h3>
+    <p>추론이 시점 t−t<sub>delay</sub>에 시작된다고 하자. 순진한 DSRL은 RL 정책도 <b>같은 시점 상태</b>를 보고 노이즈를 고른다. 하지만 그 결과는 <b>t<sub>delay</sub>스텝 뒤에야</b> 실행된다. 이 시차 때문에 학습이 제대로 되지 않는다.</p>
+
+    <h3>해법: RL 정책이 보는 상태를 세 조각으로</h3>
+    <p>ARLI는 RL 정책의 입력(논문에서 "RL 상태")을 다음 셋의 조합으로 바꾼다.</p>
+    <div class="kv">
+      <div>(a) 초기 상태</div><div>추론이 시작된 시점의 관측 — 원래 쓰던 것</div>
+      <div>(b) 확정 행동들</div><div>추론이 도는 동안 실행될, <b>이전 묶음에서 이미 정해진</b> 행동들. 어디로 움직이는 중인지를 알려준다</div>
+      <div>(c) 중간 관측</div><div>추론 <b>막바지</b>에 다시 찍은 관측. 여전히 약간 늦지만, 지연의 대부분을 차지하는 VLM 단계가 끝난 뒤라 실행 시점에 훨씬 가깝다</div>
+    </div>
+    <p>핵심 타이밍은 이렇다. 무거운 <b>VLM 백본</b>이 먼저 돌고, 그 결과가 나올 즈음 <b>작은 RL 정책</b>이 (a)(b)(c)를 보고 노이즈를 골라 <b>액션 전문가</b>에 넘긴다. RL 정책은 가볍기 때문에 <b>추론 막바지</b>에 끼워 넣을 수 있고, 그래서 가장 최신 정보를 쓸 수 있다.</p>
+
+    <h3>RTC와의 관계</h3>
+    <p>ARLI는 RTC를 <b>함께</b> 쓴다. RTC는 앞뒤 묶음의 연속성을 보장해 덜컹거림을 막고, 그 역할은 명시적으로 강제하는 편이 학습 속도를 해치지 않는다. 다만 저자들은 차이를 분명히 한다 — <b>RTC가 이전 행동을 쓰는 것은 "이어지게" 하려는 목적뿐</b>이지만, ARLI의 RL 정책은 같은 정보를 <b>훨씬 풍부한 행동을 학습하는 데</b> 활용한다.</p>
+
+    <h3>이론적 뒷받침</h3>
+    <p>지연된 상태로 계획해도 성능 손실이 제한적임을 <b>지연 최적성 격차</b>(delayed optimality gap)라는 양으로 정식화해 상한을 제시한다. 환경이 일정 조건을 만족하면 지연 때문에 잃는 성능이 이 값 이하로 묶인다는 것이다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>실기 (양팔 UR5e, 3개 태스크)</h3>
+    <p>태스크는 <b>조립</b>(전원 커넥터를 두 핀에 맞춰 인버터 박스에 삽입), <b>신발 담기</b>(신발을 집어 좁은 가방에 넣기), <b>가방 배치</b>(양팔로 누운 가방을 집어 정면과 평행하게 놓기)다. 기반 정책은 <b>π0.5</b>를 태스크별 소량 시연으로 미세조정한 것(60Hz, 행동 묶음 길이 50)이다.</p>
+    <div class="callout">
+      <b>핵심 결과:</b> 기반 정책 성공률 <b>약 40%</b>에서 시작해, ARLI는 <b>100~125 에피소드</b> 만에 세 태스크 모두 <b>거의 100%</b>에 도달했다. 같은 시간에 DSRL(동기)과 DSRL(RTC)은 조립·가방 배치에서 <b>80%에도 못 미쳤고</b>, 신발 담기에서는 ARLI를 따라잡는 데 <b>거의 두 배</b>의 시간이 걸렸다. 시간당 성공 횟수로 환산한 처리량도 전 태스크에서 ARLI가 크게 높았다.
+    </div>
+    <p>저자들이 강조하는 점: <b>비동기 추론 없이는</b> 기반 정책 자체의 성공률도 낮고 RL 학습이 매우 느리거나 <b>아예 학습되지 않는다</b>. 즉 이 태스크들에서 비동기 추론은 선택이 아니라 필수이고, ARLI는 그 조건에서 RL을 가능하게 만든다.</p>
+
+    <h3>시뮬레이션</h3>
+    <p><b>Kinetix</b>(반응성이 요구되는 동적 환경) 중 사전학습 정책 성공률이 낮은 mjc swimmer·mjc walker·car launch 세 가지와, <b>AlohaTransferCube</b>(양팔 조작, 큰 지연 상황을 모사)를 쓴다. 후자의 기반 정책은 <b>3.3B 파라미터 π0</b>의 Aloha 미세조정본이고 지연을 20스텝으로 크게 잡았다. 네 태스크 모두에서 ARLI가 순진한 DSRL 적용을 크게 앞선다(3개 시드 평균).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation</h2>
+    <ul>
+      <li><b>둘 다 있어야 한다:</b> 중간 <b>상태</b>만, 또는 확정 <b>행동</b>만 넣은 변형과 비교하면, <b>둘을 함께</b> 넣을 때가 확연히 좋다. 어느 하나로는 부족하다는 것이 이 설계의 근거다.</li>
+      <li><b>실기에서는 행동만으로도 상당 부분 커버된다:</b> 다만 <b>가방 배치</b> 태스크에서는 "확정 행동만" 변형이 높은 성공률로 <b>수렴하지 못했다</b>. 태스크에 따라 중간 관측이 결정적일 수 있다.</li>
+      <li><b>지연이 커져도 덜 무너진다:</b> 지연 값을 늘려가며 비교하면 RTC를 쓴 ARLI의 성능 하락이 DSRL보다 <b>완만하다</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.23831/fig2_overview.png" alt="ARLI 타이밍 구조 (Figure 2)" loading="lazy">
+      <figcaption><b>Figure 2 — ARLI의 타이밍 구조.</b> 위쪽 줄은 행동, 아래쪽 줄은 상태. 추론은 다음 묶음이 필요한 시점보다 t<sub>delay</sub>만큼 <b>앞서</b> 시작하고, VLM 백본이 초기 상태를 입력받는다. 추론 막바지(t−t<sup>rl</sup><sub>delay</sub>)에 <b>작은 RL 정책</b>이 (a) 초기 상태 · (b) 실행 확정된 중간 행동들 · (c) 새로 찍은 중간 관측을 받아 노이즈를 고르고, 이것이 액션 전문가에 들어간다. 오른쪽은 초기 관측과 중간 관측의 실제 화면 차이 — 그사이 신발이 움직였음을 보여준다. (출처: arXiv:2608.23831)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2608.23831/fig5_real.png" alt="실기 3개 태스크 학습 곡선 (Figure 5)" loading="lazy">
+      <figcaption><b>Figure 5 — 실기 3개 태스크 결과.</b> 왼쪽은 태스크 장면(조립·신발 담기·가방 배치), 가운데는 학습 곡선(최근 10 에피소드 평균 성공률), 오른쪽은 시간당 성공 횟수로 환산한 처리량. ARLI가 100~125 에피소드 만에 거의 100%에 도달하는 반면 DSRL 계열은 뒤처진다. (출처: arXiv:2608.23831)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.23831" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.23831" target="_blank">PDF</a></li>
+      <li><a href="https://async-rl-intermediate-information.github.io/" target="_blank">프로젝트 페이지</a></li>
+      <li><b>같은 문제를 다른 방식으로 푼 논문(이 사이트):</b> <a href="2609.18207_RealTime-EXPO-FT.html">Real-Time EXPO-FT</a> — 실행 직전에 작은 편집 정책이 최신 화면으로 행동을 손봄</li>
+      <li>관련(이 사이트): <a href="2608.02547_Why-Action-Chunking.html">Why Action Chunking</a> — 지연 관측 조건화가 왜 효과가 있는지의 이론·실증 분석</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.23831 · ARLI · 요약 생성 2026-09-23
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

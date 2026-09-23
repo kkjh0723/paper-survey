@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PredVLA — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · Predictive Coding · Compact Policy</span>
+    <h1>PredVLA: Predictive Sensorimotor Modeling for Sub-Million-Parameter Robot Manipulation</h1>
+    <p class="authors">Hiroki Sawada, Shunichi Kasahara · Sony Computer Science Laboratory, Tokyo</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2608.26673" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2608.26673" target="_blank">PDF</a>
+      <span>arXiv:2608.26673</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Predictive Coding</span>
+      <span class="t">Sub-Million Params</span>
+      <span class="t">PV-RNN</span>
+      <span class="t">No Pretraining</span>
+      <span class="t">LIBERO</span>
+    </div>
+    <p class="meta">제출: 2026년 8월 27일 (v2 8월 30일) · 학습 파라미터 675,732개(0.68M) · 로봇 데이터 사전학습 없음 · 제어 46ms/스텝(21.6Hz)</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>요즘 로봇 정책은 수십억 파라미터를 쓰는데, 이 논문은 <b>0.68M(68만) 파라미터</b>로 LIBERO에서 쓸 만한 성능을 낸다. 비결은 크기를 줄이는 기술이 아니라 <b>구조를 바꾼 것</b>이다. 보통 정책은 "<b>화면을 보고 → 행동을 낸다</b>"인데, PredVLA는 "<b>다음에 뭐가 보일지 스스로 예측하고 → 예측이 틀린 만큼만 내부 상태를 고친다</b>". 놀랍게도 관측은 신경망에 <b>직접 들어가지 않는다</b> — 오직 <b>예측 오차를 통해서만</b> 영향을 준다. LIBERO 짧은 호라이즌 3개 스위트 평균 <span class="win">86.9%</span>, 긴 것 포함 4개 평균 <span class="win">75.4%</span>. 같은 조건으로 맞춘 동급 크기 Transformer(19.7%)의 <span class="win">3.7배</span>, LSTM(10.3%)의 <span class="win">7.4배</span>다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p>대형 <b>VLA</b>(Vision-Language-Action)는 LIBERO 평균 95%를 넘을 만큼 강력하지만, 그 성능은 <b>대규모 사전학습</b>에서 나온다. 반면 작게 만들려는 기존 시도들은 대체로 <b>기존 패러다임을 압축</b>하는 데 그쳤다 — 즉 "관측 → 행동" 매핑은 그대로 두고 모델만 줄인 것이다.</p>
+    <div class="callout">
+      <b>이 논문의 질문:</b> 파라미터 예산이 극도로 적을 때, "관측을 그대로 넣어 행동에 매핑"하는 것보다 <b>"관측이 어떻게 생겨나는지의 동역학을 배우고, 예측 오차로 내부 상태를 추론"</b>하는 편이 그 예산을 더 잘 쓰는 것 아닐까? 즉 <b>예측</b>을 작은 모델을 위한 귀납적 편향(inductive bias)으로 삼자는 발상이다.
+    </div>
+    <p>이론적 바탕은 <b>예측 부호화</b>(predictive coding)다. 내부 생성 동역학이 앞으로의 감각 신호를 예측하고, <b>예측과 실제의 불일치를 최소화</b>하는 방향으로 내부 상태를 온라인 추론한다 — 관측을 순환망에 직접 밀어 넣지 않는다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>0.68M 파라미터로 LIBERO 실용 성능</b> — 로봇 데이터 사전학습 없이 짧은 호라이즌 3스위트 평균 86.9%. 동일 조건의 동급 크기 Transformer 대비 3.7배, LSTM 대비 7.4배.</li>
+      <li><b>"예측 경로"가 핵심임을 단계적으로 입증</b> — PredVLA에서 평범한 순환 모방학습으로 <b>한 기능씩 바꿔가며</b> 내려가는 실험을 설계해, <b>예측 경로를 직접 관측 입력으로 바꾼 것</b>이 단일 변경 중 가장 큰 하락을 만들며 전체 격차의 <b>약 70%</b>를 차지함을 보였다.</li>
+      <li><b>완전한 개루프 대조군을 공짜로</b> — 온라인 추론 횟수를 0으로 두면 관측이 계산에 <b>전혀 등장하지 않는</b> 개루프 정책이 된다. 재학습이나 구조 변경 없이 <b>같은 모델로</b> 폐루프/개루프를 정확히 비교할 수 있다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>동결된 앞단 (학습하지 않는 부분)</h3>
+    <div class="kv">
+      <div>언어</div><div>사전학습 문장 인코더 all-MiniLM-L6-v2로 임베딩 후 고정 PCA로 384→64차원 축소. <b>에피소드 내내 고정</b></div>
+      <div>영상</div><div>3인칭 + 손목 카메라 2개를 <b>동결 ImageNet ResNet18</b>로 인코딩, 카메라별 고정 PCA로 1024→192차원</div>
+      <div>고유수용</div><div>관절 각도·그리퍼 상태를 <b>인코더 없이</b> 그대로 사용</div>
+    </div>
+    <p class="cap">비전·언어 인코더는 <b>로봇 데이터로 사전학습하지 않았다</b>. PCA 기저는 학습 시연으로 미리 맞춘 뒤 고정한다. 0.68M은 이 앞단을 뺀 <b>학습되는 순환 제어기</b>만의 크기다.</p>
+
+    <h3>계층적 순환 동역학 — 시간 규모를 나눈 4개 모듈</h3>
+    <p>학습되는 부분은 네 모듈로 이루어진다: 최상위 <b>T</b>(언어를 받는 공유 모듈), <b>V</b>(시각 분기), <b>A<sub>top</sub></b>·<b>A<sub>bottom</sub></b>(행동 분기). 각 모듈은 <b>고유한 시간 상수 τ</b>를 갖는데, τ가 클수록 상태가 <b>천천히</b> 변한다.</p>
+    <div class="callout">
+      <b>왜 시간 규모를 나누나:</b> "컵을 집어 서랍에 넣어라"라는 <b>과제 수준 의도</b>는 몇 초간 유지돼야 하고, <b>손가락 관절 명령</b>은 매 스텝 바뀌어야 한다. 하나의 순환망에 같은 속도로 섞으면 둘 다 어정쩡해진다. 그래서 위쪽은 느리게, 아래쪽은 빠르게 돌도록 <b>시간 상수를 다르게</b> 준다 — 이것이 "계층적"의 실제 의미다.
+    </div>
+    <p>두 분기는 서로 연결돼 있다. <b>시각→행동</b> 병목이 보이는 것을 움직임에 잇고, <b>행동→시각</b> 경로는 <b>모델 자신의 이전 행동·고유수용 "예측값"</b>을 시각 쪽에 전달한다(실제 관측이 아니라 예측값이라는 점이 중요하다 — 생물학의 <b>원심성 복사</b>, efference copy에 해당).</p>
+
+    <h3>핵심: 관측은 오직 "예측 오차"로만 들어온다</h3>
+    <p>보통 정책이라면 카메라 특징을 신경망에 넣는다. PredVLA는 그러지 않는다. 대신 다음을 최소화하도록 <b>잠재 변수</b>를 온라인으로 조정한다.</p>
+    <div class="kv">
+      <div>정확도 항</div><div>시각 예측 오차 + 고유수용 예측 오차 — "예측한 화면/관절값이 실제와 얼마나 다른가"</div>
+      <div>복잡도 항</div><div>조정된 잠재 변수가 <b>모델이 원래 예상하던 값</b>에서 얼마나 벗어났는지에 대한 벌점</div>
+    </div>
+    <p>이 둘의 합을 <b>자유 에너지</b>라 부르고, 최근 <b>40스텝 창</b>에 대해 <b>10회 반복</b> 경사하강으로 잠재 변수를 조정한다(논문 설정값). <b>신경망 가중치는 이때 전혀 바뀌지 않는다</b> — 조정되는 것은 생성 동역학이 이미 정의해 둔 잠재 변수뿐이다.</p>
+    <div class="callout">
+      <b>직관:</b> 눈을 감고 컵을 향해 손을 뻗는다고 하자. 머릿속 예상대로 가고 있으면 아무것도 고칠 필요가 없다. <b>예상과 다른 촉감·모습이 왔을 때만</b> "아, 컵이 생각보다 왼쪽에 있구나" 하고 내부 추정을 고친다. PredVLA가 관측을 쓰는 방식이 정확히 이것이다 — 관측은 <b>모델을 끌고 가는 입력</b>이 아니라 <b>어긋남을 알려주는 신호</b>다.
+    </div>
+
+    <h3>학습과 출력</h3>
+    <p>학습 때는 잠재 변수도 파라미터처럼 취급해 신경망과 함께 최적화하며, 목적함수는 <b>자유 에너지 + 시연 행동의 음의 로그우도</b>다. 행동은 <b>가우시안 혼합 분포</b>(여러 후보 동작을 동시에 표현할 수 있는 형태, k=5)로 출력한다. 행동 우도 항은 학습에만 쓰이고 <b>테스트 시 자유 에너지에는 포함되지 않는다</b>. 학습에 쓰인 잠재 변수들은 배포 시 버려진다.</p>
+
+    <h3>부가 효과: 스위치 하나로 개루프</h3>
+    <p>온라인 조정 횟수를 <b>0</b>으로 두면 잠재 변수가 모델이 예상한 값에 그대로 머물고, 관측은 계산 어디에도 등장하지 않는다. 그러면 <b>완전한 개루프</b> 정책이 된다 — 재학습 없이 같은 모델로 "감각을 쓸 때 vs 안 쓸 때"를 정확히 비교할 수 있다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>LIBERO 4개 스위트 (14개 시드 평균 ± 표준편차)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>SPATIAL</th><th>GOAL</th><th>OBJECT</th><th>3스위트 평균</th><th>LONG</th><th>4스위트 평균</th></tr></thead>
+      <tbody>
+        <tr><td><b>PredVLA</b> (0.68M)</td><td>83.19 ±6.10</td><td>88.40 ±3.83</td><td>89.24 ±6.13</td><td class="win">86.94</td><td>40.57 ±6.44</td><td class="win">75.35</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">SPATIAL·GOAL·OBJECT는 각각 물체 배치·목표 조건·물체 종류가 달라지는 짧은 호라이즌 10태스크씩이고, LONG은 시연 평균 276스텝의 긴 태스크다(짧은 쪽은 125~149스텝). <b>긴 호라이즌에서 40.6%로 크게 떨어지는 것이 이 방법의 분명한 한계</b>다.</p>
+
+    <h3>같은 조건으로 맞춘 대조군 (앞단·시연·행동 디코더·평가 프로토콜 동일)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>모델</th><th>파라미터</th><th>4스위트 평균</th><th>PredVLA 대비</th></tr></thead>
+      <tbody>
+        <tr><td><b>PredVLA</b></td><td>675,732</td><td class="win">75.35</td><td>—</td></tr>
+        <tr><td>BC-Transformer (동급 크기)</td><td>646,628</td><td>19.73</td><td>3.7배 차이</td></tr>
+        <tr><td>BC-LSTM (동급 크기)</td><td>—</td><td>10.26</td><td>7.4배 차이</td></tr>
+        <tr><td>Transformer + 행동 청킹(길이 8)</td><td>—</td><td>16.70</td><td>—</td></tr>
+        <tr><td>Transformer + 행동 청킹(길이 16)</td><td>—</td><td>3.44</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">파라미터 수를 거의 같게 맞췄으므로(646K vs 676K) 차이는 <b>크기가 아니라 구조</b>에서 온다. 참고로 3.7배·7.4배는 <b>3스위트 평균</b> 기준 수치다. 제어 속도는 앞단과 온라인 추론을 포함해 <b>스텝당 46ms(21.6Hz)</b>, RTX 5090 기준.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation — 무엇이 실제로 기여했나</h2>
+    <p>가장 인상적인 설계는 PredVLA에서 평범한 순환 모방학습(BC-RNN)까지 <b>기능을 하나씩 바꿔가며</b> 내려가 보는 실험이다. 어느 요소가 성능을 지탱하는지 단계별로 분리된다.</p>
+    <ul>
+      <li><b>예측 경로가 압도적으로 중요하다:</b> 예측 경로를 <b>직접 관측 입력</b>으로 바꾼 변경이 단일 변경 중 <b>가장 큰 하락</b>을 만들었고, 전체 격차의 <b>약 70%</b>를 설명한다. 논문의 핵심 주장을 뒷받침하는 결과.</li>
+      <li><b>나머지 요소들도 각각 기여한다:</b> 학습 시점의 잠재 변수 추론, 테스트 시점의 오차 기반 조정, 계층적 시간 규모, 감각 예측 오차 채널이 <b>서로 구별되는</b> 기여를 보였다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2608.26673/fig1_arch.png" alt="PredVLA 구조 (Figure 1)" loading="lazy">
+      <figcaption><b>Figure 1 — PredVLA 구조.</b> 파란 화살표는 순전파, <span style="color:#b5502f">주황/빨강</span>은 관측, 검은 점선은 <b>오차 전파</b>다. 아래 왼쪽에서 관측 이미지가 <b>동결 ResNet-18 → 고정 PCA</b>를 거쳐 들어오지만, 파란 상자(학습 파라미터 0.68M) <b>안으로 직접 들어가지 않고</b> "Vision Prediction"과 만나 <b>오차</b>로만 연결되는 것이 핵심이다. 언어는 최상위 모듈 T로만 들어가고, 시각 분기와 행동 분기는 lateral pathway로 연결된다. 오른쪽은 각 스텝에서 사전 예상값 c<sub>p</sub>가 오차를 받아 조정된 값 c<sub>q</sub>로 갱신되는 과정. (출처: arXiv:2608.26673)</figcaption>
+    </figure>
+    <div class="callout">
+      <b>Table 3·4의 핵심:</b> PredVLA 4스위트 평균 <b>75.35</b> vs 동급 크기 BC-Transformer <b>19.73</b>, BC-LSTM <b>10.26</b>. 앞단·시연·행동 디코더·평가 방식을 모두 동일하게 통제했으므로, 이 격차는 <b>순환 제어기의 구조 차이</b>에만 기인한다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2608.26673" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2608.26673" target="_blank">PDF</a></li>
+      <li>관련(이 사이트): <a href="2607.15275_RoboTTT.html">RoboTTT</a> — 테스트 시점에 fast weight를 갱신해 이력을 압축(논문이 직접 대비한 접근)</li>
+      <li>관련(이 사이트): <a href="2602.10098_VLA-JEPA.html">VLA-JEPA</a> — 미래 잠재 상태 예측을 사전학습 신호로 쓰는 접근</li>
+      <li>관련(이 사이트): <a href="2608.02547_Why-Action-Chunking.html">Why Action Chunking</a> — 여기서 청킹 대조군이 오히려 나빠진 이유와 함께 보면 좋다</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2608.26673 · PredVLA · 요약 생성 2026-09-23
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>

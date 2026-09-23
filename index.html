@@ -196,6 +196,69 @@
       <!-- 논문 항목: 새 논문은 이 아래에 <tr>로 추가.
            data-id: localStorage 읽음키(고유), data-added: 리스트 등록일(YYYY-MM-DD),
            data-tags: 그룹/필터용 태그(쉼표구분) -->
+      <tr data-id="2609.18207" data-added="2026-09-23" data-tags="Inference Latency,Online RL,Action Editing,Async Inference,Real-Time Control">
+        <td class="no">121</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2609.18207_RealTime-EXPO-FT.html">Reinforcement Learning for Real-Time Vision-Language-Action Policies</a></div>
+          <div class="sub">Perry Dong, Kuo-Han Hung, Dorsa Sadigh, Chelsea Finn · Stanford · arXiv:2609.18207</div>
+          <div class="sub">느린 VLA 생성(67ms)과 빠른 행동 편집(&lt;1ms)을 분리. VLA는 백그라운드에서 후보 묶음을 미리 만들고, 실행 직전 작은 편집 정책이 최신 화면으로 손봐 가치함수가 선택. 사람 개입 없이 온라인 10분 학습으로 실기 4태스크 평균 42%→97%, Kinetix 96.2%(지연 0인 RLPD 81.4%보다도 높음).</div>
+          <div class="tags">
+            <span class="tag">Inference Latency</span>
+            <span class="tag">Online RL</span>
+            <span class="tag">Action Editing</span>
+            <span class="tag">Async Inference</span>
+            <span class="tag">Real-Time Control</span>
+          </div>
+        </td>
+        <td class="date">2026-09-16</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2609.18207" target="_blank">arXiv</a>
+          <a href="https://pd-perry.github.io/real-time-expo-ft" target="_blank">프로젝트</a>
+        </td>
+      </tr>
+      <tr data-id="2608.26673" data-added="2026-09-23" data-tags="Predictive Coding,Sub-Million Params,PV-RNN,No Pretraining,LIBERO">
+        <td class="no">120</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.26673_PredVLA.html">PredVLA: Predictive Sensorimotor Modeling for Sub-Million-Parameter Robot Manipulation</a></div>
+          <div class="sub">Hiroki Sawada, Shunichi Kasahara · Sony Computer Science Laboratory · arXiv:2608.26673</div>
+          <div class="sub">관측을 신경망에 직접 넣지 않고 오직 예측 오차로만 내부 상태를 갱신하는 예측 부호화 정책. 학습 파라미터 0.68M, 로봇 사전학습 없음. LIBERO 짧은 3스위트 86.9%·4스위트 75.4%로 동급 크기 Transformer(19.7%)의 3.7배·LSTM(10.3%)의 7.4배. 단 LONG은 40.6%로 한계.</div>
+          <div class="tags">
+            <span class="tag">Predictive Coding</span>
+            <span class="tag">Sub-Million Params</span>
+            <span class="tag">PV-RNN</span>
+            <span class="tag">No Pretraining</span>
+            <span class="tag">LIBERO</span>
+          </div>
+        </td>
+        <td class="date">2026-08-27</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.26673" target="_blank">arXiv</a>
+          <a href="https://arxiv.org/pdf/2608.26673" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr data-id="2608.23831" data-added="2026-09-23" data-tags="Inference Latency,Async Inference,DSRL,State Augmentation,Real-World RL">
+        <td class="no">119</td>
+        <td class="read-cell"></td>
+        <td>
+          <div class="ttl"><a href="summaries/2608.23831_ARLI.html">Learning to Act While Waiting: RL Finetuning of Generalist Robot Policies Under Inference Latency</a></div>
+          <div class="sub">Brian Zhu, Momen Khalil 외 · Oier Mees, Andrew Wagenmaker, Sergey Levine · UC Berkeley · Siemens · arXiv:2608.23831</div>
+          <div class="sub">비동기 추론에서 RL이 실패하는 원인(마르코프 성질 붕괴)을 상태 증강으로 해결. RL 정책 입력에 ① 실행 확정된 중간 행동들 ② 추론 막바지의 중간 관측을 추가. 실기 양팔 UR5e 3태스크에서 π0.5 기반 40%→100~125 에피소드 만에 거의 100%(DSRL은 같은 시간에 80% 미만).</div>
+          <div class="tags">
+            <span class="tag">Inference Latency</span>
+            <span class="tag">Async Inference</span>
+            <span class="tag">DSRL</span>
+            <span class="tag">State Augmentation</span>
+            <span class="tag">Real-World RL</span>
+          </div>
+        </td>
+        <td class="date">2026-08-24</td>
+        <td class="links">
+          <a href="https://arxiv.org/abs/2608.23831" target="_blank">arXiv</a>
+          <a href="https://async-rl-intermediate-information.github.io/" target="_blank">프로젝트</a>
+        </td>
+      </tr>
       <tr data-id="2609.19846" data-added="2026-09-22" data-tags="Latent Action,Cross-Embodiment,VLA,Representation Learning,Bimanual">
         <td class="no">118</td>
         <td class="read-cell"></td>

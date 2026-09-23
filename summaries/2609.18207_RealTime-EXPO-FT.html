@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Real-Time EXPO-FT — 요약</title>
+<style>
+  :root{
+    --bg:#f7f8f6; --card:#ffffff; --ink:#1a1f1a; --muted:#5b665b;
+    --line:#e2e6df; --accent:#76b900; --accent-d:#5a8f00; --soft:#eef4e3;
+    --blue:#2b6cb0; --softblue:#ebf3fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 22px 80px}
+  a{color:var(--accent-d);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:20px}
+  header.hero{background:linear-gradient(135deg,#1a2417,#2d3d24);color:#fff;
+    border-radius:16px;padding:30px 30px 26px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+  header.hero .tag{display:inline-block;background:var(--accent);color:#12210a;
+    font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero h1{margin:.1em 0 .35em;font-size:27px;line-height:1.3}
+  header.hero .authors{font-size:13.5px;color:#cfe0bd;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chips a,.chips span{font-size:12.5px;background:rgba(255,255,255,.12);color:#eaf5da;
+    padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+  .chips a:hover{background:rgba(255,255,255,.22);text-decoration:none}
+  .meta{font-size:13px;color:#b9cda4;margin-top:14px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+  h2{font-size:20px;margin:.1em 0 .6em;padding-bottom:.35em;border-bottom:2px solid var(--soft);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    background:var(--accent);color:#12210a;border-radius:8px;font-size:14px;font-weight:800;flex:none}
+  h3{font-size:16px;margin:1.1em 0 .3em;color:#26331f}
+  p{margin:.5em 0}
+  .tldr{background:var(--soft);border:1px solid #d5e4bf;border-left:5px solid var(--accent)}
+  .tldr h2{border:none;padding:0;margin-bottom:.4em}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.32em 0}
+  .contrib{counter-reset:c;list-style:none;padding-left:0}
+  .contrib li{position:relative;padding:10px 12px 10px 46px;margin:.5em 0;
+    background:#fafcf6;border:1px solid var(--line);border-radius:10px}
+  .contrib li:before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:11px;
+    width:24px;height:24px;background:var(--accent);color:#12210a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:.7em 0;overflow:hidden;border-radius:8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:#f0f4ea;font-weight:700}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbf8}
+  .win{color:var(--accent-d);font-weight:800}
+  .tblwrap{overflow-x:auto}
+  .cap{font-size:12.5px;color:var(--muted);margin:.2em 0 .8em}
+  /* 핵심 figure 임베드 */
+  figure{margin:1.1em 0 .4em;text-align:center}
+  figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figure figcaption{font-size:12.5px;color:var(--muted);margin-top:.5em;text-align:left;line-height:1.55}
+  figure figcaption b{color:#26331f}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 16px;font-size:14.5px;margin:.3em 0}
+  .kv div:nth-child(odd){color:var(--muted);font-weight:600}
+  .callout{background:var(--softblue);border:1px solid #cfe1f2;border-left:5px solid var(--blue);
+    border-radius:10px;padding:12px 16px;margin:.8em 0;font-size:14.5px}
+  .pill{display:inline-block;background:#eef4e3;color:var(--accent-d);border:1px solid #d5e4bf;
+    font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 2px}
+  .qa{border-left:5px solid var(--blue);background:#fbfdff}
+  .qa .q{font-weight:700;color:#1c3a57}
+  .qa .empty{color:var(--muted);font-style:italic;font-size:14px}
+  /* '이 논문에 질문하기' 버튼 (Q&A 섹션) */
+  .ask-btn{cursor:pointer;font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;
+    border:1px solid var(--blue);background:var(--softblue);color:#1c3a57;margin:2px 0 12px}
+  .ask-btn:hover{background:#dcebf9}
+  /* Q&A 접기/펼치기 (details/summary, JS 불필요, 기본 접힘) */
+  details.qa-item{margin:2px 0}
+  details.qa-item>summary.q{cursor:pointer;list-style:none;padding:9px 0;display:flex;gap:8px;align-items:flex-start}
+  details.qa-item>summary.q::-webkit-details-marker{display:none}
+  details.qa-item>summary.q::before{content:"\25B8";color:var(--blue);flex:none;font-size:13px;line-height:1.5}
+  details.qa-item[open]>summary.q::before{content:"\25BE"}
+  details.qa-item>summary.q:hover{color:var(--accent-d)}
+  details.qa-item>p,details.qa-item>ul{margin:.15em 0 .6em}
+  .divide{height:1px;background:var(--line);margin:14px 0}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+  .note{font-size:12.5px;color:var(--muted);background:#fbfbf9;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-top:10px}
+  .taglist{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}
+  .taglist .t{font-size:12px;background:rgba(255,255,255,.14);color:#eaf5da;
+    border:1px solid rgba(255,255,255,.20);padding:3px 10px;border-radius:999px}
+  /* figure 클릭 확대(라이트박스) */
+  figure img{cursor:zoom-in}
+  .imgzoom-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.86);
+    align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  .imgzoom-overlay.show{display:flex}
+  .imgzoom-overlay img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 논문 리스트로 돌아가기</a>
+
+  <header class="hero">
+    <span class="tag">cs.RO · VLA · Real-Time RL</span>
+    <h1>Reinforcement Learning for Real-Time Vision-Language-Action Policies</h1>
+    <p class="authors">Perry Dong, Kuo-Han Hung, Dorsa Sadigh, Chelsea Finn · Stanford University</p>
+    <div class="chips">
+      <a href="https://arxiv.org/abs/2609.18207" target="_blank">arXiv abstract</a>
+      <a href="https://arxiv.org/pdf/2609.18207" target="_blank">PDF</a>
+      <a href="https://arxiv.org/html/2609.18207" target="_blank">HTML</a>
+      <a href="https://pd-perry.github.io/real-time-expo-ft" target="_blank">프로젝트 페이지</a>
+      <span>arXiv:2609.18207</span>
+    </div>
+    <div class="taglist">
+      <span class="t">Inference Latency</span>
+      <span class="t">Online RL</span>
+      <span class="t">Action Editing</span>
+      <span class="t">Async Inference</span>
+      <span class="t">Real-Time Control</span>
+    </div>
+    <p class="meta">제출: 2026년 9월 16일 · 실기 DROID 단일팔 30Hz · VLA 추론 약 67ms · 온라인 데이터 10분</p>
+  </header>
+
+  <section class="tldr">
+    <h2>한 줄 요약 (TL;DR)</h2>
+    <p>큰 VLA는 한 번 생각하는 데 <b>약 67ms</b>가 걸리는데 로봇은 <b>33ms마다</b> 명령을 내야 한다. 그래서 실제로 실행되는 행동은 <b>이미 3~5스텝 전에 본 화면</b>을 보고 정한 것이 된다 — 공이 굴러가는 동안 눈을 감고 팔을 뻗는 셈이다. 이 논문은 <b>느리지만 똑똑한 생성</b>과 <b>빠르지만 작은 수정</b>을 분리한다. 무거운 VLA는 <b>백그라운드에서 미리</b> 후보 행동 묶음을 여러 개 만들어 두고, 실행 직전에 <b>1ms도 안 걸리는 작은 편집 정책</b>이 <b>가장 최신 화면</b>을 보고 그 후보를 손본 뒤 가장 좋아 보이는 것을 고른다. 온라인 강화학습으로 <b>사람 개입 없이 10분</b> 학습해, 실기 4개 태스크 평균 성공률이 <span class="win">42% → 97%</span>(30회 중 12.5 → 29회)가 됐다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span>배경 · 문제의식</h2>
+    <p><b>VLA</b>(Vision-Language-Action, 카메라 영상과 말로 된 지시를 받아 로봇 움직임을 직접 출력하는 모델)는 클수록 잘하지만 그만큼 느리다. 저자들의 서버에서 한 번 추론에 <b>약 67ms</b>가 걸리는데, 로봇 제어는 <b>30Hz</b>(33ms마다 한 번)로 돌아간다. 계산이 끝났을 때는 이미 3스텝(67ms)이 지나 있고, 지연을 더 주면 5스텝(167ms)까지 벌어진다.</p>
+    <div class="callout">
+      <b>왜 이게 치명적인가:</b> 지금 실행되는 행동이 <b>지금 상태가 아니라 d스텝 전 상태</b>를 보고 정해진 것이 된다. 논문 표현으로 <i>"the action at time t is actually a function of s<sub>t−d</sub>"</i> — 즉 현재 상태만 보면 다음이 결정된다는 <b>마르코프 성질이 깨진다</b>. 강화학습은 이 성질을 전제로 하므로 그대로 적용하면 학습이 무너진다. 공 받기·굴러가는 물체 잡기처럼 <b>반응성이 생명인 태스크</b>에서 특히 심하다.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>핵심 Contribution</h2>
+    <ul class="contrib">
+      <li><b>"느린 생성"과 "빠른 수정"의 분리</b> — 무거운 VLA는 미리 백그라운드에서 후보를 만들어 두고, 실행 직전에 <b>작은 편집 정책</b>이 최신 화면을 보고 손본다. VLA의 좋은 행동 습관은 유지하면서 <b>관측→행동 지연을 1ms 이하</b>로 줄인다.</li>
+      <li><b>지연이 있어도 되는 온라인 RL 레시피</b> — 편집 정책·가치함수만 학습하고 VLA 본체는 사실상 고정. 성공 여부만 알려주는 <b>0/1 보상</b>으로, 사람 개입 없이 에피소드마다 갱신한다.</li>
+      <li><b>노이즈 공간 사전 선별로 계산 절약</b> — 후보를 32개까지 늘리면서도 VLA를 32번 다 돌리지 않는다. <b>노이즈 단계에서 먼저 걸러낸 뒤 한 번만 디코딩</b>해, 같은 계산량으로 훨씬 빨리 학습한다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>Method</h2>
+
+    <h3>출발점: EXPO-FT의 두 정책 구조</h3>
+    <p>기반이 되는 EXPO-FT는 정책을 둘로 나눈다. <b>기본 정책</b>(큰 사전학습 VLA)이 행동을 내놓고, <b>편집 정책</b>(작은 MLP)이 거기에 <b>±β 범위로 제한된 보정값</b>을 더한다. 그다음 <b>가치함수 Q</b>(어떤 상태에서 어떤 행동이 얼마나 좋은지 점수 매기는 함수)가 원본과 편집본 중 점수가 높은 쪽을 고른다.</p>
+    <div class="callout">
+      <b>왜 "편집"인가:</b> 큰 VLA를 직접 강화학습으로 고치면 비싸고, 애써 배운 행동 습관이 망가지기 쉽다. 대신 <b>출력에 작은 보정만 얹으면</b> 원본의 좋은 점은 유지하면서 값싸게 개선할 수 있다. 보정 범위를 ±β로 묶는 것도 원본에서 너무 벗어나지 않게 하려는 장치다.
+    </div>
+
+    <h3>이 논문의 핵심: 두 단계를 시간축에서 떼어놓기</h3>
+    <p><b>① 느린 단계 — 미리, 백그라운드에서.</b> 현재 실행 중인 행동 묶음이 d스텝 남았을 때 VLA 추론을 <b>미리 시작</b>한다. 이때 <b>지금 실행 중인 행동들을 조건으로 함께 넣어</b>(이어지는 동작이 되도록) 후보 묶음을 <b>N개</b> 생성한다. 단 <b>추론이 끝난 뒤 시점</b>에 해당하는 구간만 쓴다 — 계산하는 동안 지나갈 구간은 어차피 못 쓰기 때문.</p>
+    <p><b>② 빠른 단계 — 실행 직전, 최신 화면으로.</b> 실제 실행 시점이 되면 <b>그 순간의 관측</b>을 편집 정책에 넣어 N개 후보를 각각 손보고, 가치함수가 그중 최고를 고른다. 이 편집·선택은 <b>1ms 미만</b>이라 지연이 사실상 없다. 그동안 VLA는 이미 다음 묶음을 만들고 있다.</p>
+    <div class="callout">
+      <b>직관:</b> 요리사(VLA)가 밑작업을 미리 여러 벌 해두면, 주문이 들어온 순간에는 <b>간만 맞추면</b> 된다. 무거운 일은 미리, 최신 정보가 필요한 일은 마지막 순간에 — 그래서 "지금 화면"을 반영하면서도 큰 모델의 표현력을 잃지 않는다.
+    </div>
+
+    <h3>온라인 RL — 무엇을 학습하나</h3>
+    <div class="kv">
+      <div>시작점</div><div>시연으로 지도학습만 한 VLA(성공률 약 30%)에서 출발</div>
+      <div>학습 대상</div><div>가치함수 Q, 편집 정책, 노이즈 공간 선별기</div>
+      <div>고정</div><div>VLA 본체 (성공한 에피소드에 한해 선택적으로만 미세조정)</div>
+      <div>보상</div><div>성공하면 1, 아니면 0인 <b>희소 이진 보상</b>만 사용</div>
+      <div>사람 개입</div><div>없음 — 에피소드마다 자동 갱신</div>
+    </div>
+
+    <h3>노이즈 공간 사전 선별</h3>
+    <p>후보를 N개 만들려면 원래 VLA를 N번 돌려야 해서 비싸다. 이 논문은 <b>완전히 그려내기 전 단계(노이즈)에서 먼저 후보를 걸러내고</b>, 살아남은 것만 한 번 디코딩한 뒤 K개의 편집본을 만들어 최종 선택한다. 덕분에 N=32처럼 큰 값을 써도 계산이 감당된다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>실험 결과</h2>
+
+    <h3>실기 4개 태스크 (DROID 단일팔, 태스크당 30회)</h3>
+    <p>네 태스크는 모두 <b>움직이는 대상</b>을 다룬다 — 회전판 위 블록 집기, 회전판 위 탁구공 균형 잡기, 움직이는 팔에서 물건 받기, 움직이는 수비수를 피해 공 차 넣기.</p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>태스크</th><th>지도학습만</th><th>DSRL+RTC</th><th>EXPO-FT</th><th>EXPO-FT+RTC</th><th>Real-Time EXPO-FT</th></tr></thead>
+      <tbody>
+        <tr><td>움직이는 물체 집기</td><td>19/30</td><td>25/30</td><td>21/30</td><td>24/30</td><td class="win">30/30</td></tr>
+        <tr><td>공 균형 잡기</td><td>8/30</td><td>15/30</td><td>18/30</td><td>23/30</td><td class="win">28/30</td></tr>
+        <tr><td>물건 주고받기</td><td>10/30</td><td>23/30</td><td>19/30</td><td>27/30</td><td class="win">30/30</td></tr>
+        <tr><td>공 차 넣기</td><td>13/30</td><td>17/30</td><td>17/30</td><td>26/30</td><td class="win">28/30</td></tr>
+        <tr><td><b>평균</b></td><td>12.5/30 (42%)</td><td>20/30</td><td>18.8/30</td><td>25/30</td><td class="win">29/30 (97%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">온라인 학습은 <b>10분으로 제한</b>했고 사람 개입이 없다. 42%→97%는 이 평균값 기준이다.</p>
+
+    <h3>시뮬레이션 (Kinetix 10개 동적 환경, 4스텝 지연)</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>방법</th><th>평균 성공률</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td><b>Real-Time EXPO-FT</b></td><td class="win">96.2%</td><td>4스텝 지연 상태</td></tr>
+        <tr><td>EXPO-FT + RTC</td><td>81.7%</td><td>−14.5%p</td></tr>
+        <tr><td>RLPD (지연 0, 상태 기반)</td><td>81.4%</td><td>지연이 <b>없는데도</b> 낮음</td></tr>
+        <tr><td>DSRL + RTC</td><td>76.1%</td><td>−20.1%p</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="cap">주목할 점은 <b>지연이 전혀 없는 RLPD보다도 높다</b>는 것이다(96.2% vs 81.4%). 지연을 잘 다루는 것을 넘어, 큰 VLA의 행동 사전지식을 활용하는 이득이 따로 있음을 시사한다.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>Ablation</h2>
+    <ul>
+      <li><b>노이즈 공간 선별의 효과:</b> 같은 계산량에서 선별을 쓸 때 학습 효율이 뚜렷이 높다. 이것이 있어야 N=32 같은 큰 후보 수가 실용적이 된다.</li>
+      <li><b>지연이 커질수록 격차가 벌어진다:</b> 지연을 늘려가며 비교하면 RTC 계열은 성능이 떨어지는데 Real-Time EXPO-FT는 <b>안정적으로 유지</b>된다.</li>
+      <li><b>환경이 빨라질수록 격차가 벌어진다:</b> 물건 주고받기에서 전달 속도를 올리면 EXPO-FT+RTC는 떨어지지만 이 방법은 <b>거의 100%를 유지</b>한다. 반응성이 요구될수록 이점이 커진다는 뜻.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>핵심 Figure / Table</h2>
+    <figure>
+      <img src="fig/2609.18207/real_tasks.png" alt="실기 4개 태스크 (Figure 4)" loading="lazy">
+      <figcaption><b>Figure 4 — 실기 평가 태스크 4종.</b> 왼쪽부터 회전판 위 블록 집기, 회전판 위 공 균형 잡기, 움직이는 팔에서 물건 받기, 움직이는 수비수를 피해 공 차 넣기. 넷 다 <b>대상이 계속 움직여</b> 지연에 취약한 설정이다. (출처: arXiv:2609.18207)</figcaption>
+    </figure>
+    <figure>
+      <img src="fig/2609.18207/sim_curves.png" alt="Kinetix 10개 환경 학습 곡선 (Figure 3)" loading="lazy">
+      <figcaption><b>Figure 3 — Kinetix 10개 환경의 학습 곡선.</b> 세로 점선은 지도학습 기준선(지연 0과 4스텝)을 나타낸다. 지연 4스텝 조건에서도 Real-Time EXPO-FT가 다른 방법들 위로 올라간다. (출처: arXiv:2609.18207)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>관련 링크</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2609.18207" target="_blank">arXiv 초록</a> · <a href="https://arxiv.org/pdf/2609.18207" target="_blank">PDF</a> · <a href="https://arxiv.org/html/2609.18207" target="_blank">HTML</a></li>
+      <li><a href="https://pd-perry.github.io/real-time-expo-ft" target="_blank">프로젝트 페이지</a></li>
+      <li><b>같은 문제를 다른 방식으로 푼 논문(이 사이트):</b> <a href="2608.23831_ARLI.html">ARLI</a> — 지연 중 관측·행동을 상태에 넣어 마르코프 성질을 복원</li>
+      <li>관련(이 사이트): <a href="2608.02547_Why-Action-Chunking.html">Why Action Chunking</a> — 지연 관측 조건화가 왜 도움이 되는지의 분석</li>
+    </ul>
+  </section>
+
+  <section class="qa">
+    <h2><span class="n">Q</span>추가 질문 &amp; 답변</h2>
+    <button class="ask-btn" onclick="askPaper(this)">💬 이 논문에 질문하기</button>
+    <p class="empty">아직 추가 질문이 없습니다. 이 논문에 대해 더 궁금한 점을 물어보시면 답변을 여기에 정리해 추가합니다.</p>
+  </section>
+
+  <footer>
+    arXiv:2609.18207 · Real-Time EXPO-FT · 요약 생성 2026-09-23
+  </footer>
+</div>
+<script>
+function askPaper(b){var id=location.pathname.split('/').pop().replace(/\.html$/,'').split('_')[0];var t='/paper-qa '+id+' ';var o=b.textContent;function d(){b.textContent='✅ 복사됨 — Claude에 붙여넣고 질문';setTimeout(function(){b.textContent=o;},2400);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,d);}else d();}
+</script>
+<script>
+(function(){var ov=document.createElement('div');ov.className='imgzoom-overlay';ov.innerHTML='<img alt="확대 이미지">';function c(){ov.classList.remove('show');}ov.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});function a(){document.body.appendChild(ov);document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){ov.firstChild.src=im.currentSrc||im.src;ov.classList.add('show');});});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',a);else a();})();
+</script>
+</body>
+</html>
