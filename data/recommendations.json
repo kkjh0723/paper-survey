@@ -1,10 +1,64 @@
 {
-  "generated": "2026-09-24",
+  "generated": "2026-09-25",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2609.28256",
+          "title": "MemBodied: Recurrent Associative Memory for Vision-Language-Action Models",
+          "authors": "Tej Deep Pala, Navonil Majumder, Bryce Goh, Raphael Yee, Jianfei Yang, Liming Chen, Soujanya Poria",
+          "summary_ko": "현재 카메라 화면만 보고 행동을 내는 VLA(Vision-Language-Action, 시각·언어·행동을 하나로 묶은 로봇 정책)는 '아까 어느 서랍을 열었는지'처럼 과거 관측에만 존재하던 정보를 쓸 수 없다. 과거 프레임을 전부 입력 문맥에 쌓으면 해결되지만 문맥이 무한히 불어나 추론 지연이 커진다. MemBodied는 그 대신 크기가 고정된 에피소드 기억 두 조각을 붙인다 — 정책이 호출될 때마다의 상호작용을 누적해 갱신하는 '연상 상태(associative state)'와, 처음 장면을 압축해 기준점으로 계속 보관하는 '에피소드 앵커(episode anchor)'다. 기억이 필요한 RMBench 5개 과제에서 기억 없는 정책의 7.81배, 단순 순환 기억의 2.98배 평균 성공률을 냈고, 기존 최고 기억 기반 방법보다 추가 파라미터를 10분의 1만 쓰면서 성능은 1.3배였다. 과거를 안 봐도 풀리는 LIBERO-Long에서도 π0(파이제로) 대비 5.4%p 오른 90.6%.",
+          "tags": [
+            "VLA",
+            "Episodic Memory",
+            "Long-Horizon",
+            "LIBERO",
+            "RMBench"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.28256",
+          "extra_url": "",
+          "date": "2026-09-23",
+          "reason": "보유 논문 2607.08448(동결된 VLA 위에 메모리와 프리미티브 라이브러리를 얹은 에이전트 플래너, 좋아요)과 2608.26673(PV-RNN 예측 코딩으로 순환 상태를 유지하는 100만 파라미터 미만 정책)이 모두 '정책에 과거를 어떻게 넣을까'를 다루는데, MemBodied는 같은 질문을 외부 플래너나 순환 신경망이 아니라 VLA 내부의 고정 크기 기억으로 푸는 정면 대안이다. 좋아요한 2606.10267(계층적 VLA·옵션 종료 판정 벤치마크 연구)의 '지금이 다음 단계로 넘어갈 시점인가' 판단에도 에피소드 앵커라는 재료를 제공하고, 컬렉션의 Long-Horizon 태그 논문 6편이 공통으로 겪는 단계 간 정보 소실 문제와 직접 비교된다.",
+          "rec_date": "2026-09-25"
+        },
+        {
+          "id": "2609.24118",
+          "title": "CARE: Experience-Guided Atomic Corrective Execution for Vision-Language-Action Policies",
+          "authors": "Junlan Xiao, Junwei Jiang, Zaibin Zhang, Yifan Wang, Zhongbo Zhang, Huchuan Lu, Lijun Wang",
+          "summary_ko": "VLA(시각·언어·행동 통합 정책)는 시범 데이터와 비슷한 궤적 위에서는 잘 하지만 한 번 경로를 벗어나면 회복을 못 한다. 기존 복구 학습은 사람이 손으로 설계한 교란이나 무작위 교란으로 실패 상황을 만들어 썼는데, CARE는 실제로 실패한 롤아웃을 모아 '과제의 어느 단계에서 어떤 식으로 빗나가는지'의 경험적 분포를 추정하고, 그 분포에서 대표적인 실패 상태와 그에 맞는 교정 시범을 합성한다. 실행 중에는 단계별 계획과 3차원 기하 기반 모니터링을 함께 돌려, 진행한 부분을 버리지 않고 최소 단위(atomic) 보정이나 해당 동작만 재수행을 발동한다. 중간 실패 상태에서의 복구를 재는 FSR-Bench(Failure State Recovery Benchmark)를 함께 공개했고, 여러 VLA 백본에서 시뮬레이션 +14.5%p, 실제 양팔 로봇 +15.9%p.",
+          "tags": [
+            "VLA",
+            "Failure Recovery",
+            "Self-Improvement",
+            "Benchmark",
+            "Bimanual"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.24118",
+          "extra_url": "https://github.com/xiaojunlan/care",
+          "date": "2026-09-21",
+          "reason": "좋아요한 2606.19980(로봇 플릿이 실패를 모아 스스로 코드를 고치는 자기개선)과 Aspire(스킬 라이브러리를 누적하며 지속 학습), 그리고 보유 논문 2608.19490(자기 시범으로 파인튜닝하며 망각을 막기)이 모두 '실패 경험을 다음 정책으로 되돌리는 루프'를 다루는데, CARE는 그 루프를 정책 재학습이 아니라 실행 시점 원자 단위 보정으로 닫는다. 실패 상태 복구용 벤치마크(FSR-Bench)를 같이 내놓아서, 컬렉션의 Robustness 태그 논문들(예: 2609.03142 센서 손상 강건성)이 입력 교란만 재던 것과 달리 '이미 틀어진 상태에서의 회복'이라는 축을 새로 잡아준다.",
+          "rec_date": "2026-09-25"
+        },
+        {
+          "id": "2609.28431",
+          "title": "LiMA: Bridging Long-term Imagination to Real-time Dexterous Manipulation via Asynchronous Diffusion",
+          "authors": "Ning Chen, Yankai Fu, Junkai Zhao, Qianpu Sun, Guocai Yao, Pengwei Wang, Zhongyuan Wang, Shanghang Zhang",
+          "summary_ko": "정교한 손 조작은 멀리 보는 계획과 즉각적인 반응을 동시에 요구한다. VLA는 고수준 추론은 잘 하지만 물리 동역학·공간 지각이 거칠고, 반대로 WAM(World Action Model, 미래 관측을 상상하며 행동을 내는 모델)은 반복 생성 때문에 추론이 느려서 접촉 상황이 급변할 때 의도가 현실을 못 따라간다. LiMA는 이 둘을 비동기 이중 시스템으로 쪼갠다 — 느린 시스템이 드문드문한 장기 시공간 의도를 만들고, 빠른 시스템이 촘촘한 고주파 동작 정제를 맡는다. 드문 의도 예측과 촘촘한 행동 궤적을 잇기 위해 정제 과정을 엔트로피 정규화된 확률 수송 문제로 보는 Latent Schrödinger Bridge Coupling(잠재 슈뢰딩거 브리지 결합)을 도입했다. 비동기 분리로 Cosmos-Policy 대비 추론 지연 45.8% 감소, 양팔 정교 조작 6개 과제에서 전체 성공률 70.8%·하위 과제 평균 78.9%.",
+          "tags": [
+            "Async Inference",
+            "World Model",
+            "Dexterous Manipulation",
+            "Bimanual",
+            "Inference Latency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.28431",
+          "extra_url": "https://ccdcs.github.io/LiMA_repo/",
+          "date": "2026-09-23",
+          "reason": "컬렉션의 Async Inference 축(2609.18207 실시간 행동 편집, 2608.23831 지연 보상용 상태 증강, 2608.27384 스트리밍 디코딩 30Hz 제어, 2608.25798 스트리밍 액션 전문가)은 대체로 '무거운 VLA의 출력을 어떻게 끊김 없이 흘려보낼까'를 다루는데, LiMA는 느린 쪽에 세계 모델의 장기 상상을 놓고 빠른 쪽이 그 의도를 확률 수송으로 메우는, 계층을 바꿔 끼운 접근이다. 보유한 세계 모델 계열(2608.30237 Best-of-N 계획, 좋아요한 2607.11397 잠재 행동+깊이 예측 세계 모델)이 공통으로 안고 있는 '상상은 유용한데 느리다'는 문제에 정량적 지연 감소치(45.8%)를 제시해 직접 비교가 된다.",
+          "rec_date": "2026-09-25"
+        },
         {
           "id": "2609.23968",
           "title": "Opt2VLA: Force-Aware Vision-Language-Action for Contact-Rich Humanoid Whole-Body Manipulation",
@@ -237,60 +291,6 @@
           "date": "2026-09-03",
           "reason": "컬렉션 상위 3개 태그(VLA 38편, World Model 15편, Cross-Embodiment 12편)를 정면으로 아우르는 최신 서베이 — 좋아요한 5개 최고점 논문 Aspire·2606.19980·2607.05369 GaP·2607.08448 Harness VLA·2606.10267 Hi-VLA의 사상적 지도. pool의 이번 새 추천 REFACTOR-VLA(2609.01215, VLA + skill library + world model)·EmbodiedSkills(2609.01281, 오케스트레이션)·PAVE(2608.30378, world-action policy)·pool의 관련 항목 VPP(2412.14803, 예측적 표현 정책)·ATM(2401.00025, 궤적 예측)·DINO-WM(2411.04983)·V-JEPA 2(2506.09985)의 좌표를 하나의 프레임에 배치. index의 τ₀-VLA(2608.16885, 계층 WM + TTS)·G0.5(2608.11739, 통합 AR)·SDGC(2608.19490, 자기 롤아웃)·좋아요한 WALA(2607.11397, DINOv3 world model)·Force Memory VLA(2607.18231)의 상위 좌표. pool의 Riemann-1.0(2608.27033, 200K시간)·GigaBrain-0.7(2608.15875)·이번 새 추천 CLAP(2608.27406, cross-embodiment WM)의 스케일링 논의를 정리하는 관점. 서베이라 이후 신입자에게 컬렉션 진입점으로 유용.",
           "rec_date": "2026-09-07"
-        },
-        {
-          "id": "2609.03889",
-          "title": "FWBC-VLA: Force-Aware Whole-Body Compensation for Contact-Rich Loco-Manipulation",
-          "authors": "Yutian Zhang, Siyuan Ma, Liwen Yang, Yang Li, Ce Hao, Haozhen Chi, Dong We, Qiaojun Yu, Dibo Hou",
-          "summary_ko": "접촉이 많은 로코-매니퓰레이션(loco-manipulation, 이동+조작을 동시에 하는 로봇 태스크)에서 시각-언어-액션(VLA, Vision-Language-Action) 모델이 태스크-수준 액션은 잘 만들지만 그 액션이 만들어내는 물리적 상호작용(접촉력·모멘트)은 해석하지 못한다는 한계를 다룬다. 저자들의 FWBC-VLA는 두 축을 결합 — (1) HSR-Force라는 센서리스 잔여-토크 추정기(sensorless residual-torque estimator, 힘/토크 센서 없이 관절 토크 잔차로 접촉 강도를 추정)로 접촉 강도와 그 시간 변화를 추론해 토큰으로 인코딩, 사전학습 VLA의 액션 전문가에 주입 → 정책이 접촉 시작(onset)·지속 부하(sustained loading)·해제(release)를 지각. (2) 프로프리오셉션(proprioception, 로봇 자기 감각)·자코비안 기반 몸체 좌표 힘 추정치·접촉 상태를 함께 받는 보상 생성기(compensation generator)가 교정 액션을 만들어 태스크 액션과 결합해 전신 제어(WBC, whole-body control) 정책이 실행. 화이트보드 닦기·도어 클로저 달린 문 열기 실기 실험에서 유효성 실증. 5,000+ 에피소드 WL&Arm 데이터셋 파인튜닝.",
-          "tags": [
-            "VLA",
-            "Force-Aware",
-            "Whole-Body Control",
-            "Loco-Manipulation",
-            "Sensorless"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.03889",
-          "extra_url": "",
-          "date": "2026-09-03",
-          "reason": "좋아요 최고점 조합의 정확한 다음 세대 — 좋아요한 Force Memory VLA(2607.18231, cross-embodiment force memory)의 정면 후속으로, 이번엔 힘 센서 없이 잔여-토크로 접촉을 추정한다는 실전 지향. 좋아요한 Xiaomi-Robotics-1(2607.15330, UMI 산업 스케일링)·Xiaomi-U0(2607.11643, 38B 파운데이션)의 실전 배포 축과 정합. index의 HAF(2608.16837, 휴머노이드 whole-body loco-mani)·2607.15163(Humanoid Behavior FM)·pool의 GigaBrain-WBC-0.5(2608.18234, whole-body control)의 정면 자매작 — 특히 loco-manipulation에 힘 지각을 붙였다는 점에서 pool의 이번 새 항목 HiTac-WAM(2608.19574)·ContactGuard(2608.13438, pre-contact 실패 감지)·JEPA Safety(2608.17496, action-conditioned + safety shield)·index의 SDGC(2608.19490)와 접촉 축의 최상위 좌표. HSR-Force 접촉 추정을 토큰으로 액션 전문가에 주입한다는 축은 좋아요한 Harness VLA(2607.08448, frozen VLA + 외부 모듈)·pool의 이번 새 추천 EmbodiedSkills(2609.01281)·AGM(2608.29537, 얼린 VLA + achievement memory)의 정확한 자매작. Ce Hao·Qiaojun Yu 조합이라 이후 contact-rich VLA 계보의 표준 참조.",
-          "rec_date": "2026-09-06"
-        },
-        {
-          "id": "2609.01215",
-          "title": "REFACTOR-VLA: Unsupervised Library Learning of Typed Motor Programs",
-          "authors": "Riyaaz Shaik, Chandru Venkataraman",
-          "summary_ko": "시각-언어-액션(VLA, Vision-Language-Action) 모델의 한계를 재사용 가능한 스킬 발견(reusable skill discovery)으로 해결하는 웨이크/슬립(wake-sleep, 잠들 때 정리·깨어날 때 활용하는 이중 학습 사이클) 시스템. 슬립 단계에서 모터-프로그램 조각(motor-program fragments, 짧은 액션 시퀀스 단위)을 학습된 세계 모델(world model)에서 유도한 행동 등가성 메트릭(behavioral equivalence metric, 두 조각이 관측에 미치는 효과가 같은지 측정)으로 클러스터링해 라이브러리를 만든다. 웨이크 단계에서는 이 라이브러리를 어휘로 삼아 시스템이 타입 있는 람다 표현식(typed lambda expressions, 함수형 프로그래밍의 타입 지정 함수 조합 표기)을 생성하고, 디코더가 이를 실행 가능한 액션 시퀀스로 풀어낸다. LIBERO 벤치마크 4개 스위트에서 모델 크기보다 학습 목적함수가 더 결정적임을 실증 — 특히 세계 모델 학습에 지도 대조 학습(supervised contrastive learning)을 넣으면 클러스터링 품질이 크게 향상돼 기존 베이스라인을 상회.",
-          "tags": [
-            "VLA",
-            "Skill Library",
-            "Wake-Sleep",
-            "World Model",
-            "Program Synthesis"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.01215",
-          "extra_url": "",
-          "date": "2026-09-01",
-          "reason": "좋아요 최고점 조합의 정확한 다음 세대 — 좋아요한 Aspire(agentic robotics + skill library + continual learning)·2606.19980(self-improving coding agent)·2607.05369 GaP(graph-as-policy + agentic coding)·2607.08448 Harness VLA(frozen VLA + agentic planner + skill primitive)·Hi-VLA(2606.10267, 계층 옵션 + termination) 다섯의 정면 후속. index의 Teach and Grow(2608.17209, 재사용 스킬 블록)·Skill Mining(2607.08354)·ART(2608.14047, VLA + tool-use)·pool의 SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·이번 새 추천 EmbodiedSkills(2609.01281, 오케스트레이션)·AGM(2608.29537, 얼린 VLA + achievement memory)·FLARE(2608.26645, 실패 회복 스킬 라이브러리)·이번 새 추천 Hierarchical Skill Retrieval(2608.24042)의 자매작. 웨이크/슬립 사이클로 스킬을 자율 발견하는 축은 pool 관련 항목 Voyager(2305.16291, 확장 스킬 라이브러리)·AutoRT(2401.12963, LLM 오케스트레이션)·Eureka(2310.12931, LLM 보상 설계)의 정면 다음 세대. 타입 있는 람다 표현식으로 스킬 조합을 표기한다는 것은 좋아요한 GaP(2607.05369, graph-as-policy)의 정확한 함수형 프로그래밍 대응. 세계 모델 학습이 모델 크기보다 중요하다는 결론은 이번 새 추천 MINERVA(2609.03715, 최소 파라미터)·pool의 SmolVLA(2506.01844)·Nano-VLA(2608.14379)의 스케일링 논쟁과 정합.",
-          "rec_date": "2026-09-06"
-        },
-        {
-          "id": "2609.03715",
-          "title": "MINERVA: How Small Can a Manipulation Policy Be and Still Solve LIBERO?",
-          "authors": "Kohei Sendai, Tatsuya Matsushima, Yusuke Iwasawa",
-          "summary_ko": "'조작 정책(manipulation policy)은 얼마나 작아도 되는가'라는 실증 질문을 정면으로 다룬 소형 비주얼모터 정책 계열. 저자들의 MINERVA는 단 54만(0.54M) 파라미터로 LIBERO의 네 표준 스위트에서 2,000회 롤아웃 평균 95.1% 성공률을 달성 — 기존 접근보다 훨씬 적은 파라미터로 대등 이상. 핵심 발견: (1) 성능은 약 1M 파라미터에서 포화(saturates)해 그 이상 키워도 이득이 미미, (2) 모델이 CPU에서 밀리초 단위로 재계획(replan)이 가능한 실시간 크기, (3) 표준 태스크 조건화(task conditioning)는 실제 지시 이해라기보다 '외운 태스크 선택(memorized task selection)'에 주로 의존한다는 진단.",
-          "tags": [
-            "VLA",
-            "Efficient Policy",
-            "LIBERO",
-            "Compact Model",
-            "Scaling Diagnosis"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.03715",
-          "extra_url": "",
-          "date": "2026-09-03",
-          "reason": "좋아요한 Xiaomi-U0(2607.11643, 38B)의 정반대 축을 명시적으로 진단하는 '작을수록 좋다' 좌표 — 좋아요한 Xiaomi-Robotics-1(2607.15330)·WALA(2607.11397)의 대규모 파운데이션 라인과 대비되는 실증. pool의 SmolVLA(2506.01844)·Nano-VLA(2608.14379)·FlashVLA(2608.27384)·index의 2607.14695(streaming KV cache)의 정면 다음 세대이자, pool의 이번 새 항목 Fast-WAM(2608.02365)·WALL-SS(2608.26239, next-scale AR)·이번 새 추천 REFACTOR-VLA(2609.01215)의 '학습 목적함수가 크기보다 중요' 결론의 자매작. 태스크 조건화가 실제 지시 이해가 아니라 외운 선택에 의존한다는 진단은 pool의 이번 새 항목 IMPACT(2609.00161, 어텐션 진단)·WorldSync(2608.24885, 액션 조건 진단)·index의 Latent Action Study(2608.19613)·pool의 XEWorld(2608.05799 pool, cross-embodiment WM 진단)의 진단·정합 라인의 좌표. index의 ACT(2304.13705, ALOHA)·pool 관련 항목 3D Diffusion Policy(2403.03954)·이번 새 관련 추천 CrossFormer(2408.11812)·좋아요한 Force Memory VLA(2607.18231)와의 파라미터-대비-성능 표준 참조가 될 잠재력. Yusuke Iwasawa 조합이라 이후 LIBERO 벤치마크의 표준 참조.",
-          "rec_date": "2026-09-06"
         }
       ]
     },
@@ -298,6 +298,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2310.12931",
+          "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
+          "authors": "Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani, Dinesh Jayaraman, Yuke Zhu, Linxi Fan, Anima Anandkumar",
+          "summary_ko": "대형 언어 모델(LLM)은 '무엇을 할지' 계획하는 데는 쓸 만하지만 펜 돌리기 같은 저수준 정교 조작을 직접 배우게 하기는 어렵다. Eureka는 LLM이 강화 학습의 보상 함수 코드를 직접 써 내려가게 하고, 학습 결과를 다시 프롬프트로 되돌려 보상 코드를 진화적으로 개량하는(evolutionary optimization) 방식을 쓴다. 과제별 프롬프트 튜닝이나 보상 템플릿 없이도, 로봇 형태 10종을 포함한 오픈소스 강화 학습 환경 29개 중 83%에서 사람 전문가가 손으로 짠 보상을 앞섰고 평균 정규화 성능은 52% 향상. 사람 피드백을 프롬프트로만 반영하는(모델 가중치 갱신 없는) RLHF도 가능해졌고, 커리큘럼 학습과 결합해 시뮬레이션 Shadow Hand가 펜 돌리기 기술을 수행하는 것을 처음으로 보였다.",
+          "tags": [
+            "Reward Design",
+            "Coding Agent",
+            "Reinforcement Learning",
+            "Dexterous Manipulation",
+            "LLM"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2310.12931",
+          "extra_url": "https://eureka-research.github.io/",
+          "date": "2023-10-19",
+          "reason": "좋아요 점수가 붙은 논문 중 Aspire(LLM 코딩 에이전트가 스킬 라이브러리를 키움), 2606.19980(코딩 에이전트 기반 실세계 자기개선), 2607.05369(그래프를 정책으로 쓰는 다중 에이전트 자기학습)이 모두 'LLM이 코드를 써서 로봇 능력을 만든다'는 계보인데, Eureka는 그 계보에서 보상 함수를 대상으로 삼은 원형 격 논문이다. pool에 이미 있는 DrEureka(2406.01967)가 바로 이 논문의 후속(보상+도메인 랜덤화까지 LLM에 맡겨 sim-to-real로 확장)이라 둘을 이어 읽으면 '언어 모델이 학습 신호를 설계한다'는 축이 한 번에 정리된다.",
+          "rec_date": "2026-09-25"
+        },
+        {
+          "id": "2412.14058",
+          "title": "Towards Generalist Robot Policies: What Matters in Building Vision-Language-Action Models",
+          "authors": "Xinghang Li, Peiyan Li, Long Qian, Minghuan Liu, Dong Wang, Jirong Liu, Bingyi Kang, Xiao Ma, Xinlong Wang, Di Guo, Tao Kong, Hanbo Zhang, Huaping Liu",
+          "summary_ko": "사전 학습된 비전-언어 모델(VLM)에 행동 출력을 붙여 VLA를 만드는 방법은 여러 갈래로 제안됐지만, 무엇이 실제 성능을 갈랐는지는 흩어져 있었다. 이 논문은 세 가지 설계 질문을 통제된 실험으로 답한다 — 어떤 VLM 백본을 고를 것인가, 행동을 붙이는 구조(정책 아키텍처)를 어떻게 짤 것인가, 그리고 여러 로봇의 데이터를 섞는 교차 임베디먼트(cross-embodiment) 학습은 언제 넣어야 하는가. VLM 백본 8종 이상, 정책 구조 4종, 총 600회 이상의 개별 실험을 돌려 설계 지침서를 만들고, 그 결론대로 수작업 설계를 최소화해 조립한 RoboVLMs 계열이 시뮬레이션 3종과 실제 로봇에서 당시 최고 성능을 기록했다. 코드·모델·데이터셋·학습 및 평가 레시피 전체를 공개했다.",
+          "tags": [
+            "VLA",
+            "Design Study",
+            "Cross-Embodiment",
+            "Foundation Model",
+            "Open-Source"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.14058",
+          "extra_url": "https://robovlms.github.io/",
+          "date": "2024-12-18",
+          "reason": "컬렉션의 중심 태그가 VLA(45편)·Cross-Embodiment(18편)이고, 최근 보유 논문들이 통제된 비교 연구 쪽으로 몰려 있다 — 2609.02546(교차 임베디먼트 제로샷을 통제 실험으로 검증), 2608.19613(잠재 행동 설계 공간 실증 연구), 2608.27550(VLM 사전 지식을 지키며 계속 사전학습). 이 논문은 그 통제 연구 계보의 원점으로, 백본 선택·행동 헤드 구조·교차 임베디먼트 데이터 투입 시점이라는 세 축의 기준선을 제공한다. 보유한 OpenVLA(2406.09246)·Octo(2405.12213)·π0(2410.24164)·GR00T N1(2503.14734)이 각각 어느 설계 지점을 고른 것인지 대조해 읽기에 특히 유용하다.",
+          "rec_date": "2026-09-25"
+        },
+        {
+          "id": "2401.00025",
+          "title": "Any-point Trajectory Modeling for Policy Learning",
+          "authors": "Chuan Wen, Xingyu Lin, John So, Kai Chen, Qi Dou, Yang Gao, Pieter Abbeel",
+          "summary_ko": "시범 데이터를 늘리면 정책은 좋아지지만 수집 비용이 병목이다. 영상은 행동·물리·의미가 담긴 값싼 데이터원이지만 행동 라벨이 없어 제어에 쓰기 어렵다. ATM(Any-point Trajectory Modeling, 임의 점 궤적 모델링)은 영상 프레임 안의 임의 지점들이 앞으로 어디로 움직일지를 예측하는 궤적 모델을 먼저 사전 학습한다. 이렇게 얻은 점 궤적이 상세한 제어 지침 역할을 해서, 행동 라벨이 붙은 데이터가 아주 적어도 견고한 시각-운동 정책을 학습할 수 있다. 언어 조건 과제 130개 이상에서 기존 영상 사전학습 기법 대비 평균 80% 향상, 사람 영상과 형태가 다른 로봇의 영상에서 조작 기술을 옮겨오는 것도 보였다.",
+          "tags": [
+            "Point Trajectory",
+            "Video Pretraining",
+            "Cross-Embodiment",
+            "Human Video",
+            "Imitation Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2401.00025",
+          "extra_url": "https://xingyu-lin.github.io/atm",
+          "date": "2023-12-28",
+          "reason": "행동 라벨 없는 영상에서 제어 표현을 뽑는 컬렉션의 큰 축과 정확히 겹친다 — 보유 논문 2609.21948(사람 영상+점군으로 잠재 행동을 배워 정교 손에 이식), 2609.19846(행동 유사도 감독으로 잠재 행동의 교차 임베디먼트 전이 개선), LAPA(2410.11758, 잠재 행동 사전학습), 2608.26058(카메라 중심 사람 영상 사전학습). 다만 이들이 쓰는 '추상적 잠재 행동' 대신 ATM은 화면 위 점의 실제 이동 궤적이라는 눈에 보이는 중간 표현을 쓴다. pool의 Moto(2412.04445)·IGOR(2411.00785)가 잠재 토큰 계열 대표작이라, 잠재 토큰 대 명시적 점 궤적을 나란히 비교하는 축이 완성된다.",
+          "rec_date": "2026-09-25"
+        },
         {
           "id": "2506.07339",
           "title": "Real-Time Execution of Action Chunking Flow Policies",
@@ -672,60 +726,6 @@
           "date": "2024-06-04",
           "reason": "pool의 여러 reason에서 반복 참조되던 미싱 링크 — pool 관련 항목 Eureka(2310.12931, LLM 보상 설계)의 정확한 sim-to-real 후속작. 좋아요 최고점 조합 Aspire(agentic robotics + self-improvement)·2606.19980(self-improving coding agent)·2607.05369 GaP(graph-as-policy + agentic coding)·2607.08448 Harness VLA(frozen VLA + agentic planner)의 sim-to-real·자기개선 축의 사전작. pool 관련 항목 Voyager(2305.16291)·AutoRT(2401.12963)·이번 함께 추천 Q-Transformer(2309.10150)의 자매작으로 '실기 벤치마크의 사전 튜닝을 LLM으로 자동화'하는 노선의 대표작. pool의 이번 새 항목 PhysCaP(2608.21031, code-as-policy + physics probing)·SHAPER(2608.11350, 스킬 하네스 진화)·HarnessWAM(2608.09516, VLM task manager)·Physical Agentic AI(2608.22657, 오케스트레이터 검증)·이번 새 추천 EmbodiedSkills(2609.01281)·REFACTOR-VLA(2609.01215)의 정확한 사전작. index의 ART(2608.14047, VLA + tool-use)·SDGC(2608.19490, 자기 롤아웃 파인튜닝)·pool의 이번 새 항목 ARLI(2608.23831, 지연 RL)·MiDAS(2608.11363, residual RL)의 사상적 뿌리. 사족 보행 실증은 pool의 GigaBrain-WBC-0.5(2608.18234, whole-body control)·이번 새 추천 FWBC-VLA(2609.03889, force-aware WBC)·index의 HAF(2608.16837, humanoid loco-mani)의 사전작. Yuke Zhu·Linxi Fan·Anima Anandkumar·Osbert Bastani 조합이라 이후 NVIDIA/Caltech 임바디드 계보의 표준 참조.",
           "rec_date": "2026-09-06"
-        },
-        {
-          "id": "2502.19645",
-          "title": "Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success (OpenVLA-OFT)",
-          "authors": "Moo Jin Kim, Chelsea Finn",
-          "summary_ko": "OpenVLA를 다운스트림 조작 태스크에 파인튜닝할 때 병렬 디코딩(parallel decoding)과 액션 청킹(action chunking)을 함께 도입하면 성공률·속도·양손 성능이 모두 좋아진다는 실용 레시피.",
-          "tags": [
-            "VLA",
-            "Fine-tuning",
-            "Parallel Decoding",
-            "Action Chunking",
-            "OpenVLA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2502.19645",
-          "extra_url": "https://openvla-oft.github.io/",
-          "date": "2025-02-27",
-          "reason": "보유 VLA 파인튜닝·가속 계열(2608.14379 DINOv3+CUDA Graph, 2607.14695 KV Cache 스트리밍, 2608.19490 Self-Demonstration FT)의 직계 선행. 액션 청킹(2608.02547)과 스트리밍 디코딩(2608.27384)의 레퍼런스 조합을 처음 정착시킨 논문.",
-          "rec_date": "2026-09-05"
-        },
-        {
-          "id": "2410.13126",
-          "title": "ALOHA Unleashed: A Simple Recipe for Robot Dexterity",
-          "authors": "Tony Z. Zhao, Jonathan Tompson",
-          "summary_ko": "대규모 시연 데이터와 표현력 있는 Diffusion Policy를 결합하는 단순한 레시피만으로도 양손·유연물체·정교조작 같은 어려운 dexterous 과제를 학습할 수 있다는 CoRL 계열 대표작.",
-          "tags": [
-            "ALOHA",
-            "Bimanual",
-            "Dexterous Manipulation",
-            "Diffusion Policy",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.13126",
-          "extra_url": "https://aloha-unleashed.github.io/",
-          "date": "2024-10-17",
-          "reason": "보유한 ALOHA 계열(2401.02117 mobile ALOHA, 2410.07864 RDT-1B), 양손 조작(2410.24185 MimicGen), Diffusion Policy(2607.28596)와 직접 이어지는 기반 논문. '데이터+Diffusion만으로 어디까지 되는가'라는 스케일 vs 아키텍처 논쟁의 핵심 근거.",
-          "rec_date": "2026-09-05"
-        },
-        {
-          "id": "2409.14411",
-          "title": "Scaling Diffusion Policy in Transformer to 1 Billion Parameters for Robotic Manipulation (ScaleDP)",
-          "authors": "Minjie Zhu, Yichen Zhu",
-          "summary_ko": "Transformer 기반 Diffusion Policy를 10억(1B) 파라미터까지 안정적으로 스케일업하기 위한 그래디언트 안정화·비인과 어텐션 기법을 제안. MetaWorld·실로봇에서 성능 향상.",
-          "tags": [
-            "Diffusion Policy",
-            "Scaling",
-            "Transformer",
-            "1B Parameters",
-            "MetaWorld"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2409.14411",
-          "extra_url": "",
-          "date": "2024-09-22",
-          "reason": "보유한 Diffusion Policy·스케일링 계열(2410.07864 RDT-1B, 2410.18647 Scaling Laws, 2411.19650 DiT VLA)의 직접 선행. Diffusion Policy를 어디까지 키울 수 있는가, 어떤 학습 트릭이 필요한가에 대한 핵심 참고.",
-          "rec_date": "2026-09-05"
         }
       ]
     }
