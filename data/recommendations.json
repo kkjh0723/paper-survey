@@ -1,10 +1,64 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-09-30",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2609.34414",
+          "title": "From World Models to World Action Models: Rethinking Next-State Prediction",
+          "authors": "Tingyu Yuan, Ziming Ji, Biaoliang Guan, Wen Ye 외",
+          "summary_ko": "World Action Model(WAM, 미래 상태 예측과 행동 생성을 함께 학습하는 모델)의 '다음 상태' 정의를 RGB 이미지 한 종류로 고정하지 않고, 같은 미래를 시각·의미·기하·상호작용 네 가지 투영(projection)으로 매번 다르게 샘플링해 학습시키는 CF-WAM. 표현 방식에 종속되지 않은 상태 전이 구조를 배우게 되어 사람 영상과 로봇 데이터를 외형 차이 없이 함께 쓸 수 있고, RoboCasa-GR1 82.50%·LIBERO-Plus 82.65%·실물 84.00%를 기록.",
+          "tags": [
+            "World Action Model",
+            "Next-State Prediction",
+            "Cross-Embodiment",
+            "Human Video",
+            "RoboCasa-GR1"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.34414",
+          "extra_url": "",
+          "date": "2026-09-28",
+          "reason": "보유 논문 중 'What Matters in Designing World Action Models'(2607.19190 계열의 WAM 설계 연구)와 'Think Like a World Model, Act Like a VLA'가 모두 WAM의 예측 타깃을 어떻게 잡을지를 다루는데, 이 논문은 바로 그 타깃 자체를 고정하지 않고 다중 투영으로 무작위화한다는 정반대 처방을 제시한다. 또 좋아요를 누른 2607.11643(Cross-Embodiment 인간 영상 활용)과 같은 문제(사람-로봇 외형 격차)를 상태 전이 표현 수준에서 푸는 방식이라 직접 비교 대상이 된다.",
+          "rec_date": "2026-09-30"
+        },
+        {
+          "id": "2609.34170",
+          "title": "RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models",
+          "authors": "Yuhan Chen, Ke Yu, Pengfei Liu, Shuxun Wang 외",
+          "summary_ko": "Flow matching(잡음에서 행동으로 가는 흐름을 여러 스텝에 걸쳐 적분하는 생성 방식) 기반 VLA의 두 가지 지연 원인(무거운 VLM 인코딩, 다단계 denoising)을 동시에 없애는 비동기 추론 프레임워크. 부분적으로만 잡음이 제거된 미래 행동을 롤링 버퍼에 이어 나가 단 1스텝 denoising 후에도 즉시 실행하고, VLM 인코딩을 행동 생성과 분리한 뒤 Fast Observation Pathway(FOP)로 최신 관측을 행동 전문가에 직결해 고주기 폐루프 제어를 유지한다.",
+          "tags": [
+            "VLA",
+            "Async Inference",
+            "Flow Matching",
+            "Rolling Buffer",
+            "Real-Time Control"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.34170",
+          "extra_url": "",
+          "date": "2026-09-28",
+          "reason": "보유 논문 2608.23831(Async Inference + DSRL), 2608.14047 계열의 Streaming Decoding VLA, 그리고 좋아요를 누른 2607.18231과 동일한 '실시간 제어를 위한 비동기 추론' 축에 정확히 놓인다. 기존 보유 논문들이 VLM 인코딩 지연이나 denoising 스텝 수 중 하나만 공격했던 것과 달리 둘을 한 프레임워크에서 같이 처리해, 이미 모아둔 지연 최적화 논문들의 상한선을 가늠하는 데 쓸 수 있다.",
+          "rec_date": "2026-09-30"
+        },
+        {
+          "id": "2609.34256",
+          "title": "UMR: Universal Manipulation Representation",
+          "authors": "Song Liu, Linyi Li, Yanshun Zhao, Rxuan Li 외",
+          "summary_ko": "조작을 '월드 좌표계에서의 물체 움직임(World Flow, 로봇 몸체와 무관)'과 '현재 자세 기준 엔드이펙터 상대 움직임(Ego Trajectory)'으로 분해하고 둘을 SE(3) 공역(conjugation, 좌표계 변환으로 두 성분을 정합시키는 연산)으로 묶은 통합 행동 표현. 0.5B 파라미터 정책 WEPVLA로 구현해 LIBERO 97.5%·RLBench 10태스크 85.7%를 달성하고, 로봇 시연 없이 태스크당 사람 시연 약 10분만으로 여러 로봇에 zero-shot 전이해 6개 환경 평균 91.7%(HumanEgo 60.8%)를 기록.",
+          "tags": [
+            "Cross-Embodiment",
+            "Unified Action Space",
+            "Human Demonstration",
+            "Point Cloud",
+            "Zero-Shot Transfer"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.34256",
+          "extra_url": "https://umr-wepvla.github.io/",
+          "date": "2026-09-28",
+          "reason": "보유 논문 2503.22020(Cross-Embodiment 통합 행동 공간, zero-shot 전이)과 목표가 같고, 좋아요를 누른 2607.11397·2607.11643(사람 영상 기반 Cross-Embodiment 학습)의 '사람 데이터만으로 로봇을 움직인다'는 노선을 latent action 대신 명시적 기하 표현으로 푼다. 보유한 Latent Action 계열(2410.11758 LAPA, 2609.19846 등)과 대비해 '학습된 잠재 표현 vs 명시적 기하 분해' 비교축을 만들어 준다.",
+          "rec_date": "2026-09-30"
+        },
         {
           "id": "2609.30833",
           "title": "Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models",
@@ -310,42 +364,6 @@
           "date": "2026-09-21",
           "reason": "컬렉션에 WAM 계열이 이미 10편 가까이 쌓였는데(2607.19876 WAM Best-of-N, 2608.30237, 2607.29613, 2608.02547 등) 서로 설계가 달라 무엇이 성능을 냈는지 비교가 안 되던 상태입니다. 이 논문은 '무엇이 잠재 행동에서 중요한가'(2608.19613)가 잠재 행동 설계 공간에 해준 역할을 WAM 설계 공간에 해주는 짝입니다. 두 편을 나란히 읽으면 잠재 행동 축과 월드 모델 축의 설계 지침을 한 세트로 확보할 수 있습니다.",
           "rec_date": "2026-09-23"
-        },
-        {
-          "id": "2609.23478",
-          "title": "Algebraic Consistency Alone Does Not Certify Temporal Structure in Latent Action Models",
-          "authors": "Di Wen, Ruodi Zhang, Kailun Yang",
-          "summary_ko": "최근 잠재 행동 모델(LAM, Latent Action Model — 행동 라벨 없는 영상에서 두 프레임 사이 변화를 숨은 코드로 뽑는 모델)들은 '코드를 더하면 두 단계 이동과 같아지고(덧셈 일관성), 순서를 뒤집으면 부호가 반대가 된다(역대칭)'는 대수적 성질의 오차가 크게 줄었다는 점을 '시간 구조를 제대로 배웠다'는 라벨 없는 증거로 제시해 왔다. 이 논문은 그 결론이 성립하지 않음을 보인다. 복원 손실만으로도 코드가 '두 상태 특징의 차이'에 가까워지는데, 그런 해에서는 어떤 프레임 짝을 넣어도 두 성질이 자동으로 만족되므로 지표가 진짜 시간 구조와 무의미한 해를 구분하지 못한다. 실제로 5개 도메인에서 제약 없이 학습한 모델이 이미 감소폭의 83~97%를 달성했고, 시간 순서를 일부러 망가뜨린 짝으로 재학습한 제약 모델조차 더 낮은 오차를 냈으며, LIBERO-GOAL·LIBERO-SPATIAL 성능에는 이점이 없고 오히려 대수 오차가 좋아질수록 코드에서 실제 행동을 선형으로 복원하는 정확도가 떨어졌다. 저자들은 무학습 기준선 보정, 순서 파괴 재학습, 시드 예산 분석을 포함한 검증 절차를 제안한다.",
-          "tags": [
-            "Latent Action",
-            "Negative Result",
-            "Evaluation Protocol",
-            "LIBERO",
-            "Representation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.23478",
-          "extra_url": "",
-          "date": "2026-09-20",
-          "reason": "컬렉션의 잠재 행동 계열(WALA 2607.11397, DLAM 2607.27138, GALA 2609.21948, 행동 유사도 지도 2609.19846, 설계 공간 연구 2608.19613)이 공통으로 기대는 '잠재 코드가 시간 구조를 담았다'는 전제를 정면으로 반박하는 논문입니다. 특히 좋아요 표시한 2606.19980(VQ-VAE 기반 잠재 행동)처럼 라벨 없는 지표로 품질을 판단하는 접근에 대해 어떤 검증을 추가해야 하는지 구체적 절차를 제시해, 이후 잠재 행동 논문을 읽을 때의 기준점이 됩니다.",
-          "rec_date": "2026-09-23"
-        },
-        {
-          "id": "2609.20761",
-          "title": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
-          "authors": "Hanchu Zhou, Brendan Lynch, Raman Goyal et al.",
-          "summary_ko": "세계-행동 모델(WAM, World Action Model — 미래 관측과 로봇 행동을 함께 예측해 물리 동역학까지 배우는 정책)에 촉각을 넣을 때 보통 거대한 사전학습 영상 생성 모델을 붙여 추론이 느려지는 문제를 겨냥한다. 시각과 촉각을 하나의 공유 잠재 공간으로 인코딩한 뒤 거기서 곧바로 행동 청크(여러 스텝 묶음)와 미래 시각·촉각 잠재를 함께 생성하는 flow matching(노이즈에서 목표로 가는 흐름을 배우는 생성 방식)을 돌린다. 핵심 관찰은 시각과 촉각의 변화 속도가 다르다는 점으로, 시각 잠재는 더 먼 미래 시점으로, 촉각 잠재는 바로 다음 프레임으로 예측하게 감독 신호를 분리한다(다중 지평 다중모달 예측). 시뮬레이션 9개·실물 5개 접촉 과제에서 실물 성공률 상대 29.4% 향상, 추론 지연 11.9밀리초를 달성했다.",
-          "tags": [
-            "World Action Model",
-            "Tactile",
-            "Flow Matching",
-            "Multi-Horizon Prediction",
-            "Low Latency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.20761",
-          "extra_url": "https://hanchuzhou.github.io/TARO_project_page/",
-          "date": "2026-09-17",
-          "reason": "보유 논문 중 ViTacWorld(2607.22530)가 Cosmos-Predict 같은 대형 영상 세계모델을 촉각으로 확장하며 바로 이 '무거움' 문제를 남겼고, 이 논문은 그 반대편(경량 공유 잠재 + flow matching)에서 같은 목표를 공략합니다. 좋아요를 누른 FM-VLA(2607.18231, 힘 기반 메모리)와 TacForcing(2608.25798, 실행 중 촉각 피드백 스트리밍), N0-VTLA(2607.23782, 잠재 촉각 토큰)가 모두 '촉각을 어떤 표현으로 정책에 넣는가'를 다루는데, 이 논문의 '시각·촉각 타임스케일 분리'는 그 질문에 대한 새 답입니다. Reflex(2608.14379)·FlashVLA(2608.27384)로 이어지는 저지연 관심과도 11.9ms 수치로 직접 맞물립니다.",
-          "rec_date": "2026-09-22"
         }
       ]
     },
@@ -353,6 +371,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2310.06114",
+          "title": "Learning Interactive Real-World Simulators (UniSim)",
+          "authors": "Sherry Yang, Yilun Du, Kamyar Ghasemipour, Jonathan Tompson 외 (Google DeepMind, UC Berkeley, MIT)",
+          "summary_ko": "인터넷 규모의 이질적 데이터(로봇 조작, 내비게이션, 인간 활동 영상, 시뮬레이션 등)를 한 프레임에 묶어, 사람·로봇의 행동 입력에 반응해 다음 영상을 생성하는 범용 실세계 시뮬레이터 UniSim. 이렇게 학습된 시뮬레이터 안에서 고수준 VLM 플래너와 저수준 제어 정책을 훈련시키면 실물 로봇에 zero-shot으로 전이된다는 것을 보였고, ICLR 2024 최우수 논문으로 선정된 world model의 대표 기반 연구.",
+          "tags": [
+            "World Model",
+            "Video Generation",
+            "Universal Simulator",
+            "Zero-Shot Sim2Real",
+            "ICLR 2024 Best Paper"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2310.06114",
+          "extra_url": "https://universal-simulator.github.io",
+          "date": "2023-10-09",
+          "reason": "컬렉션에 Cosmos(World Foundation Model), Genie Envisioner, InternWO 등 '영상 생성형 world model' 계열이 여럿 있는데, 그 계보의 출발점이자 '행동 조건 영상 생성 시뮬레이터로 정책을 학습시킨다'는 아이디어를 처음 규모 있게 증명한 논문이다. 보유한 2607.26789(Real2Sim world model + VLM agent)나 최근 추천한 VPTwin·DreamGen을 읽을 때 기준점이 되며, 아직 컬렉션과 이전 추천 pool에 없다.",
+          "rec_date": "2026-09-30"
+        },
+        {
+          "id": "2412.15109",
+          "title": "Predictive Inverse Dynamics Models are Scalable Learners for Robotic Manipulation (Seer)",
+          "authors": "Yang Tian, Sizhe Yang, Jia Zeng, Ping Wang 외 (Shanghai AI Lab, PKU)",
+          "summary_ko": "'먼저 미래 이미지를 예측하고, 그 예측된 미래를 조건으로 역동역학(inverse dynamics, 두 상태 사이를 잇는 행동을 되찾는 모델)을 풀어 행동을 낸다'는 Predictive Inverse Dynamics Model(PIDM)을 하나의 Transformer로 종단간 학습한 Seer. DROID 대규모 데이터로 사전학습 후 CALVIN·LIBERO와 실물에서 당시 최고 성능을 냈고, 영상 예측과 행동 예측을 분리된 두 단계가 아니라 한 모델의 결합 목표로 두면 스케일이 잘 된다는 것을 보였다.",
+          "tags": [
+            "World Model",
+            "Inverse Dynamics",
+            "Video Prediction",
+            "Scalable Pretraining",
+            "DROID"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.15109",
+          "extra_url": "https://github.com/OpenRobotLab/Seer/",
+          "date": "2024-12-19",
+          "reason": "컬렉션의 핵심 축인 WAM(World Action Model) 논문들 — 보유한 2607.19190·2607.23782, 이번에 추천하는 CF-WAM, pool에 있는 Video Prediction Policy·WorldVLA — 이 전부 '미래 예측 + 행동 생성 결합'을 변형한 것이고, Seer는 그 결합 구조를 명시적으로 정식화한 대표 선행 연구다. 특히 IDM 없이 학습하는 보유 논문 2607.22535(IDM-Free WAM)와 정면으로 대비되는 설계라 함께 읽을 가치가 크다.",
+          "rec_date": "2026-09-30"
+        },
+        {
+          "id": "2502.19417",
+          "title": "Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models",
+          "authors": "Lucy Xiaoyang Shi, Brian Ichter, Michael Equi, Liyiming Ke 외 (Physical Intelligence, Stanford)",
+          "summary_ko": "복잡한 지시와 실행 중 사람의 말 피드백('그거 아니야, 왼쪽 컵')을 처리하기 위해, 고수준 VLM이 상황을 보고 다음 단계의 짧은 원자 명령을 만들어 저수준 VLA(π0)에 내려보내는 2계층 구조. 고수준 모델을 합성 대화 데이터로 학습시켜, 단일 계층 VLA가 못 푸는 개방형 지시·중간 개입·다단계 청소 같은 태스크를 여러 로봇 플랫폼에서 수행한다.",
+          "tags": [
+            "Hierarchical VLA",
+            "VLM Planner",
+            "Open-Ended Instruction",
+            "Human Feedback",
+            "Physical Intelligence"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2502.19417",
+          "extra_url": "https://www.pi.website/research/hirobot",
+          "date": "2025-02-26",
+          "reason": "컬렉션에 Hierarchical VLA가 두텁게 쌓여 있고(2607.16636 options framework, 2607.29613 hierarchical + world model, 2608.02547 2D path 계층 VLA), 보유한 π0(2501.09747)·π0.5(2504.16054)의 '고수준 추론을 어떻게 붙일까'라는 후속 질문에 Physical Intelligence가 직접 답한 논문이 바로 이것이다. 특히 사람 말 피드백을 실행 중 반영하는 부분은 보유한 Agentic Orchestrator 계열(2607.22530 등)과 직접 비교된다.",
+          "rec_date": "2026-09-30"
+        },
         {
           "id": "2410.21845",
           "title": "Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning",
@@ -658,78 +730,6 @@
           "date": "2024-09-30",
           "reason": "컬렉션의 몸체 간 전이 논의가 대부분 '잠재 행동을 공유하자'는 방향인 데 비해, HPT는 '입출력만 로봇별로 두고 몸통 표현을 공유하자'는 아키텍처 차원의 정답지를 제시합니다. 좋아요 표시한 고유수용감각 설계 연구(2608.03052)가 다루는 바로 그 입력을 몸체 간 정렬 대상으로 삼고, Octo(2405.12213)·CrossFormer 계열과 나란히 놓으면 공유 방식의 스펙트럼이 한눈에 잡힙니다. 또 데이터셋 52개 규모의 스케일링 거동 분석은 컬렉션의 스케일링 법칙 논문(2410.18647)과 직접 이어집니다.",
           "rec_date": "2026-09-23"
-        },
-        {
-          "id": "2411.00785",
-          "title": "IGOR: Image-GOal Representations are the Atomic Control Units for Foundation Models in Embodied AI",
-          "authors": "Xiaoyu Chen, Junliang Guo, Tianyu He et al.",
-          "summary_ko": "사람과 여러 종류의 로봇이 공유하는 하나의 의미 일관적인 행동 공간을 배우는 것이 목표다. 시작 이미지와 목표 상태 이미지 사이의 '시각적 변화'를 잠재 행동(latent action, 행동 라벨 없이 영상에서 추출한 숨은 움직임 코드)으로 압축하는 방식이라, 인터넷 규모 영상에 자동으로 잠재 행동 라벨을 붙일 수 있고 그 위에서 기반 정책 모델과 월드 모델(다음 장면을 예측하는 모델)을 함께 학습한다. 세 가지를 보인다 — (1) 사람과 로봇 모두에 대해 물체가 어떻게 움직이는지를 나타내는 의미적으로 일관된 행동 공간이 학습되고, (2) 잠재 행동 모델과 월드 모델을 함께 쓰면 한 영상 속 물체 움직임을 사람↔로봇을 넘나들며 다른 영상으로 '이식'할 수 있으며, (3) 기반 정책 모델로 잠재 행동을 자연어와 정렬한 뒤 저수준 정책과 결합해 실제 로봇 제어를 수행할 수 있다.",
-          "tags": [
-            "Latent Action",
-            "Cross-Embodiment",
-            "Human Video",
-            "World Model",
-            "Unified Action Space"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2411.00785",
-          "extra_url": "",
-          "date": "2024-10-17",
-          "reason": "컬렉션이 이미 보유한 LAPA(2410.11758)가 '프레임 간 변화를 이산 토큰으로' 압축한다면, IGOR는 '시작–목표 이미지 쌍의 변화'를 잠재 행동으로 삼아 사람과 로봇을 같은 공간에 올립니다. 좋아요 표시한 2606.19980·2607.11397(WALA)과 같은 계보이면서, 잠재 행동 모델과 월드 모델을 결합해 움직임을 다른 영상으로 이식한다는 점에서 컬렉션의 사람 영상 활용 계열(2608.18948 영상 편집 기반 전이, 2608.29242 크로스임바디먼트 영상 생성, 2608.26058 카메라 중심 사람 영상 사전학습)이 뒤에서 참조하는 원류에 해당합니다.",
-          "rec_date": "2026-09-23"
-        },
-        {
-          "id": "2305.16291",
-          "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
-          "authors": "Guanzhi Wang, Yuqi Xie, Yunfan Jiang et al.",
-          "summary_ko": "대규모 언어 모델(GPT-4)을 블랙박스로 질의만 하면서 마인크래프트 세계를 끝없이 탐험하고 스킬을 모으는 최초의 평생 학습 에이전트다. 세 요소로 구성되는데, 탐험량을 최대화하는 자동 커리큘럼, 복잡한 행동을 '실행 가능한 코드' 형태로 저장·검색하는 계속 커지는 스킬 라이브러리, 그리고 환경 피드백·실행 에러·자기 검증을 프롬프트에 되먹여 프로그램을 고치는 반복 프롬프팅이다. 모델 파라미터를 전혀 미세조정하지 않으며, 획득한 스킬은 시간적으로 길고 사람이 읽을 수 있고 조합 가능해 능력이 빠르게 누적되고 파국적 망각(새 것을 배우며 옛 것을 잊는 현상)을 완화한다. 고유 아이템 3.3배, 이동 거리 2.3배, 기술 트리 도달 속도 최대 15.3배로 기존 최고 성능을 앞서고, 학습한 스킬 라이브러리를 새 월드에 그대로 옮겨 새 과제를 푼다.",
-          "tags": [
-            "LLM Agent",
-            "Skill Library",
-            "Lifelong Learning",
-            "Code Generation",
-            "Self-Verification"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2305.16291",
-          "extra_url": "https://voyager.minedojo.org/",
-          "date": "2023-05-25",
-          "reason": "좋아요 논문 4편(ASPIRE, ENPIRE 2606.19980, GaP 2607.05369, Harness VLA 2607.08448)이 모두 '코딩 에이전트 + 스킬 라이브러리 + 자기 검증 루프'라는 동일한 골격을 로봇 쪽으로 옮긴 것인데, 그 골격의 원형이 바로 이 논문입니다. 자동 커리큘럼·실행 가능한 코드 스킬·환경 피드백 반복 프롬프팅이라는 3요소가 ASPIRE의 iterative exploration과 ENPIRE의 real-world self-improvement에 거의 1:1로 대응하므로, 로봇 논문들이 무엇을 계승하고 무엇을 바꿨는지(실물 안전, 물리 실패의 비가역성 등) 구분하는 기준선이 됩니다. PhyAgentOS(2607.16636)·ABot-AgentOS(2607.10350)의 평생 메모리 설계와도 직접 연결됩니다.",
-          "rec_date": "2026-09-22"
-        },
-        {
-          "id": "2503.20020",
-          "title": "Gemini Robotics: Bringing AI into the Physical World",
-          "authors": "Gemini Robotics Team, Saminda Abeyruwan, Joshua Ainslie et al.",
-          "summary_ko": "Gemini 2.0을 토대로 만든 로봇 전용 모델 계열로, 로봇을 직접 제어하는 시각-언어-행동(VLA) 범용 모델 Gemini Robotics와 그 기반인 체화 추론 모델 Gemini Robotics-ER 두 가지를 제시한다. Gemini Robotics는 물체 종류·위치 변화와 미지 환경, 자유로운 어휘의 지시에 강건하게 부드럽고 반응적인 조작을 수행하며, 추가 미세조정으로 장기 지평의 고난도 정밀 과제, 시연 100개 수준의 신규 단기 과제 학습, 완전히 새로운 로봇 몸체 적응까지 특화된다. Gemini Robotics-ER은 Gemini의 멀티모달 추론을 물리 세계로 확장해 물체 검출, 포인팅(가리키기), 궤적·파지 예측, 다시점 대응, 3차원 경계 상자 예측을 제공한다. 이 계열 모델군에 필요한 안전 고려사항도 함께 논의한다.",
-          "tags": [
-            "VLA",
-            "Foundation Model",
-            "Embodied Reasoning",
-            "Cross-Embodiment",
-            "Safety"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2503.20020",
-          "extra_url": "",
-          "date": "2025-03-25",
-          "reason": "보유 논문 CLIFT(2607.29172)가 가중치 비공개인 Gemini Robotics On-Device를 API만으로 휴머노이드 특화시키는 연구인데, 그 대상 모델의 원 논문이 컬렉션에 없습니다. 또한 π0(2410.24164)·π0.5(2504.16054)·π0.7(2604.15483)·GR00T N1(2503.14734)과 같은 세대의 대표 VLA 기반 모델이면서, '고수준 체화 추론(ER) 모델과 저수준 제어 모델을 분리'하는 구조는 컬렉션이 많이 다루는 계층적 VLA(τ0-VLA 2608.16885, HAMSTER 2502.05485, 2606.10267의 오케스트레이션 연구)의 상업적 원형입니다. 시연 100개로 신규 과제, 새 몸체 적응이라는 주장은 cross-embodiment 계열 논문들의 비교 기준으로도 자주 인용됩니다.",
-          "rec_date": "2026-09-22"
-        },
-        {
-          "id": "2312.10812",
-          "title": "Learning to Act without Actions (LAPO)",
-          "authors": "Dominik Schmidt, Minqi Jiang",
-          "summary_ko": "웹에 가장 많은 체화 행동 데이터인 영상에는 행동 라벨이 없어 강화학습이 대규모 사전학습의 혜택을 못 받는다는 문제를 정면으로 다룬다. 제안하는 LAPO(Latent Action Policies, 잠재 행동 정책)는 영상만으로 잠재 행동 정보를 복원하고, 그로부터 잠재 행동 정책·세계 모델·역동역학 모델(관측 변화로부터 어떤 행동이 있었는지 되짚는 모델)을 함께 얻는다. 절차적으로 생성되는 까다로운 환경에서도 관측된 동역학만 보고 '진짜 행동 공간의 구조'를 복원한 최초의 방법이다. 이렇게 얻은 잠재 행동 정책은 소량의 행동 라벨 데이터로 오프라인 미세조정하거나 보상으로 온라인 미세조정해 전문가 수준으로 빠르게 끌어올릴 수 있다.",
-          "tags": [
-            "Latent Action",
-            "Video Pretraining",
-            "Inverse Dynamics",
-            "World Model",
-            "Action-Free"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2312.10812",
-          "extra_url": "",
-          "date": "2023-12-17",
-          "reason": "컬렉션의 잠재 행동 계열 전체가 이 논문의 자식입니다. 보유 중인 LAPA(2410.11758)는 LAPO를 VLA 사전학습으로 옮긴 것이고, '무엇이 잠재 행동에서 중요한가'(2608.19613)는 명시적으로 LAPO를 설계 공간의 기준점으로 삼으며, WALA(2607.11397, 좋아요)·DLAM(2607.27138)·CD-LAM(2607.09185)은 각각 실행 가능성·분포 확장·인과 편향 제거로 LAPO의 약점을 보완합니다. 원 논문에서 '잠재 행동 + 세계 모델 + 역동역학'이 한 묶음으로 나온다는 점을 보면, 컬렉션이 세계 모델 축과 잠재 행동 축을 왜 계속 함께 다루는지가 설명됩니다. 방금 추천한 2609.19846(유사도 감독)의 직접적 baseline이기도 합니다.",
-          "rec_date": "2026-09-22"
         }
       ]
     }
