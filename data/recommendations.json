@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-04",
+  "generated": "2026-10-05",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2609.39018",
+          "title": "Make Code as Policy Great Again: Frontier Agents Write, Call, and Evolve Robot Tools",
+          "authors": "Shijia Ge, Alex Zhou, Jianshu Zeng 외 (총 15명)",
+          "summary_ko": "로봇 동작을 코드로 생성하는 기존 'Code as Policy' 방식을 되살린 연구다. URAI(Universal Robot-Agent Interface)라는 구조에서, 도구(로봇이 쓸 함수·스크립트)를 작성하는 '프로그래밍 에이전트'와 그 도구를 실제로 호출해 실행하는 '실행 에이전트'를 분리해 짝지웠다. 핵심 설계는 모든 판단을 생성된 프로그램 한 덩어리에 맡기지 않고, 도구 호출 사이사이마다 대형 모델이 다시 끼어들어 판단하도록 남겨둔 것(model-level decision-making)이다. 로봇 시뮬레이션 벤치마크 RoboDojo에서 성공률이 18.0%에서 53.0%로 올랐고, 에피소드를 1.3~1.5배 빨리 끝내면서 실행 에이전트가 뱉는 출력 토큰(출력 글자 수)은 1.5~1.7배 적었다.",
+          "tags": [
+            "Agentic Robotics",
+            "Code as Policy",
+            "Tool Evolution",
+            "Coding Agent",
+            "RoboDojo"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.39018",
+          "extra_url": "",
+          "date": "2026-09-30",
+          "reason": "보유 논문 중 좋아요를 누른 에이전트 계열과 정면으로 맞물린다. ASPIRE(에이전트가 탐색하며 스킬을 코드로 프로그래밍)·GaP(그래프를 정책으로 쓰는 다중 에이전트 자가 학습)·ENPIRE(실세계 자가 개선)는 모두 '코딩 에이전트가 로봇 스킬을 직접 써서 쌓아간다'는 틀을 공유하는데, 이 논문은 그 틀에서 빠져 있던 '도구를 쓰는 주체와 만드는 주체를 나눈다'는 설계 축을 제시한다. 또 컬렉션의 고전인 Code as Policies(2209.07753)의 직계 후속이면서, Harness VLA(2607.08448, 좋아요)가 보여준 '고정된 VLA를 에이전트가 감싸 지휘한다'는 접근과 'VLA 없이 코드만으로 간다'는 접근을 비교해 볼 수 있는 대조군이 된다.",
+          "rec_date": "2026-10-05"
+        },
+        {
+          "id": "2609.36471",
+          "title": "Staircase Policy: Streaming Inference for World-Action Models with Large Action Chunks",
+          "authors": "Guoheng Sun, Chen Chen, Jin Wang, Ang Li, Teresa Lv",
+          "summary_ko": "월드-액션 모델(WAM, 미래 관측을 예측해 그 예측에 기대어 행동을 생성하는 모델)은 성능은 좋지만 '미래 예측 + 반복적 행동 생성'으로 추론이 두 배로 느려진다. 액션 청킹(한 번 추론으로 여러 스텝의 행동을 한꺼번에 뽑는 기법)으로 비용을 분산할 수 있으나, 청크 뒷부분 행동은 오래된 관측에 기대게 되어 긴 구간에서 성능이 떨어진다. 이 논문은 흐름 정합(flow matching) 기반 VLA를 JEPA식(픽셀 복원 없이 잠재 공간에서 미래를 맞히는 방식) WAM으로 바꾸고, 큰 청크를 노이즈 제거 단계가 서로 엇갈린 여러 서브 청크로 쪼갠다. 앞쪽 행동은 준비되는 즉시 내보내고 뒤쪽은 계속 다듬으며, 서브 청크 경계마다 최신 관측으로 미래 잠재를 다시 예측해 아직 실행 안 된 행동을 모두 갱신한다. LIBERO 97.7%, LIBERO-Plus 87.9%에 초당 292.7개 행동 실행을 달성했다.",
+          "tags": [
+            "World Action Model",
+            "Streaming Inference",
+            "Action Chunking",
+            "JEPA",
+            "Flow Matching"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.36471",
+          "extra_url": "",
+          "date": "2026-09-29",
+          "reason": "컬렉션에서 가장 비중이 큰 축인 '비동기·실시간 추론'의 WAM 버전이다. τ0-VLA(2607.15207, 스트리밍 디코딩 + 청크 단위 인과 주의로 30Hz 제어)와 RTC(추천 pool의 2506.07339, 실시간 액션 청킹 흐름 정책)가 모두 '지연 중에도 청크를 끊기지 않게 잇는' 문제를 다루는데, 이 논문은 거기에 '미래 예측까지 포함한 WAM을 어떻게 끊김 없이 스트리밍할까'를 더한다. pool의 RAVEL(2609.34170, 흐름 기반 VLA 비동기 롤링 추론)과 직접 비교 대상이며, 좋아요를 누른 Xiaomi-Robotics-U0(2607.11643, 월드 파운데이션 모델 기반 통합 합성)처럼 미래 예측을 쓰는 정책을 실제 로봇 속도로 돌릴 때의 공학적 답안이다.",
+          "rec_date": "2026-10-05"
+        },
+        {
+          "id": "2609.40341",
+          "title": "Ego4WAM: What Matters When Scaling Egocentric Human Data for Robot Learning?",
+          "authors": "Zhihao Sun, Liu Liu, Xinjiang Wang 외 (총 9명)",
+          "summary_ko": "사람 1인칭(에고센트릭, 머리·가슴에 단 카메라) 영상은 로봇 학습 데이터를 값싸게 늘릴 수 있는 통로지만, 사람-로봇 간 시점·동작 정합도, 다루는 행동의 범위, 라벨 유무가 천차만별이다. 이 논문은 하나의 월드-액션 모델 틀 안에서 그 변수들을 따로따로 떼어 측정한 체계적 실험 연구다. 결론은 (1) 로봇과 잘 정합된 사람 시범 데이터는 분포 밖(OOD, 학습에서 못 본 상황) 일반화를 크게 올리고 목표 과제용 로봇 데이터 요구량을 줄인다, (2) 데이터 총 길이와 과제 다양성은 서로 다른 능력에 영향을 준다, (3) 행동 라벨(어떤 관절을 얼마나 움직였는지) 없는 '영상만' 학습도 이후 영상-행동 학습의 준비 단계로 충분히 효과적이다. 실제 로봇과 RoboDojo 시뮬레이션에서 폐루프(실제로 굴려보는) 평가로 검증했다.",
+          "tags": [
+            "Egocentric Human Data",
+            "World Action Model",
+            "Data Scaling",
+            "Empirical Study",
+            "OOD Generalization"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2609.40341",
+          "extra_url": "",
+          "date": "2026-09-30",
+          "reason": "좋아요를 누른 WALA(2607.11397, 행동 라벨 있는 시범과 라벨 없는 영상에서 실행 가능한 잠재 행동을 배움)와 Xiaomi-Robotics-1(2607.15330, 10만 시간 실제 궤적으로 VLA 스케일링)이 각각 던진 질문 — '라벨 없는 사람 영상이 정말 유용한가', '데이터를 늘리면 무엇이 좋아지나' — 에 대해 변수를 통제한 답을 준다. 컬렉션에 이미 사람 영상 계열(2607.09185 카메라 중심 사람 영상 사전학습, 2607.03570 사람 영상 편집 데이터셋, 2607.27782 1인칭 영상 리타게팅 합성)이 여러 편 있는데, 이 논문은 그중 '어떤 종류의 사람 데이터를 얼마나 모아야 하는가'라는 설계 지침 역할을 한다.",
+          "rec_date": "2026-10-05"
+        },
         {
           "id": "2610.01559",
           "title": "Completion Aware Guidance for World Action Models",
@@ -92,7 +146,7 @@
           "arxiv_url": "https://arxiv.org/abs/2609.39822",
           "extra_url": "",
           "date": "2026-09-30",
-          "reason": "컬렉션에서 가장 두터운 축 중 하나인 추론 지연·비동기 실행 계열(2609.18207, 2608.23831, 2608.27384, 2607.14695, 2608.14379)의 '시스템 레벨 종합 평가판'에 해당한다. 기존 논문들이 각자 하나의 기법(스트리밍 디코딩, KV 캐시, 액션 편집)을 제안했다면 이 논문은 6가지 실시간 실행 기법을 같은 하드웨어·같은 과제에서 줄 세워 비교하므로, 보유 논문들의 주장을 교차 검증하는 기준점으로 쓸 수 있다. 또 2607.09648·2608.02547이 다룬 동작 연속성·가속도 평활도 지표를 함께 측정한다.",
+          "reason": "컬렉션에서 가장 비중이 큰 축 중 하나인 추론 지연·비동기 실행 계열(2609.18207, 2608.23831, 2608.27384, 2607.14695, 2608.14379)의 '시스템 레벨 종합 평가판'에 해당한다. 기존 논문들이 각자 하나의 기법(스트리밍 디코딩, KV 캐시, 액션 편집)을 제안했다면 이 논문은 6가지 실시간 실행 기법을 같은 하드웨어·같은 과제에서 줄 세워 비교하므로, 보유 논문들의 주장을 교차 검증하는 기준점으로 쓸 수 있다. 또 2607.09648·2608.02547이 다룬 동작 연속성·가속도 평활도 지표를 함께 측정한다.",
           "rec_date": "2026-10-03"
         },
         {
@@ -276,42 +330,6 @@
           "rec_date": "2026-09-29"
         },
         {
-          "id": "2609.30092",
-          "title": "Self-Adaptive VLA for Robust Robot Deployment",
-          "authors": "Hongxin Zhang, Chunru Lin, Tsun-Hsuan Wang 외",
-          "summary_ko": "로봇 하드웨어가 마모되거나 캘리브레이션(센서·관절 영점 보정)이 어긋나면 VLA 정책이 급격히 무너지는데, 이 논문은 정책이 스스로 실행한 rollout(실제로 굴려본 시도 기록)을 문맥으로 삼아 배포 중에 적응하게 만든다. 일부러 하드웨어 오차를 주입해 모은 데이터로 전문가 행동을 미리 보정해 학습시키고, 시각·고유수용감각(관절 각도 등 자기 몸 상태 감지)·행동을 하나의 latent context token(압축된 상황 벡터)으로 요약해 AdaLN(적응형 레이어 정규화)으로 정책을 변조한다. 이 토큰들을 앙상블하면 정책이 단계적으로 자기 교정을 하며, 구동기 편향·관절 엔코더 오프셋 상황에서 원래 성능의 80% 이상을 회복한다.",
-          "tags": [
-            "VLA",
-            "Test-Time Adaptation",
-            "Hardware Shift",
-            "Context Token",
-            "AdaLN"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.30092",
-          "extra_url": "",
-          "date": "2026-09-24",
-          "reason": "컬렉션에는 테스트 시점 적응 계열(2607.15275 Test-Time Training, 2608.25798 EATA, 2609.21740 계열)과 강건성 계열(2609.03142 센서 손상 강건성, 2609.24350 시각 강건성)이 함께 있는데, 이 논문은 '환경'이 아니라 '로봇 몸체 자체가 틀어지는' 축을 다룬다는 점에서 빈칸을 메운다. 특히 좋아요를 누른 2607.18231(Force Memory)처럼 실행 이력을 정책 입력으로 되먹이는 구조라서 계보가 직접 이어지고, 2608.19490(자기 시연 기반 파인튜닝)과는 '자기 rollout을 학습 신호로 쓴다'는 아이디어를 공유하면서 재학습 없이 추론 시 문맥만으로 해결한다는 점이 대조된다.",
-          "rec_date": "2026-09-27"
-        },
-        {
-          "id": "2609.29382",
-          "title": "Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs",
-          "authors": "Riccardo Andrea Izzo, Rimvydas Rubavicius, Gianluca Bardaro 외",
-          "summary_ko": "flow matching(노이즈에서 행동으로 가는 연속 경로를 배우는 생성 방식) 기반 VLA의 연산량을 줄이기 위해, 지금까지는 주로 VLM 백본의 층을 건너뛰거나 denoising step(노이즈 제거 반복 횟수)만 줄였다. 이 논문은 백본 깊이 V, 액션 전문가 깊이 A, denoising step 수 D를 서로 독립적으로 조절 가능한 세 개의 연산 축으로 노출시키고, 각 중간 깊이에 가벼운 Exit Transformer를 붙여 마지막 층의 출력을 증류(distillation)한다. 건너뛴 백본 층의 key/value를 합성해 주는 KV Cache synthesis 덕분에 액션 전문가가 백본보다 더 깊은 지점에서 빠져나올 수 있고, SmolVLA·π0.5에서 지연 79.2%·연산량 31.8% 감소와 함께 성공률은 5.6% 올라간다. 최적 예산이 작업마다 다르다는 점도 보인다.",
-          "tags": [
-            "VLA",
-            "Flow Matching",
-            "Early Exit",
-            "Inference Latency",
-            "KV Cache"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.29382",
-          "extra_url": "",
-          "date": "2026-09-24",
-          "reason": "추론 지연 축소는 컬렉션의 핵심 줄기 중 하나로 2607.14695(Streaming Inference·KV Cache), 2608.27384(Streaming Decoding), 2608.14379(Latency·CUDA Graph), 2609.18207(Inference Latency·Async)이 모두 '언제 내보낼지(스케줄링)'를 건드린다. 반면 이 논문은 '얼마나 깊이 계산할지(깊이 배분)'라는 직교하는 축을 제시하고, 특히 백본과 액션 전문가의 깊이를 분리한다는 점이 2609.03052(고유수용감각 설계 연구)나 2608.03052류의 설계 분석과 짝을 이룬다. 보유 중인 SmolVLA(2506.01844)와 π0.5를 그대로 실험 대상으로 삼아 재학습 없이 붙일 수 있어 바로 비교 가능하다.",
-          "rec_date": "2026-09-27"
-        },
-        {
           "id": "2609.24033",
           "title": "Imagine-RL: Residual-Confidence-Guided Cross-Attention for World-Model-Augmented VLA Reinforcement Learning",
           "authors": "Kejia Hu, Wentong Zhai, Bo Zhao 외",
@@ -328,24 +346,6 @@
           "date": "2026-09-21",
           "reason": "보유한 2608.23831(DSRL 기반 실세계 RL)의 직접적인 후속 비교 대상이며, DSRL 비평가(critic)가 미래 결과를 못 본다는 한계를 정확히 겨냥한다. 동시에 2607.29613(VLA RL + World Model 비평가, LeJEPA)과 같은 설계 공간에 있으면서 픽셀 복원을 버리고 잠재 표현만 쓴다는 선택이 다르고, 좋아요를 누른 2607.18231(Force Memory)과 2609.01596·2608.01402(힘/토크 기반 접촉 조작)처럼 토크를 1급 모달리티로 다룬다. 예측 잔차를 신뢰도로 환산하는 아이디어는 2607.26789(Conformal 기반 VLA 검증)와도 맞물려 '상상한 미래를 얼마나 믿을 것인가'라는 질문을 공유한다.",
           "rec_date": "2026-09-27"
-        },
-        {
-          "id": "2609.24976",
-          "title": "DexTacWAM: A Visuo-Tactile World-Action Model for Dexterous Manipulation",
-          "authors": "Haoran Yuan, Zekai Wang, Boning Shao, Haoran Lu, Trevor Darrell, Ismini Lourentzou, Wei Zhan · UC Berkeley",
-          "summary_ko": "기존 WAM(세계-행동 모델)은 영상 중심이라 눈에 잘 안 보이는 접촉 동역학을 못 다룬다. DexTacWAM은 손가락 끝마다 촉각을 따로 인코딩한 뒤 손가락·자세를 아는 압축기로 묶어, 그 촉각 잠재변수를 영상 확산 세계모델 안에 주입해 '영상+촉각'을 함께 예측한다. 22자유도 양팔 플랫폼의 접촉 많은 6개 과제 전부에서 1위(평균 70.6 vs 최고 베이스라인 38.0). 촉각을 조건으로만 쓰고 세계 상태 예측에서 빼면 74.7→26.6으로 무너져, 접촉 '변화'를 예측 대상에 넣는 것이 핵심임을 보였다. 사전학습된 영상 VAE는 얼려둔 채 촉각 인코더만 4시간 적응시키고 과제당 약 100개 시연으로 확장된다.",
-          "tags": [
-            "Visuo-Tactile",
-            "World Action Model",
-            "Dexterous Manipulation",
-            "Video Diffusion",
-            "Contact Dynamics"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.24976",
-          "extra_url": "",
-          "date": "2026-09-21",
-          "reason": "보유한 ViTacWorld(2607.22530, Xense 촉각 + Cosmos 세계모델)와 문제의식이 같지만, '촉각을 조건 입력으로 넣기 vs 예측 대상에 포함하기'를 절제 실험으로 갈라낸 점이 새롭다. 또 N0-VTLA(2607.23782, 잠재 촉각 토큰)·TacForcing(2608.25798)·Motus2(2608.30237, 촉각 + Best-of-N 계획)와 직접 비교 가능한 축을 제공한다. 동결 영상 사전학습을 촉각으로 확장하는 저비용 레시피라는 점에서 2608.30237의 확장판으로 읽힌다.",
-          "rec_date": "2026-09-26"
         }
       ]
     },
@@ -353,6 +353,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2302.00111",
+          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
+          "authors": "Yilun Du, Mengjiao Yang, Bo Dai 외",
+          "summary_ko": "순차적 의사결정(무엇을 어떤 순서로 할지 정하는 문제)을 '글로 조건을 준 영상 생성'으로 다시 정의한 선구적 연구다. 과제를 글로 적어 주면 플래너가 그 과제를 수행하는 미래 프레임들을 영상으로 그려내고, 그렇게 그려진 영상에서 역동역학(두 프레임 사이 변화를 보고 어떤 행동이었는지 역추정하는 모델)으로 제어 신호를 뽑아낸다. 글을 매개로 쓰기 때문에 학습에서 못 본 목표 조합으로의 조합적 일반화가 생기고, 모든 것을 '이미지 공간'에서 다루므로 서로 다른 로봇 환경을 한 공간에 통합할 수 있다. 사전학습된 언어 모델과 인터넷 영상 지식을 실제 로봇 조작으로 옮기는 경로를 처음 제시한 축에 든다.",
+          "tags": [
+            "World Model",
+            "Video Generation",
+            "Universal Policy",
+            "Inverse Dynamics",
+            "Foundational"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2302.00111",
+          "extra_url": "https://universal-policy.github.io/",
+          "date": "2023-01-31",
+          "reason": "지금 컬렉션을 뒤덮고 있는 월드-액션 모델 흐름의 뿌리에 해당하는데 아직 안 본 논문이다. 좋아요를 누른 Xiaomi-Robotics-U0(2607.11643, 월드 파운데이션 모델로 통합 합성)과 컬렉션의 2608.03052(Cosmos 계열 월드 파운데이션 모델), 2607.22530(영상 월드 모델) 들은 모두 '미래를 영상으로 그려 행동을 끌어낸다'는 UniPi의 발상을 규모와 아키텍처만 바꿔 확장한 것이다. 왜 WAM이 영상 생성으로부터 시작됐는지, 또 현재 추천 pool의 '잠재 공간에서만 예측하자'(V-JEPA Policy 2609.37250, Staircase Policy)는 반작용이 무엇에 대한 반작용인지 이해하는 기준점이 된다.",
+          "rec_date": "2026-10-05"
+        },
+        {
+          "id": "2412.08261",
+          "title": "FLIP: Flow-Centric Generative Planning as General-Purpose Manipulation World Model",
+          "authors": "Chongkai Gao, Haozhuo Zhang, Zhixuan Xu 외",
+          "summary_ko": "이미지 위 점들의 이동 궤적(여기서 flow는 광학 흐름처럼 '화면의 어느 점이 어디로 가는지'를 뜻한다)을 범용 행동 표현으로 삼아 조작용 월드 모델을 만든 모델 기반 계획 연구다. 세 모듈로 이뤄진다 — (1) 여러 가지 가능한 흐름 후보를 생성하는 다중 모드 흐름 생성 모듈(행동 제안 역할), (2) 그 흐름을 조건으로 미래 영상을 만들어 결과를 시뮬레이션하는 흐름 조건 영상 생성 모듈(동역학 역할), (3) 시각-언어 표현으로 그 결과가 얼마나 좋은지 점수를 매기는 가치 추정 모듈. 이 셋을 결합해 할인 보상(미래 보상을 시간에 따라 깎아 합한 값)이 가장 큰 장기 흐름·영상 계획을 점진적으로 탐색한다. 흐름을 공통 행동 언어로 쓰므로 물체와 로봇이 바뀌어도 계획을 이어 붙일 수 있고, 찾아낸 계획으로 하위 제어 정책을 학습시켜 실제 실행까지 연결한다.",
+          "tags": [
+            "World Model",
+            "Optical Flow",
+            "Generative Planning",
+            "Test-Time Search",
+            "Cross-Embodiment"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.08261",
+          "extra_url": "https://nus-lins-lab.github.io/flipweb/",
+          "date": "2024-12-11",
+          "reason": "컬렉션의 2608.27550(광학 흐름 기반 이중 스트림 확산 월드 액션 모델)과 2607.27549(월드 모델 위에서 상상을 탐색하는 VLM 플래너, Best-of-N)가 각각 쓰고 있는 두 요소 — '흐름을 행동 표현으로' 와 '상상 속에서 탐색해 고르기' — 를 처음 한 틀에 합친 원전이다. pool의 Track2Act(2405.01527, 인터넷 영상에서 점 궤적 예측)가 '흐름 예측'까지만 간 반면 FLIP은 거기에 영상 동역학과 가치 함수를 붙여 계획까지 간다. 2607.29172(WAM Best-of-N 테스트 타임 스케일링)처럼 추론 시 계산을 더 써서 성능을 올리는 최근 흐름의 직계 선조이기도 하다.",
+          "rec_date": "2026-10-05"
+        },
+        {
+          "id": "2503.20020",
+          "title": "Gemini Robotics: Bringing AI into the Physical World",
+          "authors": "Gemini Robotics Team (Google DeepMind), Saminda Abeyruwan, Joshua Ainslie 외",
+          "summary_ko": "구글 딥마인드가 Gemini 2.0 위에 올려 만든 VLA(시각-언어-행동) 범용 로봇 제어 모델 계열이다. 로봇을 직접 조종하면서도 끊김 없이 부드럽고 반응이 빠른 움직임을 내며, 물체가 바뀌거나 처음 보는 환경에 놓여도 잘 버틴다. 함께 공개된 Gemini Robotics-ER(ER은 Embodied Reasoning, 몸을 가진 존재로서의 추론)은 공간·시간 이해를 강화해 물체 검출, 궤적 예측, 3차원 분석을 수행한다. 새로운 로봇 몸체(embodiment)로 특화 미세조정을 통해 확장되는 점과 장기 구간 손재주 과제를 다루는 점, 그리고 로봇 파운데이션 모델의 안전 문제를 정면으로 논의한 점이 특징이다.",
+          "tags": [
+            "VLA",
+            "Foundation Model",
+            "Embodied Reasoning",
+            "Cross-Embodiment",
+            "Safety"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2503.20020",
+          "extra_url": "",
+          "date": "2025-03-25",
+          "reason": "컬렉션에 π0(2410.24164)·π0.5(2504.16054)·GR00T N1(2503.14734)·RT-2(2307.15818)·OpenVLA(2406.09246)·Octo(2405.12213) 같은 범용 VLA 대표작이 다 모여 있는데 유일하게 빠진 주요 계열이 Gemini Robotics다. 좋아요를 누른 Xiaomi-Robotics-1(2607.15330, 대규모 실제 데이터로 VLA 스케일링)과 비교하면 '대형 VLM을 기반으로 올려 쓰는' 전략의 원형을 볼 수 있고, Gemini Robotics-ER의 공간 추론·접촉점 예측은 컬렉션의 2609.03142(공간 추론·3D 그라운딩·접촉점을 다루는 임바디드 파운데이션 모델)가 겨냥한 바로 그 지점이다. 안전 논의는 pool에 쌓인 적대적 공격·고장 모드 연구들과도 이어진다.",
+          "rec_date": "2026-10-05"
+        },
         {
           "id": "2506.07339",
           "title": "Real-Time Execution of Action Chunking Flow Policies (RTC)",
@@ -676,60 +730,6 @@
           "date": "2025-05-19",
           "reason": "'영상 생성으로 로봇 학습 데이터를 늘린다'는 줄기에서 보유한 2608.29242(잠재 확산 영상 기반 데이터 생성), 2608.02580(에고센트릭 영상 리타게팅), 2608.18948(영상 편집 기반 크로스 임바디먼트)의 공통 선행 연구인데 아직 컬렉션에 없다. 또한 좋아요를 누른 2607.11397(Latent Action + DINOv3 + World Model)이 쓰는 잠재 행동 복원을 '데이터 합성'이라는 목적으로 돌려 쓴 사례라서, 같은 부품이 다른 목적에 놓였을 때의 차이를 보여 준다. 보유한 GR00T N1(2503.14734)과 같은 NVIDIA GEAR 계열이라 휴머노이드 데이터 피라미드 논의와도 바로 연결된다.",
           "rec_date": "2026-09-27"
-        },
-        {
-          "id": "2502.19645",
-          "title": "Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success (OpenVLA-OFT)",
-          "authors": "Moo Jin Kim, Chelsea Finn, Percy Liang · Stanford",
-          "summary_ko": "VLA를 새 로봇에 맞춰 미세조정할 때 무엇이 중요한지 설계 선택지를 체계적으로 비교한 연구. 결론인 OFT(Optimized Fine-Tuning) 레시피는 네 가지 조합이다 — 행동 토큰을 하나씩 순차 생성하지 않고 한 번에 내는 병렬 디코딩, 여러 스텝을 묶어 내는 행동 청킹, 이산 토큰 대신 연속값 행동 표현, 그리고 복잡한 목적함수 대신 단순 L1 회귀. OpenVLA에 적용한 OpenVLA-OFT는 LIBERO 평균 76.5%→97.1%, 행동 생성 처리량 26배. 실기 양팔 ALOHA에서 π0·RDT-1B의 기본 레시피보다 최대 15%p 높았다.",
-          "tags": [
-            "VLA",
-            "Fine-Tuning Recipe",
-            "Parallel Decoding",
-            "Action Chunking",
-            "LIBERO"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2502.19645",
-          "extra_url": "https://openvla-oft.github.io/",
-          "date": "2025-02-27",
-          "reason": "컬렉션에 OpenVLA(2406.09246)·π0(2410.24164)·FAST(2501.09747)는 있는데, 정작 이후 거의 모든 논문이 베이스라인·기본 레시피로 쓰는 OpenVLA-OFT가 빠져 있다. 보유한 SkillPlug(2607.08354), Why Action Chunking(2608.02547), Know When to Stop(2609.00908), FlashVLA(2608.27384)가 모두 '병렬 디코딩 + 청킹 + 연속 행동'이라는 이 논문의 전제 위에서 논의를 전개하므로, 읽어두면 그 논문들의 비교표가 해석된다.",
-          "rec_date": "2026-09-26"
-        },
-        {
-          "id": "2410.06158",
-          "title": "GR-2: A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation",
-          "authors": "Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong, Hang Li 외 · ByteDance Research",
-          "summary_ko": "인터넷 영상 3,800만 클립·500억 토큰 이상으로 먼저 '세상이 어떻게 움직이는지'를 학습한 뒤, 로봇 궤적으로 영상 생성과 행동 예측을 동시에 미세조정하는 영상-언어-행동 모델. 100개 이상 과제 평균 성공률 97.7%, 처음 보는 배경·환경·물체·과제로도 잘 넘어가며 모델 크기를 키울수록 성능이 따라 오르는 스케일링 경향을 보였다.",
-          "tags": [
-            "Video Pretraining",
-            "World Model",
-            "VLA",
-            "Generalization",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.06158",
-          "extra_url": "https://gr2-manipulation.github.io/",
-          "date": "2024-10-08",
-          "reason": "'영상 생성 사전학습 → 행동 예측'이라는 WAM 계열의 원류 격 논문으로, 보유한 FlowWAM(2607.13017), MVA(2607.19343), LingBot-VA2(2607.08639), Rofacto(2607.22535)가 사실상 이 설계의 변주다. 좋아요한 WALA(2607.11397)·Xiaomi U0(2607.11643)의 '웹 영상 지식을 행동으로 잇는다'는 주장의 실증적 출발점이고, pool의 Streaming-WAM·What Matters in WAM이 비교 기준으로 삼는 계보의 뿌리이기도 하다.",
-          "rec_date": "2026-09-26"
-        },
-        {
-          "id": "2408.17355",
-          "title": "Bidirectional Decoding: Improving Action Chunking via Guided Test-Time Sampling",
-          "authors": "Yuejiang Liu, Jubayer Ibn Hamid, Annie Xie, Yoonho Lee, Maximilian Du, Chelsea Finn · Stanford",
-          "summary_ko": "여러 스텝을 한 번에 예측해 중간 재계획 없이 실행하는 행동 청킹은 시연의 시간적 일관성은 잘 잡지만 예상 밖 상황에 대한 반응성이 떨어진다는 상충을 먼저 분석한다. 해법 BID(Bidirectional Decoding, 양방향 디코딩)는 학습을 바꾸지 않고 추론 시점에만 개입한다 — 매 스텝 후보를 여러 개 뽑아 (i) 직전 결정과 어긋나지 않는지(backward coherence, 후방 일관성), (ii) 이후 계획에서도 가능성이 높은지(forward contrast, 전방 대조) 두 기준으로 고른다. 시뮬레이션 7종·실기 2종에서 최신 생성 정책 두 개의 성능을 모두 끌어올렸다.",
-          "tags": [
-            "Action Chunking",
-            "Test-Time Sampling",
-            "Closed-Loop",
-            "Diffusion Policy",
-            "Training-Free"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2408.17355",
-          "extra_url": "https://bid-robot.github.io/",
-          "date": "2024-08-30",
-          "reason": "보유한 Why Action Chunking(2608.02547, 청킹의 암묵적 앙상블 효과)과 Know When to Stop(2609.00908, 엔트로피로 청크 길이 조절)이 다루는 '일관성 대 반응성' 상충을 최초로 정식화하고 학습 없이 추론만으로 푼 원본이다. GeoBoN(2607.17454)·Motus2(2608.30237)의 Best-of-N 테스트타임 탐색과 같은 계열이라, 후보 여러 개를 뽑아 고르는 계열의 기준선으로 쓰인다.",
-          "rec_date": "2026-09-26"
         }
       ]
     }
