@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-09",
+  "generated": "2026-10-10",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2610.12369",
+          "title": "Embodied Turing Machines: Stateful Code for Robot Recursive Self-Improvement",
+          "authors": "Kairui Hu, Siyuan Hu, Fangzhou Hong 등",
+          "summary_ko": "로봇 제어 루프에서 신경망 모델(VLA = Vision-Language-Action, 영상과 언어 지시를 받아 행동을 내놓는 모델)을 아예 빼버리는 COAP(Code-Only-as-Policy) 패러다임을 제안한다. 카메라 영상과 관절 센서값(proprioception, 로봇이 자기 몸 상태를 감지하는 신호)으로부터 로봇·환경·과제의 '상태'를 코드가 직접 측정하고 기록하며, 모든 판단을 그 상태 변수만 보고 코드로 내린다. 저자들은 세상을 '테이프에 상태가 적히고 규칙이 그것을 읽어 움직이는 튜링 기계'로 보는 비유를 써서, 상태를 정확히 적을 수만 있으면 의사결정은 전부 코드로 쓸 수 있다고 주장한다. 코드로 쓰여 있으니 코딩 에이전트가 라이브러리를 닫힌 루프로 계속 고쳐 쌓는 재귀적 자기개선(RSI, recursive self-improvement — 스스로를 반복해 개량하는 것)이 가능하고, 양팔 과제 42종 벤치마크 RoboDojo에서 테스트 시점에 모델을 하나도 쓰지 않고 성공률 70.24%를 기록했다.",
+          "tags": [
+            "Code as Policy",
+            "Recursive Self-Improvement",
+            "Coding Agent",
+            "Stateful Code",
+            "Bimanual"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12369",
+          "extra_url": "",
+          "date": "2026-10-08",
+          "reason": "초록이 보유 논문 Harness VLA(2607.08448, 좋아요 표시)와 Agent-as-Policy 계열을 직접 비교 대상으로 지목한다 — 그쪽은 실행 중에 VLM(Vision-Language Model, 영상·언어 이해 모델)을 계속 호출하지만 COAP는 모델을 루프에서 완전히 제거한다. 좋아요를 누른 ASPIRE·ENPIRE(2606.19980)·GaP(2607.05369)가 모두 '코딩 에이전트가 스킬 라이브러리를 키운다'는 노선인데 이 논문은 그 노선의 가장 극단적인 형태이고, 보유 중인 '닫힌 루프 로봇 소프트웨어의 학습·전이'(2609.19906)와 pool에 있는 'Make Code as Policy Great Again'(2609.39018)이 던진 질문에 '모델 0개'로 답한다.",
+          "rec_date": "2026-10-10"
+        },
+        {
+          "id": "2610.10846",
+          "title": "Cross-Embodiment Robot Foundation World Models with Latent Actions",
+          "authors": "Huang Huang, Sriram Yenamandra, Arjun Majumdar 등",
+          "summary_ko": "팔 개수·관절 구조·그리퍼가 서로 다른 여러 로봇 기종(embodiment, 몸체)이 함께 쓰는 하나의 '잠재 행동 공간'(latent action space — 실제 관절 명령 대신 학습으로 얻어낸 추상적인 행동 좌표계) 위에서 돌아가는 월드 모델 LAC-WM을 제안한다. 비교 대상인 EAC-WM은 관절 명령을 그대로 조건으로 넣는 방식인데, 이렇게 하면 기종마다 행동 표현이 서로 겹치지 않게 쪼개져서 사전학습에 쓴 기종 수를 늘릴수록 새 로봇 적응 성능이 오히려 떨어졌다. LAC-WM은 손재주 조작(dexterous manipulation)에서 최대 46.7%, 조작 벤치마크 LIBERO에서 11.7% 더 좋았고, 기종 수가 늘어날수록 성능이 함께 올라갔다.",
+          "tags": [
+            "World Model",
+            "Latent Action",
+            "Cross-Embodiment",
+            "Dexterous Manipulation",
+            "Scaling"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.10846",
+          "extra_url": "https://lacwm.github.io/",
+          "date": "2026-10-07",
+          "reason": "좋아요를 누른 WALA(2607.11397)와 보유 중인 GALA(2609.21948)·'행동 유사도 감독으로 잠재 행동 모델의 교차 몸체 전이 개선'(2609.19846)이 모두 '잠재 행동으로 기종 장벽을 넘자'고 주장하는데, 이 논문은 같은 주장을 정책(policy)이 아니라 월드 모델 쪽에서 통제 실험으로 검증한다. 특히 '명시적 관절 조건은 기종을 늘리면 손해'라는 음(-)의 스케일링 결과는 보유 중인 ZETA(2609.02546)의 교차 몸체 제로샷 전이 통제 연구와 AnyWorld(2608.29242)의 인자화된 교차 몸체 월드 모델 논의에 바로 맞물린다.",
+          "rec_date": "2026-10-10"
+        },
+        {
+          "id": "2610.09228",
+          "title": "Co-Evolving Robot Orchestrators and Policies through Deployment",
+          "authors": "Xilun Zhang, Maggie Wang, Erik Bauer 등",
+          "summary_ko": "에이전트형 로봇 시스템은 보통 정책(policy, 영상을 보고 행동을 내는 모델)을 얼려 두고 VLM(Vision-Language Model, 영상·언어 이해 모델) 오케스트레이터가 '언제 정책을 부르고 어떻게 지시하고 언제 대신 스크립트를 쓸지'만 배운다. 그러면 오케스트레이터는 정책의 실패를 피해 다닐 수만 있고 그 실력 한계 자체를 넘지는 못해, 정책이 시스템 전체의 병목이 된다. Robo-COP은 배포 중 로봇이 자기 실행 기록에서 시연 데이터를 직접 모아, 반복되는 실패를 메울 수 있는 데이터가 쌓였을 때만 정책을 미세조정하고, 새 정책이 해당 스킬에서 실제로 나아졌는지 검증한 뒤에만 채택한다. 시뮬레이션 10개 과제에서 미학습 과제 성공률이 64.8%→73.8%, 실제 로봇 3개 과제에서 38.3%→50.0%로 올랐다.",
+          "tags": [
+            "Agentic Robotics",
+            "Orchestrator",
+            "Self-Improvement",
+            "Frozen VLA",
+            "Deployment"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.09228",
+          "extra_url": "https://robo-cop.pages.dev/",
+          "date": "2026-10-06",
+          "reason": "좋아요를 누른 '로봇 정책 오케스트레이션에서 무엇이 중요한가'(2606.10267)와 Harness VLA(2607.08448)가 공통으로 남긴 한계 — 정책을 얼려 두면 상위 오케스트레이터가 정책의 실력 상한을 넘을 수 없다 — 를 정면으로 겨눈다. 역시 좋아요를 누른 ENPIRE(2606.19980)의 실세계 자기개선과 보유 중인 RoboHarness(2607.18060)의 메모리 기반 오케스트레이션을 한 루프로 묶은 형태이며, '검증 없이 정해진 일정대로 미세조정하면 65.8%에 그친다'는 대조 실험이 자기개선 루프 설계에 특히 참고가 된다.",
+          "rec_date": "2026-10-10"
+        },
         {
           "id": "2610.10515",
           "title": "RoboJEPA: Scaling Robotic Latent World Models",
@@ -276,42 +330,6 @@
           "rec_date": "2026-10-04"
         },
         {
-          "id": "2610.02054",
-          "title": "UniWAM: Unified World-Action Model",
-          "authors": "Jiayi Chen, Wenxuan Song, Jingbo Wang, Shuai Zhou 외",
-          "summary_ko": "물리 추론기(장면의 물리적 상황을 언어로 이해하는 모듈)·월드 생성기(미래 영상을 만드는 모듈)·행동 예측기를 하나의 모델에 통합하고, 저수준 로봇 동작을 자연어로 표현해 사전학습된 비전-언어 모델(VLM)의 언어 능력을 유지한 채 학습한다. 사람의 1인칭(에고센트릭) 영상과 로봇 시연을 함께 쓰는 공동 학습에서 데이터 양 대비 성능이 로그-선형으로 꾸준히 오르는 스케일링 법칙을 확인했다.",
-          "tags": [
-            "World Action Model",
-            "Unified Architecture",
-            "Scaling Law",
-            "Human Egocentric Data",
-            "Flow Matching"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.02054",
-          "extra_url": "",
-          "date": "2026-10-01",
-          "reason": "컬렉션의 WAM(World Action Model, 미래 영상과 행동을 함께 예측하는 모델) 계열(2607.17454, 2607.29235, 2607.13017)과 VLA 파운데이션 계열(2607.15330, 2608.27550)을 한 아키텍처로 합친 최신 사례다. 특히 2607.15330(UMI 기반 스케일링 법칙)이 데이터 규모 대비 성능 곡선을 다뤘다면, UniWAM은 '사람 영상 + 로봇 데이터 혼합' 공동 학습에서의 로그-선형 스케일링을 보여 2608.26058·2608.29242(사람 영상 활용 사전학습)과 직접 비교할 축을 제공한다. 또 행동 이력 조건부 플로우 매칭으로 디노이징(노이즈 제거 반복) 횟수를 줄인 점은 2608.27384·2607.14695의 실시간 추론 논의와도 맞물린다.",
-          "rec_date": "2026-10-03"
-        },
-        {
-          "id": "2609.39822",
-          "title": "Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation",
-          "authors": "Di Wu, Rongtian Shen, Ping Liu, Yan Shen 외",
-          "summary_ko": "VLA의 느린 추론과 빠른 로봇 제어 주기 사이의 '타이밍 격차'를 모델 추론 시간과 로봇 실행 체인(센서 취득·통신 스케줄링·물리 반응)으로 나눠 실측했다. 플로우 매칭의 속도장(velocity field)이 초반에는 크기·방향이 안정적이고 종단 근처에서만 크게 꺾이는 성질을 이용해 디노이징을 2단계 비균일 스텝으로 줄여 추론을 61.6ms→22.0ms로 단축하고, π0.5 기반으로 6가지 실시간 실행 기법을 긴 호라이즌 빨래 접기 과제에서 비교했다.",
-          "tags": [
-            "Real-Time Control",
-            "Flow Matching",
-            "Denoising Steps",
-            "System Latency",
-            "π0.5"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.39822",
-          "extra_url": "",
-          "date": "2026-09-30",
-          "reason": "컬렉션에서 가장 비중이 큰 축 중 하나인 추론 지연·비동기 실행 계열(2609.18207, 2608.23831, 2608.27384, 2607.14695, 2608.14379)의 '시스템 레벨 종합 평가판'에 해당한다. 기존 논문들이 각자 하나의 기법(스트리밍 디코딩, KV 캐시, 액션 편집)을 제안했다면 이 논문은 6가지 실시간 실행 기법을 같은 하드웨어·같은 과제에서 줄 세워 비교하므로, 보유 논문들의 주장을 교차 검증하는 기준점으로 쓸 수 있다. 또 2607.09648·2608.02547이 다룬 동작 연속성·가속도 평활도 지표를 함께 측정한다.",
-          "rec_date": "2026-10-03"
-        },
-        {
           "id": "2609.39794",
           "title": "Inline Memory Meets Reusable Skills: Memory-centric Framework for Vision-Language-Action Model",
           "authors": "Zaijing Li, Rui Shao, Bing Hu, Haoyu Zhang 외",
@@ -328,24 +346,6 @@
           "date": "2026-09-30",
           "reason": "좋아요를 누른 에이전틱 로보틱스·스킬 라이브러리 계열(Aspire, 2606.19980, 2607.08448)과 평생학습 계열(2608.19589, 2607.14852, 2608.19490)의 교차점에 정확히 놓인다. 보유 논문들이 스킬 라이브러리를 LLM이 쓰는 '코드/프리미티브' 수준에서 관리했다면, Optimus-R은 같은 스킬 재사용 아이디어를 VLA 내부의 미분 가능한 메모리로 내려 구현한다. 특히 2608.19589(직교 부공간+LoRA로 망각 방지)와 2607.08354(스킬 마이닝 플러그인)에 대한 직접적인 대안 설계여서 비교 독해 가치가 크다.",
           "rec_date": "2026-10-03"
-        },
-        {
-          "id": "2609.38163",
-          "title": "Rethinking Representations for World-Action Modeling",
-          "authors": "Haoyi Jiang, Liu Liu, Xinjiang Wang et al.",
-          "summary_ko": "월드-액션 모델에서 표현 공간을 '예측과 제어 사이의 인터페이스'로 보고 재설계한 ReWAM. 사전학습된 DINO 특징에 Feature Calibration(특징 보정)과 Temporal Representation Bottleneck(시간축 표현 병목)을 걸어 압축된 월드 상태를 만들고, 행동 손실의 기울기를 그 병목으로 흘려보내(Action-Grounded Representation Shaping) 정책이 표현의 내용을 직접 결정하게 한다. RoboTwin 2.0 93.6% 성공률.",
-          "tags": [
-            "World Action Model",
-            "Representation Learning",
-            "DINO",
-            "Bottleneck",
-            "RoboTwin"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.38163",
-          "extra_url": "",
-          "date": "2026-09-29",
-          "reason": "WAM(월드-액션 모델) 설계에서 '어떤 표현을 쓸 것인가'에 정면으로 답한 논문이다. 보유 논문 2607.11397·2607.18236(DINOv2/v3 고정 백본 정책)과 같은 DINO 특징을 쓰면서, 행동 손실의 기울기로 표현을 역으로 깎는다는 점이 2607.13017(광학 흐름 이중 스트림)·2607.17454(WAM best-of-N)·2607.29235(training-free WAM)의 표현 설계와 대비해 볼 지점이다. 같은 주에 나온 V-JEPA Policy와 묶어 읽으면 '예측용 표현 vs 제어용 표현' 논쟁의 양쪽을 볼 수 있다.",
-          "rec_date": "2026-10-02"
         }
       ]
     },
@@ -353,6 +353,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2403.01823",
+          "title": "RT-H: Action Hierarchies Using Language",
+          "authors": "Suneel Belkhale, Tianli Ding, Ted Xiao 등",
+          "summary_ko": "'콜라 캔 집어' 같은 과제 지시와 실제 관절 명령 사이에, 동작을 더 잘게 말로 쪼갠 중간 단계인 언어 모션(language motion — 예: '팔을 앞으로', '그리퍼를 닫아')을 끼워 넣는 2단 계층 정책 RT-H를 제안한다. 먼저 언어 모션을 예측하고, 그다음 그 언어 모션과 상위 과제를 함께 보고 행동을 내놓는다. 이렇게 하면 '콜라 캔 집어'와 '컵에 따라'처럼 의미가 전혀 다른 과제 사이에서도 저수준 동작의 공통 구조를 공유할 수 있어 적은 시연으로도 학습이 된다. 또 실행 중에 사람이 '아니, 팔을 왼쪽으로'처럼 말로 교정해주면 그 개입을 그대로 학습에 흡수해, 조작기로 직접 손을 잡고 고쳐주는 방식보다 더 좋은 성능을 냈다.",
+          "tags": [
+            "Hierarchical VLA",
+            "Language Motion",
+            "Human Intervention",
+            "RT-2",
+            "Imitation Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.01823",
+          "extra_url": "https://rt-hierarchy.github.io",
+          "date": "2024-03-04",
+          "reason": "좋아요를 누른 '로봇 정책 오케스트레이션에서 무엇이 중요한가'(2606.10267)와 보유 중인 τ0-VLA(2608.16885)·HAMSTER(2502.05485)가 모두 '상위 플래너 + 하위 정책' 2단 구조를 다루는데, RT-H는 그 중간 인터페이스를 '언어'로 잡은 원조격 논문이다. 보유 중인 RT-2(2307.15818)를 백본으로 쓰고 ECoT(2407.08693)의 사고연쇄(chain-of-thought, 단계별로 추론 과정을 말로 적는 기법) 추론과 계보가 이어지며, 사람의 언어 개입으로 정책을 고치는 설정은 FlowDAgger(2607.08877)의 사람 개입 적응과 직접 비교된다. 계층형 VLA 묶음에 빠져 있던 기준점이다.",
+          "rec_date": "2026-10-10"
+        },
+        {
+          "id": "2311.01455",
+          "title": "RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation",
+          "authors": "Yufei Wang, Zhou Xian, Feng Chen 등",
+          "summary_ko": "로봇이 스스로 '배울 만한 과제'를 제안하고(propose), 그에 맞는 시뮬레이션 장면을 물체와 배치까지 채워 만들고(generate), 상위 과제를 하위 과제로 쪼개 강화학습·모션 플래닝·궤적 최적화 중 적절한 방법을 골라 학습하는(learn) 자기주도 순환을 돌리는 생성형 로봇 에이전트다. 핵심 주장은 거대 기반 모델(foundation model)에 담긴 상식을 정책이나 저수준 행동으로 직접 쓰는 대신, '과제·장면·학습 감독 신호를 자동으로 만들어내는 데' 쓰자는 것이다. 이 파이프라인은 몇 번이고 다시 돌릴 수 있어 사람 손을 거의 대지 않고 다양한 과제의 스킬 시연을 끝없이 뽑아낸다(ICML 2024).",
+          "tags": [
+            "Generative Simulation",
+            "Skill Library",
+            "Self-Guided Learning",
+            "Data Generation",
+            "LLM Agent"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2311.01455",
+          "extra_url": "",
+          "date": "2023-11-02",
+          "reason": "좋아요를 누른 ASPIRE·ENPIRE(2606.19980)와 보유 중인 Teach and Grow(2608.17209)가 하는 '에이전트가 스킬 라이브러리를 스스로 늘려간다'를, 시뮬레이션 과제 생성 쪽에서 먼저 제안한 대표작이다. 추천 목록의 Eureka(2310.12931, 보상 함수를 LLM이 직접 코드로 써내는 연구)와 Voyager(2305.16291, LLM 에이전트가 스킬 코드를 평생 쌓아가는 연구)와 함께 읽어야 이 계보가 완성된다. 보유 중인 MimicGen(2310.17596)·DexMimicGen(2410.24185)이 '주어진 과제의 데이터를 불린다'면 RoboGen은 '과제 자체를 불린다'는 쪽이어서, 보유 중인 서베이 '체화 조작을 위한 데이터 피라미드'(2607.24744)의 최상단 빈 칸을 메운다.",
+          "rec_date": "2026-10-10"
+        },
+        {
+          "id": "1810.10191",
+          "title": "Making Sense of Vision and Touch: Self-Supervised Learning of Multimodal Representations for Contact-Rich Tasks",
+          "authors": "Michelle A. Lee, Yuke Zhu, Krishnan Srinivasan 등",
+          "summary_ko": "끼우기·조립처럼 물체와 맞닿아 힘을 주고받는 접촉 집약 조작(contact-rich manipulation)에는 시각과 촉각·힘 감각이 둘 다 필요한데, 성질이 전혀 다른 두 신호를 사람이 직접 섞어 제어기를 설계하기는 어렵다. 이 논문은 정답 라벨 없이 스스로 학습하는 자기지도(self-supervised) 방식으로 카메라 영상·힘토크 센서값·관절 상태를 하나의 압축된 멀티모달 표현으로 묶고, 그 표현 위에서만 정책을 학습해 강화학습의 샘플 효율(필요한 시행 횟수)을 크게 줄였다. 구멍에 핀을 끼우는 과제(peg insertion)에서 모양·위치·틈새 크기가 바뀌어도 되고 외부에서 밀어도 버티는 것을 시뮬레이션과 실제 로봇에서 함께 보였다(ICRA 2019).",
+          "tags": [
+            "Visuo-Tactile",
+            "Multimodal Representation",
+            "Self-Supervised",
+            "Contact-Rich",
+            "Peg Insertion"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/1810.10191",
+          "extra_url": "",
+          "date": "2018-10-24",
+          "reason": "좋아요를 누른 FM-VLA(2607.18231)의 힘 기반 메모리, 보유 중인 N0-VTLA(2607.23782)의 잠재 촉각 토큰, TacForcing(2608.25798), ViTacWorld(2607.22530), Facet-0(2609.01596)까지 컬렉션의 접촉 중심 묶음이 전부 '시각과 힘/촉각을 어떤 표현으로 합칠 것인가'를 다루는데, 이 논문이 바로 그 질문을 자기지도 표현학습으로 처음 정식화한 원조다. 추천 pool의 Sparsh(2410.24090)·ForceMimic(2410.07554)과 묶어 읽으면 촉각 표현 계보가 2018년부터 현재까지 이어진다.",
+          "rec_date": "2026-10-10"
+        },
         {
           "id": "2505.06111",
           "title": "UniVLA: Learning to Act Anywhere with Task-centric Latent Actions",
@@ -676,60 +730,6 @@
           "date": "2024-10-31",
           "reason": "컬렉션의 촉각·접촉 풍부(contact-rich) 조작 축(2608.25798, 2607.23782 VTLA, 2607.22530 비주얼-택타일 월드 모델, 2608.30237, 2607.28596)에 공통으로 깔려 있는 '촉각 표현 사전학습' 기반이 빠져 있다. 보유 논문들은 각자 자기 센서에 맞춘 촉각 인코더를 처음부터 학습하는데, Sparsh는 그 부분을 센서 불변 파운데이션 모델로 대체하자는 제안이라 2607.23782(잠재 촉각 토큰)의 설계 선택을 평가할 기준이 된다. DINO/I-JEPA 계열이 촉각에서 가장 잘 작동했다는 결과는 좋아요한 2607.11397·보유 2404.08471(V-JEPA), 2602.10098(JEPA 기반 VLA)의 잠재 예측 노선과 직접 연결된다.",
           "rec_date": "2026-10-03"
-        },
-        {
-          "id": "2305.16291",
-          "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
-          "authors": "Guanzhi Wang, Yuqi Xie, Yunfan Jiang et al.",
-          "summary_ko": "마인크래프트에서 사람 개입 없이 평생 학습하는 최초의 LLM 기반 에이전트. ① 다음에 뭘 배울지 스스로 정하는 자동 커리큘럼, ② 성공한 행동을 실행 가능한 코드로 저장해 재사용하는 스킬 라이브러리, ③ 환경 피드백·실행 오류·자기 검증으로 코드를 반복 수정하는 프롬프팅 루프로 구성된다. 기존 방식보다 고유 아이템 3.3배, 탐험 거리 2.3배.",
-          "tags": [
-            "Agentic Agent",
-            "Skill Library",
-            "Lifelong Learning",
-            "Code Generation",
-            "LLM"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2305.16291",
-          "extra_url": "https://voyager.minedojo.org/",
-          "date": "2023-05-25",
-          "reason": "좋아요를 누른 Aspire·2606.19980·2607.05369·2607.08448이 공유하는 '코드 스킬 라이브러리 + 자기 검증 루프' 설계의 원류다. 이 세 구성요소(자동 커리큘럼·스킬 라이브러리·자기 수정 프롬프팅)가 어디서 왔는지 알면 보유한 2608.17209·2607.10350(평생 메모리 에이전트 OS)·2607.16636(Embodied OS)의 설계 선택이 훨씬 또렷하게 읽힌다.",
-          "rec_date": "2026-10-02"
-        },
-        {
-          "id": "2206.14176",
-          "title": "DayDreamer: World Models for Physical Robot Learning",
-          "authors": "Philipp Wu, Alejandro Escontrela, Danijar Hafner et al.",
-          "summary_ko": "Dreamer 알고리즘을 시뮬레이터 없이 실제 로봇에 직접 적용한 연구. 월드 모델이 '행동의 결과'를 예측하게 학습해 상상 속에서 계획을 돌리면, 실제 환경에서 필요한 시행착오 횟수가 크게 줄어든다. 4족 로봇이 1시간 안에 걷기를 배우고, 로봇 팔이 카메라 영상만으로 집어 옮기기를 익혔다.",
-          "tags": [
-            "World Model",
-            "Real-World RL",
-            "Dreamer",
-            "Sample Efficiency",
-            "Locomotion"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2206.14176",
-          "extra_url": "https://danijar.com/project/daydreamer/",
-          "date": "2022-06-28",
-          "reason": "보유한 2301.04104(DreamerV3)가 범용 RL 벤치마크에서 월드 모델을 증명했다면, 이 논문은 같은 계열을 실제 로봇에서 돌려 '상상 속 학습으로 실세계 샘플을 아낀다'는 명제를 처음 입증했다. 2608.30237(월드모델 MBRL + best-of-N 계획)·2607.27782(실패 재유도 오프라인 RL)·2608.23831(실세계 RL) 등 현재 컬렉션의 실세계 RL 논문들이 밟고 선 토대다.",
-          "rec_date": "2026-10-02"
-        },
-        {
-          "id": "2310.16828",
-          "title": "TD-MPC2: Scalable, Robust World Models for Continuous Control",
-          "authors": "Nicklas Hansen, Hao Su, Xiaolong Wang",
-          "summary_ko": "학습된 암묵적(디코더 없는, 즉 영상을 복원하지 않는) 월드 모델의 잠재 공간에서 짧은 구간 궤적 최적화를 수행하는 모델 기반 RL. 하이퍼파라미터를 바꾸지 않고 104개 온라인 RL 과제에서 일관되게 앞서고, 317M 파라미터 단일 에이전트가 서로 다른 관측·행동 공간을 가진 80개 과제를 동시에 수행한다.",
-          "tags": [
-            "World Model",
-            "Model-Based RL",
-            "Latent Planning",
-            "Multi-Task",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2310.16828",
-          "extra_url": "https://www.tdmpc2.com/",
-          "date": "2023-10-25",
-          "reason": "보유 논문 2607.17454(WAM best-of-N)·2608.30237(best-of-N 계획)·2607.27599(상상 위 탐색)가 모두 '월드 모델 위에서 후보 행동을 굴려 고른다'는 구조인데, 그 계획 방식의 표준 레퍼런스가 TD-MPC2다. 특히 영상 복원 없이 잠재 공간만으로 제어한다는 점이 2602.10098·2607.29613(JEPA 계열)과 같은 노선이어서, 디코더 유무가 성능에 어떤 영향을 주는지 비교 기준이 된다.",
-          "rec_date": "2026-10-02"
         }
       ]
     }
