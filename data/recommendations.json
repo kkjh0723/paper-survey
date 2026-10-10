@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-10",
+  "generated": "2026-10-11",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2610.09940",
+          "title": "Juno: Taming Predictive Latents for Vision-Language-Action Models",
+          "authors": "Yuchen Zhu, Chenyi Xu, Yulin Zhang, Gang Xu et al.",
+          "summary_ko": "관측의 미래를 픽셀 복원 없이 표현(특징 벡터) 공간에서 예측하는 JEPA(Joint-Embedding Predictive Architecture, 공동 임베딩 예측 구조)를 VLA(Vision-Language-Action, 시각-언어-행동 모델)의 시각 백본·교사·적응형 동역학 모델로 동시에 활용해, 배포 시점에 테스트 시간 적응까지 수행한다. SimplerEnv 벤치마크 성공률을 60.9%에서 72.7%로 끌어올렸다.",
+          "tags": [
+            "VLA",
+            "JEPA",
+            "World Model",
+            "Test-Time Adaptation",
+            "Predictive Latent"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.09940",
+          "extra_url": "https://juno-policy.github.io/",
+          "date": "2026-10-07",
+          "reason": "보유 논문 중 2602.10098(VLA+World Model+JEPA+Latent Action)과 2607.29613(LeJEPA 기반 VLA 강화학습 비평자)이 이미 JEPA 계열 잠재 예측을 다루는데, Juno는 그 잠재 예측기를 '백본 + 교사 + 동역학 모델' 3역할로 쓰는 통합 레시피를 제시한다. 또 좋아요한 2606.15631(Retrieval 기반 테스트 시간 적응)과 2607.06988(Test-Time Training) 계열의 '배포 중 적응' 흐름을 JEPA 잠재 공간에서 구현한 사례라 두 축을 직접 잇는다.",
+          "rec_date": "2026-10-11"
+        },
+        {
+          "id": "2610.12007",
+          "title": "REACT: Rolling Denoising and Dual Decoupling for Reactive Robot Control with VLA Models",
+          "authors": "Houlong Xiong, Zhenqi Qiu, Zechen Wang, Suohang Zhang et al.",
+          "summary_ko": "Flow Matching(흐름 정합: 노이즈에서 행동으로 가는 경로를 학습하는 생성 기법) 기반 VLA가 행동 묶음(action chunk)을 한 번에 내놓을 때 생기는 딜레마—묶음을 길게 하면 동작은 매끄럽지만 반응이 늦고, 짧게 하면 반응은 빠르지만 이음새가 끊기는 문제—를 '굴리며 디노이징(rolling denoising)'으로 푼다. 행동 버퍼를 계속 유지하면서 매 스텝 일부만 더 정제해, 장기 문맥을 잃지 않고 반응성을 높인다. RoboTwin 2.0과 실제 로봇에서 검증했다.",
+          "tags": [
+            "VLA",
+            "Flow Matching",
+            "Action Chunking",
+            "Reactive Control",
+            "Async Inference"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12007",
+          "extra_url": "https://react-vla.github.io",
+          "date": "2026-10-08",
+          "reason": "보유 논문 2608.27384(스트리밍 디코딩 30Hz 제어), 2607.14695(KV 캐시 기반 스트리밍 추론), 2609.18207(추론 지연·행동 편집)이 모두 '행동 묶음 단위 추론의 지연·불연속' 문제를 다루는데, REACT는 같은 문제를 디노이징 스케줄 자체를 굴리는 방식으로 접근한 새 해법이다. 좋아요한 2607.18231(힘 메모리+Flow Matching)처럼 Flow Matching 정책을 쓰는 보유 논문들에 바로 얹을 수 있는 기법이라 비교 대상으로 가치가 높다.",
+          "rec_date": "2026-10-11"
+        },
+        {
+          "id": "2610.12468",
+          "title": "DreamTrue: Action-Faithful Robot World Model with Counterfactual Post-Training",
+          "authors": "Junyan Li, Ruizhi Li, Yu Liu, Xiangshuo Liu et al.",
+          "summary_ko": "로봇 월드 모델(행동을 넣으면 미래 영상을 그려주는 모델)이 '그럴듯한 영상'은 만들지만 입력한 행동을 충실히 반영하지 않는 문제를 다룬다. 여러 시점(multi-view)·여러 로봇 몸체(cross-embodiment)를 함께 다루면서, 오프라인 기하 보정과 반사실(counterfactual: 실제와 다른 행동을 넣었을 때의 결과) 사후학습으로 행동 충실도를 끌어올렸다. AgiBot 데이터에서 결함률을 48.12%에서 6.25%로 낮췄다.",
+          "tags": [
+            "World Model",
+            "Cross-Embodiment",
+            "Video Prediction",
+            "Counterfactual",
+            "Multi-View"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12468",
+          "extra_url": "https://github.com/brave-eai/DreamTrue",
+          "date": "2026-10-08",
+          "reason": "보유 논문 2607.22535(URDF 렌더링 기반 cross-embodiment 월드 모델), 2607.19343(마스킹 행동 기반 비디오 월드 모델), 2607.19876(IDM 없는 월드 모델 벤치마크)가 공통으로 '행동 조건부 영상 예측이 정말 행동을 따르는가'를 묻는데, DreamTrue는 이를 반사실 사후학습으로 정면 공략한다. 또 2607.26789(월드 모델로 VLA 행동을 검증)처럼 월드 모델을 검증기로 쓰려면 행동 충실도가 전제라서, 그 선행 조건을 보강하는 논문이다.",
+          "rec_date": "2026-10-11"
+        },
         {
           "id": "2610.12369",
           "title": "Embodied Turing Machines: Stateful Code for Robot Recursive Self-Improvement",
@@ -276,42 +330,6 @@
           "rec_date": "2026-10-05"
         },
         {
-          "id": "2610.01559",
-          "title": "Completion Aware Guidance for World Action Models",
-          "authors": "Seungyeon Kim, Junhoo Lee, Baekseung Kim, Minkyu Kim, Nojun Kwak",
-          "summary_ko": "미래 영상과 로봇 동작을 함께 예측하는 WAM(World Action Model, 세계-행동 모델)은 '그럴듯하지만 과제를 끝내지 못하는 상상'을 자주 한다. 저자들은 이 문제가 모델 구조 탓이 아니라, 짧은 동작 묶음(action chunk, 수십 스텝 단위로 한 번에 내놓는 행동 시퀀스) 제어용으로 미세조정할 때 생긴다고 진단한다. 해결책인 CAG(Completion Aware Guidance, 과제 완료 인지 가이던스)는 재학습 없이 생성(샘플링) 단계에서만 과제 완료 방향으로 예측을 유도하며, RoboTwin 2.0 일부 과제 성공률을 64%→70%, 제로샷 시뮬레이션은 69%→75%로 올리고 미완성 상상 비율을 79%→40%로 낮췄다.",
-          "tags": [
-            "World Model",
-            "VLA",
-            "Training-Free",
-            "RoboTwin",
-            "Guidance"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.01559",
-          "extra_url": "",
-          "date": "2026-10-01",
-          "reason": "보유 중인 World Action Model 계열(「Test-Time Scaling for World Action Models via Zero-Shot Geometric Evaluation」, 「BadWAM: When World-Action Models Dream Right but Act Wrong」, 「World Action Planner」)의 핵심 약점을 정면으로 다룬다. 특히 BadWAM이 '상상은 맞는데 행동이 틀리는' 현상을 지적한 데 반해, 이 논문은 '행동과는 일관되지만 과제를 끝내지 못하는 상상'이라는 다른 축의 실패를 정의하고 재학습 없는 샘플링 교정으로 고친다. τ₀-VLA·FBFM처럼 학습 없이 추론 시점에만 개입하는 보유 논문들과 기법 계열이 같아 비교하기 좋다.",
-          "rec_date": "2026-10-04"
-        },
-        {
-          "id": "2609.39526",
-          "title": "Discrete Forcing: Infusing Discrete Guidance into Continuous Denoising for Few-Step Action Experts",
-          "authors": "Jingbo Wang, Wenxuan Song, Wenhao Yu, Han Zhao, Xi Wang, Jiayi Chen, Donglin Wang, Yan Wang, Haoang Li",
-          "summary_ko": "VLA(Vision-Language-Action, 시각-언어-행동 모델)에서 행동을 표현하는 두 방식의 장단점을 합친다. 이산 토큰(행동을 단어처럼 유한한 기호로 쪼갠 표현)은 전체 동작의 뼈대를 간결히 잡지만 정밀도가 낮고, 연속 토큰(실수값 그대로)은 정밀하지만 노이즈 제거(denoising)를 여러 번 반복해야 느리다. Discrete Forcing은 먼저 이산 토큰으로 거친 동작 구조를 예측하고 그것을 길잡이로 삼아 연속값을 다듬는 flow matching(출발 분포에서 목표 분포로 가는 속도장을 학습해 적은 스텝으로 생성하는 방식) 구조로, 이산·연속 분기가 하나의 Diffusion Transformer 몸통을 공유해 파라미터 수는 기존 단일 분기 모델과 비슷하면서 분기당 순전파 1회만 쓴다.",
-          "tags": [
-            "VLA",
-            "Flow Matching",
-            "Action Tokenization",
-            "Fast Inference",
-            "Diffusion Transformer"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.39526",
-          "extra_url": "",
-          "date": "2026-09-30",
-          "reason": "보유 논문 FAST(「FAST: Efficient Action Tokenization for VLA Models」)와 M2Tok 계열이 다룬 '이산 행동 토큰화'와, π0·「Toward Real-Time VLAs」 등이 다룬 '연속 flow matching 가속'을 한 모델 안에서 결합한 사례다. 적은 스텝으로 빠르게 뽑으려는 FlashVLA·Reflex·FBFM과 목표는 같지만, 속도를 추론 스케줄링으로 얻는 그들과 달리 행동 표현 자체를 거친→정밀 2단계로 재설계한 접근이라 'Flow Matching' 태그 20편짜리 컬렉션에 빠진 축을 메운다.",
-          "rec_date": "2026-10-04"
-        },
-        {
           "id": "2609.40153",
           "title": "Dream4ACT: A Shared Visual Action Interface for Multi-Embodiment Video-Action Modeling",
           "authors": "Xiangyu Zhu, Jin Xu, Yue Guo, Xin Wu, Yifan Sun, Xiancong Ren, Jianxin Sun, Yong Dai, Xiaozhu Ju",
@@ -328,24 +346,6 @@
           "date": "2026-09-30",
           "reason": "'서로 다른 로봇 몸체를 하나의 행동 표현으로 묶는다'는 보유 컬렉션의 큰 축(「One Policy, Many Embodiments: Unified Camera-Centric Action Geometry」, 「Cross-Embodiment Robot Manipulation via a Unified Hand Action Space」, 추천 pool의 UMR)과 직결된다. 특히 카메라 공간 기하로 몸체 차이를 흡수하는 2608.26058과 비교할 지점이 명확한데, 이쪽은 행동 자체를 '이미지로 렌더링'해 영상 생성 모델의 사전지식을 그대로 재활용한다. 또 보유 중인 FlowWAM(광학 흐름을 통합 행동 표현으로 사용)과 같은 '행동을 픽셀 공간에 올리는' 흐름의 최신판이다.",
           "rec_date": "2026-10-04"
-        },
-        {
-          "id": "2609.39794",
-          "title": "Inline Memory Meets Reusable Skills: Memory-centric Framework for Vision-Language-Action Model",
-          "authors": "Zaijing Li, Rui Shao, Bing Hu, Haoyu Zhang 외",
-          "summary_ko": "VLA 적응을 파라미터 미세조정 대신 '질의-스킬 메모리 조정'으로 재정의한 Optimus-R을 제안한다. 학습 가능한 메모리 토큰을 VLA 입력 앞단(프리픽스)에 끼워 넣어 제어에 필요한 질의/스킬 표현을 뽑고(Inline Memory Interface), 스킬을 '무엇을 꺼낼지 정하는 질의 프로토타입'과 '어떻게 움직일지 지정하는 스킬 값'으로 외부 메모리 뱅크에 분리 저장해 재사용·확장하며, 경량 어댑터와 잔차 메모리 갱신으로 새 도메인에 맞춘다.",
-          "tags": [
-            "Skill Memory",
-            "Lifelong Learning",
-            "Catastrophic Forgetting",
-            "Parameter-Efficient Adaptation",
-            "VLA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.39794",
-          "extra_url": "",
-          "date": "2026-09-30",
-          "reason": "좋아요를 누른 에이전틱 로보틱스·스킬 라이브러리 계열(Aspire, 2606.19980, 2607.08448)과 평생학습 계열(2608.19589, 2607.14852, 2608.19490)의 교차점에 정확히 놓인다. 보유 논문들이 스킬 라이브러리를 LLM이 쓰는 '코드/프리미티브' 수준에서 관리했다면, Optimus-R은 같은 스킬 재사용 아이디어를 VLA 내부의 미분 가능한 메모리로 내려 구현한다. 특히 2608.19589(직교 부공간+LoRA로 망각 방지)와 2607.08354(스킬 마이닝 플러그인)에 대한 직접적인 대안 설계여서 비교 독해 가치가 크다.",
-          "rec_date": "2026-10-03"
         }
       ]
     },
@@ -353,6 +353,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2506.21539",
+          "title": "WorldVLA: Towards Autoregressive Action World Model",
+          "authors": "Jun Cen, Chaohui Yu, Hangjie Yuan, Yuming Jiang et al.",
+          "summary_ko": "VLA(행동 생성)와 월드 모델(미래 영상 생성)을 하나의 자기회귀(autoregressive: 토큰을 하나씩 순차 예측) 모델로 통합한다. 월드 모델은 행동과 영상을 함께 이해해 다음 영상을 예측하고, 행동 모델은 영상을 보고 다음 행동을 내며 서로를 강화한다. 행동을 연속으로 여러 개 뽑을 때 앞선 행동의 오차가 뒤로 번지는 현상을 발견하고, 현재 행동을 생성할 때 이전 행동들을 선택적으로 가리는 어텐션 마스크로 해결했다.",
+          "tags": [
+            "VLA",
+            "World Model",
+            "Autoregressive",
+            "Action Chunking",
+            "Unified Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2506.21539",
+          "extra_url": "https://github.com/alibaba-damo-academy/WorldVLA",
+          "date": "2025-06-26",
+          "reason": "컬렉션의 핵심 축인 'World Action Model'(2607.17454, 2607.29235, 2607.13017, 2601.x 계열)과 보유 논문 2602.10098(VLA+월드 모델 통합)의 직접적 선행 연구다. 특히 '행동 묶음 자기회귀 생성에서 오차 전파'라는 문제 진단은 보유 논문 2608.02547(행동 묶음의 누적 오차)와 2501.09747(행동 토큰화)이 다루는 주제와 같은 뿌리라, 통합 모델 계열의 기준점으로 읽어둘 만하다.",
+          "rec_date": "2026-10-11"
+        },
+        {
+          "id": "2502.19417",
+          "title": "Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models",
+          "authors": "Lucy Xiaoyang Shi, Brian Ichter, Michael Equi, Liyiming Ke et al.",
+          "summary_ko": "복잡한 지시(\"채식 샌드위치 만들어줘\")와 수행 중 피드백(\"그건 쓰레기가 아니야\")을 처리하기 위해, 상위 VLM(Vision-Language Model, 시각-언어 모델)이 지시·피드백을 해석해 다음 할 일을 말로 뽑고 하위 VLA가 그 한 단계를 실제 행동으로 수행하는 2계층 구조를 제안한다. 단일팔·양팔·양팔 모바일 로봇 3개 플랫폼에서 책상 정리, 샌드위치 만들기, 장보기를 수행했다. ICML 2025.",
+          "tags": [
+            "Hierarchical VLA",
+            "VLM Planner",
+            "Instruction Following",
+            "Human Feedback",
+            "Long-Horizon"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2502.19417",
+          "extra_url": "https://www.pi.website/research/hirobot",
+          "date": "2025-02-26",
+          "reason": "좋아요한 2606.10267(계층형 VLA를 옵션 프레임워크로 정리한 벤치마크 연구)이 비교·분석하는 대표 계층형 시스템이 바로 Hi Robot 계열인데 아직 컬렉션에 없다. 보유 논문 2502.05485(계층형 VLA, 2D 경로)·2608.16885(계층 정책+월드 모델 테스트 시간 연산)·2504.16054(π0.5의 계층적 추론)와 같은 Physical Intelligence 계열 설계를 공유하므로, 그 계보의 원점을 채워 넣는 역할을 한다.",
+          "rec_date": "2026-10-11"
+        },
+        {
+          "id": "2403.03954",
+          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
+          "authors": "Yanjie Ze, Gu Zhang, Kangning Zhang, Chenyuan Hu et al.",
+          "summary_ko": "Diffusion Policy(확산 정책: 노이즈를 점진적으로 제거해 행동 궤적을 생성하는 모방학습 기법)에 희소 점군(sparse point cloud, 3D 점들의 집합)에서 뽑은 간결한 3D 표현을 결합했다. 시뮬레이션 72개 과제에서 시연 10개만으로 대부분을 풀고 기존 기법 대비 24.2% 상대 개선, 실제 로봇 4개 과제에서 시연 40개로 85% 성공률을 냈다. 공간·시점·외형·물체 종류 변화에 강했다. RSS 2024.",
+          "tags": [
+            "Diffusion Policy",
+            "3D Representation",
+            "Point Cloud",
+            "Imitation Learning",
+            "Sample Efficiency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.03954",
+          "extra_url": "https://3d-diffusion-policy.github.io",
+          "date": "2024-03-06",
+          "reason": "보유 논문 2303.04137(Diffusion Policy 원조)의 직계 후속으로, 좋아요한 2609.21948(점군 기반 기하 인식 잠재 행동 모델)과 2607.17977(3D 그라운딩·접촉점 추론)이 전제하는 '3D 표현이 정책 일반화에 왜 중요한가'를 통제된 실험으로 처음 입증한 기준 논문이다. 2607.11498(포인트맵 기반 시점 일반화)과도 직접 비교 대상이라, 2D 관측 중심 보유 논문들과 대조하기 좋다.",
+          "rec_date": "2026-10-11"
+        },
         {
           "id": "2403.01823",
           "title": "RT-H: Action Hierarchies Using Language",
@@ -676,60 +730,6 @@
           "date": "2024-05-02",
           "reason": "'Human Video' 태그 논문들(「RoboEdit」, 「Ego2Robot」, 「Robot Self-Improvement via Human-Video Dynamics Models」)과 pool의 Any-point Trajectory Modeling(2401.00025)을 잇는 핵심 선행 연구다. 사람 영상의 몸체 차이를 '점이 어디로 움직이는가'라는 몸체 중립 표현으로 우회하는 아이디어는 pool의 UMR이 쓰는 world flow + ego trajectory 분해, 보유 중 FlowWAM의 광학 흐름 행동 표현과 같은 계보이고, '개루프 계획 + 잔차 폐루프 보정' 구조는 보유 논문 「DSDyn-VLA」류 계층 구조의 원형이기도 하다.",
           "rec_date": "2026-10-04"
-        },
-        {
-          "id": "2408.11812",
-          "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation",
-          "authors": "Ria Doshi, Homer Walke, Oier Mees, Sudeep Dasari 외",
-          "summary_ko": "센서 구성·액추에이터·제어 주기가 전혀 다른 로봇들의 데이터를 그대로 받아먹는 트랜스포머 정책 CrossFormer를 제안한다. 20종 로봇 90만 개 궤적으로 학습한 단일 네트워크 가중치가 단일/양팔 매니퓰레이터, 바퀴형 로봇, 쿼드콥터, 사족보행을 모두 제어하며, 관측·행동 공간을 수동으로 맞춰주는 정렬(alignment) 작업 없이도 각 로봇 전용 정책과 동등한 성능을 낸다.",
-          "tags": [
-            "Cross-Embodiment",
-            "Generalist Policy",
-            "Transformer",
-            "Open X-Embodiment",
-            "Multi-Robot"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2408.11812",
-          "extra_url": "https://crossformer-model.github.io/",
-          "date": "2024-08-21",
-          "reason": "컬렉션의 크로스-엠바디먼트(서로 다른 로봇 몸체 간 전이) 축(2609.02546, 2608.27550, 2607.03570, 2607.27549, 2310.08864 OXE)에서 빠져 있는 핵심 선행 연구다. 보유 논문 2607.03570(통일 행동 공간)과 2609.21948(잠재 행동으로 몸체 차이 흡수)이 '행동 표현을 맞춰 전이하자'는 입장인데, CrossFormer는 정반대로 '정렬을 아예 포기하고 토큰 시퀀스로 흘려보낸다'는 설계를 택해 두 접근의 trade-off를 보여준다. 2609.02546(통제된 비교 연구)의 베이스라인 맥락을 이해하는 데도 필요하다.",
-          "rec_date": "2026-10-03"
-        },
-        {
-          "id": "2412.04445",
-          "title": "Moto: Latent Motion Token as the Bridging Language for Learning Robot Manipulation from Videos",
-          "authors": "Yi Chen, Yuying Ge, Weiliang Tang, Yizhuo Li 외",
-          "summary_ko": "행동 라벨이 없는 일반 영상을 '잠재 모션 토큰(Latent Motion Token)' 열로 변환하는 토크나이저를 비지도로 학습해, 영상을 로봇 제어의 중간 언어처럼 쓴다. 이 토큰을 자기회귀(다음 토큰 예측)로 사전학습한 Moto-GPT는 의미가 해석되는 모션 토큰을 생성하고 궤적의 타당성을 출력 확률로 평가할 수 있으며, 공동 미세조정(co-fine-tuning)으로 잠재 모션 예측과 실제 로봇 제어를 이어 붙인다.",
-          "tags": [
-            "Latent Action",
-            "Video Pretraining",
-            "Motion Tokenizer",
-            "Autoregressive",
-            "Action-Free Data"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2412.04445",
-          "extra_url": "",
-          "date": "2024-12-05",
-          "reason": "좋아요를 누른 2607.11397(잠재 행동+DINOv3+깊이 예측)과 보유 논문 2410.11758(LAPA), 2607.27138(가우시안 잠재 행동), 2608.19613(잠재 행동 설계 공간 실증 연구)이 모두 '영상에서 잠재 행동을 뽑아 사전학습한다'는 계보에 속하는데, Moto는 그 계보에서 가장 많이 인용되는 자기회귀 토큰 방식 원형이다. 특히 2608.19613이 비교한 설계 축(토큰 이산화 vs 연속 표현)을 제대로 읽으려면 Moto의 모션 토크나이저 설계를 알아야 한다. 2607.09185(잠재 행동의 인과 편향 제거)가 지적하는 문제의 출발점도 이 방식이다.",
-          "rec_date": "2026-10-03"
-        },
-        {
-          "id": "2410.24090",
-          "title": "Sparsh: Self-supervised touch representations for vision-based tactile sensing",
-          "authors": "Carolina Higuera, Akash Sharma, Chaithanya Krishna Bodduluri, Taosha Fan 외",
-          "summary_ko": "젤 표면을 카메라로 찍는 방식의 촉각 센서(비전 기반 택타일 센서) 전반에 쓸 수 있는 범용 촉각 표현을 자기지도학습으로 만든다. 46만 장 이상의 촉각 이미지에 마스킹과 자기증류(self-distillation)를 픽셀·잠재 공간에서 적용해 센서별 라벨 수집 없이 사전학습하고, 6개 과제로 구성된 TacBench에서 과제·센서 전용 종단간 학습보다 평균 95.1% 높은 성능을 보였다.",
-          "tags": [
-            "Tactile Foundation Model",
-            "Self-Supervised Learning",
-            "Touch Representation",
-            "Benchmark",
-            "JEPA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.24090",
-          "extra_url": "https://sparsh-ssl.github.io/",
-          "date": "2024-10-31",
-          "reason": "컬렉션의 촉각·접촉 풍부(contact-rich) 조작 축(2608.25798, 2607.23782 VTLA, 2607.22530 비주얼-택타일 월드 모델, 2608.30237, 2607.28596)에 공통으로 깔려 있는 '촉각 표현 사전학습' 기반이 빠져 있다. 보유 논문들은 각자 자기 센서에 맞춘 촉각 인코더를 처음부터 학습하는데, Sparsh는 그 부분을 센서 불변 파운데이션 모델로 대체하자는 제안이라 2607.23782(잠재 촉각 토큰)의 설계 선택을 평가할 기준이 된다. DINO/I-JEPA 계열이 촉각에서 가장 잘 작동했다는 결과는 좋아요한 2607.11397·보유 2404.08471(V-JEPA), 2602.10098(JEPA 기반 VLA)의 잠재 예측 노선과 직접 연결된다.",
-          "rec_date": "2026-10-03"
         }
       ]
     }
