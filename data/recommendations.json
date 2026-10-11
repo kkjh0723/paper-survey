@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-11",
+  "generated": "2026-10-12",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2610.12285",
+          "title": "PLaW-VLA: Predictive Latent World Modeling for Vision-Language-Action Policies",
+          "authors": "Yu Liu, Hetian Guo, Tianlv Huang, et al.",
+          "summary_ko": "로봇 정책(VLA, 시각-언어-행동 모델)이 미래를 예측해 장기 과제를 풀게 하되, 픽셀을 그대로 복원하는 대신 '제어에 필요한 정보만 담은 압축 표현(잠재 공간)'에서 과제 관련 미래 상태만 예측한다. 관측 이력·과제 의미·예측된 미래를 구조화된 인과 어텐션으로 묶어 행동을 생성해, 영상을 직접 생성하는 월드 모델 대비 추론 지연을 약 1/19로 줄이면서 RoboTwin Hard Horizon III에서 +11.8%p를 얻었다.",
+          "tags": [
+            "VLA",
+            "World Model",
+            "Latent Prediction",
+            "Long-Horizon",
+            "Inference Latency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12285",
+          "extra_url": "",
+          "date": "2026-10-08",
+          "reason": "보유 논문 중 좋아요를 누른 '잠재 행동 + 월드 모델' 계열(2607.11397)과 가장 직접적으로 겹친다. 그 논문이 DINOv3·깊이 예측으로 잠재 표현을 만든 데 비해, 이 논문은 '복원용 표현'과 '예측용 표현'을 구분해 후자가 정책 성능에 더 유리함을 수치로 보여주고(zero-shot LIBERO-Plus +1.77%p), 추가로 추론 지연 1/19라는 실용적 근거를 제시한다. pool에 이미 있는 Juno(2610.09940)·RoboJEPA(2610.10515)와 함께 '잠재 예측 표현을 어떻게 고를 것인가'를 비교해 읽기 좋은 짝이다.",
+          "rec_date": "2026-10-12"
+        },
+        {
+          "id": "2610.08150",
+          "title": "ViDAL: A Visual Dynamics-Grounded Action Latent Space for Vision-Language-Action Models",
+          "authors": "Yuan Xu, Yixiang Chen, Qisen Ma, et al.",
+          "summary_ko": "행동을 압축해 표현하는 '잠재 행동 공간'을 만들 때, 기존처럼 로봇 관절 궤적만 복원하는 게 아니라 그 행동이 일으킬 '장면의 미래 변화(시각 동역학)'에 정렬시킨다. 행동 구간을 압축·복원하는 VAE(변분 오토인코더)를 이렇게 학습시키면 여러 VLA 구조에 끼워 넣을 수 있는 공용 행동 인터페이스가 되고, LIBERO 98.1%, RoboTwin 2.0에서 π0.5 정책을 54.3%→65.5%로 올렸으며 실제 Franka·ARX 로봇에서도 각각 +20.0%p, +23.4%p를 얻었다.",
+          "tags": [
+            "Latent Action",
+            "VLA",
+            "Action VAE",
+            "Visual Dynamics",
+            "Cross-Architecture"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.08150",
+          "extra_url": "",
+          "date": "2026-10-06",
+          "reason": "컬렉션에서 'Latent Action' 태그 논문 8편(2609.19846, 2609.21948, 2607.11397 등)이 모두 '행동을 어떤 잠재 공간에 넣을까'를 다루는데, 이 논문은 그 잠재 공간의 학습 신호를 '시각 동역학 정렬'로 못 박는 구체적 설계안이다. 특히 좋아요를 누른 2607.11397(잠재 행동+깊이 예측)과 문제 설정이 같고, 보유 중인 π0.5(2504.16054)를 베이스로 개선 폭을 측정했으므로 우리 컬렉션 기준선과 직접 비교가 가능하다.",
+          "rec_date": "2026-10-12"
+        },
+        {
+          "id": "2610.08425",
+          "title": "MIM-VLA: Learning Physical Interaction Representations from Gripper Motor Feedback",
+          "authors": "Jaeyoung Lee, Jiyeon Koo, Taehwa Kim, et al.",
+          "summary_ko": "촉각 센서나 힘-토크 센서를 새로 달지 않고, 그리퍼(집게) 모터가 이미 내보내는 전류·위치·속도 신호만 128차원 '상호작용 토큰'으로 압축해 정책에 넣는다. 이 토큰을 사람이 검수한 접촉 구간 라벨로 먼저 학습시킨 뒤 SmolVLA의 그리퍼 행동 경로에만 주입해, 겉보기 비슷한 진품/모형 구분이나 깨지기 쉬운 물체를 살살 집는 과제에서 13쌍 중 75.0%를 맞혔다(기준 모델 48.8%).",
+          "tags": [
+            "VLA",
+            "Contact-Rich",
+            "Force Feedback",
+            "Tactile-Free",
+            "Real-World"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.08425",
+          "extra_url": "",
+          "date": "2026-10-06",
+          "reason": "좋아요를 누른 2607.18231(힘 기억, Force Memory·접촉 중심 VLA)과 보유 중인 2609.01596(렌치 기반 조립), 2608.30237(촉각 월드 모델)이 공통적으로 '접촉 정보를 정책에 어떻게 넣나'를 다루는데, 이 논문은 추가 센서 없이 모터 피드백만으로 같은 효과를 노리는 가장 값싼 해법이라 비용-성능 축에서 대조점이 된다. pool의 AgenticTactileVLA(2610.04391)·FP2(2609.37433)와 묶어 '힘 정보 획득 경로' 세 가지(전용 촉각 / 힘 제어 / 모터 전류)를 비교해 볼 수 있다.",
+          "rec_date": "2026-10-12"
+        },
         {
           "id": "2610.09940",
           "title": "Juno: Taming Predictive Latents for Vision-Language-Action Models",
@@ -294,24 +348,6 @@
           "rec_date": "2026-10-05"
         },
         {
-          "id": "2609.36471",
-          "title": "Staircase Policy: Streaming Inference for World-Action Models with Large Action Chunks",
-          "authors": "Guoheng Sun, Chen Chen, Jin Wang, Ang Li, Teresa Lv",
-          "summary_ko": "월드-액션 모델(WAM, 미래 관측을 예측해 그 예측에 기대어 행동을 생성하는 모델)은 성능은 좋지만 '미래 예측 + 반복적 행동 생성'으로 추론이 두 배로 느려진다. 액션 청킹(한 번 추론으로 여러 스텝의 행동을 한꺼번에 뽑는 기법)으로 비용을 분산할 수 있으나, 청크 뒷부분 행동은 오래된 관측에 기대게 되어 긴 구간에서 성능이 떨어진다. 이 논문은 흐름 정합(flow matching) 기반 VLA를 JEPA식(픽셀 복원 없이 잠재 공간에서 미래를 맞히는 방식) WAM으로 바꾸고, 큰 청크를 노이즈 제거 단계가 서로 엇갈린 여러 서브 청크로 쪼갠다. 앞쪽 행동은 준비되는 즉시 내보내고 뒤쪽은 계속 다듬으며, 서브 청크 경계마다 최신 관측으로 미래 잠재를 다시 예측해 아직 실행 안 된 행동을 모두 갱신한다. LIBERO 97.7%, LIBERO-Plus 87.9%에 초당 292.7개 행동 실행을 달성했다.",
-          "tags": [
-            "World Action Model",
-            "Streaming Inference",
-            "Action Chunking",
-            "JEPA",
-            "Flow Matching"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.36471",
-          "extra_url": "",
-          "date": "2026-09-29",
-          "reason": "컬렉션에서 가장 비중이 큰 축인 '비동기·실시간 추론'의 WAM 버전이다. τ0-VLA(2607.15207, 스트리밍 디코딩 + 청크 단위 인과 주의로 30Hz 제어)와 RTC(추천 pool의 2506.07339, 실시간 액션 청킹 흐름 정책)가 모두 '지연 중에도 청크를 끊기지 않게 잇는' 문제를 다루는데, 이 논문은 거기에 '미래 예측까지 포함한 WAM을 어떻게 끊김 없이 스트리밍할까'를 더한다. pool의 RAVEL(2609.34170, 흐름 기반 VLA 비동기 롤링 추론)과 직접 비교 대상이며, 좋아요를 누른 Xiaomi-Robotics-U0(2607.11643, 월드 파운데이션 모델 기반 통합 합성)처럼 미래 예측을 쓰는 정책을 실제 로봇 속도로 돌릴 때의 공학적 답안이다.",
-          "rec_date": "2026-10-05"
-        },
-        {
           "id": "2609.40341",
           "title": "Ego4WAM: What Matters When Scaling Egocentric Human Data for Robot Learning?",
           "authors": "Zhihao Sun, Liu Liu, Xinjiang Wang 외 (총 9명)",
@@ -328,24 +364,6 @@
           "date": "2026-09-30",
           "reason": "좋아요를 누른 WALA(2607.11397, 행동 라벨 있는 시범과 라벨 없는 영상에서 실행 가능한 잠재 행동을 배움)와 Xiaomi-Robotics-1(2607.15330, 10만 시간 실제 궤적으로 VLA 스케일링)이 각각 던진 질문 — '라벨 없는 사람 영상이 정말 유용한가', '데이터를 늘리면 무엇이 좋아지나' — 에 대해 변수를 통제한 답을 준다. 컬렉션에 이미 사람 영상 계열(2607.09185 카메라 중심 사람 영상 사전학습, 2607.03570 사람 영상 편집 데이터셋, 2607.27782 1인칭 영상 리타게팅 합성)이 여러 편 있는데, 이 논문은 그중 '어떤 종류의 사람 데이터를 얼마나 모아야 하는가'라는 설계 지침 역할을 한다.",
           "rec_date": "2026-10-05"
-        },
-        {
-          "id": "2609.40153",
-          "title": "Dream4ACT: A Shared Visual Action Interface for Multi-Embodiment Video-Action Modeling",
-          "authors": "Xiangyu Zhu, Jin Xu, Yue Guo, Xin Wu, Yifan Sun, Xiancong Ren, Jianxin Sun, Yong Dai, Xiaozhu Ju",
-          "summary_ko": "영상 생성 모델은 시공간 상식을 풍부하게 갖고 있지만, 로봇 행동이 보통 관절 각도 벡터(로봇마다 차원 수와 의미가 다름)로 표현되기 때문에 그 상식을 바로 쓰기 어렵다. Dream4ACT는 '행동 뷰(action view)'라는 공유 표현을 제안한다. 목표 관절 자세를 URDF(로봇의 링크·관절 구조를 적어둔 표준 기술 파일) 기반 순운동학으로 계산해 정해진 가상 카메라 4대에서 그림으로 렌더링하는 것이다. 덕분에 관측 영상과 행동이 같은 영상 오토인코더·Diffusion Transformer를 공유하고, 마스킹된 flow matching 학습 하나로 순방향 동역학·역동역학·관측-행동 동시 생성을 모두 지원한다. 실행용 관절값은 학습 없는 URDF 제약 다시점 복원으로 되돌리며 RoboTwin 2.0 평균 성공률 88.98%를 기록했다.",
-          "tags": [
-            "Cross-Embodiment",
-            "World Model",
-            "Flow Matching",
-            "Video Generation",
-            "Action Representation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.40153",
-          "extra_url": "",
-          "date": "2026-09-30",
-          "reason": "'서로 다른 로봇 몸체를 하나의 행동 표현으로 묶는다'는 보유 컬렉션의 큰 축(「One Policy, Many Embodiments: Unified Camera-Centric Action Geometry」, 「Cross-Embodiment Robot Manipulation via a Unified Hand Action Space」, 추천 pool의 UMR)과 직결된다. 특히 카메라 공간 기하로 몸체 차이를 흡수하는 2608.26058과 비교할 지점이 명확한데, 이쪽은 행동 자체를 '이미지로 렌더링'해 영상 생성 모델의 사전지식을 그대로 재활용한다. 또 보유 중인 FlowWAM(광학 흐름을 통합 행동 표현으로 사용)과 같은 '행동을 픽셀 공간에 올리는' 흐름의 최신판이다.",
-          "rec_date": "2026-10-04"
         }
       ]
     },
@@ -353,6 +371,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2305.16291",
+          "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+          "authors": "Guanzhi Wang, Yuqi Xie, Yunfan Jiang, et al.",
+          "summary_ko": "대형 언어 모델(GPT-4)이 Minecraft 안에서 사람 개입 없이 평생 학습하는 에이전트를 만든 대표 연구다. (1) 탐험을 극대화하는 자동 커리큘럼, (2) 실행 가능한 코드를 계속 쌓아 재사용하는 '스킬 라이브러리', (3) 환경 피드백·실행 오류·자기 검증을 다시 프롬프트에 넣어 코드를 고치는 반복 개선 루프 세 가지로 구성되며, 모델 가중치는 전혀 고치지 않는다.",
+          "tags": [
+            "Agentic Robotics",
+            "Skill Library",
+            "LLM Coding Agent",
+            "Self-Improvement",
+            "Lifelong Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2305.16291",
+          "extra_url": "https://voyager.minedojo.org/",
+          "date": "2023-05-25",
+          "reason": "좋아요를 누른 Aspire(스킬 라이브러리·LLM 코딩 에이전트·지속 학습), 2606.19980(에이전트가 실세계에서 스스로 개선), 2607.05369(Graph-as-Policy 자가 학습), 2607.08448(동결 VLA + 에이전트 플래너 + 프리미티브 라이브러리)가 모두 이 논문이 제시한 '코드 스킬 라이브러리 + 자기 검증 반복'이라는 틀의 로봇판 후속이다. 컬렉션의 Agentic Robotics 계열을 읽을 때 원형이 되는 논문인데 아직 보유 목록에 없어, 이후 논문들이 무엇을 물려받고 무엇을 바꿨는지 기준선을 잡아준다.",
+          "rec_date": "2026-10-12"
+        },
+        {
+          "id": "2408.11812",
+          "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation (CrossFormer)",
+          "authors": "Ria Doshi, Homer Walke, Oier Mees, et al.",
+          "summary_ko": "센서·구동기·제어 주기가 완전히 다른 로봇 20종의 궤적 90만 개로 트랜스포머 정책 하나(CrossFormer)를 학습시켰다. 관측 공간과 행동 공간을 사람이 수동으로 맞춰 주지 않아도 같은 가중치가 단일/양팔 매니퓰레이터, 바퀴 로봇, 쿼드콥터(드론), 사족 보행 로봇을 모두 제어하며, 각 로봇 전용으로 만든 정책과 동등한 성능을 낸다.",
+          "tags": [
+            "Cross-Embodiment",
+            "Generalist Policy",
+            "Transformer",
+            "Multi-Robot Dataset",
+            "Navigation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2408.11812",
+          "extra_url": "https://crossformer-model.github.io/",
+          "date": "2024-08-21",
+          "reason": "'Cross-Embodiment' 태그가 보유 논문 18편에 붙어 있어 컬렉션의 두 번째 축인데, 보유 중인 Open X-Embodiment(2310.08864)·Octo(2405.12213)는 주로 팔(매니퓰레이션) 중심이라 '서로 다른 로봇 형태(몸)를 어디까지 한 정책에 담을 수 있나'의 상한선 실험이 비어 있다. 이 논문은 행동 공간 수동 정렬 없이 드론·사족까지 묶은 지점에서 그 상한을 보여주며, pool의 Cross-Embodiment Robot Foundation World Models(2610.10846)나 보유 중인 2609.02546(크로스-임바디먼트 통제 실험)의 결론을 해석할 때 비교 기준이 된다.",
+          "rec_date": "2026-10-12"
+        },
+        {
+          "id": "2206.14176",
+          "title": "DayDreamer: World Models for Physical Robot Learning",
+          "authors": "Philipp Wu, Alejandro Escontrela, Danijar Hafner, et al.",
+          "summary_ko": "시뮬레이터를 전혀 쓰지 않고 실제 로봇 4대에서 Dreamer(학습된 월드 모델 안에서 '상상으로 계획'하는 강화학습)를 그대로 돌린 연구다. 사족 로봇이 1시간 만에 뒤집힌 자세에서 일어나 걷는 것을 배우고(리셋 없이), 밀어서 방해해도 10분 안에 적응하며, 로봇 팔 두 종은 카메라 영상과 희소한 보상만으로 집고 놓기를, 바퀴 로봇은 영상만으로 목표 지점 주행을 익혔다.",
+          "tags": [
+            "World Model",
+            "MBRL",
+            "Real-World RL",
+            "Sample Efficiency",
+            "Dreamer"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2206.14176",
+          "extra_url": "https://danijar.com/project/daydreamer/",
+          "date": "2022-06-28",
+          "reason": "보유 중인 DreamerV3(2301.04104)가 알고리즘 쪽 원본이라면, 이 논문은 같은 월드 모델을 실제 로봇에 올렸을 때 무엇이 되고 무엇이 안 되는지를 보고한 실물 검증편으로, 둘을 붙여 읽어야 'World Model' 태그 16편의 전제를 알 수 있다. 또 좋아요를 누른 2606.19980(실세계 RL·로봇 플릿 자가 개선)과 보유 중인 2608.30237(월드 모델 기반 Best-of-N 계획)이 다루는 '실세계 시행착오 예산'을 최초로 수치화한 논문이라, 최근 연구들의 샘플 효율 주장을 가늠할 기준점이 된다.",
+          "rec_date": "2026-10-12"
+        },
         {
           "id": "2506.21539",
           "title": "WorldVLA: Towards Autoregressive Action World Model",
@@ -624,24 +696,6 @@
           "rec_date": "2026-10-06"
         },
         {
-          "id": "2302.00111",
-          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
-          "authors": "Yilun Du, Mengjiao Yang, Bo Dai 외",
-          "summary_ko": "순차적 의사결정(무엇을 어떤 순서로 할지 정하는 문제)을 '글로 조건을 준 영상 생성'으로 다시 정의한 선구적 연구다. 과제를 글로 적어 주면 플래너가 그 과제를 수행하는 미래 프레임들을 영상으로 그려내고, 그렇게 그려진 영상에서 역동역학(두 프레임 사이 변화를 보고 어떤 행동이었는지 역추정하는 모델)으로 제어 신호를 뽑아낸다. 글을 매개로 쓰기 때문에 학습에서 못 본 목표 조합으로의 조합적 일반화가 생기고, 모든 것을 '이미지 공간'에서 다루므로 서로 다른 로봇 환경을 한 공간에 통합할 수 있다. 사전학습된 언어 모델과 인터넷 영상 지식을 실제 로봇 조작으로 옮기는 경로를 처음 제시한 축에 든다.",
-          "tags": [
-            "World Model",
-            "Video Generation",
-            "Universal Policy",
-            "Inverse Dynamics",
-            "Foundational"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2302.00111",
-          "extra_url": "https://universal-policy.github.io/",
-          "date": "2023-01-31",
-          "reason": "지금 컬렉션을 뒤덮고 있는 월드-액션 모델 흐름의 뿌리에 해당하는데 아직 안 본 논문이다. 좋아요를 누른 Xiaomi-Robotics-U0(2607.11643, 월드 파운데이션 모델로 통합 합성)과 컬렉션의 2608.03052(Cosmos 계열 월드 파운데이션 모델), 2607.22530(영상 월드 모델) 들은 모두 '미래를 영상으로 그려 행동을 끌어낸다'는 UniPi의 발상을 규모와 아키텍처만 바꿔 확장한 것이다. 왜 WAM이 영상 생성으로부터 시작됐는지, 또 현재 추천 pool의 '잠재 공간에서만 예측하자'(V-JEPA Policy 2609.37250, Staircase Policy)는 반작용이 무엇에 대한 반작용인지 이해하는 기준점이 된다.",
-          "rec_date": "2026-10-05"
-        },
-        {
           "id": "2412.08261",
           "title": "FLIP: Flow-Centric Generative Planning as General-Purpose Manipulation World Model",
           "authors": "Chongkai Gao, Haozhuo Zhang, Zhixuan Xu 외",
@@ -676,60 +730,6 @@
           "date": "2025-03-25",
           "reason": "컬렉션에 π0(2410.24164)·π0.5(2504.16054)·GR00T N1(2503.14734)·RT-2(2307.15818)·OpenVLA(2406.09246)·Octo(2405.12213) 같은 범용 VLA 대표작이 다 모여 있는데 유일하게 빠진 주요 계열이 Gemini Robotics다. 좋아요를 누른 Xiaomi-Robotics-1(2607.15330, 대규모 실제 데이터로 VLA 스케일링)과 비교하면 '대형 VLM을 기반으로 올려 쓰는' 전략의 원형을 볼 수 있고, Gemini Robotics-ER의 공간 추론·접촉점 예측은 컬렉션의 2609.03142(공간 추론·3D 그라운딩·접촉점을 다루는 임바디드 파운데이션 모델)가 겨냥한 바로 그 지점이다. 안전 논의는 pool에 쌓인 적대적 공격·고장 모드 연구들과도 이어진다.",
           "rec_date": "2026-10-05"
-        },
-        {
-          "id": "2506.07339",
-          "title": "Real-Time Execution of Action Chunking Flow Policies (RTC)",
-          "authors": "Kevin Black, Manuel Y. Galliker, Sergey Levine",
-          "summary_ko": "행동 묶음(action chunking, 한 번의 추론으로 앞으로의 여러 스텝 행동을 한꺼번에 내놓는 방식)은 고주기 제어의 일관성을 살려주지만, 다음 묶음을 계산하는 동안 로봇이 멈추거나 묶음 경계에서 덜컥거리는 문제가 남는다. RTC(real-time chunking, 실시간 청킹)는 재학습 없이 추론 시점에만 적용되는 알고리즘으로, 현재 묶음을 실행하는 동안 다음 묶음을 생성한다. 이때 반드시 실행될 앞부분 행동은 '고정(freeze)'하고 나머지는 이미지 복원처럼 '채워 넣기(inpainting)'하여 이어 붙인다. diffusion·flow 기반 VLA에 그대로 끼울 수 있고, Kinetix 시뮬레이터의 동적 과제 12종과 실제 양팔 과제 6종에서 추론 지연에 강건함을 보였다(성냥 켜기 같은 정밀 과제 포함).",
-          "tags": [
-            "Async Inference",
-            "Flow Matching",
-            "Action Chunking",
-            "VLA",
-            "Real-Time"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2506.07339",
-          "extra_url": "https://pi.website/research/real_time_chunking",
-          "date": "2025-06-09",
-          "reason": "컬렉션의 'Async Inference'·'Action Chunking' 태그 논문들이 사실상 모두 이 논문을 출발점으로 삼는다. 보유 중인 FBFM(학습 없는 비동기 피드백), FlashVLA(스트리밍 디코딩), Reflex(스트리밍 추론), 「Knowing When to Stop: Adaptive Action Chunking」, 「Bidirectional Decoding」(pool)이 겹치는 문제를 각자 변형해 풀고 있어, 원형 알고리즘인 RTC를 읽으면 그 차이가 정리된다. Physical Intelligence가 π0 계열 위에서 제안한 것이라 보유 중인 π0/π0.5/π0.7과도 직접 이어진다.",
-          "rec_date": "2026-10-04"
-        },
-        {
-          "id": "2409.20537",
-          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
-          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He",
-          "summary_ko": "로봇 데이터는 몸체·센서·과제가 제각각이어서(heterogeneity, 이질성) 하나의 범용 모델로 학습하기 어렵다. HPT는 정책 신경망을 '몸체별 입출력 어댑터 + 공유 몸통(trunk)'으로 쪼개고, 공유 몸통만 대규모 사전학습한다. 각 로봇의 고유수용성 감각(proprioception, 관절 각도·힘 등 자기 신체 상태 신호)과 시각 입력을 짧은 토큰 열로 정렬해 몸통에 넣는 구조다. 실로봇·시뮬레이션·사람 영상까지 52개 데이터셋 규모로 학습 목표의 스케일링 거동을 조사했고, 미세조정 후 처음 보는 과제 성능을 20% 이상 끌어올렸다.",
-          "tags": [
-            "Cross-Embodiment",
-            "Pretraining",
-            "Scaling Law",
-            "Proprioception",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2409.20537",
-          "extra_url": "https://liruiw.github.io/hpt/",
-          "date": "2024-09-30",
-          "reason": "'Cross-Embodiment' 18편, 'Scaling Law' 관련 논문을 모아둔 컬렉션에서 기반 문헌으로 빠져 있다. 보유 중인 「How Should VLAs Use Proprioceptive State?」가 던지는 질문(자기 신체 상태 신호를 어떻게 넣을까)의 대표적 선행 설계가 바로 HPT의 몸체별 stem 구조이고, ZETA의 제로샷 몸체 전이 벤치마크와 pool의 CrossFormer가 공유하는 '공유 몸통 + 몸체별 어댑터' 패러다임의 원형이기도 하다. Kaiming He가 참여해 스케일링 관점 분석이 탄탄하다.",
-          "rec_date": "2026-10-04"
-        },
-        {
-          "id": "2405.01527",
-          "title": "Track2Act: Predicting Point Tracks from Internet Videos enables Generalizable Robot Manipulation",
-          "authors": "Homanga Bharadhwaj, Roozbeh Mottaghi, Abhinav Gupta, Shubham Tulsiani",
-          "summary_ko": "로봇 시연 데이터를 많이 모으는 대신 인터넷 영상으로 일반화를 얻는 접근이다. Track2Act는 목표 이미지를 주면 현재 화면의 점들이 앞으로 어디로 움직일지(point track, 점 궤적)를 예측하도록 사람·로봇 영상 모두에서 학습한다. 이 2차원 점 궤적에서 대상 물체의 강체 변환(회전·평행이동) 시퀀스를 역산해 로봇 말단(end-effector) 자세를 개루프로 뽑고, 그 다음 소량의 해당 로봇 시연으로 학습한 폐루프 정책이 잔차(residual) 행동을 더해 보정한다. 처음 보는 과제·물체·장면에서 제로샷 조작을 실제 로봇으로 보였다.",
-          "tags": [
-            "Human Video",
-            "Cross-Embodiment",
-            "Point Tracking",
-            "Residual Policy",
-            "Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2405.01527",
-          "extra_url": "https://homangab.github.io/track2act/",
-          "date": "2024-05-02",
-          "reason": "'Human Video' 태그 논문들(「RoboEdit」, 「Ego2Robot」, 「Robot Self-Improvement via Human-Video Dynamics Models」)과 pool의 Any-point Trajectory Modeling(2401.00025)을 잇는 핵심 선행 연구다. 사람 영상의 몸체 차이를 '점이 어디로 움직이는가'라는 몸체 중립 표현으로 우회하는 아이디어는 pool의 UMR이 쓰는 world flow + ego trajectory 분해, 보유 중 FlowWAM의 광학 흐름 행동 표현과 같은 계보이고, '개루프 계획 + 잔차 폐루프 보정' 구조는 보유 논문 「DSDyn-VLA」류 계층 구조의 원형이기도 하다.",
-          "rec_date": "2026-10-04"
         }
       ]
     }
