@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-12",
+  "generated": "2026-10-13",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2610.12793",
+          "title": "Gamma: Grounded Multi-Agent Memory with Mechanical Audit for Memory-Intensive Manipulation",
+          "authors": "Yudong Liu, Yueqian Lin, Zijia Tang, Yuxi Zheng, Yuan Li, Shuai Zhang, Yi Li, Taotao Jing, Shuangjun Liu, Dashan Gao, Ning Bi, Jingwei Sun, Yiran Chen",
+          "summary_ko": "사전학습된 VLA 정책이 '기억 과제'(현재 프레임보다 훨씬 전에 관측한 사건에 의존하는 행동)에서 실패하는 이유를 학습 데이터가 대부분 마르코프적(Markov, 현재 상태만으로 다음 행동이 결정된다는 가정)이기 때문으로 진단한다. 저자들은 같은 정책에 특권적(privileged) 오라클이 만든 '접지된 하위목표 텍스트'를 따르도록 한 번만 파인튜닝하면 과제가 거의 풀린다는 점을 보이고, 따라서 병목은 기억을 기호적 하위목표로 변환하는 단계에 있다고 주장한다. GAMMA는 이 단계를 두 에이전트 협업 기억 시스템으로 구성한다 — 공간 접지를 담당하는 검출 도구(SAM-3), 재계획 구간마다 관측을 요약해 기록하는 VLM 작성자, 그리고 기록된 기억을 기계적으로 검증(audit)해 환각을 걸러내는 장치다.",
+          "tags": [
+            "Memory",
+            "Multi-Agent",
+            "VLA",
+            "Orchestration",
+            "Long-Horizon"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12793",
+          "extra_url": "",
+          "date": "2026-10-08",
+          "reason": "좋아요를 누른 세 논문을 한 번에 잇는다. FM-VLA(2607.18231, 접촉 과제용 힘 기반 기억)가 센서 신호를 기억으로 쓰는 반면 이 논문은 시각 사건을 기호적 기억으로 쓰며, GaP(2607.05369)의 멀티에이전트 하니스 구조를 '기억 쓰기/감사' 역할 분담으로 구체화하고, What Matters in Orchestrating Robot Policies(2606.10267)가 제기한 오케스트레이션 설계 변수에 '기억 모듈의 환각 검증'이라는 항목을 추가한다. 보유 논문 RoboHarness(2607.18060, 기억 기반 이종 정책 오케스트레이션)와는 사실상 같은 문제를 다른 방식으로 푼 직접 비교 대상이며, ABot-AgentOS(2607.10350)·PhyAgentOS(2607.16636)의 에이전트 OS 계열에서 기억 서브시스템만 떼어내 깊게 파고든 연구로 읽을 수 있다.",
+          "rec_date": "2026-10-13"
+        },
+        {
+          "id": "2610.12457",
+          "title": "SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation",
+          "authors": "Jiayu Wang, Yue Yu, Bin Zhu, Zhiyao Yang, Jingjing Chen",
+          "summary_ko": "정밀 조작이 실패하는 원인을 '정책 능력 부족'이 아니라 '공간 관측 가능성(spatial observability) 부족', 즉 현재 카메라 배치로는 과제에 결정적인 공간 관계가 잘 보이지 않는 문제로 재정의한다. SpatialHarness는 정책을 추가 학습(파인튜닝)하지 않고 물리 센서 구성도 바꾸지 않은 채, 실제 실행과 동기화된 시뮬레이션 장면을 온라인으로 유지하면서 과제에 중요한 공간 관계를 드러내는 '가상 시점(virtual view)'을 추가로 렌더링해 동결된(frozen) 멀티모달 정책에 넣어주는 실행 시점(test-time) 하니스다. 장면 동기화는 물체를 정적·파지 중·이동 중 상태로 구분하는 상호작용 인식 방식으로 수행한다.",
+          "tags": [
+            "Test-Time Scaling",
+            "Harness",
+            "Frozen Policy",
+            "Spatial Reasoning",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12457",
+          "extra_url": "",
+          "date": "2026-10-08",
+          "reason": "좋아요를 누른 Harness VLA(2607.08448, 동결된 VLA를 신뢰 가능한 조작 프리미티브로 조종)와 설계 철학이 거의 동일하다. 둘 다 '모델 가중치는 건드리지 않고 외부 하니스로 성능을 끌어올린다'는 노선인데, Harness VLA가 행동 측(출력 프리미티브)을 손본다면 이 논문은 관측 측(입력 시점)을 손보는 상호 보완적 접근이다. 역시 좋아요한 GaP(2607.05369, 그래프 기반 멀티에이전트 자기학습 하니스)와 함께 '하니스 계열' 비교 축을 완성한다. 보유 논문 Test-Time Scaling for World Action Models(2607.17454)·RoboTTT(2607.15275)·WAM-TTT(2607.06988)가 공유하는 실행 시점 개선 흐름에 속하면서, Agentic Real2Sim(2607.19190)처럼 실시간 시뮬레이션 장면을 유지하는 기법과도 직접 맞붙는다.",
+          "rec_date": "2026-10-13"
+        },
+        {
+          "id": "2610.13732",
+          "title": "LAPT-Scale: Scaling Embodied Policies with Latent Action Pre-Training on Human Videos",
+          "authors": "Zhiyuan Xiang, Peidong Liu, Mingyang Li, Jiawei Li, Wenhow Li, Wenbo Ding, Xiang Deng",
+          "summary_ko": "로봇 행동 라벨이 없는 1인칭(에고센트릭) 사람 영상에서 '잠재 행동(latent action, 영상의 프레임 간 변화만으로 역추정한 추상적 행동 표현)'을 학습해 VLA(Vision-Language-Action, 영상·언어를 입력받아 로봇 행동을 출력하는 모델) 정책을 사전학습하는 방법이다. 기존 잠재 행동 모델이 쓰던 VQ(Vector Quantization, 표현을 유한한 코드북의 이산 토큰으로 양자화하는 기법) 대신 연속 잠재 공간을 사용해 미세한 움직임과 접촉 역학을 보존하고, 지각·의미·옵티컬 플로우(optical flow, 픽셀이 프레임 간 이동한 방향·크기 벡터장) 정렬 신호를 합쳐 프레임 전이 감독 신호의 품질을 높였다. 사람 영상 사전학습 → 목표 로봇 신체 정렬 → 과제별 후속학습의 3단계로 구성된다.",
+          "tags": [
+            "Latent Action",
+            "Human Video",
+            "VLA",
+            "Pre-training",
+            "Cross-Embodiment"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.13732",
+          "extra_url": "",
+          "date": "2026-10-09",
+          "reason": "좋아요를 누른 WALA(2607.11397, 행동 라벨 있는 데모에서 실행 가능한 잠재 행동 학습)와 정면으로 맞물리는 후속 주제다. WALA가 '라벨 있는 데모'로 잠재 행동을 실행 가능하게 만든 반면, 이 논문은 '라벨 없는 사람 영상'을 연속 잠재 공간으로 확장해 스케일을 키우는 반대 방향의 해법을 제시한다. 보유 논문 중 Latent Action Pretraining from Videos(2410.11758, LAPA)의 VQ 기반 이산 코드북을 연속 표현으로 대체한다는 점에서 직접적인 개선 관계이고, What Matters for Latent Actions in Robot Learning(2608.19613)·DLAM(2607.27138)·CD-LAM(2607.09185)이 다룬 '어떤 잠재 행동 설계가 실제로 중요한가'라는 질문에 옵티컬 플로우 정렬이라는 구체적 답을 더한다. 또한 Ego2Robot(2608.02580)·RoboEdit(2608.18948)처럼 사람 영상을 로봇 데이터로 전환하는 보유 논문 계열과 비교하기에 좋다.",
+          "rec_date": "2026-10-13"
+        },
         {
           "id": "2610.12285",
           "title": "PLaW-VLA: Predictive Latent World Modeling for Vision-Language-Action Policies",
@@ -310,60 +364,6 @@
           "date": "2026-09-29",
           "reason": "좋아요한 FM-VLA(접촉 과제용 힘 기반 메모리를 VLA에 넣은 논문)와 같은 문제를 반대 방향에서 푼다. FM-VLA는 힘 이력을 VLA 내부 표현으로 끌어들였고, FP2는 VLA/RFM을 그대로 얼린 채 외부에 힘 제어 정책을 붙인다. 보유 중인 Harness VLA(얼린 VLA를 조종해 신뢰 가능한 프리미티브로 만드는 방식)와 설계 철학이 같아, '파운데이션 모델을 건드리지 않고 능력을 덧붙이는' 계열의 비교 사례로 바로 쓸 수 있다.",
           "rec_date": "2026-10-06"
-        },
-        {
-          "id": "2610.02459",
-          "title": "OpenRUA: Robot-Use Agents Are Zero-Shot Visuomotor Policies",
-          "authors": "Zhaoyang Chu, Earl T. Barr, Claire Le Goues et al.",
-          "summary_ko": "기존 연구들이 코딩 에이전트에게 로봇을 쓰게 하려고 전용 프리미티브·전용 워크플로를 정교하게 깔아줬던 것과 달리, OpenRUA는 그런 중간 추상화를 전부 없앤다. 에이전트에게 주는 것은 로봇의 표준 미들웨어 ROS 2 문서와 터미널 접근뿐이고, 작업 순서는 에이전트가 스스로 정한다. 지각은 파일 입출력으로, 조작은 코드 작성으로 환원된다. Claude Opus 5 기반 Claude Code로 CaP-Bench 99.0%, LIBERO-PRO 87.0%를 별도 학습 없이 달성했다. 더 흥미로운 건 창발 행동으로, 에피소드의 96.80%에서 원시 센서값을 처리해 실제 거리·크기를 직접 계산하는 프로그램을 스스로 작성했고, 95.87%에서 그리퍼 제어 클라이언트를, 50.13%에서는 센서 피드백으로 동작을 수정하는 폐루프 제어 프로그램을 스스로 만들었다.",
-          "tags": [
-            "Code as Policy",
-            "Coding Agent",
-            "ROS 2",
-            "Zero-Shot",
-            "LIBERO-PRO"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.02459",
-          "extra_url": "https://github.com/terminalworld/OpenRUA",
-          "date": "2026-10-01",
-          "reason": "좋아요한 GaP(그래프-as-정책 멀티에이전트 자기학습 하네스)와 Harness VLA가 공들여 만든 '하네스'가 정말 필요한지를 정면으로 반박하는 논문이다. 추천 pool에 이미 있는 'Make Code as Policy Great Again'과 같은 질문을 더 극단적으로 밀어붙였고, 보유 중인 Code as Policies(2209.07753)·'What Matters in Orchestrating Robot Policies'(좋아요)와 함께 읽으면 오케스트레이션 설계의 상한선을 가늠할 수 있다.",
-          "rec_date": "2026-10-06"
-        },
-        {
-          "id": "2609.39018",
-          "title": "Make Code as Policy Great Again: Frontier Agents Write, Call, and Evolve Robot Tools",
-          "authors": "Shijia Ge, Alex Zhou, Jianshu Zeng 외 (총 15명)",
-          "summary_ko": "로봇 동작을 코드로 생성하는 기존 'Code as Policy' 방식을 되살린 연구다. URAI(Universal Robot-Agent Interface)라는 구조에서, 도구(로봇이 쓸 함수·스크립트)를 작성하는 '프로그래밍 에이전트'와 그 도구를 실제로 호출해 실행하는 '실행 에이전트'를 분리해 짝지웠다. 핵심 설계는 모든 판단을 생성된 프로그램 한 덩어리에 맡기지 않고, 도구 호출 사이사이마다 대형 모델이 다시 끼어들어 판단하도록 남겨둔 것(model-level decision-making)이다. 로봇 시뮬레이션 벤치마크 RoboDojo에서 성공률이 18.0%에서 53.0%로 올랐고, 에피소드를 1.3~1.5배 빨리 끝내면서 실행 에이전트가 뱉는 출력 토큰(출력 글자 수)은 1.5~1.7배 적었다.",
-          "tags": [
-            "Agentic Robotics",
-            "Code as Policy",
-            "Tool Evolution",
-            "Coding Agent",
-            "RoboDojo"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.39018",
-          "extra_url": "",
-          "date": "2026-09-30",
-          "reason": "보유 논문 중 좋아요를 누른 에이전트 계열과 정면으로 맞물린다. ASPIRE(에이전트가 탐색하며 스킬을 코드로 프로그래밍)·GaP(그래프를 정책으로 쓰는 다중 에이전트 자가 학습)·ENPIRE(실세계 자가 개선)는 모두 '코딩 에이전트가 로봇 스킬을 직접 써서 쌓아간다'는 틀을 공유하는데, 이 논문은 그 틀에서 빠져 있던 '도구를 쓰는 주체와 만드는 주체를 나눈다'는 설계 축을 제시한다. 또 컬렉션의 고전인 Code as Policies(2209.07753)의 직계 후속이면서, Harness VLA(2607.08448, 좋아요)가 보여준 '고정된 VLA를 에이전트가 감싸 지휘한다'는 접근과 'VLA 없이 코드만으로 간다'는 접근을 비교해 볼 수 있는 대조군이 된다.",
-          "rec_date": "2026-10-05"
-        },
-        {
-          "id": "2609.40341",
-          "title": "Ego4WAM: What Matters When Scaling Egocentric Human Data for Robot Learning?",
-          "authors": "Zhihao Sun, Liu Liu, Xinjiang Wang 외 (총 9명)",
-          "summary_ko": "사람 1인칭(에고센트릭, 머리·가슴에 단 카메라) 영상은 로봇 학습 데이터를 값싸게 늘릴 수 있는 통로지만, 사람-로봇 간 시점·동작 정합도, 다루는 행동의 범위, 라벨 유무가 천차만별이다. 이 논문은 하나의 월드-액션 모델 틀 안에서 그 변수들을 따로따로 떼어 측정한 체계적 실험 연구다. 결론은 (1) 로봇과 잘 정합된 사람 시범 데이터는 분포 밖(OOD, 학습에서 못 본 상황) 일반화를 크게 올리고 목표 과제용 로봇 데이터 요구량을 줄인다, (2) 데이터 총 길이와 과제 다양성은 서로 다른 능력에 영향을 준다, (3) 행동 라벨(어떤 관절을 얼마나 움직였는지) 없는 '영상만' 학습도 이후 영상-행동 학습의 준비 단계로 충분히 효과적이다. 실제 로봇과 RoboDojo 시뮬레이션에서 폐루프(실제로 굴려보는) 평가로 검증했다.",
-          "tags": [
-            "Egocentric Human Data",
-            "World Action Model",
-            "Data Scaling",
-            "Empirical Study",
-            "OOD Generalization"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.40341",
-          "extra_url": "",
-          "date": "2026-09-30",
-          "reason": "좋아요를 누른 WALA(2607.11397, 행동 라벨 있는 시범과 라벨 없는 영상에서 실행 가능한 잠재 행동을 배움)와 Xiaomi-Robotics-1(2607.15330, 10만 시간 실제 궤적으로 VLA 스케일링)이 각각 던진 질문 — '라벨 없는 사람 영상이 정말 유용한가', '데이터를 늘리면 무엇이 좋아지나' — 에 대해 변수를 통제한 답을 준다. 컬렉션에 이미 사람 영상 계열(2607.09185 카메라 중심 사람 영상 사전학습, 2607.03570 사람 영상 편집 데이터셋, 2607.27782 1인칭 영상 리타게팅 합성)이 여러 편 있는데, 이 논문은 그중 '어떤 종류의 사람 데이터를 얼마나 모아야 하는가'라는 설계 지침 역할을 한다.",
-          "rec_date": "2026-10-05"
         }
       ]
     },
@@ -371,6 +371,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2207.05608",
+          "title": "Inner Monologue: Embodied Reasoning through Planning with Language Models",
+          "authors": "Wenlong Huang, Fei Xia, Ted Xiao, Harris Chan, Jacky Liang, Pete Florence, Andy Zeng, Jonathan Tompson, Igor Mordatch, Yevgen Chebotar, Pierre Sermanet, Noah Brown, et al.",
+          "summary_ko": "LLM(대형 언어 모델)이 로봇 계획을 세울 때, 실행 결과를 자연어 피드백으로 되돌려 받아 스스로와 대화하듯 계획을 고쳐 나가는 '내적 독백(inner monologue)' 구조를 제안한다. 추가 학습 없이 세 종류의 피드백 — 성공 여부 판정, 장면 설명, 사람의 개입 — 을 언어로 프롬프트에 누적해 넣는 것만으로 LLM이 재계획하고 실패를 복구한다. 즉 개방 루프(한 번 계획하고 끝)였던 LLM 플래너를 닫힌 루프(실행→피드백→재계획)로 바꾼 초기 연구이며, SayCan 계열의 후속으로 인용이 매우 많다.",
+          "tags": [
+            "Embodied Agent",
+            "LLM Planning",
+            "Closed-Loop",
+            "Failure Recovery",
+            "Self-Improvement"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2207.05608",
+          "extra_url": "https://innermonologue.github.io/",
+          "date": "2022-07-12",
+          "reason": "좋아요가 몰려 있는 '에이전트형 자기개선·하니스' 계열의 출발점이다. ENPIRE(2606.19980, 실제 환경에서의 에이전트형 정책 자기개선), ASPIRE(반복적 로봇 탐색을 통한 기술 프로그래밍), GaP(2607.05369, 멀티에이전트 자기학습 하니스) 모두 '실행 피드백을 받아 계획·코드를 고친다'는 루프를 쓰는데, 그 루프를 추가 학습 없이 언어 피드백만으로 처음 구현한 것이 이 논문이다. 보유 논문 SayCan(2204.01691)·Code as Policies(2209.07753)와 함께 읽으면 '언어로 로봇을 제어한다'에서 '언어로 실패를 복구한다'로 넘어가는 분기점이 또렷해지고, ETA(2608.03924)·Teach and Grow(2608.17209)·Evolve VLA into an Agent(2608.14047) 같은 최신 에이전트 논문이 무엇을 새로 더했는지 가늠할 기준선이 된다.",
+          "rec_date": "2026-10-13"
+        },
+        {
+          "id": "2410.06158",
+          "title": "GR-2: A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation",
+          "authors": "Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong, Hang Li, Yifeng Li, Yuxiao Liu, Hongtao Wu, Jiafeng Xu, Yichu Yang, Hanbo Zhang, Minzhao Zhu",
+          "summary_ko": "인터넷 영상 3,800만 클립·500억 토큰 이상으로 먼저 세상의 동역학을 학습한 뒤, 로봇 궤적 데이터로 '영상 생성'과 '행동 예측'을 함께 파인튜닝하는 생성형 영상-언어-행동 모델이다. 즉 하나의 모델이 다음에 무슨 장면이 펼쳐질지(월드 모델 역할)와 그때 어떤 행동을 할지(정책 역할)를 동시에 내놓는다. 100개가 넘는 과제에서 평균 성공률 97.7%를 보고하고, 새로운 배경·환경·물체·과제로의 일반화와 모델 크기에 따른 성능 스케일링을 함께 제시했다. ByteDance 연구진의 GR-1 후속작이다.",
+          "tags": [
+            "World Model",
+            "VLA",
+            "Video Pre-training",
+            "Scaling",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.06158",
+          "extra_url": "https://gr2-manipulation.github.io/",
+          "date": "2024-10-08",
+          "reason": "컬렉션의 핵심 축인 '월드 모델 + 행동 예측 통합'(World-Action Model) 계열의 직계 조상 격 논문인데 아직 보유하지 않았다. 보유 논문 Native Video-Action Pretraining(2607.08639)·Masked Visual Actions(2607.19343)·FlowWAM(2607.13017)·World Action Planner(2607.27599)가 모두 '영상 예측과 행동 예측을 한 모델에 넣는다'는 전제를 공유하는데, 그 전제를 웹 스케일 영상 사전학습으로 처음 설득력 있게 입증한 연구가 GR-2다. 좋아요한 Xiaomi-Robotics-U0(2607.11643, 월드 파운데이션 모델 기반 통합 신체 합성)와 Xiaomi-Robotics-1(2607.15330)의 스케일링 주장을 2024년 기준선과 비교할 수 있고, 보유 논문 Cosmos(2501.03575)·Motus2(2608.30237)·InternVLA-A1.5(2607.04988)와 묶어 '영상 생성형 월드 모델의 2년 궤적'을 한눈에 정리하기에 좋다.",
+          "rec_date": "2026-10-13"
+        },
+        {
+          "id": "2409.20537",
+          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
+          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He",
+          "summary_ko": "로봇 일반화 모델의 걸림돌을 '이질성(heterogeneity)', 즉 로봇마다 신체·센서·과제가 달라 데이터를 함께 쓰기 어렵다는 문제로 보고, 이를 공유 가능한 몸통(trunk) 신경망으로 해결한다. HPT는 각 로봇의 고유수용감각(proprioception, 관절 각도·속도 등 자기 신체 상태 감각)과 시각 입력을 신체별 '스템(stem)' 모듈이 짧은 토큰 열로 정렬해 변환하고, 그 토큰을 신체·과제에 무관한 공유 트렁크가 처리한 뒤 신체별 '헤드(head)'가 실제 제어 명령으로 되돌린다. 여러 신체의 실제 로봇 데이터와 시뮬레이션을 합쳐 대규모로 사전학습하며, 트렁크를 키울수록 성능이 오르는 스케일링 경향을 보고한다. Kaiming He 공저로 인용 수가 많은 대표 연구다.",
+          "tags": [
+            "Cross-Embodiment",
+            "Pre-training",
+            "Scaling",
+            "Proprioception",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.20537",
+          "extra_url": "https://liruiw.github.io/hpt/",
+          "date": "2024-09-30",
+          "reason": "컬렉션의 크로스 임보디먼트(cross-embodiment, 서로 다른 로봇 신체 간 전이) 축에서 빠진 기반 논문이다. 보유 논문 Open X-Embodiment(2310.08864)와 Octo(2405.12213)가 '여러 로봇 데이터를 한 정책으로 모은다'는 사실을 보였지만, 신체 간 입출력 차이를 구조적으로 흡수하는 스템/트렁크/헤드 분해를 제시한 것이 바로 이 논문이다. 따라서 ZETA(2609.02546, 제로샷 크로스 임보디먼트 VLA 전이 통제 실험), One Policy Many Embodiments(2608.26058, 카메라 중심 통일 행동 기하), Cross-Embodiment Transfer via Behavior-Aligned Representations(2607.27549)가 각자 제안하는 정렬 방식의 공통 비교 기준선이 된다. 좋아요한 WALA·Xiaomi-Robotics-U0 계열이 잠재 행동으로 신체 차이를 흡수하는 것과 대비해, 아키텍처로 흡수하는 대안을 보여준다.",
+          "rec_date": "2026-10-13"
+        },
         {
           "id": "2305.16291",
           "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
@@ -676,60 +730,6 @@
           "date": "2023-10-19",
           "reason": "좋아요한 ASPIRE·ENPIRE·GaP가 공유하는 핵심 메커니즘인 'LLM이 코드를 쓰고 실행 피드백으로 그 코드를 반복 개선한다'를 처음 제대로 작동시킨 논문이다. 이 논문은 개선 대상이 보상 함수이고 세 논문은 스킬·정책 코드라는 차이만 있을 뿐 루프 구조가 같아, 오늘 함께 추천한 RPG(프롬프트와 스킬을 동시에 진화)와 묶어 읽기에 좋다.",
           "rec_date": "2026-10-06"
-        },
-        {
-          "id": "2410.07554",
-          "title": "ForceMimic: Force-Centric Imitation Learning with Force-Motion Capture System for Contact-Rich Manipulation",
-          "authors": "Wenhai Liu, Junbo Wang, Yiming Wang et al.",
-          "summary_ko": "사람은 접촉이 많은 작업을 할 때 시각만으로 생기는 궤적 오차를 시간에 따라 변하는 힘으로 보정하는데, 기존 로봇 학습은 거의 궤적만 따라한다. ForceMimic은 로봇 없이도 사람이 직접 힘과 동작을 함께 기록할 수 있는 ForceCapture 장치를 만들어 시연 수집 비용을 낮췄다(애호박 껍질 벗기기 시연: 5분 vs 힘 피드백 원격조작 13분 이상). 수집한 데이터로 HybridIL을 학습시키는데, 이 모델은 렌치(힘·토크)와 위치를 함께 예측하고 실행 때는 힘-위치 하이브리드 제어 프리미티브로 그 값을 따라간다. 순수 시각 기반 모방학습 대비 성공률이 상대적으로 54.5% 올랐다.",
-          "tags": [
-            "Force-Centric",
-            "Imitation Learning",
-            "Hybrid Force-Position",
-            "Data Collection",
-            "Contact-Rich"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.07554",
-          "extra_url": "https://forcemimic.github.io",
-          "date": "2024-10-10",
-          "reason": "좋아요한 FM-VLA(힘 기반 메모리 VLA)와 보유 중인 Wrench/Flow Matching 접촉 과제 논문들이 전제하는 '힘을 행동 공간에 직접 넣는다'는 발상의 대표 선행 연구다. 특히 보유한 UMI 계열 로봇 없는 시연 수집 논문들과 같은 축(사람이 장치를 들고 데이터를 모은다)에 있으면서 힘 채널을 추가한 사례라, 오늘 함께 추천한 FP2와 묶어 '힘을 어디에 넣을 것인가(데이터·행동 공간 vs 외부 제어기)'를 대조할 수 있다.",
-          "rec_date": "2026-10-06"
-        },
-        {
-          "id": "2412.08261",
-          "title": "FLIP: Flow-Centric Generative Planning as General-Purpose Manipulation World Model",
-          "authors": "Chongkai Gao, Haozhuo Zhang, Zhixuan Xu 외",
-          "summary_ko": "이미지 위 점들의 이동 궤적(여기서 flow는 광학 흐름처럼 '화면의 어느 점이 어디로 가는지'를 뜻한다)을 범용 행동 표현으로 삼아 조작용 월드 모델을 만든 모델 기반 계획 연구다. 세 모듈로 이뤄진다 — (1) 여러 가지 가능한 흐름 후보를 생성하는 다중 모드 흐름 생성 모듈(행동 제안 역할), (2) 그 흐름을 조건으로 미래 영상을 만들어 결과를 시뮬레이션하는 흐름 조건 영상 생성 모듈(동역학 역할), (3) 시각-언어 표현으로 그 결과가 얼마나 좋은지 점수를 매기는 가치 추정 모듈. 이 셋을 결합해 할인 보상(미래 보상을 시간에 따라 깎아 합한 값)이 가장 큰 장기 흐름·영상 계획을 점진적으로 탐색한다. 흐름을 공통 행동 언어로 쓰므로 물체와 로봇이 바뀌어도 계획을 이어 붙일 수 있고, 찾아낸 계획으로 하위 제어 정책을 학습시켜 실제 실행까지 연결한다.",
-          "tags": [
-            "World Model",
-            "Optical Flow",
-            "Generative Planning",
-            "Test-Time Search",
-            "Cross-Embodiment"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2412.08261",
-          "extra_url": "https://nus-lins-lab.github.io/flipweb/",
-          "date": "2024-12-11",
-          "reason": "컬렉션의 2608.27550(광학 흐름 기반 이중 스트림 확산 월드 액션 모델)과 2607.27549(월드 모델 위에서 상상을 탐색하는 VLM 플래너, Best-of-N)가 각각 쓰고 있는 두 요소 — '흐름을 행동 표현으로' 와 '상상 속에서 탐색해 고르기' — 를 처음 한 틀에 합친 원전이다. pool의 Track2Act(2405.01527, 인터넷 영상에서 점 궤적 예측)가 '흐름 예측'까지만 간 반면 FLIP은 거기에 영상 동역학과 가치 함수를 붙여 계획까지 간다. 2607.29172(WAM Best-of-N 테스트 타임 스케일링)처럼 추론 시 계산을 더 써서 성능을 올리는 최근 흐름의 직계 선조이기도 하다.",
-          "rec_date": "2026-10-05"
-        },
-        {
-          "id": "2503.20020",
-          "title": "Gemini Robotics: Bringing AI into the Physical World",
-          "authors": "Gemini Robotics Team (Google DeepMind), Saminda Abeyruwan, Joshua Ainslie 외",
-          "summary_ko": "구글 딥마인드가 Gemini 2.0 위에 올려 만든 VLA(시각-언어-행동) 범용 로봇 제어 모델 계열이다. 로봇을 직접 조종하면서도 끊김 없이 부드럽고 반응이 빠른 움직임을 내며, 물체가 바뀌거나 처음 보는 환경에 놓여도 잘 버틴다. 함께 공개된 Gemini Robotics-ER(ER은 Embodied Reasoning, 몸을 가진 존재로서의 추론)은 공간·시간 이해를 강화해 물체 검출, 궤적 예측, 3차원 분석을 수행한다. 새로운 로봇 몸체(embodiment)로 특화 미세조정을 통해 확장되는 점과 장기 구간 손재주 과제를 다루는 점, 그리고 로봇 파운데이션 모델의 안전 문제를 정면으로 논의한 점이 특징이다.",
-          "tags": [
-            "VLA",
-            "Foundation Model",
-            "Embodied Reasoning",
-            "Cross-Embodiment",
-            "Safety"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2503.20020",
-          "extra_url": "",
-          "date": "2025-03-25",
-          "reason": "컬렉션에 π0(2410.24164)·π0.5(2504.16054)·GR00T N1(2503.14734)·RT-2(2307.15818)·OpenVLA(2406.09246)·Octo(2405.12213) 같은 범용 VLA 대표작이 다 모여 있는데 유일하게 빠진 주요 계열이 Gemini Robotics다. 좋아요를 누른 Xiaomi-Robotics-1(2607.15330, 대규모 실제 데이터로 VLA 스케일링)과 비교하면 '대형 VLM을 기반으로 올려 쓰는' 전략의 원형을 볼 수 있고, Gemini Robotics-ER의 공간 추론·접촉점 예측은 컬렉션의 2609.03142(공간 추론·3D 그라운딩·접촉점을 다루는 임바디드 파운데이션 모델)가 겨냥한 바로 그 지점이다. 안전 논의는 pool에 쌓인 적대적 공격·고장 모드 연구들과도 이어진다.",
-          "rec_date": "2026-10-05"
         }
       ]
     }
