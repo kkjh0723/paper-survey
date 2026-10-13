@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-13",
+  "generated": "2026-10-14",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2610.12818",
+          "title": "LeWAM: End-to-End World and Action Modeling with JEPAs",
+          "authors": "Minghao Fu, Tavis Siebert, Eryk Halicki, Randall Balestriero",
+          "summary_ko": "영상의 다음 장면을 픽셀로 그리지 않고 잠재 표현(의미만 담은 압축 벡터) 공간에서 예측하는 JEPA(Joint-Embedding Predictive Architecture, 공동 임베딩 예측 구조)에 행동 생성까지 한 모델로 합친 연구다. 다음 잠재 상태 예측과 플로우 매칭(노이즈에서 행동으로 가는 경로를 학습하는 생성 방식) 기반 행동 생성을 함께 학습하고 잠재 분포를 등방 가우시안(모든 방향으로 퍼짐이 같은 정규분포)으로 제약해, 정책을 바로 실행하는 것과 상상 속 계획을 둘 다 지원한다. 접촉이 많은 과제 성공률 28.6%→89.7%, 장기 과제 10.9%→46.2%, 계획 속도는 32.3배 빨라졌다.",
+          "tags": [
+            "World Model",
+            "JEPA",
+            "Flow Matching",
+            "Contact-Rich",
+            "Planning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12818",
+          "extra_url": "",
+          "date": "2026-10-08",
+          "reason": "보유 논문 중 좋아요를 누른 2607.11397(잠재 행동 + 세계 모델)과 2610.09940 Juno(행동 조건부 JEPA)·2610.10515 RoboJEPA(JEPA 스케일링) 계열의 정면 후속이다. 특히 컬렉션에 있는 'VLA RL, Critic, World Model, LeJEPA' 논문과 같은 LeJEPA 흐름(저자 Randall Balestriero)이면서, 세계 모델을 '예측기'로만 쓰지 않고 행동 생성까지 한 네트워크에 통합해 계획 비용을 32배 줄인 점이 보유 논문들의 공통 약점(상상 기반 계획의 느린 추론)을 직접 겨냥한다. 접촉이 많은 과제에서의 큰 향상은 좋아요를 누른 2607.18231(힘 기억·접촉 풍부 조작)과도 연결된다.",
+          "rec_date": "2026-10-14"
+        },
+        {
+          "id": "2610.12424",
+          "title": "RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments",
+          "authors": "Zimo Wen, Yijin Chen, Yuxuan Cao, et al.",
+          "summary_ko": "로봇이 실패를 겪으며 스스로 기술을 고쳐 나가는 재귀적 자기개선(RSI, Recursive Self-Improvement) 시스템이다. 핵심은 '상향식으로 아무 코드나 고치기'가 아니라 하향식 기술 정제(Top-Down Skill Refinement)로, 과제를 복합 기술·원자 기술·기반 기술 3단계로 쪼개 각 단계의 책임 범위를 한정한 뒤 계획·실행·진단·기술 검증을 담당하는 에이전트들이 역할을 나눠 수정한다. 가정 정리 과제를 104라운드 반복하며 개선되고, LIBERO 벤치마크에서 기존 방식보다 2.7~11.0%p 높은 성공률을 보였다.",
+          "tags": [
+            "Agentic Robotics",
+            "Self-Improvement",
+            "Skill Refinement",
+            "Multi-Agent",
+            "LIBERO"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.12424",
+          "extra_url": "",
+          "date": "2026-10-08",
+          "reason": "좋아요를 누른 Aspire(코딩 에이전트 기반 평생 학습 기술 라이브러리), 2606.19980(로봇 플릿 자기개선), 2607.05369(그래프-as-정책 자기학습) 세 편과 가장 직접 맞닿는 신작이다. 그 세 편의 공통 한계가 '수정 범위가 넓어 개선이 불안정하고 이전 기술을 깨뜨린다'는 점인데, RoboRSI는 기술을 3계층으로 나눠 수정 범위를 좁히는 방식으로 안정성·재사용성을 확보한다. 보유 중인 2607.08448(고정 VLA + 에이전트 플래너 + 원시 동작 라이브러리)의 라이브러리 관리 전략과 비교해 읽기에도 좋다.",
+          "rec_date": "2026-10-14"
+        },
+        {
+          "id": "2610.07946",
+          "title": "Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution",
+          "authors": "Ahin Lee, Jinwoo Seo, Youngsoo Jang, Taesik Gong",
+          "summary_ko": "실행 중 카메라 영상이 갑자기 망가졌을 때(가림·흐림·조명 변화 등) VLA(Vision-Language-Action, 시각-언어-행동 모델) 정책을 그 자리에서 적응시키는 SALT를 제안한다. 핵심 아이디어는 직전 행동 청크(한 번에 예측해 둔 여러 스텝 분량의 행동 묶음) 중 아직 실행되지 않고 남은 구간(leftover trajectory)을 정답 대신 쓰는 자기지도 신호로 삼는 것으로, 어떤 종류의 손상인지 미리 라벨링할 필요가 없다. LIBERO-10에서 SmolVLA 43.9%→53.2%, GR00T 58.7%→66.0%로 올리면서 정상 상황 성능은 유지했다.",
+          "tags": [
+            "VLA",
+            "Test-Time Adaptation",
+            "Visual Corruption",
+            "Action Chunk",
+            "SmolVLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.07946",
+          "extra_url": "",
+          "date": "2026-10-06",
+          "reason": "컬렉션에 있는 'VLA, Multi-Modal, Robustness, Sensor Corruption' 논문(센서 손상 강건성)과 'VLA, Test-Time Training, Long Context, Fast Weights' 논문(테스트 시점 학습)의 교집합을 메우는 신작이다. 앞의 논문은 학습 단계 정규화로 손상에 대비하고 뒤의 논문은 긴 문맥을 활용하는데, SALT는 추가 라벨 없이 '이미 예측해 둔 미실행 행동'만으로 실행 중 적응한다는 점에서 보유 논문의 액션 청킹 계열(2607.xxxx 액션 청킹·Implicit Ensemble 논문)과 테스트 시점 적응 계열을 한 번에 잇는다. 보유 중인 SmolVLA(2506.01844)와 GR00T N1(2503.14734)을 그대로 백본으로 쓰므로 비교 실험을 바로 재현해 볼 수 있다.",
+          "rec_date": "2026-10-14"
+        },
         {
           "id": "2610.12793",
           "title": "Gamma: Grounded Multi-Agent Memory with Mechanical Audit for Memory-Intensive Manipulation",
@@ -310,60 +364,6 @@
           "date": "2026-10-03",
           "reason": "좋아요를 누른 FM-VLA(2607.18231, 힘 이력을 기억으로 쓰는 VLA)와 Harness VLA(2607.08448, 고정된 VLA를 메모리로 조종)가 교차하는 바로 그 지점 — '재학습 없이 접촉 신호로 실행 시점에 개입'이다. 보유 중인 TacForcing(2608.25798)과 N0-VTLA(2607.23782)는 전용 촉각 센서를 전제로 하는데, 이 논문은 모터 부하만으로 대체해 센서 없는 손에도 쓸 수 있다는 점이 다르다.",
           "rec_date": "2026-10-07"
-        },
-        {
-          "id": "2610.06843",
-          "title": "Recursive Video In-Context Learning for Agentic Robot",
-          "authors": "Wenrui Bao, Xinxin Liu, Bingxin Xu et al.",
-          "summary_ko": "시연 영상을 프롬프트에 통째로 넣는 대신, 잡기·놓기 같은 하위 사건 단위로 쪼개 계층으로 만든다(전체 키프레임 → 국면 → 순간 → 짧은 클립). 에이전트는 이 계층을 읽기 전용 도구로 탐색하며 계획 단계에서는 거친 층만 보고, 실행 중 더 자세한 정보가 필요해질 때만 현재 하위 목표에 해당하는 클립을 불러온다. 글로 된 메모리는 '무엇을 했는지'만 남기지만 영상은 '어떻게 하는지'를 담는다는 문제의식이다. 학습이 전혀 필요 없고(training-free) 작업당 시연 1개로 충분하며, RPent 위에서 LIBERO-PRO 92.6%에서 96.5%로, LIBERO-Plus 86.7%에서 95.8%로 올랐다.",
-          "tags": [
-            "Agentic Robotics",
-            "In-Context Learning",
-            "Frozen VLA",
-            "Training-Free",
-            "Memory"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.06843",
-          "extra_url": "",
-          "date": "2026-10-05",
-          "reason": "좋아요를 누른 Harness VLA(2607.08448)와 GaP(2607.05369)처럼 '고정된 VLA를 상위 에이전트가 조종하는' 계열인데, 기존 텍스트 메모리의 한계를 영상 계층으로 메운다. 보유 중인 RoboTTT(2607.15275, 정책의 문맥 확장), Retrieve Don't Retrain(2606.15631, 재학습 없는 검색 기반 적응), ABot-AgentOS(2607.10350, 멀티모달 평생 메모리)를 '영상 메모리' 축으로 이어붙인 후속 흐름이다. LIBERO-PRO는 보유 중인 2607.21725와 같은 벤치마크라 비교도 쉽다.",
-          "rec_date": "2026-10-07"
-        },
-        {
-          "id": "2610.02204",
-          "title": "Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents",
-          "authors": "Yen-Jen Wang, Haozhe Jiang, Shuying Deng et al.",
-          "summary_ko": "RPG는 모델 가중치를 전혀 업데이트하지 않고 로봇 실행 시스템을 스스로 개선한다. 오프라인 데이터셋에서 가능한 조작 능력을 찾아내 시뮬레이터 안에 '연습 과제'를 만들고, 실행 피드백·시뮬레이터 내부 상태(특권 정보)·데이터셋 영상을 함께 보며 실패 원인을 진단한다. 그 진단을 바탕으로 재사용 가능한 기호적(symbolic) 스킬을 새로 만들거나 기존 스킬을 다듬고, 멀티모달 LLM에게 주는 시스템 프롬프트 자체를 고쳐 쓴다. 22개 조작 과제에서 1회 연습 후 28.6%였던 성공률이 15회 반복 후 95.0%로 올랐고(ASPIRE 75.5%, CaP-Agent0 60.0%), 이후 가중치를 고정한 그대로 실제 로봇 30회 시도를 모두 성공했다.",
-          "tags": [
-            "Agentic Robotics",
-            "Self-Improvement",
-            "Skill Library",
-            "Prompt Evolution",
-            "Sim-to-Real"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.02204",
-          "extra_url": "https://rpg-robot.github.io/",
-          "date": "2026-10-01",
-          "reason": "보유 중이고 좋아요한 ASPIRE(에이전트가 스스로 탐색하며 스킬을 프로그래밍)와 ENPIRE(실세계 자기개선)를 직접 베이스라인으로 삼아 넘어선 논문이다(ASPIRE 75.5% vs RPG 95.0%). 두 논문의 공통 한계인 '실패 원인을 어떻게 알아내 스킬 라이브러리를 고칠지'를 시뮬레이터 특권 정보 + 데이터셋 영상 기반 진단으로 메우고, 스킬뿐 아니라 시스템 프롬프트까지 진화 대상에 넣은 점이 GaP(그래프-as-정책 자기학습)와도 맞물린다.",
-          "rec_date": "2026-10-06"
-        },
-        {
-          "id": "2609.37433",
-          "title": "FP2: Equipping Robotic Foundation Models with Force Control",
-          "authors": "Hongjie Fang, Shirun Tang, Junjian Hu et al.",
-          "summary_ko": "FP2는 이미 과제에 맞춰 미세조정된 로봇 파운데이션 모델(RFM)에 명시적인 힘 제어 능력을 덧붙이는 가벼운 인터페이스다. 역할을 둘로 쪼개(action-regulation decomposition) RFM은 과제 수준의 동작 생성만 담당하고, 별도의 고주기 힘 제어 정책이 접촉 상호작용 조절만 전담한다. 이때 RFM 내부의 문맥 표현을 압축해 렌치(wrench, 힘+토크 6차원)와 관절 자기수용(proprioception) 이력과 합쳐 구조화된 힘 제어 파라미터를 예측한다. 4개 RFM 백본·4개 실제 접촉 과제에서 원래 정책보다 성공률과 힘 조절 품질이 모두 올랐고, RFM의 동작 생성 능력을 건드리지 않아 새 물체 일반화도 유지됐다.",
-          "tags": [
-            "Force Control",
-            "Contact-Rich",
-            "Foundation Model",
-            "Wrench",
-            "Plug-in Interface"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2609.37433",
-          "extra_url": "http://force-policy.github.io/fp2",
-          "date": "2026-09-29",
-          "reason": "좋아요한 FM-VLA(접촉 과제용 힘 기반 메모리를 VLA에 넣은 논문)와 같은 문제를 반대 방향에서 푼다. FM-VLA는 힘 이력을 VLA 내부 표현으로 끌어들였고, FP2는 VLA/RFM을 그대로 얼린 채 외부에 힘 제어 정책을 붙인다. 보유 중인 Harness VLA(얼린 VLA를 조종해 신뢰 가능한 프리미티브로 만드는 방식)와 설계 철학이 같아, '파운데이션 모델을 건드리지 않고 능력을 덧붙이는' 계열의 비교 사례로 바로 쓸 수 있다.",
-          "rec_date": "2026-10-06"
         }
       ]
     },
@@ -371,6 +371,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2302.00111",
+          "title": "Learning Universal Policies via Text-Guided Video Generation",
+          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, et al.",
+          "summary_ko": "순차적 의사결정 문제를 '텍스트 조건부 영상 생성' 문제로 바꿔 푸는 UniPi다. 지시문을 받으면 앞으로 일어날 장면들을 영상으로 먼저 그려 계획을 세우고, 그 영상에서 역동역학 모델(연속한 두 프레임을 보고 그 사이에 필요한 행동을 추정하는 모델)로 실제 제어 명령을 뽑아낸다. 영상은 로봇 종류에 무관한 공통 표현이라 인터넷 영상의 지식을 끌어올 수 있고, 학습 때 본 적 없는 지시문 조합으로도 일반화(조합 일반화)된다.",
+          "tags": [
+            "Video Generation",
+            "Universal Policy",
+            "Text-Conditioned",
+            "Planning",
+            "Combinatorial Generalization"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2302.00111",
+          "extra_url": "",
+          "date": "2023-01-31",
+          "reason": "컬렉션에 세계 모델·영상 생성 기반 계획 논문이 15편 이상(Cosmos 2501.03575, 'World Model, Video Diffusion, URDF Rendering', 'Video World Model, Masked Actions' 등) 있는데, 이들이 공통 전제로 삼는 '영상 생성 = 로봇에 무관한 보편 정책'이라는 발상을 처음 정식화한 원조 논문이다. 좋아요를 누른 2607.11643(세계 기반 모델로 임베디드 데이터 증강)과 2607.11397(잠재 행동 + 세계 모델)의 설계 근거를 거슬러 읽는 용도로 적합하며, 역동역학으로 영상→행동을 복원하는 구조는 컬렉션의 'IDM-Free' 논문이 무엇을 반대하는지 이해하는 기준점이 된다.",
+          "rec_date": "2026-10-14"
+        },
+        {
+          "id": "2401.00025",
+          "title": "Any-point Trajectory Modeling for Policy Learning",
+          "authors": "Chuan Wen, Xingyu Lin, John So, et al.",
+          "summary_ko": "행동 라벨이 전혀 없는 영상만으로 정책을 사전학습하는 ATM이다. 한 프레임에서 임의로 고른 점들이 앞으로 어디로 움직일지(미래 궤적)를 예측하도록 미리 학습하고, 이 점 궤적을 중간 안내 신호로 써서 소량의 행동 라벨만으로 시각-운동 정책을 학습한다. 시뮬레이션과 실제를 합쳐 130개 이상 언어 조건 과제에서 기존 영상 사전학습 방식을 평균 80% 앞섰고, 사람 영상이나 다른 형태의 로봇 영상에서도 전이가 됐다.",
+          "tags": [
+            "Point Trajectory",
+            "Video Pretraining",
+            "Action-Free",
+            "Cross-Embodiment",
+            "Human Video"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2401.00025",
+          "extra_url": "",
+          "date": "2024-01-28",
+          "reason": "컬렉션의 사람 영상·행동 라벨 없는 사전학습 계열(2610.13732 LAPT-Scale, 'Cross-Embodiment, Behavior-Aligned, EE Traces, Action-Free', 'Human Video, Video Editing, Cross-Embodiment')이 공유하는 핵심 중간 표현, 즉 '점 궤적(point track)'을 제안한 기반 논문이다. 최근 추천된 신작들이 쓰는 pointflow(점 흐름) 표현이 여기서 출발하므로, 잠재 행동(latent action) 계열과 점 궤적 계열이 어떻게 갈라지는지 비교하는 축이 된다. 보유 중인 LAPA(2410.11758)·LAPO와 짝지어 읽으면 '행동 없는 영상에서 무엇을 중간 신호로 쓸 것인가'라는 질문이 정리된다.",
+          "rec_date": "2026-10-14"
+        },
+        {
+          "id": "2412.04445",
+          "title": "Moto: Latent Motion Token as the Bridging Language for Learning Robot Manipulation from Videos",
+          "authors": "Yi Chen, Yuying Ge, Weiliang Tang, et al.",
+          "summary_ko": "영상에서 연속한 두 프레임 사이의 '움직임'만 떼어내 이산 토큰(정해진 개수의 기호 중 하나로 양자화한 코드)으로 바꾸는 비지도 토크나이저를 학습하고, 이 잠재 동작 토큰 열을 언어처럼 다음 토큰 예측으로 학습하는 Moto-GPT를 제안한다. 즉 영상 지식을 '움직임 언어'로 압축해 사전학습한 뒤, 공동 미세조정(co-fine-tuning)으로 실제 로봇 행동에 연결한다. 로봇 조작 벤치마크에서 영상 지식 전이의 강건성과 데이터 효율이 좋아졌다.",
+          "tags": [
+            "Latent Motion Token",
+            "Video Pretraining",
+            "Autoregressive",
+            "Unsupervised Tokenizer",
+            "Co-Fine-Tuning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.04445",
+          "extra_url": "",
+          "date": "2024-12-05",
+          "reason": "컬렉션에서 가장 두터운 주제인 잠재 행동(Latent Action) 계열 — 보유 논문 2607.11397(좋아요), 'Latent Action, VLA, VQ-VAE, Video Pretraining', 'Latent Action, VLA, Empirical Study, Design Space, LAPO', 'Latent Action, VLA, Gaussian, Video Pretraining' — 의 직계 기반 논문인데 아직 컬렉션에 없다. 이미 추천 pool에 있는 UniVLA(2505.06111)·villa-X(2507.23682)가 모두 Moto의 '이산 동작 토큰 + 자기회귀 사전학습' 구도를 전제로 비교하므로, 이 한 편을 넣으면 잠재 행동 계보(LAPO → Moto → LAPA/UniVLA → villa-X)가 끊김 없이 이어진다.",
+          "rec_date": "2026-10-14"
+        },
         {
           "id": "2207.05608",
           "title": "Inner Monologue: Embodied Reasoning through Planning with Language Models",
@@ -676,60 +730,6 @@
           "date": "2025-06-18",
           "reason": "보유 중인 2608.23831(추론 지연 상황에서 범용 정책을 RL로 미세조정)이 바로 이 DSRL을 토대로 삼고 있는데 원 논문이 컬렉션에 없다. 또한 RedFlow(2607.27782, 실패를 행동 수준 교정으로 되돌림), WCM(2607.29613, VLA 강화학습용 세계 비평 모델), FlowDAgger(2607.08877, 잠재 공간에서의 사람 개입 적응)이 공유하는 '기존 정책을 깨뜨리지 않고 고치기' 문제의 기준선 역할을 한다.",
           "rec_date": "2026-10-07"
-        },
-        {
-          "id": "2412.14058",
-          "title": "What Matters in Building Vision-Language-Action Models for Generalist Robots (RoboVLMs)",
-          "authors": "Xinghang Li, Peiyan Li, Long Qian et al.",
-          "summary_ko": "VLA를 만들 때의 설계 선택 세 가지를 대규모 통제 실험으로 비교한다 — 어떤 시각-언어 모델(VLM)을 뼈대로 쓸지, 행동 부분을 어떤 구조로 붙일지, 여러 몸체의 로봇 데이터(cross-embodiment data, 서로 다른 로봇에서 모은 데이터)를 학습의 어느 단계에 섞을지. VLM 뼈대 8종 이상, 정책 구조 4종, 설계가 다른 실험 600여 건을 돌려 '향후 VLA 설계 지침서'를 정리했고, 그 결론을 모아 손으로 설계할 부분을 최소화한 RoboVLMs라는 틀을 공개했다.",
-          "tags": [
-            "VLA",
-            "Empirical Study",
-            "Design Space",
-            "Cross-Embodiment",
-            "Open-Source"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2412.14058",
-          "extra_url": "https://robovlms.github.io",
-          "date": "2024-12-18",
-          "reason": "보유 중인 'What Matters' 류 통제 실험들이 공통으로 기준점으로 삼는 선행 연구인데 아직 없다 — 2608.19613(잠재 행동에서 무엇이 중요한가), 2608.03052(VLA는 자기수용감각을 어떻게 써야 하는가), ZETA(2609.02546, 제로샷 교차 몸체 전이 통제 연구). 특히 '교차 몸체 데이터를 언제 넣을지'라는 질문은 보유 중인 2608.27550(표현 중심 추가 사전학습)과 2608.26058(카메라 중심 통합 사전학습)이 다시 파고드는 주제다.",
-          "rec_date": "2026-10-07"
-        },
-        {
-          "id": "2312.10812",
-          "title": "Learning to Act without Actions (LAPO)",
-          "authors": "Dominik Schmidt, Minqi Jiang",
-          "summary_ko": "웹에 넘치는 영상 데이터에는 로봇이 어떤 행동(action)을 했는지에 대한 라벨이 없어서 기존 모방학습을 쓸 수 없다. LAPO(Latent Action Policies)는 연속된 두 프레임 사이의 변화만 보고 '잠재 행동(latent action)'을 역으로 복원해, 영상만으로 잠재 행동 정책·월드 모델·역동역학 모델(inverse dynamics model, 상태 변화에서 행동을 되짚는 모델)을 함께 학습한다. 절차적으로 생성되는 어려운 환경에서도 실제 행동 공간의 구조를 영상만 보고 되찾아낸 최초의 방법이며, 이렇게 사전학습된 잠재 행동 정책은 소량의 행동 라벨 데이터로 오프라인 미세조정하거나 온라인 보상으로 학습해 전문가 수준까지 빠르게 끌어올릴 수 있다.",
-          "tags": [
-            "Latent Action",
-            "Video Pretraining",
-            "Inverse Dynamics",
-            "World Model",
-            "Action-Free"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2312.10812",
-          "extra_url": "http://github.com/schmidtdominik/LAPO",
-          "date": "2023-12-17",
-          "reason": "컬렉션의 잠재 행동 계열 전체의 원류다. 좋아요한 WALA(행동 라벨이 있는 시연에서 실행 가능한 잠재 행동을 학습)가 정확히 LAPO의 '라벨 없는' 전제를 뒤집은 설계이고, 보유 중인 잠재 행동 설계공간 실증 연구(2608.19613)와 LAPA(2410.11758)가 모두 이 논문을 기준점으로 삼는다. 아직 컬렉션에 원 논문이 없어 비교의 기준선이 비어 있는 상태다.",
-          "rec_date": "2026-10-06"
-        },
-        {
-          "id": "2310.12931",
-          "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
-          "authors": "Yecheng Jason Ma, William Liang, Guanzhi Wang et al.",
-          "summary_ko": "강화학습으로 어려운 저수준 조작을 배우려면 보상 함수를 사람이 손으로 설계해야 하는데, Eureka는 그 보상 함수 '코드'를 LLM이 진화 알고리즘처럼 반복 개선하게 만든다. 과제별 프롬프트나 보상 템플릿을 미리 주지 않고도, GPT-4의 코드 작성 능력과 맥락 내 개선(in-context improvement) 능력만으로 사람 전문가가 만든 보상을 뛰어넘는다. 10가지 로봇 형태를 포함한 29개 공개 RL 환경에서 83%의 과제에서 전문가를 능가했고(평균 52% 개선), 사람의 피드백을 모델 업데이트 없이 보상 코드에 반영하는 경사 없는(gradient-free) RLHF도 가능하게 했다. 최종적으로 시뮬레이션 Shadow Hand가 펜을 빠르게 돌리는 기술을 처음으로 익혔다.",
-          "tags": [
-            "LLM Reward Design",
-            "Evolutionary Search",
-            "Code Generation",
-            "RL",
-            "Dexterous Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2310.12931",
-          "extra_url": "https://eureka-research.github.io/",
-          "date": "2023-10-19",
-          "reason": "좋아요한 ASPIRE·ENPIRE·GaP가 공유하는 핵심 메커니즘인 'LLM이 코드를 쓰고 실행 피드백으로 그 코드를 반복 개선한다'를 처음 제대로 작동시킨 논문이다. 이 논문은 개선 대상이 보상 함수이고 세 논문은 스킬·정책 코드라는 차이만 있을 뿐 루프 구조가 같아, 오늘 함께 추천한 RPG(프롬프트와 스킬을 동시에 진화)와 묶어 읽기에 좋다.",
-          "rec_date": "2026-10-06"
         }
       ]
     }
