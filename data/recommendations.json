@@ -1,10 +1,64 @@
 {
-  "generated": "2026-10-14",
+  "generated": "2026-10-15",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2610.18867",
+          "title": "EmbodiedEvo: Self-improving Coding Agents for Physical Intelligence",
+          "authors": "Wenyi Li, Yizhe Chi, Youjie Zheng, et al.",
+          "summary_ko": "관찰과 지시문을 곧바로 행동으로 바꾸는 VLA(Vision-Language-Action, 시각·언어·행동 모델) 대신, 제어 로직을 사람이 읽을 수 있는 코드로 쓰게 하는 코딩 에이전트를 로봇에 적용한 연구다. 핵심은 '플레이그라운드(Playground)'라 부르는 연습용 장면 한 곳에서 에이전트가 코드를 직접 고쳐 실행하고 실패 피드백을 받으며, 재사용 가능한 스킬(Skill, 성공한 코드 조각)과 레슨(Lesson, 실패에서 뽑은 교훈 메모)을 축적한 뒤, 그 축적물(하네스)을 고정해 처음 보는 새 장면에 투입한다는 점이다. 평가용 시뮬레이터 RoboDojo-Sim에서 평균 점수 44.48, 성공률 37.82%로 공식 검증된 기존 결과를 모두 넘었고, 특히 과거 상태를 기억해야 하는 과제에서 이득이 컸으며 섬세한 접촉 제어는 여전히 약했다. 강한 모델이 쌓은 경험을 약한 모델에 옮기면 성공률이 5.5~8.9%p 올랐고, 원본 상호작용 기록을 그대로 넘겨주는 것에 비해 실행 비용이 53.0% 낮았다.",
+          "tags": [
+            "Agentic Robotics",
+            "Coding Agent",
+            "Self-Improvement",
+            "Skill Library",
+            "Experience Transfer"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.18867",
+          "extra_url": "",
+          "date": "2026-10-13",
+          "reason": "좋아요를 누른 논문 중 가장 선호가 뚜렷한 축인 '코딩 에이전트형 자기개선 로봇' 계열의 최신판이다. Aspire(스킬 라이브러리 + 지속 학습 + 시뮬레이션에서 실제로 전이)와 2606.19980(에이전트형 로봇의 자기개선·로봇 플릿), 2607.05369(그래프를 정책으로 쓰는 멀티 에이전트 자기학습) 셋이 공통으로 남긴 질문, 즉 '쌓인 경험을 어떤 형태로 저장하면 새 장면에 쓸 수 있나'에 대해 스킬/레슨이라는 두 갈래 저장 형식과 실행 비용 53% 절감이라는 정량 답을 준다. 또 컬렉션의 2609.19906(Code as Policy·전이 학습)과 2608.17209(소수 시연 교육 + 스킬 라이브러리 + 스케일링 법칙)이 다루는 '코드 = 정책' 가설을 VLA와 직접 비교한 점, 강한 모델→약한 모델 경험 이식 실험이 2607.29172(닫힌 가중치 API로 로봇을 개선하는 설정)와 맞물리는 점에서 바로 이어 읽기 좋다.",
+          "rec_date": "2026-10-15"
+        },
+        {
+          "id": "2610.18792",
+          "title": "SEAR: Self-Evolving Agentic Robotics",
+          "authors": "Xinyi Wang, Bangzheng Li, Hanyu Wang, et al.",
+          "summary_ko": "최신 언어 모델 에이전트가 스스로 로봇을 개선한다고 할 때 '정말 학습한 것인가, 그냥 시도를 더 많이 한 것인가'를 가려내려고 만든 프레임워크 겸 벤치마크다. 에이전트를 세 가지 모드로 돌린다 — 코드를 써서 그 코드가 정책이 되는 code-as-policy, 에이전트가 제어 루프 안에서 직접 행동하는 agent-as-policy, 에이전트가 연구자 역할을 하며 VLA(시각·언어·행동 모델)를 미세조정하는 auto-research. 그리고 '쌓인 경험'을 '반복 시도·익숙한 과제·시뮬레이터 내부 상태 열람·더 큰 예산·운'과 분리하는 대조 조건을 벤치마크에 넣었다. 프런티어 모델 7종, 시뮬레이션 과제 330개와 실물 과제 5개, 누적 4년 분량의 에이전트 실행 시간으로 얻은 결론은 세 가지다. (1) 학습 곡선은 전체 시간 예산과 '과제 난이도 대비 모델 능력'에 함께 좌우되어, 어려운 과제에서만 긴 세션이 값어치를 한다. (2) 제어 코드와 공용 루틴은 과제·시뮬레이터를 건너 전이되지만 과제 전용 해법은 전이되지 않고, 실물 로봇에서는 에이전트가 스스로 만든 연습 장면과 사람이 새로 설계한 장면 사이에 성능 격차가 남는다. (3) 잘 진화하는 방식이 모델마다 달라 어떤 모델은 직접 행동하는 쪽이, 어떤 모델은 코드를 먼저 쓰는 쪽이 유리했고, 텍스트만 보는 모델이 동급 멀티모달 모델과 대등했다.",
+          "tags": [
+            "Agentic Robotics",
+            "Self-Improvement",
+            "Benchmark",
+            "Code as Policy",
+            "Controlled Study"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.18792",
+          "extra_url": "",
+          "date": "2026-10-13",
+          "reason": "좋아요를 누른 2606.19980(에이전트형 로봇 자기개선)과 Aspire가 보여준 '에이전트가 로봇을 스스로 고친다'는 주장을, 운·예산·반복 시도 같은 교란 요인을 통제해 검증하는 대조 실험 설계를 제시한다. 컬렉션에 2609.02546(통제된 비교 연구 + 벤치마크), 2608.19613(잠재 행동 설계 공간 실증 연구), 2607.29687(조합 일반화 진단) 같은 '화려한 신기법보다 측정 방법을 바로잡는' 논문을 꾸준히 모아왔는데, 그 계보를 에이전트형 로봇 쪽으로 옮긴 편이다. 특히 좋아요를 누른 2607.08448(동결 VLA + 에이전트 플래너 + 프리미티브 라이브러리)과 2607.05369가 전제하는 '경험이 새 과제로 전이된다'는 가정에 대해 '공용 루틴은 전이되고 과제 전용 해법은 안 된다'는 구체적 경계선을 그어 준다. 바로 위에 함께 추천한 2610.18867 EmbodiedEvo와 짝으로 읽으면 주장(기법)과 검증(벤치마크)을 한 번에 볼 수 있다.",
+          "rec_date": "2026-10-15"
+        },
+        {
+          "id": "2610.18855",
+          "title": "Interaction Latents as Actions for Contact-Rich Manipulation",
+          "authors": "Yuhang Zheng, Yujie Zang, Yuchen Liu, et al.",
+          "summary_ko": "접촉이 많은 조작에서 대부분의 정책은 행동을 '움직임 궤적'으로만 표현하고 촉각 신호는 입력이나 보조 예측 대상으로만 쓴다는 문제를 지적한다. 제안 기법 ILA(Interaction Latents as Actions, 상호작용 잠재를 행동으로)는 움직임·접촉·힘이 시간에 따라 어떻게 변해가는지를 한 덩어리로 담은 '해독 가능한 잠재 벡터'를 아예 행동의 단위로 삼는다. 영상 조건에서 행동과 촉각을 함께 복원하도록 학습하고, 시간을 입력으로 받는 암묵적 디코더(연속 시간에서 값을 뽑아내는 디코더)로 잠재를 실제 실행 가능한 행동으로 되돌린다. 이 잠재를 플로우 매칭(노이즈에서 목표로 가는 경로를 학습하는 생성 방식)의 생성 목표로 쓰면 사전학습된 VLA와 WAM(World Action Model, 세계·행동 모델)의 후속 학습에도, 플로우 매칭 정책을 처음부터 학습하는 데에도 쓸 수 있다. 오프라인 개선용으로는 전문가 시연에서 뽑은 잠재로 '촉각 조건부 전문가 참조 모델'을 학습해, 성공 롤아웃에는 전문가 일치도 보상을 주고 실패 롤아웃은 참조로 교정한다. 정책 계열 3종에서 실제 과제 4개 평균 성공률이 촉각을 입력으로만 쓴 기준선 대비 21.0~36.5%p 올랐다.",
+          "tags": [
+            "Contact-Rich",
+            "Latent Action",
+            "Tactile",
+            "Flow Matching",
+            "Offline Improvement"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2610.18855",
+          "extra_url": "https://mrsecant.github.io/ILA/",
+          "date": "2026-10-13",
+          "reason": "좋아요를 누른 두 축이 정면으로 만나는 지점이다. 하나는 2607.18231(힘 기억을 VAE로 압축해 접촉 조작에 쓰는 VLA)이고 다른 하나는 2607.11397(잠재 행동 + 세계 모델)인데, ILA는 '힘·접촉을 입력이나 보조 과제가 아니라 행동 표현 자체에 넣는다'는 방식으로 둘을 합친다. 컬렉션의 2607.23782(VTLA·잠재 촉각 토큰 + 오프라인 RL)와 가장 직접적인 비교 대상이고, 2608.25798(촉각 피드백 + 스트리밍 행동 전문가), 2608.01402·2607.28596(힘/토크 기반 접촉 조작), 2610.18852 ForceWAM 계열과도 같은 문제를 다른 설계로 푼다. 또 pool에 쌓인 잠재 행동 논문들(2610.09509 TERRA, 2610.08150 ViDAL, 2610.16969 UniLAP 등)이 대체로 영상에서만 잠재를 뽑는 반면 여기선 촉각까지 포함해, '잠재 행동에 무엇을 담아야 하나'라는 질문의 답을 넓혀 준다.",
+          "rec_date": "2026-10-15"
+        },
         {
           "id": "2610.12818",
           "title": "LeWAM: End-to-End World and Action Modeling with JEPAs",
@@ -276,42 +330,6 @@
           "rec_date": "2026-10-10"
         },
         {
-          "id": "2610.10515",
-          "title": "RoboJEPA: Scaling Robotic Latent World Models",
-          "authors": "Artem Zholus, Nicolas Beltran-Velez, Jianhao Yuan, Sarath Chandar, Tushar Nagarajan, Daniel Severo, Koustuv Sinha, Michal Drozdzal, Adriana Romero Soriano, Jeannette Bohg, Nicolas Ballas, Mahmoud Assran",
-          "summary_ko": "로봇 12종(embodiment, 즉 팔·그리퍼 구성이 서로 다른 로봇 기체)의 실제 주행 데이터를 모아, 픽셀을 복원하지 않고 특징 벡터 공간에서 다음 상태를 예측하는 JEPA(Joint Embedding Predictive Architecture, 공동 임베딩 예측 구조) 기반 월드 모델 8B(80억 파라미터)를 학습했다. 상상 오차(latent rollout, 즉 모델이 머릿속으로 여러 스텝 굴린 결과의 예측 오차)가 연산량에 대해 2차 멱법칙(second-order power law)을 따라 줄어들어 학습 전보다 훨씬 큰 규모의 성능을 미리 예측할 수 있고, 이 상상 오차가 실제 로봇 계획 성공률과 강하게 상관되므로 실기 평가를 대신하는 지표로 쓸 수 있음을 보였다. 나아가 보상·태스크별 학습 없이 목표 이미지 한 장만 주고 월드 모델을 그대로 에이전트로 돌려(zero-shot) 장기 과제를 실제 하드웨어에서 해결했다.",
-          "tags": [
-            "World Model",
-            "JEPA",
-            "Scaling Law",
-            "Cross-Embodiment",
-            "Zero-Shot Planning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.10515",
-          "extra_url": "",
-          "date": "2026-10-07",
-          "reason": "추천 pool의 'Rethinking Representations for World-Action Modeling'(2609.38163)과 'V-JEPA Policy'(2609.37250)가 \"사전학습된 영상 표현 위에 월드-액션 모델을 어떻게 올릴까\"를 다뤘는데, RoboJEPA는 그 위에 '얼마나 키우면 얼마나 좋아지는가'라는 스케일링 법칙을 처음으로 붙였다. 또 컬렉션의 월드모델 계열(2607.17454 World Action Model Best-of-N, 2608.30237 MBRL Best-of-N Planning)이 쓰는 '상상 품질'을 실기 평가 대신 측정하는 프록시를 제공하므로, 평가 비용 문제를 공유하는 보유 논문들과 직접 연결된다. Cross-Embodiment 태그(보유 18편)와 World Model 태그(16편)가 교차하는 지점이다.",
-          "rec_date": "2026-10-09"
-        },
-        {
-          "id": "2610.09509",
-          "title": "TERRA: Learning Transportable Latent Actions through Temporal Effect Representation and Relational Alignment",
-          "authors": "Tianxingjian Ding, Mubarak Shah, Yu Tian",
-          "summary_ko": "잠재 행동(latent action, 두 프레임 사이의 시각적 변화에서 뽑아낸 '행동 비슷한 코드')이 쓸모 있으려면 (1) 전이에서 무엇을 남기는가, (2) 다른 초기 상태에서 재사용해도 같은 뜻인가라는 두 질문을 통과해야 한다는 문제 설정에서 출발한다. TERRA는 전이를 '시간적 효과(temporal effect)' — 구간 양끝 특징 차이에 구간 내부의 저차 동역학 성분을 더한 압축 표현 — 으로 기술해 연속 잠재 코드를 학습하고, EAT(Effect-Anchored Transport, 효과 기준 전이)로 그 코드를 다른 초기 상태에서 디코딩했을 때 생기는 효과를 원래 관측된 효과에 정박시켜 '맥락이 바뀌어도 같은 뜻'을 강제한다. 선형 판독기(frozen linear reader)를 얹은 비교에서 UniVLA와 LAPA 계열 기준선보다 행동 예측이 정확하고 시각 방해물에 덜 흔들렸으며, 같은 사전학습 규모에서 LIBERO 평균 성공률 93.4%(UniVLA 91.8%)를 기록했다.",
-          "tags": [
-            "Latent Action",
-            "Cross-Embodiment",
-            "Representation Learning",
-            "LIBERO",
-            "Video Pretraining"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.09509",
-          "extra_url": "",
-          "date": "2026-10-07",
-          "reason": "보유 논문 'Improving Cross-embodiment Transfer in Latent Action Models with Action-Similarity Supervision'(2609.19846)은 잠재 행동 간 유사도를 실제 행동 유사도에 맞추는 방식으로 재사용성을 다뤘고, TERRA는 같은 문제를 '다른 초기 상태로 옮겨도 효과가 보존되는가'로 다시 정의해 EAT라는 다른 해법을 제시한다. 또 'GALA: Geometry-Aware Latent Action Modeling'(2609.21948, 좋아요 대상인 잠재행동 계열)이 3D 말단 기하를 추가한 방향과, 'Latent Action Models: 설계공간 실증연구'(2608.19613)·'Gaussian 분포형 잠재행동'(2607.27138)이 제기한 '잠재 코드가 무엇을 담아야 하나' 질문에 직접 답하는 후속 연구다.",
-          "rec_date": "2026-10-09"
-        },
-        {
           "id": "2610.09533",
           "title": "Contact-Aware Imitation Learning Through Contact Factorization",
           "authors": "Jiho Hong, Daeun Song, Sanghyun Kim, Mingyo Seo",
@@ -328,42 +346,6 @@
           "date": "2026-10-07",
           "reason": "좋아요를 누른 'VLA with Force Memory'(2607.18231)와 보유 논문 'Contact-Rich Wrench + Flow Matching'(2609.01596), 'VLA with Force/Torque'(2608.01402), 'Visual-Force Diffusion Policy'(2607.28596)는 모두 힘/토크 신호를 정책 입력에 섞어 접촉 과제를 푸는 방향인데, FACE는 반대로 '힘을 그대로 먹이면 조건이 바뀔 때 깨진다'는 점을 공격하고 접촉 좌표 정규화로 분해한다. 즉 보유 컬렉션의 힘 기반 정책들이 공통으로 가진 전이성 약점을 정면으로 다루는 대조 논문이라, Contact-Rich(6편)·Robustness(6편) 태그 축에서 읽을 가치가 크다.",
           "rec_date": "2026-10-09"
-        },
-        {
-          "id": "2610.03476",
-          "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
-          "authors": "Chenzhi Liu, Yue Zhang, Jiehong Lin et al.",
-          "summary_ko": "이동형 로봇의 긴 작업을 두 겹의 고리로 돌리는 에이전트 틀. 안쪽 고리(Inner Loop)는 시각-언어 모델(VLM, 이미지와 글을 함께 이해하는 모델)이 앞쪽 일정 구간만 보고 계획을 계속 갱신하는 방식(receding-horizon planning)으로, 더 쪼갤 수 없는 최소 단위 동작인 '원자 기술(atomic skill)'들을 조합해 실패를 복구한다. 각 기술은 하나의 VLM 뼈대를 공유하는 흐름 맞추기(flow matching, 잡음에서 행동으로 이어지는 흐름을 학습하는 생성 방식) 전문가들이 실행한다. 바깥쪽 고리(Outer Loop)는 배포 중 수행 기록을 사람 라벨 없이 스스로 잘라내고 검증·군집화해 기술 목록을 계속 늘린다. BEHAVIOR-1K에서 pi0.5-TA보다 22.5%포인트 높고, 자율 데이터 재활용으로 RoboCasa 성공률이 7.5%에서 27.50%로, 실제 로봇 Astribot S1에서 32.5%에서 57.5%로 올랐다.",
-          "tags": [
-            "Agentic Robotics",
-            "Self-Improvement",
-            "Skill Library",
-            "Mobile Manipulation",
-            "Flow Matching"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.03476",
-          "extra_url": "",
-          "date": "2026-10-02",
-          "reason": "좋아요를 누른 ENPIRE(2606.19980, 실제 환경에서의 자율 자기개선), ASPIRE(에이전트가 기술을 스스로 프로그래밍), 그리고 계층형 VLA 에이전트 오케스트레이션 연구(2606.10267)를 하나의 틀로 합친 구조다. 보유 중인 Teach and Grow(2608.17209)·SkillPlug(2607.08354)의 기술 라이브러리 축적과 ABot-AgentOS(2607.10350)의 평생 메모리를 '배포 중 쌓인 기록을 스스로 재활용해 기술을 늘린다'는 방향으로 확장한 셈이다.",
-          "rec_date": "2026-10-07"
-        },
-        {
-          "id": "2610.04391",
-          "title": "AgenticTactileVLA: Contact-Guided Execution-Time Supervision for Generalizable Dexterous Manipulation without VLA Retraining",
-          "authors": "Elizaveta Semenyakina, Ivan Snegirev, Mikhail Kiselev et al.",
-          "summary_ko": "학습을 다시 하지 않고, 이미 가중치가 고정된(frozen) VLA 위에 '실행 중 감독자'를 얹는다. 감독자는 촉각 센서 없이 손가락 위치와 모터에 걸리는 부하(motor effort, 모터가 쓰는 힘으로 접촉을 간접 추정하는 신호)만 보고 다섯 가지 중 하나를 고른다 — 그대로 둘지, 손가락 굽힘을 더 조일지, 교정된 손 모양을 유지하거나 풀지, VLA에 다시 맡겨 재시도할지, 외력에 순응하는 제어(compliant control)로 바꿀지. Unitree G1 로봇과 BrainCo Revo2 손에서 VLA 학습에 쓰이지 않은 물체 5종에 대해 완수율이 기본 VLA 61.3%, 무조건 끝까지 쥐는 제어 72.0%, 이 감독자 84.0%로 나왔다. 선택적으로만 개입하게 하면 교정 횟수가 65.7% 줄어드는데도 완수율은 떨어지지 않았다.",
-          "tags": [
-            "Tactile",
-            "Frozen VLA",
-            "Execution-Time Adaptation",
-            "Dexterous Manipulation",
-            "Contact-Rich"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.04391",
-          "extra_url": "",
-          "date": "2026-10-03",
-          "reason": "좋아요를 누른 FM-VLA(2607.18231, 힘 이력을 기억으로 쓰는 VLA)와 Harness VLA(2607.08448, 고정된 VLA를 메모리로 조종)가 교차하는 바로 그 지점 — '재학습 없이 접촉 신호로 실행 시점에 개입'이다. 보유 중인 TacForcing(2608.25798)과 N0-VTLA(2607.23782)는 전용 촉각 센서를 전제로 하는데, 이 논문은 모터 부하만으로 대체해 센서 없는 손에도 쓸 수 있다는 점이 다르다.",
-          "rec_date": "2026-10-07"
         }
       ]
     },
@@ -371,6 +353,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2310.12931",
+          "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
+          "authors": "Yecheng Jason Ma, William Liang, Guanzhi Wang, et al.",
+          "summary_ko": "대규모 언어 모델(LLM)이 상위 수준 계획은 잘 세우지만 펜 돌리기처럼 섬세한 저수준 조작을 배우게 하는 건 열린 문제였다. Eureka는 LLM을 '행동을 직접 내는 정책'으로 쓰지 않고 '강화학습의 보상 함수 코드를 써 주는 설계자'로 쓴다. GPT-4에게 환경 소스 코드를 보여 주고 보상 함수를 파이썬 코드로 생성하게 한 뒤, 그 보상으로 강화학습을 돌려 나온 학습 통계를 다시 LLM에 되먹여 보상 코드를 고치게 하는 진화적 최적화(여러 후보를 만들고 좋은 것을 골라 변형하는 반복)를 돈다. 과제별 프롬프트 손질이나 보상 템플릿 없이도, 로봇 형태 10종을 포함한 오픈소스 강화학습 환경 29개 중 83%에서 사람 전문가가 손으로 설계한 보상을 능가했고 평균 정규화 개선은 52%였다. 사람 피드백을 보상 코드 수정 지시로 받아들이는 '모델 업데이트 없는 RLHF(사람 피드백 기반 학습)'도 가능했고, 커리큘럼 학습과 결합해 시뮬레이션 섀도우 핸드가 펜을 빠르게 돌리는 기술을 처음으로 익혔다.",
+          "tags": [
+            "Coding Agent",
+            "LLM",
+            "Reward Design",
+            "Evolutionary Search",
+            "Dexterous Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2310.12931",
+          "extra_url": "https://eureka-research.github.io/",
+          "date": "2023-10-19",
+          "reason": "좋아요를 누른 코딩 에이전트 3편(Aspire, 2606.19980, 2607.05369)과 컬렉션의 2609.19906(Code as Policy), 2209.07753(LLM이 로봇 정책 코드를 생성)이 모두 'LLM이 쓴 코드를 실행하고 피드백으로 고친다'는 루프를 쓰는데, 그 루프를 로봇 학습에서 처음 대규모로 성립시킨 기준 논문이다. 다만 Eureka가 고치는 대상은 정책 코드가 아니라 보상 코드라는 점이 중요한데, 이 차이가 좋아요를 누른 2607.29172(보상 모델 + 반복 미세조정)과 컬렉션의 2607.27782·2607.29613(오프라인 RL·크리틱 기반 VLA 개선)이 왜 보상/크리틱 쪽을 건드리는지 설명해 준다. 오늘 함께 추천한 2610.18867 EmbodiedEvo와 2610.18792 SEAR를 읽기 전에 거쳐 두면 '무엇이 3년 만에 달라졌는지'가 선명해진다.",
+          "rec_date": "2026-10-15"
+        },
+        {
+          "id": "2409.01652",
+          "title": "ReKep: Spatio-Temporal Reasoning of Relational Keypoint Constraints for Robotic Manipulation",
+          "authors": "Wenlong Huang, Chen Wang, Yunzhu Li, et al.",
+          "summary_ko": "조작 과제를 '로봇과 환경을 묶는 제약 조건'으로 표현하려는 접근인데, 그 제약을 ReKep(Relational Keypoint Constraints, 관계적 키포인트 제약)이라는 형태로 적는다. 구체적으로는 환경에서 뽑은 3차원 키포인트(물체·로봇 위의 의미 있는 점)들을 입력받아 숫자 비용을 돌려주는 파이썬 함수다. 과제를 이런 제약의 시퀀스로 쓰면, 계층적 최적화(상위에서 어느 단계인지 고르고 하위에서 실제 자세를 푸는 2단 구조)로 로봇 행동 — SE(3), 즉 3차원 위치와 회전을 함께 나타내는 공간에서의 말단 자세 시퀀스 — 을 실시간 주기의 지각-행동 루프로 풀 수 있다. 과제마다 사람이 제약을 적는 수고를 없애려고, 대형 비전 모델과 비전-언어 모델이 자유 형식 지시문과 RGB-D(색상 + 깊이) 관찰에서 ReKep 함수를 자동 생성하게 했다. 바퀴 달린 단일 팔 플랫폼과 고정형 양팔 플랫폼에서 다단계·실제 환경·양팔·반응형 행동을 과제별 데이터나 환경 모델 없이 수행했다.",
+          "tags": [
+            "VLM Planner",
+            "Keypoint Constraints",
+            "Code as Policy",
+            "Hierarchical Optimization",
+            "Bimanual"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.01652",
+          "extra_url": "https://rekep-robot.github.io/",
+          "date": "2024-09-03",
+          "reason": "좋아요를 누른 2607.08448(동결 VLA + 에이전트 플래너 + 프리미티브 라이브러리 + 메모리)과 2606.10267(계층형 VLA·옵션 프레임워크·VLM 플래너·종료 판정)이 공유하는 구조, 즉 '상위는 비전-언어 모델이 무엇을 할지 정하고 하위는 정해진 방식으로 실행한다'를 데이터 학습 없이 끝까지 밀어붙인 대표작이다. 컬렉션에서 이미 제외(dismissed) 처리한 2307.05973 VoxPoser의 직계 후속이라 '그때 왜 걸렀는지'와 대비해 보기 좋고, 2607.21725(에이전트형 오케스트레이터 + 동결 VLA + TAMP)가 말하는 TAMP(과제·동작 통합 계획) 쪽 제약 최적화와 LLM 코드 생성이 만나는 접점을 가장 깔끔하게 보여 준다. 키포인트라는 중간 표현은 컬렉션의 2607.27549(말단 궤적 기반 크로스 임베디먼트)·2502.05485(2차원 경로를 중간 표현으로 쓰는 계층형 VLA)와 같은 계열의 질문을 다룬다.",
+          "rec_date": "2026-10-15"
+        },
+        {
+          "id": "2303.12076",
+          "title": "Dexterity from Touch: Self-Supervised Pre-Training of Tactile Representations with Robotic Play",
+          "authors": "Irmak Guzey, Ben Evans, Soumith Chintala, et al.",
+          "summary_ko": "손가락이 여러 개인 로봇 손에 섬세함을 가르치는 문제를 촉각 쪽에서 공략한 T-Dex다. 시각이나 시각에서 추정한 상태만 쓰는 방법은 접촉력을 따져야 하거나 손 자체에 물체가 가려지는 미세 조작에서 잘 안 된다는 관찰에서 출발한다. 1단계로 특별한 과제 없이 손을 놀리는 '플레이' 데이터 2.5시간을 모아 자기지도 학습(정답 라벨 없이 데이터 자체에서 학습 신호를 만드는 방식)으로 촉각 인코더를 학습해, 고차원 촉각 센서 값을 낮은 차원 임베딩(압축 벡터)으로 줄인다. 2단계로 과제별 시연 몇 개만 받아, 촉각 임베딩과 시각 관찰을 함께 쓰는 비모수 정책(가중치를 학습하는 대신 저장된 시연 중 가장 비슷한 것을 찾아 따라가는 방식)을 만든다. 까다로운 미세 조작 5개에서 시각만 쓰거나 관절 토크만 쓰는 모델보다 평균 1.7배 좋았고, 플레이 데이터·구조·표현 학습 중 무엇이 결정적인지 분석을 덧붙였다.",
+          "tags": [
+            "Tactile",
+            "Self-Supervised",
+            "Pre-training",
+            "Dexterous Manipulation",
+            "Play Data"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2303.12076",
+          "extra_url": "https://tactile-dexterity.github.io/",
+          "date": "2023-03-21",
+          "reason": "좋아요를 누른 2607.18231(힘 기억·접촉 풍부 VLA)과 컬렉션의 촉각 계열 — 2607.23782(VTLA·잠재 촉각 토큰), 2608.25798(촉각 피드백 + 스트리밍 행동 전문가), 2607.22530(시각-촉각 세계 모델), 2608.30237(촉각 + 모델 기반 계획) — 이 공통으로 쓰는 '촉각을 저차원 잠재로 눌러 담아 정책에 먹인다'는 설계의 출발점이다. 오늘 함께 추천한 2610.18855 ILA가 '그 잠재에 행동까지 담자'로 한 걸음 더 가는 논문이라 짝으로 읽기 좋다. 과제 없는 플레이 데이터로 표현을 먼저 학습한다는 발상은 컬렉션의 2607.25895(UMI 기반 데이터 수집)·2402.10329(손에 드는 그리퍼로 데이터 수집)가 다루는 '값싼 데이터로 사전학습' 문제의식과도 이어진다.",
+          "rec_date": "2026-10-15"
+        },
         {
           "id": "2302.00111",
           "title": "Learning Universal Policies via Text-Guided Video Generation",
@@ -694,42 +730,6 @@
           "date": "2025-06-11",
           "reason": "컬렉션의 World Model 태그(16편)와 보유 논문 'VLA RL with LeJEPA critic'(2607.29613)이 전제하는 'JEPA식 잠재 월드모델'의 원류이자, 오늘 함께 추천한 RoboJEPA(2610.10515)의 직계 선행 연구다(공저자도 상당 부분 겹친다). 추천 pool의 'Rethinking Representations for World-Action Modeling'(2609.38163) 등 최근 월드-액션 모델 연구가 V-JEPA 계열 표현을 출발점으로 삼으므로, 이 논문을 먼저 읽어야 그 설계 선택이 왜 그런지 이해된다. 보유한 DROID 데이터셋 논문(2403.12945)을 월드모델 후학습에 쓰는 사례이기도 하다.",
           "rec_date": "2026-10-09"
-        },
-        {
-          "id": "2411.00785",
-          "title": "IGOR: Image-GOal Representations are the Atomic Control Units for Foundation Models in Embodied AI",
-          "authors": "Xiaoyu Chen, Junliang Guo, Tianyu He et al. (Microsoft Research Asia)",
-          "summary_ko": "사람과 여러 종류의 로봇이 공유하는 하나의 '잠재 행동(latent action, 행동 라벨 없이 영상 속 변화에서 거꾸로 추정한 이름 없는 행동 표현)' 공간을 만든다. 시작 이미지와 목표 이미지 사이의 시각적 변화를 압축한 것을 잠재 행동으로 쓰고, 이를 인터넷 규모 영상에 자동 라벨처럼 붙여 기반 정책 모델과 세계 모델(world model, 행동을 넣으면 다음 장면을 예측하는 모델)을 함께 학습한다. 사람과 로봇에 걸쳐 의미가 일관된 행동 공간이 생기고, 한 영상 속 물체 움직임을 다른 영상으로 '옮겨 심는' 것까지 보여준다. 나아가 잠재 행동을 자연어와 맞추고 저수준 정책과 연결해 실제 로봇 제어로 잇는다.",
-          "tags": [
-            "Latent Action",
-            "Cross-Embodiment",
-            "Human Video",
-            "World Model",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2411.00785",
-          "extra_url": "",
-          "date": "2024-10-17",
-          "reason": "컬렉션의 잠재 행동 계열이 공통으로 참조하는 초기 대표작인데 아직 보유 목록에 없다 — LAPA(2410.11758), 좋아요를 누른 WALA(2607.11397), GALA(2609.21948), DLAM(2607.27138), What Matters for Latent Actions(2608.19613)가 모두 이 '영상 변화를 행동으로 쓰는' 틀 위에 서 있다. 특히 '시작-목표 이미지 쌍을 행동 단위로 본다'는 설계는 보유 중인 2609.19846(행동 유사도 감독으로 교차 몸체 전이 개선)과 CD-LAM(2607.09185, 인과 편향 제거)이 지적하는 문제의 출발점이다.",
-          "rec_date": "2026-10-07"
-        },
-        {
-          "id": "2506.15799",
-          "title": "Steering Your Diffusion Policy with Latent Space Reinforcement Learning (DSRL)",
-          "authors": "Andrew Wagenmaker, Mitsuhiko Nakamoto, Yunchu Zhang et al. (UC Berkeley, Physical Intelligence)",
-          "summary_ko": "사람 시연을 모방해 배운 확산 정책(diffusion policy, 잡음을 조금씩 걷어내며 행동을 만들어내는 정책)의 가중치는 전혀 건드리지 않고, 그 정책이 출발점으로 쓰는 '잠재 잡음(latent noise)' 공간 위에서만 강화학습을 돌려 행동을 바꾼다. 원래 정책에는 입력을 넣고 출력을 받는 블랙박스 접근만 필요하므로, 확산 모델을 직접 미세조정할 때 생기는 골치 아픈 문제들을 전부 피한다. 표본 효율이 높아 실제 로봇에서 자율적인 성능 개선이 가능하고, 이미 학습된 범용 정책(generalist policy)을 적응시키는 데도 쓸 수 있다.",
-          "tags": [
-            "Diffusion Policy",
-            "Latent Noise RL",
-            "Real-World RL",
-            "Policy Steering",
-            "Sample Efficiency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2506.15799",
-          "extra_url": "https://diffusion-steering.github.io",
-          "date": "2025-06-18",
-          "reason": "보유 중인 2608.23831(추론 지연 상황에서 범용 정책을 RL로 미세조정)이 바로 이 DSRL을 토대로 삼고 있는데 원 논문이 컬렉션에 없다. 또한 RedFlow(2607.27782, 실패를 행동 수준 교정으로 되돌림), WCM(2607.29613, VLA 강화학습용 세계 비평 모델), FlowDAgger(2607.08877, 잠재 공간에서의 사람 개입 적응)이 공유하는 '기존 정책을 깨뜨리지 않고 고치기' 문제의 기준선 역할을 한다.",
-          "rec_date": "2026-10-07"
         }
       ]
     }
