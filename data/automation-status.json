@@ -1,6 +1,6 @@
 {
-  "state": "ok",
-  "since": "",
-  "checked": "2026-09-22 11:10:59",
-  "detail": ""
+  "state": "auth_expired",
+  "since": "2026-10-22",
+  "checked": "2026-10-22 08:30:11",
+  "detail": "매일 추천(run-recommend)에서 OAuth 만료 감지"
 }
