@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-07",
+  "generated": "2026-11-08",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.03815",
+          "title": "AIRoA-0: Long-Horizon, Precise, Cross-Embodiment Manipulation from Handheld Data",
+          "authors": "Yueh-Hua Wu, Kei Ota, Hanlong Li 외 (AIRoA)",
+          "summary_ko": "로봇을 한 대도 쓰지 않고, 사람이 손에 들고 쓰는 집게(YUBI, 저자들이 공개한 오픈소스 핸드헬드 그리퍼)로만 모은 1만 6151시간 분량 시연으로 양팔 조작 정책을 학습했다. 머리나 장면 카메라 없이 양쪽 손목 카메라만 보고, 한 문장 지시로 12개 이상 부품을 번호 칸에 분류하거나 로봇청소기 물걸레·브러시를 교체하고, 필통 지퍼를 열고 수건을 접는 긴 작업을 학습 데이터에 없던 장소에서 수행한다. 평가 10개 과제 평균 성공률 78%로, 같은 시연으로 후학습한 다른 VLA(Vision-Language-Action, 시각·언어·행동 모델) 4종 중 최고치인 27%를 크게 앞섰다. 원격조작 데이터·강화학습·실기 교정 없이 로봇은 테스트 때만 등장하며, YUBI 집게를 장착한 여러 로봇(양팔 Franka, TX-G2, OpenArm, UR)에 그대로 올라간다. 데이터셋·사전학습 가중치·후학습 레시피를 공개했고, 새 과제 후학습은 H200 GPU 8장 한 노드에서 4시간 이내.",
+          "tags": [
+            "Cross-Embodiment",
+            "Hand-held Gripper",
+            "Bimanual",
+            "Long-Horizon",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.03815",
+          "extra_url": "https://a-0.airoa.io",
+          "date": "2026-11-02",
+          "reason": "보유 중인 UMI(Universal Manipulation Interface, 2402.10329)가 제시한 '로봇 없이 손에 든 집게로 데이터 수집' 노선을 1만 6천 시간 규모까지 밀어붙인 결과물이다. 좋아요를 누른 Xiaomi-Robotics-1(2607.15330, VLA·UMI·스케일링 법칙·흐름 매칭)이 10만 시간 규모 수집으로 스케일을 키운 것과 같은 축에 있지만, 이쪽은 '로봇 데이터를 단 한 건도 쓰지 않는다'는 극단 조건이어서 핸드헬드 데이터만으로 어디까지 가능한지의 상한을 보여준다. 또 Cross-Embodiment 태그 18편과 Open X-Embodiment(2310.08864)의 '여러 몸체를 한 정책으로' 흐름, Mobile ALOHA(2401.02117)·π0(2410.24164)의 원격조작 기반 수집과 직접 비교할 수 있는 대조군이다.",
+          "rec_date": "2026-11-08"
+        },
+        {
+          "id": "2611.05249",
+          "title": "Should the Action Expert Train the VLM? Action-Token Supervision and Gradient Routing in Mixture-of-Transformer VLAs",
+          "authors": "Asher James Hancock, Boyi Li, Yuxiao Chen 외",
+          "summary_ko": "요즘 VLA(Vision-Language-Action, 시각·언어·행동 모델)는 사전학습된 시각언어모델(VLM) 뒤에 흐름 매칭(flow matching, 잡음에서 목표 행동까지 이어지는 속도장을 학습해 행동을 생성하는 방식) 기반 '행동 전문가(action expert)'를 붙이고, 전문가가 VLM의 키-값(key-value) 표현을 받아 행동을 예측하게 한다. 문제는 VLM이 정작 그 흐름 매칭 목표로 학습된 적이 없다는 점이다. 이를 메울 신호는 두 가지 — 전문가 손실에서 VLM으로 기울기(gradient)를 흘려보내는 결합(coupling), 그리고 같은 행동을 이산 토큰으로 바꿔 VLM에 직접 감독을 주는 방식. 널리 쓰이는 레시피는 VLM 능력 보호를 이유로 기울기를 끊고(insulation) 이산 행동 토큰과 시각언어 데이터로만 감독하는데, 저자들은 '행동 토큰 감독 여부'와 '전문가 손실이 VLM을 갱신하는지'를 독립 변수로 쪼개 자율주행과 조작에서 비교했다. 결과: 행동 토큰 감독이 있으면 기울기 차단이 결합과 대등하지만, 없으면 결합이 궤적 예측 오차를 약 25% 줄이고 폐루프 주행 경로 진행도를 약 40% 끌어올린다(토큰 감독이 있을 때는 약 17%). 즉 기울기 차단을 기본값으로 삼는 관행은 조건부라는 결론.",
+          "tags": [
+            "VLA",
+            "Flow Matching",
+            "Action Expert",
+            "Training Recipe",
+            "Mixture-of-Transformers"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.05249",
+          "extra_url": "",
+          "date": "2026-11-03",
+          "reason": "컬렉션에서 가장 두꺼운 두 태그 VLA(45편)와 Flow Matching(18편)이 정확히 겹치는 지점을 통제 실험으로 파헤친다. 보유 중인 π0(2410.24164), π0.5(2504.16054), GR00T N1(2503.14734)은 모두 'VLM + 흐름 매칭 행동 전문가' 구조이고 기울기 차단 쪽 설계를 택했는데, 이 논문은 그 선택이 언제 이득이고 언제 손해인지를 분해한다. FAST(2501.09747)처럼 행동을 이산 토큰으로 바꾸는 계열이 왜 중요한지도 같은 틀에서 설명되므로, 보유 논문들의 학습 레시피를 다시 읽는 기준점이 된다.",
+          "rec_date": "2026-11-08"
+        },
+        {
+          "id": "2611.01483",
+          "title": "TF^2-Steering: Action Refinement with Tactile Forecasts and Feedback via Velocity-Field Steering",
+          "authors": "Yiming Chen, Xiaofei Wei, Chun Gu 외",
+          "summary_ko": "플러그를 소켓에 꽂는 마지막 순간처럼 시각이 거의 단서를 주지 못하는 접촉 구간에서, 사람은 '곧 닿을 느낌'에 대한 예측과 실제로 닿은 촉각 피드백을 함께 써서 손을 미세 조정한다. 반면 지금 로봇 정책은 대체로 시각 지배적이고, 촉각 데이터가 적고 접촉 사건이 드물어서 촉각 신호를 그냥 집어넣으면 무시되거나 사전학습으로 얻은 능력을 오히려 깨뜨린다. TF^2-Steering은 흐름 매칭(flow matching) 행동 전문가가 만드는 속도장(velocity field, 잡음에서 행동으로 가는 경로를 결정하는 벡터장)에 학습된 잔차(residual) 조향을 더해 행동을 다듬는다. 촉각 예측(앞으로 어떤 접촉이 올지)과 실시간 촉각 피드백을 함께 받는 촉각 전문가 혼합(mixture-of-experts) 구조에 3단계 학습 레시피를 붙여, 촉각이 흐름 매칭 생성 과정을 교정하고 필요하면 방향까지 틀 수 있게 만든다. 시뮬레이션 6개·실제 6개 조작 과제에서 가장 강한 기준선 대비 시뮬 평균 성공률 10.7%p, 실제 진행도 성공률 9.1%p 높았다.",
+          "tags": [
+            "Tactile",
+            "Contact-Rich",
+            "Flow Matching",
+            "VLA",
+            "Mixture-of-Experts"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.01483",
+          "extra_url": "https://yiming-cc.github.io/tf2-steering/",
+          "date": "2026-11-01",
+          "reason": "좋아요를 누른 FM-VLA(2607.18231, 접촉이 많은 조작을 위해 힘 기록을 기억으로 쓰는 VLA)와 정확히 같은 문제 — 시각만으로는 안 되는 접촉 구간 — 을 다루면서, 해법의 위치가 다르다. FM-VLA가 힘 이력을 메모리로 입력단에 넣는 반면 이쪽은 흐름 매칭의 속도장을 출력단에서 조향한다. 사전학습 정책 가중치를 건드리지 않고 모듈만 얹는 방식이라 Harness VLA(2607.08448, 얼린 VLA를 외부에서 조종)와도 같은 전략 계열이고, Contact-Rich(6편)·Flow Matching(18편) 태그가 만나는 자리를 메운다.",
+          "rec_date": "2026-11-08"
+        },
         {
           "id": "2611.06881",
           "title": "VABAR: A Variational Automation Benchmark for Agentic Robotics",
@@ -276,42 +330,6 @@
           "rec_date": "2026-10-21"
         },
         {
-          "id": "2610.21985",
-          "title": "VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models",
-          "authors": "Xueli Sun, Yuxiang Lu, Yantong Liu 외",
-          "summary_ko": "흐름 기반(flow matching) VLA 정책은 같은 관측에서도 난수 시드에 따라 행동 묶음(action chunk)의 품질이 달라진다는 점에 주목해, JEPA(관측을 잠재 공간에서 예측하도록 학습하는 자기지도 구조) 기반 잠재 세계 모델로 각 후보 행동의 미래 상태를 예측·채점해 가장 좋은 후보만 실행한다. 추가 학습 없이 펜 삽입·피펫팅·사과 놓기 같은 정밀 조작 과제의 평균 완료 점수를 50.8%에서 65.5%로 끌어올렸다.",
-          "tags": [
-            "VLA",
-            "Flow Matching",
-            "World Model",
-            "Test-Time Scaling",
-            "JEPA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.21985",
-          "extra_url": "",
-          "date": "2026-10-15",
-          "reason": "좋아요를 누른 2607.15330(UMI 기반 Flow Matching VLA)과 2607.11397(잠재 행동+세계 모델)의 교집합에 정확히 놓이는 논문이다. 보유 중인 pool의 '테스트 타임 계산을 적응으로 바꾸는' 2610.14885(Verify, Act, Distill)가 검증 결과를 증류로 정책에 흡수하는 쪽이라면, 이쪽은 세계 모델 자체를 검증기로 쓰는 학습 불필요(training-free) 경로라 두 편을 나란히 보면 '행동 후보 검증' 설계 공간이 한눈에 정리된다.",
-          "rec_date": "2026-10-20"
-        },
-        {
-          "id": "2610.18852",
-          "title": "ForceWAM: Decoupling Future and Response Learning from Demo and Play Data for Contact-Rich Manipulation",
-          "authors": "Zijun Xu, Wendi Chen, Xinkai Wang 외",
-          "summary_ko": "접촉이 많은 조작에서 '어떤 결과 상태가 과제에 맞는가'(미래 예측)와 '국소 행동이 접촉력을 어떻게 바꾸는가'(반응 학습)를 분리해, 전자는 전문가 시연으로 학습한 세계 모델이, 후자는 목적 없는 자유 탐색(play) 데이터까지 쓴 역동역학 모델이 담당하게 한다. 밀기·뒤집기·놓기 과제에서 85~95% 성공률을 냈고, play 데이터 추가만으로 15~45%p가 올랐다.",
-          "tags": [
-            "Contact-Rich",
-            "Force",
-            "World Action Model",
-            "Play Data",
-            "Inverse Dynamics"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.18852",
-          "extra_url": "",
-          "date": "2026-10-13",
-          "reason": "좋아요한 2607.18231(힘 기억을 VAE+Flow Matching으로 다루는 접촉 중심 VLA)의 직접적인 후속 비교군이다. 2607.18231이 힘 이력을 정책 내부에 기억시키는 접근이라면 ForceWAM은 힘 반응 지식을 세계 모델 바깥의 역동역학 모듈로 떼어내는 반대 설계이고, pool에 있는 DEFT-VLA(2610.14854, 단계별 힘 특화)와 함께 보면 접촉-힘 정보를 어디에 둘지에 대한 세 가지 답을 비교할 수 있다.",
-          "rec_date": "2026-10-20"
-        },
-        {
           "id": "2610.20474",
           "title": "AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents",
           "authors": "Peidong Wang, Ying Chang, Zhiming Ma 외",
@@ -328,24 +346,6 @@
           "date": "2026-10-14",
           "reason": "좋아요한 2606.19980(코딩 에이전트 기반 자기개선)과 Aspire(스킬 라이브러리 지속 학습)의 공통 약점이었던 '언제·무엇을 다시 학습할지'를 실패 귀속으로 결정한다는 점에서 한 걸음 더 나간다. pool의 RoboRSI(2610.12424)·EmbodiedEvo(2610.18867)가 자기진화 루프의 구조를 다룬다면 이 논문은 그 루프의 비용 문제를 정면으로 다룬다.",
           "rec_date": "2026-10-20"
-        },
-        {
-          "id": "2610.14885",
-          "title": "Verify, Act, Distill: Turning Test-Time Compute into Test-Time Adaptation for Vision-Language-Action Models",
-          "authors": "Kaneyoshi Hiratsuka, Satoshi Yamamori, Jun Morimoto",
-          "summary_ko": "추론할 때 행동 후보를 여러 개 뽑아 점수를 매겨 고르는 테스트타임 연산(TTC, Test-Time Compute)은 VLA의 실제 수행 성능을 올려주지만, 정책 가중치는 그대로여서 그 이득을 매 실행마다 비싸게 다시 사게 된다. 이 논문의 Verify-Act-Distill은 그 이득을 모델 안으로 집어넣는다. 고정된 검증기(verifier)가 흐름 매칭(flow matching, 노이즈에서 행동으로 가는 연속 변환을 학습하는 생성 방식) 기반 VLA의 후보들을 채점하고, 점수로 가중 평균한 행동을 실제로 실행한다. 그렇게 성공한 에피소드의 관측과 집계된 행동 묶음을 LoRA(기존 가중치를 건드리지 않고 작은 저랭크 행렬만 추가 학습하는 기법) 파라미터로 그대로 증류한다. 별도의 강화학습이나 교사 모델용 추가 롤아웃이 필요 없고, 이미 실행 중 만들어진 검증 신호를 재활용하는 것이 핵심이다. SmolVLA 5k 체크포인트로 LIBERO 40개 과제를 돌려 과제당 10에피소드만 증류해도 후보 하나만 쓰는 성능이 54.1%에서 70.6%로 올랐고(후보 8개 집계로 얻는 향상분의 약 74%를 회수), 증류된 정책에 다시 집계를 적용하면 76.4%→82.3%, 장기 과제 묶음에서는 44.0%→57.8%였다.",
-          "tags": [
-            "Test-Time Compute",
-            "Test-Time Adaptation",
-            "VLA",
-            "LoRA",
-            "Flow Matching"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.14885",
-          "extra_url": "",
-          "date": "2026-10-10",
-          "reason": "보유 2607.17454(세계·행동 모델에 Best-of-N 후보 선택을 붙인 테스트타임 스케일링), 2608.30237(Best-of-N 계획), 2608.16885(테스트타임 연산을 쓰는 계층 정책), 2607.15275(테스트타임 훈련과 빠른 가중치), 2606.15631(검색 기반 테스트타임 적응)은 모두 '추론 시점에 연산을 더 써서 좋아지게 하는' 축에 있는데, 공통 약점이 그 이득을 매번 다시 지불한다는 점이다. 이 논문은 그 이득을 가중치로 흡수해 상시 성능으로 바꾸는 방향이라 해당 묶음의 자연스러운 다음 수다. 증류 수단이 LoRA라서 2607.14852(LoRA 게이팅 평생학습), 2608.19589(직교 부분공간 + LoRA 지속학습), 2608.19490(자기 시연 미세조정의 망각 문제)과 '어디에 무엇을 얼마나 써서 넣을지' 논의가 바로 이어진다.",
-          "rec_date": "2026-10-16"
         }
       ]
     },
@@ -353,6 +353,57 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2409.20537",
+          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
+          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He",
+          "summary_ko": "로봇 데이터는 보통 몸체(embodiment)마다, 과제마다 따로 모이기 때문에 센서 구성도 관절 수도 행동 공간도 전부 달라서 하나의 범용 모델로 합치기 어렵다. HPT는 이 이질성을 구조로 흡수한다. 과제·몸체와 무관한 공통 표현을 담는 크고 공유 가능한 정책 '몸통(trunk)'을 사전학습하고, 몸체별로는 자기 고유의 자기수용감각(proprioception, 관절 각도·속도 같은 몸 내부 상태)과 시각 입력을 짧은 토큰 열로 바꿔주는 '줄기(stem)'만 따로 둔다. 그래서 몸통은 어떤 로봇이 들어와도 같은 형식의 토큰만 받는다. 사전학습에는 대규모 실제 멀티-몸체 로봇 데이터에 시뮬레이션, 실제 배치된 로봇, 사람 영상까지 섞어 52개 데이터셋 규모로 스케일링 실험을 했고, 미리 보지 못한 과제에서 미세조정 정책 성능을 20% 이상 끌어올렸다(NeurIPS 2024).",
+          "tags": [
+            "Cross-Embodiment",
+            "Pre-training",
+            "Generalist Policy",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.20537",
+          "extra_url": "https://liruiw.github.io/hpt/",
+          "date": "2024-09-30",
+          "reason": "Cross-Embodiment 태그가 붙은 18편의 공통 전제 — '서로 다른 로봇 데이터를 한 모델에 모을 수 있다' — 를 가장 깔끔하게 구조로 못박은 기반 논문인데 아직 컬렉션에 없다. 보유 중인 Open X-Embodiment(2310.08864)가 데이터셋 쪽 답이고 π0(2410.24164)·GR00T N1(2503.14734)이 정책 쪽 답이라면, HPT는 그 사이의 '몸체별 줄기 + 공유 몸통' 아키텍처 답이다. 추천 pool에 있는 Octo/CrossFormer(2408.11812)와 짝으로 읽으면 멀티-몸체 사전학습 설계 공간이 거의 다 덮인다.",
+          "rec_date": "2026-11-08"
+        },
+        {
+          "id": "2412.14803",
+          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations",
+          "authors": "Yucheng Hu, Yanjiang Guo, Pengchao Wang 외",
+          "summary_ko": "로봇 정책이 쓰는 시각 인코더는 대개 한 장 이미지를 복원하거나 두 장을 대조(contrastive)하는 목표로 사전학습돼서, 정지된 장면 정보는 잘 담지만 '다음에 무엇이 어떻게 움직일지'라는 동역학 정보는 거의 담지 못한다. 이 논문의 가설은 영상 확산 모델(video diffusion model, 영상을 잡음에서 점진적으로 복원하며 생성하는 모델)의 내부 표현에는 현재 장면 상태와 예측된 미래 변화가 함께 들어 있고, 이것을 행동 학습의 조건으로 쓸 수 있다는 것이다. VPP는 영상을 끝까지 생성하지 않고 영상 확산 모델 내부에서 꺼낸 '예측된 미래 표현'을 조건으로 암묵적 역동역학 모델(inverse dynamics model, 상태 변화로부터 그 변화를 만든 행동을 역산하는 모델)을 학습한다. 영상 기반 모델은 로봇 데이터와 인터넷 사람 조작 영상으로 미세조정해 예측을 더 선명하게 만든다. CALVIN ABC-D 일반화 벤치마크에서 기존 최고 대비 상대 18.6% 개선, 복잡한 실제 민첩 조작 성공률 31.6% 상승.",
+          "tags": [
+            "World Model",
+            "Video Diffusion",
+            "Representation Learning",
+            "Generalist Policy"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.14803",
+          "extra_url": "https://video-prediction-policy.github.io",
+          "date": "2024-12-19",
+          "reason": "컬렉션의 World Model 태그 16편과 추천 pool의 세계-행동 모델 묶음(La-JEPA 2611.08156, W2A 2611.02600, PrimeSim 2611.04870)이 전부 공유하는 아이디어 — '미래를 생성하지 말고, 생성 모델 내부 표현만 빌려 행동에 쓴다' — 의 원형이다. 좋아요를 누른 Xiaomi-Robotics-U0(2607.11643, 세계 기반 모델로 체화 데이터를 통합 합성)와 WALA(2607.11397, 잠재 행동과 세계 모델)의 직계 선행 연구이기도 하고, 보유 중인 Diffusion Forcing(2407.01392)이 제공하는 생성 쪽 기법과 맞물려 읽힌다.",
+          "rec_date": "2026-11-08"
+        },
+        {
+          "id": "2410.13126",
+          "title": "ALOHA Unleashed: A Simple Recipe for Robot Dexterity",
+          "authors": "Tony Z. Zhao, Jonathan Tompson, Danny Driess 외 (Google DeepMind)",
+          "summary_ko": "종단간(end-to-end) 모방 학습만으로 어려운 양팔 민첩 조작을 어디까지 할 수 있는지 밀어본 연구다. 레시피는 의도적으로 단순하다 — ALOHA 2 양팔 플랫폼으로 원격조작 시연을 대규모로 모으고, 표현력이 큰 정책류(확산 정책, diffusion policy: 잡음에서 행동 궤적을 점진적으로 복원해 생성하는 방식)를 쓴다. 특별한 모듈이나 과제별 설계 없이 이 조합만으로 신발끈 묶기, 티셔츠 걸기처럼 변형체(옷·끈 같은 모양이 변하는 물체)를 다루고 접촉 동역학이 복잡한 양팔 과제가 풀린다는 것을 보인다. 실제 5개·시뮬레이션 3개 과제에서 당시 최신 기준선을 능가.",
+          "tags": [
+            "Bimanual",
+            "Diffusion Policy",
+            "Dexterous Manipulation",
+            "Imitation Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.13126",
+          "extra_url": "https://aloha-unleashed.github.io",
+          "date": "2024-10-17",
+          "reason": "컬렉션에 ACT(2304.13705, ALOHA 원 논문의 행동 분할 트랜스포머)와 Mobile ALOHA(2401.02117)는 있는데, 그 사이를 잇는 '데이터 규모 + 확산 정책이면 충분하다'는 핵심 레시피 논문이 빠져 있다. Bimanual(6편)·Diffusion Policy(7편)·Dexterous Manipulation(4편) 태그가 모두 걸리는 자리이고, 보유 중인 Diffusion Policy(2303.04137)가 왜 양팔 변형체 조작에서 결정적이었는지를 실증하는 편이다. 신규 추천인 AIRoA-0(2611.03815)이 '로봇 없는 핸드헬드 수집'으로 같은 종류의 긴 양팔 과제를 노린다는 점에서, 원격조작 대규모 수집 쪽 기준선으로 나란히 보기 좋다.",
+          "rec_date": "2026-11-08"
+        },
         {
           "id": "2408.11812",
           "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation (CrossFormer)",
@@ -675,60 +726,6 @@
           "date": "2024-10-10",
           "reason": "컬렉션의 UMI 계열 핸드헬드 수집(2410.24164, 2607.15330)은 힘 정보가 없는 영상·자세 기반인데, 이 논문은 같은 방식에 힘 채널을 더한 초기 대표작이다. 좋아요한 2607.18231과 새로 추천한 ForceWAM이 전제로 삼는 '힘 라벨이 붙은 사람 시연을 어떻게 싸게 모으는가'에 대한 답이라 세 편을 묶어 읽으면 접촉 조작 데이터 파이프라인이 완성된다.",
           "rec_date": "2026-10-20"
-        },
-        {
-          "id": "2312.10812",
-          "title": "Learning to Act without Actions (LAPO)",
-          "authors": "Dominik Schmidt, Minqi Jiang",
-          "summary_ko": "웹에 넘치는 영상에는 로봇이 무슨 행동을 했는지 적힌 행동 라벨이 없어서, 기존 모방학습 기법으로는 쓸 수 없었다. LAPO(Latent Action Policies)는 영상만 보고 잠재 행동(latent action, 연속한 두 프레임의 변화를 설명하는 압축된 행동 표현)을 복원해 이 문제를 돌파한다. 영상의 관측된 변화만으로 실제 행동 공간의 구조 자체를 되찾아낸 첫 방법이며, 그 과정에서 잠재 행동 정책·세계 모델·역동역학 모델(inverse dynamics model, 앞뒤 관측을 보고 사이에 무슨 행동이 있었는지 되짚는 모델)을 함께 얻는다. 이렇게 사전학습한 잠재 행동 정책은 행동 라벨이 붙은 소량의 오프라인 데이터나 온라인 보상만으로 빠르게 전문가 수준으로 미세조정된다.",
-          "tags": [
-            "Latent Action",
-            "World Model",
-            "Action-Free Video",
-            "Inverse Dynamics",
-            "Pre-training"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2312.10812",
-          "extra_url": "",
-          "date": "2023-12-17",
-          "reason": "컬렉션의 잠재 행동 축이 전제로 깔고 있는 원 논문인데 정작 빠져 있다. 보유 2608.19613은 제목부터 LAPO의 설계 공간을 실증 분석하는 논문이고, 좋아요한 2607.11397(DINOv3 특징 위에서 잠재 행동과 깊이 예측을 함께 학습)도 같은 계보다. 2410.11758(LAPA, 영상에서 잠재 행동을 VQ-VAE로 양자화해 사전학습), 2607.27138(잠재 행동을 가우시안 분포로 두는 확장), 2609.19846·2609.21948(교차 신체 잠재 행동)이 공유하는 '행동 라벨 없는 영상에서 행동 표현을 복원한다'는 발상이 어디서 왔고 원형은 무엇을 보장했는지 확인하면, 최근 변형들이 실제로 무엇을 바꿨는지 가늠하기 쉬워진다.",
-          "rec_date": "2026-10-16"
-        },
-        {
-          "id": "2205.06175",
-          "title": "A Generalist Agent (Gato)",
-          "authors": "Scott Reed, Konrad Zolna, Emilio Parisotto 외 (DeepMind)",
-          "summary_ko": "하나의 신경망이 하나의 가중치 세트로 아타리 게임을 하고 이미지에 설명을 달고 대화를 하고 실제 로봇 팔로 블록을 쌓는다. Gato는 다중 모달·다중 과제·다중 신체(multi-embodiment, 서로 다른 몸체를 가진 로봇·에이전트를 한 모델이 함께 다루는 것) 일반 정책으로, 모든 입출력을 토큰 시퀀스로 통일한 뒤 주어진 맥락만 보고 지금 내놓아야 할 것이 텍스트인지 관절 토크인지 게임 패드 입력인지를 스스로 판단해 출력한다.",
-          "tags": [
-            "Generalist Policy",
-            "Multi-Embodiment",
-            "Token Sequence",
-            "Multi-Task",
-            "DeepMind"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2205.06175",
-          "extra_url": "",
-          "date": "2022-05-12",
-          "reason": "컬렉션에서 가장 두꺼운 축인 교차 신체(cross-embodiment)의 원형이다. 보유 2310.08864(Open X-Embodiment/RT-X, 여러 기관 로봇 데이터를 합쳐 긍정 전이를 확인), 2212.06817(RT-1, 행동을 이산 토큰으로 바꾼 로보틱스 트랜스포머), 2609.02546(교차 신체 제로샷 전이를 통제 실험으로 검증), 2607.03570(통합 행동 공간으로 손재주 정책 전이)이 모두 '서로 다른 로봇을 한 모델에'라는 전제를 깔지만, 그 전제를 처음으로 극단까지 밀어 게임·대화·로봇을 한 가중치에 담은 것이 Gato다. 행동을 토큰으로 직렬화한다는 선택이 이후 2501.09747(FAST, 이산 코사인 변환 기반 행동 토크나이저)이나 2608.11739(RVQ 행동 토크나이저)로 이어지는 출발점이라, 지금 보유한 토큰화 논문들의 기준점으로 읽을 가치가 있다.",
-          "rec_date": "2026-10-16"
-        },
-        {
-          "id": "2303.11366",
-          "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
-          "authors": "Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik Narasimhan, Shunyu Yao",
-          "summary_ko": "대규모 언어 모델을 목표 지향 에이전트로 쓸 때, 시행착오로 배우게 하려면 보통 많은 샘플과 비싼 미세조정이 필요하다. Reflexion은 가중치를 전혀 건드리지 않고 '말'로 강화한다. 에이전트가 과제 피드백을 받으면 왜 실패했는지를 언어로 자기 반성해 그 반성문을 에피소드 메모리 버퍼(시도별 기록을 쌓아두는 저장소)에 남기고, 다음 시도에서 그 텍스트를 다시 읽어 판단을 고친다. 피드백은 점수 같은 수치든 자유 서술이든, 외부에서 오든 내부 시뮬레이션에서 오든 받아들일 수 있다. 순차 의사결정·코딩·언어 추론 과제에서 기준 에이전트를 크게 앞섰고, HumanEval 코딩 벤치마크에서 한 번에 맞추는 비율(pass@1) 91%로 당시 최고였던 GPT-4의 80%를 넘었다.",
-          "tags": [
-            "LLM Agent",
-            "Self-Reflection",
-            "Verbal RL",
-            "Episodic Memory",
-            "Self-Improvement"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2303.11366",
-          "extra_url": "",
-          "date": "2023-03-20",
-          "reason": "좋아요가 가장 몰린 축이 자기개선 에이전트형 로봇이다 — Aspire(스킬 라이브러리를 쌓아가는 지속학습), 2606.19980(코딩 에이전트로 로봇 플릿을 자기개선), 2607.05369(그래프를 정책으로 쓰는 다중 에이전트 자기학습), 2607.08448(동결 VLA 위에 에이전트 플래너와 메모리). 이들이 공통으로 돌리는 '실패를 언어로 되짚어 다음 시도에 반영하고 그 기록을 메모리에 쌓는' 루프의 원조가 Reflexion이다. 보유 2607.10350(평생 메모리를 가진 에이전트 OS), 2607.16636(세션 런타임과 인식 메모리), 2607.18060(메모리 브리지로 장기 과제 수행)의 메모리 설계가 어떤 원형을 로봇 쪽으로 옮긴 것인지 바로 보이고, 이미 추천 목록에 있는 Voyager·Eureka와 함께 읽으면 자기개선 계보가 한 줄로 이어진다.",
-          "rec_date": "2026-10-16"
         }
       ]
     }
