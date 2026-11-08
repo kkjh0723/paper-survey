@@ -1,10 +1,61 @@
 {
-  "generated": "2026-11-08",
+  "generated": "2026-11-09",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.05571",
+          "title": "ELA: End-to-End Latent Action Policy Learning from Video Demonstrations",
+          "authors": "Cheng-Chun Hsu, Peter Stone",
+          "summary_ko": "행동 레이블(로봇 관절 명령)이 없는 사람 동작 영상에서 '잠재 행동(latent action, 연속 프레임 사이의 변화를 설명하는 압축된 행동 코드)'을 뽑아 쓰는 기존 방식은, 잠재 행동을 정책 학습과 따로 학습해서 정작 정책이 모델링하기 어렵고 실제 로봇 연속 행동으로 되돌리기도 부정확했다. ELA는 잠재 행동 모델·잠재 행동 정책·행동 복원기(decoder)를 한 번에(end-to-end) 함께 학습해, 영상은 대량으로 쓰고 행동 레이블이 달린 로봇 시연은 소량만으로도 성능을 낸다. 복원기는 400만 파라미터 수준으로 가벼워 기존 모방학습 구조를 바꾸지 않고 붙일 수 있다.",
+          "tags": [
+            "Latent Action",
+            "Human Video",
+            "Imitation Learning",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.05571",
+          "extra_url": "https://end2end-latent-action.github.io/",
+          "date": "2026-11-03",
+          "reason": "보유 논문 LAPA(2410.11758, 영상에서 잠재 행동을 사전학습)와 GENIMA/Moto 계열 잠재 행동 흐름의 핵심 약점을 정면으로 지적한다. LAPA는 잠재 행동 학습과 정책 학습이 분리돼 있는데, ELA는 그 둘을 함께 최적화하면 무엇이 좋아지는지 직접 비교해 보여준다. 추천 pool의 Moto(2412.04445)·DreamX(2611.05377)와 같은 축에 있어 '잠재 행동 설계' 비교 읽기에 적합하다.",
+          "rec_date": "2026-11-09"
+        },
+        {
+          "id": "2611.03294",
+          "title": "ForceLDM: A Force-aware Latent Dynamics Model for Contact-Rich Manipulation",
+          "authors": "Peiyuan Tang, Yao Li, Xiaodong Zhang, Wuyang Zhang 등",
+          "summary_ko": "끼워맞추기·닦기처럼 접촉이 많은 작업(contact-rich manipulation)은 카메라 영상만으로는 지금 얼마나 세게 닿아 있는지 알 수 없어 실패가 잦다. ForceLDM은 힘/토크 센서 값을 단순한 추가 입력으로 쓰는 대신, '앞으로 일어날 접촉과 움직임'을 예측하는 잠재 동역학 모델(latent dynamics model, 미래 상태를 압축된 벡터로 예측하는 모델)로 학습한다. 학습 때는 미래의 힘·토크와 광학 흐름(optical flow, 영상 픽셀의 이동량)을 미리 볼 수 있는 교사 네트워크가 미래 동역학 특징을 뽑고, 이를 현재 관측만 보는 학생 네트워크에 지식 증류(knowledge distillation)로 옮긴다. 덕분에 실제 배포 시에는 미래 센서 값 없이도 다가올 접촉을 예측한다. 미래 특징에 과의존하지 않도록 노이즈를 점진적으로 키우는 커리큘럼도 넣었고, 실제 로봇 접촉 작업 5개에서 기존 최고 성능을 앞섰다.",
+          "tags": [
+            "Contact-Rich",
+            "World Model",
+            "Force Sensing",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.03294",
+          "extra_url": "https://tpy001.github.io/ForceLDM/",
+          "date": "2026-11-02",
+          "reason": "보유 컬렉션의 Contact-Rich 계열(힘·촉각을 쓰는 조작 논문들)과 World Model 계열이 교차하는 지점이다. 추천 pool의 TF^2-Steering(2611.01483)이 촉각 예측으로 행동을 보정하는 접근이라면, ForceLDM은 힘·토크 신호로 '미래 동역학 자체'를 예측해 행동 생성을 유도하는 한 단계 더 나아간 설계라 두 편을 묶어 보면 흐름이 선명해진다.",
+          "rec_date": "2026-11-09"
+        },
+        {
+          "id": "2611.05155",
+          "title": "Asynchronous Robot Policies",
+          "authors": "Sombit Dey, Luc Van Gool, Danda Pani Paudel",
+          "summary_ko": "시각-언어-행동 모델(VLA)을 키우면 똑똑해지지만 추론이 느려져 로봇의 즉각 반응성이 떨어진다. 기존 VLA는 의미 추론과 행동 생성을 같은 제어 루프 안에서 순서대로 돌리기 때문이다. ARP(Asynchronous Robot Policy)는 둘을 서로 다른 주기로 도는 비동기 프로세스로 분리한다. 큰 시각-언어 모델(VLM)은 낮은 빈도로 '의미 메모리'만 갱신하고, 가벼운 시각-행동 전문가(expert)가 그 메모리를 참조해 훨씬 높은 제어 주기로 행동을 낸다. 메모리가 낡는 문제(staleness)는 학습 때부터 시간이 어긋난 관측과 실행 지연을 일부러 넣어 적응시킨다. Franka 로봇 작업에서 준정적 환경 성공률 18% 상승·실행시간 20% 단축, 동적 시뮬레이션에서는 기준선의 3~5배 성능을 냈고, VLM을 원래 주기의 1/10로 돌려도 성능 손실이 거의 없었다.",
+          "tags": [
+            "Async Inference",
+            "VLA",
+            "Memory",
+            "Real-Time Control"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.05155",
+          "extra_url": "",
+          "date": "2026-11-03",
+          "reason": "컬렉션에서 꾸준히 모아 온 Async Inference 주제(추론 지연을 숨기는 비동기 실행)의 최신 설계다. 추천 pool의 Real-Time Chunking(2506.07339)이 행동 청크 단위로 지연을 메우는 접근이라면, ARP는 아예 VLM과 행동 전문가의 주기를 분리하고 '의미 메모리'를 공유 상태로 둔다. HeLM(2611.02660, 계층적 언어 메모리)과도 메모리 설계 측면에서 맞물려 읽기 좋다.",
+          "rec_date": "2026-11-09"
+        },
         {
           "id": "2611.03815",
           "title": "AIRoA-0: Long-Horizon, Precise, Cross-Embodiment Manipulation from Handheld Data",
@@ -276,42 +327,6 @@
           "rec_date": "2026-11-03"
         },
         {
-          "id": "2610.26855",
-          "title": "Ropedia W0: Scaling Loco-Manipulation World Models across Embodiments with Human Experience",
-          "authors": "Tianqi Liu, Hanfei Zhao, Qifeng Liang 외 (15인)",
-          "summary_ko": "사람과 여러 로봇을 모두 포괄하는 최초의 1인칭 시점(에고센트릭) '이동+조작' 월드 파운데이션 모델. 사람 영상 1만 시간 + 로봇 데이터 3천 시간을 모아, 이동은 카메라 자세(포즈)로, 조작은 화면에 투영된 골격(스켈레톤) 키포인트로 통일해 표현함으로써 로봇마다 다른 관절 구성(이종 행동 공간) 문제를 우회한다. 5개 크로스-임바디먼트 벤치마크에서 최고 성능을 내고, 증류(distillation) 후에는 분 단위 실시간 롤아웃으로 VR 상호작용까지 가능하다.",
-          "tags": [
-            "World Foundation Model",
-            "Cross-Embodiment",
-            "Loco-Manipulation",
-            "Human Video",
-            "Egocentric"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.26855",
-          "extra_url": "",
-          "date": "2026-10-19",
-          "reason": "좋아요한 Xiaomi-Robotics-U0(2607.11643, 월드 파운데이션 모델 기반 통합 합성)의 정면 확장판으로, U0가 다루지 않은 '이동(locomotion)까지 포함한 전신 월드 모델'을 겨냥한다. 또 컬렉션의 사람 영상 활용 축(2608.26058 카메라 중심 사람 영상 사전학습, 2608.18948 사람 영상 편집 데이터셋)이 '사람 영상 1만 시간 + 통일 운동학 표현'으로 극단까지 밀린 사례이며, 보유 중인 Cross-Embodiment 월드 모델(2608.29242, 2607.22535)과 달리 카메라 포즈+투영 골격이라는 공통 좌표계를 쓴다는 점이 대조 포인트다.",
-          "rec_date": "2026-10-21"
-        },
-        {
-          "id": "2610.21362",
-          "title": "LTM: Latent Transition Based In-Context Memory for Vision-Language-Action Models",
-          "authors": "Qixin Sun, WenLong Gao, Xiansheng Chen 외 (6인)",
-          "summary_ko": "이미 화면에서 사라진 과거 상호작용을 기억해야 하는 조작 문제를 위해, 히스토리를 '연속한 두 관측 사이의 잠재 전이(latent transition)'라는 압축 토큰으로 저장하는 메모리. 고정(frozen)된 잠재 행동 인코더 + 경량 어댑터 + 인과적 KV 캐시만 써서 메모리용 수작업 주석이나 외부 추론 모델 호출 없이 점진 추론한다. pi0.5에 붙인 LTM-pi가 RoboMME 58.54%, LIBERO-Mem 80.5%를 기록하고, 200토큰 메모리 예산으로 압축해도 84.00%(무압축 87.50%)를 유지하며 실로봇 개수 세기 과제는 11.25%→82.50%로 올랐다.",
-          "tags": [
-            "VLA",
-            "Memory",
-            "Latent Action",
-            "In-Context",
-            "KV Cache"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.21362",
-          "extra_url": "",
-          "date": "2026-10-15",
-          "reason": "좋아요한 Harness VLA(2607.08448, 메모리 기반 에이전트로 고정 VLA를 조종)와 같은 '프로즌 정책 + 외부 기억' 전략인데, 저쪽은 외부 에이전트가 언어로 기억을 관리하는 반면 LTM은 잠재 전이 토큰을 정책 내부 컨텍스트에 직접 끼워넣어 LLM 호출 없이 처리한다는 점이 직접 비교 대상이다. 또 보유 중인 2608.11739(시각 메모리 기반 자기회귀 VLA)와 2608.19613(잠재 행동 설계공간 실증 연구)를 '잠재 행동 인코더를 메모리 표현으로 재활용'이라는 각도에서 이어주며, 컬렉션에 거의 없는 Long-Horizon 메모리 축을 보강한다.",
-          "rec_date": "2026-10-21"
-        },
-        {
           "id": "2610.21915",
           "title": "What Should Robot Policies Learn to Predict? Rethinking Supervision Targets in Vision-Language-Action Learning",
           "authors": "Haitao Shen, Hanyu Liu, Yihan Lin 외 (10인)",
@@ -328,24 +343,6 @@
           "date": "2026-10-15",
           "reason": "보유 중인 2608.19613(잠재 행동 설계공간 실증 연구)·2608.03052(프로프리오셉션 설계 연구)와 같은 계열의 '설계축을 통제해 측정하는' 논문인데, 이번에는 잠재 행동과 미래 영상 예측을 같은 예산 위에 올려놓고 승패를 가린다. 풀에 이미 있는 2610.19825(VLA의 월드 모델링에서 무엇이 중요한가)와 짝지어 읽으면 '월드 모델을 보조 목표로 쓸 때의 구조 선택(그쪽) vs 데이터 예산 배분(이쪽)'으로 상호 보완되고, 좋아요한 WALA(2607.11397, 행동 없는 영상에서 실행 가능한 잠재 행동 학습)가 전제한 잠재 행동의 효용 자체를 검증해준다.",
           "rec_date": "2026-10-21"
-        },
-        {
-          "id": "2610.20474",
-          "title": "AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents",
-          "authors": "Peidong Wang, Ying Chang, Zhiming Ma 외",
-          "summary_ko": "사전학습된 VLA가 긴 호흡의 복합 과제에서 실패할 때, 코딩 에이전트가 먼저 스킬과 실행 환경(harness)을 고치고, 그래도 남는 실패만 재시도로 원인을 귀속해 해당 하위 단계만 선택적으로 미세조정한다. GR00T N1.5를 RoboCasa365에서 돌려 처음 보는 복합 과제 성공률을 4.6%에서 13.8%로 올리면서 GPU 사용량은 전체 미세조정 대비 28% 수준으로 줄였다.",
-          "tags": [
-            "Agentic Robotics",
-            "Self-Improvement",
-            "Failure Attribution",
-            "Coding Agent",
-            "Long-Horizon"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.20474",
-          "extra_url": "",
-          "date": "2026-10-14",
-          "reason": "좋아요한 2606.19980(코딩 에이전트 기반 자기개선)과 Aspire(스킬 라이브러리 지속 학습)의 공통 약점이었던 '언제·무엇을 다시 학습할지'를 실패 귀속으로 결정한다는 점에서 한 걸음 더 나간다. pool의 RoboRSI(2610.12424)·EmbodiedEvo(2610.18867)가 자기진화 루프의 구조를 다룬다면 이 논문은 그 루프의 비용 문제를 정면으로 다룬다.",
-          "rec_date": "2026-10-20"
         }
       ]
     },
@@ -353,6 +350,57 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2310.16828",
+          "title": "TD-MPC2: Scalable, Robust World Models for Continuous Control",
+          "authors": "Nicklas Hansen, Hao Su, Xiaolong Wang",
+          "summary_ko": "TD-MPC는 디코더 없이(decoder-free, 영상을 복원하지 않고) 잠재 공간에서만 미래를 예측하는 월드 모델을 학습하고, 그 안에서 짧은 구간의 궤적 최적화로 행동을 고르는 모델 기반 강화학습 기법이다. TD-MPC2는 이를 개선해 하이퍼파라미터 하나로 4개 도메인·104개 온라인 강화학습 과제에서 일관되게 기준선을 앞섰다. 더 나아가 3억 1700만 파라미터 단일 에이전트 하나로 서로 다른 몸체(embodiment)와 행동 공간을 가진 80개 과제를 수행해, 월드 모델도 모델·데이터 크기에 따라 능력이 커지는 스케일링 성질을 보인다는 것을 보였다.",
+          "tags": [
+            "World Model",
+            "Cross-Embodiment",
+            "Model-Based RL",
+            "Scaling Law"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2310.16828",
+          "extra_url": "https://tdmpc2.com",
+          "date": "2023-10-25",
+          "reason": "컬렉션의 World Model 축(DreamerV3 2301.04104 보유)과 Cross-Embodiment 축이 만나는 대표 기반 논문인데 아직 없다. 특히 '하나의 월드 모델로 여러 몸체·행동 공간을 함께 다루고 스케일링된다'는 결과는 pool의 Continuous-Action World Models(2610.40401)·RynnWorld-Latent(2610.36791) 같은 크로스 임바디먼트 월드 모델 논문들의 직계 선행 연구다.",
+          "rec_date": "2026-11-09"
+        },
+        {
+          "id": "2302.00111",
+          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
+          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai 등",
+          "summary_ko": "순차적 의사결정을 '텍스트 조건 영상 생성' 문제로 바꾼 연구다. 목표를 글로 주면 플래너가 앞으로 일어날 미래 프레임들을 만들어 계획을 그리고, 생성된 영상에서 역동역학(inverse dynamics, 연속된 두 프레임을 보고 그 사이 행동을 추정)으로 제어 명령을 뽑는다. 목표를 언어로 지정하므로 새로운 목표에 조합적으로 일반화되고, 상태·행동 공간이 다른 환경들도 모두 '이미지'라는 공통 공간에서 표현되어 서로 다른 로봇 조작 과제 사이의 학습 전이가 가능해진다. 인터넷의 대량 영상과 사전학습된 언어 임베딩을 활용해 실제 로봇용 영상 계획을 만들어낸다.",
+          "tags": [
+            "World Model",
+            "Video Generation",
+            "Cross-Embodiment",
+            "Generalist Policy"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2302.00111",
+          "extra_url": "",
+          "date": "2023-01-31",
+          "reason": "'영상 예측을 정책으로 쓴다'는 계열의 원류 논문이다. pool의 Video Prediction Policy(2412.14803)·DreamGen(2505.12705)·DreamX(2611.05377)와 보유 논문 중 비디오 생성 기반 조작 연구들이 모두 이 policy-as-video 아이디어를 전제로 하므로, 배경을 잡으려면 먼저 읽을 값이 크다.",
+          "rec_date": "2026-11-09"
+        },
+        {
+          "id": "2410.21845",
+          "title": "Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning (HIL-SERL)",
+          "authors": "Jianlan Luo, Charles Xu, Jeffrey Wu, Sergey Levine",
+          "summary_ko": "시연 데이터와 사람의 실시간 개입 수정(human-in-the-loop correction)을 효율적인 강화학습 알고리즘과 결합해, 시뮬레이터 없이 실제 로봇에서 1~2.5시간 학습만으로 거의 100% 성공률을 내는 시스템이다. 동적인 물체 조작, 정밀 조립(끼워맞추기), 양팔 협조 작업 등 까다로운 과제들을 다루며, 모방학습 기준선 대비 평균 성공률 2배·실행 속도 1.8배를 기록했다. 실제 환경에서의 비전 기반 강화학습이 현실적인 학습 시간 안에 가능하다는 것을 보인 대표 사례다.",
+          "tags": [
+            "Real-World RL",
+            "Contact-Rich",
+            "Dexterous Manipulation",
+            "Bimanual"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.21845",
+          "extra_url": "https://hil-serl.github.io/",
+          "date": "2024-10-29",
+          "reason": "컬렉션의 Real-World RL·Contact-Rich·Bimanual 태그가 한 번에 걸리는 기준점 논문인데 아직 빠져 있다. 보유 중인 VLA 사후학습/강화학습 논문들과 pool의 Beyond Policy Patches 계열(RL 전문가를 VLA로 증류)이 '실제 로봇 RL은 어디까지 되는가'를 전제로 깔고 있어, 그 전제의 출처를 확인하는 용도로 적합하다.",
+          "rec_date": "2026-11-09"
+        },
         {
           "id": "2409.20537",
           "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
@@ -673,59 +721,6 @@
           "date": "2022-03-23",
           "reason": "컬렉션의 Human Video 축(2608.26058, 2608.18948, 2608.02580, 2609.21948)이 지금은 '사람 영상에서 행동/궤적까지 뽑아내기'로 가 있지만, 그 출발점은 '사람 영상에서 시각 표현만 뽑아 써도 큰 이득'이라는 R3M의 발견이었다. 또 보유 중인 2607.18236(DINOv2 고정 백본 기반 효율 정책)과 2608.14379(DINOv3 활용)의 '프로즌 비전 인코더' 전략이 어디서 비롯됐는지를 보여주며, 사람 영상의 가치가 표현 → 잠재 행동 → 월드 모델로 어떻게 단계적으로 커졌는지 계보를 완성한다.",
           "rec_date": "2026-10-21"
-        },
-        {
-          "id": "2210.02747",
-          "title": "Flow Matching for Generative Modeling",
-          "authors": "Yaron Lipman, Ricky T. Q. Chen, Heli Ben-Hamu 외",
-          "summary_ko": "연속 정규화 흐름(continuous normalizing flow, 잡음 분포를 데이터 분포로 연속 변환하는 생성 모델)을 시뮬레이션 없이 학습하는 방법을 제안한다. 고정된 조건부 확률 경로의 속도장(vector field)을 회귀로 맞추기만 하면 되고, 특히 최적수송(optimal transport) 직선 경로를 쓰면 확산 모델보다 학습이 안정적이고 샘플링 단계가 크게 줄어든다.",
-          "tags": [
-            "Flow Matching",
-            "Generative Model",
-            "Foundation",
-            "Diffusion"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2210.02747",
-          "extra_url": "",
-          "date": "2022-10-06",
-          "reason": "컬렉션에서 'Flow Matching' 태그가 18편으로 두 번째로 많은데, 정작 그 기법을 정의한 원전이 빠져 있다. pi0 계열(2410.24164)·2607.15330·2607.18231이 공통으로 쓰는 행동 생성기의 수식적 근거가 여기서 나오므로, 이 한 편을 읽어두면 이후 VLA 논문들이 왜 몇 단계 적분만으로 행동 묶음을 뽑는지가 설명된다.",
-          "rec_date": "2026-10-20"
-        },
-        {
-          "id": "2506.09985",
-          "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
-          "authors": "Mido Assran, Adrien Bardes, David Fan 외",
-          "summary_ko": "100만 시간이 넘는 인터넷 영상으로 JEPA(영상의 미래를 픽셀이 아닌 잠재 표현 공간에서 예측하도록 학습하는 자기지도 구조)를 대규모 사전학습한 뒤, 62시간 미만의 라벨 없는 로봇 영상만 덧붙여 행동 조건부 세계 모델로 바꾼다. 과제별 추가 학습 없이(zero-shot) 모델 예측 제어로 집기·놓기를 수행하며, 동작 이해(Something-Something v2 77.3%)에서도 높은 성능을 보인다.",
-          "tags": [
-            "World Model",
-            "JEPA",
-            "Video Pretraining",
-            "Zero-Shot",
-            "Planning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2506.09985",
-          "extra_url": "https://github.com/facebookresearch/vjepa2",
-          "date": "2025-06-11",
-          "reason": "최근 pool에 쌓인 JEPA 계열(LeWAM 2610.12818, EgoJEPA 2610.20904, 위의 VeriVLA)이 모두 전제로 삼는 기반 모델인데 컬렉션에는 없다. 좋아요한 2607.11397(DINOv3 특징 위의 잠재 행동+깊이 예측)이 '픽셀 대신 표현을 예측한다'는 같은 발상을 쓰고 있어, 그 선택의 출처와 한계를 확인하는 데 가장 직접적인 참고가 된다.",
-          "rec_date": "2026-10-20"
-        },
-        {
-          "id": "2410.07554",
-          "title": "ForceMimic: Force-Centric Imitation Learning with Force-Motion Capture System for Contact-Rich Manipulation",
-          "authors": "Wenhai Liu, Junbo Wang, Yiming Wang 외",
-          "summary_ko": "사람이 손에 쥐고 쓰는 힘-모션 수집 장치(ForceCapture)로 로봇 없이 접촉력까지 포함한 시연을 모으고, 이를 힘과 모션을 함께 출력하는 하이브리드 모방학습 정책(HybridIL)으로 학습한다. 채소 껍질 벗기기 과제에서 수집 시간을 13분에서 5분으로 줄이면서 영상만 쓰는 모방학습 대비 성공률을 상대적으로 54.5% 높였다.",
-          "tags": [
-            "Contact-Rich",
-            "Force",
-            "Imitation Learning",
-            "UMI",
-            "Data Collection"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.07554",
-          "extra_url": "https://forcemimic.github.io/",
-          "date": "2024-10-10",
-          "reason": "컬렉션의 UMI 계열 핸드헬드 수집(2410.24164, 2607.15330)은 힘 정보가 없는 영상·자세 기반인데, 이 논문은 같은 방식에 힘 채널을 더한 초기 대표작이다. 좋아요한 2607.18231과 새로 추천한 ForceWAM이 전제로 삼는 '힘 라벨이 붙은 사람 시연을 어떻게 싸게 모으는가'에 대한 답이라 세 편을 묶어 읽으면 접촉 조작 데이터 파이프라인이 완성된다.",
-          "rec_date": "2026-10-20"
         }
       ]
     }
