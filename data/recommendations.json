@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-09",
+  "generated": "2026-11-10",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.06817",
+          "title": "Open-HumanWAM: An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models",
+          "authors": "Juncheng Ma, Jiaxin Li, Jiankai Tu, Bo Liang 외 29명",
+          "summary_ko": "사람이 머리에 카메라를 쓰고 찍은 1인칭(에고센트릭) 조작 영상 5만 시간을 손 움직임·자연어로 주석해 공개하고, 이것만으로 '세계-행동 모델'(World-Action Model, 미래 장면 변화와 행동을 함께 예측하는 모델)을 사전학습하는 전 과정을 공개 레시피로 정리했다. 사전학습 데이터 시간과 로봇 성공률 사이에 로그-선형 스케일링 법칙이 성립함을 보였고, 사람+로봇 데이터를 함께 쓴 버전은 RoboTwin 2.0 벤치마크에서 최고 성적을 냈다.",
+          "tags": [
+            "Human Video",
+            "World Action Model",
+            "Scaling Law",
+            "Foundation Model",
+            "Cross-Embodiment"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.06817",
+          "extra_url": "",
+          "date": "2026-11-04",
+          "reason": "컬렉션에서 좋아요한 '스케일링 법칙' 기반 VLA 파운데이션 모델(2607.15330)과 월드 파운데이션 모델(2607.11643)을 한 편에서 합친 격이다. 사람 영상(Human Video 태그 5편)으로 사전학습해 로봇으로 옮기는 흐름을 데이터 5만 시간 규모에서 법칙 수준으로 검증했고, 데이터 큐레이션·학습 레시피를 전부 공개해 보유 논문들의 비공개 레시피 부분을 메워준다.",
+          "rec_date": "2026-11-10"
+        },
+        {
+          "id": "2611.09672",
+          "title": "ODEAction: From Predicting Chunks to Evolving Actions",
+          "authors": "Qishen Wang, Pengxiang Ding, Shifeng Bao, Mingyang Sun 외 13명",
+          "summary_ko": "대부분의 VLA(Vision-Language-Action, 영상·언어를 받아 행동을 내는 모델)는 행동을 여러 스텝 묶음(action chunk)으로 한 번에 예측하는데, 묶음과 묶음이 이어지는 지점에서 궤적이 끊기는 문제가 있다. ODEAction은 묶음 예측을 버리고 행동 공간 위에 '행동 변화율 장(transition field)'을 학습한 뒤, 현재 행동을 초기값으로 두고 상미분방정식(ODE)을 수치 적분하듯 다음 행동을 연속적으로 뽑아낸다. 백본에 상관없이 붙일 수 있는 액션 헤드 형태이며 LIBERO·RoboTwin·실로봇에서 정밀 조작 성능이 특히 좋아졌다.",
+          "tags": [
+            "VLA",
+            "Action Chunking",
+            "Flow Matching",
+            "Manipulation",
+            "LIBERO"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.09672",
+          "extra_url": "",
+          "date": "2026-11-06",
+          "reason": "좋아요한 2609.18207(추론 지연·Async Inference·행동 편집으로 실시간 제어)과 컬렉션의 Action Chunking·Flow Matching 계열(각 3편·18편)이 공통으로 안고 있는 '청크 경계에서의 불연속' 문제를 아예 청크를 없애는 방향으로 공격한다. RTC(Real-Time Chunking, 풀에 있는 2506.07339)가 청크를 유지한 채 이어붙이기를 고치는 접근이라면, 이 논문은 대안 설계를 제시하므로 둘을 나란히 비교하기 좋다.",
+          "rec_date": "2026-11-10"
+        },
+        {
+          "id": "2611.06905",
+          "title": "Reinforcement Learning Enables Scaling Generalist Robot Policy Improvement",
+          "authors": "Michal Korniak, Marco Bagatella, Ralf Römer, Michal Nauman 외 20명",
+          "summary_ko": "사전학습된 범용(generalist) 로봇 정책을 배치 후 강화학습(RL)으로 스스로 개선시킬 때, 지금까지는 대부분 '한 가지 과제'만 좋아지게 만들었다. 이 논문은 여러 과제를 동시에 목표로 하는 다중과제 자기개선이 가능한지를 묻고, 가치 추정 방식·정책 추출 방식·자원 배분 같은 설계 선택지를 체계적으로 비교하는 평가 체계를 만든다. 제대로 된 레시피를 쓰면 온라인 학습에 쓰지 않은 과제에서도 성능이 올라간다는 일반화 효과를 보였다.",
+          "tags": [
+            "Generalist Policy",
+            "Self-Improvement",
+            "Real-World RL",
+            "VLA",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.06905",
+          "extra_url": "",
+          "date": "2026-11-04",
+          "reason": "좋아요한 2606.19980(에이전트가 실세계 RL로 로봇 플릿을 자가개선)과 2607.05369(자가학습 멀티에이전트)의 '배치 후 스스로 좋아지기' 축을 범용 정책 전체로 확장한 연구다. 컬렉션의 VLA 45편 대부분이 모방학습으로 끝나는 데 비해, 사전학습된 정책을 어떤 RL 레시피로 더 밀어올릴지에 대한 통제된 비교를 제공한다.",
+          "rec_date": "2026-11-10"
+        },
         {
           "id": "2611.05571",
           "title": "ELA: End-to-End Latent Action Policy Learning from Video Demonstrations",
@@ -325,24 +379,6 @@
           "date": "2026-10-27",
           "reason": "컬렉션의 두 최대 주제인 VLA(45편)와 World Model(16편)이 실제로 같은 설계 공간의 두 지점인지를 통제 실험으로 가르는 논문이다. 보유한 VLA-JEPA(2602.10098)·WAVE 계열·FlowWAM(2607.13017)·Masked Visual Actions(2607.19343)가 각자 택한 '미래 예측 손실'의 효용만 따로 주장했던 데 비해, 여기서는 백본·손실·추론 부품을 분리해 무엇이 이득의 원인인지 짚는다. 좋아요한 '하이럴키컬 VLA 체계 연구'(2606.10267)와 보유한 'What Matters for Latent Actions'(2608.19613)·'How Should VLAs Use Proprioceptive State?'(2608.03052) 같은 통제 연구 계열의 최신판이고, 영상 생성을 추론에서 빼면서도 이득을 유지한다는 결론은 추론 지연을 다룬 FlashVLA(2608.27384)·Reflex(2608.14379) 라인과도 맞닿는다.",
           "rec_date": "2026-11-03"
-        },
-        {
-          "id": "2610.21915",
-          "title": "What Should Robot Policies Learn to Predict? Rethinking Supervision Targets in Vision-Language-Action Learning",
-          "authors": "Haitao Shen, Hanyu Liu, Yihan Lin 외 (10인)",
-          "summary_ko": "VLA 정책에 흔히 덧붙이는 보조 목표(잠재 행동 예측 LA, 미래 영상 예측 FV)가 정작 행동 예측과 같은 학습 예산을 두고 경쟁한다는 점에 주목해, '고정 예산을 어디에 배분해야 하는가'를 정면으로 측정한다. 두 흐름(two-stream) 멀티모달 확산 트랜스포머(MMDiT)에 샘플 단위 라우터를 붙여 각 학습 샘플을 행동 예측 또는 보조 목표로 명시적으로 배정하고, LA는 LAPA 계열 3종, FV는 DINOv3·V-JEPA 2·Wan2.2 표현 3종으로 실험했다. 결론은 행동 예측에 샘플의 절반 이하만 줘도 적절한 LA/FV 감독이 행동 전용 학습을 이기며, 전반적으로 FV가 LA보다 낫고 LA는 상대적 움직임, FV는 절대 위치·과제 정체성을 강조한다는 것.",
-          "tags": [
-            "VLA",
-            "Latent Action",
-            "World Model",
-            "Empirical Study",
-            "Supervision Target"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2610.21915",
-          "extra_url": "",
-          "date": "2026-10-15",
-          "reason": "보유 중인 2608.19613(잠재 행동 설계공간 실증 연구)·2608.03052(프로프리오셉션 설계 연구)와 같은 계열의 '설계축을 통제해 측정하는' 논문인데, 이번에는 잠재 행동과 미래 영상 예측을 같은 예산 위에 올려놓고 승패를 가린다. 풀에 이미 있는 2610.19825(VLA의 월드 모델링에서 무엇이 중요한가)와 짝지어 읽으면 '월드 모델을 보조 목표로 쓸 때의 구조 선택(그쪽) vs 데이터 예산 배분(이쪽)'으로 상호 보완되고, 좋아요한 WALA(2607.11397, 행동 없는 영상에서 실행 가능한 잠재 행동 학습)가 전제한 잠재 행동의 효용 자체를 검증해준다.",
-          "rec_date": "2026-10-21"
         }
       ]
     },
@@ -350,6 +386,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2312.10812",
+          "title": "Learning to Act without Actions (LAPO)",
+          "authors": "Dominik Schmidt, Minqi Jiang",
+          "summary_ko": "웹 영상에는 로봇 학습에 필요한 '행동 라벨'(어떤 조작을 했는지)이 없다는 점이 병목이다. LAPO(Latent Action Policies)는 연속된 두 프레임의 변화만 보고 그 사이에 일어났을 행동을 잠재 변수로 역추정해(역동역학 모델), 행동 라벨 없이 잠재 행동 정책·세계 모델을 함께 학습한다. 절차적으로 생성된 어려운 환경에서도 실제 행동 공간의 구조를 복원해냈고, 이후 소량의 행동 라벨이나 보상으로 빠르게 전문가급으로 미세조정된다.",
+          "tags": [
+            "Latent Action",
+            "World Model",
+            "Video Pretraining",
+            "Inverse Dynamics",
+            "Foundation Model"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2312.10812",
+          "extra_url": "",
+          "date": "2023-12-17",
+          "reason": "좋아요한 2608.19613이 바로 'LAPO 계열 잠재 행동 설계 공간'을 실증 분석한 논문이고, 역시 좋아요한 2607.11397(DINOv3 기반 잠재 행동+세계 모델)도 같은 계보다. 컬렉션의 Latent Action 8편과 풀에 쌓인 ELA·DreamX·Moto가 모두 이 논문을 출발점으로 삼는데 정작 원전이 빠져 있어, 용어와 가정을 정리하는 데 필요한 기반 논문이다.",
+          "rec_date": "2026-11-10"
+        },
+        {
+          "id": "2410.06158",
+          "title": "GR-2: A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation",
+          "authors": "Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong 외 8명",
+          "summary_ko": "인터넷 영상 3,800만 클립(토큰 500억 개 이상)으로 '다음 장면 예측'을 먼저 배워 세상의 물리적 변화를 익힌 뒤, 로봇 궤적으로 영상 생성과 행동 예측을 동시에 미세조정한 범용 조작 모델이다. 100개 이상 과제에서 평균 성공률 97.7%를 기록했고 새로운 배경·물체·과제로의 일반화와 모델 크기에 따른 성능 향상(스케일링)을 함께 보였다.",
+          "tags": [
+            "VLA",
+            "Video Pretraining",
+            "World Model",
+            "Generalist Policy",
+            "Scaling Law"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.06158",
+          "extra_url": "https://gr2-manipulation.github.io",
+          "date": "2024-10-08",
+          "reason": "컬렉션의 World Model 16편·Video Pretraining 계열과 풀의 VPP(2412.14803)·DreamGen(2505.12705)이 공유하는 '영상 생성으로 사전학습하고 행동을 뽑는다'는 설계의 대표 선행 연구다. 좋아요한 2607.11643(38B 자기회귀 월드 파운데이션 모델)과 직접 비교 대상이 되며, 영상 사전학습 규모와 성능의 관계를 먼저 보여준 레퍼런스다.",
+          "rec_date": "2026-11-10"
+        },
+        {
+          "id": "2508.05635",
+          "title": "Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation",
+          "authors": "Yue Liao, Pengfei Zhou, Siyuan Huang, Donglin Yang 외 10명",
+          "summary_ko": "정책 학습·평가·시뮬레이션을 하나의 영상 생성 프레임워크로 묶은 플랫폼이다. GE-Base는 명령어를 조건으로 받는 대규모 영상 확산 모델로 실제 로봇 상호작용의 시공간·의미 변화를 잠재 공간에 담고, GE-Act는 그 잠재 표현을 흐름 정합(flow matching, 노이즈에서 정답까지의 경로를 직선적으로 학습하는 생성 기법) 디코더로 실제 행동 궤적으로 바꿔 여러 로봇 몸체에 적은 지도만으로 적용한다. GE-Sim은 행동 조건부 신경 시뮬레이터로 폐루프 평가를 지원하고, EWMBench로 시각 충실도·물리 일관성·명령-행동 정합을 표준 측정한다.",
+          "tags": [
+            "World Foundation Model",
+            "Video Diffusion",
+            "Flow Matching",
+            "Cross-Embodiment",
+            "Benchmark"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2508.05635",
+          "extra_url": "",
+          "date": "2025-08-07",
+          "reason": "좋아요한 2607.11643(월드 파운데이션 모델)과 2607.15330(Flow Matching 기반 VLA 스케일링)의 두 축이 한 플랫폼에 결합된 형태라, 컬렉션의 World Foundation Model·Cross-Embodiment(18편) 흐름의 직전 세대 기준점이 된다. 풀에 있는 PrimeSim·RynnWorld-Latent 같은 최신 세계 모델 시뮬레이터들이 무엇을 개선하려 했는지 가늠할 기준선이기도 하다.",
+          "rec_date": "2026-11-10"
+        },
         {
           "id": "2310.16828",
           "title": "TD-MPC2: Scalable, Robust World Models for Continuous Control",
@@ -631,96 +721,6 @@
           "date": "2025-06-09",
           "reason": "컬렉션에 '비동기 추론/추론 지연' 논문이 일곱 편(FlashVLA 2608.27384, Reflex 2608.14379·2607.14695, Learning to Act While Waiting 2608.23831, 실시간 VLA용 RL 2609.18207, FBFM 2607.29235, TacForcing 2608.25798)이나 있는데 이들이 공통 비교군으로 삼는 바로 그 기준선이 빠져 있다. 묶음 경계에서 앞부분을 고정하고 뒤를 인페인팅하는 RTC의 아이디어가 FlashVLA의 스트리밍 디코딩, FBFM의 학습 없는 비동기 피드백, 'Why Does Action Chunking Improve Behavioral Cloning'(2608.02547)의 분석을 읽는 전제이고, 보유한 π0(2410.24164)·π0.5(2504.16054)·π0.7(2604.15483)과 같은 팀의 후속 작업이라 플로우 매칭 정책 계열 전체의 맥락이 맞춰진다.",
           "rec_date": "2026-11-03"
-        },
-        {
-          "id": "2505.12705",
-          "title": "DreamGen: Unlocking Generalization in Robot Learning through Video World Models",
-          "authors": "Joel Jang, Seonghyeon Ye, Zongyu Lin 등 (NVIDIA)",
-          "summary_ko": "비디오 세계 모델이 만든 합성 영상에서 '뉴럴 궤적'(neural trajectory, 사람이 수집하지 않은 가짜 로봇 데이터)을 뽑아 정책을 학습시키는 4단계 파이프라인이다. 먼저 이미지→영상 생성 모델을 목표 로봇 몸체에 맞게 미세조정하고, 그 모델로 익숙한 과제와 처음 보는 과제를 다양한 환경에서 사실적으로 생성한다. 생성물에는 행동 라벨이 없으므로 잠재 행동 모델(latent action model)이나 역동역학 모델(IDM, inverse dynamics model — 연속한 두 관측을 보고 그 사이에 취한 행동을 역추정하는 모델)로 가짜 행동 시퀀스를 복원해 붙인다. 결과적으로 한 환경에서 집어 옮기기 한 과제의 원격조작 데이터만으로 휴머노이드가 22가지 새 행동을 익히고 처음 보는 환경에서도 수행했다. 영상 생성 품질과 최종 정책 성공률의 상관을 재는 DreamGen Bench도 함께 공개했다.",
-          "tags": [
-            "World Model",
-            "Data Generation",
-            "Latent Action",
-            "Humanoid",
-            "Generalization"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2505.12705",
-          "extra_url": "https://github.com/NVIDIA/GR00T-Dreams",
-          "date": "2025-05-19",
-          "reason": "'세계 모델로 데이터를 합성해 정책을 키운다'는 지금 컬렉션의 큰 줄기(AnyWorld 2608.29242, Robot-Factored World Models 2607.22535, Xiaomi-Robotics-U0 2607.11643[좋아요], RoboEdit 2608.18948, Ego2Robot 2608.02580, Human-Video Dynamics 2606.21406)의 출발점 격 논문인데 빠져 있다. 생성 영상에 잠재 행동 모델이나 IDM으로 행동을 되붙이는 절차는 보유한 KineBench(2607.19876, IDM 없이 세계 모델을 평가)와 CD-LAM(2607.09185)이 문제 삼는 지점의 원형이고, 이번 '새로 공개된 논문'으로 함께 추천한 RynnWorld-Latent(2610.36791)가 바로 이 두 합성 경로를 확장한 작업이다. 보유한 GR00T N1(2503.14734)과 같은 팀의 자매 논문이라 휴머노이드 데이터 전략의 전후 맥락도 이어진다.",
-          "rec_date": "2026-11-03"
-        },
-        {
-          "id": "2503.20020",
-          "title": "Gemini Robotics: Bringing AI into the Physical World",
-          "authors": "Gemini Robotics Team (Google DeepMind)",
-          "summary_ko": "Gemini 2.0 위에 올린 로봇 전용 모델 가족을 소개하는 기술 보고서다. 두 모델로 구성된다. Gemini Robotics-ER(Embodied Reasoning, 체화 추론)은 Gemini의 멀티모달 추론을 물리 세계로 확장해 물체 검출, 포인팅(화면 좌표 지시), 궤적·파지 자세 예측, 여러 시점 간 대응점 찾기, 3차원 경계 상자 예측 같은 공간·시간 이해 능력을 갖춘다. 그 위에 올린 Gemini Robotics는 로봇을 직접 제어하는 범용 VLA로, 물체 종류와 위치가 바뀌어도 매끄럽고 반응적인 움직임을 내고 처음 보는 환경과 자유로운 자연어 지시를 처리한다. 추가 미세조정으로 장기 호라이즌의 고난도 손재주 과제, 시연 100개 수준의 신규 단기 과제 학습, 완전히 다른 로봇 몸체로의 적응까지 특화된다. 이런 로봇 기초 모델이 새로 만드는 안전 문제도 함께 다룬다.",
-          "tags": [
-            "VLA",
-            "Foundation Model",
-            "Embodied Reasoning",
-            "Generalist Policy",
-            "Cross-Embodiment"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2503.20020",
-          "extra_url": "",
-          "date": "2025-03-25",
-          "reason": "컬렉션은 범용 VLA 기초 모델 계보를 RT-1(2212.06817)·RT-2(2307.15818)·Octo(2405.12213)·OpenVLA(2406.09246)·π0 계열·GR00T N1(2503.14734)·RDT-1B(2410.07864)까지 촘촘히 갖췄는데 Google DeepMind 축만 PaLM-E(2303.03378)에서 끊겨 있다. 특히 보유한 CLIFT(2607.29172)는 Gemini Robotics On-Device를 가중치 접근 없이 휴머노이드 전문가로 바꾸는 연구여서 이 기반 논문 없이는 전제가 비어 있다. ER 모델의 포인팅·궤적 예측은 보유한 HAMSTER(2502.05485)의 2D 경로 기반 계층 정책, ECoT(2407.08693)의 체화 추론, See like a Robot(2607.11498)의 로봇 중심 포인트맵과 직접 비교되고, 시연 100개로 신규 과제·신규 몸체에 적응한다는 주장은 ZETA(2609.02546)의 제로샷 크로스 임바디먼트 통제 연구와 맞물린다.",
-          "rec_date": "2026-11-03"
-        },
-        {
-          "id": "1803.10122",
-          "title": "World Models",
-          "authors": "David Ha, Jürgen Schmidhuber",
-          "summary_ko": "강화학습 환경 자체를 생성 신경망으로 모델링한 월드 모델의 원전. 관측을 압축하는 변이 오토인코더(VAE)와 시간 변화를 예측하는 순환망(MDN-RNN)으로 환경의 공간·시간 표현을 비지도 학습하고, 그 특징을 입력으로 쓰면 아주 작고 단순한 정책(컨트롤러)만으로 과제를 풀 수 있음을 보였다. 핵심 시연은 '에이전트를 월드 모델이 만든 환각(꿈) 안에서만 학습시킨 뒤 실제 환경으로 이식'한 것으로, 오늘날 월드 모델 기반 계획·학습의 출발점이다.",
-          "tags": [
-            "World Model",
-            "Latent Dynamics",
-            "Dream Training",
-            "VAE",
-            "RNN"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/1803.10122",
-          "extra_url": "https://worldmodels.github.io/",
-          "date": "2018-03-27",
-          "reason": "컬렉션에서 가장 큰 축 중 하나인 World Model(2608.30237 모델 기반 계획, 2607.29613 LeJEPA 크리틱, 2607.17454 World Action Model 등 16편)의 공통 조상이다. '잠재 공간에서 다음 상태를 예측해 그 안에서 정책을 학습/검증한다'는 지금 논문들의 기본 전제가 어디서 왔는지, 그리고 왜 요즘 연구가 VAE+RNN 대신 JEPA·영상 확산 모델로 갈아타는지를 비교할 기준선이 된다. 풀에 있는 DayDreamer(2206.14176)와 V-JEPA 2(2506.09985)를 읽기 전 선행 문헌으로 가장 적합하다.",
-          "rec_date": "2026-10-21"
-        },
-        {
-          "id": "2206.11795",
-          "title": "Video PreTraining (VPT): Learning to Act by Watching Unlabeled Online Videos",
-          "authors": "Bowen Baker, Ilge Akkaya, Peter Zhokhov 외 (9인, OpenAI)",
-          "summary_ko": "행동 레이블이 없는 인터넷 영상을 순차 의사결정 사전학습에 쓰는 방법을 제시한 논문. 소량의 레이블 데이터로 역동역학 모델(IDM, 영상의 전후 프레임을 보고 그 사이에 어떤 입력이 있었는지 되맞히는 모델)을 충분히 정확하게 학습한 뒤, 그 IDM으로 방대한 무레이블 영상(마인크래프트 플레이 영상)에 가짜 행동 레이블을 붙여 일반 행동 사전확률(behavioral prior)을 학습한다. 결과 모델은 사람과 같은 인터페이스(마우스·키보드 20Hz)로 제로샷 능력을 보이고, 모방학습·강화학습 미세조정 후에는 다이아몬드 도구 제작처럼 밑바닥 강화학습으로는 불가능한 과제까지 해낸다.",
-          "tags": [
-            "Inverse Dynamics",
-            "Action-Free Video",
-            "Pseudo-Labeling",
-            "Behavioral Prior",
-            "Pre-training"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2206.11795",
-          "extra_url": "https://openai.com/research/vpt",
-          "date": "2022-06-23",
-          "reason": "좋아요한 WALA(2607.11397, 행동 레이블 데모 + 행동 없는 영상에서 실행 가능한 잠재 행동 학습)가 푸는 문제 설정을 처음 정식화한 원전이다. 보유 중인 2607.19876(IDM-Free 월드 모델)과 2607.27549(행동 없는 EE 궤적 기반 크로스-임바디먼트)는 사실상 'VPT식 IDM 의존을 어떻게 덜어낼까'에 대한 답들이라, 원본을 알아야 기여의 크기가 보인다. 풀에 있는 LAPO(2312.10812)가 IDM 대신 잠재 행동을 쓰는 대안 노선이므로 둘을 묶어 읽기 좋다.",
-          "rec_date": "2026-10-21"
-        },
-        {
-          "id": "2203.12601",
-          "title": "R3M: A Universal Visual Representation for Robot Manipulation",
-          "authors": "Suraj Nair, Aravind Rajeswaran, Vikash Kumar, Chelsea Finn, Abhinav Gupta",
-          "summary_ko": "다양한 사람 활동 영상(Ego4D)으로 미리 학습한 시각 표현 하나를 로봇 조작 정책의 고정된 지각 모듈로 재사용하는 접근. 시간 대조 학습(가까운 시점 프레임은 비슷하게, 먼 시점은 다르게), 영상-언어 정렬, 그리고 표현을 희소·간결하게 만드는 L1 벌점을 결합해 학습한다. 시뮬레이션 12개 조작 과제에서 밑바닥 학습 대비 20%p 이상, CLIP·MoCo 같은 기존 표현 대비 10%p 이상 성공률을 올리고, 실제 어수선한 아파트에서 프랑카 팔이 데모 20개만으로 과제를 익혔다.",
-          "tags": [
-            "Visual Representation",
-            "Human Video",
-            "Pre-training",
-            "Frozen Encoder",
-            "Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2203.12601",
-          "extra_url": "https://sites.google.com/view/robot-r3m/",
-          "date": "2022-03-23",
-          "reason": "컬렉션의 Human Video 축(2608.26058, 2608.18948, 2608.02580, 2609.21948)이 지금은 '사람 영상에서 행동/궤적까지 뽑아내기'로 가 있지만, 그 출발점은 '사람 영상에서 시각 표현만 뽑아 써도 큰 이득'이라는 R3M의 발견이었다. 또 보유 중인 2607.18236(DINOv2 고정 백본 기반 효율 정책)과 2608.14379(DINOv3 활용)의 '프로즌 비전 인코더' 전략이 어디서 비롯됐는지를 보여주며, 사람 영상의 가치가 표현 → 잠재 행동 → 월드 모델로 어떻게 단계적으로 커졌는지 계보를 완성한다.",
-          "rec_date": "2026-10-21"
         }
       ]
     }
