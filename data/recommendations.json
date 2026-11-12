@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-12",
+  "generated": "2026-11-13",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.09892",
+          "title": "On Agentic Manipulation Policies",
+          "authors": "Chen Chen, Matthias Müller, Vladlen Koltun 외 (Apple AIML Research)",
+          "summary_ko": "시범 데이터로 학습한 전용 정책(VLA·World-Action Model) 대신, 범용 AI 모델이 로봇 팔을 직접 지휘하며 과제 진행에 맞춰 행동을 바꾸는 '에이전틱 조작 정책(Agentic Manipulation Policy, AMP)'을 체계적으로 분석했다. 단일팔·양팔·모바일 매니퓰레이터에 수정 없이 그대로 돌아가는 참조 구현 AMP1은 시범 데이터나 과제별 학습이 전혀 없는 상태에서 RoboLab-120 시뮬레이션 벤치마크 85.6% 성공률을 기록해, 대표적 VLA(49.2%)와 World-Action Model(42.9%)을 크게 앞섰다. 실제 로봇 12개 과제·3개 기체 108회 시도 중 104회를 영샷(zero-shot, 해당 과제 학습 없이 바로 수행)으로 성공해 실패율을 VLA 대비 20배, World-Action Model 대비 15배 줄였다. 기본 하네스는 집기·밀기·놓기 같은 스킬을 하나도 제공하지 않는데도 에이전트가 숨은 물체 탐색, 물건을 도구로 쓰기, 카메라 자가 캘리브레이션 같은 전략을 스스로 만들어 냈고, 에피소드를 넘어 유지되는 메모리를 붙이면 RoboDojo 양팔 과제 실패율이 영샷 대비 4.6배 더 떨어졌다.",
+          "tags": [
+            "Agentic Robotics",
+            "VLA",
+            "Zero-Shot",
+            "Memory",
+            "Benchmark"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.09892",
+          "extra_url": "https://apple-aiml-research.github.io/ml-amp/",
+          "date": "2026-11-06",
+          "reason": "보유 컬렉션이 '전용 정책 학습'(수많은 VLA·World-Action Model)과 '에이전트식 오케스트레이션'(ETA 2608.03924, Teach and Grow 2608.17209, Physical Agent 2607.21725, 좋아요를 누른 '로봇 정책 오케스트레이션 체계적 연구' 2606.10267) 두 축으로 갈려 있는데, 이 논문은 그 둘을 정면으로 맞붙여 '범용 에이전트가 전용 VLA보다 더 잘한다'는 수치를 제시한다. 특히 2606.10267이 '무엇이 오케스트레이션을 결정하는가'를 물었던 질문에 대해, 스킬을 아예 주지 않은 하네스만으로도 에이전트가 전략을 자생시킨다는 상반된 답을 내놓아 비교 독해 가치가 크다. 보유 논문 RoboHarness(2607.18060, 메모리 기반 이종 정책 오케스트레이션)와도 '에피소드를 넘는 메모리가 에이전트 성능을 얼마나 올리는가'라는 같은 질문을 공유한다.",
+          "rec_date": "2026-11-13"
+        },
+        {
+          "id": "2611.12806",
+          "title": "Learning Heterogeneous Tactile Representation for General Dexterous Manipulation",
+          "authors": "Bing Han, Yichuan Peng, Nan Xue, Wei Ning 외 19인",
+          "summary_ko": "촉각 센서는 종류마다 측정 원리가 달라(압력으로 저항이 바뀌는 piezoresistive 방식, 자기장 변화를 읽는 magnetic 방식, 접촉면 변형을 카메라로 찍는 visuotactile 방식) 각각 장점과 한계가 뚜렷하고, 그래서 한 센서로 모은 데이터를 다른 센서에 재사용하기 어렵다. 이 논문의 LingBot-Touch는 이 세 방식을 하나의 공통 표현으로 묶는 촉각 파운데이션 모델로, 새 센서 종류도 쉽게 붙일 수 있게 설계됐다. 학습된 촉각 토큰은 플러그앤플레이로 Diffusion Policy부터 VLA 모델(파이-영-점-오(π0.5), LingBot-VLA)까지 서로 다른 정책 구조에 그대로 꽂아 넣을 수 있고, 여러 하드웨어 플랫폼의 시뮬레이션·실로봇 실험에서 복잡한 조작 과제 성능을 일관되게 끌어올리면서 계산 효율도 유지했다. 저자들은 센서 종류를 가로지르는 데이터 통합이 촉각 학습을 스케일업하는 길이라고 주장한다.",
+          "tags": [
+            "Tactile",
+            "Foundation Model",
+            "Contact-Rich",
+            "Dexterous Manipulation",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.12806",
+          "extra_url": "",
+          "date": "2026-11-09",
+          "reason": "보유 논문 중 좋아요를 누른 FM-VLA(2607.18231, 힘 기반 메모리)와 N0-VTLA(2607.23782, 잠재 촉각 토큰으로 VLA 확장), ViTacWorld(2607.22530, 시각-촉각 월드 모델), TacForcing(2608.25798)은 모두 '촉각/힘 신호를 정책에 어떻게 넣을까'를 다루지만 각자 특정 센서에 묶여 있다. 이 논문은 그 전제를 한 단계 아래에서 해체해 센서 종류에 독립적인 촉각 표현을 만들고, 그 토큰을 Diffusion Policy와 VLA 양쪽에 꽂아 넣는다 — 즉 기존 촉각 논문들이 각자 해결한 문제의 공통 기반층에 해당한다. 2608.01402(접촉 많은 과제에서 VLA가 실패하는 이유)가 지적한 접촉 정보 부족 문제의 직접적 처방으로도 읽을 수 있다.",
+          "rec_date": "2026-11-13"
+        },
+        {
+          "id": "2611.14488",
+          "title": "Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies",
+          "authors": "Chubin Zhang, Bo An 외",
+          "summary_ko": "메모리를 붙인 VLA 정책은 보통 '시간 기준'으로 과거 프레임을 채운다 — 에피소드 전체에서 일정 간격으로 프레임을 뽑고 각 프레임에 몇 번째 시점인지 표시를 붙이는 방식이다. 문제는 아무 일도 일어나지 않아도 시간은 흐른다는 점이어서, 이런 메모리는 '기다리는 중'과 '일하는 중'을 구분할 수 없다. 저자들은 RoboMME 벤치마크의 개수 세기 과제에서 로봇을 잠시 멈추거나 손목을 꿈틀거리게 하는, 과제상 아무 의미 없는 '널 이벤트(null event)'를 넣었더니 공개된 메모리 VLA가 그 시간을 진행으로 착각해 일찍 멈추는 현상을 발견하고 이를 '유령 진행(phantom progress)'이라 이름 붙였다. 성공률이 한 과제에서 50회 중 47→16회, 다른 과제에서 44→10회로 무너졌고, 해당 프레임을 메모리에서 빼면 회복돼 원인이 중단 자체가 아니라 메모리임이 확인됐다. 원인은 시간 단축 경로(temporal shortcut)로, 일정한 속도로 수행된 시범 데이터에서는 경과 시간이 곧 진행률을 예측하기 때문이다. 타임스탬프 값만 늘이거나 줄여도 정책이 일찍 멈추거나 반복하며, 시간 인코딩을 아예 제거해도 고쳐지지 않는다(널 이벤트 프레임이 여전히 시간 기준 메모리 슬롯을 차지하므로). 학습 때 일부러 멈춤을 섞는 처방은 실패하고 개수 세기 성능까지 깎았지만, 메모리를 '시간'이 아니라 '이벤트' 기준으로 인덱싱하면 재학습 없이 손실의 절반 이상을 되찾았다.",
+          "tags": [
+            "VLA",
+            "Memory",
+            "Long-Horizon",
+            "Robustness",
+            "Failure Analysis"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.14488",
+          "extra_url": "",
+          "date": "2026-11-10",
+          "reason": "컬렉션은 진단형 연구를 꾸준히 모아 왔다 — 2608.02547(액션 청킹이 왜 효과 있는가), 2608.19613(잠재 행동에서 무엇이 중요한가), 2608.01402(접촉 과제에서 VLA가 실패하는 이유), 2607.29687(순차 과제 합성 일반화 진단), 그리고 좋아요를 누른 2606.10267. 이 논문은 그 계보에 '메모리' 축을 추가한다. 특히 좋아요를 누른 FM-VLA(2607.18231)가 힘 신호를 메모리로 쌓고, RoboHarness(2607.18060)가 메모리 기반 오케스트레이션을 하고, RoboTTT(2607.15275)가 컨텍스트를 늘리는 방향으로 가는데 — 이 논문은 그 메모리들이 실제로는 '시계'를 읽고 있을 뿐일 수 있다는 반례를 제시하고, 이벤트 기준 인덱싱이라는 재학습 없는 수정법까지 내놓는다. 보유 메모리 계열 논문을 다시 읽을 때의 점검표로 쓰기 좋다.",
+          "rec_date": "2026-11-13"
+        },
         {
           "id": "2611.08577",
           "title": "Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation",
@@ -273,42 +327,6 @@
           "rec_date": "2026-11-08"
         },
         {
-          "id": "2611.06881",
-          "title": "VABAR: A Variational Automation Benchmark for Agentic Robotics",
-          "authors": "Shuangyu Xie, Kaiyuan Chen, Uksang Yoo 외 (Linxi Fan, Yuke Zhu, Ken Goldberg 포함 19명)",
-          "summary_ko": "공장·의료 현장처럼 물체의 모양과 위치만 조금씩 바뀌는 반복 작업(저자들이 말하는 '가변 자동화', Variational Automation)을 거대언어모델 코딩 에이전트가 얼마나 끈기 있게 해내는지 재는 공개 벤치마크다. 공구 분류·공구 걸기·기어 맞물리기·주사기 포장·케이블 삽입·케이블 배선 6종 작업을 Newton 물리 엔진 위에 난이도 단계별로 구현했고, 사람이 직접 작성한 정답 프로그램과 재사용 가능한 기술(스킬) 33개 라이브러리를 함께 공개했다. 기준 성능으로는 공개 에이전트 조작 하네스와 Graph-as-Policy, Isaac Lab Arena를 쓴다.",
-          "tags": [
-            "Agentic Robotics",
-            "Benchmark",
-            "Skill Library",
-            "Coding Agent",
-            "Industrial Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.06881",
-          "extra_url": "",
-          "date": "2026-11-04",
-          "reason": "보유 논문 Graph-as-Policy(2607.05369, 좋아요)가 이 벤치마크의 기준 성능(baseline)으로 직접 쓰였다. Aspire(좋아요, 거대언어모델 코딩 에이전트가 스킬 라이브러리를 쌓아 sim2real로 옮기는 연속 학습)와 2606.19980(좋아요, 자기개선 코딩 에이전트)이 내세우는 '에이전트가 스스로 코드를 고쳐 기술을 축적한다'는 주장을 같은 잣대로 비교할 측정 수단이 컬렉션에 아직 없는데, 이 논문이 그 빈자리를 채운다.",
-          "rec_date": "2026-11-07"
-        },
-        {
-          "id": "2611.08156",
-          "title": "La-JEPA: Compact Robot Policies with Latent World Modeling",
-          "authors": "Mateo Clémente, George Z. Xue, Amin Abyaneh 외",
-          "summary_ko": "영상 생성 모델을 뜯어 쓰는 기존 세계-행동 모델(World-Action Model, 미래 장면과 행동을 함께 예측하는 모델)과 달리, 미리 학습된 영상 이해 모델 V-JEPA 2.1의 특징 공간 위에서 정책 트랜스포머를 처음부터 작게 학습한다. 학습할 때는 미래 특징과 행동을 같이 예측하고, 실제 구동 시점에는 행동만 내보낸다. 로봇 데이터 사전학습이 없는 정책 중에서 RoboTwin 2.0(원본·무작위화)과 LIBERO-Plus 최고 성능을 훨씬 적은 파라미터로 달성했고, 실제 로봇 4개 작업 평균 성공률은 pi0.5와 비슷하다. 영상 VAE 잠재변수보다 JEPA 특징이, 특히 분포 밖 상황에서 유리하다는 비교 실험도 담았다.",
-          "tags": [
-            "World-Action Model",
-            "V-JEPA",
-            "Latent World Model",
-            "Compact Policy",
-            "LIBERO"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.08156",
-          "extra_url": "https://github.com/mt-clemente/lajepa",
-          "date": "2026-11-05",
-          "reason": "2607.11397(좋아요, DINOv3 특징 공간에서 잠재 행동과 깊이를 예측하는 세계 모델)과 똑같이 '픽셀이 아니라 특징 공간에서 미래를 예측한다'는 전략을 쓰면서, 영상 VAE 잠재변수와 JEPA 특징을 정면으로 비교해 근거를 제시한다. 컬렉션의 World Model 계열 16편은 대부분 영상 생성에 기대는데, 그 반대편 설계를 작은 모델로 입증한 사례라 2607.11643(좋아요, 38B 자기회귀 세계 기반 모델)과 규모·설계 양쪽에서 대조축이 생긴다.",
-          "rec_date": "2026-11-07"
-        },
-        {
           "id": "2611.08338",
           "title": "GPWM: Modeling the World as 3D Particle Motion",
           "authors": "Robert Ren, Matthew Bronars, He Zhu 외",
@@ -325,24 +343,6 @@
           "date": "2026-11-05",
           "reason": "2607.18231(좋아요, 힘 기억을 VAE로 압축해 흐름 맞추기 정책에 넣는 접촉 많은 작업용 VLA)과 2607.15330(좋아요, 흐름 맞추기 기반 VLA 기반 모델)이 접촉과 힘을 정책 쪽에서 다루는데, 이 논문은 같은 문제를 세계 모델 쪽에서 3차원 입자 물리로 푼다. 컬렉션에 Contact-Rich 6편·World Model 16편이 있지만 둘을 입자 기반 물리로 잇는 접근은 아직 없다.",
           "rec_date": "2026-11-07"
-        },
-        {
-          "id": "2611.02600",
-          "title": "W2A: Distilling World Priors into Action Models for Real-Time Robotic Control",
-          "authors": "Xiaopeng Zhang, Yongjin Mu, Yueyang Weng 외",
-          "summary_ko": "세계·행동 모델(World Action Model, 미래 장면을 상상해 보고 그에 맞춰 행동을 정하는 모델)은 추론할 때마다 미래 영상을 실제로 생성해야 해서 계산이 무겁고 지연이 커 실시간 제어에 쓰기 어렵다는 문제를 겨냥한다. W2A는 학습 단계에서만 영상 확산 모델(잡음에서 영상을 복원하며 학습된 생성 모델)의 중간 복원 과정 표현을 행동 모델 쪽으로 옮겨 심는 2단계 증류(distillation, 큰 모델의 지식을 작은 모델로 옮기는 기법)를 수행하고, 추론 시점에는 영상 모델을 완전히 떼어낸다. 바탕 가설은 고차원 영상 잠재 표현 중 저차원 부분 공간만으로도 행동 생성을 지도하기에 충분하다는 것이다. 조작 벤치마크 LIBERO에서 평균 성공률 95.9%를 기록하면서 대표적인 세계·행동 모델 기준선보다 추론이 약 21배 빨랐다고 보고한다.",
-          "tags": [
-            "World Action Model",
-            "Distillation",
-            "Real-Time Control",
-            "Video Diffusion",
-            "LIBERO"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.02600",
-          "extra_url": "",
-          "date": "2026-11-02",
-          "reason": "컬렉션에는 세계·행동 모델 계열(2607.23782 학습 없이 비동기 피드백 활용, 2608.02580 광학 흐름 이중 스트림, 2607.17454 Best-of-N 테스트타임 탐색)과 추론 지연 계열(좋아요 대상과 같은 시기의 2609.18207, 2608.23831, 2608.27384 스트리밍 디코딩, 2608.14379 CUDA 그래프)이 각각 두텁게 쌓여 있는데, 이 논문은 바로 그 두 축의 정면 충돌 지점을 다룬다. 즉 '미래를 상상하는 비용'을 테스트타임 탐색으로 감당하려 한 보유 논문들과 달리, 상상 자체를 학습 때 끝내고 추론에서는 버리는 방향(21배 가속)을 제시하므로 어느 쪽이 실기기 제어에 맞는지 직접 비교할 소재가 된다. 좋아요를 누른 2607.11643처럼 큰 세계 모델의 사전 지식을 쓰고 싶지만 지연이 걸림돌인 상황에 바로 대응하는 선택지다.",
-          "rec_date": "2026-11-06"
         }
       ]
     },
@@ -350,6 +350,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2506.07339",
+          "title": "Real-Time Execution of Action Chunking Flow Policies",
+          "authors": "Kevin Black, Manuel Y. Galliker, Sergey Levine (Physical Intelligence)",
+          "summary_ko": "액션 청킹(action chunking, 한 번의 추론으로 여러 스텝의 행동 묶음을 한꺼번에 뽑는 방식)은 고주기 제어의 시간적 일관성을 확보해 주지만 지연 문제를 완전히 풀지는 못한다 — 청크 경계에서 로봇이 멈칫하거나, 학습 분포에서 벗어난 덜컥거리는 움직임이 나온다. 이 논문의 실시간 청킹(Real-Time Chunking, RTC)은 추론 시점에만 작동하는 알고리즘으로, 재학습 없이 확산(diffusion) 기반이나 흐름 정합(flow matching) 기반 VLA에 그대로 적용된다. 핵심은 현재 청크가 실행되는 동안 다음 청크를 생성하면서, 이미 실행이 확정된 구간의 행동은 '동결(freeze)'하고 나머지 구간만 '인페인팅(inpainting, 그림의 빈 영역을 주변과 이어지게 채워 넣는 기법)'으로 채우는 것이다. Kinetix 시뮬레이터의 동적인 과제 12개와 실제 양팔 조작 과제 6개로 구성한 새 벤치마크에서, RTC는 추론 지연에 유독 강건하면서 과제 처리량을 크게 높이고, 상당한 지연 조건에서도 성냥 켜기처럼 정밀한 과제에서 높은 성공률을 유지했다. NeurIPS 2025 게재.",
+          "tags": [
+            "Async Inference",
+            "Action Chunking",
+            "Flow Matching",
+            "Real-Time Control",
+            "Inference Latency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2506.07339",
+          "extra_url": "https://pi.website/research/real_time_chunking",
+          "date": "2025-06-09",
+          "reason": "컬렉션의 비동기 추론 계열이 가장 두꺼운 축 중 하나인데(FlashVLA 2608.27384 스트리밍 디코딩, Reflex 2608.14379, FBFM 2607.29235 학습 없는 비동기 피드백, 2608.23831 대기 중 행동 학습, 2609.18207 실시간 VLA 강화학습, 추천 pool의 DASH 2611.11854·Asynchronous Robot Policies 2611.05155), 이 논문이 바로 그 계열이 공통으로 전제하는 '청크 경계 지연' 문제를 정식화하고 재학습 없는 인페인팅 해법을 처음 제시한 원류다. FBFM과 2607.28596(FA-RDP)은 사실상 RTC의 변형·확장으로 읽히므로, 이걸 먼저 읽어 두면 그 논문들의 설계 선택이 왜 그렇게 됐는지가 설명된다.",
+          "rec_date": "2026-11-13"
+        },
+        {
+          "id": "2505.23705",
+          "title": "Knowledge Insulating Vision-Language-Action Models: Train Fast, Run Fast, Generalize Better",
+          "authors": "Danny Driess, Jost Tobias Springenberg, Brian Ichter, Sergey Levine 외 (Physical Intelligence)",
+          "summary_ko": "VLA 모델은 웹 규모로 학습된 시각-언어 모델(VLM)의 의미 지식을 로봇 제어로 옮겨 오는 방식이지만, 실시간 제어 요구와 VLM의 설계가 정면으로 충돌한다 — 성능 좋은 VLM은 파라미터가 수백억~수천억 개라 실시간 추론이 불가능하고, 출력이 이산 토큰이어서 로봇이 필요한 연속값 명령과 맞지 않는다. 그래서 최근 VLA들은 연속 제어용 모듈(확산(diffusion) 또는 흐름 정합(flow matching) 기반 '액션 전문가(action expert)', 또는 연속값 출력 헤드)을 덧붙이는데, 이는 사전학습된 VLM 백본에 학습이 안 된 새 파라미터를 끼워 넣는 일이다. 이 논문은 그렇게 붙인 모듈이 VLM의 사전학습 지식을 보존하는지 망가뜨리는지, 학습 동역학에 어떤 영향을 주는지를 파헤쳐, 액션 전문가를 순진하게 덧붙이면 '학습 속도와 지식 전이 양쪽을 심하게 해친다'는 것을 보인다. 그리고 VLA 학습 중 VLM 백본을 '절연(insulating)'해 이 손상을 막는 기법을 제안한다.",
+          "tags": [
+            "VLA",
+            "Action Expert",
+            "Flow Matching",
+            "Knowledge Transfer",
+            "Training Dynamics"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2505.23705",
+          "extra_url": "https://pi.website/research/knowledge_insulation",
+          "date": "2025-05-29",
+          "reason": "추천 pool에 들어 있는 '액션 전문가가 VLM을 학습시켜야 하는가?'(2611.05249)와 보유 논문 2608.03052(VLA는 자기수용감각 상태를 어떻게 써야 하는가), 2608.27550(표현 중심 계속 사전학습), 2607.20771(MoE VLA의 창발적 합성 스킬)이 던지는 질문 — '액션 헤드를 붙이면 백본의 지식이 어떻게 되는가' — 의 출발점이 된 논문이다. 컬렉션에 FAST(2501.09747, 이산 액션 토큰화)와 파이-영 계열(2504.16054)이 이미 있으니, 이산 토큰 경로와 연속 액션 전문가 경로가 갈라지는 지점을 이 논문으로 메우면 그 계보가 완성된다.",
+          "rec_date": "2026-11-13"
+        },
+        {
+          "id": "2403.03954",
+          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
+          "authors": "Yanjie Ze, Gu Zhang, Huazhe Xu 외",
+          "summary_ko": "모방 학습으로 섬세한 조작 기술을 가르칠 수 있지만, 복잡한 기술을 튼튼하고 일반화되게 익히려면 보통 사람이 보여 주는 시범 데이터가 아주 많이 필요하다. 이 논문의 3D 확산 정책(3D Diffusion Policy, DP3)은 3차원 시각 표현을 확산 정책(diffusion policy, 행동을 조건부 생성 모델로 뽑는 방식)에 결합한 모방 학습 기법으로, 핵심 설계는 드문드문한 점구름(sparse point cloud)에서 효율적인 점 인코더로 뽑아낸 간결한 3차원 표현이다. 시뮬레이션 과제 72개에서 대부분을 시범 10개만으로 해결하며 기준선 대비 상대 24.2% 개선을 보였고, 실로봇 과제 4개에서는 과제당 시범 40개만으로 85% 성공률의 정밀 제어를 달성하면서 공간·시점·외형·물체 개체가 바뀌어도 잘 일반화했다. 특히 실로봇 실험에서 기준선들은 안전 요건을 자주 위반해 사람이 개입해야 했지만 DP3는 거의 위반하지 않았다. RSS 2024 게재.",
+          "tags": [
+            "Diffusion Policy",
+            "Point Cloud",
+            "3D Representation",
+            "Imitation Learning",
+            "Sample Efficiency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2403.03954",
+          "extra_url": "https://3d-diffusion-policy.github.io",
+          "date": "2024-03-06",
+          "reason": "보유 논문 GALA(2609.21948, 점구름 기반 기하 인식 잠재 행동 모델링)와 Patch Policy(2607.18236, 밀집 시각 표현을 통한 효율적 제어), 2607.22535(로봇 렌더링을 통한 로봇 분리 월드 모델)는 모두 '2차원 이미지가 아닌 공간 구조를 정책에 넣는다'는 선택을 전제로 깔고 있는데, 그 전제를 처음 수치로 입증한 기준 논문이 DP3다. 컬렉션에 확산 정책 원조(2303.04137)는 있지만 3차원 표현 축이 비어 있어, GALA·Patch Policy가 비교 대상으로 삼는 지점을 이 논문이 채워 준다.",
+          "rec_date": "2026-11-13"
+        },
         {
           "id": "1803.10122",
           "title": "World Models",
@@ -666,60 +720,6 @@
           "date": "2023-11-02",
           "reason": "Aspire(좋아요, 코딩 에이전트가 스킬 라이브러리를 쌓아 sim2real로 옮기는 연속 학습)와 2607.05369(좋아요, 에이전트 코딩으로 스스로 학습하는 Graph-as-Policy)가 전제하는 '에이전트가 학습 과제를 스스로 만들어낸다'의 원형이다. 컬렉션에 Data Generation 3편·Agentic Robotics 3편이 있지만, 작업·환경·감독 신호를 한꺼번에 생성하는 이 원류는 빠져 있다.",
           "rec_date": "2026-11-07"
-        },
-        {
-          "id": "2401.00025",
-          "title": "Any-point Trajectory Modeling for Policy Learning",
-          "authors": "Chuan Wen, Xingyu Lin, John So 외",
-          "summary_ko": "영상에는 행동·물리·의미 정보가 풍부하지만 '그때 로봇이 어떤 관절 명령을 줬는가'라는 행동 라벨이 없다는 점이 로봇 학습의 병목이다. ATM(Any-point Trajectory Modeling)은 영상만으로 '화면 속 임의의 점이 앞으로 어디로 움직일지'를 예측하는 궤적 모델을 먼저 사전학습한다. 그렇게 예측된 점들의 이동 경로를 세밀한 제어 길잡이로 삼으면, 행동 라벨이 붙은 데이터가 아주 적어도 튼튼한 시각-운동 정책을 학습할 수 있다. 시뮬레이션과 실제 환경의 언어 지시 과제 130여 개에서 기존 영상 사전학습 기준선들을 평균 80% 앞섰고, 사람 영상이나 형태가 다른 로봇의 영상에서도 조작 기술을 옮겨올 수 있었다.",
-          "tags": [
-            "Point Trajectory",
-            "Action-Free Video",
-            "Cross-Embodiment",
-            "Pre-training",
-            "Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2401.00025",
-          "extra_url": "https://xingyu-lin.github.io/atm",
-          "date": "2023-12-28",
-          "reason": "컬렉션은 '행동 라벨 없는 영상에서 무엇을 중간 표현으로 둘 것인가'를 잠재 행동(2607.11397 좋아요, 2608.19613, 2607.08354)과 광학 흐름(2608.02580), 2D 경로(2608.02547 계열)로 각각 탐색하고 있는데, ATM은 그 선택지 중 '임의 점의 궤적'이라는 갈래를 처음 세운 기반 논문이면서 아직 컬렉션에 없다. 즉 보유 논문들이 비교 대상으로 삼거나 전제로 깔고 있는 출발점이라서, 잠재 행동 대 점 궤적의 장단점을 판단하려면 원본을 읽어 두는 편이 유리하다. 사람 영상→로봇 전이와 형태가 다른 로봇 간 전이를 모두 보였다는 점에서 보유 논문 2608.19589·2609.19846의 직접적 선행 연구다.",
-          "rec_date": "2026-11-06"
-        },
-        {
-          "id": "2207.05608",
-          "title": "Inner Monologue: Embodied Reasoning through Planning with Language Models",
-          "authors": "Wenlong Huang, Fei Xia, Ted Xiao 외",
-          "summary_ko": "대형 언어 모델이 로봇 계획에 쓰이려면 자기가 가진 기술 목록, 그 기술이 세상을 어떻게 바꾸는지, 그리고 그 변화가 다시 언어로 어떻게 표현되는지를 알아야 한다. 이 논문은 추가 학습 없이도 언어 모델이 환경에서 올라오는 자연어 피드백을 읽고 추론할 수 있는지를 묻고, 그 피드백이 모델 안에서 일종의 '속말(inner monologue)'을 이루어 더 풍부한 계획을 가능하게 한다고 제안한다. 피드백 종류로는 성공 여부 판정, 장면 묘사, 사람의 개입 지시를 시험했다. 시뮬레이션과 실제 책상 정리, 그리고 주방에서의 장기 과제 모바일 조작 등 세 영역에서, 이렇게 언어 피드백으로 고리를 닫는 것이 상위 지시 완수율을 크게 높였다.",
-          "tags": [
-            "LLM Planner",
-            "Closed-Loop Feedback",
-            "Embodied Reasoning",
-            "Long-Horizon",
-            "CoRL 2022"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2207.05608",
-          "extra_url": "https://innermonologue.github.io",
-          "date": "2022-07-12",
-          "reason": "컬렉션의 에이전트형 로보틱스 축(좋아요를 누른 2607.08448 고정된 VLA 위에 에이전트 계획자와 기억을 얹음, 2606.10267 계층형 VLA의 옵션 프레임워크, 2607.05369 그래프를 정책으로 쓰는 다중 에이전트, 2606.19980 코딩 에이전트의 자기개선)과 보유 고전 3편(2204.01691 SayCan, 2209.07753 Code as Policies, 2303.03378 PaLM-E)을 잇는 결정적 한 칸이 비어 있다. Inner Monologue는 바로 '실행 결과를 자연어로 되먹여 계획을 고쳐 쓴다'는 아이디어의 원전이며, 보유 논문들이 쓰는 재시도·실패 진단·기억 갱신 루프가 모두 여기서 갈라져 나왔다. 최근 추천 pool에 있는 HeLM(2611.02660, 언어로 작업 기억을 유지)과 Reflexion(2303.11366)을 함께 읽으면 '언어를 상태 저장소로 쓰기'의 계보가 한 줄로 정리된다.",
-          "rec_date": "2026-11-06"
-        },
-        {
-          "id": "2304.07193",
-          "title": "DINOv2: Learning Robust Visual Features without Supervision",
-          "authors": "Maxime Oquab, Timothée Darcet, Théo Moutakanni 외",
-          "summary_ko": "자연어 처리에서처럼 대규모 사전학습을 하면 시각에서도 '추가 미세조정 없이 어디에나 쓸 수 있는' 범용 이미지 특징을 얻을 수 있다는 주장을 검증한 논문이다. 기존 자기지도학습(self-supervised learning, 정답 라벨 없이 데이터 자체에서 학습 신호를 만드는 방식) 기법들을 다시 조합하고 데이터와 모델 크기를 함께 키웠으며, 기술적 기여의 대부분은 그 규모에서 학습을 빠르고 안정적으로 돌리는 데 쓰였다. 데이터 쪽에서는 정제되지 않은 이미지를 그대로 쓰는 관행 대신, 다양하면서도 선별된 전용 데이터셋을 자동으로 구축하는 큐레이션 파이프라인을 제안한다. 10억 파라미터 규모의 비전 트랜스포머(ViT)를 학습한 뒤 작은 모델들로 증류했고, 이미지 단위와 픽셀 단위 벤치마크 대부분에서 OpenCLIP을 앞섰다.",
-          "tags": [
-            "Self-Supervised",
-            "Vision Foundation Model",
-            "ViT",
-            "Dense Features",
-            "Frozen Backbone"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2304.07193",
-          "extra_url": "https://github.com/facebookresearch/dinov2",
-          "date": "2023-04-14",
-          "reason": "보유 논문 상당수가 DINOv2/DINOv3의 '밀집 시각 특징'을 정책의 눈으로 그대로 쓰고 있다 — 2607.15163(동결된 DINOv2 특징 위에 블록 인과 어텐션만 얹은 경량 정책), 2608.14379(DINOv3로 지연을 줄인 동적 조작), 그리고 좋아요를 누른 2607.11397(DINOv3 특징 위에서 잠재 행동 학습). 정작 그 특징이 왜 미세조정 없이도 통하는지, 어떤 데이터 큐레이션과 증류 덕인지를 설명하는 원본은 컬렉션에 없다. 왜 백본을 얼려도 되는가, 어떤 층의 특징을 꺼내 써야 하는가 같은 실무 판단의 근거가 이 논문에 있어서 위 세 편을 다시 읽을 때 해상도가 달라진다.",
-          "rec_date": "2026-11-06"
         }
       ]
     }
