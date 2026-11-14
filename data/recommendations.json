@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-14",
+  "generated": "2026-11-15",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.16728",
+          "title": "EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming",
+          "authors": "Yaru Niu, Binghong Chen, Changwei Yao, Shangtao Li 외",
+          "summary_ko": "사람·실제 로봇·시뮬레이션 에이전트라는 서로 몸 구조(형태·센서·제어 인터페이스)가 다른 시연 데이터를 '1인칭 시점(egocentric, 머리/카메라 시점)'이라는 공통 기준으로 묶어 하나의 정책으로 사전학습한다. 관측 종류(이미지·관절 상태 등)마다 전용 토크나이저를, 행동 종류마다 전용 전문가 모듈(expert)을 두고 트랜스포머 본체만 몸체 간에 공유하는 MXT+ 구조를 쓴다. 여기에 '몸체 상상(Embodiment Dreaming)' 학습 목표 — 미래의 시각·관절 상태를 잠재 벡터(latent, 압축된 내부 표현) 수준에서 예측하게 하는 보조 과제 — 를 더해 공유 본체가 각 몸체의 동역학을 학습하게 만든다. 5개 과제·6개 몸체(실로봇 5대 + 시뮬레이션 휴머노이드 1대)의 13개 조합에서 평균 과제 진행도를 0.63→0.80으로, 학습 분포를 벗어난(OOD) 조건에서는 0.53→0.77로 끌어올렸다.",
+          "tags": [
+            "Cross-Embodiment",
+            "Egocentric Video",
+            "Latent Dynamics",
+            "Modular Transformer",
+            "Pre-training"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.16728",
+          "extra_url": "https://egox-dream.github.io",
+          "date": "2026-11-12",
+          "reason": "보유 중인 AnyWorld(2608.29242, 1인칭 월드 모델로 몸체 간 일반화)와 ZETA(2609.02546, 제로샷 몸체 전이 통제 실험)가 던진 '서로 다른 몸체 데이터를 어떻게 한 정책에 합칠 것인가'라는 질문에 모듈형 인터페이스 + 미래 잠재 상태 예측이라는 구체적 답을 제시한다. 미래 표현을 예측해 표현을 정렬하는 방식은 VLA-JEPA(2602.10098)의 잠재 월드 모델 아이디어와 같은 계열이고, 행동 정렬로 몸체 간극을 메운 Cross-Embodiment Transfer via Behavior-Aligned Representations(2607.27549)와 직접 비교해 볼 만하다.",
+          "rec_date": "2026-11-15"
+        },
+        {
+          "id": "2611.14048",
+          "title": "LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning",
+          "authors": "Xuheng Zhang, Yiming Zhang, Jialin Gao, Hao Chen, Jiaming Liu 외",
+          "summary_ko": "영상 예측 모델(월드 모델)과 행동 생성기를 한 몸에 담은 월드 액션 모델(WAM)에서, 기존 방식은 장면 전체의 전역 표현을 그대로 행동 생성에 넘겨 로봇과 물체가 맞닿는 국소 상호작용이 묻히는 문제가 있다고 지적한다. LaST0.5는 그 사이에 '상호작용 중심 잠재 공간' — 로봇-환경 접촉을 드러내는 시각적 단서로 지도학습한 압축 표현 — 을 끼워 넣고, 이를 Mixture-of-Transformers(과제별 전문가 트랜스포머를 섞는 구조) 안의 '잠재 전문가'로 구현해 월드 전문가와 행동 전문가를 잇는다. 또 미래 표현과 과제 진행도(progress) 값을 함께 예측해, 진행도가 일관되지 않으면 행동 실행 속도를 조정하거나 미래를 다시 예측하도록 만든다. 1만 4천 시간 이상의 로봇 데이터로 사전학습해 LIBERO 99.5%, RLBench 10개 과제 최고 성능, 실로봇 장기 과제·정밀 조작에서 안정적 실행을 보였다.",
+          "tags": [
+            "World Action Model",
+            "Interaction-Centric Latent",
+            "Mixture-of-Transformers",
+            "Progress Prediction",
+            "Long-Horizon"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.14048",
+          "extra_url": "",
+          "date": "2026-11-10",
+          "reason": "보유 WAM 계열 — FlowWAM(2607.13017, 광학 흐름을 행동 표현으로), World Action Planner(2607.27599), FBFM(2607.29235, 학습 없는 비동기 피드백), Motus2(2608.30237) — 가 공통으로 쓰는 '월드 모델 표현을 행동에 그대로 넘긴다'는 전제를 정면으로 문제 삼는다. 진행도 예측으로 실행 타이밍을 조절하는 부분은 Knowing When to Stop(2609.00908)의 적응적 청크 종료, τ0-VLA(2608.16885)의 월드 모델 기반 테스트타임 스케일링과 묶어 읽기 좋다.",
+          "rec_date": "2026-11-15"
+        },
+        {
+          "id": "2611.15490",
+          "title": "ActionCodec2: A Streaming Action Tokenizer",
+          "authors": "Zibin Dong, Yicheng Liu, Shiduo Zhang, Tianyuan Yuan, Baijun Ye, Jinqiu Wang, Hang Zhao",
+          "summary_ko": "자기회귀(autoregressive, 토큰을 하나씩 순차 생성) VLA가 쓰는 기존 행동 토크나이저는 행동 묶음(chunk) 전체를 다 디코딩해야 실행할 수 있다. ActionCodec2는 신경망을 쓰지 않는 토크나이저로, 궤적 복원 오차를 정해진 허용치 안에 유지하면서 행동을 생성되는 즉시 하나씩 내보낸다(streaming). 핵심은 각 스텝을 '디코더가 지금까지 복원한 상태를 기준으로' 양자화해, 선택된 동작 프리미티브가 남은 오차를 보정하게 만드는 것이다(독립 양자화 시 오차가 누적되는 문제를 차단). 필요한 최소 프리미티브 집합 찾기를 기하학적 덮기(covering) 문제로 정식화해 병진 운동은 정확한 최소값, 회전은 상수배 내 상한을 유도했고, Set-BPE(자주 함께 나오는 프리미티브 기호를 좌표 순서에 상관없이 무손실 병합하는 기법)로 토큰 수를 더 줄인다. 24개 몸체·2만 시간 데이터로 맞춘 범용 버전은 15Hz 말단 제어에서 초당 평균 8.8토큰이며, 같은 VLA 백본에서 기존 토크나이저들을 시뮬레이션 3종과 제로샷 실로봇 평가 모두에서 앞섰다. 청크 중간에도 상태 피드백을 반영할 수 있어 동역학 변화·외력·움직이는 물체 조건에서 개루프 실행 대비 성능이 크게 올랐고, 같은 토큰을 VLM 에이전트의 직접 제어 인터페이스로 써서 성공한 행동 시퀀스를 재사용 가능한 매크로로 묶는 것도 보였다.",
+          "tags": [
+            "Action Tokenization",
+            "Streaming",
+            "Autoregressive VLA",
+            "Set-BPE",
+            "Closed-Loop Execution"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.15490",
+          "extra_url": "https://zibindong.github.io/actioncodec2-page/",
+          "date": "2026-11-11",
+          "reason": "보유 FAST(2501.09747, DCT+BPE 행동 토크나이저)의 직계 후속 비교 대상이다. 청크를 다 뽑기 전에 실행을 시작한다는 점에서 TacForcing(2608.25798)의 스트리밍 행동 생성, Knowing When to Stop(2609.00908)의 청크 길이 적응과 같은 문제를 토크나이저 층에서 푼다. 또 Why Does Action Chunking Improve Behavioral Cloning(2608.02547)이 분석한 '청크의 개루프 실행 대가'를 정량적으로 되짚을 수 있는 실험 결과를 담고 있다.",
+          "rec_date": "2026-11-15"
+        },
         {
           "id": "2611.17110",
           "title": "SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models",
@@ -325,24 +379,6 @@
           "date": "2026-11-03",
           "reason": "컬렉션에서 꾸준히 모아 온 Async Inference 주제(추론 지연을 숨기는 비동기 실행)의 최신 설계다. 추천 pool의 Real-Time Chunking(2506.07339)이 행동 청크 단위로 지연을 메우는 접근이라면, ARP는 아예 VLM과 행동 전문가의 주기를 분리하고 '의미 메모리'를 공유 상태로 둔다. HeLM(2611.02660, 계층적 언어 메모리)과도 메모리 설계 측면에서 맞물려 읽기 좋다.",
           "rec_date": "2026-11-09"
-        },
-        {
-          "id": "2611.03815",
-          "title": "AIRoA-0: Long-Horizon, Precise, Cross-Embodiment Manipulation from Handheld Data",
-          "authors": "Yueh-Hua Wu, Kei Ota, Hanlong Li 외 (AIRoA)",
-          "summary_ko": "로봇을 한 대도 쓰지 않고, 사람이 손에 들고 쓰는 집게(YUBI, 저자들이 공개한 오픈소스 핸드헬드 그리퍼)로만 모은 1만 6151시간 분량 시연으로 양팔 조작 정책을 학습했다. 머리나 장면 카메라 없이 양쪽 손목 카메라만 보고, 한 문장 지시로 12개 이상 부품을 번호 칸에 분류하거나 로봇청소기 물걸레·브러시를 교체하고, 필통 지퍼를 열고 수건을 접는 긴 작업을 학습 데이터에 없던 장소에서 수행한다. 평가 10개 과제 평균 성공률 78%로, 같은 시연으로 후학습한 다른 VLA(Vision-Language-Action, 시각·언어·행동 모델) 4종 중 최고치인 27%를 크게 앞섰다. 원격조작 데이터·강화학습·실기 교정 없이 로봇은 테스트 때만 등장하며, YUBI 집게를 장착한 여러 로봇(양팔 Franka, TX-G2, OpenArm, UR)에 그대로 올라간다. 데이터셋·사전학습 가중치·후학습 레시피를 공개했고, 새 과제 후학습은 H200 GPU 8장 한 노드에서 4시간 이내.",
-          "tags": [
-            "Cross-Embodiment",
-            "Hand-held Gripper",
-            "Bimanual",
-            "Long-Horizon",
-            "VLA"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.03815",
-          "extra_url": "https://a-0.airoa.io",
-          "date": "2026-11-02",
-          "reason": "보유 중인 UMI(Universal Manipulation Interface, 2402.10329)가 제시한 '로봇 없이 손에 든 집게로 데이터 수집' 노선을 1만 6천 시간 규모까지 밀어붙인 결과물이다. 좋아요를 누른 Xiaomi-Robotics-1(2607.15330, VLA·UMI·스케일링 법칙·흐름 매칭)이 10만 시간 규모 수집으로 스케일을 키운 것과 같은 축에 있지만, 이쪽은 '로봇 데이터를 단 한 건도 쓰지 않는다'는 극단 조건이어서 핸드헬드 데이터만으로 어디까지 가능한지의 상한을 보여준다. 또 Cross-Embodiment 태그 18편과 Open X-Embodiment(2310.08864)의 '여러 몸체를 한 정책으로' 흐름, Mobile ALOHA(2401.02117)·π0(2410.24164)의 원격조작 기반 수집과 직접 비교할 수 있는 대조군이다.",
-          "rec_date": "2026-11-08"
         }
       ]
     },
@@ -350,6 +386,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2205.09991",
+          "title": "Planning with Diffusion for Flexible Behavior Synthesis (Diffuser)",
+          "authors": "Michael Janner, Yilun Du, Joshua B. Tenenbaum, Sergey Levine",
+          "summary_ko": "모델 기반 강화학습은 보통 학습으로 동역학 모델만 만들고 나머지 의사결정은 고전적 궤적 최적화기에 맡기는데, 학습된 모델은 그런 최적화에 잘 맞지 않는다는 문제가 있다. 이 논문은 궤적 최적화 과정 자체를 모델 안으로 집어넣어, 모델에서 샘플을 뽑는 것과 계획을 세우는 것이 거의 같은 일이 되게 만든다. 구체적으로 확산 확률 모델(diffusion probabilistic model, 노이즈를 점진적으로 제거해 데이터를 생성하는 모델)이 궤적 전체를 반복 디노이징하며 계획을 만들고, 이미지 생성에서 쓰던 분류기 유도 샘플링(classifier-guided sampling)과 인페인팅(일부를 비워두고 채우기)을 각각 '보상 유도 계획'과 '시작·목표 상태 제약 계획'으로 재해석한다. 장기 의사결정과 테스트 시점 유연성이 중요한 제어 문제에서 효과를 보였다.",
+          "tags": [
+            "Diffusion Planning",
+            "Model-Based RL",
+            "Trajectory Optimization",
+            "Classifier Guidance",
+            "Foundational"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2205.09991",
+          "extra_url": "https://diffusion-planning.github.io/",
+          "date": "2022-05-20",
+          "reason": "보유 Diffusion Policy(2303.04137)가 '행동을 확산 모델로 생성한다'는 아이디어의 출발점이고, Diffusion Forcing(2407.01392)·World Action Planner(2607.27599)·FBFM(2607.29235)처럼 궤적/미래를 디노이징으로 계획하는 최근 연구들의 공통 조상이다. 특히 테스트 시점에 보상이나 제약을 샘플링 단계에 끼워 넣는 기법은 Test-Time Scaling for World Action Models(2607.17454)와 FA-RDP(2607.28596, 주파수 적응형 반응 확산 정책)에서 반복되는 패턴이라, 컬렉션의 '계획을 생성 모델로 푼다' 축을 이해하는 데 빠진 기반 논문이다.",
+          "rec_date": "2026-11-15"
+        },
+        {
+          "id": "2206.14176",
+          "title": "DayDreamer: World Models for Physical Robot Learning",
+          "authors": "Philipp Wu, Alejandro Escontrela, Danijar Hafner, Ken Goldberg, Pieter Abbeel",
+          "summary_ko": "시뮬레이터 없이 실제 로봇에서 직접 온라인 학습이 가능한지를 Dreamer 알고리즘(학습한 월드 모델 안에서 상상으로 계획·학습하는 방법)으로 검증한 연구다. 월드 모델이 '이 행동을 하면 어떻게 될지'를 예측해 주기 때문에 실제 환경에서 필요한 시행착오 횟수가 크게 줄어든다. 네발 로봇은 리셋 없이 1시간 만에 뒤집기·일어서기·걷기를 처음부터 배우고, 학습 후 밀어도 10분 안에 적응해 외력을 버티거나 빠르게 다시 일어난다. 로봇팔 2종은 카메라 영상과 희소 보상(성공 시에만 주는 보상)만으로 집어 옮기기를 사람 수준에 근접하게 배우고, 바퀴 로봇은 영상만으로 목표 지점 주행과 자기 방향 모호성 해소를 익힌다. 모든 실험에 동일한 하이퍼파라미터를 써서 실세계 월드 모델 학습의 기준선을 세웠다.",
+          "tags": [
+            "World Model",
+            "Real-World RL",
+            "Dreamer",
+            "Sample Efficiency",
+            "Foundational"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2206.14176",
+          "extra_url": "https://danijar.com/project/daydreamer/",
+          "date": "2022-06-28",
+          "reason": "보유 DreamerV3(2301.04104, Mastering Diverse Domains through World Models)의 실로봇 선행 연구로, 같은 저자군이 '월드 모델이 실제 하드웨어에서도 표본 효율을 준다'를 먼저 입증한 논문이다. ENPIRE(2606.19980)나 WCM(2607.29613)처럼 실세계에서 정책을 스스로 개선·평가하려는 보유 논문들이 전제하는 '상상 속 롤아웃으로 실제 시도를 아낀다'는 가정의 원형이며, WAM-TTT(2607.06988)의 테스트 시점 적응과 비교해 온라인 적응 속도(10분)의 기준점을 준다.",
+          "rec_date": "2026-11-15"
+        },
+        {
+          "id": "2106.01345",
+          "title": "Decision Transformer: Reinforcement Learning via Sequence Modeling",
+          "authors": "Lili Chen, Kevin Lu, Aravind Rajeswaran, Kimin Lee, Aditya Grover, Michael Laskin, Pieter Abbeel, Aravind Srinivas, Igor Mordatch",
+          "summary_ko": "강화학습을 '수익률·상태·행동이 번갈아 나오는 토큰 열을 이어 쓰는 문제'로 바꿔, 가치 함수 적합이나 정책 경사 계산 없이 인과 마스크 트랜스포머(앞쪽 토큰만 보게 가린 트랜스포머)가 다음 행동 토큰을 그냥 출력하게 한다. 원하는 누적 보상(return-to-go)을 조건으로 주면 그 수준의 성능을 내는 행동을 생성한다는 '조건부 시퀀스 모델링' 관점이 핵심이다. 구조가 단순한데도 Atari, OpenAI Gym, Key-to-Door에서 당시 최고 수준의 모델-프리 오프라인 강화학습 기법들과 동등하거나 더 나은 성능을 냈다.",
+          "tags": [
+            "Sequence Modeling",
+            "Offline RL",
+            "Action-as-Token",
+            "Return Conditioning",
+            "Foundational"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2106.01345",
+          "extra_url": "https://sites.google.com/berkeley.edu/decision-transformer",
+          "date": "2021-06-02",
+          "reason": "보유 RT-1(2212.06817)·RT-2(2307.15818)가 채택한 '행동을 토큰으로 바꿔 자기회귀로 예측한다'는 설계의 직접적 기원이며, FAST(2501.09747)와 이번에 함께 추천한 ActionCodec2(2611.15490) 같은 행동 토크나이저 연구의 전제를 만든 논문이다. 또 목표·수익률을 조건으로 붙여 행동 품질을 조절한다는 아이디어는 보유 논문 중 보상 모델로 어드밴티지를 조건화한 CLIFT(2607.29172)와 WCM(2607.29613)의 크리틱 조건화와 바로 연결된다.",
+          "rec_date": "2026-11-15"
+        },
         {
           "id": "2206.11795",
           "title": "Video PreTraining (VPT): Learning to Act by Watching Unlabeled Online Videos",
@@ -635,91 +725,6 @@
           "date": "2023-10-25",
           "reason": "컬렉션의 World Model 축(DreamerV3 2301.04104 보유)과 Cross-Embodiment 축이 만나는 대표 기반 논문인데 아직 없다. 특히 '하나의 월드 모델로 여러 몸체·행동 공간을 함께 다루고 스케일링된다'는 결과는 pool의 Continuous-Action World Models(2610.40401)·RynnWorld-Latent(2610.36791) 같은 크로스 임바디먼트 월드 모델 논문들의 직계 선행 연구다.",
           "rec_date": "2026-11-09"
-        },
-        {
-          "id": "2302.00111",
-          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
-          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai 등",
-          "summary_ko": "순차적 의사결정을 '텍스트 조건 영상 생성' 문제로 바꾼 연구다. 목표를 글로 주면 플래너가 앞으로 일어날 미래 프레임들을 만들어 계획을 그리고, 생성된 영상에서 역동역학(inverse dynamics, 연속된 두 프레임을 보고 그 사이 행동을 추정)으로 제어 명령을 뽑는다. 목표를 언어로 지정하므로 새로운 목표에 조합적으로 일반화되고, 상태·행동 공간이 다른 환경들도 모두 '이미지'라는 공통 공간에서 표현되어 서로 다른 로봇 조작 과제 사이의 학습 전이가 가능해진다. 인터넷의 대량 영상과 사전학습된 언어 임베딩을 활용해 실제 로봇용 영상 계획을 만들어낸다.",
-          "tags": [
-            "World Model",
-            "Video Generation",
-            "Cross-Embodiment",
-            "Generalist Policy"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2302.00111",
-          "extra_url": "",
-          "date": "2023-01-31",
-          "reason": "'영상 예측을 정책으로 쓴다'는 계열의 원류 논문이다. pool의 Video Prediction Policy(2412.14803)·DreamGen(2505.12705)·DreamX(2611.05377)와 보유 논문 중 비디오 생성 기반 조작 연구들이 모두 이 policy-as-video 아이디어를 전제로 하므로, 배경을 잡으려면 먼저 읽을 값이 크다.",
-          "rec_date": "2026-11-09"
-        },
-        {
-          "id": "2410.21845",
-          "title": "Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning (HIL-SERL)",
-          "authors": "Jianlan Luo, Charles Xu, Jeffrey Wu, Sergey Levine",
-          "summary_ko": "시연 데이터와 사람의 실시간 개입 수정(human-in-the-loop correction)을 효율적인 강화학습 알고리즘과 결합해, 시뮬레이터 없이 실제 로봇에서 1~2.5시간 학습만으로 거의 100% 성공률을 내는 시스템이다. 동적인 물체 조작, 정밀 조립(끼워맞추기), 양팔 협조 작업 등 까다로운 과제들을 다루며, 모방학습 기준선 대비 평균 성공률 2배·실행 속도 1.8배를 기록했다. 실제 환경에서의 비전 기반 강화학습이 현실적인 학습 시간 안에 가능하다는 것을 보인 대표 사례다.",
-          "tags": [
-            "Real-World RL",
-            "Contact-Rich",
-            "Dexterous Manipulation",
-            "Bimanual"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.21845",
-          "extra_url": "https://hil-serl.github.io/",
-          "date": "2024-10-29",
-          "reason": "컬렉션의 Real-World RL·Contact-Rich·Bimanual 태그가 한 번에 걸리는 기준점 논문인데 아직 빠져 있다. 보유 중인 VLA 사후학습/강화학습 논문들과 pool의 Beyond Policy Patches 계열(RL 전문가를 VLA로 증류)이 '실제 로봇 RL은 어디까지 되는가'를 전제로 깔고 있어, 그 전제의 출처를 확인하는 용도로 적합하다.",
-          "rec_date": "2026-11-09"
-        },
-        {
-          "id": "2409.20537",
-          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
-          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He",
-          "summary_ko": "로봇 데이터는 보통 몸체(embodiment)마다, 과제마다 따로 모이기 때문에 센서 구성도 관절 수도 행동 공간도 전부 달라서 하나의 범용 모델로 합치기 어렵다. HPT는 이 이질성을 구조로 흡수한다. 과제·몸체와 무관한 공통 표현을 담는 크고 공유 가능한 정책 '몸통(trunk)'을 사전학습하고, 몸체별로는 자기 고유의 자기수용감각(proprioception, 관절 각도·속도 같은 몸 내부 상태)과 시각 입력을 짧은 토큰 열로 바꿔주는 '줄기(stem)'만 따로 둔다. 그래서 몸통은 어떤 로봇이 들어와도 같은 형식의 토큰만 받는다. 사전학습에는 대규모 실제 멀티-몸체 로봇 데이터에 시뮬레이션, 실제 배치된 로봇, 사람 영상까지 섞어 52개 데이터셋 규모로 스케일링 실험을 했고, 미리 보지 못한 과제에서 미세조정 정책 성능을 20% 이상 끌어올렸다(NeurIPS 2024).",
-          "tags": [
-            "Cross-Embodiment",
-            "Pre-training",
-            "Generalist Policy",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2409.20537",
-          "extra_url": "https://liruiw.github.io/hpt/",
-          "date": "2024-09-30",
-          "reason": "Cross-Embodiment 태그가 붙은 18편의 공통 전제 — '서로 다른 로봇 데이터를 한 모델에 모을 수 있다' — 를 가장 깔끔하게 구조로 못박은 기반 논문인데 아직 컬렉션에 없다. 보유 중인 Open X-Embodiment(2310.08864)가 데이터셋 쪽 답이고 π0(2410.24164)·GR00T N1(2503.14734)이 정책 쪽 답이라면, HPT는 그 사이의 '몸체별 줄기 + 공유 몸통' 아키텍처 답이다. 추천 pool에 있는 Octo/CrossFormer(2408.11812)와 짝으로 읽으면 멀티-몸체 사전학습 설계 공간이 거의 다 덮인다.",
-          "rec_date": "2026-11-08"
-        },
-        {
-          "id": "2412.14803",
-          "title": "Video Prediction Policy: A Generalist Robot Policy with Predictive Visual Representations",
-          "authors": "Yucheng Hu, Yanjiang Guo, Pengchao Wang 외",
-          "summary_ko": "로봇 정책이 쓰는 시각 인코더는 대개 한 장 이미지를 복원하거나 두 장을 대조(contrastive)하는 목표로 사전학습돼서, 정지된 장면 정보는 잘 담지만 '다음에 무엇이 어떻게 움직일지'라는 동역학 정보는 거의 담지 못한다. 이 논문의 가설은 영상 확산 모델(video diffusion model, 영상을 잡음에서 점진적으로 복원하며 생성하는 모델)의 내부 표현에는 현재 장면 상태와 예측된 미래 변화가 함께 들어 있고, 이것을 행동 학습의 조건으로 쓸 수 있다는 것이다. VPP는 영상을 끝까지 생성하지 않고 영상 확산 모델 내부에서 꺼낸 '예측된 미래 표현'을 조건으로 암묵적 역동역학 모델(inverse dynamics model, 상태 변화로부터 그 변화를 만든 행동을 역산하는 모델)을 학습한다. 영상 기반 모델은 로봇 데이터와 인터넷 사람 조작 영상으로 미세조정해 예측을 더 선명하게 만든다. CALVIN ABC-D 일반화 벤치마크에서 기존 최고 대비 상대 18.6% 개선, 복잡한 실제 민첩 조작 성공률 31.6% 상승.",
-          "tags": [
-            "World Model",
-            "Video Diffusion",
-            "Representation Learning",
-            "Generalist Policy"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2412.14803",
-          "extra_url": "https://video-prediction-policy.github.io",
-          "date": "2024-12-19",
-          "reason": "컬렉션의 World Model 태그 16편과 추천 pool의 세계-행동 모델 묶음(La-JEPA 2611.08156, W2A 2611.02600, PrimeSim 2611.04870)이 전부 공유하는 아이디어 — '미래를 생성하지 말고, 생성 모델 내부 표현만 빌려 행동에 쓴다' — 의 원형이다. 좋아요를 누른 Xiaomi-Robotics-U0(2607.11643, 세계 기반 모델로 체화 데이터를 통합 합성)와 WALA(2607.11397, 잠재 행동과 세계 모델)의 직계 선행 연구이기도 하고, 보유 중인 Diffusion Forcing(2407.01392)이 제공하는 생성 쪽 기법과 맞물려 읽힌다.",
-          "rec_date": "2026-11-08"
-        },
-        {
-          "id": "2410.13126",
-          "title": "ALOHA Unleashed: A Simple Recipe for Robot Dexterity",
-          "authors": "Tony Z. Zhao, Jonathan Tompson, Danny Driess 외 (Google DeepMind)",
-          "summary_ko": "종단간(end-to-end) 모방 학습만으로 어려운 양팔 민첩 조작을 어디까지 할 수 있는지 밀어본 연구다. 레시피는 의도적으로 단순하다 — ALOHA 2 양팔 플랫폼으로 원격조작 시연을 대규모로 모으고, 표현력이 큰 정책류(확산 정책, diffusion policy: 잡음에서 행동 궤적을 점진적으로 복원해 생성하는 방식)를 쓴다. 특별한 모듈이나 과제별 설계 없이 이 조합만으로 신발끈 묶기, 티셔츠 걸기처럼 변형체(옷·끈 같은 모양이 변하는 물체)를 다루고 접촉 동역학이 복잡한 양팔 과제가 풀린다는 것을 보인다. 실제 5개·시뮬레이션 3개 과제에서 당시 최신 기준선을 능가.",
-          "tags": [
-            "Bimanual",
-            "Diffusion Policy",
-            "Dexterous Manipulation",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.13126",
-          "extra_url": "https://aloha-unleashed.github.io",
-          "date": "2024-10-17",
-          "reason": "컬렉션에 ACT(2304.13705, ALOHA 원 논문의 행동 분할 트랜스포머)와 Mobile ALOHA(2401.02117)는 있는데, 그 사이를 잇는 '데이터 규모 + 확산 정책이면 충분하다'는 핵심 레시피 논문이 빠져 있다. Bimanual(6편)·Diffusion Policy(7편)·Dexterous Manipulation(4편) 태그가 모두 걸리는 자리이고, 보유 중인 Diffusion Policy(2303.04137)가 왜 양팔 변형체 조작에서 결정적이었는지를 실증하는 편이다. 신규 추천인 AIRoA-0(2611.03815)이 '로봇 없는 핸드헬드 수집'으로 같은 종류의 긴 양팔 과제를 노린다는 점에서, 원격조작 대규모 수집 쪽 기준선으로 나란히 보기 좋다.",
-          "rec_date": "2026-11-08"
         }
       ]
     }
