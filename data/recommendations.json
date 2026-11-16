@@ -1,10 +1,62 @@
 {
-  "generated": "2026-11-16",
+  "generated": "2026-11-17",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.17775",
+          "title": "Beyond Prediction Gain: LASR as a Metric for Action-Grounded Latents in World Models",
+          "authors": "Yu Zhou, Changsong Lei, Yixiang Wei, Kairui Wen 외 9명",
+          "summary_ko": "행동 레이블이 없는 영상에서 추론해 낸 '잠재 행동(latent action)'이 정말로 로봇의 행동 정보를 담고 있는지, 아니면 현재 상태·에피소드 진행도·과제 종류처럼 미래 예측에만 도움이 되는 지름길 정보를 외운 것인지 구분하는 측정법을 제안한다. 제안 지표 LASR(Latent Action Support Ratio, 잠재 행동 지지 비율)은 단위가 없는 비율값으로, 학습에 쓰지 않은 데이터(held-out data)에서 '현재 상태만으로 맞힐 수 있는 수준'을 넘어 실제 행동·물리적 상태 변화를 얼마나 더 잘 설명하는지를 잰다. 평균적 경향을 보는 GeoLASR(기하평균 기반)과 최악의 경우를 보는 WorstLASR 두 가지로 요약하며, 정답이 있는 긍정·부정 대조군 실험으로 실제 행동 정보는 탐지하고 지름길은 걸러냄을 보인다.",
+          "tags": [
+            "Latent Action",
+            "World Model",
+            "Evaluation",
+            "Benchmark"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.17775",
+          "extra_url": "",
+          "date": "2026-11-13",
+          "reason": "컬렉션의 잠재 행동 계열 핵심 논문들 — '2608.19613 What Matters for Latent Actions in Robot Learning', 'GALA(2609.21948)', 'DLAM(2607.27138)', 'LAPA(2410.11758)' — 은 모두 '어떤 잠재 행동이 좋은가'를 다루지만 좋음을 재는 기준은 대체로 하류 과제 성공률이나 복원 오차에 의존한다. 이 논문은 바로 그 평가 공백을 메우는 오프라인 측정 프로토콜을 제시해, 보유 논문들이 만든 잠재 행동 표현을 서로 비교·감사할 수 있는 공통 척도를 준다. 또한 '2609.19846 Action-Similarity 기반 Cross-embodiment 잠재 행동'처럼 표현 품질이 전이 성능을 좌우한다고 주장하는 논문들의 가설을 직접 검증하는 도구로도 쓸 수 있다.",
+          "rec_date": "2026-11-17"
+        },
+        {
+          "id": "2611.14969",
+          "title": "Scaling VLA Serving Under Robotic Execution Constraints",
+          "authors": "Yue Zhang, Zicong Ye, Lufang Chen, Dance Yang 외 17명",
+          "summary_ko": "이미 수백 대의 로봇이 실제 현장에서 VLA(Vision-Language-Action, 시각·언어·행동 통합 정책)로 돌아가는 상황을 전제로, 이 로봇 집단(fleet)에 추론을 싸게 공급하는 서버 시스템 XInfer를 제안한다. 핵심은 VLA 모델 내부의 서로 다른 연산 단계(무거운 시각·언어 처리와 가벼운 행동 디코딩 등)를 GPU에서 병렬로 겹쳐 돌려 활용률을 올리면서도, 로봇 제어 주기처럼 늦으면 안 되는 응답은 간섭에서 보호하는 스케줄링이다. 실제 운영 데이터로 만든 작업 부하에서 VLA 3종을 대상으로, 물리적 실행 제약을 지키면서 기존 최고 시스템 대비 '유효 로봇 수용량(ERC, 한 서버가 동시에 감당하는 로봇 대수)'을 1.26~3.75배로 늘렸다. 코드는 공개되어 있다.",
+          "tags": [
+            "VLA",
+            "Async Inference",
+            "Inference Latency",
+            "Serving"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.14969",
+          "extra_url": "https://github.com/X-Square-Robot/xinfer",
+          "date": "2026-11-11",
+          "reason": "컬렉션의 지연 대응 논문들 — 'FlashVLA(2608.27384)', 'Reflex(2608.14379)', '2608.23831 Learning to Act While Waiting', 'DASH(2611.11854)' — 은 전부 로봇 한 대 관점에서 모델을 빠르게/비동기로 만드는 쪽을 본다. 이 논문은 같은 지연 문제를 서버 측 다중 로봇 스케줄링 관점에서 뒤집어 보므로, 보유 논문들의 기법이 실제 배포에서 어떤 제약과 만나는지 보완해 준다. 'RTC(2506.07339)'와 '2611.11089 비동기 제어용 명령 생성'을 함께 읽으면 정책 쪽 비동기화와 인프라 쪽 비동기화가 어떻게 맞물리는지 그림이 완성된다.",
+          "rec_date": "2026-11-17"
+        },
+        {
+          "id": "2611.17394",
+          "title": "Agentic-Teacher: An Agentic Data Engine for Failure-Driven VLA Post-Training",
+          "authors": "Gongyue Teng, Yuqing Xie, Yixian Zhang, Feng Gao 외 13명",
+          "summary_ko": "사전학습된 VLA(시각·언어·행동 정책)를 더 좋게 만들려면 그 모델이 '못하는 지점'을 겨냥한 시범 데이터가 필요하다는 문제의식에서, 코딩 에이전트가 스스로 데이터를 만드는 엔진을 제안한다. 엔진은 대상 VLA의 실패 롤아웃(실행 기록)을 분석해 개입할 상태를 고르고, 환경 도구를 호출하며 실행 피드백으로 폐루프 코드 정책을 반복 개선한 뒤, 검증된 코드 정책을 재사용 가능한 시범 생성기로 쓴다. 학습에 쓸 만한 데이터로 만들기 위해 시간적으로 상관된 행동 잡음을 넣어 상태·행동 분포를 넓히고, 움직임 없는 프레임은 집게(그리퍼) 전환은 남기면서 제거하고, 원본 모델의 flow-matching(흐름 정합) 손실값으로 궤적을 걸러낸다. 이렇게 모은 데이터로 후속학습하면 π0의 성공률이 LIBERO-10에서 79.4%→87.8%, MetaWorld-10에서 80.4%→90.6%, RoboCasa 3개 과제에서 0%→30.0%로 올랐고, 완성된 정책은 코딩 에이전트 없이 동작한다.",
+          "tags": [
+            "VLA",
+            "Agentic Robotics",
+            "Data Generation",
+            "Coding Agent",
+            "LIBERO"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.17394",
+          "extra_url": "",
+          "date": "2026-11-12",
+          "reason": "보유 논문 '2609.19906 Learning and Transferring Closed-Loop Robot Software'와 '2608.14047 ART(도구 사용 에이전트화)'가 코딩 에이전트로 로봇 제어 코드를 짜는 방향을 다루고, '2608.19490 Self-Demonstrated Generative Control'과 'RedFlow(2607.27782)'는 실패를 되먹여 정책을 고치는 방향을 다룬다. 이 논문은 두 흐름을 정확히 합쳐 '코딩 에이전트가 VLA의 실패 지점용 교사 데이터를 생산한다'는 구조를 만들므로, 보유 논문 묶음의 빈 칸을 메운다. 또 flow-matching 손실로 데이터를 선별하는 점이 'Data Pyramid(2607.24744)'와 '2410.18647 Data Scaling Laws'의 데이터 품질 논의와 직접 이어진다.",
+          "rec_date": "2026-11-17"
+        },
         {
           "id": "2611.14365",
           "title": "From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models",
@@ -276,42 +328,6 @@
           "rec_date": "2026-11-12"
         },
         {
-          "id": "2611.12870",
-          "title": "SWAM: Scaling World Action Models with Cross-Modal Alignment",
-          "authors": "Yu Zhou, Xinyuan Xia, Xuankun Yang, Yinghao Yang 외 7명",
-          "summary_ko": "'세계-행동 모델'(World-Action Model, 앞으로 보일 영상과 취할 행동을 동시에 예측하는 모델)을 키울 때, 영상 사전학습으로 얻어 둔 '말과 장면의 대응'(language-video alignment)이 행동 학습을 추가하는 순간 깨질 수 있다는 점을 문제로 짚었다. 일반 영상·1인칭(에고센트릭) 영상·UMI(Universal Manipulation Interface, 사람이 손에 들고 쓰는 집게형 수집 장치) 시연·로봇 시연을 합쳐 약 4만 7천 시간을 모은 뒤, 어떤 감독 신호(말-영상만 / 말-영상-행동 / 둘의 혼합)를 어떤 비율로 섞어야 이 대응이 유지되는지를 통제 실험으로 비교했다. 결론은 고정된 학습 예산에서 1인칭 영상과 UMI 시연을 섞는 쪽이 제어 일반화에 유리하고, 언어 주석의 품질과 모델 구조가 이 경험을 얼마나 활용하는지를 좌우한다는 것이다. 깨끗한 환경(RoboTwin Clean) 시연만으로 후속 학습했을 때 동일 조건 88.10%, 물체 배치가 무작위로 바뀐 어려운 조건 61.56%의 성공률을 냈고, 실제 로봇 3개 과제 평균 40.00%로 최고 베이스라인 23.33%를 앞섰다. 데이터·학습 코드·모델 가중치를 공개한다.",
-          "tags": [
-            "World Action Model",
-            "Cross-Modal Alignment",
-            "UMI",
-            "Human Video",
-            "Scaling"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.12870",
-          "extra_url": "",
-          "date": "2026-11-09",
-          "reason": "풀에 있는 Open-HumanWAM(2611.06817)이 '사람 1인칭 영상을 얼마나 많이 넣으면 좋아지는가'를 스케일링 법칙으로 답했다면, 이 논문은 같은 세계-행동 모델 계열에서 '무엇을 어떤 감독 신호로 섞어야 하는가'를 통제 실험으로 답한다. 특히 컬렉션의 UMI 태그 4편(좋아요 포함)과 Human Video 5편이 다루는 '사람 데이터로 로봇 정책을 키우는 경로'가 영상 사전학습의 언어 정합성을 훼손할 수 있다는 부작용을 처음 정면으로 측정한 점이 새롭고, 좋아요한 2607.15330(스케일링 기반 VLA)의 레시피 설계 근거를 보완한다.",
-          "rec_date": "2026-11-11"
-        },
-        {
-          "id": "2611.11854",
-          "title": "Decoupled Asynchronous System for Humanoids (DASH): Latency-Agnostic Scaling of Vision-Language-Action Models for Humanoid Manipulation",
-          "authors": "Bingzhang Wang, Nathan Zhao, Jialeng Ni, Jiajin Zheng 외 3명",
-          "summary_ko": "VLA(Vision-Language-Action, 영상과 언어를 받아 로봇 행동을 내는 모델)는 시각-언어 백본이 제어 경로 위에 그대로 올라가 있어서, 백본이 계산하는 동안 로봇은 계속 움직이고 결국 낡은 관측에 근거한 행동을 실행하게 된다. 그래서 백본을 키우면 반응성이 떨어진다. DASH는 느린 시각-언어 모델(System 2)과 빠른 플로우 매칭(Flow Matching, 노이즈에서 행동 궤적으로 이어지는 흐름을 학습하는 생성 방식) 행동 헤드(System 1)를 LCM(Lightweight Communications and Marshalling, 로봇용 저지연 메시지 통신 규약) 위의 별도 프로세스로 분리해 동시에 돌린다. 제어 주기는 행동 헤드만으로 정해져 백본 크기와 무관해진다. 행동 헤드는 고정된 백본에서 온 '낡은 의미 정보'와 자체 ResNet 인코더로 방금 뽑은 '신선한 시각 정보'를 함께 쓰고, 학습 때 일부러 시차를 넣어(desynchronized training) 배포 환경의 지연을 미리 겪게 하며, 추론 지연이 들쭉날쭉해도 겹치는 행동 묶음(action chunk)을 맞춰 붙이는 적응형 시간 통합기를 둔다. 추론 지연을 시뮬레이션 시간에 실제로 과금하는 비동기 RoboTwin 벤치마크에서 백본을 0.8B→8B로 키워도 20Hz 제어를 유지했고(동기 방식은 9.7Hz→4.1Hz로 붕괴), 모든 크기에서 성공률이 더 높았다. 손가락이 있는 실제 휴머노이드의 집어 옮기기에서도 동기 파이프라인을 분명히 앞섰다.",
-          "tags": [
-            "Async Inference",
-            "VLA",
-            "Humanoid",
-            "Flow Matching",
-            "Inference Latency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.11854",
-          "extra_url": "",
-          "date": "2026-11-09",
-          "reason": "컬렉션의 Async Inference 5편과 Inference Latency 2편, 그리고 풀의 Asynchronous Robot Policies(2611.05155)·Real-Time Chunking(2506.07339)이 다루는 '추론 지연을 숨기는 문제'를 휴머노이드 양손 조작으로 끌고 온 편이다. 보유 논문들은 대개 지연을 공짜로 치는 벤치마크에서 평가했는데, 여기서는 지연을 시뮬레이션 시간에 과금해 '백본을 10배 키워도 제어율이 안 떨어진다'는 주장을 직접 측정한다. 좋아요한 2607.08448·2607.18231 계열의 Flow Matching 행동 헤드를 System 1로 쓰는 구조여서 비교 축이 바로 맞는다.",
-          "rec_date": "2026-11-11"
-        },
-        {
           "id": "2611.10148",
           "title": "BATCH: Behavior Alignment for Cross-Embodiment Learning from Humans",
           "authors": "Zeyi Liu, Shuran Song",
@@ -328,24 +344,6 @@
           "date": "2026-11-06",
           "reason": "컬렉션 2위 관심사인 Cross-Embodiment 18편과 Human Video 5편이 겹치는 핵심 지점이다. 보유 중인 UMI(2402.10329) 계열은 사람이 로봇과 같은 집게를 들게 해서 간극을 '하드웨어로' 없애는 접근인데, 이 논문은 맨손 사람 영상을 그대로 두고 '시간 대응을 학습해서' 메우는 반대 방향 해법이라 대비가 선명하다. 풀의 AIRoA-0(2611.03815)·Open-HumanWAM이 사람 데이터를 대량으로 붓는 쪽이라면 여기는 적은 데이터에서 정렬 품질로 버티는 쪽이고, Shuran Song 그룹이라 보유한 Diffusion Policy(2303.04137)와 구현 계보가 이어진다.",
           "rec_date": "2026-11-11"
-        },
-        {
-          "id": "2611.06905",
-          "title": "Reinforcement Learning Enables Scaling Generalist Robot Policy Improvement",
-          "authors": "Michal Korniak, Marco Bagatella, Ralf Römer, Michal Nauman 외 20명",
-          "summary_ko": "사전학습된 범용(generalist) 로봇 정책을 배치 후 강화학습(RL)으로 스스로 개선시킬 때, 지금까지는 대부분 '한 가지 과제'만 좋아지게 만들었다. 이 논문은 여러 과제를 동시에 목표로 하는 다중과제 자기개선이 가능한지를 묻고, 가치 추정 방식·정책 추출 방식·자원 배분 같은 설계 선택지를 체계적으로 비교하는 평가 체계를 만든다. 제대로 된 레시피를 쓰면 온라인 학습에 쓰지 않은 과제에서도 성능이 올라간다는 일반화 효과를 보였다.",
-          "tags": [
-            "Generalist Policy",
-            "Self-Improvement",
-            "Real-World RL",
-            "VLA",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.06905",
-          "extra_url": "",
-          "date": "2026-11-04",
-          "reason": "좋아요한 2606.19980(에이전트가 실세계 RL로 로봇 플릿을 자가개선)과 2607.05369(자가학습 멀티에이전트)의 '배치 후 스스로 좋아지기' 축을 범용 정책 전체로 확장한 연구다. 컬렉션의 VLA 45편 대부분이 모방학습으로 끝나는 데 비해, 사전학습된 정책을 어떤 RL 레시피로 더 밀어올릴지에 대한 통제된 비교를 제공한다.",
-          "rec_date": "2026-11-10"
         }
       ]
     },
@@ -353,6 +351,57 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2408.11812",
+          "title": "Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation (CrossFormer)",
+          "authors": "Ria Doshi, Homer Walke, Oier Mees, Sudeep Dasari, Sergey Levine",
+          "summary_ko": "센서 구성, 구동 방식, 제어 주기가 전혀 다른 로봇들의 데이터를 하나의 정책으로 같이 학습하는 트랜스포머 구조 CrossFormer를 제안한다. 20종의 로봇 몸체(embodiment)에서 모은 90만 궤적 — 당시 최대 규모·최다 종류 — 으로 학습했고, 동일한 신경망 가중치 하나가 한 팔/두 팔 매니퓰레이터, 바퀴 로봇, 쿼드콥터(4발 드론), 사족보행 로봇을 모두 제어한다. 선행 연구들이 관측 공간·행동 공간을 사람이 손으로 맞춰 줘야 했던 것과 달리 그런 수동 정렬이 필요 없으며, 실제 환경 실험에서 각 몸체 전용으로 만든 특화 정책과 대등한 성능을 내면서 기존 cross-embodiment(몸체 간 전이) 학습 최고 성능을 큰 폭으로 앞섰다.",
+          "tags": [
+            "Cross-Embodiment",
+            "Generalist Policy",
+            "Autoregressive",
+            "Manipulation"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2408.11812",
+          "extra_url": "https://crossformer-model.github.io/",
+          "date": "2024-08-21",
+          "reason": "Cross-Embodiment는 컬렉션에서 VLA 다음으로 많은 태그(18편)인데, 그 계열의 기준점이 되는 '하나의 정책으로 모든 몸체'를 정면으로 밀어붙인 대표작이 아직 없다. 'ZETA(2609.02546)'의 제로샷 몸체 전이 통제 실험, '2607.27549 Behavior-Aligned Representations', 'UniLatent(2611.10061, 추천 pool)'는 모두 관측·행동 공간을 정렬하는 방법을 제안하는데, 이 논문은 '정렬을 아예 하지 않고 토큰화로 흡수한다'는 반대 선택지를 보여 주므로 비교 기준으로 꼭 필요하다. 보유 논문 'Open X-Embodiment(2310.08864)'의 데이터셋을 쓰는 대표 모델이기도 하다.",
+          "rec_date": "2026-11-17"
+        },
+        {
+          "id": "2409.20537",
+          "title": "Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers (HPT)",
+          "authors": "Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He",
+          "summary_ko": "로봇 데이터가 몸체·과제마다 제각각이라는 이질성(heterogeneity)을 일반 모델 학습의 핵심 걸림돌로 보고, 정책 신경망의 가운데 '몸통(trunk)'만 크게 키워 여러 몸체가 공유하도록 사전학습하는 HPT를 제안한다. 각 몸체의 고유한 자기수용감각(proprioception, 관절 각도·힘 같은 몸 내부 상태 감각)과 시각 입력은 몸체별 작은 모듈이 짧은 토큰 열로 변환해 공유 몸통에 넣고, 몸통 출력은 다시 몸체별 모듈이 제어 신호로 되돌린다. 대규모 다중 몸체 실제 로봇 데이터, 시뮬레이션, 사람 영상까지 52개 데이터셋 규모로 학습 목표의 확장 거동(scaling behavior)을 조사했고, 사전학습한 몸통을 쓰면 처음 보는 과제에서 미세조정 성능이 20% 이상 올랐다.",
+          "tags": [
+            "Cross-Embodiment",
+            "Pre-training",
+            "Representation Learning",
+            "Generalist Policy"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.20537",
+          "extra_url": "https://liruiw.github.io/hpt/",
+          "date": "2024-09-30",
+          "reason": "보유 논문 '2608.27550 Representation-Centric Continued Pre-training'과 '2609.19846 Action-Similarity 기반 잠재 행동 전이'는 '몸체가 달라도 공유 가능한 표현을 어디서 어떻게 만드느냐'를 핵심 질문으로 삼는데, HPT는 그 질문을 '공유 몸통 + 몸체별 어댑터'라는 가장 단순한 형태로 못 박은 기반 논문이다. 특히 자기수용감각을 1급 입력으로 정렬한다는 설계는 보유 논문 '2608.03052 How Should VLAs Use Proprioceptive State?'와 '2611.11798 PAIR'의 논의와 직접 맞물린다. 52개 데이터셋 규모의 확장 거동 분석은 'Data Pyramid(2607.24744)'를 읽을 때의 비교 근거가 된다.",
+          "rec_date": "2026-11-17"
+        },
+        {
+          "id": "2412.04445",
+          "title": "Moto: Latent Motion Token as the Bridging Language for Learning Robot Manipulation from Videos",
+          "authors": "Yi Chen, Yuying Ge, Weiliang Tang, Yizhuo Li 외 8명",
+          "summary_ko": "행동 레이블이 붙은 로봇 데이터가 비싸다는 문제를 두고, 레이블 없는 방대한 영상을 언어 모델의 말뭉치처럼 쓰는 생성형 사전학습을 제안한다. 핵심은 사전학습에 쓸 표현으로 '움직임(motion)'을 고른 것인데, 움직임은 저수준 행동과 가깝고 하드웨어에 구애받지 않아 실제 로봇 행동으로 옮기기 쉽다는 논리다. 잠재 움직임 토크나이저(Latent Motion Tokenizer)가 영상을 잠재 움직임 토큰 열로 바꾸고, Moto-GPT가 그 토큰을 자기회귀(autoregressive, 다음 토큰 예측)로 사전학습해 '움직임의 언어'를 비지도로 배운다. 학습 후에는 의미가 해석되는 움직임 토큰을 생성하고 그럴듯한 궤적을 예측하며 출력 확률로 궤적의 타당성까지 평가할 수 있다. 실제 로봇 행동으로 옮길 때는 잠재 움직임 토큰 예측과 로봇 제어를 함께 미세조정하는 공동 미세조정(co-fine-tuning)을 써서, 조작 벤치마크에서 더 강건하고 데이터 효율적인 성능을 보였다.",
+          "tags": [
+            "Latent Action",
+            "Human Video",
+            "Autoregressive",
+            "Pre-training"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2412.04445",
+          "extra_url": "https://chenyi99.github.io/moto/",
+          "date": "2024-12-05",
+          "reason": "보유 논문 'LAPA(2410.11758)'와 '2608.19613 What Matters for Latent Actions'가 영상에서 잠재 행동을 뽑는 계열의 출발점인데, Moto는 그 잠재 변수를 '움직임 토큰'이라는 명시적 어휘로 만들고 자기회귀 사전학습 + 공동 미세조정이라는 레시피를 확립한 또 하나의 축이다. 보유 논문 'GALA(2609.21948, 기하 인식 잠재 행동)'와 'DLAM(2607.27138, 분포형 잠재 행동)'이 개선하려는 바로 그 기준선이며, 오늘 함께 추천한 'LASR(2611.17775)'로 평가해 볼 대상으로도 적합하다. 사람 영상 활용이라는 점에서 'Ego2Robot(2608.02580)', 'RoboEdit(2608.18948)'와도 이어진다.",
+          "rec_date": "2026-11-17"
+        },
         {
           "id": "2403.03181",
           "title": "Behavior Generation with Latent Actions (VQ-BeT)",
@@ -675,60 +724,6 @@
           "date": "2022-03-23",
           "reason": "이번에 함께 추천한 BATCH와 풀의 Open-HumanWAM·SWAM이 모두 '사람 영상을 로봇 정책의 밑거름으로 쓴다'는 같은 전제를 공유하는데, 그 전제를 처음 설득력 있게 증명한 게 이 논문이다. 보유한 DINOv2(풀)·DINOv3 기반 잠재 행동(좋아요한 2607.11397)처럼 요즘은 범용 시각 인코더를 동결해 끼우는 게 기본값인데, 그 관행의 로봇 쪽 출발점이자 '왜 사람 영상이 로봇 조작 표현으로 쓸모 있는가'를 Ego4D 규모에서 처음 보인 기반 논문이어서, 컬렉션 Human Video 5편의 맥락을 잡아 준다.",
           "rec_date": "2026-11-11"
-        },
-        {
-          "id": "2312.10812",
-          "title": "Learning to Act without Actions (LAPO)",
-          "authors": "Dominik Schmidt, Minqi Jiang",
-          "summary_ko": "웹 영상에는 로봇 학습에 필요한 '행동 라벨'(어떤 조작을 했는지)이 없다는 점이 병목이다. LAPO(Latent Action Policies)는 연속된 두 프레임의 변화만 보고 그 사이에 일어났을 행동을 잠재 변수로 역추정해(역동역학 모델), 행동 라벨 없이 잠재 행동 정책·세계 모델을 함께 학습한다. 절차적으로 생성된 어려운 환경에서도 실제 행동 공간의 구조를 복원해냈고, 이후 소량의 행동 라벨이나 보상으로 빠르게 전문가급으로 미세조정된다.",
-          "tags": [
-            "Latent Action",
-            "World Model",
-            "Video Pretraining",
-            "Inverse Dynamics",
-            "Foundation Model"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2312.10812",
-          "extra_url": "",
-          "date": "2023-12-17",
-          "reason": "좋아요한 2608.19613이 바로 'LAPO 계열 잠재 행동 설계 공간'을 실증 분석한 논문이고, 역시 좋아요한 2607.11397(DINOv3 기반 잠재 행동+세계 모델)도 같은 계보다. 컬렉션의 Latent Action 8편과 풀에 쌓인 ELA·DreamX·Moto가 모두 이 논문을 출발점으로 삼는데 정작 원전이 빠져 있어, 용어와 가정을 정리하는 데 필요한 기반 논문이다.",
-          "rec_date": "2026-11-10"
-        },
-        {
-          "id": "2410.06158",
-          "title": "GR-2: A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation",
-          "authors": "Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong 외 8명",
-          "summary_ko": "인터넷 영상 3,800만 클립(토큰 500억 개 이상)으로 '다음 장면 예측'을 먼저 배워 세상의 물리적 변화를 익힌 뒤, 로봇 궤적으로 영상 생성과 행동 예측을 동시에 미세조정한 범용 조작 모델이다. 100개 이상 과제에서 평균 성공률 97.7%를 기록했고 새로운 배경·물체·과제로의 일반화와 모델 크기에 따른 성능 향상(스케일링)을 함께 보였다.",
-          "tags": [
-            "VLA",
-            "Video Pretraining",
-            "World Model",
-            "Generalist Policy",
-            "Scaling Law"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2410.06158",
-          "extra_url": "https://gr2-manipulation.github.io",
-          "date": "2024-10-08",
-          "reason": "컬렉션의 World Model 16편·Video Pretraining 계열과 풀의 VPP(2412.14803)·DreamGen(2505.12705)이 공유하는 '영상 생성으로 사전학습하고 행동을 뽑는다'는 설계의 대표 선행 연구다. 좋아요한 2607.11643(38B 자기회귀 월드 파운데이션 모델)과 직접 비교 대상이 되며, 영상 사전학습 규모와 성능의 관계를 먼저 보여준 레퍼런스다.",
-          "rec_date": "2026-11-10"
-        },
-        {
-          "id": "2508.05635",
-          "title": "Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation",
-          "authors": "Yue Liao, Pengfei Zhou, Siyuan Huang, Donglin Yang 외 10명",
-          "summary_ko": "정책 학습·평가·시뮬레이션을 하나의 영상 생성 프레임워크로 묶은 플랫폼이다. GE-Base는 명령어를 조건으로 받는 대규모 영상 확산 모델로 실제 로봇 상호작용의 시공간·의미 변화를 잠재 공간에 담고, GE-Act는 그 잠재 표현을 흐름 정합(flow matching, 노이즈에서 정답까지의 경로를 직선적으로 학습하는 생성 기법) 디코더로 실제 행동 궤적으로 바꿔 여러 로봇 몸체에 적은 지도만으로 적용한다. GE-Sim은 행동 조건부 신경 시뮬레이터로 폐루프 평가를 지원하고, EWMBench로 시각 충실도·물리 일관성·명령-행동 정합을 표준 측정한다.",
-          "tags": [
-            "World Foundation Model",
-            "Video Diffusion",
-            "Flow Matching",
-            "Cross-Embodiment",
-            "Benchmark"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2508.05635",
-          "extra_url": "",
-          "date": "2025-08-07",
-          "reason": "좋아요한 2607.11643(월드 파운데이션 모델)과 2607.15330(Flow Matching 기반 VLA 스케일링)의 두 축이 한 플랫폼에 결합된 형태라, 컬렉션의 World Foundation Model·Cross-Embodiment(18편) 흐름의 직전 세대 기준점이 된다. 풀에 있는 PrimeSim·RynnWorld-Latent 같은 최신 세계 모델 시뮬레이터들이 무엇을 개선하려 했는지 가늠할 기준선이기도 하다.",
-          "rec_date": "2026-11-10"
         }
       ]
     }
