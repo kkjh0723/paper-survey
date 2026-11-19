@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.24925",
+          "title": "Render the Robot, Generate the World: One Video World Model Across Embodiments (Doppel)",
+          "authors": "Yash Jangir, Karan Mirakhor, Renos Zabounidis, Muhammad Zubair Irshad, Sergey Zakharov, Yonatan Bisk, Homanga Bharadhwaj",
+          "summary_ko": "로봇이 어떤 행동을 했을 때 화면이 어떻게 바뀔지를 영상으로 예측하는 '비디오 세계 모델(video world model)'을 여러 몸체에 공통으로 쓰도록 만든 연구다. 기존 모델은 관절값 같은 숫자 행동만 받아서 '로봇 몸이 어떻게 움직일지'와 '그 결과 물체가 어떻게 반응할지'를 둘 다 스스로 알아내야 했다. Doppel은 몸의 움직임은 기하·기구학(로봇 링크 길이와 관절 구조)으로 이미 계산 가능하다는 점에 착안해, 앞으로의 로봇(또는 사람 손·몸) 자세를 카메라 시점에 맞춰 렌더링한 영상을 숫자 행동과 함께 조건으로 넣는다. 그러면 모델은 물체의 움직임과 접촉으로 인한 환경 변화 예측에만 집중할 수 있고, 렌더링된 몸 영상이 로봇 종류·행동 공간과 무관한 공통 시각 인터페이스가 된다. 카메라 외부 파라미터(extrinsics, 카메라의 위치·방향)가 없는 데이터셋은 카메라 자세를 복원해 렌더링을 정렬했다. 단일 팔·양팔·손재주 휴머노이드·사람 손과 몸까지 8개 몸체, 약 600시간 영상을 몸체 레이블 없이 하나의 백본으로 학습했고, 숫자 행동만 쓰는 기준선보다 영상 화질 지표 PSNR(최대 신호 대 잡음비, 높을수록 정답 영상과 가까움)이 분포 내 1.00dB·분포 밖 1.20dB 높았다. 8개 몸체를 모두 학습한 모델이 로봇 3종만 학습한 모델보다 6개 평가 중 4개에서 더 나았다.",
+          "tags": [
+            "World Model",
+            "Cross-Embodiment",
+            "Robot Rendering",
+            "Video Diffusion",
+            "Human Video"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.24925",
+          "extra_url": "https://doppelwm.github.io/",
+          "date": "2026-11-18",
+          "reason": "보유 논문 2607.22535(Robot-Factored World Models via Robot Rendering, URDF 렌더링·Cross-Embodiment)와 거의 같은 직관—'로봇 몸은 렌더링해서 넣고, 세계 모델은 환경 반응만 배우게 하자'—을 8개 몸체·600시간 규모로 키운 후속 격 연구라 직접 비교하기 좋다. 2608.29242(AnyWorld, 몸체 요인을 분리한 egocentric 세계 모델)가 '몸과 세계를 분해'하는 다른 방식이라 함께 읽으면 설계 선택지가 정리되고, 사람 손·몸 데이터를 같은 인터페이스로 섞는다는 점에서 2606.21406(사람 영상 동역학 모델 기반 자기개선)·2607.11643(Xiaomi-U0, 세계 파운데이션 모델 기반 데이터 합성)과도 연결된다. pool의 2611.14365(로봇 메타프레임 통합 잠재 인터페이스)와는 '몸체 공통 인터페이스를 렌더링 영상으로 둘지 잠재 프레임으로 둘지'의 대조가 된다.",
+          "rec_date": "2026-11-20"
+        },
+        {
+          "id": "2611.24836",
+          "title": "DiWALI: Diffusion Policy Learning in World Models via Latent Action Inference from Human and Robot Play",
+          "authors": "Akshay L Chandra, Iman Nematollahi, Lingyue Zhao, Daria Kulikova, Angela P. Schoellig, Fabien Despinoy, Abhinav Valada",
+          "summary_ko": "로봇 행동 레이블이 붙은 데이터가 부족하다는 문제를, 사람이 자유롭게 물건을 만지작거린 '플레이(play) 데이터'로 메우는 프레임워크다. 먼저 역동역학 모델(inverse dynamics model, 앞뒤 두 프레임의 차이로 어떤 행동이 있었는지 거꾸로 추정하는 모델)로 연속된 프레임에서 '잠재 행동(latent action, 실제 관절 명령 대신 영상 변화로부터 뽑은 압축된 행동 표현)'을 추론하고, 이를 이용해 행동 레이블 없이 세계 모델(world model, 행동을 넣으면 다음 상태를 예측하는 학습된 시뮬레이터)을 학습한다. 잠재 행동을 실제 로봇 명령으로 바꾸는 디코더는 로봇 플레이 데이터로 따로 학습한다. 기술(skill) 정책은 행동 레이블이 없는 사람 시연만으로 잠재 행동 공간에서 확산 정책(diffusion policy, 노이즈를 점점 걷어내며 행동을 생성하는 정책)으로 학습하고, 이후 세계 모델 안에서 상상 속 강화학습(RL in imagination, 실제 로봇 대신 세계 모델 롤아웃으로 시행착오를 하는 방식)으로 개선한다. CALVIN 벤치마크에서 사람 시연만으로 학습한 정책이 로봇 시연으로 학습한 기준선을 크게 앞섰고, 세계 모델 학습에 사람 플레이를 섞으면 같은 양의 로봇 플레이만 쓸 때보다 미세조정 후 정책이 더 강했다. 실물 로봇에서도 사람 시연 위주로 배운 기술이 상상 속 RL로 추가 향상됐다.",
+          "tags": [
+            "Latent Action",
+            "World Model",
+            "Human Video",
+            "Diffusion Policy",
+            "RL in Imagination"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.24836",
+          "extra_url": "https://diwali.cs.uni-freiburg.de",
+          "date": "2026-11-18",
+          "reason": "좋아요를 받은 보유 논문 2607.11397(WALA, 행동 레이블 시연+행동 없는 영상으로 실행 가능한 잠재 행동 학습)과 문제 설정이 같으면서, 잠재 행동을 정책 사전학습에만 쓰지 않고 '세계 모델 학습 → 상상 속 RL 개선'까지 이어 붙인 점이 다르다. 2410.11758(LAPA, 영상 기반 잠재 행동 사전학습)과 2607.09185(CD-LAM, 잠재 행동 조건 세계 모델)의 잠재 행동 세계 모델을 실제 정책 개선 루프에 연결했고, 2606.21406(사람 영상 동역학 모델로 로봇 자기개선)과는 '사람 데이터로 개선 신호를 만든다'는 목표를 공유한다. 상상 속 RL은 2301.04104(DreamerV3) 계열 방식이고, 사람 플레이 활용은 pool의 2302.12422(MimicPlay)와 바로 이어진다.",
+          "rec_date": "2026-11-20"
+        },
+        {
+          "id": "2611.22356",
+          "title": "SR-VLA: Stall-Reduced VLA Execution via Predicted-Input Lookahead and Selective KV Cache Repair",
+          "authors": "Tao Zhang, Yi Zhong, Jinhao Ruan, Yipeng Gao, Linfeng Zhong, Youming Yang, Yuan Wang",
+          "summary_ko": "VLA(Vision-Language-Action, 영상·언어를 입력받아 로봇 행동을 출력하는 모델)는 다음 행동 묶음(action chunk, 여러 스텝 분량의 행동을 한 번에 출력한 것)을 계산하는 동안 로봇이 멈추는 '제어 정지(stall)'가 생긴다. 미리 추론을 돌려두는 비동기 조기 추론(asynchronous early inference)으로 지연을 숨길 수는 있지만, 미리 쓴 입력과 실제 도착한 입력이 다르면 엉뚱한 행동을 할 위험이 있고, 그렇다고 매번 전부 다시 계산하면 미리 한 작업이 낭비된다. SR-VLA는 현재 행동 묶음을 실행하는 동안 가벼운 행동 조건 예측기가 다음 경계 시점의 카메라 영상과 고유수용 상태(proprioception, 관절 각도 등 로봇 자신의 몸 상태)를 미리 예측하고, 얼려둔(frozen) VLA가 이 예측 입력으로 KV 캐시(트랜스포머가 앞서 계산한 키·값을 저장해 재사용하는 메모리)와 행동 묶음을 투기적으로 미리 계산하게 한다. 실제 입력이 들어오면 예측과 실제의 차이 및 과제 조건을 보고 미리 만든 행동을 그대로 쓸지, 어긋난 부분만 골라 KV 캐시를 고칠지(selective KV repair) 결정한다. LIBERO에서 동기식 π0.5·OpenVLA-OFT 대비 질의 속도가 각각 2.67배·1.27배 빨라졌고 성공률은 비슷하게 유지됐으며, 목표물이 움직이는 교란 상황에서도 1.52~1.93배 속도 향상을 보였다.",
+          "tags": [
+            "Async Inference",
+            "Inference Latency",
+            "KV Cache",
+            "Speculative Execution",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.22356",
+          "extra_url": "",
+          "date": "2026-11-17",
+          "reason": "가장 최근 등록된 보유 논문들(2609.18207 실시간 VLA용 RL, 2608.23831 추론 지연 속 행동 학습)이 모두 Inference Latency·Async Inference 태그를 달고 있어 지금 관심이 몰린 주제다. 2608.23831이 '지연 중에도 행동하도록 정책을 RL로 다시 학습'하는 접근이라면 SR-VLA는 정책을 얼려둔 채 '입력을 예측해 미리 계산하고 틀린 부분만 고친다'는 시스템 쪽 해법이라 정면 비교가 된다. KV 캐시를 재사용한다는 점에서 2607.14695(Reflex 스트리밍 추론, KV Cache 태그)·2608.27384(FlashVLA 스트리밍 행동 디코딩)와 같은 계열이고, 기준선이 보유 논문 2504.16054(π0.5)라 수치 해석도 쉽다. pool의 2611.14969(로봇 실행 제약 하 VLA 서빙)·2611.19709(플로우 매칭 세계 행동 모델의 잔차 재사용)와 묶어 '추론 비용을 숨기는 세 가지 방법'으로 읽을 만하다.",
+          "rec_date": "2026-11-20"
+        },
         {
           "id": "2611.22077",
           "title": "ReLAP: Latent Action Pretraining through Recurrent Video Prediction in JEPA Space",
@@ -273,42 +327,6 @@
           "rec_date": "2026-11-15"
         },
         {
-          "id": "2611.17110",
-          "title": "SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models",
-          "authors": "Jiachun Jin, Zetong Zhou, Haonan Wang, Xiao Yang 외",
-          "summary_ko": "사람이 머리에 카메라를 달고 찍은 1인칭 영상을 로봇 학습에 쓰려면, 영상만 보고 '어떤 동작이 일어났는지'를 숨은 코드로 뽑아내는 잠재 행동 모델(Latent Action Model, 영상 프레임 변화로부터 행동을 역추정하는 모델)이 필요하다. 그런데 기존 방식은 영상을 다시 복원하는 것만으로 학습해서, 숨은 코드가 '동작'이 아니라 '화면 생김새'를 기준으로 뭉치는 문제가 있다. SALA는 사람 영상과 로봇 영상에 각각 붙은 언어 설명의 의미 유사도를 이용해, 짝지어진 데이터 없이도 비슷한 뜻의 사람 동작과 로봇 동작이 같은 잠재 공간에 모이도록 지도한다. 그 결과 사람 데이터와 로봇 데이터 양쪽을 동시에 늘리는 '양축 확장'이 가능해진다.",
-          "tags": [
-            "Latent Action",
-            "Cross-Embodiment",
-            "Human Video",
-            "Foundation Model",
-            "Scaling Law"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.17110",
-          "extra_url": "",
-          "date": "2026-11-12",
-          "reason": "보유 논문 GALA(2609.21948, 기하 정보를 이용한 잠재 행동 모델링)와 '행동 유사도 지도로 교차 신체 전이를 개선'하는 2609.19846이 모두 '잠재 행동이 외형이 아니라 실제 동작을 표현하게 만드는 법'을 다룬다. SALA는 같은 문제를 기하나 행동 레이블 대신 '언어 설명의 의미 유사도'로 푼다는 점에서 세 논문을 나란히 비교하기 좋다. 추천 풀에 있는 ELA(2611.05571)·UniLatent(2611.10061)와도 직접 경쟁 관계다.",
-          "rec_date": "2026-11-14"
-        },
-        {
-          "id": "2611.15491",
-          "title": "What Makes a VLA Reactive? A Study of Execution Strategies for Dynamic Manipulation",
-          "authors": "Zhuoyue Li, Zhendong Han, Pankhuri Vanjani, Wenting Li 외",
-          "summary_ko": "시각-언어-행동 모델(Vision-Language-Action, 카메라 영상과 말로 된 지시를 받아 로봇 동작을 직접 내놓는 모델)은 보통 미래 동작을 한 뭉치(action chunk)로 미리 예측하는데, 물체가 움직이는 상황에서는 그 뭉치가 실행되기도 전에 낡아버린다. 이 논문은 공개 모델 파이(π) 0.5를 가지고 예측 구간 길이, 실행 구간 길이, 동기/비동기 추론, 연속된 뭉치를 매끄럽게 잇는 기법, 강화학습 적응 등을 체계적으로 실험한다. 결론은 예측 구간은 약 1초가 적절하고, 지연만 줄이는 기법보다 궤적을 끊기지 않게 잇는 기법이 낫다는 것. 즉 반응성은 정책 자체만이 아니라 실행 파이프라인이 함께 결정한다.",
-          "tags": [
-            "VLA",
-            "Async Inference",
-            "Action Chunking",
-            "Real-Time Control",
-            "Dynamic Manipulation"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.15491",
-          "extra_url": "",
-          "date": "2026-11-11",
-          "reason": "보유 논문 중 추론 지연과 비동기 실행을 다루는 2609.18207(행동 편집 기반 실시간 제어)과 직접 이어진다. 그 논문이 '새 기법'을 제안했다면 이 논문은 '어떤 실행 전략이 실제로 효과가 있는지'를 통제 실험으로 정리한 비교 연구라, 보유 기법의 위치를 가늠하는 기준선으로 쓸 수 있다. 추천 풀의 DASH(2611.11854)·Asynchronous Robot Policies(2611.05155)와도 같은 축이다.",
-          "rec_date": "2026-11-14"
-        },
-        {
           "id": "2611.10967",
           "title": "BAT-WAM: Bridging Action and Touch in World-Action Models for Dexterous Hands",
           "authors": "Dong Fang, Feixuan Huang, Yuanxin Zhong, Yuxiang Gao 외",
@@ -325,24 +343,6 @@
           "date": "2026-11-07",
           "reason": "컬렉션에서 Contact-Rich·촉각 계열은 꾸준히 상위 관심사이고, 추천 풀의 ForceLDM(2611.03294, 힘을 인지하는 잠재 동역학 모델)·TF^2-Steering(2611.01483, 촉각 예측으로 행동 보정)과 정확히 같은 문제를 푼다. 다만 BAT-WAM은 '촉각 센서가 아예 없거나 가려진 경우를 영상으로 메운다'는 결측 보완 관점이라, 센서가 부족한 실환경 배포를 고민할 때 보완적으로 읽히는 각도다.",
           "rec_date": "2026-11-14"
-        },
-        {
-          "id": "2611.14488",
-          "title": "Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies",
-          "authors": "Chubin Zhang, Bo An 외",
-          "summary_ko": "메모리를 붙인 VLA 정책은 보통 '시간 기준'으로 과거 프레임을 채운다 — 에피소드 전체에서 일정 간격으로 프레임을 뽑고 각 프레임에 몇 번째 시점인지 표시를 붙이는 방식이다. 문제는 아무 일도 일어나지 않아도 시간은 흐른다는 점이어서, 이런 메모리는 '기다리는 중'과 '일하는 중'을 구분할 수 없다. 저자들은 RoboMME 벤치마크의 개수 세기 과제에서 로봇을 잠시 멈추거나 손목을 꿈틀거리게 하는, 과제상 아무 의미 없는 '널 이벤트(null event)'를 넣었더니 공개된 메모리 VLA가 그 시간을 진행으로 착각해 일찍 멈추는 현상을 발견하고 이를 '유령 진행(phantom progress)'이라 이름 붙였다. 성공률이 한 과제에서 50회 중 47→16회, 다른 과제에서 44→10회로 무너졌고, 해당 프레임을 메모리에서 빼면 회복돼 원인이 중단 자체가 아니라 메모리임이 확인됐다. 원인은 시간 단축 경로(temporal shortcut)로, 일정한 속도로 수행된 시범 데이터에서는 경과 시간이 곧 진행률을 예측하기 때문이다. 타임스탬프 값만 늘이거나 줄여도 정책이 일찍 멈추거나 반복하며, 시간 인코딩을 아예 제거해도 고쳐지지 않는다(널 이벤트 프레임이 여전히 시간 기준 메모리 슬롯을 차지하므로). 학습 때 일부러 멈춤을 섞는 처방은 실패하고 개수 세기 성능까지 깎았지만, 메모리를 '시간'이 아니라 '이벤트' 기준으로 인덱싱하면 재학습 없이 손실의 절반 이상을 되찾았다.",
-          "tags": [
-            "VLA",
-            "Memory",
-            "Long-Horizon",
-            "Robustness",
-            "Failure Analysis"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.14488",
-          "extra_url": "",
-          "date": "2026-11-10",
-          "reason": "컬렉션은 진단형 연구를 꾸준히 모아 왔다 — 2608.02547(액션 청킹이 왜 효과 있는가), 2608.19613(잠재 행동에서 무엇이 중요한가), 2608.01402(접촉 과제에서 VLA가 실패하는 이유), 2607.29687(순차 과제 합성 일반화 진단), 그리고 좋아요를 누른 2606.10267. 이 논문은 그 계보에 '메모리' 축을 추가한다. 특히 좋아요를 누른 FM-VLA(2607.18231)가 힘 신호를 메모리로 쌓고, RoboHarness(2607.18060)가 메모리 기반 오케스트레이션을 하고, RoboTTT(2607.15275)가 컨텍스트를 늘리는 방향으로 가는데 — 이 논문은 그 메모리들이 실제로는 '시계'를 읽고 있을 뿐일 수 있다는 반례를 제시하고, 이벤트 기준 인덱싱이라는 재학습 없는 수정법까지 내놓는다. 보유 메모리 계열 논문을 다시 읽을 때의 점검표로 쓰기 좋다.",
-          "rec_date": "2026-11-13"
         }
       ]
     },
@@ -350,6 +350,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2503.00200",
+          "title": "Unified Video Action Model (UVA)",
+          "authors": "Shuang Li, Yihuai Gao, Dorsa Sadigh, Shuran Song",
+          "summary_ko": "영상 예측과 행동 예측을 하나의 모델로 묶은 '통합 비디오-행동 모델'이다. 영상은 행동 예측에 풍부한 장면 정보를 주고, 행동은 영상 예측에 동역학 정보를 주므로 둘을 함께 학습하면 서로 이득이지만, 기존 영상 생성 기반 정책은 행동 정확도와 추론 속도에서 직접 정책 학습을 따라가지 못했다. UVA는 영상과 행동을 함께 담는 공동 잠재 표현(joint video-action latent)을 학습하고, 디코딩은 두 개의 가벼운 확산 헤드(diffusion head, 노이즈를 걷어내며 출력을 생성하는 작은 모듈)로 분리한다. 덕분에 추론 시에는 영상 생성을 건너뛰고 행동만 빠르게 뽑을 수 있다. 학습 때 영상이나 행동 입력을 선택적으로 가리는 마스킹 학습(masked training)을 써서, 하나의 모델로 정책 학습뿐 아니라 순방향 동역학(행동→다음 영상)·역방향 동역학(영상 변화→행동) 추정과 영상 생성까지 수행한다. 각 전용 방법과 비교해 성능 손해 없이 범용 해법이 될 수 있음을 보였다.",
+          "tags": [
+            "World Action Model",
+            "Video Prediction",
+            "Masked Training",
+            "Diffusion Head",
+            "Forward/Inverse Dynamics"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2503.00200",
+          "extra_url": "https://unified-video-action-model.github.io/",
+          "date": "2025-02-28",
+          "reason": "컬렉션에 World Model(17편)·World Action Model 계열 논문이 많지만 그 출발점 중 하나인 UVA는 빠져 있다. 보유 논문 2607.19343(Masked Visual Actions for Unified World Modeling, 마스킹으로 순방향/역방향 동역학 통합)은 UVA의 '마스킹 학습으로 한 모델이 정책·동역학·영상 생성을 모두 수행' 아이디어를 대형 비디오 모델로 확장한 것이고, 2607.13017(FlowWAM)·2607.08639(LingBot-VA 2.0)·2607.15207(BadWAM)도 '영상과 행동을 함께 생성하는 모델'이라는 같은 축 위에 있어, UVA를 기준점으로 두면 각 설계 차이가 선명해진다. 저자 Shuran Song은 보유 논문 2303.04137(Diffusion Policy)·2402.10329(UMI)의 교신저자라 같은 계보에서 정책→세계 행동 모델로 넘어가는 지점을 보여준다.",
+          "rec_date": "2026-11-20"
+        },
+        {
+          "id": "2511.14759",
+          "title": "π*0.6: a VLA That Learns From Experience (RECAP)",
+          "authors": "Physical Intelligence (Ali Amin, Raichelle Aniceto, Ashwin Balakrishna, Kevin Black 외)",
+          "summary_ko": "VLA(Vision-Language-Action) 모델이 실제 배포 경험으로부터 강화학습(RL)을 통해 스스로 나아지게 하는 방법을 다룬 Physical Intelligence의 논문이다. 핵심 기법 RECAP(RL with Experience and Corrections via Advantage-conditioned Policies)은 '이득 조건 정책(advantage-conditioned policy, 각 행동이 평균보다 얼마나 좋았는지를 나타내는 advantage 값을 입력으로 함께 넣어, 추론 때 좋은 쪽 행동을 고르게 하는 방식)'으로 거대 VLA를 RL 학습한다. 사람 시연, 로봇이 직접 수행하며 모은 온폴리시(on-policy) 데이터, 자율 실행 중 사람이 원격조종으로 끼어들어 바로잡은 개입 데이터를 모두 한 자기개선 루프에 섞는다. 먼저 오프라인 RL로 범용 VLA π*0.6을 사전학습한 뒤, 로봇에서 직접 데이터를 모아 특정 과제에 특화시킨다. 이렇게 학습한 모델은 실제 가정에서 빨래 개기, 상자 조립, 전문 에스프레소 머신으로 커피 만들기를 해냈고, 가장 어려운 과제에서는 처리량을 두 배 이상 늘리고 실패율을 약 절반으로 줄였다.",
+          "tags": [
+            "VLA",
+            "Real-World RL",
+            "Offline RL",
+            "Advantage Conditioning",
+            "Self-Improvement"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2511.14759",
+          "extra_url": "https://www.pi.website/blog/pistar06",
+          "date": "2025-11-18",
+          "reason": "컬렉션은 π 계열(2410.24164 π0, 2504.16054 π0.5, 2604.15483 π0.7)을 모두 갖고 있지만 그 사이 'RL로 경험에서 배우는' 단계인 π*0.6이 빠져 있다. 최근 등록된 2609.18207(실시간 VLA용 RL)·2608.23831(추론 지연 하 RL 미세조정)과 2609.03591(1,500시간 시연 → 온폴리시 교정, DAgger)이 다루는 '배포 데이터로 정책 개선'의 대표 기준점이며, 좋아요를 받은 2606.19980(ENPIRE, 에이전트형 실세계 자기개선)이 코딩 에이전트로 푸는 문제를 RECAP은 advantage 조건화라는 학습 레벨에서 푼다는 대비가 뚜렷하다. 2607.29613(WCM, 세계 비평 모델 기반 VLA RL)·2607.27782(RedFlow, 실패를 행동 교정으로 전환)를 읽을 때도 비교 기준이 된다.",
+          "rec_date": "2026-11-20"
+        },
+        {
+          "id": "2510.25889",
+          "title": "πRL: Online RL Fine-tuning for Flow-based Vision-Language-Action Models",
+          "authors": "Kang Chen, Zhihao Liu, Tonghe Zhang, Zhen Guo, Si Xu, Hao Lin, Hongzhi Zang, Xiang Li 외",
+          "summary_ko": "π0·π0.5 같은 플로우 매칭(flow matching, 노이즈에서 행동으로 가는 연속 경로를 학습하는 생성 방식) 기반 대형 VLA에 온라인 강화학습을 적용하는 방법이다. 이런 모델은 행동이 여러 단계의 노이즈 제거 과정을 거쳐 생성되기 때문에, 정책 경사(policy gradient) 계열 RL에 꼭 필요한 '이 행동이 나올 로그 확률(log-likelihood)'을 정확히 계산하기 어렵다. πRL은 두 가지 해법을 낸다. ① Flow-Noise: 노이즈 제거 과정을 이산 시간 MDP(Markov Decision Process, 상태·행동·보상으로 이뤄진 순차 의사결정 문제)로 보고 학습 가능한 노이즈 네트워크를 붙여 정확한 로그 확률을 계산한다. ② Flow-SDE: 결정론적 미분방정식(ODE)을 확률적 미분방정식(SDE)으로 바꿔 탐색용 무작위성을 넣고, 노이즈 제거 단계와 환경 상호작용을 2층 MDP로 엮는다. 여러 벤치마크에서 지도학습 미세조정(SFT)만 한 모델보다 분포 내·분포 밖 모두 성능이 크게 올랐다.",
+          "tags": [
+            "Flow Matching",
+            "Online RL",
+            "VLA",
+            "Flow-SDE",
+            "Fine-Tuning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2510.25889",
+          "extra_url": "https://github.com/RLinf/RLinf",
+          "date": "2025-10-29",
+          "reason": "Flow Matching은 컬렉션에서 VLA 다음으로 많은 태그(20편)인데, 보유한 플로우 매칭 VLA(2410.24164 π0, 2504.16054 π0.5)를 RL로 직접 미세조정하는 기반 기법이 없다. 보유 논문 2608.23831은 DSRL(정책 가중치는 두고 입력 노이즈만 RL로 조정)로 같은 문제를 우회하고, 2607.27782(RedFlow)는 오프라인 RL로 플로우 매칭 VLA를 교정하는데, πRL은 '로그 확률을 정면으로 계산해 가중치를 온라인 RL로 업데이트'하는 대조군이라 세 접근을 나란히 비교할 수 있다. 최근 등록된 2609.18207(실시간 VLA용 온라인 RL)이 다루는 '플로우 매칭 VLA를 온라인 RL로 고친다'는 흐름의 기반 기법으로 함께 읽기 좋다.",
+          "rec_date": "2026-11-20"
+        },
         {
           "id": "2402.19432",
           "title": "Pushing the Limits of Cross-Embodiment Learning for Manipulation and Navigation",
@@ -667,60 +721,6 @@
           "date": "2023-09-18",
           "reason": "컬렉션에 Real-World RL·Self-Improvement 태그 논문이 꾸준히 쌓이고 있고, 추천 풀의 '강화학습으로 범용 로봇 정책을 확장한다'(2611.06905), HIL-SERL(2410.21845)이 모두 '시연만으로는 한계가 있다'는 같은 출발점을 공유한다. Q-Transformer는 그 흐름에서 '대규모 트랜스포머 + 오프라인 Q학습'이라는 가장 널리 인용되는 기반 설계를 제공하며, RT-1(2212.06817) 데이터·아키텍처 계보와도 직접 이어져 있다.",
           "rec_date": "2026-11-14"
-        },
-        {
-          "id": "2506.07339",
-          "title": "Real-Time Execution of Action Chunking Flow Policies",
-          "authors": "Kevin Black, Manuel Y. Galliker, Sergey Levine (Physical Intelligence)",
-          "summary_ko": "액션 청킹(action chunking, 한 번의 추론으로 여러 스텝의 행동 묶음을 한꺼번에 뽑는 방식)은 고주기 제어의 시간적 일관성을 확보해 주지만 지연 문제를 완전히 풀지는 못한다 — 청크 경계에서 로봇이 멈칫하거나, 학습 분포에서 벗어난 덜컥거리는 움직임이 나온다. 이 논문의 실시간 청킹(Real-Time Chunking, RTC)은 추론 시점에만 작동하는 알고리즘으로, 재학습 없이 확산(diffusion) 기반이나 흐름 정합(flow matching) 기반 VLA에 그대로 적용된다. 핵심은 현재 청크가 실행되는 동안 다음 청크를 생성하면서, 이미 실행이 확정된 구간의 행동은 '동결(freeze)'하고 나머지 구간만 '인페인팅(inpainting, 그림의 빈 영역을 주변과 이어지게 채워 넣는 기법)'으로 채우는 것이다. Kinetix 시뮬레이터의 동적인 과제 12개와 실제 양팔 조작 과제 6개로 구성한 새 벤치마크에서, RTC는 추론 지연에 유독 강건하면서 과제 처리량을 크게 높이고, 상당한 지연 조건에서도 성냥 켜기처럼 정밀한 과제에서 높은 성공률을 유지했다. NeurIPS 2025 게재.",
-          "tags": [
-            "Async Inference",
-            "Action Chunking",
-            "Flow Matching",
-            "Real-Time Control",
-            "Inference Latency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2506.07339",
-          "extra_url": "https://pi.website/research/real_time_chunking",
-          "date": "2025-06-09",
-          "reason": "컬렉션의 비동기 추론 계열이 가장 두꺼운 축 중 하나인데(FlashVLA 2608.27384 스트리밍 디코딩, Reflex 2608.14379, FBFM 2607.29235 학습 없는 비동기 피드백, 2608.23831 대기 중 행동 학습, 2609.18207 실시간 VLA 강화학습, 추천 pool의 DASH 2611.11854·Asynchronous Robot Policies 2611.05155), 이 논문이 바로 그 계열이 공통으로 전제하는 '청크 경계 지연' 문제를 정식화하고 재학습 없는 인페인팅 해법을 처음 제시한 원류다. FBFM과 2607.28596(FA-RDP)은 사실상 RTC의 변형·확장으로 읽히므로, 이걸 먼저 읽어 두면 그 논문들의 설계 선택이 왜 그렇게 됐는지가 설명된다.",
-          "rec_date": "2026-11-13"
-        },
-        {
-          "id": "2505.23705",
-          "title": "Knowledge Insulating Vision-Language-Action Models: Train Fast, Run Fast, Generalize Better",
-          "authors": "Danny Driess, Jost Tobias Springenberg, Brian Ichter, Sergey Levine 외 (Physical Intelligence)",
-          "summary_ko": "VLA 모델은 웹 규모로 학습된 시각-언어 모델(VLM)의 의미 지식을 로봇 제어로 옮겨 오는 방식이지만, 실시간 제어 요구와 VLM의 설계가 정면으로 충돌한다 — 성능 좋은 VLM은 파라미터가 수백억~수천억 개라 실시간 추론이 불가능하고, 출력이 이산 토큰이어서 로봇이 필요한 연속값 명령과 맞지 않는다. 그래서 최근 VLA들은 연속 제어용 모듈(확산(diffusion) 또는 흐름 정합(flow matching) 기반 '액션 전문가(action expert)', 또는 연속값 출력 헤드)을 덧붙이는데, 이는 사전학습된 VLM 백본에 학습이 안 된 새 파라미터를 끼워 넣는 일이다. 이 논문은 그렇게 붙인 모듈이 VLM의 사전학습 지식을 보존하는지 망가뜨리는지, 학습 동역학에 어떤 영향을 주는지를 파헤쳐, 액션 전문가를 순진하게 덧붙이면 '학습 속도와 지식 전이 양쪽을 심하게 해친다'는 것을 보인다. 그리고 VLA 학습 중 VLM 백본을 '절연(insulating)'해 이 손상을 막는 기법을 제안한다.",
-          "tags": [
-            "VLA",
-            "Action Expert",
-            "Flow Matching",
-            "Knowledge Transfer",
-            "Training Dynamics"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2505.23705",
-          "extra_url": "https://pi.website/research/knowledge_insulation",
-          "date": "2025-05-29",
-          "reason": "추천 pool에 들어 있는 '액션 전문가가 VLM을 학습시켜야 하는가?'(2611.05249)와 보유 논문 2608.03052(VLA는 자기수용감각 상태를 어떻게 써야 하는가), 2608.27550(표현 중심 계속 사전학습), 2607.20771(MoE VLA의 창발적 합성 스킬)이 던지는 질문 — '액션 헤드를 붙이면 백본의 지식이 어떻게 되는가' — 의 출발점이 된 논문이다. 컬렉션에 FAST(2501.09747, 이산 액션 토큰화)와 파이-영 계열(2504.16054)이 이미 있으니, 이산 토큰 경로와 연속 액션 전문가 경로가 갈라지는 지점을 이 논문으로 메우면 그 계보가 완성된다.",
-          "rec_date": "2026-11-13"
-        },
-        {
-          "id": "2403.03954",
-          "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
-          "authors": "Yanjie Ze, Gu Zhang, Huazhe Xu 외",
-          "summary_ko": "모방 학습으로 섬세한 조작 기술을 가르칠 수 있지만, 복잡한 기술을 튼튼하고 일반화되게 익히려면 보통 사람이 보여 주는 시범 데이터가 아주 많이 필요하다. 이 논문의 3D 확산 정책(3D Diffusion Policy, DP3)은 3차원 시각 표현을 확산 정책(diffusion policy, 행동을 조건부 생성 모델로 뽑는 방식)에 결합한 모방 학습 기법으로, 핵심 설계는 드문드문한 점구름(sparse point cloud)에서 효율적인 점 인코더로 뽑아낸 간결한 3차원 표현이다. 시뮬레이션 과제 72개에서 대부분을 시범 10개만으로 해결하며 기준선 대비 상대 24.2% 개선을 보였고, 실로봇 과제 4개에서는 과제당 시범 40개만으로 85% 성공률의 정밀 제어를 달성하면서 공간·시점·외형·물체 개체가 바뀌어도 잘 일반화했다. 특히 실로봇 실험에서 기준선들은 안전 요건을 자주 위반해 사람이 개입해야 했지만 DP3는 거의 위반하지 않았다. RSS 2024 게재.",
-          "tags": [
-            "Diffusion Policy",
-            "Point Cloud",
-            "3D Representation",
-            "Imitation Learning",
-            "Sample Efficiency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2403.03954",
-          "extra_url": "https://3d-diffusion-policy.github.io",
-          "date": "2024-03-06",
-          "reason": "보유 논문 GALA(2609.21948, 점구름 기반 기하 인식 잠재 행동 모델링)와 Patch Policy(2607.18236, 밀집 시각 표현을 통한 효율적 제어), 2607.22535(로봇 렌더링을 통한 로봇 분리 월드 모델)는 모두 '2차원 이미지가 아닌 공간 구조를 정책에 넣는다'는 선택을 전제로 깔고 있는데, 그 전제를 처음 수치로 입증한 기준 논문이 DP3다. 컬렉션에 확산 정책 원조(2303.04137)는 있지만 3차원 표현 축이 비어 있어, GALA·Patch Policy가 비교 대상으로 삼는 지점을 이 논문이 채워 준다.",
-          "rec_date": "2026-11-13"
         }
       ]
     }
