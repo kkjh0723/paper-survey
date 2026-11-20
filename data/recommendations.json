@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-20",
+  "generated": "2026-11-21",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.24940",
+          "title": "Z-sight: Unifying Vision-Language-Action and Latent World Modeling",
+          "authors": "Junjie Ye, Yiqi Zhao, Muchen Xu 외 · Gaurav S. Sukhatme, Jyotirmoy V. Deshmukh, Yue Wang, Yuliang Guo",
+          "summary_ko": "VLA(시각-언어-행동 모델: 카메라 영상과 언어 지시를 받아 로봇 행동을 출력하는 모델)가 '다음에 장면이 어떻게 보일지'를 함께 상상하며 행동을 내도록, VLA와 잠재 세계 모델(latent world model: 미래를 픽셀이 아니라 압축된 특징 벡터로 예측하는 모델)을 하나로 합친 연구다. 영상을 직접 생성하면서 행동도 함께 뽑는 세계 행동 모델(WAM, world action model)은 효과가 있지만, 비디오 생성기의 무거운 계산을 그대로 떠안는다. 픽셀 생성을 피한 기존 잠재 공간 방식은 미래 예측을 별도의 고정 인코더(학습 중 업데이트하지 않는 외부 영상 인코더)가 만든 특징에 맞추는 경우가 많았다. 그래서 VLM(시각-언어 모델)이 현재 장면을 보는 특징 공간과 미래 예측이 서로 따로 놀았다. Z-sight는 VLM이 현재 장면을 인식할 때 쓰는 바로 그 시각 토큰(이미지를 잘게 나눈 조각별 특징 벡터) 공간에서 미래를 예측한다. 구조는 VLM에 '예견 전문가(foresight expert, 미래 시각 토큰 담당)'와 '연속 행동 전문가(action expert, 실수값 행동 담당)'를 붙인 mixture-of-transformers(역할별로 가중치가 다른 트랜스포머 블록들이 어텐션으로 정보를 주고받는 구조)다. 추론 때는 미래 공간 토큰과 행동을 함께 디노이징(노이즈에서 시작해 점차 정답 쪽으로 다듬는 생성 방식)하며, 픽셀 복원이나 외부 인코더가 필요 없다. 사람 영상과 로봇 궤적으로 학습해 시뮬레이션 벤치마크 SIMPLE(실제 로봇 환경을 재현한 평가 세트)에서 81.9%로 가장 강한 기준선보다 9.6%p 높았다. Unitree G1 휴머노이드 실기 6개 과제에서는 평균 73.3%(기준선 대비 +20.0%p)를 기록했고, 행동 묶음(action chunk, 한 번에 예측하는 여러 스텝의 행동) 하나를 만드는 데 110ms가 걸렸다.",
+          "tags": [
+            "VLA",
+            "World Model",
+            "Latent Foresight",
+            "Mixture-of-Transformers",
+            "Humanoid"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.24940",
+          "extra_url": "https://junjieye.com/Z-sight/",
+          "date": "2026-11-18",
+          "reason": "보유 논문 2602.10098(VLA-JEPA)과 2607.04988(InternVLA-A1.5, 잠재 예견)은 '미래를 잠재 공간에서 예측해 VLA를 돕는다'는 같은 목표를 갖지만, 둘 다 미래 특징을 별도 타깃 인코더에 맞추는 쪽이다. Z-sight는 'VLM 자신의 시각 토큰 공간에서 바로 미래를 예측'한다는 점에서 이들과 정확히 대조된다. 영상을 직접 생성하는 WAM인 2607.13017(FlowWAM)·2607.19343(Masked Visual Actions)과는 '픽셀을 생성할지 말지'의 비용-성능 트레이드오프로 비교할 수 있다. VLM에 action expert를 붙이는 구조는 2410.24164(π0)·2503.14734(GR00T N1) 계열 설계를 잇는다. 오늘 함께 추천한 FLARE(2505.15659)가 Z-sight가 비판하는 '외부 인코더 특징에 맞추는 미래 잠재 정렬' 방식의 대표작이라, 둘을 나란히 읽으면 설계 차이가 선명해진다.",
+          "rec_date": "2026-11-21"
+        },
+        {
+          "id": "2611.26617",
+          "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning (O²LaF)",
+          "authors": "Yuxin Jiang, Wenqiang Sun, Jiaqi Li, Yuchao Gu, Lvmin Zhang, Ivor Tsang, Mike Zheng Shou",
+          "summary_ko": "행동 레이블이 없는 영상에서 '화면 변화를 일으킨 행동'을 스스로 찾아내는 잠재 행동 학습(latent action learning: 연속 프레임 사이의 변화를 설명하는 압축 코드를 행동 대용으로 학습하는 기법)을, 사전학습된 비디오 생성 모델 위에서 하자는 연구다. 기존 잠재 행동 모델은 장면이 어떻게 변하는지(동역학)를 대부분 처음부터 학습했다. O²LaF는 '하나의 사전지식(prior), 두 개의 동역학'이라는 원칙으로, 같은 사전학습 비디오 DiT(Diffusion Transformer: 트랜스포머로 노이즈를 걷어내며 영상을 생성하는 모델)에서 두 모델을 초기화한다. 첫째는 역동역학(inverse dynamics: 앞뒤 프레임을 보고 그 사이의 행동을 추정) 역할의 인코더다. 학습 가능한 행동 쿼리(action query, 행동 정보만 뽑아 담는 전용 토큰)로 프레임 변화를 요약한다. 둘째는 순동역학(forward dynamics: 현재 프레임과 행동으로 다음 프레임을 예측) 역할의, 과거만 보는 행동 조건 비디오 생성기다. 두 모델 사이를 좁은 병목(bottleneck, 정보량을 제한한 작은 잠재 코드)으로 잇고 끝단까지 함께 최적화해, 잠재 행동에 배경·외형 같은 불필요한 정보가 새지 않게 한다. 내비게이션과 로봇 조작에서, 실제 행동 레이블 몇 개만으로 잠재 코드에서 행동을 맞히는 few-shot 행동 탐침(action probing) 성능이 최고 수준이었다. 추가 학습 없이 잠재 행동을 다른 장면·다른 몸체에 그대로 옮기는 zero-shot 행동 전이도 기존보다 잘 됐다. 생성형 영상 모델 대신 미래 특징을 예측하는 표현 모델 V-JEPA2를 사전지식으로 써도 경쟁력 있는 결과를 보였다.",
+          "tags": [
+            "Latent Action",
+            "Video Diffusion",
+            "Inverse/Forward Dynamics",
+            "Video Pretraining",
+            "Cross-Embodiment"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.26617",
+          "extra_url": "https://showlab.github.io/o2laf",
+          "date": "2026-11-19",
+          "reason": "좋아요를 받은 2607.11397(WALA, 실행 가능한 잠재 행동)과 2410.11758(LAPA), 2607.27138(DLAM), 2609.21948(GALA)은 모두 잠재 행동 모델을 쓰지만 동역학은 대부분 처음부터 학습한다. O²LaF는 '사전학습 비디오 생성기를 역·순동역학 양쪽의 초기값으로 쓰자'는 다른 축을 제시한다. 2608.19613(What Matters for Latent Actions, 잠재 행동 설계 공간 실증 연구)이 정리한 병목 크기·정보 누출 문제를 생성 사전지식으로 푸는 시도라 바로 대조해 읽기 좋다. V-JEPA2 변형은 보유한 2404.08471(V-JEPA)과 이어진다. 오늘 함께 추천한 LAOM(2502.00379)과는 '잡음 섞인 실제 영상에서 행동 정보만 골라내는 법'이라는 같은 문제를 다르게 풀고, pool의 2611.22077(ReLAP, JEPA 공간 순환 영상 예측 기반 잠재 행동)과도 직접 비교된다.",
+          "rec_date": "2026-11-21"
+        },
+        {
+          "id": "2611.20460",
+          "title": "Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models (VLA-SSD)",
+          "authors": "Jingru Guo, Alessandra Russo, Joey Bose, Christos Ziakas",
+          "summary_ko": "플로우 매칭(flow matching: 노이즈에서 정답 행동까지 이어지는 속도장을 학습하고, 여러 번의 적분 단계로 행동을 생성하는 방식) 기반 VLA를 강화학습으로 미세조정할 때의 두 걸림돌을 한 번에 푸는 방법이다. 걸림돌은 GRPO(Group Relative Policy Optimization: 같은 상황에서 여러 번 실행한 결과를 그룹으로 묶고, 그룹 평균보다 나은 시도를 강화하는 RL 기법) 같은 그룹 기반 RL에서 드러난다. 첫째, 매 실행 단계마다 여러 단계의 ODE 적분(미분방정식을 단계별로 풀어 행동을 만드는 과정)이 필요해 느리다. 둘째, 플로우 샘플러의 무작위성이 작아 같은 상황에서 뽑은 행동들이 서로 비슷하고, 그룹 내 차이가 작아 학습 신호가 약하다. VLA-SSD는 사전학습된 플로우 매칭 행동 헤드를 스스로의 교사로 삼아 '확률적 1단계 정책'으로 증류(distillation: 느린 모델의 출력을 빠른 모델이 흉내 내도록 학습)한다. 이 정책은 브라운 경로(Brownian path, 무작위 잡음이 시간에 따라 쌓인 궤적)를 조건으로 받아 노이즈에서 행동으로 한 번에 점프한다. 1단계 정책은 행동의 조건부 확률밀도를 계산할 수 있어서, 확률 비율을 쓰는 표준 정책경사 RL(보상이 높았던 행동의 확률을 직접 높이는 방법)에 바로 쓸 수 있다. π0에서 증류하면 행동 헤드의 순전파 시간이 7.7배 줄고, LIBERO(로봇 조작 시뮬레이션 벤치마크) 성공률은 원래 π0 대비 상대적으로 5.5% 떨어졌다. 대신 늘어난 샘플 다양성을 GRPO 그룹 생성에 활용해 π0.5를 후학습하면 성공률이 상대적으로 20.6% 올랐다.",
+          "tags": [
+            "Flow Matching",
+            "VLA",
+            "Online RL",
+            "Distillation",
+            "GRPO"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.20460",
+          "extra_url": "",
+          "date": "2026-11-16",
+          "reason": "보유 논문 2410.24164(π0)·2504.16054(π0.5)의 플로우 매칭 행동 헤드를 RL로 다듬는 문제를 정면으로 다룬다. 2607.27782(RedFlow, 실패를 행동 수준 교정으로 바꾸는 플로우 VLA RL)·2608.16837(HAF, 잠재 공간 RL로 휴머노이드 적응)이 RL 신호를 넣는 위치를 바꿔 우회했다면, VLA-SSD는 정책 자체를 확률밀도를 계산할 수 있는 1단계 정책으로 바꿔 정면으로 푼다. 행동 헤드를 7.7배 빠르게 만든다는 점은 최근 등록한 추론 지연 논문 2608.23831(Learning to Act While Waiting)과도 이어진다. pool의 2510.25889(πRL, Flow-SDE로 플로우 VLA에 무작위성을 주입해 온라인 RL)와는 '무작위성을 어떻게 만들 것인가'를 두고 정확히 비교되고, 오늘 함께 추천한 DPPO(2409.00588)가 이 계열의 출발점이다.",
+          "rec_date": "2026-11-21"
+        },
         {
           "id": "2611.24925",
           "title": "Render the Robot, Generate the World: One Video World Model Across Embodiments (Doppel)",
@@ -273,42 +327,6 @@
           "rec_date": "2026-11-16"
         },
         {
-          "id": "2611.16728",
-          "title": "EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming",
-          "authors": "Yaru Niu, Binghong Chen, Changwei Yao, Shangtao Li 외",
-          "summary_ko": "사람·실제 로봇·시뮬레이션 에이전트라는 서로 몸 구조(형태·센서·제어 인터페이스)가 다른 시연 데이터를 '1인칭 시점(egocentric, 머리/카메라 시점)'이라는 공통 기준으로 묶어 하나의 정책으로 사전학습한다. 관측 종류(이미지·관절 상태 등)마다 전용 토크나이저를, 행동 종류마다 전용 전문가 모듈(expert)을 두고 트랜스포머 본체만 몸체 간에 공유하는 MXT+ 구조를 쓴다. 여기에 '몸체 상상(Embodiment Dreaming)' 학습 목표 — 미래의 시각·관절 상태를 잠재 벡터(latent, 압축된 내부 표현) 수준에서 예측하게 하는 보조 과제 — 를 더해 공유 본체가 각 몸체의 동역학을 학습하게 만든다. 5개 과제·6개 몸체(실로봇 5대 + 시뮬레이션 휴머노이드 1대)의 13개 조합에서 평균 과제 진행도를 0.63→0.80으로, 학습 분포를 벗어난(OOD) 조건에서는 0.53→0.77로 끌어올렸다.",
-          "tags": [
-            "Cross-Embodiment",
-            "Egocentric Video",
-            "Latent Dynamics",
-            "Modular Transformer",
-            "Pre-training"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.16728",
-          "extra_url": "https://egox-dream.github.io",
-          "date": "2026-11-12",
-          "reason": "보유 중인 AnyWorld(2608.29242, 1인칭 월드 모델로 몸체 간 일반화)와 ZETA(2609.02546, 제로샷 몸체 전이 통제 실험)가 던진 '서로 다른 몸체 데이터를 어떻게 한 정책에 합칠 것인가'라는 질문에 모듈형 인터페이스 + 미래 잠재 상태 예측이라는 구체적 답을 제시한다. 미래 표현을 예측해 표현을 정렬하는 방식은 VLA-JEPA(2602.10098)의 잠재 월드 모델 아이디어와 같은 계열이고, 행동 정렬로 몸체 간극을 메운 Cross-Embodiment Transfer via Behavior-Aligned Representations(2607.27549)와 직접 비교해 볼 만하다.",
-          "rec_date": "2026-11-15"
-        },
-        {
-          "id": "2611.14048",
-          "title": "LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning",
-          "authors": "Xuheng Zhang, Yiming Zhang, Jialin Gao, Hao Chen, Jiaming Liu 외",
-          "summary_ko": "영상 예측 모델(월드 모델)과 행동 생성기를 한 몸에 담은 월드 액션 모델(WAM)에서, 기존 방식은 장면 전체의 전역 표현을 그대로 행동 생성에 넘겨 로봇과 물체가 맞닿는 국소 상호작용이 묻히는 문제가 있다고 지적한다. LaST0.5는 그 사이에 '상호작용 중심 잠재 공간' — 로봇-환경 접촉을 드러내는 시각적 단서로 지도학습한 압축 표현 — 을 끼워 넣고, 이를 Mixture-of-Transformers(과제별 전문가 트랜스포머를 섞는 구조) 안의 '잠재 전문가'로 구현해 월드 전문가와 행동 전문가를 잇는다. 또 미래 표현과 과제 진행도(progress) 값을 함께 예측해, 진행도가 일관되지 않으면 행동 실행 속도를 조정하거나 미래를 다시 예측하도록 만든다. 1만 4천 시간 이상의 로봇 데이터로 사전학습해 LIBERO 99.5%, RLBench 10개 과제 최고 성능, 실로봇 장기 과제·정밀 조작에서 안정적 실행을 보였다.",
-          "tags": [
-            "World Action Model",
-            "Interaction-Centric Latent",
-            "Mixture-of-Transformers",
-            "Progress Prediction",
-            "Long-Horizon"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.14048",
-          "extra_url": "",
-          "date": "2026-11-10",
-          "reason": "보유 WAM 계열 — FlowWAM(2607.13017, 광학 흐름을 행동 표현으로), World Action Planner(2607.27599), FBFM(2607.29235, 학습 없는 비동기 피드백), Motus2(2608.30237) — 가 공통으로 쓰는 '월드 모델 표현을 행동에 그대로 넘긴다'는 전제를 정면으로 문제 삼는다. 진행도 예측으로 실행 타이밍을 조절하는 부분은 Knowing When to Stop(2609.00908)의 적응적 청크 종료, τ0-VLA(2608.16885)의 월드 모델 기반 테스트타임 스케일링과 묶어 읽기 좋다.",
-          "rec_date": "2026-11-15"
-        },
-        {
           "id": "2611.15490",
           "title": "ActionCodec2: A Streaming Action Tokenizer",
           "authors": "Zibin Dong, Yicheng Liu, Shiduo Zhang, Tianyuan Yuan, Baijun Ye, Jinqiu Wang, Hang Zhao",
@@ -325,24 +343,6 @@
           "date": "2026-11-11",
           "reason": "보유 FAST(2501.09747, DCT+BPE 행동 토크나이저)의 직계 후속 비교 대상이다. 청크를 다 뽑기 전에 실행을 시작한다는 점에서 TacForcing(2608.25798)의 스트리밍 행동 생성, Knowing When to Stop(2609.00908)의 청크 길이 적응과 같은 문제를 토크나이저 층에서 푼다. 또 Why Does Action Chunking Improve Behavioral Cloning(2608.02547)이 분석한 '청크의 개루프 실행 대가'를 정량적으로 되짚을 수 있는 실험 결과를 담고 있다.",
           "rec_date": "2026-11-15"
-        },
-        {
-          "id": "2611.10967",
-          "title": "BAT-WAM: Bridging Action and Touch in World-Action Models for Dexterous Hands",
-          "authors": "Dong Fang, Feixuan Huang, Yuanxin Zhong, Yuxiang Gao 외",
-          "summary_ko": "다섯 손가락 손으로 물건을 다루려면 관절 상태와 촉각 정보가 필요한데, 실제 데이터에는 이 둘이 빠져 있는 경우가 많다. BAT-WAM은 세계-행동 모델(World-Action Model, 미래 관측과 행동을 함께 예측하는 모델) 안에서 촉각 스트림과 행동 스트림에 각각 별도의 코드북(이산 표현 사전)과 디코더를 두고, RGB 영상을 조건으로 한 연속 잠재 다리로 두 스트림을 양방향 연결한다. 촉각이 완전히 가려진 상황에서 복원 오차(RMSE)를 34.7% 줄였고, 목표 시점 영상과 과거 행동만으로 미래 촉각을 예측하는 설정에서는 기존 OpenWAM 대비 오차를 85.6% 줄였다.",
-          "tags": [
-            "Tactile",
-            "World Model",
-            "Dexterous Manipulation",
-            "Contact-Rich",
-            "Multimodal"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.10967",
-          "extra_url": "",
-          "date": "2026-11-07",
-          "reason": "컬렉션에서 Contact-Rich·촉각 계열은 꾸준히 상위 관심사이고, 추천 풀의 ForceLDM(2611.03294, 힘을 인지하는 잠재 동역학 모델)·TF^2-Steering(2611.01483, 촉각 예측으로 행동 보정)과 정확히 같은 문제를 푼다. 다만 BAT-WAM은 '촉각 센서가 아예 없거나 가려진 경우를 영상으로 메운다'는 결측 보완 관점이라, 센서가 부족한 실환경 배포를 고민할 때 보완적으로 읽히는 각도다.",
-          "rec_date": "2026-11-14"
         }
       ]
     },
@@ -350,6 +350,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2409.00588",
+          "title": "Diffusion Policy Policy Optimization (DPPO)",
+          "authors": "Allen Z. Ren, Justin Lidard, Lars L. Ankile, Anthony Simeonov, Pulkit Agrawal, Anirudha Majumdar, Benjamin Burchfiel, Hongkai Dai, Max Simchowitz",
+          "summary_ko": "확산 정책(diffusion policy: 노이즈를 여러 단계에 걸쳐 걷어내며 행동을 생성하는 정책)을 정책경사(policy gradient: 보상이 높았던 행동의 확률을 직접 높이는 RL 방법) 계열 강화학습으로 미세조정하는 프레임워크와 실전 노하우를 정리한 논문이다. 당시에는 확산 정책의 행동 확률을 직접 계산하기 어려워, 정책경사와는 궁합이 나쁠 것이라는 추측이 많았다. DPPO의 핵심 아이디어는 디노이징 과정 자체를 '여러 단계짜리 작은 의사결정 과정'으로 펼쳐 보는 것이다. 이렇게 보면 각 디노이징 단계는 계산 가능한 가우시안 확률을 가지므로, PPO(Proximal Policy Optimization: 한 번에 정책이 너무 크게 바뀌지 않게 제한하는 대표적 정책경사 알고리즘)를 그대로 적용할 수 있다. 실험 결과 다른 확산 정책용 RL 방법들은 물론, 가우시안 등 다른 형태의 정책을 정책경사로 튜닝한 경우보다도 성능과 효율이 좋았다. 저자들은 확산 구조 덕분에 탐색이 시연 데이터 분포 근처(on-manifold)에서 구조적으로 일어나, 학습이 안정적이고 정책도 견고해진다고 분석했다. 픽셀 입력 시뮬레이션 과제를 다뤘고, 시뮬레이션에서 학습한 정책을 장기 다단계 조립 과제의 실제 로봇에 추가 학습 없이 배치하는 데에도 성공했다.",
+          "tags": [
+            "Diffusion Policy",
+            "Online RL",
+            "PPO",
+            "Fine-Tuning",
+            "Sim2Real"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2409.00588",
+          "extra_url": "https://diffusion-ppo.github.io",
+          "date": "2024-09-01",
+          "reason": "컬렉션의 핵심 축인 확산·플로우 정책(2303.04137 Diffusion Policy, 2410.24164 π0)을 RL로 후학습하는 연구가 최근 급증했다(보유 2607.27782 RedFlow·2608.16837 HAF·2608.23831, pool의 2510.25889 πRL·2511.14759 π*0.6). 이들 대부분이 비교 기준이나 출발점으로 삼는 DPPO는 아직 컬렉션에 없다. '디노이징 단계를 작은 의사결정 과정으로 펼쳐 PPO를 적용'하는 아이디어는, 오늘 추천한 VLA-SSD(2611.20460)가 '아예 1단계 확률 정책으로 증류'해 해결하려는 바로 그 비용 문제의 원점이다. 둘을 이어 읽으면 플로우 VLA 강화학습의 설계 선택지가 정리된다.",
+          "rec_date": "2026-11-21"
+        },
+        {
+          "id": "2505.15659",
+          "title": "FLARE: Robot Learning with Implicit World Modeling",
+          "authors": "Ruijie Zheng, Jing Wang, Scott Reed, Johan Bjorck 외 · Joel Jang, Seonghyeon Ye · Yuke Zhu, Linxi Fan (NVIDIA GEAR)",
+          "summary_ko": "로봇 정책이 행동을 생성하면서 '미래 관측이 어떤 특징을 가질지'도 함께 예측하게 만들어, 영상을 직접 생성하지 않고도 세계 모델의 이점을 얻는 방법이다(FLARE = Future LAtent REpresentation Alignment, 미래 잠재 표현 정렬). 확산 트랜스포머(diffusion transformer: 트랜스포머로 노이즈를 걷어내며 행동을 생성하는 정책)에 미래 예측용 학습 토큰 몇 개를 추가한다. 이 토큰의 출력이 실제 미래 관측을 인코더에 넣어 얻은 잠재 임베딩(압축된 특징 벡터)과 가까워지도록 정렬 손실을 건다. 그러면 정책 내부 표현이 '이 행동을 하면 장면이 어떻게 될지'를 품게 되어, 장기적 결과를 고려한 행동 생성이 가능해진다. 구조 변경은 기존 VLA에 토큰 몇 개를 더하는 수준으로 가볍다. 단일 팔과 휴머노이드 탁상 조작을 다루는 두 개의 멀티태스크 모방학습 시뮬레이션 벤치마크에서, 기존 정책 학습 기준선보다 최대 26% 높은 성능을 냈다. 또한 행동 레이블 없는 사람 1인칭 영상(egocentric video)을 함께 학습할 수 있다. 덕분에 처음 보는 형태의 새 물체에 대해, 로봇 시연이 단 1개뿐이어도 일반화가 크게 좋아졌다.",
+          "tags": [
+            "World Model",
+            "Latent Alignment",
+            "Diffusion Transformer",
+            "Human Video",
+            "VLA"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2505.15659",
+          "extra_url": "https://research.nvidia.com/labs/gear/flare",
+          "date": "2025-05-21",
+          "reason": "오늘 추천한 Z-sight(2611.24940)가 '외부 인코더 특징에 맞추는 기존 잠재 정렬 방식'이라고 대조하는 대상의 대표작이 FLARE다. 보유 논문 2602.10098(VLA-JEPA)·2607.04988(InternVLA-A1.5)도 같은 '미래 잠재 예측으로 VLA 보강' 계열이라 FLARE가 그 기준점이 된다. 보유 논문 2503.14734(GR00T N1)를 만든 NVIDIA GEAR 팀의 후속 연구다. 2410.11758(LAPA)의 저자 Seonghyeon Ye·Joel Jang이 참여해, '사람 영상을 행동 레이블 없이 활용한다'는 같은 목표를 잠재 행동 대신 미래 특징 예측으로 푼 다른 해법이기도 하다.",
+          "rec_date": "2026-11-21"
+        },
+        {
+          "id": "2502.00379",
+          "title": "Latent Action Learning Requires Supervision in the Presence of Distractors (LAOM)",
+          "authors": "Alexander Nikulin, Ilya Zisman, Denis Tarasov, Nikita Lyubaykin, Andrei Polubarov, Igor Kiselev, Vladislav Kurenkov",
+          "summary_ko": "잠재 행동 학습(행동 레이블 없는 영상에서 프레임 변화를 설명하는 압축 코드를 행동 대용으로 학습하는 기법)이 실제 세상 영상에서도 통하는지를 따진 연구다(ICML 2025). 이 분야의 선구 연구인 LAPO(Latent Action Policies)를 포함한 기존 연구는, 화면 변화가 거의 전부 에이전트의 행동으로 설명되는 '방해 요소 없는' 데이터만 다뤘다. 하지만 실제 영상에는 배경 움직임이나 카메라 흔들림처럼 행동과 함께 변하는 방해 요소(distractor)가 섞여 있다. 저자들은 표준 제어 과제에 움직이는 배경 영상·색 변화·카메라 위치 변화를 인위적으로 넣은 Distracting Control Suite에서 실험해, 이런 환경에서는 LAPO가 크게 무너진다는 것을 보였다. LAPO를 간단히 고친 LAOM은 잠재 행동의 품질을 선형 탐침(linear probing: 잠재 코드에서 실제 행동을 선형 회귀로 얼마나 잘 맞히는지) 기준 8배 끌어올렸다. 더 중요한 발견은, 전체 데이터의 2.5%만이라도 실제 행동 레이블로 잠재 행동 학습을 지도하면 하류 과제 성능이 평균 4.2배 좋아진다는 점이다. 즉 '완전 비지도'보다 '약간의 행동 레이블을 섞는' 쪽이 잠재 행동 모델 사전학습에 결정적이라는 결론이다.",
+          "tags": [
+            "Latent Action",
+            "Distractors",
+            "Weak Supervision",
+            "Video Pretraining",
+            "ICML 2025"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2502.00379",
+          "extra_url": "https://laom.dunnolab.ai/",
+          "date": "2025-02-01",
+          "reason": "좋아요를 받은 2607.11397(WALA)은 '행동 레이블 있는 시연+레이블 없는 영상'을 함께 쓰고, 2609.19846(행동 유사도 지도로 잠재 행동 모델의 몸체 간 전이 개선)도 약한 지도를 넣는다. 이 '잠재 행동에 실제 행동 지도를 조금 섞어야 한다'는 흐름의 근거가 된 논문이 LAOM이다. 2608.19613(What Matters for Latent Actions)에 LAPO 태그가 붙어 있을 만큼 컬렉션은 LAPO 계열을 깊게 다루지만, '방해 요소가 있는 실제 영상에서 잠재 행동이 깨진다'는 실패 조건 분석은 비어 있다. 오늘 추천한 O²LaF(2611.26617)가 좁은 병목과 생성 사전지식으로 같은 정보 누출 문제를 푸는 만큼 함께 읽기 좋다.",
+          "rec_date": "2026-11-21"
+        },
         {
           "id": "2503.00200",
           "title": "Unified Video Action Model (UVA)",
@@ -667,60 +721,6 @@
           "date": "2021-06-02",
           "reason": "보유 RT-1(2212.06817)·RT-2(2307.15818)가 채택한 '행동을 토큰으로 바꿔 자기회귀로 예측한다'는 설계의 직접적 기원이며, FAST(2501.09747)와 이번에 함께 추천한 ActionCodec2(2611.15490) 같은 행동 토크나이저 연구의 전제를 만든 논문이다. 또 목표·수익률을 조건으로 붙여 행동 품질을 조절한다는 아이디어는 보유 논문 중 보상 모델로 어드밴티지를 조건화한 CLIFT(2607.29172)와 WCM(2607.29613)의 크리틱 조건화와 바로 연결된다.",
           "rec_date": "2026-11-15"
-        },
-        {
-          "id": "2206.11795",
-          "title": "Video PreTraining (VPT): Learning to Act by Watching Unlabeled Online Videos",
-          "authors": "Bowen Baker, Ilge Akkaya, Peter Zhokhov, Joost Huizinga 외",
-          "summary_ko": "인터넷에 널린 '사람이 플레이하는 영상'에는 어떤 키를 눌렀는지(행동 레이블)가 없어서 그대로는 정책 학습에 못 쓴다. VPT는 소량의 레이블 데이터로 역동역학 모델(Inverse Dynamics Model, 연속한 두 화면을 보고 그 사이에 어떤 행동이 있었는지 되맞히는 모델)을 먼저 학습한 뒤, 그 모델로 방대한 무레이블 영상에 행동 레이블을 자동으로 붙이고, 그 데이터로 범용 행동 사전(behavioral prior)을 학습한다. 마인크래프트에서 처음부터 강화학습으로는 불가능했던 다이아몬드 도구 제작까지 해내며, '영상에서 행동을 되찾아 대규모 사전학습을 한다'는 패러다임을 처음으로 설득력 있게 보여준 논문이다.",
-          "tags": [
-            "Latent Action",
-            "Inverse Dynamics",
-            "Human Video",
-            "Pretraining",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2206.11795",
-          "extra_url": "https://openai.com/index/vpt/",
-          "date": "2022-06-23",
-          "reason": "컬렉션의 잠재 행동(Latent Action) 계열 — GALA(2609.21948), 2609.19846, 추천 풀의 LAPO(2312.10812)·ELA(2611.05571)·DreamX — 는 모두 '행동 레이블 없는 영상에서 행동을 복원한다'는 같은 뿌리에서 나왔고, 그 뿌리가 바로 VPT다. 레이블이 조금이라도 있으면 역동역학 모델을 쓰고, 전혀 없으면 잠재 행동 모델로 간다는 분기를 이해하는 출발점이라 기반 논문으로 한 번 읽어둘 가치가 있다.",
-          "rec_date": "2026-11-14"
-        },
-        {
-          "id": "2205.06175",
-          "title": "A Generalist Agent (Gato)",
-          "authors": "Scott Reed, Konrad Zolna, Emilio Parisotto, Sergio Gomez Colmenarejo 외",
-          "summary_ko": "하나의 신경망이 똑같은 가중치 그대로 아타리 게임을 하고, 이미지에 설명을 달고, 대화를 하고, 실제 로봇 팔로 블록을 쌓는다. 관측·텍스트·관절 토크·버튼 입력을 전부 하나의 토큰 열로 바꿔 넣고, 문맥을 보고 무엇을 출력할지 스스로 정하게 한 것이 핵심 아이디어다. '서로 다른 몸체(embodiment)와 과제를 하나의 시퀀스 모델로 통합한다'는 접근을 처음 대규모로 시연한 보고서로, 오늘날 교차 신체 로봇 파운데이션 모델의 직계 조상이다.",
-          "tags": [
-            "Cross-Embodiment",
-            "Generalist Policy",
-            "Foundation Model",
-            "Multi-Task",
-            "Token Sequence"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2205.06175",
-          "extra_url": "",
-          "date": "2022-05-12",
-          "reason": "컬렉션 상위 관심사인 Cross-Embodiment(교차 신체) 태그 논문들 — Open X-Embodiment(2310.08864), Octo(2405.12213), 그리고 추천 풀의 CrossFormer(2408.11812)·HPT(2409.20537) — 이 공유하는 전제('몸체가 달라도 하나의 토큰 열로 통합 가능하다')를 처음 제시한 논문이다. 보유 논문들이 이 전제를 어떻게 다듬고 반박했는지 보려면 원본을 알고 있어야 한다.",
-          "rec_date": "2026-11-14"
-        },
-        {
-          "id": "2309.10150",
-          "title": "Q-Transformer: Scalable Offline Reinforcement Learning via Autoregressive Q-Functions",
-          "authors": "Yevgen Chebotar, Quan Vuong, Alex Irpan, Karol Hausman 외",
-          "summary_ko": "사람 시연과 로봇이 스스로 모은 (실패 포함) 데이터를 함께 써서 멀티태스크 정책을 학습하는 오프라인 강화학습 기법이다. 핵심은 행동의 각 차원을 잘게 나눈 뒤 각 차원의 Q값(그 행동을 했을 때 앞으로 받을 보상의 기댓값)을 별개의 토큰으로 두어, 큰 트랜스포머의 시퀀스 모델링 능력을 Q학습에 그대로 끌어오는 것. 덕분에 모방학습처럼 '성공 시연만' 쓰는 게 아니라 실패 데이터에서도 배울 수 있고, 실제 로봇의 다양한 조작 과제에서 기존 오프라인 강화학습·모방학습을 모두 앞섰다.",
-          "tags": [
-            "Offline RL",
-            "Real-World RL",
-            "Transformer",
-            "Manipulation",
-            "Autoregressive"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2309.10150",
-          "extra_url": "https://qtransformer.github.io",
-          "date": "2023-09-18",
-          "reason": "컬렉션에 Real-World RL·Self-Improvement 태그 논문이 꾸준히 쌓이고 있고, 추천 풀의 '강화학습으로 범용 로봇 정책을 확장한다'(2611.06905), HIL-SERL(2410.21845)이 모두 '시연만으로는 한계가 있다'는 같은 출발점을 공유한다. Q-Transformer는 그 흐름에서 '대규모 트랜스포머 + 오프라인 Q학습'이라는 가장 널리 인용되는 기반 설계를 제공하며, RT-1(2212.06817) 데이터·아키텍처 계보와도 직접 이어져 있다.",
-          "rec_date": "2026-11-14"
         }
       ]
     }
