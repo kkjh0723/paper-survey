@@ -1,10 +1,64 @@
 {
-  "generated": "2026-11-22",
+  "generated": "2026-11-23",
   "groups": [
     {
       "key": "new",
       "label": "새로 공개된 논문",
       "items": [
+        {
+          "id": "2611.21099",
+          "title": "ForceHarness: Turning Force into Action and Physics for Frozen Frontier Models",
+          "authors": "Ke Sun, Kevin Yuchen Ma, Yike Zhang, Yanzhe Chen, Mike Zheng Shou · NUS Show Lab",
+          "summary_ko": "API로만 쓸 수 있는 가중치 고정 프런티어 멀티모달 모델(GPT-6 Astra 등)이 시연도 미세조정도 없이 힘 정보를 쓰게 해주는 하네스(harness: 모델과 로봇 사이에서 도구·관측·제어를 중개하는 소프트웨어 층) 연구다. 이런 모델은 이미 이미지만 보고 로봇 팔 자세를 지시해 제로샷(zero-shot: 해당 과제 학습 없이 바로)으로 조작할 수 있다. 하지만 나사 조이기나 똑같이 생긴 병의 무게 비교처럼 이미지로는 안 보이는 접촉 힘이 필요한 과제에서는 막힌다. 저자들이 짚은 문제는 두 가지다. 첫째, 접촉은 API 모델이 한 번 판단하는 시간보다 훨씬 빨리 변한다. 그래서 힘 제어 루프는 모델 아래에서 닫혀야 한다. 둘째, 고정 모델은 원시 힘 시계열 숫자를 해석하지 못한다. ForceHarness는 세 층으로 이를 푼다. 맨 아래 보정 층은 손목 힘·토크 센서, 또는 센서 없이 관절 토크만으로 손끝에 걸린 힘을 추정하고 센서 오프셋을 제거한다. 가운데 층은 '스스로 끝나는 힘 프리미티브(self-terminating force primitive)'다. 접촉할 때까지 내려가기, 누른 채 미끄러뜨리기, 나선형으로 더듬어 구멍을 찾아 끼우기 같은 접촉 기술을 도구 호출로 만들었다. 호출되면 임피던스 제어(impedance control: 목표 자세와 실제 자세의 차이를 스프링처럼 힘으로 바꾸는 제어)로 힘을 알아서 조절하다가, 접촉 사건이 생기면 결과를 들고 돌아온다. 맨 위 물리 번역 층은 각 호출의 힘 기록을 들고 있는 물체의 질량, 접촉 높이, 마찰 같은 물리량과 그 불확실성으로 바꿔 도구 결과로 돌려준다. 모델은 매 턴 프리미티브 하나를 호출하고, 돌아온 물리량을 읽고 다음 행동을 정한다. 손목 힘 센서가 없는 실제 로봇 팔의 6개 접촉 과제에서 GPT-6 Astra의 성공률이 3.3%에서 90.0%로 올랐다. 공개 벤치마크 ForceBench에서는 70.0%에서 87.5%로 올라, 시연으로 학습한 힘 인식 정책들을 넘었다. 저자들은 무게·마찰 같은 물리 변수를 숨겨둔 7개 과제의 MuJoCo 벤치마크 HiddenPhys도 새로 만들었다. 여기서는 62.1%에서 96.4%로 올라, 사람이 손으로 짠 전문가 힘 제어기와 같은 수준이 됐다. 과제당 약 200개 시연으로 학습한 Diffusion Policy, VLA, ForceVLA보다도 크게 앞섰다. 작은 모델일수록 원시 힘 값 대신 물리량을 받았을 때 판단이 눈에 띄게 좋아졌다.",
+          "tags": [
+            "Force",
+            "Agentic Harness",
+            "Frozen Frontier Model",
+            "Contact-Rich",
+            "Zero-Shot"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.21099",
+          "extra_url": "https://showlab.github.io/ForceHarness",
+          "date": "2026-11-16",
+          "reason": "좋아요를 누른 2607.18231(FM-VLA)은 힘 신호를 VAE로 압축해 기억 토큰으로 넣고 시연으로 학습한다. ForceHarness는 정반대로, 학습 없이 고정 모델에 힘을 '물리량이 담긴 도구 결과'로 건넨다. 역시 좋아요를 누른 2607.08448(Harness VLA), 2606.19980(ENPIRE), 2607.05369(GaP), Aspire가 쌓아온 '고정 모델 + 하네스' 계열에 처음으로 힘 채널을 붙인 셈이다. 보유 2209.07753(Code as Policies)의 '프리미티브 위에서 돌아가는 프로그램' 구조를 힘 제어로 넓혔다고도 볼 수 있다. 보유 2608.01402(VLA가 접촉 과제에서 실패하는 이유)와 2609.01596(Facet-0)과는 '힘을 학습시킬지, 도구로 줄지'의 대비가 된다. 오늘 관련 논문으로 함께 추천한 Adaptive Compliance Policy(2410.09309)는 같은 임피던스 제어 층을 시연 학습으로 다루는 대표작이다. pool의 TacInno(2611.26405), Reactive Diffusion Policy(2503.02881)와도 짝을 이룬다.",
+          "rec_date": "2026-11-23"
+        },
+        {
+          "id": "2611.26376",
+          "title": "Alignment Drives Reuse: Learning Generalizable Robot-Use Agents from Heterogeneous Experience (UniCraft)",
+          "authors": "Ziyue Wang, Yaopeng Yang, Liyi Zhou · University of Sydney · Nanjing University",
+          "summary_ko": "여러 벤치마크와 여러 로봇 몸체(embodiment)에서 모은 상호작용 경험을 하나의 공유 기술 저장소로 모아, 시연도 가중치 업데이트도 없이 조작 기술을 키우는 에이전트 프레임워크 UniCraft를 제안한다. VLM(시각-언어 모델)은 언어·이미지라는 공통 인터페이스 덕분에 이질적인 데이터를 한데 모아 일반화한다. 반면 로봇은 몸체마다 기구학·관측·행동 표현이 다르다. 벤치마크마다 좌표계 관례와 과제 정의도 달라서 경험이 조각난다. 'LLM이 정책 코드를 짜고, 실행 결과를 보고 고치며, 성공한 코드를 기술 라이브러리로 쌓는' 기존 연구(GaP, Skill2Real 등)도 한 작업 셀이나 한 벤치마크 안에 머물렀다. UniCraft는 '먼저 정렬하고, 그다음 규모를 키운다'는 원칙으로 네 가지를 맞춘다. (1) 장면 속 물체를 일관된 좌표 관례를 따르는 타입 있는 Object로 표현하고, 로봇·카메라 기능을 공용 파이썬 패키지로 노출한다. (2) 기술은 재사용 가능한 라이브러리 함수로 짜고, 필요한 행동 인터페이스만 선언한다. 로봇별 실제 구현은 어댑터가 맡는다. (3) 관측과 실행 결과를 보고 어떤 기술을 골라 어떻게 조합할지 에이전트를 이끄는 오케스트레이션 정책도 학습 대상이다. 단, 가중치가 아니라 텍스트·코드를 고쳐가며 다듬는다. (4) 서로 다른 벤치마크의 과제를 지시문·성공 조건·몸체·초기 상태가 같은 형식으로 적힌 표준 케이스로 정리한다. LIBERO-PRO, RoboTwin 2.0, RoboCasa365의 180개 과제와 6개 몸체를 섞어, 에이전트 모델당 2,700번의 학습 실행을 돌렸다. 에이전트 모델로는 GPT-6 Astra, Gemini 3.8 Flash, 오픈소스 DeepSeek-V4.1-Flash를 썼다. 학습 1~3 epoch(전체 과제를 한 바퀴 도는 단위)에 걸쳐, 처음 보는 장면·과제에서의 성공률이 LIBERO-PRO 9~28%p, RoboTwin 2.0 10.8~13.3%p, RoboCasa365 3.1~14.4%p 향상됐다. 학습이 끝난 기술을 고정한 채로, Baxter·Tiago 등 처음 보는 로봇 4종과 추가 에이전트 모델 5종, 처음 보는 벤치마크 robosuite·RoboDojo로도 제로샷 이전에 성공했다.",
+          "tags": [
+            "Agentic Robotics",
+            "Skill Library",
+            "Cross-Embodiment",
+            "Code as Policy",
+            "Orchestration"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.26376",
+          "extra_url": "",
+          "date": "2026-11-19",
+          "reason": "좋아요를 누른 2607.05369(GaP)는 고정된 작업 셀 안에서 다중 에이전트가 그래프 형태의 정책을 스스로 개선한다. 역시 좋아요를 누른 Aspire는 LLM 코딩 에이전트가 기술 라이브러리를 쌓으며 지속 학습한다. UniCraft는 이 계열을 여러 벤치마크·여러 몸체로 넓힌 연구다. 실제로 GaP를 '한 작업 셀에 묶인 한계'의 예로 든다. '정렬이 먼저'라는 원칙은 보유 2606.17846(Qwen-RobotManip)에서 가져왔다고 밝힌다. 그래서 같은 아이디어가 VLA 학습과 에이전트 기술 학습에서 각각 어떻게 쓰이는지 비교할 수 있다. 오케스트레이션 정책을 학습한다는 점은 좋아요를 누른 2606.10267(로봇 정책 오케스트레이션 체계 연구), 2607.08448(Harness VLA)와 겹친다. LIBERO-PRO로 평가한다는 점은 보유 2607.21725(오케스트레이션 격차)와 같다. 보유 2609.19906(폐루프 로봇 소프트웨어 학습·이전)도 같은 문제의식이다. 오늘 관련 논문으로 함께 추천한 Gemini Robotics 1.5(2510.03342)는 이 '추론 에이전트 + 실행기' 구도를 로봇 전용 대형 모델로 구현한 대표작이다.",
+          "rec_date": "2026-11-23"
+        },
+        {
+          "id": "2611.25667",
+          "title": "CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control",
+          "authors": "Xu Pan, Chubin Zhang, Xingrui Yu 외 · Ziwei Wang · NTU · A*STAR",
+          "summary_ko": "VLA(카메라 영상·언어 지시를 받아 로봇 행동을 내는 모델)는 무거운 영상 인코딩 때문에 추론이 실제 로봇 동작보다 느리다. 추론과 실행을 겹치는 비동기 실행(asynchronous execution)으로 대기 시간을 숨길 수는 있다. 하지만 그러면 정책이 이미 지나간 장면을 보고 판단하게 되고, 연속된 행동 묶음(action chunk: 한 번에 예측하는 여러 스텝의 행동) 사이 경계에서 동작이 튄다. CauSyncVLA는 '로봇이 실제로 실행한 기록'을 지각과 행동을 맞추는 공통 시계로 쓴다. 구조는 느린 흐름과 빠른 흐름으로 나뉜 이중 시스템(dual-system)이다. 느린 시각 흐름은 주기적으로 카메라 이미지를 처리해 KV 메모리 기준점(KV anchor: 트랜스포머가 이미지·지시문 부분에서 계산해 저장해둔 키·값)을 내보낸다. 빠른 제어 흐름은 그 사이에 두 가지를 한다. 첫째, 인과 잠재 세계 모델(Causal Latent World Model)이 가장 최근의 늦은 기준점과, 그 뒤 실제로 실행된 상태·행동 기록만으로 '지금 시점의 KV 메모리'를 예측한다. 미래 픽셀이나 물리 상태가 아니라, 정책이 실제로 참고하는 내부 메모리를 바로 예측하는 것이다. 이 예측기는 행동 민감 증류(action-sensitive distillation)로 학습한다. 예측한 메모리를 넣어도 고정된 원래 정책(전문가)의 행동 반응이 그대로 유지되도록 감독하는 방식이다. 둘째, 예측 플로우 웜스타트(PFWS, Predictive Flow Warm-Starting)는 이전 계획에서 아직 실행하지 않은 꼬리 부분을 플로우 매칭(flow matching: 노이즈에서 정답 행동으로 가는 속도장을 따라 행동을 생성하는 방식)의 중간 출발점으로 재사용한다. 그래서 고정된 행동 전문가가 단 한 번의 적분 단계로 남은 궤적을 현재 시점에 맞게 고친다. 이 단계에는 추가 학습이 필요 없다. 전체적으로 학습하는 것은 가벼운 예측기 하나뿐이고, 백본과 행동 전문가는 그대로 고정된다. LIBERO-10(장기 과제 10개로 된 시뮬레이션 벤치마크)에서 10스텝 동기식 정책의 성공률 91.2%를 93.8%로 올렸다. 같은 GPU에서 재계획 처리량은 5.04배로 늘었다. 교란 실험과 실제 로봇 시험에서는 동작도 더 매끄러워졌다.",
+          "tags": [
+            "Async Inference",
+            "Latent World Model",
+            "KV Cache",
+            "Flow Matching",
+            "Inference Latency"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2611.25667",
+          "extra_url": "https://xupan.top/projects/causyncvla",
+          "date": "2026-11-19",
+          "reason": "가장 최근 등록된 보유 논문 2609.18207(실시간 VLA용 RL), 2608.23831(추론 지연 속 행동 학습)과 2608.27384(FlashVLA), 2607.14695(Reflex 스트리밍 추론)가 모두 Inference Latency·Async Inference 문제를 다룬다. 이들은 정책을 다시 학습하거나 디코딩 구조를 바꾼다. CauSyncVLA는 정책을 얼려둔 채, '늦게 본 장면을 실행 기록으로 현재까지 끌어오는' 잠재 세계 모델을 끼운다. 관심 주제인 World Model과 Async Inference가 만나는 지점이다. 좋아요를 누른 2607.11397(WALA)처럼 픽셀이 아닌 잠재 공간에서 미래를 맞추지만, 그 대상이 정책의 KV 메모리라는 점이 새롭다. pool의 SR-VLA(2611.22356)는 '다음 입력을 예측해 미리 계산하고 어긋난 KV만 고친다'는 같은 문제의 시스템 쪽 해법이라 정면 비교가 된다. 오늘 관련 논문으로 함께 추천한 VLASH(2512.01031)는 '이전 행동으로 로봇 상태만 앞으로 굴려 넣는' 더 단순한 기준선이다.",
+          "rec_date": "2026-11-23"
+        },
         {
           "id": "2611.25529",
           "title": "CoachSI: Self-Improvement of Robot Policies with a Language Coach",
@@ -275,40 +329,6 @@
           "rec_date": "2026-11-18"
         },
         {
-          "id": "2611.17775",
-          "title": "Beyond Prediction Gain: LASR as a Metric for Action-Grounded Latents in World Models",
-          "authors": "Yu Zhou, Changsong Lei, Yixiang Wei, Kairui Wen 외 9명",
-          "summary_ko": "행동 레이블이 없는 영상에서 추론해 낸 '잠재 행동(latent action)'이 정말로 로봇의 행동 정보를 담고 있는지, 아니면 현재 상태·에피소드 진행도·과제 종류처럼 미래 예측에만 도움이 되는 지름길 정보를 외운 것인지 구분하는 측정법을 제안한다. 제안 지표 LASR(Latent Action Support Ratio, 잠재 행동 지지 비율)은 단위가 없는 비율값으로, 학습에 쓰지 않은 데이터(held-out data)에서 '현재 상태만으로 맞힐 수 있는 수준'을 넘어 실제 행동·물리적 상태 변화를 얼마나 더 잘 설명하는지를 잰다. 평균적 경향을 보는 GeoLASR(기하평균 기반)과 최악의 경우를 보는 WorstLASR 두 가지로 요약하며, 정답이 있는 긍정·부정 대조군 실험으로 실제 행동 정보는 탐지하고 지름길은 걸러냄을 보인다.",
-          "tags": [
-            "Latent Action",
-            "World Model",
-            "Evaluation",
-            "Benchmark"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.17775",
-          "extra_url": "",
-          "date": "2026-11-13",
-          "reason": "컬렉션의 잠재 행동 계열 핵심 논문들 — '2608.19613 What Matters for Latent Actions in Robot Learning', 'GALA(2609.21948)', 'DLAM(2607.27138)', 'LAPA(2410.11758)' — 은 모두 '어떤 잠재 행동이 좋은가'를 다루지만 좋음을 재는 기준은 대체로 하류 과제 성공률이나 복원 오차에 의존한다. 이 논문은 바로 그 평가 공백을 메우는 오프라인 측정 프로토콜을 제시해, 보유 논문들이 만든 잠재 행동 표현을 서로 비교·감사할 수 있는 공통 척도를 준다. 또한 '2609.19846 Action-Similarity 기반 Cross-embodiment 잠재 행동'처럼 표현 품질이 전이 성능을 좌우한다고 주장하는 논문들의 가설을 직접 검증하는 도구로도 쓸 수 있다.",
-          "rec_date": "2026-11-17"
-        },
-        {
-          "id": "2611.14969",
-          "title": "Scaling VLA Serving Under Robotic Execution Constraints",
-          "authors": "Yue Zhang, Zicong Ye, Lufang Chen, Dance Yang 외 17명",
-          "summary_ko": "이미 수백 대의 로봇이 실제 현장에서 VLA(Vision-Language-Action, 시각·언어·행동 통합 정책)로 돌아가는 상황을 전제로, 이 로봇 집단(fleet)에 추론을 싸게 공급하는 서버 시스템 XInfer를 제안한다. 핵심은 VLA 모델 내부의 서로 다른 연산 단계(무거운 시각·언어 처리와 가벼운 행동 디코딩 등)를 GPU에서 병렬로 겹쳐 돌려 활용률을 올리면서도, 로봇 제어 주기처럼 늦으면 안 되는 응답은 간섭에서 보호하는 스케줄링이다. 실제 운영 데이터로 만든 작업 부하에서 VLA 3종을 대상으로, 물리적 실행 제약을 지키면서 기존 최고 시스템 대비 '유효 로봇 수용량(ERC, 한 서버가 동시에 감당하는 로봇 대수)'을 1.26~3.75배로 늘렸다. 코드는 공개되어 있다.",
-          "tags": [
-            "VLA",
-            "Async Inference",
-            "Inference Latency",
-            "Serving"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.14969",
-          "extra_url": "https://github.com/X-Square-Robot/xinfer",
-          "date": "2026-11-11",
-          "reason": "컬렉션의 지연 대응 논문들 — 'FlashVLA(2608.27384)', 'Reflex(2608.14379)', '2608.23831 Learning to Act While Waiting', 'DASH(2611.11854)' — 은 전부 로봇 한 대 관점에서 모델을 빠르게/비동기로 만드는 쪽을 본다. 이 논문은 같은 지연 문제를 서버 측 다중 로봇 스케줄링 관점에서 뒤집어 보므로, 보유 논문들의 기법이 실제 배포에서 어떤 제약과 만나는지 보완해 준다. 'RTC(2506.07339)'와 '2611.11089 비동기 제어용 명령 생성'을 함께 읽으면 정책 쪽 비동기화와 인프라 쪽 비동기화가 어떻게 맞물리는지 그림이 완성된다.",
-          "rec_date": "2026-11-17"
-        },
-        {
           "id": "2611.17394",
           "title": "Agentic-Teacher: An Agentic Data Engine for Failure-Driven VLA Post-Training",
           "authors": "Gongyue Teng, Yuqing Xie, Yixian Zhang, Feng Gao 외 13명",
@@ -325,24 +345,6 @@
           "date": "2026-11-12",
           "reason": "보유 논문 '2609.19906 Learning and Transferring Closed-Loop Robot Software'와 '2608.14047 ART(도구 사용 에이전트화)'가 코딩 에이전트로 로봇 제어 코드를 짜는 방향을 다루고, '2608.19490 Self-Demonstrated Generative Control'과 'RedFlow(2607.27782)'는 실패를 되먹여 정책을 고치는 방향을 다룬다. 이 논문은 두 흐름을 정확히 합쳐 '코딩 에이전트가 VLA의 실패 지점용 교사 데이터를 생산한다'는 구조를 만들므로, 보유 논문 묶음의 빈 칸을 메운다. 또 flow-matching 손실로 데이터를 선별하는 점이 'Data Pyramid(2607.24744)'와 '2410.18647 Data Scaling Laws'의 데이터 품질 논의와 직접 이어진다.",
           "rec_date": "2026-11-17"
-        },
-        {
-          "id": "2611.11650",
-          "title": "FlowEval: How Much Adaptation Does an Embodied Foundation Model Need at Deployment?",
-          "authors": "Zhang Xi-Jia, Roman Yakunin, Shivang Chopra, Chengyue Huang, Che Chen, Siddharth Karamcheti, Zsolt Kira",
-          "summary_ko": "대규모 사전학습으로 로봇 기반 모델의 추가 적응 비용이 줄었지만, 특정 현장에서 바로 쓸 만한 성능이 나올지는 보장되지 않는다. 현장 담당자는 '이 모델이 우리 환경에 얼마나 맞는지'와 '데이터를 얼마나 더 모아야 하는지'를 미세조정 전에 알고 싶어 한다. FlowEval은 성공한 시범 몇 개만으로 이를 가늠하는 학습 불필요(training-free) 지표 모음으로, 흐름 매칭(flow matching, 노이즈에서 행동으로 가는 경로의 속도장을 배우는 생성 기법) 학습 목표값을 모델에 되물어 예측이 서로 얼마나 엇갈리는지를 잰다. π0.5, MolmoAct2, GR00T, DreamZero 네 계열에서 학습에 쓰인 환경과 처음 보는 환경을 구분해냈고, π0.5와 GR00T를 RoboCasa365의 17개 조작 과제에 미세조정한 결과 이 지표가 '데이터를 더 넣을 때 성공률이 오르는 정도'와 상관을 보였다.",
-          "tags": [
-            "Foundation Model",
-            "Flow Matching",
-            "Test-Time Adaptation",
-            "Evaluation",
-            "Data Efficiency"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2611.11650",
-          "extra_url": "",
-          "date": "2026-11-08",
-          "reason": "보유 논문 π0.5(2504.16054)와 GR00T N1(2503.14734)을 직접 평가 대상으로 삼은 연구여서, 그 두 모델을 실제로 가져다 쓸 때의 '추가 데이터 예산'을 가늠하는 실무용 도구가 된다. 또한 Xiaomi-Robotics-1(2607.15330, 10만 시간 규모 궤적으로 VLA를 키우며 스케일링 법칙을 본 연구)이 '데이터를 더 넣으면 얼마나 좋아지나'를 사후에 측정했다면, 이 논문은 같은 질문을 미세조정 전에 예측하려는 시도다.",
-          "rec_date": "2026-11-16"
         }
       ]
     },
@@ -350,6 +352,60 @@
       "key": "related",
       "label": "관련 논문",
       "items": [
+        {
+          "id": "2512.01031",
+          "title": "VLASH: Real-Time VLAs via Future-State-Aware Asynchronous Inference",
+          "authors": "Jiaming Tang, Yufei Sun, Yilong Zhao 외 · Song Han · MIT Han Lab",
+          "summary_ko": "VLA(카메라 영상·언어 지시를 받아 로봇 행동을 내는 모델)를 실시간·동적 과제에 쓸 수 있게 하는 간단한 비동기 추론 방법이다. 보통 VLA는 동기식으로 돈다. 로봇이 추론이 끝날 때까지 기다렸다가 행동하므로 동작이 멈칫거리고, 실행 중 환경 변화에 반응하지 못한다. 추론과 실행을 동시에 하는 비동기 추론(asynchronous inference)이 대안이지만, 추론하는 동안에도 로봇과 환경은 계속 움직인다. 그래서 '예측에 쓴 시점'과 '실제로 실행되는 시점'이 어긋나 행동이 불안정해진다. 기존 비동기 방법들은 이를 막으려다 정확도를 잃거나 실행 중 추가 계산 부담을 졌다. VLASH의 아이디어는 단순하다. 이번 추론이 끝나 새 행동이 실행되기 시작할 시점의 로봇 상태를, 이전 행동 묶음(action chunk: 한 번에 예측한 여러 스텝의 행동)을 따라 앞으로 굴려(roll forward) 미리 계산한다. 그리고 이 '미래 실행 시점의 상태'를 모델 입력으로 넣는다. 모델 구조는 바꾸지 않고, 실행 중 추가 비용도 없다. 동기식 추론보다 반응 지연을 최대 11.8배 줄였고, 정확도는 모든 비동기 기준선보다 높았다. 행동 양자화(action quantization: 행동 값을 더 거친 단위로 묶어 실행 단계를 줄이는 것)를 더하면 정확도를 거의 잃지 않고 과제 완료 속도가 1.5~2.0배 빨라졌다. π0.5 같은 최신 VLA로 탁구, 두더지 잡기처럼 빠른 반응과 정밀도가 함께 필요한 과제도 해냈다. 동기식 추론으로는 실패하던 과제들이다. 코드가 공개돼 있다.",
+          "tags": [
+            "Async Inference",
+            "Inference Latency",
+            "VLA",
+            "Real-Time Control",
+            "π0.5"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2512.01031",
+          "extra_url": "https://github.com/mit-han-lab/vlash",
+          "date": "2025-11-30",
+          "reason": "보유 논문 2608.23831(추론 지연 속 행동 학습), 2609.18207(실시간 VLA용 RL), 2608.27384(FlashVLA), 2506.01844(SmolVLA의 비동기 추론)가 모두 '예측 시점과 실행 시점의 어긋남'을 다룬다. 그런데 가장 단순한 기준선인 VLASH는 아직 컬렉션에 없다. VLASH는 로봇 상태만 미래로 굴리고, 영상은 늦은 것을 그대로 쓴다. 오늘 추천한 CauSyncVLA(2611.25667)는 한 걸음 더 나가, 영상에서 나온 KV 메모리까지 실행 기록으로 갱신한다. 두 논문을 나란히 읽으면 '무엇을 미래로 끌어올지'의 선택지가 정리된다. 기준 모델이 보유 2504.16054(π0.5)라 수치 비교도 쉽다. pool의 SR-VLA(2611.22356)와도 함께 읽을 만하다.",
+          "rec_date": "2026-11-23"
+        },
+        {
+          "id": "2510.03342",
+          "title": "Gemini Robotics 1.5: Pushing the Frontier of Generalist Robots with Advanced Embodied Reasoning, Thinking, and Motion Transfer",
+          "authors": "Gemini Robotics Team · Google DeepMind",
+          "summary_ko": "Google DeepMind의 로봇 모델 Gemini Robotics 2세대 기술 보고서로, 두 모델이 짝을 이룬다. Gemini Robotics 1.5는 여러 로봇 몸체(embodiment)를 하나로 다루는 VLA(카메라 영상·언어 지시를 받아 로봇 행동을 내는 모델)다. Gemini Robotics-ER 1.5는 체화 추론(ER, Embodied Reasoning: 시각·공간 이해, 과제 계획, 진행도 추정처럼 로봇에 필요한 추론) 전용 모델이다. 핵심은 세 가지다. 첫째, 새 구조와 동작 전이(MT, Motion Transfer) 기법이다. ALOHA 양팔 로봇, 양팔 Franka, 휴머노이드 Apollo처럼 서로 다른 로봇의 데이터를 함께 학습한다. 그 결과 한 로봇에서만 배운 기술이 다른 로봇에서도 추가 학습 없이 나온다. 둘째, '행동 전에 생각하기'다. VLA가 행동 사이사이에 자연어로 여러 단계의 내부 추론을 끼워 넣는다. 복잡한 다단계 과제를 더 잘 쪼개 실행하고, 로봇이 왜 그렇게 움직이는지 사용자가 읽을 수 있다. 셋째, ER 1.5는 체화 추론 벤치마크에서 당시 최고 성능을 냈다. 실제 사용에서는 두 모델을 에이전트 구조로 묶는다. ER 1.5가 상위 오케스트레이터로서 과제를 계획하고 진행도를 판단하며, 필요하면 웹 검색 같은 도구도 부른다. 그리고 단계별 지시를 VLA에 넘기면, VLA가 실제로 몸을 움직인다.",
+          "tags": [
+            "VLA",
+            "Embodied Reasoning",
+            "Agentic Robotics",
+            "Cross-Embodiment",
+            "Motion Transfer"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2510.03342",
+          "extra_url": "https://deepmind.google/models/gemini-robotics/",
+          "date": "2025-10-02",
+          "reason": "보유 논문 2607.29172(CLIFT)는 이 계열의 온디바이스 모델(Gemini Robotics On-Device)을 휴머노이드 전문가로 다듬는 연구다. 그런데 바탕이 되는 Gemini Robotics 1.5 보고서는 아직 컬렉션에 없다. ER 1.5가 계획·진행도 판단을 맡고 VLA가 실행하는 구도는, 좋아요를 누른 2607.08448(Harness VLA)과 2606.10267(로봇 정책 오케스트레이션 체계 연구)이 분석한 '상위 계획기 + 하위 VLA' 구조의 대표적인 산업 사례다. 동작 전이는 보유 2310.08864(Open X-Embodiment), 2609.02546(ZETA)이 다루는 교차 몸체 전이 문제에 대한 최신 답이다. 행동 사이에 언어 추론을 끼우는 방식은 보유 2407.08693(ECoT), 2608.11739(G0.5)와 비교된다. 오늘 추천한 ForceHarness(2611.21099)와 UniCraft(2611.26376)는 범용 프런티어 모델을 하네스로 감싸 로봇을 움직인다. 이 보고서는 로봇 전용으로 학습한 모델을 쓰는 반대쪽 접근이라 대조해 읽기 좋다.",
+          "rec_date": "2026-11-23"
+        },
+        {
+          "id": "2410.09309",
+          "title": "Adaptive Compliance Policy: Learning Approximate Compliance for Diffusion Guided Control (ACP)",
+          "authors": "Yifan Hou, Zeyi Liu, Cheng Chi 외 · Shuran Song · Stanford · Toyota Research Institute",
+          "summary_ko": "위치만 따라가던 시각 모방학습 정책이 '얼마나 단단하게 버틸지'까지 출력하게 만든 연구다. 순응성(compliance)은 로봇이 외부 힘에 얼마나 부드럽게 밀려주는지를 뜻한다. 불확실한 접촉 상황에서 위치와 힘을 동시에 다루게 해주는 핵심 성질이다. 하지만 오늘날 시각운동(visuomotor) 정책은 대부분 위치 제어만 한다. 순응성을 쓰더라도 미리 정해둔 고정 강성(stiffness: 밀렸을 때 버티는 정도, 스프링 상수에 해당)을 쓴다. ACP는 시연에서 순응성을 배워, 과제 진행에 따라(시간적으로) 그리고 방향별로(공간적으로) 강성을 바꾼다. 문제는 사람 시연만으로 완전한 순응성 파라미터를 구하는 일은 답이 하나로 정해지지 않는다는 점이다. 그래서 저자들은 두 가지 성질만 만족하는 '근사 순응성 프로필'을 시연의 힘 기록에서 추정해 학습 목표로 쓴다. 큰 접촉 힘은 피하고, 목표 궤적은 정확히 따라가게 하는 것이다. 확산 정책(diffusion policy: 노이즈를 걷어내며 행동을 생성하는 정책)이 목표 자세와 강성을 함께 생성하고, 저수준 순응 제어기가 이를 실행한다. 물건 뒤집기, 꽃병 닦기 같은 접촉이 많은 과제에서 최신 시각운동 정책보다 50% 넘게 성능이 좋아졌다.",
+          "tags": [
+            "Compliance Control",
+            "Contact-Rich",
+            "Diffusion Policy",
+            "Force",
+            "Imitation Learning"
+          ],
+          "arxiv_url": "https://arxiv.org/abs/2410.09309",
+          "extra_url": "https://adaptive-compliance.github.io/",
+          "date": "2024-10-12",
+          "reason": "보유 논문 2607.28596(FA-RDP), 2609.01596(Facet-0), 2608.01402(VLA가 접촉 과제에서 실패하는 이유)와 좋아요를 누른 2607.18231(FM-VLA)은 모두 힘을 정책의 '입력'으로 넣는다. ACP는 힘을 순응성이라는 '출력'으로 다루는 대표작이다. 보유 2303.04137(Diffusion Policy)과 2402.10329(UMI)의 저자진이 이어 낸 후속작이라 계보도 바로 이어진다. 오늘 추천한 ForceHarness(2611.21099)는 임피던스 제어 위에 고정 모델용 힘 프리미티브를 올렸다. ACP는 같은 제어 층을 시연으로 학습한다. pool의 Reactive Diffusion Policy(2503.02881)는 빠른 촉각 보정으로, TacInno(2611.26405)는 촉각을 학습 목표로만 써서 접촉 문제를 푼다. ACP까지 셋을 함께 읽으면 접촉 문제를 다루는 세 방향이 정리된다.",
+          "rec_date": "2026-11-23"
+        },
         {
           "id": "2509.15155",
           "title": "Self-Improving Embodied Foundation Models",
@@ -667,60 +723,6 @@
           "date": "2024-12-05",
           "reason": "보유 논문 'LAPA(2410.11758)'와 '2608.19613 What Matters for Latent Actions'가 영상에서 잠재 행동을 뽑는 계열의 출발점인데, Moto는 그 잠재 변수를 '움직임 토큰'이라는 명시적 어휘로 만들고 자기회귀 사전학습 + 공동 미세조정이라는 레시피를 확립한 또 하나의 축이다. 보유 논문 'GALA(2609.21948, 기하 인식 잠재 행동)'와 'DLAM(2607.27138, 분포형 잠재 행동)'이 개선하려는 바로 그 기준선이며, 오늘 함께 추천한 'LASR(2611.17775)'로 평가해 볼 대상으로도 적합하다. 사람 영상 활용이라는 점에서 'Ego2Robot(2608.02580)', 'RoboEdit(2608.18948)'와도 이어진다.",
           "rec_date": "2026-11-17"
-        },
-        {
-          "id": "2403.03181",
-          "title": "Behavior Generation with Latent Actions (VQ-BeT)",
-          "authors": "Seungjae Lee, Yibin Wang, Haritheja Etukuru, H. Jin Kim, Nur Muhammad Mahi Shafiullah, Lerrel Pinto",
-          "summary_ko": "로봇 행동은 연속값 벡터이면서 같은 상황에서도 여러 정답이 가능한 다봉(multimodal) 분포라, 평균을 맞추는 식으로 회귀하면 서로 다른 해법이 뭉개지고 순차 예측에서 오차가 누적된다. 앞선 Behavior Transformer(BeT)는 k-평균 군집으로 행동을 이산화해 여러 모드를 잡았지만, 군집은 고차원 행동 공간이나 긴 구간으로 확장하기 어렵고 기울기 정보가 없어 장기 행동 모델링에 약했다. VQ-BeT는 이를 잔차 벡터 양자화(residual vector quantization, 코드북을 여러 단계로 겹쳐 쓰며 오차를 점점 줄이는 이산화)로 바꿔 행동 묶음을 토큰으로 만들고, 트랜스포머로 그 토큰을 예측한다. 다봉 행동 예측·조건부 생성·부분 관측을 한 모델로 다루며, 시뮬레이션과 실제 로봇 양쪽에서 확산 정책류 대비 추론이 훨씬 빠르다.",
-          "tags": [
-            "Latent Action",
-            "Action Tokenization",
-            "Behavior Cloning",
-            "Autoregressive",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2403.03181",
-          "extra_url": "https://github.com/jayLEE0301/vq_bet_official",
-          "date": "2024-03-05",
-          "reason": "보유 논문 FAST(2501.09747, VLA용 효율적 행동 토크나이저)와 추천 풀의 ActionCodec2(2611.15490, 스트리밍 행동 토크나이저)가 모두 '행동을 어떻게 토큰화하나'를 다루는데, 그 계보의 출발점이 바로 이 VQ-BeT다. 또 컬렉션에서 8편이 달고 있는 Latent Action 태그와 Latent Action Pretraining from Videos(2410.11758)의 '잠재 행동 코드북' 개념이 어디서 왔는지 확인하는 기반 논문이다.",
-          "rec_date": "2026-11-16"
-        },
-        {
-          "id": "2302.00111",
-          "title": "Learning Universal Policies via Text-Guided Video Generation (UniPi)",
-          "authors": "Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai, Ofir Nachum, Joshua B. Tenenbaum, Dale Schuurmans, Pieter Abbeel",
-          "summary_ko": "순차 의사결정을 '텍스트 조건 영상 생성' 문제로 바꿔 푼 연구. 목표를 글로 주면 플래너가 앞으로 일어날 장면들을 영상으로 합성하고, 그 생성된 영상에서 역동역학 모델(inverse dynamics model, 연속한 두 장면을 보고 그 사이에 필요한 제어 명령을 되짚는 모델)로 실제 제어 명령을 뽑아낸다. 목표를 언어로 명세하므로 학습 때 본 적 없는 조합(새 물체·새 지시)으로도 자연스럽게 일반화되고, 행동 공간이 서로 다른 환경·로봇의 영상 데이터를 한 모델에 함께 넣을 수 있어 인터넷 영상 같은 행동 라벨 없는 데이터를 활용하는 길을 연다.",
-          "tags": [
-            "World Model",
-            "Video Diffusion",
-            "Video Pretraining",
-            "Cross-Embodiment",
-            "Compositional Generalization"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2302.00111",
-          "extra_url": "",
-          "date": "2023-01-31",
-          "reason": "컬렉션에서 16편이 달고 있는 World Model 태그와 '영상 생성을 정책으로 쓴다'는 발상의 원류다. 보유 논문 Xiaomi-Robotics-U0(2607.11643)와 추천 풀의 Genie Envisioner(2508.05635), 그리고 이번에 추천한 MetaWAM(2611.14365)이 모두 '사전학습 영상 생성 모델 + 행동 추출' 구조를 쓰므로, 그 원형과 한계(영상 품질이 곧 제어 품질이 되는 문제)를 먼저 보면 최신 논문들의 설계 선택이 훨씬 또렷해진다.",
-          "rec_date": "2026-11-16"
-        },
-        {
-          "id": "2401.00025",
-          "title": "Any-point Trajectory Modeling for Policy Learning (ATM)",
-          "authors": "Chuan Wen, Xingyu Lin, John So, Kai Chen, Qi Dou, Yang Gao, Pieter Abbeel",
-          "summary_ko": "시범 데이터는 많을수록 좋지만 수집 비용이 병목이다. 영상에는 행동·물리·의미에 대한 지식이 풍부하지만 행동 라벨이 없어 제어에 필요한 정보를 꺼내기 어렵다. ATM은 영상 프레임 안의 '임의의 점'들이 앞으로 어디로 움직일지(점 궤적)를 예측하도록 모델을 사전학습한다. 이렇게 뽑힌 점 궤적은 로봇에 어떤 팔·손이 달렸는지와 무관한 중간 표현이자 상세한 제어 지침이 되어, 행동 라벨이 붙은 데이터가 아주 적어도 견고한 시각-운동 정책을 학습할 수 있다. 언어 조건 과제 130여 개를 시뮬레이션과 실제 로봇에서 평가해 기존 영상 사전학습 기법들을 큰 차이로 앞섰다.",
-          "tags": [
-            "Human Video",
-            "Point Tracking",
-            "Cross-Embodiment",
-            "Data Efficiency",
-            "Imitation Learning"
-          ],
-          "arxiv_url": "https://arxiv.org/abs/2401.00025",
-          "extra_url": "https://xingyu-lin.github.io/atm/",
-          "date": "2023-12-28",
-          "reason": "컬렉션의 Cross-Embodiment(18편)·Human Video(5편) 축에서 '구현체에 무관한 중간 표현'을 무엇으로 쓸지가 핵심 쟁점인데, 잠재 행동(WALA 2607.11397, LAPA 2410.11758)과 대비되는 또 하나의 대표 답안이 바로 이 점 궤적이다. 추천 풀의 EgoX(2611.16728)·BATCH(2611.10148)가 사람 영상에서 로봇으로 건너가는 방법을 다루므로, 그 비교군으로 읽으면 '왜 점 추적을 쓰거나 버리는가'가 정리된다.",
-          "rec_date": "2026-11-16"
         }
       ]
     }
